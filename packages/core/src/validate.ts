@@ -51,10 +51,16 @@ function validateSlideXml(name: string, xml: string, errors: string[], stats: Pp
     [/<p:pic[\s>]/, 'p:pic (raster picture)'],
     [/<p:cxnSp[\s>]/, 'p:cxnSp (connector)'],
     [/<p:graphicFrame[\s>]/, 'p:graphicFrame (chart/table/diagram)'],
+    [/<p:grpSp[\s>]/, 'p:grpSp (group shape)'],
     [/<a:blip[\s>]/, 'a:blip (image fill)'],
+    [/<a:blipFill[\s>]/, 'a:blipFill (picture fill)'],
     [/<p:contentPart[\s>]/, 'p:contentPart (embedded media)'],
     [/<p:oleObj[\s>]/, 'p:oleObj (embedded object)'],
+    [/<c:chart[\s>]/, 'c:chart (embedded chart)'],
+    [/<a:tbl[\s>]/, 'a:tbl (table)'],
+    [/<v:shape[\s>]/, 'v:shape (VML shape)'],
     [/<a:gradFill[\s>]/, 'a:gradFill (gradient)'],
+    [/<a:pattFill[\s>]/, 'a:pattFill (pattern fill)'],
   ];
   for (const [re, label] of forbidden) {
     if (re.test(xml)) errors.push(`${name}: forbidden element ${label}`);

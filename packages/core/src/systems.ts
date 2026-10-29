@@ -146,7 +146,9 @@ export function colorFor(system: TypographySystem, role: TextRole, background: s
   const ink = onAlt ? c.background : c.ink;
   switch (role) {
     case 'kicker':
-      return c.accent;
+      // The expressive accent (yellow) is unreadable on the light alt
+      // background (1.28:1), so alt slides use the dark ink token instead.
+      return onAlt ? c.background : c.accent;
     case 'caption':
       return onAlt ? '#6B6B6B' : c.muted;
     default:
