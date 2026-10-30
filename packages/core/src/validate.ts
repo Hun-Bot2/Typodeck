@@ -123,15 +123,17 @@ function validateSlideXml(name: string, xml: string, errors: string[], stats: Pp
 }
 
 /**
- * Structurally validate an exported .pptx file.
+ * Structurally validate exported .pptx bytes.
  * When `expectedMinChars` is given, also require at least that many
  * editable characters (guards against empty/rasterized decks).
  */
-export async function validatePptx(filePath: string, expectedMinChars = 1): Promise<PptxValidationResult> {
+export async function validatePptxBytes(
+  data: Uint8Array | Buffer | ArrayBuffer,
+  expectedMinChars = 1,
+): Promise<PptxValidationResult> {
   const errors: string[] = [];
   const stats: PptxValidationStats = { slides: 0, textShapes: 0, editableChars: 0, slideSizeIn: null };
-  const buf = await fs.readFile(filePath);
-  const zip = await JSZip.loadAsync(buf);
+  const zip = await JSZip.loadAsync(data as Uint8Array);
 
   // Slide size must be 16:9.
   const presFile = zip.file('ppt/presentation.xml');
@@ -176,4 +178,14 @@ export async function validatePptx(filePath: string, expectedMinChars = 1): Prom
   }
 
   return { ok: errors.length === 0, errors, stats };
+}
+
+/**
+ * Structurally validate an exported .pptx file.
+ * When `expectedMinChars` is given, also require at least that many
+ * editable characters (guards against empty/rasterized decks).
+ */
+export async function validatePptx(filePath: string, expectedMinChars = 1): Promise<PptxValidationResult> {
+  const buf = await fs.readFile(filePath);
+  return validatePptxBytes(buf, expectedMinChars);
 }

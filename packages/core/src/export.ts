@@ -41,12 +41,13 @@ export interface ExportResult {
   textBoxCount: number;
 }
 
-/**
- * Export a validated deck to an editable .pptx file.
- * Only slide.addText (native text boxes) and slide background fill are used.
- */
-export async function exportToPptx(deckInput: unknown, outPath: string): Promise<ExportResult> {
-  const deck: Deck = validateDeck(deckInput);
+export interface ExportBufferResult {
+  buffer: Buffer;
+  slideCount: number;
+  textBoxCount: number;
+}
+
+function buildPresentation(deck: Deck): { pptx: PptxGenJS; slideCount: number; textBoxCount: number } {
   const system = getSystem(deck.meta.system);
 
   const pptx = new PptxGenJS();
@@ -66,7 +67,30 @@ export async function exportToPptx(deckInput: unknown, outPath: string): Promise
       textBoxCount += 1;
     }
   }
+  return { pptx, slideCount: deck.slides.length, textBoxCount };
+}
+
+/**
+ * Export a validated deck to an editable .pptx file.
+ * Only slide.addText (native text boxes) and slide background fill are used.
+ */
+export async function exportToPptx(deckInput: unknown, outPath: string): Promise<ExportResult> {
+  const deck: Deck = validateDeck(deckInput);
+  const { pptx, slideCount, textBoxCount } = buildPresentation(deck);
 
   await pptx.writeFile({ fileName: outPath });
   return { path: outPath, slideCount: deck.slides.length, textBoxCount };
+}
+
+/**
+ * Export a validated deck to in-memory .pptx bytes (for the Web Studio
+ * download route — no temp files). Same content as exportToPptx.
+ */
+export async function exportToPptxBuffer(deckInput: unknown): Promise<ExportBufferResult> {
+  const deck: Deck = validateDeck(deckInput);
+  const { pptx, slideCount, textBoxCount } = buildPresentation(deck);
+
+  const out = await pptx.write({ outputType: 'nodebuffer' });
+  const buffer = Buffer.isBuffer(out) ? out : Buffer.from(out as Uint8Array);
+  return { buffer, slideCount: deck.slides.length, textBoxCount };
 }

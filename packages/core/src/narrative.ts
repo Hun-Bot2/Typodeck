@@ -252,24 +252,38 @@ export interface PlanDeckResult {
   };
 }
 
-/**
- * End-to-end: ingestion -> evidence -> narrative -> layoutDeck -> validateDeck.
- * Provider defaults to resolveProvider() (fallback unless Muse env is set).
- * Fallback-built decks are labeled generatedBy=fallback.
- */
-export async function planDeck(input: PlanDeckInput, opts: PlanDeckOptions): Promise<PlanDeckResult> {
-  const provider = opts.provider ?? resolveProvider(process.env, opts.fetchImpl);
+/** Pipeline stages reported to an optional progress callback (Phase 3 SSE). */
+export type PipelineStage = 'ingest' | 'evidence' | 'narrative' | 'layout';
+export type StageCallback = (stage: PipelineStage, detail?: string) => void;
+
+interface NarrativeRun {
+  ingested: Ingested;
+  claims: Claim[];
+  narrative: Narrative;
+  counts: ClaimCounts;
+  warnings: string[];
+}
+
+/** Shared ingestion -> evidence -> narrative run for planDeck/planDecksAll. */
+async function runToNarrative(
+  input: PlanDeckInput,
+  opts: { purpose?: string; lang?: string } & FetchRepoOptions,
+  onStage?: StageCallback,
+): Promise<NarrativeRun> {
   const warnings: string[] = [];
 
+  onStage?.('ingest');
   const ingested: Ingested =
     input.type === 'repo' ? await fetchRepo(input.owner, input.repo, opts) : acceptIdea(input.text);
   warnings.push(...ingested.warnings);
 
+  onStage?.('evidence');
   const claims = extractClaims(ingested);
   if (claims.length === 0) {
     warnings.push('no claims extracted; deck is cover + proposal slides only');
   }
 
+  onStage?.('narrative');
   const narrative = planNarrative(claims, { purpose: opts.purpose, lang: opts.lang });
   const counts: ClaimCounts = {
     total: claims.length,
@@ -284,19 +298,103 @@ export async function planDeck(input: PlanDeckInput, opts: PlanDeckOptions): Pro
     warnings.push('idea mode: all claims ungrounded; number slides labeled unverified/illustrative');
   }
 
-  const deck = layoutDeck(narrative, opts.system, opts.seed === undefined ? {} : { seed: opts.seed });
+  return { ingested, claims, narrative, counts, warnings };
+}
+
+function labelDeck(
+  narrative: Narrative,
+  system: SystemId,
+  seed: number | undefined,
+  provider: ModelProvider,
+): Deck {
+  const deck = layoutDeck(narrative, system, seed === undefined ? {} : { seed });
   // Label the producing provider on the deck itself.
   deck.meta.generatedBy = provider.id === 'fallback' ? 'fallback' : `typodeck:${provider.id}`;
+  validateDeck(deck);
+  return deck;
+}
+
+/**
+ * End-to-end: ingestion -> evidence -> narrative -> layoutDeck -> validateDeck.
+ * Provider defaults to resolveProvider() (fallback unless Muse env is set).
+ * Fallback-built decks are labeled generatedBy=fallback.
+ */
+export async function planDeck(
+  input: PlanDeckInput,
+  opts: PlanDeckOptions,
+  onStage?: StageCallback,
+): Promise<PlanDeckResult> {
+  const provider = opts.provider ?? resolveProvider(process.env, opts.fetchImpl);
+  const run = await runToNarrative(input, opts, onStage);
+
+  onStage?.('layout', opts.system);
+  const deck = labelDeck(run.narrative, opts.system, opts.seed, provider);
   if (provider.id === 'fallback') {
-    warnings.push('built with the deterministic fallback (not model inference)');
+    run.warnings.push('built with the deterministic fallback (not model inference)');
   }
 
-  validateDeck(deck);
   return {
     deck,
-    narrative,
-    claims,
-    ingested,
-    provenance: { provider: provider.id, generatedBy: deck.meta.generatedBy, claims: counts, warnings },
+    narrative: run.narrative,
+    claims: run.claims,
+    ingested: run.ingested,
+    provenance: {
+      provider: provider.id,
+      generatedBy: deck.meta.generatedBy,
+      claims: run.counts,
+      warnings: run.warnings,
+    },
+  };
+}
+
+export interface PlanDecksAllOptions extends FetchRepoOptions {
+  purpose?: string;
+  lang?: string;
+  provider?: ModelProvider;
+  seed?: number;
+}
+
+export interface PlanDecksAllResult {
+  narrative: Narrative;
+  claims: Claim[];
+  ingested: Ingested;
+  decks: Record<SystemId, Deck>;
+  provenance: {
+    provider: string;
+    generatedBy: string;
+    claims: ClaimCounts;
+    warnings: string[];
+  };
+}
+
+/**
+ * End-to-end like planDeck, but lays out ALL THREE systems from the SAME
+ * planned narrative so the Web Studio can show comparable design previews.
+ */
+export async function planDecksAll(
+  input: PlanDeckInput,
+  opts: PlanDecksAllOptions = {},
+  onStage?: StageCallback,
+): Promise<PlanDecksAllResult> {
+  const provider = opts.provider ?? resolveProvider(process.env, opts.fetchImpl);
+  const run = await runToNarrative(input, opts, onStage);
+
+  const systems: SystemId[] = ['editorial', 'swiss', 'expressive'];
+  const decks = {} as Record<SystemId, Deck>;
+  for (const system of systems) {
+    onStage?.('layout', system);
+    decks[system] = labelDeck(run.narrative, system, opts.seed, provider);
+  }
+  const generatedBy = provider.id === 'fallback' ? 'fallback' : `typodeck:${provider.id}`;
+  if (provider.id === 'fallback') {
+    run.warnings.push('built with the deterministic fallback (not model inference)');
+  }
+
+  return {
+    narrative: run.narrative,
+    claims: run.claims,
+    ingested: run.ingested,
+    decks,
+    provenance: { provider: provider.id, generatedBy, claims: run.counts, warnings: run.warnings },
   };
 }
