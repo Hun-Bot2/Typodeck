@@ -112,3 +112,88 @@
   server was left running. `npm` needed `NPM_CONFIG_CACHE=/tmp/...` (the
   default cache dir is unwritable).
 - No commits (parent commits after review).
+
+## Phase 4 — Evaluation (2026-10-30)
+- Re-pinned `evals/fixtures.json` live via the GitHub API (`npm run
+  eval:fixtures`): F1 sindresorhus/is@main, F2 tj/commander@master, F3
+  iamkun/dayjs@dev all resolve with default branches unchanged, READMEs
+  present (2974/12/530 words), and HEAD SHAs identical to the Phase 2 pins
+  (no drift; `pinned_at=2026-10-30`). F4 kept as the inline/recorded 477-word
+  idea text. One transient `fetch failed` on F1 needed a single retry.
+- Implemented `packages/core/scripts/eval.ts` (single CLI, `require.main`
+  guard so tests can import its pure helpers) and wired the EVALUATION.md
+  §4 interface at root: `eval:fixtures` (re-verify + refresh SHAs, optional
+  `--token-env` for authed quota), `eval` → `eval.js run [--lang ko|en|all]
+  [--direction <id>|all] [--fixture F1] [--seed 42]`, `eval:report` →
+  `evals/summary.json`. Per run: `planDeck` (pinned branch, live GitHub for
+  F1–F3 with core bounds; recorded text for F4) → `exportToPptxBuffer` →
+  `validatePptxBytes` → metrics. Per-run JSON + `.pptx` under `evals/reports/`
+  record fixture, pinned/observed SHA, direction, lang, provider, seed, and
+  all metric values.
+- Metric semantics (documented in the script header; EVALUATION.md names no
+  diversity thresholds): forbidden = validator "forbidden element" hits (0);
+  editability = editable/total `a:t` chars with `noTxEdt` shapes counted
+  non-editable (1.0); overflow = "exceeds slide bounds" hits (0 — the layout
+  engine fits every box, so no separate clip detector exists); evidence
+  coverage = factual (verified+suggestion) claims with ≥1 valid ref
+  (ingested path + in-bounds lines) / all factual claims; unsupported =
+  factual claims with no valid ref (repo) / fabricated (non-idea.txt) refs +
+  unlabeled captions (idea, both 0); diversity per (fixture, lang) pair =
+  ≥2 of {blocks-mean Δ≥0.5, headline-median rel-Δ≥15%, alignment-mix L1≥0.2};
+  latency = `planDeck` wall ms; success = completed + ≥5 slides + PPTX bytes
+  + structural validation ok.
+- Ran the full live matrix 4×2×3 = 24 runs, seed 42, provider fallback
+  (no `TYPOdeck_MUSE_*` env set): first pass 19/24 in 9.5 s, then GitHub
+  unauthenticated quota hit 0 and 5 F3 runs failed honestly with
+  `IngestionError: repo metadata HTTP 403` (typed, recorded in per-run
+  JSON); after the quota reset the 6 F3 runs re-ran green in 6.0 s.
+  `npm run eval:report` → OVERALL PASS: S1 24/24 (100.0%) ≥90%;
+  S2 180/216 repo slides (83.3%) ≥80% (cover+closing carry no refs by
+  design: 10/12 per deck; content slides 180/180 = 100%); S3 max 0/deck ≤1;
+  S4 max 0; S5 min 100.00%; S6 max 0; S7 p95 1814 ms, max 4679 ms ≤120 s.
+  Diversity 24/24 pairs pass, every pair differing in exactly headline size
+  + alignment mix (blocks-per-slide is identical across systems because
+  layout preserves narrative block counts 1:1 — recorded, not tuned).
+  Idea mode: 0 fabricated refs, 0 unlabeled captions over 6 runs. No SHA
+  drift (observed == pinned on all 18 repo runs). F3 hit the 20-file ingest
+  cap (warning recorded); F1/F2 stayed within bounds.
+- Tests: new offline `tests/eval.test.ts` (10 tests: percentile/median,
+  caption parsing incl. KO, ref validation, diversity math, editability
+  split); full suite 75/75 green (65 baseline + 10). Arg passthrough
+  `npm run eval -- --lang ...` verified (invalid value reaches the parser
+  and fails before any network).
+- Commands run: `npm run eval:fixtures`, `npm run eval` (full matrix),
+  `npm run eval -- --fixture F3` (post-reset rerun), `npm run eval:report`.
+  Seed/provider notes: fixed seed 42 passed to `planDeck` for layout
+  determinism; provider resolved to `fallback` on every run (labeled in
+  each report); live-network latencies are honest per-run measurements.
+- No commits (parent commits after review).
+
+## Skill — Typodeck Agent Skill (2026-10-30)
+- Verified Skill conventions without touching other agents' stores: read one
+  bundled Muse skill body via the skill catalog (`SKILL.md` + YAML frontmatter
+  `name`/`description`, one directory per skill under `skills/`) and confirmed
+  the `skills/<slug>/SKILL.md` layout. Read the Athos repo README only, as an
+  architectural reference for portable know-how + own-benchmark practices; no
+  code copied, no dependency added.
+- Authored `skills/typodeck/SKILL.md` (~125 lines): trigger, announce line,
+  CLI-first workflow orchestrating Core (`npm run deck`, `/api/generate` +
+  `/api/export` contracts, `planDecksAll`/`layoutDeck`/`exportToPptxBuffer`/
+  `validatePptx`), typography-only allow/forbid lists, evidence-grounding
+  rules, provider/fallback labeling, typed error codes + API status map, and
+  three worked examples with observed outputs. Portable: shell + HTTP only.
+- Authored `skills/typodeck/EXAMPLES.sh` (executable transcript) and ran it
+  end-to-end: PASS examples=5 skipped=0. Ex1 idea→3 systems (6 slides/22
+  boxes each, ~87 KB, byte-identical reruns, `validation: OK`); Ex2 live repo
+  sindresorhus/is (38 claims: 29 verified/9 suggestion, 12 slides/46 boxes,
+  135592 B, `validation: OK`); Ex3 `eval -- --fixture F4` 6/6 OK (offline,
+  seed 42) + `eval:report` OVERALL PASS (S1–S7 match the Phase 4 pins).
+  Ex2 skips honestly on GitHub quota 0; Ex3 skips when the Phase 4 scripts
+  are absent, so the transcript also passes on the committed baseline.
+- Verification notes: every cited command was run in this session. The
+  `/api/*` path was verified at the function level (`planDecksAll` →
+  `layoutDeck` → `exportToPptxBuffer` → `validatePptxBytes`, 86641 B, valid);
+  HTTP framing relies on the Phase 3 observed probes (dev-server `listen()`
+  is sandbox-blocked and the unsandboxed start produced no output). `npm run
+  --silent test` 75/75 green. Artifacts under `/tmp/typodeck-skill/`.
+- No commits (parent commits after review).

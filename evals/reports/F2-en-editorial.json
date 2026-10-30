@@ -1,0 +1,72 @@
+{
+  "fixture": "F2",
+  "fixtureType": "code-heavy repo",
+  "pinnedSha": "d10fc03ce9d44a0a34bb913df99dded4a0bd5287",
+  "observedSha": "d10fc03ce9d44a0a34bb913df99dded4a0bd5287",
+  "branch": "master",
+  "direction": "editorial",
+  "lang": "en",
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "seed": 42,
+  "slideCount": 12,
+  "textBoxCount": 46,
+  "pptxBytes": 136020,
+  "claimCounts": {
+    "total": 39,
+    "verified": 29,
+    "suggestion": 10,
+    "ungrounded": 0
+  },
+  "features": {
+    "blocksPerSlide": [
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      3
+    ],
+    "meanBlocksPerSlide": 3.8333333333333335,
+    "medianHeadlineSize": 46,
+    "alignmentMix": {
+      "left": 1,
+      "center": 0,
+      "right": 0
+    }
+  },
+  "warnings": [
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "latencyMs": 125,
+  "exportMs": 23,
+  "success": true,
+  "error": null,
+  "timestamp": "2026-10-30T03:23:11.575Z",
+  "metrics": {
+    "forbiddenCount": 0,
+    "otherErrorCount": 0,
+    "validatorOk": true,
+    "validatorErrors": [],
+    "editableChars": 1740,
+    "totalChars": 1740,
+    "editability": 1,
+    "overflowCount": 0,
+    "factualClaims": 39,
+    "factualWithValidRef": 39,
+    "evidenceCoverage": 1,
+    "unsupportedClaims": 0,
+    "fabricatedRefs": 0,
+    "unlabeledCaptions": 0,
+    "slidesWithValidRef": 10,
+    "slideEvidenceCoverage": 0.8333333333333334,
+    "contentSlidesWithValidRef": 10,
+    "contentSlideEvidenceCoverage": 1
+  }
+}

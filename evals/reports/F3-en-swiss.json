@@ -1,0 +1,73 @@
+{
+  "fixture": "F3",
+  "fixtureType": "repo with numbers",
+  "pinnedSha": "436bde0bcded312781cbe45dc2b0ef079a36d8e3",
+  "observedSha": "436bde0bcded312781cbe45dc2b0ef079a36d8e3",
+  "branch": "dev",
+  "direction": "swiss",
+  "lang": "en",
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "seed": 42,
+  "slideCount": 12,
+  "textBoxCount": 46,
+  "pptxBytes": 135573,
+  "claimCounts": {
+    "total": 40,
+    "verified": 3,
+    "suggestion": 37,
+    "ungrounded": 0
+  },
+  "features": {
+    "blocksPerSlide": [
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      3
+    ],
+    "meanBlocksPerSlide": 3.8333333333333335,
+    "medianHeadlineSize": 30,
+    "alignmentMix": {
+      "left": 0.782608695652174,
+      "center": 0,
+      "right": 0.21739130434782608
+    }
+  },
+  "warnings": [
+    "file cap reached (20); remaining files skipped",
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "latencyMs": 243,
+  "exportMs": 22,
+  "success": true,
+  "error": null,
+  "timestamp": "2026-10-30T03:32:14.579Z",
+  "metrics": {
+    "forbiddenCount": 0,
+    "otherErrorCount": 0,
+    "validatorOk": true,
+    "validatorErrors": [],
+    "editableChars": 2007,
+    "totalChars": 2007,
+    "editability": 1,
+    "overflowCount": 0,
+    "factualClaims": 40,
+    "factualWithValidRef": 40,
+    "evidenceCoverage": 1,
+    "unsupportedClaims": 0,
+    "fabricatedRefs": 0,
+    "unlabeledCaptions": 0,
+    "slidesWithValidRef": 10,
+    "slideEvidenceCoverage": 0.8333333333333334,
+    "contentSlidesWithValidRef": 10,
+    "contentSlideEvidenceCoverage": 1
+  }
+}

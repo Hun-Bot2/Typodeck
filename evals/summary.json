@@ -1,0 +1,490 @@
+{
+  "generatedAt": "2026-10-30T03:49:57.974Z",
+  "seed": 42,
+  "provider": "fallback",
+  "runs": [
+    {
+      "file": "F1-en-editorial.json",
+      "fixture": "F1",
+      "lang": "en",
+      "direction": "editorial",
+      "success": true
+    },
+    {
+      "file": "F1-en-expressive.json",
+      "fixture": "F1",
+      "lang": "en",
+      "direction": "expressive",
+      "success": true
+    },
+    {
+      "file": "F1-en-swiss.json",
+      "fixture": "F1",
+      "lang": "en",
+      "direction": "swiss",
+      "success": true
+    },
+    {
+      "file": "F1-ko-editorial.json",
+      "fixture": "F1",
+      "lang": "ko",
+      "direction": "editorial",
+      "success": true
+    },
+    {
+      "file": "F1-ko-expressive.json",
+      "fixture": "F1",
+      "lang": "ko",
+      "direction": "expressive",
+      "success": true
+    },
+    {
+      "file": "F1-ko-swiss.json",
+      "fixture": "F1",
+      "lang": "ko",
+      "direction": "swiss",
+      "success": true
+    },
+    {
+      "file": "F2-en-editorial.json",
+      "fixture": "F2",
+      "lang": "en",
+      "direction": "editorial",
+      "success": true
+    },
+    {
+      "file": "F2-en-expressive.json",
+      "fixture": "F2",
+      "lang": "en",
+      "direction": "expressive",
+      "success": true
+    },
+    {
+      "file": "F2-en-swiss.json",
+      "fixture": "F2",
+      "lang": "en",
+      "direction": "swiss",
+      "success": true
+    },
+    {
+      "file": "F2-ko-editorial.json",
+      "fixture": "F2",
+      "lang": "ko",
+      "direction": "editorial",
+      "success": true
+    },
+    {
+      "file": "F2-ko-expressive.json",
+      "fixture": "F2",
+      "lang": "ko",
+      "direction": "expressive",
+      "success": true
+    },
+    {
+      "file": "F2-ko-swiss.json",
+      "fixture": "F2",
+      "lang": "ko",
+      "direction": "swiss",
+      "success": true
+    },
+    {
+      "file": "F3-en-editorial.json",
+      "fixture": "F3",
+      "lang": "en",
+      "direction": "editorial",
+      "success": true
+    },
+    {
+      "file": "F3-en-expressive.json",
+      "fixture": "F3",
+      "lang": "en",
+      "direction": "expressive",
+      "success": true
+    },
+    {
+      "file": "F3-en-swiss.json",
+      "fixture": "F3",
+      "lang": "en",
+      "direction": "swiss",
+      "success": true
+    },
+    {
+      "file": "F3-ko-editorial.json",
+      "fixture": "F3",
+      "lang": "ko",
+      "direction": "editorial",
+      "success": true
+    },
+    {
+      "file": "F3-ko-expressive.json",
+      "fixture": "F3",
+      "lang": "ko",
+      "direction": "expressive",
+      "success": true
+    },
+    {
+      "file": "F3-ko-swiss.json",
+      "fixture": "F3",
+      "lang": "ko",
+      "direction": "swiss",
+      "success": true
+    },
+    {
+      "file": "F4-en-editorial.json",
+      "fixture": "F4",
+      "lang": "en",
+      "direction": "editorial",
+      "success": true
+    },
+    {
+      "file": "F4-en-expressive.json",
+      "fixture": "F4",
+      "lang": "en",
+      "direction": "expressive",
+      "success": true
+    },
+    {
+      "file": "F4-en-swiss.json",
+      "fixture": "F4",
+      "lang": "en",
+      "direction": "swiss",
+      "success": true
+    },
+    {
+      "file": "F4-ko-editorial.json",
+      "fixture": "F4",
+      "lang": "ko",
+      "direction": "editorial",
+      "success": true
+    },
+    {
+      "file": "F4-ko-expressive.json",
+      "fixture": "F4",
+      "lang": "ko",
+      "direction": "expressive",
+      "success": true
+    },
+    {
+      "file": "F4-ko-swiss.json",
+      "fixture": "F4",
+      "lang": "ko",
+      "direction": "swiss",
+      "success": true
+    }
+  ],
+  "p95LatencyMs": 1814,
+  "maxLatencyMs": 4679,
+  "diversityPairs": [
+    {
+      "fixture": "F1",
+      "lang": "en",
+      "a": "editorial",
+      "b": "expressive",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F1",
+      "lang": "en",
+      "a": "editorial",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F1",
+      "lang": "en",
+      "a": "expressive",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F1",
+      "lang": "ko",
+      "a": "editorial",
+      "b": "expressive",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F1",
+      "lang": "ko",
+      "a": "editorial",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F1",
+      "lang": "ko",
+      "a": "expressive",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F2",
+      "lang": "en",
+      "a": "editorial",
+      "b": "expressive",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F2",
+      "lang": "en",
+      "a": "editorial",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F2",
+      "lang": "en",
+      "a": "expressive",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F2",
+      "lang": "ko",
+      "a": "editorial",
+      "b": "expressive",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F2",
+      "lang": "ko",
+      "a": "editorial",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F2",
+      "lang": "ko",
+      "a": "expressive",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F3",
+      "lang": "en",
+      "a": "editorial",
+      "b": "expressive",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F3",
+      "lang": "en",
+      "a": "editorial",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F3",
+      "lang": "en",
+      "a": "expressive",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F3",
+      "lang": "ko",
+      "a": "editorial",
+      "b": "expressive",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F3",
+      "lang": "ko",
+      "a": "editorial",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F3",
+      "lang": "ko",
+      "a": "expressive",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F4",
+      "lang": "en",
+      "a": "editorial",
+      "b": "expressive",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F4",
+      "lang": "en",
+      "a": "editorial",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F4",
+      "lang": "en",
+      "a": "expressive",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F4",
+      "lang": "ko",
+      "a": "editorial",
+      "b": "expressive",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F4",
+      "lang": "ko",
+      "a": "editorial",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fixture": "F4",
+      "lang": "ko",
+      "a": "expressive",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    }
+  ],
+  "s1": {
+    "pass": true,
+    "value": "24/24 (100.0%)",
+    "target": ">= 90%",
+    "detail": "success = completed + >=5 slides + PPTX exported + structural validation ok"
+  },
+  "s2": {
+    "pass": true,
+    "value": "180/216 (83.3%)",
+    "target": ">= 80%",
+    "detail": "micro-average over 18 successful repo run(s); content slides (excl. cover/closing): 180/180 (100.0%)"
+  },
+  "s3": {
+    "pass": true,
+    "value": "max 0/deck, mean 0.00",
+    "target": "<= 1/deck",
+    "detail": "factual (verified+suggestion) claims with no valid ref, over 18 repo run(s)"
+  },
+  "s4": {
+    "pass": true,
+    "value": "max 0/deck",
+    "target": "0",
+    "detail": "non-textbox shapes/lines/images in PPTX XML"
+  },
+  "s5": {
+    "pass": true,
+    "value": "min 100.00%",
+    "target": "100%",
+    "detail": "editable chars / total visible chars"
+  },
+  "s6": {
+    "pass": true,
+    "value": "max 0/deck",
+    "target": "0",
+    "detail": "text boxes exceeding slide bounds (layout engine fits every box; no separate clip detector)"
+  },
+  "s7": {
+    "pass": true,
+    "value": "p95 1814ms, max 4679ms (n=24)",
+    "target": "<= 120000ms",
+    "detail": "planDeck wall time (submit -> deck), successful runs only"
+  },
+  "allPass": true,
+  "notes": [
+    "design-diversity PASS on all 24 pair(s) (>=2 of blocks-mean>=0.5, headline-rel>=0.15, align-L1>=0.2)",
+    "idea mode: max fabricated refs 0 (target 0), max unlabeled captions 0 (target 0), over 6 run(s)"
+  ]
+}
