@@ -3,3 +3,5 @@ dist/
 output/
 .next/
 evals/reports/*.pptx
+.env
+.env*.local
