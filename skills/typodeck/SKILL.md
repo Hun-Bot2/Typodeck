@@ -9,6 +9,7 @@ You build typography-only pitch decks by ORCHESTRATING Typodeck Core.
 You never lay out slides yourself, never emit PPTX XML, never invent numbers.
 
 Announce first: "Following the Typodeck Skill: <idea|repo> mode, <systems>, provider <muse|fallback>."
+- `density.md` — speaker-led vs reading-first policies, readable floors.
 
 ## 1. Inputs
 
@@ -26,6 +27,9 @@ Announce first: "Following the Typodeck Skill: <idea|repo> mode, <systems>, prov
 4. Ship only on `validation: OK` (exit 0). Exit 1 = failure/validation error; exit 2 = usage error.
 
 ### Studio API (generate → select → export; HTTP-level proof in IMPLEMENTATION_LOG Phase 3)
+   Driving conversationally? Batch ALL missing inputs in ONE message
+   (≤3 questions: purpose, length/content, density); otherwise proceed
+   on stated assumptions — never interrogate step by step.
 
 - `POST /api/generate` `{mode, input, purpose?, lang?}` → `{narrative, decks, provenance}`
   (all 3 systems over the SAME narrative; or SSE stage events with `Accept: text/event-stream`).
@@ -111,7 +115,11 @@ npm run --silent eval:report            # → evals/summary.json, OVERALL: PASS
 
 ## 8. Health checks
 
-- `npm run --silent test` — whole core suite green (75/75 at writing: 65 baseline + 10 eval).
+- `npm run --silent test` — whole core suite green (248 at writing, incl.
+  preset/markdown/registry/import/review/density/notes tests).
+- Honest-skip rule: any QA layer that cannot run must report
+  `SKIPPED: <layer> (<reason>)` — never silent green, never a
+  guessed pass.
 - Every `.pptx` ships only with `validation: OK`: 0 forbidden objects, all boxes in-bounds, 16:9.
 
 ## 9. Portability

@@ -482,7 +482,13 @@ function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: nu
       lastError = e;
       continue;
     }
-    return { id: slide.id, thesis: slide.thesis, background, blocks };
+    return {
+      id: slide.id,
+      thesis: slide.thesis,
+      background,
+      blocks,
+      ...(slide.notes !== undefined ? { notes: slide.notes } : {}),
+    };
   }
   throw lastError instanceof Error ? lastError : new Error(`could not lay out slide "${slide.id}" without overlap`);
 }

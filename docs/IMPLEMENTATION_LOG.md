@@ -197,3 +197,40 @@
   is sandbox-blocked and the unsandboxed start produced no output). `npm run
   --silent test` 75/75 green. Artifacts under `/tmp/typodeck-skill/`.
 - No commits (parent commits after review).
+
+## Skill benchmark & refinement vs 3 external Skills (2026-10-30)
+
+- Audited from fresh /tmp clones (SHAs recorded, MIT each):
+  zarazhangrui/frontend-slides `9906a34`, arifszn/slide-wright
+  `a751585`, siril9/presentation-skill `efd899c` (+ forks noted).
+  Deliverables: `evals/skill-benchmark/SOURCE_AUDIT.md`,
+  `SKILL_GAP_ANALYSIS.md` (32 practices classified), and
+  `SKILL_REFINEMENT_PLAN.md` (R1–R14 + benchmark proposal).
+- Implemented R1–R8: `density.md` (speaker-led/reading-first +
+  floors) + `densityPolicy` IR metadata w/ validation test;
+  optional 3-system preview flow docs; `findWorkflowTokens`
+  authenticity gate wired into visual-benchmark (30/30 PASS);
+  adversarial inspection checklist + handoff honesty block in
+  revision.md; Skill-wide honest-skip rule; edit ladder;
+  speaker-notes chain (Markdown→IR→Narrative→layout→native PPTX
+  notes) with notes-part test; batched-intake rule.
+- CONTRACT CHANGE (intentional, requested): Slide IR `notes` are
+  no longer dropped by `slideIRToNarrative` — they flow to PPTX
+  notes. Existing round-trip test updated (emphasis still dropped;
+  notes preserved + blocks untouched). Validator ignores notes
+  parts (walks ppt/slides only) — no gate impact.
+- Tests: 248/248 green (243 + 5 new). Benchmark re-run: 30/30
+  PASS, decisions.json untouched (all PENDING).
+- Planned, not started: R9 rendered-HTML QA script (M, closes the
+  font/wrap/clipping measurement gap), R10 critic repair packets
+  (M), R11 hash-bound review receipts (S), R12 registry growth
+  contract at research arrival, R13 `--preview-all` (S), R14 full
+  benchmark harness (M; minimal first run needs only a ~40-line
+  bootstrap script + frozen manifest).
+- Rejected with reasons: mandatory approval gates, per-deck
+  invented themes, raster-background PPTX, reveal.js/SVG engines,
+  deploy/PDF sharing, entropy diversity gates (premature).
+- No quality improvement claimed: gated on the proposed blind
+  before/after benchmark (frozen manifest, failures in
+  denominator, conjunctive superiority rule). Ownership held:
+  research/* and worktrees untouched.

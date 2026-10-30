@@ -66,6 +66,10 @@ function buildPresentation(deck: Deck): { pptx: PptxGenJS; slideCount: number; t
       pSlide.addText(block.content, textOptions(block, face));
       textBoxCount += 1;
     }
+    // Speaker notes travel in the native notes part — never on slides.
+    if (slide.notes !== undefined && slide.notes.length > 0) {
+      pSlide.addNotes(slide.notes);
+    }
   }
   return { pptx, slideCount: deck.slides.length, textBoxCount };
 }

@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { promises as fs } from 'node:fs';
 import * as os from 'node:os';
 import * as path from 'node:path';
-import { exportToPptx } from '../src/export';
+import JSZip from 'jszip';
+import { exportToPptx, exportToPptxBuffer } from '../src/export';
 import { layoutDeck } from '../src/layout';
 import { SAMPLE_NARRATIVE } from '../src/sample';
 import { SYSTEM_IDS } from '../src/systems';
@@ -46,6 +47,22 @@ describe('export + structural validation', () => {
       assert.ok(sz !== null);
       assert.ok(Math.abs(sz.w / sz.h - 16 / 9) < 0.01, `${f}: not 16:9`);
     }
+  });
+
+  it('writes speaker notes to native notes parts, never onto slides', async () => {
+    const narrative = JSON.parse(JSON.stringify(SAMPLE_NARRATIVE)) as typeof SAMPLE_NARRATIVE;
+    narrative.slides[0].notes = 'UNIQUE-NOTE-MARKER greet the judges warmly';
+    const deck = layoutDeck(narrative, 'swiss', { seed: 7 });
+    assert.equal(deck.slides[0].notes, narrative.slides[0].notes);
+    assert.ok(deck.slides[0].blocks.every((b) => !b.content.includes('UNIQUE-NOTE-MARKER')));
+    const { buffer } = await exportToPptxBuffer(deck);
+    const zip = await JSZip.loadAsync(buffer);
+    const noteNames = Object.keys(zip.files).filter((n) => /^ppt\/notesSlides\/notesSlide\d+\.xml$/.test(n));
+    assert.ok(noteNames.length >= 1, 'expected at least one notes part');
+    const noteXml = await zip.file(noteNames[0])?.async('string');
+    assert.ok(noteXml?.includes('UNIQUE-NOTE-MARKER'), 'notes text missing from notes part');
+    const slideXml = await zip.file('ppt/slides/slide1.xml')?.async('string');
+    assert.ok(!slideXml?.includes('UNIQUE-NOTE-MARKER'), 'notes text leaked onto slide');
   });
 
   it('exporter source never calls forbidden drawing APIs', async () => {

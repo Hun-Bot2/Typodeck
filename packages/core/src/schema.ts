@@ -48,6 +48,8 @@ export interface TextBlock {
 export interface Slide {
   id: string;
   thesis: string;
+  /** Optional speaker notes (native PPTX notes, never rendered on slides). */
+  notes?: string;
   /** Solid slide background color, #rrggbb. The only background primitive. */
   background: string;
   blocks: TextBlock[];
@@ -76,6 +78,8 @@ export interface NarrativeSlide {
   id: string;
   thesis: string;
   blocks: NarrativeBlock[];
+  /** Optional speaker notes (metadata, never laid out as blocks). */
+  notes?: string;
 }
 
 export interface Narrative {
@@ -214,6 +218,7 @@ export function validateDeck(deck: unknown): Deck {
     if (!isRecord(s)) fail(`${path} must be an object`);
     if (typeof s.id !== 'string' || s.id.length === 0) fail(`${path}.id must be a non-empty string`);
     if (typeof s.thesis !== 'string') fail(`${path}.thesis must be a string`);
+    if (s.notes !== undefined && typeof s.notes !== 'string') fail(`${path}.notes must be a string`);
     if (typeof s.background !== 'string' || !HEX_COLOR.test(s.background)) {
       fail(`${path}.background must be #rrggbb, got ${JSON.stringify(s.background)}`);
     }
@@ -239,6 +244,7 @@ export function validateNarrative(n: unknown): Narrative {
     if (!isRecord(s)) fail(`${path} must be an object`);
     if (typeof s.id !== 'string' || s.id.length === 0) fail(`${path}.id must be a non-empty string`);
     if (typeof s.thesis !== 'string') fail(`${path}.thesis must be a string`);
+    if (s.notes !== undefined && typeof s.notes !== 'string') fail(`${path}.notes must be a string`);
     if (!Array.isArray(s.blocks) || s.blocks.length === 0) {
       fail(`${path}.blocks must be a non-empty array`);
     }
