@@ -1,0 +1,325 @@
+{
+  "deck": "FX1-a.html",
+  "fx": "FX1-ledgerly",
+  "arm": "a",
+  "sys": "-",
+  "o1": {
+    "numbers": 62,
+    "matched": 62,
+    "accuracy": 1
+  },
+  "o2": {
+    "blocksWithRefs": 9,
+    "slidesWithRefs": 9,
+    "lineLevel": 0,
+    "fileLevel": 9,
+    "labeledUnverified": 0
+  },
+  "o3misses": [],
+  "o4": {
+    "sequence": [
+      "cover",
+      "stat",
+      "stat",
+      "stat",
+      "stat",
+      "stat",
+      "stat",
+      "stat",
+      "closing"
+    ],
+    "distinct": 3,
+    "maxSameShare": 0.7777777777777778,
+    "tripleRepeat": true,
+    "slideSignaturesDistinct": 3,
+    "slideSignaturesTotal": 9
+  },
+  "o6": {
+    "minTitlePx": 44,
+    "minBodyPx": 21,
+    "minNumberPx": null,
+    "minCaptionPx": 14,
+    "contrastFails45": 18,
+    "contrastRows": [
+      {
+        "blockId": "FX1-ledgerly-a-s0-kicker",
+        "role": "kicker",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s0-title",
+        "role": "title",
+        "ratio": 16.53
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s0-b0",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s0-b1",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s0-src",
+        "role": "caption",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s1-kicker",
+        "role": "kicker",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s1-title",
+        "role": "title",
+        "ratio": 16.53
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s1-b0",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s1-b1",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s1-b2",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s1-src",
+        "role": "caption",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s2-kicker",
+        "role": "kicker",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s2-title",
+        "role": "title",
+        "ratio": 16.53
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s2-b0",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s2-b1",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s2-b2",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s2-b3",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s2-src",
+        "role": "caption",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s3-kicker",
+        "role": "kicker",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s3-title",
+        "role": "title",
+        "ratio": 16.53
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s3-b0",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s3-b1",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s3-b2",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s3-src",
+        "role": "caption",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s4-kicker",
+        "role": "kicker",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s4-title",
+        "role": "title",
+        "ratio": 16.53
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s4-b0",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s4-b1",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s4-b2",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s4-src",
+        "role": "caption",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s5-kicker",
+        "role": "kicker",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s5-title",
+        "role": "title",
+        "ratio": 16.53
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s5-b0",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s5-b1",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s5-b2",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s5-src",
+        "role": "caption",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s6-kicker",
+        "role": "kicker",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s6-title",
+        "role": "title",
+        "ratio": 16.53
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s6-b0",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s6-b1",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s6-b2",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s6-src",
+        "role": "caption",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s7-kicker",
+        "role": "kicker",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s7-title",
+        "role": "title",
+        "ratio": 16.53
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s7-b0",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s7-b1",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s7-b2",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s7-src",
+        "role": "caption",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s8-kicker",
+        "role": "kicker",
+        "ratio": 2.81
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s8-title",
+        "role": "title",
+        "ratio": 16.53
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s8-b0",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s8-b1",
+        "role": "body",
+        "ratio": 11.18
+      },
+      {
+        "blockId": "FX1-ledgerly-a-s8-src",
+        "role": "caption",
+        "ratio": 2.81
+      }
+    ]
+  },
+  "o7": {
+    "na": "single-artifact arm (no PPTX by design)"
+  },
+  "o8": {
+    "ratio": 1,
+    "note": "DOM text extraction (by construction)",
+    "emptySlides": 0
+  },
+  "o9": {
+    "slides": 9,
+    "inRange": true,
+    "blocks": 53
+  },
+  "blockCount": 53
+}

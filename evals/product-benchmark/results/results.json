@@ -1,0 +1,4983 @@
+{
+  "generatedAt": "2026-10-31T10:58:20.361Z",
+  "pins": {
+    "baseline": "b09865c701944ecbf475dbd58e524b9a7e4bd75b",
+    "skill": "76a9570c2696ab96b2931edd2aee0cbf8d402ad1 (agent/b-skill)",
+    "engine": "d0c5166a54d7998fdb2151e26bff5ac7f9eb05cb (agent/c-composition)",
+    "seed": 42,
+    "viewport": "1280x720",
+    "chrome": "Google Chrome 156.0.8078.74"
+  },
+  "quota": {
+    "githubCallsByBenchmark": 0,
+    "probe": "{  \"resources\": {    \"code_search\": {      \"limit\": 60,      \"remaining\": 34,      \"reset\": 1793445030,      \"used\": 26    },    \"core\": {      \"limit\": 60,      \"remaining\": 34,      \"reset\": 1793445"
+  },
+  "timings": [
+    {
+      "fx": "FX1",
+      "arm": "a",
+      "sys": "-",
+      "gen_ms": 38
+    },
+    {
+      "fx": "FX2",
+      "arm": "a",
+      "sys": "-",
+      "gen_ms": 33
+    },
+    {
+      "fx": "FX1",
+      "arm": "b",
+      "sys": "swiss",
+      "gen_ms": 87,
+      "exit": 0
+    },
+    {
+      "fx": "FX1",
+      "arm": "b",
+      "sys": "editorial",
+      "gen_ms": 79,
+      "exit": 0
+    },
+    {
+      "fx": "FX1",
+      "arm": "b",
+      "sys": "expressive",
+      "gen_ms": 78,
+      "exit": 0
+    },
+    {
+      "fx": "FX2",
+      "arm": "b",
+      "sys": "swiss",
+      "gen_ms": 76,
+      "exit": 0
+    },
+    {
+      "fx": "FX2",
+      "arm": "b",
+      "sys": "editorial",
+      "gen_ms": 77,
+      "exit": 0
+    },
+    {
+      "fx": "FX2",
+      "arm": "b",
+      "sys": "expressive",
+      "gen_ms": 75,
+      "exit": 0
+    }
+  ],
+  "crossSystemDiversity": [
+    {
+      "fx": "FX1-ledgerly",
+      "a": "editorial",
+      "b": "expressive",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fx": "FX1-ledgerly",
+      "a": "editorial",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fx": "FX1-ledgerly",
+      "a": "expressive",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fx": "FX2-pipecheck",
+      "a": "editorial",
+      "b": "expressive",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fx": "FX2-pipecheck",
+      "a": "editorial",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    },
+    {
+      "fx": "FX2-pipecheck",
+      "a": "expressive",
+      "b": "swiss",
+      "blocksDiffer": false,
+      "headlineDiffer": true,
+      "alignDiffer": true,
+      "differCount": 2,
+      "pass": true
+    }
+  ],
+  "runs": [
+    {
+      "deck": "FX1-a.html",
+      "fx": "FX1-ledgerly",
+      "arm": "a",
+      "sys": "-",
+      "o1": {
+        "numbers": 62,
+        "matched": 62,
+        "accuracy": 1
+      },
+      "o2": {
+        "blocksWithRefs": 9,
+        "slidesWithRefs": 9,
+        "lineLevel": 0,
+        "fileLevel": 9,
+        "labeledUnverified": 0
+      },
+      "o3misses": [],
+      "o4": {
+        "sequence": [
+          "cover",
+          "stat",
+          "stat",
+          "stat",
+          "stat",
+          "stat",
+          "stat",
+          "stat",
+          "closing"
+        ],
+        "distinct": 3,
+        "maxSameShare": 0.7777777777777778,
+        "tripleRepeat": true,
+        "slideSignaturesDistinct": 3,
+        "slideSignaturesTotal": 9
+      },
+      "o6": {
+        "minTitlePx": 44,
+        "minBodyPx": 21,
+        "minNumberPx": null,
+        "minCaptionPx": 14,
+        "contrastFails45": 18,
+        "contrastRows": [
+          {
+            "blockId": "FX1-ledgerly-a-s0-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s0-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s0-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s0-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s0-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-b3",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s8-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s8-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s8-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s8-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s8-src",
+            "role": "caption",
+            "ratio": 2.81
+          }
+        ]
+      },
+      "o7": {
+        "na": "single-artifact arm (no PPTX by design)"
+      },
+      "o8": {
+        "ratio": 1,
+        "note": "DOM text extraction (by construction)",
+        "emptySlides": 0
+      },
+      "o9": {
+        "slides": 9,
+        "inRange": true,
+        "blocks": 53
+      },
+      "blockCount": 53,
+      "overflow": {
+        "deck": "FX1-a.html",
+        "chrome": "Google Chrome 156.0.8078.74",
+        "viewport": "1280x720",
+        "blocksInHtml": 53,
+        "measured": 53,
+        "overflowBlocks": 0,
+        "overflowing": [],
+        "fonts": [
+          {
+            "blockId": "FX1-ledgerly-a-s0-kicker",
+            "slideId": "FX1-ledgerly-a-s0",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s0-title",
+            "slideId": "FX1-ledgerly-a-s0",
+            "fontSizePx": 72
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s0-b0",
+            "slideId": "FX1-ledgerly-a-s0",
+            "fontSizePx": 24
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s0-b1",
+            "slideId": "FX1-ledgerly-a-s0",
+            "fontSizePx": 24
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s0-src",
+            "slideId": "FX1-ledgerly-a-s0",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-kicker",
+            "slideId": "FX1-ledgerly-a-s1",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-title",
+            "slideId": "FX1-ledgerly-a-s1",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-b0",
+            "slideId": "FX1-ledgerly-a-s1",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-b1",
+            "slideId": "FX1-ledgerly-a-s1",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-b2",
+            "slideId": "FX1-ledgerly-a-s1",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s1-src",
+            "slideId": "FX1-ledgerly-a-s1",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-kicker",
+            "slideId": "FX1-ledgerly-a-s2",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-title",
+            "slideId": "FX1-ledgerly-a-s2",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-b0",
+            "slideId": "FX1-ledgerly-a-s2",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-b1",
+            "slideId": "FX1-ledgerly-a-s2",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-b2",
+            "slideId": "FX1-ledgerly-a-s2",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-b3",
+            "slideId": "FX1-ledgerly-a-s2",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s2-src",
+            "slideId": "FX1-ledgerly-a-s2",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-kicker",
+            "slideId": "FX1-ledgerly-a-s3",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-title",
+            "slideId": "FX1-ledgerly-a-s3",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-b0",
+            "slideId": "FX1-ledgerly-a-s3",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-b1",
+            "slideId": "FX1-ledgerly-a-s3",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-b2",
+            "slideId": "FX1-ledgerly-a-s3",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s3-src",
+            "slideId": "FX1-ledgerly-a-s3",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-kicker",
+            "slideId": "FX1-ledgerly-a-s4",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-title",
+            "slideId": "FX1-ledgerly-a-s4",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-b0",
+            "slideId": "FX1-ledgerly-a-s4",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-b1",
+            "slideId": "FX1-ledgerly-a-s4",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-b2",
+            "slideId": "FX1-ledgerly-a-s4",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s4-src",
+            "slideId": "FX1-ledgerly-a-s4",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-kicker",
+            "slideId": "FX1-ledgerly-a-s5",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-title",
+            "slideId": "FX1-ledgerly-a-s5",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-b0",
+            "slideId": "FX1-ledgerly-a-s5",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-b1",
+            "slideId": "FX1-ledgerly-a-s5",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-b2",
+            "slideId": "FX1-ledgerly-a-s5",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s5-src",
+            "slideId": "FX1-ledgerly-a-s5",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-kicker",
+            "slideId": "FX1-ledgerly-a-s6",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-title",
+            "slideId": "FX1-ledgerly-a-s6",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-b0",
+            "slideId": "FX1-ledgerly-a-s6",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-b1",
+            "slideId": "FX1-ledgerly-a-s6",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-b2",
+            "slideId": "FX1-ledgerly-a-s6",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s6-src",
+            "slideId": "FX1-ledgerly-a-s6",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-kicker",
+            "slideId": "FX1-ledgerly-a-s7",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-title",
+            "slideId": "FX1-ledgerly-a-s7",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-b0",
+            "slideId": "FX1-ledgerly-a-s7",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-b1",
+            "slideId": "FX1-ledgerly-a-s7",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-b2",
+            "slideId": "FX1-ledgerly-a-s7",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s7-src",
+            "slideId": "FX1-ledgerly-a-s7",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s8-kicker",
+            "slideId": "FX1-ledgerly-a-s8",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s8-title",
+            "slideId": "FX1-ledgerly-a-s8",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s8-b0",
+            "slideId": "FX1-ledgerly-a-s8",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s8-b1",
+            "slideId": "FX1-ledgerly-a-s8",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX1-ledgerly-a-s8-src",
+            "slideId": "FX1-ledgerly-a-s8",
+            "fontSizePx": 14
+          }
+        ],
+        "stageWidthsPx": [
+          1229
+        ]
+      },
+      "sidecar": null
+    },
+    {
+      "deck": "FX1-b-editorial.html",
+      "fx": "FX1-ledgerly",
+      "arm": "b",
+      "sys": "editorial",
+      "o1": {
+        "numbers": 18,
+        "matched": 16,
+        "accuracy": 0.8889
+      },
+      "o2": {
+        "blocksWithRefs": 9,
+        "slidesWithRefs": 8,
+        "lineLevel": 8,
+        "fileLevel": 1,
+        "labeledUnverified": 8
+      },
+      "o3misses": [
+        {
+          "token": "8000",
+          "blockId": "n3-number-b1",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "8000"
+        },
+        {
+          "token": "8000",
+          "blockId": "n3-number-b2",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "--- README.md (first 8000 bytes) ---"
+        }
+      ],
+      "o4": {
+        "sequence": [
+          "opening-statement",
+          "metric-anchored",
+          "metric-hero",
+          "thesis-sparse",
+          "comparison-stacked",
+          "tradeoff-balanced",
+          "evidence-focused",
+          "evidence-anchored",
+          "evidence-focused",
+          "conclusion-charge"
+        ],
+        "distinct": 9,
+        "maxSameShare": 0.2,
+        "tripleRepeat": false,
+        "slideSignaturesDistinct": 4,
+        "slideSignaturesTotal": 10
+      },
+      "o6": {
+        "minTitlePx": 61.4,
+        "minBodyPx": 20,
+        "minNumberPx": 160,
+        "minCaptionPx": 13.3,
+        "contrastFails45": 0,
+        "contrastRows": [
+          {
+            "blockId": "n1-cover-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "role": "body",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n2-number-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n2-number-b1",
+            "role": "number",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n2-number-b2",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n2-number-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n3-number-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n3-number-b1",
+            "role": "number",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n3-number-b2",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n3-number-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "role": "body",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n5-differentiation-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n5-differentiation-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n5-differentiation-b2",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n7-point-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n7-point-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n7-point-b2",
+            "role": "body",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n7-point-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n8-point-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n8-point-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n8-point-b2",
+            "role": "body",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n8-point-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n9-point-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n9-point-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n9-point-b2",
+            "role": "body",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n9-point-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "role": "body",
+            "ratio": 16.29
+          }
+        ]
+      },
+      "o7": {
+        "slideCountMatch": true,
+        "mismatches": 0,
+        "detail": []
+      },
+      "o8": {
+        "editableChars": 1185,
+        "totalChars": 1185,
+        "ratio": 1,
+        "forbiddenOk": true
+      },
+      "o9": {
+        "slides": 10,
+        "inRange": true,
+        "blocks": 36
+      },
+      "blockCount": 36,
+      "overflow": {
+        "deck": "FX1-b-editorial.html",
+        "chrome": "Google Chrome 156.0.8078.74",
+        "viewport": "1280x720",
+        "blocksInHtml": 36,
+        "measured": 36,
+        "overflowBlocks": 0,
+        "overflowing": [],
+        "fonts": [
+          {
+            "blockId": "n1-cover-b0",
+            "slideId": "n1-cover",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "slideId": "n1-cover",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "slideId": "n1-cover",
+            "fontSizePx": 20.01
+          },
+          {
+            "blockId": "n2-number-b0",
+            "slideId": "n2-number",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n2-number-b1",
+            "slideId": "n2-number",
+            "fontSizePx": 160.04
+          },
+          {
+            "blockId": "n2-number-b2",
+            "slideId": "n2-number",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n2-number-b3",
+            "slideId": "n2-number",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n3-number-b0",
+            "slideId": "n3-number",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n3-number-b1",
+            "slideId": "n3-number",
+            "fontSizePx": 160.04
+          },
+          {
+            "blockId": "n3-number-b2",
+            "slideId": "n3-number",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n3-number-b3",
+            "slideId": "n3-number",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 20.01
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n5-differentiation-b0",
+            "slideId": "n5-differentiation",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n5-differentiation-b1",
+            "slideId": "n5-differentiation",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n5-differentiation-b2",
+            "slideId": "n5-differentiation",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "slideId": "n6-limitations",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "slideId": "n6-limitations",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "slideId": "n6-limitations",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n7-point-b0",
+            "slideId": "n7-point",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n7-point-b1",
+            "slideId": "n7-point",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n7-point-b2",
+            "slideId": "n7-point",
+            "fontSizePx": 20.01
+          },
+          {
+            "blockId": "n7-point-b3",
+            "slideId": "n7-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n8-point-b0",
+            "slideId": "n8-point",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n8-point-b1",
+            "slideId": "n8-point",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n8-point-b2",
+            "slideId": "n8-point",
+            "fontSizePx": 20.01
+          },
+          {
+            "blockId": "n8-point-b3",
+            "slideId": "n8-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n9-point-b0",
+            "slideId": "n9-point",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n9-point-b1",
+            "slideId": "n9-point",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n9-point-b2",
+            "slideId": "n9-point",
+            "fontSizePx": 20.01
+          },
+          {
+            "blockId": "n9-point-b3",
+            "slideId": "n9-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "slideId": "n10-closing",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "slideId": "n10-closing",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "slideId": "n10-closing",
+            "fontSizePx": 20.01
+          }
+        ],
+        "stageWidthsPx": [
+          1280
+        ]
+      },
+      "sidecar": {
+        "fx": "FX1",
+        "arm": "B",
+        "system": "editorial",
+        "slides": 10,
+        "textBoxes": 36,
+        "diversityFeatures": {
+          "meanBlocksPerSlide": 3.6,
+          "medianHeadlineSize": 46,
+          "alignmentMix": {
+            "left": 1,
+            "center": 0,
+            "right": 0
+          }
+        },
+        "provider": "fallback",
+        "claims": {
+          "total": 24,
+          "verified": 0,
+          "suggestion": 0,
+          "ungrounded": 24
+        },
+        "quality": {
+          "pass": true,
+          "overall": 96,
+          "errors": 0,
+          "warnings": 2
+        },
+        "warnings": [
+          "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+          "quality warning [thin-slide] on n5-differentiation: thesis slide has no supporting body",
+          "quality warning [thin-slide] on n6-limitations: thesis slide has no supporting body",
+          "built with the deterministic fallback (not model inference)"
+        ],
+        "critiqueFindings": [
+          {
+            "slideId": "n2-number",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n4-capabilities",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n4-capabilities",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n4-capabilities-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n5-differentiation",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n6-limitations",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n6-limitations",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n6-limitations-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n6-limitations",
+            "failureClass": "perceptual",
+            "check": "rag-quality",
+            "severity": "warning",
+            "detail": "headline rag score 55 (lines=3 lastWords=1)",
+            "suggestedFix": "re-break headline for even rag"
+          },
+          {
+            "slideId": "n7-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n8-point",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n8-point-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n8-point",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 69 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n9-point",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n9-point-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n10-closing",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 74 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          }
+        ],
+        "revisions": 0,
+        "revisionProvenance": [],
+        "candidateIds": [
+          "opening-statement",
+          "metric-anchored",
+          "metric-hero",
+          "thesis-sparse",
+          "comparison-stacked",
+          "tradeoff-balanced",
+          "evidence-focused",
+          "evidence-anchored",
+          "evidence-focused",
+          "conclusion-charge"
+        ],
+        "latencyMs": 6
+      }
+    },
+    {
+      "deck": "FX1-b-expressive.html",
+      "fx": "FX1-ledgerly",
+      "arm": "b",
+      "sys": "expressive",
+      "o1": {
+        "numbers": 18,
+        "matched": 16,
+        "accuracy": 0.8889
+      },
+      "o2": {
+        "blocksWithRefs": 9,
+        "slidesWithRefs": 8,
+        "lineLevel": 8,
+        "fileLevel": 1,
+        "labeledUnverified": 8
+      },
+      "o3misses": [
+        {
+          "token": "8000",
+          "blockId": "n3-number-b1",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "8000"
+        },
+        {
+          "token": "8000",
+          "blockId": "n3-number-b2",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "--- README.md (first 8000 bytes) ---"
+        }
+      ],
+      "o4": {
+        "sequence": [
+          "opening-statement",
+          "metric-hero",
+          "metric-hero",
+          "thesis-statement",
+          "comparison-stacked",
+          "tradeoff-decided",
+          "evidence-focused",
+          "evidence-focused",
+          "evidence-focused",
+          "conclusion-charge"
+        ],
+        "distinct": 7,
+        "maxSameShare": 0.3,
+        "tripleRepeat": true,
+        "slideSignaturesDistinct": 4,
+        "slideSignaturesTotal": 10
+      },
+      "o6": {
+        "minTitlePx": 72,
+        "minBodyPx": 18.7,
+        "minNumberPx": 226.7,
+        "minCaptionPx": 13.3,
+        "contrastFails45": 0,
+        "contrastRows": [
+          {
+            "blockId": "n1-cover-b0",
+            "role": "kicker",
+            "ratio": 13.49
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "role": "body",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n2-number-b0",
+            "role": "kicker",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n2-number-b1",
+            "role": "number",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n2-number-b2",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n2-number-b3",
+            "role": "caption",
+            "ratio": 4.76
+          },
+          {
+            "blockId": "n3-number-b0",
+            "role": "kicker",
+            "ratio": 13.49
+          },
+          {
+            "blockId": "n3-number-b1",
+            "role": "number",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n3-number-b2",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n3-number-b3",
+            "role": "caption",
+            "ratio": 6.86
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "role": "kicker",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "role": "body",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "role": "caption",
+            "ratio": 4.76
+          },
+          {
+            "blockId": "n5-differentiation-b0",
+            "role": "kicker",
+            "ratio": 13.49
+          },
+          {
+            "blockId": "n5-differentiation-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n5-differentiation-b2",
+            "role": "caption",
+            "ratio": 6.86
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "role": "kicker",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "role": "caption",
+            "ratio": 4.76
+          },
+          {
+            "blockId": "n7-point-b0",
+            "role": "kicker",
+            "ratio": 13.49
+          },
+          {
+            "blockId": "n7-point-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n7-point-b2",
+            "role": "body",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n7-point-b3",
+            "role": "caption",
+            "ratio": 6.86
+          },
+          {
+            "blockId": "n8-point-b0",
+            "role": "kicker",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n8-point-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n8-point-b2",
+            "role": "body",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n8-point-b3",
+            "role": "caption",
+            "ratio": 4.76
+          },
+          {
+            "blockId": "n9-point-b0",
+            "role": "kicker",
+            "ratio": 13.49
+          },
+          {
+            "blockId": "n9-point-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n9-point-b2",
+            "role": "body",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n9-point-b3",
+            "role": "caption",
+            "ratio": 6.86
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "role": "kicker",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "role": "body",
+            "ratio": 17.26
+          }
+        ]
+      },
+      "o7": {
+        "slideCountMatch": true,
+        "mismatches": 0,
+        "detail": []
+      },
+      "o8": {
+        "editableChars": 1185,
+        "totalChars": 1185,
+        "ratio": 1,
+        "forbiddenOk": true
+      },
+      "o9": {
+        "slides": 10,
+        "inRange": true,
+        "blocks": 36
+      },
+      "blockCount": 36,
+      "overflow": {
+        "deck": "FX1-b-expressive.html",
+        "chrome": "Google Chrome 156.0.8078.74",
+        "viewport": "1280x720",
+        "blocksInHtml": 36,
+        "measured": 36,
+        "overflowBlocks": 1,
+        "overflowing": [
+          {
+            "blockId": "n7-point-b1",
+            "slideId": "n7-point",
+            "axes": [
+              "h 332>231 (tol 43.3)"
+            ],
+            "fontSizePx": 78.68
+          }
+        ],
+        "fonts": [
+          {
+            "blockId": "n1-cover-b0",
+            "slideId": "n1-cover",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "slideId": "n1-cover",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "slideId": "n1-cover",
+            "fontSizePx": 18.68
+          },
+          {
+            "blockId": "n2-number-b0",
+            "slideId": "n2-number",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n2-number-b1",
+            "slideId": "n2-number",
+            "fontSizePx": 226.73
+          },
+          {
+            "blockId": "n2-number-b2",
+            "slideId": "n2-number",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n2-number-b3",
+            "slideId": "n2-number",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n3-number-b0",
+            "slideId": "n3-number",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n3-number-b1",
+            "slideId": "n3-number",
+            "fontSizePx": 226.73
+          },
+          {
+            "blockId": "n3-number-b2",
+            "slideId": "n3-number",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n3-number-b3",
+            "slideId": "n3-number",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 72.01
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 18.68
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n5-differentiation-b0",
+            "slideId": "n5-differentiation",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n5-differentiation-b1",
+            "slideId": "n5-differentiation",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n5-differentiation-b2",
+            "slideId": "n5-differentiation",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "slideId": "n6-limitations",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "slideId": "n6-limitations",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "slideId": "n6-limitations",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n7-point-b0",
+            "slideId": "n7-point",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n7-point-b1",
+            "slideId": "n7-point",
+            "fontSizePx": 78.68
+          },
+          {
+            "blockId": "n7-point-b2",
+            "slideId": "n7-point",
+            "fontSizePx": 18.68
+          },
+          {
+            "blockId": "n7-point-b3",
+            "slideId": "n7-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n8-point-b0",
+            "slideId": "n8-point",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n8-point-b1",
+            "slideId": "n8-point",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n8-point-b2",
+            "slideId": "n8-point",
+            "fontSizePx": 18.68
+          },
+          {
+            "blockId": "n8-point-b3",
+            "slideId": "n8-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n9-point-b0",
+            "slideId": "n9-point",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n9-point-b1",
+            "slideId": "n9-point",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n9-point-b2",
+            "slideId": "n9-point",
+            "fontSizePx": 18.68
+          },
+          {
+            "blockId": "n9-point-b3",
+            "slideId": "n9-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "slideId": "n10-closing",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "slideId": "n10-closing",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "slideId": "n10-closing",
+            "fontSizePx": 18.68
+          }
+        ],
+        "stageWidthsPx": [
+          1280
+        ]
+      },
+      "sidecar": {
+        "fx": "FX1",
+        "arm": "B",
+        "system": "expressive",
+        "slides": 10,
+        "textBoxes": 36,
+        "diversityFeatures": {
+          "meanBlocksPerSlide": 3.6,
+          "medianHeadlineSize": 64,
+          "alignmentMix": {
+            "left": 0,
+            "center": 1,
+            "right": 0
+          }
+        },
+        "provider": "fallback",
+        "claims": {
+          "total": 24,
+          "verified": 0,
+          "suggestion": 0,
+          "ungrounded": 24
+        },
+        "quality": {
+          "pass": true,
+          "overall": 96,
+          "errors": 0,
+          "warnings": 2
+        },
+        "warnings": [
+          "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+          "quality warning [thin-slide] on n5-differentiation: thesis slide has no supporting body",
+          "quality warning [thin-slide] on n6-limitations: thesis slide has no supporting body",
+          "built with the deterministic fallback (not model inference)"
+        ],
+        "critiqueFindings": [
+          {
+            "slideId": "n1-cover",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n1-cover-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n2-number",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 4 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n4-capabilities",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n4-capabilities",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n4-capabilities-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n5-differentiation",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n6-limitations",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n7-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n8-point",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n8-point-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n8-point",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 69 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n9-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n9-point",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n9-point-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n10-closing",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 74 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          }
+        ],
+        "revisions": 0,
+        "revisionProvenance": [],
+        "candidateIds": [
+          "opening-statement",
+          "metric-hero",
+          "metric-hero",
+          "thesis-statement",
+          "comparison-stacked",
+          "tradeoff-decided",
+          "evidence-focused",
+          "evidence-focused",
+          "evidence-focused",
+          "conclusion-charge"
+        ],
+        "latencyMs": 6
+      }
+    },
+    {
+      "deck": "FX1-b-swiss.html",
+      "fx": "FX1-ledgerly",
+      "arm": "b",
+      "sys": "swiss",
+      "o1": {
+        "numbers": 18,
+        "matched": 16,
+        "accuracy": 0.8889
+      },
+      "o2": {
+        "blocksWithRefs": 9,
+        "slidesWithRefs": 8,
+        "lineLevel": 8,
+        "fileLevel": 1,
+        "labeledUnverified": 8
+      },
+      "o3misses": [
+        {
+          "token": "8000",
+          "blockId": "n3-number-b1",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "8000"
+        },
+        {
+          "token": "8000",
+          "blockId": "n3-number-b2",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "--- README.md (first 8000 bytes) ---"
+        }
+      ],
+      "o4": {
+        "sequence": [
+          "opening-statement",
+          "metric-anchored",
+          "metric-anchored",
+          "thesis-statement",
+          "comparison-columns",
+          "tradeoff-balanced",
+          "evidence-focused",
+          "evidence-anchored",
+          "evidence-focused",
+          "conclusion-restatement"
+        ],
+        "distinct": 8,
+        "maxSameShare": 0.2,
+        "tripleRepeat": false,
+        "slideSignaturesDistinct": 4,
+        "slideSignaturesTotal": 10
+      },
+      "o6": {
+        "minTitlePx": 37.3,
+        "minBodyPx": 16,
+        "minNumberPx": 96,
+        "minCaptionPx": 12,
+        "contrastFails45": 0,
+        "contrastRows": [
+          {
+            "blockId": "n1-cover-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "role": "body",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n2-number-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n2-number-b1",
+            "role": "number",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n2-number-b2",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n2-number-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n3-number-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n3-number-b1",
+            "role": "number",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n3-number-b2",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n3-number-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "role": "body",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n5-differentiation-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n5-differentiation-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n5-differentiation-b2",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n7-point-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n7-point-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n7-point-b2",
+            "role": "body",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n7-point-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n8-point-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n8-point-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n8-point-b2",
+            "role": "body",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n8-point-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n9-point-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n9-point-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n9-point-b2",
+            "role": "body",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n9-point-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "role": "body",
+            "ratio": 18.88
+          }
+        ]
+      },
+      "o7": {
+        "slideCountMatch": true,
+        "mismatches": 0,
+        "detail": []
+      },
+      "o8": {
+        "editableChars": 1185,
+        "totalChars": 1185,
+        "ratio": 1,
+        "forbiddenOk": true
+      },
+      "o9": {
+        "slides": 10,
+        "inRange": true,
+        "blocks": 36
+      },
+      "blockCount": 36,
+      "overflow": {
+        "deck": "FX1-b-swiss.html",
+        "chrome": "Google Chrome 156.0.8078.74",
+        "viewport": "1280x720",
+        "blocksInHtml": 36,
+        "measured": 36,
+        "overflowBlocks": 0,
+        "overflowing": [],
+        "fonts": [
+          {
+            "blockId": "n1-cover-b0",
+            "slideId": "n1-cover",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "slideId": "n1-cover",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "slideId": "n1-cover",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n2-number-b0",
+            "slideId": "n2-number",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n2-number-b1",
+            "slideId": "n2-number",
+            "fontSizePx": 96.03
+          },
+          {
+            "blockId": "n2-number-b2",
+            "slideId": "n2-number",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n2-number-b3",
+            "slideId": "n2-number",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n3-number-b0",
+            "slideId": "n3-number",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n3-number-b1",
+            "slideId": "n3-number",
+            "fontSizePx": 96.03
+          },
+          {
+            "blockId": "n3-number-b2",
+            "slideId": "n3-number",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n3-number-b3",
+            "slideId": "n3-number",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n5-differentiation-b0",
+            "slideId": "n5-differentiation",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n5-differentiation-b1",
+            "slideId": "n5-differentiation",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n5-differentiation-b2",
+            "slideId": "n5-differentiation",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "slideId": "n6-limitations",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "slideId": "n6-limitations",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "slideId": "n6-limitations",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n7-point-b0",
+            "slideId": "n7-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n7-point-b1",
+            "slideId": "n7-point",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n7-point-b2",
+            "slideId": "n7-point",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n7-point-b3",
+            "slideId": "n7-point",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n8-point-b0",
+            "slideId": "n8-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n8-point-b1",
+            "slideId": "n8-point",
+            "fontSizePx": 37.34
+          },
+          {
+            "blockId": "n8-point-b2",
+            "slideId": "n8-point",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n8-point-b3",
+            "slideId": "n8-point",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n9-point-b0",
+            "slideId": "n9-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n9-point-b1",
+            "slideId": "n9-point",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n9-point-b2",
+            "slideId": "n9-point",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n9-point-b3",
+            "slideId": "n9-point",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "slideId": "n10-closing",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "slideId": "n10-closing",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "slideId": "n10-closing",
+            "fontSizePx": 16
+          }
+        ],
+        "stageWidthsPx": [
+          1280
+        ]
+      },
+      "sidecar": {
+        "fx": "FX1",
+        "arm": "B",
+        "system": "swiss",
+        "slides": 10,
+        "textBoxes": 36,
+        "diversityFeatures": {
+          "meanBlocksPerSlide": 3.6,
+          "medianHeadlineSize": 30,
+          "alignmentMix": {
+            "left": 0.7777777777777778,
+            "center": 0,
+            "right": 0.2222222222222222
+          }
+        },
+        "provider": "fallback",
+        "claims": {
+          "total": 24,
+          "verified": 0,
+          "suggestion": 0,
+          "ungrounded": 24
+        },
+        "quality": {
+          "pass": true,
+          "overall": 96,
+          "errors": 0,
+          "warnings": 2
+        },
+        "warnings": [
+          "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+          "quality warning [thin-slide] on n5-differentiation: thesis slide has no supporting body",
+          "quality warning [thin-slide] on n6-limitations: thesis slide has no supporting body",
+          "built with the deterministic fallback (not model inference)"
+        ],
+        "critiqueFindings": [
+          {
+            "slideId": "n2-number",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n4-capabilities",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n4-capabilities",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n4-capabilities-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n7-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n8-point",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n8-point-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n8-point",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 69 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n9-point",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n9-point-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n10-closing",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 68 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n10-closing",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n10-closing-b2 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          }
+        ],
+        "revisions": 0,
+        "revisionProvenance": [],
+        "candidateIds": [
+          "opening-statement",
+          "metric-anchored",
+          "metric-anchored",
+          "thesis-statement",
+          "comparison-columns",
+          "tradeoff-balanced",
+          "evidence-focused",
+          "evidence-anchored",
+          "evidence-focused",
+          "conclusion-restatement"
+        ],
+        "latencyMs": 20
+      }
+    },
+    {
+      "deck": "FX2-a.html",
+      "fx": "FX2-pipecheck",
+      "arm": "a",
+      "sys": "-",
+      "o1": {
+        "numbers": 78,
+        "matched": 78,
+        "accuracy": 1
+      },
+      "o2": {
+        "blocksWithRefs": 9,
+        "slidesWithRefs": 9,
+        "lineLevel": 0,
+        "fileLevel": 9,
+        "labeledUnverified": 0
+      },
+      "o3misses": [],
+      "o4": {
+        "sequence": [
+          "cover",
+          "stat",
+          "stat",
+          "stat",
+          "stat",
+          "stat",
+          "stat",
+          "stat",
+          "closing"
+        ],
+        "distinct": 3,
+        "maxSameShare": 0.7777777777777778,
+        "tripleRepeat": true,
+        "slideSignaturesDistinct": 2,
+        "slideSignaturesTotal": 9
+      },
+      "o6": {
+        "minTitlePx": 44,
+        "minBodyPx": 21,
+        "minNumberPx": null,
+        "minCaptionPx": 14,
+        "contrastFails45": 18,
+        "contrastRows": [
+          {
+            "blockId": "FX2-pipecheck-a-s0-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s0-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s0-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s0-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s0-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s1-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s1-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s1-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s1-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s1-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-b2",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-src",
+            "role": "caption",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s8-kicker",
+            "role": "kicker",
+            "ratio": 2.81
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s8-title",
+            "role": "title",
+            "ratio": 16.53
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s8-b0",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s8-b1",
+            "role": "body",
+            "ratio": 11.18
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s8-src",
+            "role": "caption",
+            "ratio": 2.81
+          }
+        ]
+      },
+      "o7": {
+        "na": "single-artifact arm (no PPTX by design)"
+      },
+      "o8": {
+        "ratio": 1,
+        "note": "DOM text extraction (by construction)",
+        "emptySlides": 0
+      },
+      "o9": {
+        "slides": 9,
+        "inRange": true,
+        "blocks": 51
+      },
+      "blockCount": 51,
+      "overflow": {
+        "deck": "FX2-a.html",
+        "chrome": "Google Chrome 156.0.8078.74",
+        "viewport": "1280x720",
+        "blocksInHtml": 51,
+        "measured": 51,
+        "overflowBlocks": 0,
+        "overflowing": [],
+        "fonts": [
+          {
+            "blockId": "FX2-pipecheck-a-s0-kicker",
+            "slideId": "FX2-pipecheck-a-s0",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s0-title",
+            "slideId": "FX2-pipecheck-a-s0",
+            "fontSizePx": 72
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s0-b0",
+            "slideId": "FX2-pipecheck-a-s0",
+            "fontSizePx": 24
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s0-b1",
+            "slideId": "FX2-pipecheck-a-s0",
+            "fontSizePx": 24
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s0-src",
+            "slideId": "FX2-pipecheck-a-s0",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s1-kicker",
+            "slideId": "FX2-pipecheck-a-s1",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s1-title",
+            "slideId": "FX2-pipecheck-a-s1",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s1-b0",
+            "slideId": "FX2-pipecheck-a-s1",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s1-b1",
+            "slideId": "FX2-pipecheck-a-s1",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s1-src",
+            "slideId": "FX2-pipecheck-a-s1",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-kicker",
+            "slideId": "FX2-pipecheck-a-s2",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-title",
+            "slideId": "FX2-pipecheck-a-s2",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-b0",
+            "slideId": "FX2-pipecheck-a-s2",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-b1",
+            "slideId": "FX2-pipecheck-a-s2",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-b2",
+            "slideId": "FX2-pipecheck-a-s2",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s2-src",
+            "slideId": "FX2-pipecheck-a-s2",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-kicker",
+            "slideId": "FX2-pipecheck-a-s3",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-title",
+            "slideId": "FX2-pipecheck-a-s3",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-b0",
+            "slideId": "FX2-pipecheck-a-s3",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-b1",
+            "slideId": "FX2-pipecheck-a-s3",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-b2",
+            "slideId": "FX2-pipecheck-a-s3",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s3-src",
+            "slideId": "FX2-pipecheck-a-s3",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-kicker",
+            "slideId": "FX2-pipecheck-a-s4",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-title",
+            "slideId": "FX2-pipecheck-a-s4",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-b0",
+            "slideId": "FX2-pipecheck-a-s4",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-b1",
+            "slideId": "FX2-pipecheck-a-s4",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-b2",
+            "slideId": "FX2-pipecheck-a-s4",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s4-src",
+            "slideId": "FX2-pipecheck-a-s4",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-kicker",
+            "slideId": "FX2-pipecheck-a-s5",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-title",
+            "slideId": "FX2-pipecheck-a-s5",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-b0",
+            "slideId": "FX2-pipecheck-a-s5",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-b1",
+            "slideId": "FX2-pipecheck-a-s5",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-b2",
+            "slideId": "FX2-pipecheck-a-s5",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s5-src",
+            "slideId": "FX2-pipecheck-a-s5",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-kicker",
+            "slideId": "FX2-pipecheck-a-s6",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-title",
+            "slideId": "FX2-pipecheck-a-s6",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-b0",
+            "slideId": "FX2-pipecheck-a-s6",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-b1",
+            "slideId": "FX2-pipecheck-a-s6",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-b2",
+            "slideId": "FX2-pipecheck-a-s6",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s6-src",
+            "slideId": "FX2-pipecheck-a-s6",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-kicker",
+            "slideId": "FX2-pipecheck-a-s7",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-title",
+            "slideId": "FX2-pipecheck-a-s7",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-b0",
+            "slideId": "FX2-pipecheck-a-s7",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-b1",
+            "slideId": "FX2-pipecheck-a-s7",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-b2",
+            "slideId": "FX2-pipecheck-a-s7",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s7-src",
+            "slideId": "FX2-pipecheck-a-s7",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s8-kicker",
+            "slideId": "FX2-pipecheck-a-s8",
+            "fontSizePx": 14
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s8-title",
+            "slideId": "FX2-pipecheck-a-s8",
+            "fontSizePx": 44
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s8-b0",
+            "slideId": "FX2-pipecheck-a-s8",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s8-b1",
+            "slideId": "FX2-pipecheck-a-s8",
+            "fontSizePx": 21
+          },
+          {
+            "blockId": "FX2-pipecheck-a-s8-src",
+            "slideId": "FX2-pipecheck-a-s8",
+            "fontSizePx": 14
+          }
+        ],
+        "stageWidthsPx": [
+          1229
+        ]
+      },
+      "sidecar": null
+    },
+    {
+      "deck": "FX2-b-editorial.html",
+      "fx": "FX2-pipecheck",
+      "arm": "b",
+      "sys": "editorial",
+      "o1": {
+        "numbers": 29,
+        "matched": 27,
+        "accuracy": 0.931
+      },
+      "o2": {
+        "blocksWithRefs": 9,
+        "slidesWithRefs": 8,
+        "lineLevel": 8,
+        "fileLevel": 1,
+        "labeledUnverified": 8
+      },
+      "o3misses": [
+        {
+          "token": "8000",
+          "blockId": "n3-number-b1",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "8000"
+        },
+        {
+          "token": "8000",
+          "blockId": "n3-number-b2",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "--- README.md (first 8000 bytes) ---"
+        }
+      ],
+      "o4": {
+        "sequence": [
+          "opening-statement",
+          "metric-anchored",
+          "metric-hero",
+          "thesis-sparse",
+          "architecture-layered",
+          "tradeoff-decided",
+          "evidence-focused",
+          "evidence-anchored",
+          "evidence-focused",
+          "conclusion-charge"
+        ],
+        "distinct": 9,
+        "maxSameShare": 0.2,
+        "tripleRepeat": false,
+        "slideSignaturesDistinct": 4,
+        "slideSignaturesTotal": 10
+      },
+      "o6": {
+        "minTitlePx": 56,
+        "minBodyPx": 20,
+        "minNumberPx": 160,
+        "minCaptionPx": 13.3,
+        "contrastFails45": 0,
+        "contrastRows": [
+          {
+            "blockId": "n1-cover-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "role": "body",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n2-number-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n2-number-b1",
+            "role": "number",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n2-number-b2",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n2-number-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n3-number-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n3-number-b1",
+            "role": "number",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n3-number-b2",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n3-number-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "role": "body",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n5-architecture-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n5-architecture-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n5-architecture-b2",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "role": "body",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n6-limitations-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n7-point-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n7-point-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n7-point-b2",
+            "role": "body",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n7-point-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n8-point-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n8-point-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n8-point-b2",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n9-point-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n9-point-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n9-point-b2",
+            "role": "body",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n9-point-b3",
+            "role": "caption",
+            "ratio": 4.99
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "role": "kicker",
+            "ratio": 6.49
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "role": "title",
+            "ratio": 16.29
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "role": "body",
+            "ratio": 16.29
+          }
+        ]
+      },
+      "o7": {
+        "slideCountMatch": true,
+        "mismatches": 0,
+        "detail": []
+      },
+      "o8": {
+        "editableChars": 1371,
+        "totalChars": 1371,
+        "ratio": 1,
+        "forbiddenOk": true
+      },
+      "o9": {
+        "slides": 10,
+        "inRange": true,
+        "blocks": 36
+      },
+      "blockCount": 36,
+      "overflow": {
+        "deck": "FX2-b-editorial.html",
+        "chrome": "Google Chrome 156.0.8078.74",
+        "viewport": "1280x720",
+        "blocksInHtml": 36,
+        "measured": 36,
+        "overflowBlocks": 0,
+        "overflowing": [],
+        "fonts": [
+          {
+            "blockId": "n1-cover-b0",
+            "slideId": "n1-cover",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "slideId": "n1-cover",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "slideId": "n1-cover",
+            "fontSizePx": 20.01
+          },
+          {
+            "blockId": "n2-number-b0",
+            "slideId": "n2-number",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n2-number-b1",
+            "slideId": "n2-number",
+            "fontSizePx": 160.04
+          },
+          {
+            "blockId": "n2-number-b2",
+            "slideId": "n2-number",
+            "fontSizePx": 56.01
+          },
+          {
+            "blockId": "n2-number-b3",
+            "slideId": "n2-number",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n3-number-b0",
+            "slideId": "n3-number",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n3-number-b1",
+            "slideId": "n3-number",
+            "fontSizePx": 160.04
+          },
+          {
+            "blockId": "n3-number-b2",
+            "slideId": "n3-number",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n3-number-b3",
+            "slideId": "n3-number",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 20.01
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n5-architecture-b0",
+            "slideId": "n5-architecture",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n5-architecture-b1",
+            "slideId": "n5-architecture",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n5-architecture-b2",
+            "slideId": "n5-architecture",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "slideId": "n6-limitations",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "slideId": "n6-limitations",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "slideId": "n6-limitations",
+            "fontSizePx": 20.01
+          },
+          {
+            "blockId": "n6-limitations-b3",
+            "slideId": "n6-limitations",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n7-point-b0",
+            "slideId": "n7-point",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n7-point-b1",
+            "slideId": "n7-point",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n7-point-b2",
+            "slideId": "n7-point",
+            "fontSizePx": 20.01
+          },
+          {
+            "blockId": "n7-point-b3",
+            "slideId": "n7-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n8-point-b0",
+            "slideId": "n8-point",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n8-point-b1",
+            "slideId": "n8-point",
+            "fontSizePx": 56.01
+          },
+          {
+            "blockId": "n8-point-b2",
+            "slideId": "n8-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n9-point-b0",
+            "slideId": "n9-point",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n9-point-b1",
+            "slideId": "n9-point",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n9-point-b2",
+            "slideId": "n9-point",
+            "fontSizePx": 20.01
+          },
+          {
+            "blockId": "n9-point-b3",
+            "slideId": "n9-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "slideId": "n10-closing",
+            "fontSizePx": 14.67
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "slideId": "n10-closing",
+            "fontSizePx": 61.35
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "slideId": "n10-closing",
+            "fontSizePx": 20.01
+          }
+        ],
+        "stageWidthsPx": [
+          1280
+        ]
+      },
+      "sidecar": {
+        "fx": "FX2",
+        "arm": "B",
+        "system": "editorial",
+        "slides": 10,
+        "textBoxes": 36,
+        "diversityFeatures": {
+          "meanBlocksPerSlide": 3.6,
+          "medianHeadlineSize": 46,
+          "alignmentMix": {
+            "left": 1,
+            "center": 0,
+            "right": 0
+          }
+        },
+        "provider": "fallback",
+        "claims": {
+          "total": 24,
+          "verified": 0,
+          "suggestion": 0,
+          "ungrounded": 24
+        },
+        "quality": {
+          "pass": true,
+          "overall": 100,
+          "errors": 0,
+          "warnings": 0
+        },
+        "warnings": [
+          "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+          "built with the deterministic fallback (not model inference)"
+        ],
+        "critiqueFindings": [
+          {
+            "slideId": "n1-cover",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 81 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n4-capabilities",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 69 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n5-architecture",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n6-limitations",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n6-limitations",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 65 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n7-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 4 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n7-point",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n7-point-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n7-point",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 69 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n8-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n9-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n9-point",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n9-point-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n10-closing",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 75 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n10-closing",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n10-closing-b2 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          }
+        ],
+        "revisions": 0,
+        "revisionProvenance": [],
+        "candidateIds": [
+          "opening-statement",
+          "metric-anchored",
+          "metric-hero",
+          "thesis-sparse",
+          "architecture-layered",
+          "tradeoff-decided",
+          "evidence-focused",
+          "evidence-anchored",
+          "evidence-focused",
+          "conclusion-charge"
+        ],
+        "latencyMs": 6
+      }
+    },
+    {
+      "deck": "FX2-b-expressive.html",
+      "fx": "FX2-pipecheck",
+      "arm": "b",
+      "sys": "expressive",
+      "o1": {
+        "numbers": 29,
+        "matched": 27,
+        "accuracy": 0.931
+      },
+      "o2": {
+        "blocksWithRefs": 9,
+        "slidesWithRefs": 8,
+        "lineLevel": 8,
+        "fileLevel": 1,
+        "labeledUnverified": 8
+      },
+      "o3misses": [
+        {
+          "token": "8000",
+          "blockId": "n3-number-b1",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "8000"
+        },
+        {
+          "token": "8000",
+          "blockId": "n3-number-b2",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "--- README.md (first 8000 bytes) ---"
+        }
+      ],
+      "o4": {
+        "sequence": [
+          "opening-statement",
+          "metric-hero",
+          "metric-hero",
+          "thesis-statement",
+          "architecture-map",
+          "tradeoff-decided",
+          "evidence-focused",
+          "evidence-focused",
+          "evidence-focused",
+          "conclusion-charge"
+        ],
+        "distinct": 7,
+        "maxSameShare": 0.3,
+        "tripleRepeat": true,
+        "slideSignaturesDistinct": 4,
+        "slideSignaturesTotal": 10
+      },
+      "o6": {
+        "minTitlePx": 72.5,
+        "minBodyPx": 18.7,
+        "minNumberPx": 192.7,
+        "minCaptionPx": 11.3,
+        "contrastFails45": 0,
+        "contrastRows": [
+          {
+            "blockId": "n1-cover-b0",
+            "role": "kicker",
+            "ratio": 13.49
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "role": "body",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n2-number-b0",
+            "role": "kicker",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n2-number-b1",
+            "role": "number",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n2-number-b2",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n2-number-b3",
+            "role": "caption",
+            "ratio": 4.76
+          },
+          {
+            "blockId": "n3-number-b0",
+            "role": "kicker",
+            "ratio": 13.49
+          },
+          {
+            "blockId": "n3-number-b1",
+            "role": "number",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n3-number-b2",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n3-number-b3",
+            "role": "caption",
+            "ratio": 6.86
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "role": "kicker",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "role": "body",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "role": "caption",
+            "ratio": 4.76
+          },
+          {
+            "blockId": "n5-architecture-b0",
+            "role": "kicker",
+            "ratio": 13.49
+          },
+          {
+            "blockId": "n5-architecture-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n5-architecture-b2",
+            "role": "caption",
+            "ratio": 6.86
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "role": "kicker",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "role": "body",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n6-limitations-b3",
+            "role": "caption",
+            "ratio": 4.76
+          },
+          {
+            "blockId": "n7-point-b0",
+            "role": "kicker",
+            "ratio": 13.49
+          },
+          {
+            "blockId": "n7-point-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n7-point-b2",
+            "role": "body",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n7-point-b3",
+            "role": "caption",
+            "ratio": 6.86
+          },
+          {
+            "blockId": "n8-point-b0",
+            "role": "kicker",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n8-point-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n8-point-b2",
+            "role": "caption",
+            "ratio": 4.76
+          },
+          {
+            "blockId": "n9-point-b0",
+            "role": "kicker",
+            "ratio": 13.49
+          },
+          {
+            "blockId": "n9-point-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n9-point-b2",
+            "role": "body",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n9-point-b3",
+            "role": "caption",
+            "ratio": 6.86
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "role": "kicker",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "role": "title",
+            "ratio": 17.26
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "role": "body",
+            "ratio": 17.26
+          }
+        ]
+      },
+      "o7": {
+        "slideCountMatch": true,
+        "mismatches": 0,
+        "detail": []
+      },
+      "o8": {
+        "editableChars": 1371,
+        "totalChars": 1371,
+        "ratio": 1,
+        "forbiddenOk": true
+      },
+      "o9": {
+        "slides": 10,
+        "inRange": true,
+        "blocks": 36
+      },
+      "blockCount": 36,
+      "overflow": {
+        "deck": "FX2-b-expressive.html",
+        "chrome": "Google Chrome 156.0.8078.74",
+        "viewport": "1280x720",
+        "blocksInHtml": 36,
+        "measured": 36,
+        "overflowBlocks": 3,
+        "overflowing": [
+          {
+            "blockId": "n2-number-b1",
+            "slideId": "n2-number",
+            "axes": [
+              "h 379>136 (tol 86.7)"
+            ],
+            "fontSizePx": 192.72
+          },
+          {
+            "blockId": "n2-number-b2",
+            "slideId": "n2-number",
+            "axes": [
+              "h 229>137 (tol 39.9)"
+            ],
+            "fontSizePx": 72.55
+          },
+          {
+            "blockId": "n5-architecture-b1",
+            "slideId": "n5-architecture",
+            "axes": [
+              "h 449>339 (tol 46.9)"
+            ],
+            "fontSizePx": 85.35
+          }
+        ],
+        "fonts": [
+          {
+            "blockId": "n1-cover-b0",
+            "slideId": "n1-cover",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "slideId": "n1-cover",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "slideId": "n1-cover",
+            "fontSizePx": 18.68
+          },
+          {
+            "blockId": "n2-number-b0",
+            "slideId": "n2-number",
+            "fontSizePx": 13.61
+          },
+          {
+            "blockId": "n2-number-b1",
+            "slideId": "n2-number",
+            "fontSizePx": 192.72
+          },
+          {
+            "blockId": "n2-number-b2",
+            "slideId": "n2-number",
+            "fontSizePx": 72.55
+          },
+          {
+            "blockId": "n2-number-b3",
+            "slideId": "n2-number",
+            "fontSizePx": 11.34
+          },
+          {
+            "blockId": "n3-number-b0",
+            "slideId": "n3-number",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n3-number-b1",
+            "slideId": "n3-number",
+            "fontSizePx": 226.73
+          },
+          {
+            "blockId": "n3-number-b2",
+            "slideId": "n3-number",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n3-number-b3",
+            "slideId": "n3-number",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 18.68
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n5-architecture-b0",
+            "slideId": "n5-architecture",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n5-architecture-b1",
+            "slideId": "n5-architecture",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n5-architecture-b2",
+            "slideId": "n5-architecture",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "slideId": "n6-limitations",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "slideId": "n6-limitations",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "slideId": "n6-limitations",
+            "fontSizePx": 18.68
+          },
+          {
+            "blockId": "n6-limitations-b3",
+            "slideId": "n6-limitations",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n7-point-b0",
+            "slideId": "n7-point",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n7-point-b1",
+            "slideId": "n7-point",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n7-point-b2",
+            "slideId": "n7-point",
+            "fontSizePx": 18.68
+          },
+          {
+            "blockId": "n7-point-b3",
+            "slideId": "n7-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n8-point-b0",
+            "slideId": "n8-point",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n8-point-b1",
+            "slideId": "n8-point",
+            "fontSizePx": 78.68
+          },
+          {
+            "blockId": "n8-point-b2",
+            "slideId": "n8-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n9-point-b0",
+            "slideId": "n9-point",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n9-point-b1",
+            "slideId": "n9-point",
+            "fontSizePx": 78.68
+          },
+          {
+            "blockId": "n9-point-b2",
+            "slideId": "n9-point",
+            "fontSizePx": 18.68
+          },
+          {
+            "blockId": "n9-point-b3",
+            "slideId": "n9-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "slideId": "n10-closing",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "slideId": "n10-closing",
+            "fontSizePx": 85.35
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "slideId": "n10-closing",
+            "fontSizePx": 18.68
+          }
+        ],
+        "stageWidthsPx": [
+          1280
+        ]
+      },
+      "sidecar": {
+        "fx": "FX2",
+        "arm": "B",
+        "system": "expressive",
+        "slides": 10,
+        "textBoxes": 36,
+        "diversityFeatures": {
+          "meanBlocksPerSlide": 3.6,
+          "medianHeadlineSize": 64,
+          "alignmentMix": {
+            "left": 0,
+            "center": 1,
+            "right": 0
+          }
+        },
+        "provider": "fallback",
+        "claims": {
+          "total": 24,
+          "verified": 0,
+          "suggestion": 0,
+          "ungrounded": 24
+        },
+        "quality": {
+          "pass": true,
+          "overall": 100,
+          "errors": 0,
+          "warnings": 0
+        },
+        "warnings": [
+          "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+          "built with the deterministic fallback (not model inference)"
+        ],
+        "critiqueFindings": [
+          {
+            "slideId": "n1-cover",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n1-cover-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n1-cover",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n1-cover-b2 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n4-capabilities",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n4-capabilities",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n4-capabilities-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n4-capabilities",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 69 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n5-architecture",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 4 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n6-limitations",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 4 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n6-limitations",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 65 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n7-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 4 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n7-point",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n7-point-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n7-point",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 69 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n8-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 4 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n8-point",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n8-point-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n9-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n10-closing",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n10-closing-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n10-closing",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 75 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n10-closing",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n10-closing-b2 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          }
+        ],
+        "revisions": 0,
+        "revisionProvenance": [],
+        "candidateIds": [
+          "opening-statement",
+          "metric-hero",
+          "metric-hero",
+          "thesis-statement",
+          "architecture-map",
+          "tradeoff-decided",
+          "evidence-focused",
+          "evidence-focused",
+          "evidence-focused",
+          "conclusion-charge"
+        ],
+        "latencyMs": 6
+      }
+    },
+    {
+      "deck": "FX2-b-swiss.html",
+      "fx": "FX2-pipecheck",
+      "arm": "b",
+      "sys": "swiss",
+      "o1": {
+        "numbers": 29,
+        "matched": 27,
+        "accuracy": 0.931
+      },
+      "o2": {
+        "blocksWithRefs": 9,
+        "slidesWithRefs": 8,
+        "lineLevel": 8,
+        "fileLevel": 1,
+        "labeledUnverified": 8
+      },
+      "o3misses": [
+        {
+          "token": "8000",
+          "blockId": "n3-number-b1",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "8000"
+        },
+        {
+          "token": "8000",
+          "blockId": "n3-number-b2",
+          "slide": "n3-number",
+          "matched": false,
+          "context": "--- README.md (first 8000 bytes) ---"
+        }
+      ],
+      "o4": {
+        "sequence": [
+          "opening-statement",
+          "metric-anchored",
+          "metric-anchored",
+          "thesis-statement",
+          "architecture-map",
+          "tradeoff-balanced",
+          "evidence-focused",
+          "evidence-anchored",
+          "evidence-focused",
+          "conclusion-restatement"
+        ],
+        "distinct": 8,
+        "maxSameShare": 0.2,
+        "tripleRepeat": false,
+        "slideSignaturesDistinct": 4,
+        "slideSignaturesTotal": 10
+      },
+      "o6": {
+        "minTitlePx": 40,
+        "minBodyPx": 16,
+        "minNumberPx": 96,
+        "minCaptionPx": 12,
+        "contrastFails45": 0,
+        "contrastRows": [
+          {
+            "blockId": "n1-cover-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "role": "body",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n2-number-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n2-number-b1",
+            "role": "number",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n2-number-b2",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n2-number-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n3-number-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n3-number-b1",
+            "role": "number",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n3-number-b2",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n3-number-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "role": "body",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n5-architecture-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n5-architecture-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n5-architecture-b2",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "role": "body",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n6-limitations-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n7-point-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n7-point-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n7-point-b2",
+            "role": "body",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n7-point-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n8-point-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n8-point-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n8-point-b2",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n9-point-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n9-point-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n9-point-b2",
+            "role": "body",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n9-point-b3",
+            "role": "caption",
+            "ratio": 5.1
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "role": "kicker",
+            "ratio": 4.88
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "role": "title",
+            "ratio": 18.88
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "role": "body",
+            "ratio": 18.88
+          }
+        ]
+      },
+      "o7": {
+        "slideCountMatch": true,
+        "mismatches": 0,
+        "detail": []
+      },
+      "o8": {
+        "editableChars": 1371,
+        "totalChars": 1371,
+        "ratio": 1,
+        "forbiddenOk": true
+      },
+      "o9": {
+        "slides": 10,
+        "inRange": true,
+        "blocks": 36
+      },
+      "blockCount": 36,
+      "overflow": {
+        "deck": "FX2-b-swiss.html",
+        "chrome": "Google Chrome 156.0.8078.74",
+        "viewport": "1280x720",
+        "blocksInHtml": 36,
+        "measured": 36,
+        "overflowBlocks": 0,
+        "overflowing": [],
+        "fonts": [
+          {
+            "blockId": "n1-cover-b0",
+            "slideId": "n1-cover",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n1-cover-b1",
+            "slideId": "n1-cover",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n1-cover-b2",
+            "slideId": "n1-cover",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n2-number-b0",
+            "slideId": "n2-number",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n2-number-b1",
+            "slideId": "n2-number",
+            "fontSizePx": 96.03
+          },
+          {
+            "blockId": "n2-number-b2",
+            "slideId": "n2-number",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n2-number-b3",
+            "slideId": "n2-number",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n3-number-b0",
+            "slideId": "n3-number",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n3-number-b1",
+            "slideId": "n3-number",
+            "fontSizePx": 96.03
+          },
+          {
+            "blockId": "n3-number-b2",
+            "slideId": "n3-number",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n3-number-b3",
+            "slideId": "n3-number",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n4-capabilities-b0",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n4-capabilities-b1",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n4-capabilities-b2",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n4-capabilities-b3",
+            "slideId": "n4-capabilities",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n5-architecture-b0",
+            "slideId": "n5-architecture",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n5-architecture-b1",
+            "slideId": "n5-architecture",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n5-architecture-b2",
+            "slideId": "n5-architecture",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n6-limitations-b0",
+            "slideId": "n6-limitations",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n6-limitations-b1",
+            "slideId": "n6-limitations",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n6-limitations-b2",
+            "slideId": "n6-limitations",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n6-limitations-b3",
+            "slideId": "n6-limitations",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n7-point-b0",
+            "slideId": "n7-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n7-point-b1",
+            "slideId": "n7-point",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n7-point-b2",
+            "slideId": "n7-point",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n7-point-b3",
+            "slideId": "n7-point",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n8-point-b0",
+            "slideId": "n8-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n8-point-b1",
+            "slideId": "n8-point",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n8-point-b2",
+            "slideId": "n8-point",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n9-point-b0",
+            "slideId": "n9-point",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n9-point-b1",
+            "slideId": "n9-point",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n9-point-b2",
+            "slideId": "n9-point",
+            "fontSizePx": 16
+          },
+          {
+            "blockId": "n9-point-b3",
+            "slideId": "n9-point",
+            "fontSizePx": 12.01
+          },
+          {
+            "blockId": "n10-closing-b0",
+            "slideId": "n10-closing",
+            "fontSizePx": 13.34
+          },
+          {
+            "blockId": "n10-closing-b1",
+            "slideId": "n10-closing",
+            "fontSizePx": 40.01
+          },
+          {
+            "blockId": "n10-closing-b2",
+            "slideId": "n10-closing",
+            "fontSizePx": 16
+          }
+        ],
+        "stageWidthsPx": [
+          1280
+        ]
+      },
+      "sidecar": {
+        "fx": "FX2",
+        "arm": "B",
+        "system": "swiss",
+        "slides": 10,
+        "textBoxes": 36,
+        "diversityFeatures": {
+          "meanBlocksPerSlide": 3.6,
+          "medianHeadlineSize": 30,
+          "alignmentMix": {
+            "left": 0.7777777777777778,
+            "center": 0,
+            "right": 0.2222222222222222
+          }
+        },
+        "provider": "fallback",
+        "claims": {
+          "total": 24,
+          "verified": 0,
+          "suggestion": 0,
+          "ungrounded": 24
+        },
+        "quality": {
+          "pass": true,
+          "overall": 100,
+          "errors": 0,
+          "warnings": 0
+        },
+        "warnings": [
+          "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+          "built with the deterministic fallback (not model inference)"
+        ],
+        "critiqueFindings": [
+          {
+            "slideId": "n1-cover",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n1-cover-b2 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n4-capabilities",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 69 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n5-architecture",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n6-limitations",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n6-limitations",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 65 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n7-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n7-point",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 69 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n8-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n9-point",
+            "failureClass": "typographic",
+            "check": "title-lines",
+            "severity": "warning",
+            "detail": "title spans 3 lines (cap 2, derived)",
+            "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+          },
+          {
+            "slideId": "n9-point",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n9-point-b1 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          },
+          {
+            "slideId": "n10-closing",
+            "failureClass": "typographic",
+            "check": "body-measure",
+            "severity": "warning",
+            "detail": "body line 69 chars (cap ~60, derived)",
+            "suggestedFix": "narrow measure via composition plan or split body"
+          },
+          {
+            "slideId": "n10-closing",
+            "failureClass": "typographic",
+            "check": "widow-risk",
+            "severity": "warning",
+            "detail": "block n10-closing-b2 ends in 1-2 word line (T8)",
+            "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+          }
+        ],
+        "revisions": 0,
+        "revisionProvenance": [],
+        "candidateIds": [
+          "opening-statement",
+          "metric-anchored",
+          "metric-anchored",
+          "thesis-statement",
+          "architecture-map",
+          "tradeoff-balanced",
+          "evidence-focused",
+          "evidence-anchored",
+          "evidence-focused",
+          "conclusion-restatement"
+        ],
+        "latencyMs": 19
+      }
+    }
+  ]
+}

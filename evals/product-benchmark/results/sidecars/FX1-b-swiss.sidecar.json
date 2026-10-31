@@ -1,0 +1,124 @@
+{
+  "fx": "FX1",
+  "arm": "B",
+  "system": "swiss",
+  "slides": 10,
+  "textBoxes": 36,
+  "diversityFeatures": {
+    "meanBlocksPerSlide": 3.6,
+    "medianHeadlineSize": 30,
+    "alignmentMix": {
+      "left": 0.7777777777777778,
+      "center": 0,
+      "right": 0.2222222222222222
+    }
+  },
+  "provider": "fallback",
+  "claims": {
+    "total": 24,
+    "verified": 0,
+    "suggestion": 0,
+    "ungrounded": 24
+  },
+  "quality": {
+    "pass": true,
+    "overall": 96,
+    "errors": 0,
+    "warnings": 2
+  },
+  "warnings": [
+    "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+    "quality warning [thin-slide] on n5-differentiation: thesis slide has no supporting body",
+    "quality warning [thin-slide] on n6-limitations: thesis slide has no supporting body",
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "critiqueFindings": [
+    {
+      "slideId": "n2-number",
+      "failureClass": "typographic",
+      "check": "title-lines",
+      "severity": "warning",
+      "detail": "title spans 3 lines (cap 2, derived)",
+      "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+    },
+    {
+      "slideId": "n4-capabilities",
+      "failureClass": "typographic",
+      "check": "title-lines",
+      "severity": "warning",
+      "detail": "title spans 3 lines (cap 2, derived)",
+      "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+    },
+    {
+      "slideId": "n4-capabilities",
+      "failureClass": "typographic",
+      "check": "widow-risk",
+      "severity": "warning",
+      "detail": "block n4-capabilities-b1 ends in 1-2 word line (T8)",
+      "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+    },
+    {
+      "slideId": "n7-point",
+      "failureClass": "typographic",
+      "check": "title-lines",
+      "severity": "warning",
+      "detail": "title spans 3 lines (cap 2, derived)",
+      "suggestedFix": "shorten title in narrative (<=~50 chars) or split slide"
+    },
+    {
+      "slideId": "n8-point",
+      "failureClass": "typographic",
+      "check": "widow-risk",
+      "severity": "warning",
+      "detail": "block n8-point-b1 ends in 1-2 word line (T8)",
+      "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+    },
+    {
+      "slideId": "n8-point",
+      "failureClass": "typographic",
+      "check": "body-measure",
+      "severity": "warning",
+      "detail": "body line 69 chars (cap ~60, derived)",
+      "suggestedFix": "narrow measure via composition plan or split body"
+    },
+    {
+      "slideId": "n9-point",
+      "failureClass": "typographic",
+      "check": "widow-risk",
+      "severity": "warning",
+      "detail": "block n9-point-b1 ends in 1-2 word line (T8)",
+      "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+    },
+    {
+      "slideId": "n10-closing",
+      "failureClass": "typographic",
+      "check": "body-measure",
+      "severity": "warning",
+      "detail": "body line 68 chars (cap ~60, derived)",
+      "suggestedFix": "narrow measure via composition plan or split body"
+    },
+    {
+      "slideId": "n10-closing",
+      "failureClass": "typographic",
+      "check": "widow-risk",
+      "severity": "warning",
+      "detail": "block n10-closing-b2 ends in 1-2 word line (T8)",
+      "suggestedFix": "re-break lines (manual until auto-rebreak is validated)"
+    }
+  ],
+  "revisions": 0,
+  "revisionProvenance": [],
+  "candidateIds": [
+    "opening-statement",
+    "metric-anchored",
+    "metric-anchored",
+    "thesis-statement",
+    "comparison-columns",
+    "tradeoff-balanced",
+    "evidence-focused",
+    "evidence-anchored",
+    "evidence-focused",
+    "conclusion-restatement"
+  ],
+  "latencyMs": 20
+}

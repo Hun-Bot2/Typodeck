@@ -1,0 +1,194 @@
+{
+  "deck": "FX2-b-editorial.html",
+  "chrome": "Google Chrome 156.0.8078.74",
+  "viewport": "1280x720",
+  "blocksInHtml": 36,
+  "measured": 36,
+  "overflowBlocks": 0,
+  "overflowing": [],
+  "fonts": [
+    {
+      "blockId": "n1-cover-b0",
+      "slideId": "n1-cover",
+      "fontSizePx": 14.67
+    },
+    {
+      "blockId": "n1-cover-b1",
+      "slideId": "n1-cover",
+      "fontSizePx": 61.35
+    },
+    {
+      "blockId": "n1-cover-b2",
+      "slideId": "n1-cover",
+      "fontSizePx": 20.01
+    },
+    {
+      "blockId": "n2-number-b0",
+      "slideId": "n2-number",
+      "fontSizePx": 14.67
+    },
+    {
+      "blockId": "n2-number-b1",
+      "slideId": "n2-number",
+      "fontSizePx": 160.04
+    },
+    {
+      "blockId": "n2-number-b2",
+      "slideId": "n2-number",
+      "fontSizePx": 56.01
+    },
+    {
+      "blockId": "n2-number-b3",
+      "slideId": "n2-number",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n3-number-b0",
+      "slideId": "n3-number",
+      "fontSizePx": 14.67
+    },
+    {
+      "blockId": "n3-number-b1",
+      "slideId": "n3-number",
+      "fontSizePx": 160.04
+    },
+    {
+      "blockId": "n3-number-b2",
+      "slideId": "n3-number",
+      "fontSizePx": 61.35
+    },
+    {
+      "blockId": "n3-number-b3",
+      "slideId": "n3-number",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n4-capabilities-b0",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 14.67
+    },
+    {
+      "blockId": "n4-capabilities-b1",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 61.35
+    },
+    {
+      "blockId": "n4-capabilities-b2",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 20.01
+    },
+    {
+      "blockId": "n4-capabilities-b3",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n5-architecture-b0",
+      "slideId": "n5-architecture",
+      "fontSizePx": 14.67
+    },
+    {
+      "blockId": "n5-architecture-b1",
+      "slideId": "n5-architecture",
+      "fontSizePx": 61.35
+    },
+    {
+      "blockId": "n5-architecture-b2",
+      "slideId": "n5-architecture",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n6-limitations-b0",
+      "slideId": "n6-limitations",
+      "fontSizePx": 14.67
+    },
+    {
+      "blockId": "n6-limitations-b1",
+      "slideId": "n6-limitations",
+      "fontSizePx": 61.35
+    },
+    {
+      "blockId": "n6-limitations-b2",
+      "slideId": "n6-limitations",
+      "fontSizePx": 20.01
+    },
+    {
+      "blockId": "n6-limitations-b3",
+      "slideId": "n6-limitations",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n7-point-b0",
+      "slideId": "n7-point",
+      "fontSizePx": 14.67
+    },
+    {
+      "blockId": "n7-point-b1",
+      "slideId": "n7-point",
+      "fontSizePx": 61.35
+    },
+    {
+      "blockId": "n7-point-b2",
+      "slideId": "n7-point",
+      "fontSizePx": 20.01
+    },
+    {
+      "blockId": "n7-point-b3",
+      "slideId": "n7-point",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n8-point-b0",
+      "slideId": "n8-point",
+      "fontSizePx": 14.67
+    },
+    {
+      "blockId": "n8-point-b1",
+      "slideId": "n8-point",
+      "fontSizePx": 56.01
+    },
+    {
+      "blockId": "n8-point-b2",
+      "slideId": "n8-point",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n9-point-b0",
+      "slideId": "n9-point",
+      "fontSizePx": 14.67
+    },
+    {
+      "blockId": "n9-point-b1",
+      "slideId": "n9-point",
+      "fontSizePx": 61.35
+    },
+    {
+      "blockId": "n9-point-b2",
+      "slideId": "n9-point",
+      "fontSizePx": 20.01
+    },
+    {
+      "blockId": "n9-point-b3",
+      "slideId": "n9-point",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n10-closing-b0",
+      "slideId": "n10-closing",
+      "fontSizePx": 14.67
+    },
+    {
+      "blockId": "n10-closing-b1",
+      "slideId": "n10-closing",
+      "fontSizePx": 61.35
+    },
+    {
+      "blockId": "n10-closing-b2",
+      "slideId": "n10-closing",
+      "fontSizePx": 20.01
+    }
+  ],
+  "stageWidthsPx": [
+    1280
+  ]
+}

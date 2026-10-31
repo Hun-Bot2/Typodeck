@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Ledgerly — pitch</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#1b2430;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;color:#fff}
+.stage{width:min(1280px,96vw);aspect-ratio:16/9;margin:24px 0 12px}
+.slide{width:100%;height:100%;background:#f7f5f0;color:#17202b;border-radius:12px;padding:56px 72px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.kicker{font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#8a94a6;margin-bottom:12px}
+.slide-title{font-size:44px;line-height:1.15;margin:0 0 20px;color:#0f1722}
+.slide-body{font-size:21px;line-height:1.5;margin:0 0 12px;color:#2b3648}
+.slide[data-kind="cover"] .slide-title{font-size:72px}.slide[data-kind="cover"] .slide-body{font-size:24px}
+.slide-src{font-size:14px;color:#8a94a6;margin-top:16px}
+.nav{display:flex;gap:12px;margin-bottom:24px}.nav button{font-size:16px;padding:8px 20px;border-radius:8px;border:1px solid #3b4a63;background:#24314a;color:#fff;cursor:pointer}
+.count{font-size:14px;color:#8a94a6;margin-bottom:24px}
+</style></head><body>
+<div class="stage"><section class="slide" data-slide-id="FX1-ledgerly-a-s0" data-kind="cover" style="display:flex"><div class="kicker slide-block" data-block-id="FX1-ledgerly-a-s0-kicker" data-slide-id="FX1-ledgerly-a-s0">FX1-ledgerly · 1 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX1-ledgerly-a-s0-title" data-slide-id="FX1-ledgerly-a-s0">Ledgerly</h2>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s0-b0" data-slide-id="FX1-ledgerly-a-s0">Ledgerly is a commandline ledger for people who outgrow spreadsheets but don't want accounting software. It tracks cash flow across 9 bank CSV dialects, keeps budgets for up to 20 envelopes, and exports to 3 formats.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s0-b1" data-slide-id="FX1-ledgerly-a-s0">Version 0.4.2 · Command-line cash-flow ledger: 12 commands, 9 bank CSV dialects, 3 export formats.</div>
+<div class="slide-src slide-block" data-block-id="FX1-ledgerly-a-s0-src" data-slide-id="FX1-ledgerly-a-s0">Source: README.md + package.json</div></section>
+<section class="slide" data-slide-id="FX1-ledgerly-a-s1" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX1-ledgerly-a-s1-kicker" data-slide-id="FX1-ledgerly-a-s1">FX1-ledgerly · 2 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX1-ledgerly-a-s1-title" data-slide-id="FX1-ledgerly-a-s1">Install</h2>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s1-b0" data-slide-id="FX1-ledgerly-a-s1">Requires Node 18 or newer.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s1-b1" data-slide-id="FX1-ledgerly-a-s1">Install the 0.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s1-b2" data-slide-id="FX1-ledgerly-a-s1">4.</div>
+<div class="slide-src slide-block" data-block-id="FX1-ledgerly-a-s1-src" data-slide-id="FX1-ledgerly-a-s1">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX1-ledgerly-a-s2" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX1-ledgerly-a-s2-kicker" data-slide-id="FX1-ledgerly-a-s2">FX1-ledgerly · 3 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX1-ledgerly-a-s2-title" data-slide-id="FX1-ledgerly-a-s2">Commands</h2>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s2-b0" data-slide-id="FX1-ledgerly-a-s2">init — create a ledger in the current directory (1 file, ledger.json)</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s2-b1" data-slide-id="FX1-ledgerly-a-s2">add — record one transaction in about 5 seconds</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s2-b2" data-slide-id="FX1-ledgerly-a-s2">import — read bank CSVs (up to 9 dialects, see below)</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s2-b3" data-slide-id="FX1-ledgerly-a-s2">list — show the 30 most recent transactions</div>
+<div class="slide-src slide-block" data-block-id="FX1-ledgerly-a-s2-src" data-slide-id="FX1-ledgerly-a-s2">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX1-ledgerly-a-s3" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX1-ledgerly-a-s3-kicker" data-slide-id="FX1-ledgerly-a-s3">FX1-ledgerly · 4 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX1-ledgerly-a-s3-title" data-slide-id="FX1-ledgerly-a-s3">Import</h2>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s3-b0" data-slide-id="FX1-ledgerly-a-s3">ledgerly import statement.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s3-b1" data-slide-id="FX1-ledgerly-a-s3">csv reads a 1,200row bank export in under 2 seconds on a 2020 laptop — roughly 40 ms per 1,000 rows.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s3-b2" data-slide-id="FX1-ledgerly-a-s3">9 dialects ship built in (Chase, Amex, N26, and 6 more); unknown columns are reported, never guessed, and the import stops after 50 skipped rows instead of corr</div>
+<div class="slide-src slide-block" data-block-id="FX1-ledgerly-a-s3-src" data-slide-id="FX1-ledgerly-a-s3">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX1-ledgerly-a-s4" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX1-ledgerly-a-s4-kicker" data-slide-id="FX1-ledgerly-a-s4">FX1-ledgerly · 5 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX1-ledgerly-a-s4-title" data-slide-id="FX1-ledgerly-a-s4">Export</h2>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s4-b0" data-slide-id="FX1-ledgerly-a-s4">3 formats: CSV (opens in any spreadsheet), JSON (1 transaction per line), and OFX 2.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s4-b1" data-slide-id="FX1-ledgerly-a-s4">1 for legacy desktop tools.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s4-b2" data-slide-id="FX1-ledgerly-a-s4">Exports include all 6 account fields and never drop the 2 runningbalance columns.</div>
+<div class="slide-src slide-block" data-block-id="FX1-ledgerly-a-s4-src" data-slide-id="FX1-ledgerly-a-s4">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX1-ledgerly-a-s5" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX1-ledgerly-a-s5-kicker" data-slide-id="FX1-ledgerly-a-s5">FX1-ledgerly · 6 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX1-ledgerly-a-s5-title" data-slide-id="FX1-ledgerly-a-s5">Budgets</h2>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s5-b0" data-slide-id="FX1-ledgerly-a-s5">20 envelopes max, 1 per line in budget.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s5-b1" data-slide-id="FX1-ledgerly-a-s5">json.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s5-b2" data-slide-id="FX1-ledgerly-a-s5">A $600 groceries envelope warns at 80 percent ($480) and blocks add at 100 percent unless you pass force.</div>
+<div class="slide-src slide-block" data-block-id="FX1-ledgerly-a-s5-src" data-slide-id="FX1-ledgerly-a-s5">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX1-ledgerly-a-s6" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX1-ledgerly-a-s6-kicker" data-slide-id="FX1-ledgerly-a-s6">FX1-ledgerly · 7 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX1-ledgerly-a-s6-title" data-slide-id="FX1-ledgerly-a-s6">Limits (honest)</h2>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s6-b0" data-slide-id="FX1-ledgerly-a-s6">1 currency per ledger; multicurrency is the mostrequested feature.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s6-b1" data-slide-id="FX1-ledgerly-a-s6">No mobile app; the JSON file syncs through any of the 4 tested providers</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s6-b2" data-slide-id="FX1-ledgerly-a-s6">check covers 11 rules; it does not audit for fraud, only for damage.</div>
+<div class="slide-src slide-block" data-block-id="FX1-ledgerly-a-s6-src" data-slide-id="FX1-ledgerly-a-s6">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX1-ledgerly-a-s7" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX1-ledgerly-a-s7-kicker" data-slide-id="FX1-ledgerly-a-s7">FX1-ledgerly · 8 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX1-ledgerly-a-s7-title" data-slide-id="FX1-ledgerly-a-s7">Roadmap</h2>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s7-b0" data-slide-id="FX1-ledgerly-a-s7">Version 0.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s7-b1" data-slide-id="FX1-ledgerly-a-s7">5.</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s7-b2" data-slide-id="FX1-ledgerly-a-s7">0 (October 2026) plans 3 items: a 2nd currency per ledger, recurringtransaction templates (up to 50 rules), and a 1command doctor that repairs the 4 most common</div>
+<div class="slide-src slide-block" data-block-id="FX1-ledgerly-a-s7-src" data-slide-id="FX1-ledgerly-a-s7">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX1-ledgerly-a-s8" data-kind="closing" style="display:none"><div class="kicker slide-block" data-block-id="FX1-ledgerly-a-s8-kicker" data-slide-id="FX1-ledgerly-a-s8">FX1-ledgerly · 9 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX1-ledgerly-a-s8-title" data-slide-id="FX1-ledgerly-a-s8">Get started in a minute</h2>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s8-b0" data-slide-id="FX1-ledgerly-a-s8">npm install -g ledgerly@0.4.2 ledgerly init</div>
+<div class="slide-body slide-block" data-block-id="FX1-ledgerly-a-s8-b1" data-slide-id="FX1-ledgerly-a-s8">Ledgerly 0.4.2 — &gt;=18 required</div>
+<div class="slide-src slide-block" data-block-id="FX1-ledgerly-a-s8-src" data-slide-id="FX1-ledgerly-a-s8">Source: README.md</div></section></div>
+<div class="nav"><button id="prev">← Prev</button><button id="next">Next →</button></div>
+<div class="count">9 slides · FX1-ledgerly · generic baseline (Arm A)</div>
+<script>
+let i=0;const S=[...document.querySelectorAll('.slide')];
+function show(n){i=(n+S.length)%S.length;S.forEach((s,k)=>s.style.display=k===i?'flex':'none')}
+document.getElementById('prev').onclick=()=>show(i-1);document.getElementById('next').onclick=()=>show(i+1);
+addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)});
+</script></body></html>

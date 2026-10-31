@@ -1,0 +1,24 @@
+=== FX2 swiss exit=0 gen_ms=76 ===
+provider: fallback (generated_by=fallback)
+claims: total=24 verified=0 suggestion=0 ungrounded=24
+quality: pass overall=100 errors=0 warnings=0
+deck: 10 slides, 36 text boxes -> /tmp/td-g-out/FX2-b-swiss.pptx
+warning: idea mode: all claims ungrounded; number slides labeled unverified/illustrative
+warning: built with the deterministic fallback (not model inference)
+validation: OK
+=== FX2 editorial exit=0 gen_ms=77 ===
+provider: fallback (generated_by=fallback)
+claims: total=24 verified=0 suggestion=0 ungrounded=24
+quality: pass overall=100 errors=0 warnings=0
+deck: 10 slides, 36 text boxes -> /tmp/td-g-out/FX2-b-editorial.pptx
+warning: idea mode: all claims ungrounded; number slides labeled unverified/illustrative
+warning: built with the deterministic fallback (not model inference)
+validation: OK
+=== FX2 expressive exit=0 gen_ms=75 ===
+provider: fallback (generated_by=fallback)
+claims: total=24 verified=0 suggestion=0 ungrounded=24
+quality: pass overall=100 errors=0 warnings=0
+deck: 10 slides, 36 text boxes -> /tmp/td-g-out/FX2-b-expressive.pptx
+warning: idea mode: all claims ungrounded; number slides labeled unverified/illustrative
+warning: built with the deterministic fallback (not model inference)
+validation: OK

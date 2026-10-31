@@ -1,0 +1,219 @@
+{
+  "deck": "FX2-b-expressive.html",
+  "chrome": "Google Chrome 156.0.8078.74",
+  "viewport": "1280x720",
+  "blocksInHtml": 36,
+  "measured": 36,
+  "overflowBlocks": 3,
+  "overflowing": [
+    {
+      "blockId": "n2-number-b1",
+      "slideId": "n2-number",
+      "axes": [
+        "h 379>136 (tol 86.7)"
+      ],
+      "fontSizePx": 192.72
+    },
+    {
+      "blockId": "n2-number-b2",
+      "slideId": "n2-number",
+      "axes": [
+        "h 229>137 (tol 39.9)"
+      ],
+      "fontSizePx": 72.55
+    },
+    {
+      "blockId": "n5-architecture-b1",
+      "slideId": "n5-architecture",
+      "axes": [
+        "h 449>339 (tol 46.9)"
+      ],
+      "fontSizePx": 85.35
+    }
+  ],
+  "fonts": [
+    {
+      "blockId": "n1-cover-b0",
+      "slideId": "n1-cover",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n1-cover-b1",
+      "slideId": "n1-cover",
+      "fontSizePx": 85.35
+    },
+    {
+      "blockId": "n1-cover-b2",
+      "slideId": "n1-cover",
+      "fontSizePx": 18.68
+    },
+    {
+      "blockId": "n2-number-b0",
+      "slideId": "n2-number",
+      "fontSizePx": 13.61
+    },
+    {
+      "blockId": "n2-number-b1",
+      "slideId": "n2-number",
+      "fontSizePx": 192.72
+    },
+    {
+      "blockId": "n2-number-b2",
+      "slideId": "n2-number",
+      "fontSizePx": 72.55
+    },
+    {
+      "blockId": "n2-number-b3",
+      "slideId": "n2-number",
+      "fontSizePx": 11.34
+    },
+    {
+      "blockId": "n3-number-b0",
+      "slideId": "n3-number",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n3-number-b1",
+      "slideId": "n3-number",
+      "fontSizePx": 226.73
+    },
+    {
+      "blockId": "n3-number-b2",
+      "slideId": "n3-number",
+      "fontSizePx": 85.35
+    },
+    {
+      "blockId": "n3-number-b3",
+      "slideId": "n3-number",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n4-capabilities-b0",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n4-capabilities-b1",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 85.35
+    },
+    {
+      "blockId": "n4-capabilities-b2",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 18.68
+    },
+    {
+      "blockId": "n4-capabilities-b3",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n5-architecture-b0",
+      "slideId": "n5-architecture",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n5-architecture-b1",
+      "slideId": "n5-architecture",
+      "fontSizePx": 85.35
+    },
+    {
+      "blockId": "n5-architecture-b2",
+      "slideId": "n5-architecture",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n6-limitations-b0",
+      "slideId": "n6-limitations",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n6-limitations-b1",
+      "slideId": "n6-limitations",
+      "fontSizePx": 85.35
+    },
+    {
+      "blockId": "n6-limitations-b2",
+      "slideId": "n6-limitations",
+      "fontSizePx": 18.68
+    },
+    {
+      "blockId": "n6-limitations-b3",
+      "slideId": "n6-limitations",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n7-point-b0",
+      "slideId": "n7-point",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n7-point-b1",
+      "slideId": "n7-point",
+      "fontSizePx": 85.35
+    },
+    {
+      "blockId": "n7-point-b2",
+      "slideId": "n7-point",
+      "fontSizePx": 18.68
+    },
+    {
+      "blockId": "n7-point-b3",
+      "slideId": "n7-point",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n8-point-b0",
+      "slideId": "n8-point",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n8-point-b1",
+      "slideId": "n8-point",
+      "fontSizePx": 78.68
+    },
+    {
+      "blockId": "n8-point-b2",
+      "slideId": "n8-point",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n9-point-b0",
+      "slideId": "n9-point",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n9-point-b1",
+      "slideId": "n9-point",
+      "fontSizePx": 78.68
+    },
+    {
+      "blockId": "n9-point-b2",
+      "slideId": "n9-point",
+      "fontSizePx": 18.68
+    },
+    {
+      "blockId": "n9-point-b3",
+      "slideId": "n9-point",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n10-closing-b0",
+      "slideId": "n10-closing",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n10-closing-b1",
+      "slideId": "n10-closing",
+      "fontSizePx": 85.35
+    },
+    {
+      "blockId": "n10-closing-b2",
+      "slideId": "n10-closing",
+      "fontSizePx": 18.68
+    }
+  ],
+  "stageWidthsPx": [
+    1280
+  ]
+}

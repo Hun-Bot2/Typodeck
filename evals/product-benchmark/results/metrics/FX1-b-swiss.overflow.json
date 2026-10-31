@@ -1,0 +1,194 @@
+{
+  "deck": "FX1-b-swiss.html",
+  "chrome": "Google Chrome 156.0.8078.74",
+  "viewport": "1280x720",
+  "blocksInHtml": 36,
+  "measured": 36,
+  "overflowBlocks": 0,
+  "overflowing": [],
+  "fonts": [
+    {
+      "blockId": "n1-cover-b0",
+      "slideId": "n1-cover",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n1-cover-b1",
+      "slideId": "n1-cover",
+      "fontSizePx": 40.01
+    },
+    {
+      "blockId": "n1-cover-b2",
+      "slideId": "n1-cover",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n2-number-b0",
+      "slideId": "n2-number",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n2-number-b1",
+      "slideId": "n2-number",
+      "fontSizePx": 96.03
+    },
+    {
+      "blockId": "n2-number-b2",
+      "slideId": "n2-number",
+      "fontSizePx": 40.01
+    },
+    {
+      "blockId": "n2-number-b3",
+      "slideId": "n2-number",
+      "fontSizePx": 12.01
+    },
+    {
+      "blockId": "n3-number-b0",
+      "slideId": "n3-number",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n3-number-b1",
+      "slideId": "n3-number",
+      "fontSizePx": 96.03
+    },
+    {
+      "blockId": "n3-number-b2",
+      "slideId": "n3-number",
+      "fontSizePx": 40.01
+    },
+    {
+      "blockId": "n3-number-b3",
+      "slideId": "n3-number",
+      "fontSizePx": 12.01
+    },
+    {
+      "blockId": "n4-capabilities-b0",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n4-capabilities-b1",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 40.01
+    },
+    {
+      "blockId": "n4-capabilities-b2",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n4-capabilities-b3",
+      "slideId": "n4-capabilities",
+      "fontSizePx": 12.01
+    },
+    {
+      "blockId": "n5-differentiation-b0",
+      "slideId": "n5-differentiation",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n5-differentiation-b1",
+      "slideId": "n5-differentiation",
+      "fontSizePx": 40.01
+    },
+    {
+      "blockId": "n5-differentiation-b2",
+      "slideId": "n5-differentiation",
+      "fontSizePx": 12.01
+    },
+    {
+      "blockId": "n6-limitations-b0",
+      "slideId": "n6-limitations",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n6-limitations-b1",
+      "slideId": "n6-limitations",
+      "fontSizePx": 40.01
+    },
+    {
+      "blockId": "n6-limitations-b2",
+      "slideId": "n6-limitations",
+      "fontSizePx": 12.01
+    },
+    {
+      "blockId": "n7-point-b0",
+      "slideId": "n7-point",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n7-point-b1",
+      "slideId": "n7-point",
+      "fontSizePx": 40.01
+    },
+    {
+      "blockId": "n7-point-b2",
+      "slideId": "n7-point",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n7-point-b3",
+      "slideId": "n7-point",
+      "fontSizePx": 12.01
+    },
+    {
+      "blockId": "n8-point-b0",
+      "slideId": "n8-point",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n8-point-b1",
+      "slideId": "n8-point",
+      "fontSizePx": 37.34
+    },
+    {
+      "blockId": "n8-point-b2",
+      "slideId": "n8-point",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n8-point-b3",
+      "slideId": "n8-point",
+      "fontSizePx": 12.01
+    },
+    {
+      "blockId": "n9-point-b0",
+      "slideId": "n9-point",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n9-point-b1",
+      "slideId": "n9-point",
+      "fontSizePx": 40.01
+    },
+    {
+      "blockId": "n9-point-b2",
+      "slideId": "n9-point",
+      "fontSizePx": 16
+    },
+    {
+      "blockId": "n9-point-b3",
+      "slideId": "n9-point",
+      "fontSizePx": 12.01
+    },
+    {
+      "blockId": "n10-closing-b0",
+      "slideId": "n10-closing",
+      "fontSizePx": 13.34
+    },
+    {
+      "blockId": "n10-closing-b1",
+      "slideId": "n10-closing",
+      "fontSizePx": 40.01
+    },
+    {
+      "blockId": "n10-closing-b2",
+      "slideId": "n10-closing",
+      "fontSizePx": 16
+    }
+  ],
+  "stageWidthsPx": [
+    1280
+  ]
+}
