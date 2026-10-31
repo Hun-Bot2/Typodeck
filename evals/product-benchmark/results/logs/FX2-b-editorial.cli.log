@@ -1,0 +1,7 @@
+provider: fallback (generated_by=fallback)
+claims: total=24 verified=0 suggestion=0 ungrounded=24
+quality: pass overall=100 errors=0 warnings=0
+deck: 10 slides, 36 text boxes -> /tmp/td-g-out/FX2-b-editorial.pptx
+warning: idea mode: all claims ungrounded; number slides labeled unverified/illustrative
+warning: built with the deterministic fallback (not model inference)
+validation: OK

@@ -1,0 +1,269 @@
+{
+  "deck": "FX2-a.html",
+  "chrome": "Google Chrome 156.0.8078.74",
+  "viewport": "1280x720",
+  "blocksInHtml": 51,
+  "measured": 51,
+  "overflowBlocks": 0,
+  "overflowing": [],
+  "fonts": [
+    {
+      "blockId": "FX2-pipecheck-a-s0-kicker",
+      "slideId": "FX2-pipecheck-a-s0",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s0-title",
+      "slideId": "FX2-pipecheck-a-s0",
+      "fontSizePx": 72
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s0-b0",
+      "slideId": "FX2-pipecheck-a-s0",
+      "fontSizePx": 24
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s0-b1",
+      "slideId": "FX2-pipecheck-a-s0",
+      "fontSizePx": 24
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s0-src",
+      "slideId": "FX2-pipecheck-a-s0",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s1-kicker",
+      "slideId": "FX2-pipecheck-a-s1",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s1-title",
+      "slideId": "FX2-pipecheck-a-s1",
+      "fontSizePx": 44
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s1-b0",
+      "slideId": "FX2-pipecheck-a-s1",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s1-b1",
+      "slideId": "FX2-pipecheck-a-s1",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s1-src",
+      "slideId": "FX2-pipecheck-a-s1",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s2-kicker",
+      "slideId": "FX2-pipecheck-a-s2",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s2-title",
+      "slideId": "FX2-pipecheck-a-s2",
+      "fontSizePx": 44
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s2-b0",
+      "slideId": "FX2-pipecheck-a-s2",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s2-b1",
+      "slideId": "FX2-pipecheck-a-s2",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s2-b2",
+      "slideId": "FX2-pipecheck-a-s2",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s2-src",
+      "slideId": "FX2-pipecheck-a-s2",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s3-kicker",
+      "slideId": "FX2-pipecheck-a-s3",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s3-title",
+      "slideId": "FX2-pipecheck-a-s3",
+      "fontSizePx": 44
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s3-b0",
+      "slideId": "FX2-pipecheck-a-s3",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s3-b1",
+      "slideId": "FX2-pipecheck-a-s3",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s3-b2",
+      "slideId": "FX2-pipecheck-a-s3",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s3-src",
+      "slideId": "FX2-pipecheck-a-s3",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s4-kicker",
+      "slideId": "FX2-pipecheck-a-s4",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s4-title",
+      "slideId": "FX2-pipecheck-a-s4",
+      "fontSizePx": 44
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s4-b0",
+      "slideId": "FX2-pipecheck-a-s4",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s4-b1",
+      "slideId": "FX2-pipecheck-a-s4",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s4-b2",
+      "slideId": "FX2-pipecheck-a-s4",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s4-src",
+      "slideId": "FX2-pipecheck-a-s4",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s5-kicker",
+      "slideId": "FX2-pipecheck-a-s5",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s5-title",
+      "slideId": "FX2-pipecheck-a-s5",
+      "fontSizePx": 44
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s5-b0",
+      "slideId": "FX2-pipecheck-a-s5",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s5-b1",
+      "slideId": "FX2-pipecheck-a-s5",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s5-b2",
+      "slideId": "FX2-pipecheck-a-s5",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s5-src",
+      "slideId": "FX2-pipecheck-a-s5",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s6-kicker",
+      "slideId": "FX2-pipecheck-a-s6",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s6-title",
+      "slideId": "FX2-pipecheck-a-s6",
+      "fontSizePx": 44
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s6-b0",
+      "slideId": "FX2-pipecheck-a-s6",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s6-b1",
+      "slideId": "FX2-pipecheck-a-s6",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s6-b2",
+      "slideId": "FX2-pipecheck-a-s6",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s6-src",
+      "slideId": "FX2-pipecheck-a-s6",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s7-kicker",
+      "slideId": "FX2-pipecheck-a-s7",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s7-title",
+      "slideId": "FX2-pipecheck-a-s7",
+      "fontSizePx": 44
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s7-b0",
+      "slideId": "FX2-pipecheck-a-s7",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s7-b1",
+      "slideId": "FX2-pipecheck-a-s7",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s7-b2",
+      "slideId": "FX2-pipecheck-a-s7",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s7-src",
+      "slideId": "FX2-pipecheck-a-s7",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s8-kicker",
+      "slideId": "FX2-pipecheck-a-s8",
+      "fontSizePx": 14
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s8-title",
+      "slideId": "FX2-pipecheck-a-s8",
+      "fontSizePx": 44
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s8-b0",
+      "slideId": "FX2-pipecheck-a-s8",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s8-b1",
+      "slideId": "FX2-pipecheck-a-s8",
+      "fontSizePx": 21
+    },
+    {
+      "blockId": "FX2-pipecheck-a-s8-src",
+      "slideId": "FX2-pipecheck-a-s8",
+      "fontSizePx": 14
+    }
+  ],
+  "stageWidthsPx": [
+    1229
+  ]
+}

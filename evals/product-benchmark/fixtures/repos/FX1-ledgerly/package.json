@@ -1,0 +1,15 @@
+{
+  "name": "ledgerly",
+  "version": "0.4.2",
+  "description": "Command-line cash-flow ledger: 12 commands, 9 bank CSV dialects, 3 export formats.",
+  "bin": {
+    "ledgerly": "./bin/ledgerly.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "commander": "^12.0.0"
+  },
+  "keywords": ["finance", "cli", "ledger", "csv"]
+}

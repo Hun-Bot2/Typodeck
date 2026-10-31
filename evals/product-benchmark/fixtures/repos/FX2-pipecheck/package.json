@@ -1,0 +1,15 @@
+{
+  "name": "pipecheck",
+  "version": "1.1.0",
+  "description": "Pipeline linter: 14 rules over YAML workflows, 2-second reports, PR comments.",
+  "bin": {
+    "pipecheck": "./bin/pipecheck.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "yaml": "^2.4.0"
+  },
+  "keywords": ["ci", "lint", "github-actions", "yaml"]
+}

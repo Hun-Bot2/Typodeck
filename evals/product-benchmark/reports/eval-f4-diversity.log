@@ -1,0 +1,29 @@
+### F4 matrix (throwaway /tmp/td-g, B skill + C engine @ b09865c)
+
+[1] F4-ko-editorial ... OK slides=10 forbid=0 edit=1.000 over=0 cov=1.000 unsup=0 qual=100 lat=13ms prov=fallback
+[2] F4-ko-swiss ... OK slides=10 forbid=0 edit=1.000 over=0 cov=1.000 unsup=0 qual=100 lat=4ms prov=fallback
+[3] F4-ko-expressive ... OK slides=10 forbid=0 edit=1.000 over=0 cov=1.000 unsup=0 qual=100 lat=5ms prov=fallback
+[4] F4-ko-document ... OK slides=10 forbid=0 edit=1.000 over=0 cov=1.000 unsup=0 qual=100 lat=4ms prov=fallback
+[5] F4-en-editorial ... OK slides=10 forbid=0 edit=1.000 over=0 cov=1.000 unsup=0 qual=100 lat=5ms prov=fallback
+[6] F4-en-swiss ... OK slides=10 forbid=0 edit=1.000 over=0 cov=1.000 unsup=0 qual=100 lat=4ms prov=fallback
+[7] F4-en-expressive ... OK slides=10 forbid=0 edit=1.000 over=0 cov=1.000 unsup=0 qual=100 lat=4ms prov=fallback
+[8] F4-en-document ... OK slides=10 forbid=0 edit=1.000 over=0 cov=1.000 unsup=0 qual=100 lat=3ms prov=fallback
+
+matrix: 8/8 runs succeeded in 108ms (seed=42)
+
+### eval:report (exit 1)
+
+wrote /private/tmp/td-g/evals/summary.json (26 runs)
+S1: PASS value=26/26 (100.0%) target=>= 90%
+S2: PASS value=144/180 (80.0%) target=>= 80%
+S3: PASS value=max 0/deck, mean 0.00 target=<= 1/deck
+S4: PASS value=max 0/deck target=0
+S5: PASS value=min 100.00% target=100%
+S6: PASS value=max 0/deck target=0
+S7: PASS value=p95 204ms, max 624ms (n=26) target=<= 120000ms
+note: design-diversity FAIL on 2/30 pair(s): F4/en document~swiss, F4/ko document~swiss
+note: idea mode: max fabricated refs 0 (target 0), max unlabeled captions 0 (target 0), over 8 run(s)
+note: narrative quality (report-only): 26/26 pass, mean overall 99.1, min 98
+note: fetch cache: 15/26 runs served warm (S7 mixes cold/warm latency; --no-cache for cold-only)
+diversity: 28/30 pairs pass
+OVERALL: FAIL

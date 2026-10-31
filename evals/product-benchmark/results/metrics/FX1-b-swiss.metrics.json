@@ -1,0 +1,259 @@
+{
+  "deck": "FX1-b-swiss.html",
+  "fx": "FX1-ledgerly",
+  "arm": "b",
+  "sys": "swiss",
+  "o1": {
+    "numbers": 18,
+    "matched": 16,
+    "accuracy": 0.8889
+  },
+  "o2": {
+    "blocksWithRefs": 9,
+    "slidesWithRefs": 8,
+    "lineLevel": 8,
+    "fileLevel": 1,
+    "labeledUnverified": 8
+  },
+  "o3misses": [
+    {
+      "token": "8000",
+      "blockId": "n3-number-b1",
+      "slide": "n3-number",
+      "matched": false,
+      "context": "8000"
+    },
+    {
+      "token": "8000",
+      "blockId": "n3-number-b2",
+      "slide": "n3-number",
+      "matched": false,
+      "context": "--- README.md (first 8000 bytes) ---"
+    }
+  ],
+  "o4": {
+    "sequence": [
+      "opening-statement",
+      "metric-anchored",
+      "metric-anchored",
+      "thesis-statement",
+      "comparison-columns",
+      "tradeoff-balanced",
+      "evidence-focused",
+      "evidence-anchored",
+      "evidence-focused",
+      "conclusion-restatement"
+    ],
+    "distinct": 8,
+    "maxSameShare": 0.2,
+    "tripleRepeat": false,
+    "slideSignaturesDistinct": 4,
+    "slideSignaturesTotal": 10
+  },
+  "o6": {
+    "minTitlePx": 37.3,
+    "minBodyPx": 16,
+    "minNumberPx": 96,
+    "minCaptionPx": 12,
+    "contrastFails45": 0,
+    "contrastRows": [
+      {
+        "blockId": "n1-cover-b0",
+        "role": "kicker",
+        "ratio": 4.88
+      },
+      {
+        "blockId": "n1-cover-b1",
+        "role": "title",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n1-cover-b2",
+        "role": "body",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n2-number-b0",
+        "role": "kicker",
+        "ratio": 4.88
+      },
+      {
+        "blockId": "n2-number-b1",
+        "role": "number",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n2-number-b2",
+        "role": "title",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n2-number-b3",
+        "role": "caption",
+        "ratio": 5.1
+      },
+      {
+        "blockId": "n3-number-b0",
+        "role": "kicker",
+        "ratio": 4.88
+      },
+      {
+        "blockId": "n3-number-b1",
+        "role": "number",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n3-number-b2",
+        "role": "title",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n3-number-b3",
+        "role": "caption",
+        "ratio": 5.1
+      },
+      {
+        "blockId": "n4-capabilities-b0",
+        "role": "kicker",
+        "ratio": 4.88
+      },
+      {
+        "blockId": "n4-capabilities-b1",
+        "role": "title",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n4-capabilities-b2",
+        "role": "body",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n4-capabilities-b3",
+        "role": "caption",
+        "ratio": 5.1
+      },
+      {
+        "blockId": "n5-differentiation-b0",
+        "role": "kicker",
+        "ratio": 4.88
+      },
+      {
+        "blockId": "n5-differentiation-b1",
+        "role": "title",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n5-differentiation-b2",
+        "role": "caption",
+        "ratio": 5.1
+      },
+      {
+        "blockId": "n6-limitations-b0",
+        "role": "kicker",
+        "ratio": 4.88
+      },
+      {
+        "blockId": "n6-limitations-b1",
+        "role": "title",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n6-limitations-b2",
+        "role": "caption",
+        "ratio": 5.1
+      },
+      {
+        "blockId": "n7-point-b0",
+        "role": "kicker",
+        "ratio": 4.88
+      },
+      {
+        "blockId": "n7-point-b1",
+        "role": "title",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n7-point-b2",
+        "role": "body",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n7-point-b3",
+        "role": "caption",
+        "ratio": 5.1
+      },
+      {
+        "blockId": "n8-point-b0",
+        "role": "kicker",
+        "ratio": 4.88
+      },
+      {
+        "blockId": "n8-point-b1",
+        "role": "title",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n8-point-b2",
+        "role": "body",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n8-point-b3",
+        "role": "caption",
+        "ratio": 5.1
+      },
+      {
+        "blockId": "n9-point-b0",
+        "role": "kicker",
+        "ratio": 4.88
+      },
+      {
+        "blockId": "n9-point-b1",
+        "role": "title",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n9-point-b2",
+        "role": "body",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n9-point-b3",
+        "role": "caption",
+        "ratio": 5.1
+      },
+      {
+        "blockId": "n10-closing-b0",
+        "role": "kicker",
+        "ratio": 4.88
+      },
+      {
+        "blockId": "n10-closing-b1",
+        "role": "title",
+        "ratio": 18.88
+      },
+      {
+        "blockId": "n10-closing-b2",
+        "role": "body",
+        "ratio": 18.88
+      }
+    ]
+  },
+  "o7": {
+    "slideCountMatch": true,
+    "mismatches": 0,
+    "detail": []
+  },
+  "o8": {
+    "editableChars": 1185,
+    "totalChars": 1185,
+    "ratio": 1,
+    "forbiddenOk": true
+  },
+  "o9": {
+    "slides": 10,
+    "inRange": true,
+    "blocks": 36
+  },
+  "blockCount": 36
+}
