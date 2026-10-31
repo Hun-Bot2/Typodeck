@@ -5,13 +5,14 @@ narrative order or factual content.
 
 Source of truth: `packages/core/src/visual-systems.ts`.
 
-## Production systems (pinned, versioned)
+## Registry systems (pinned, versioned)
 
 | ID | Version | Status | Notes |
 |----|---------|--------|-------|
 | editorial | 1.0.0 | production | Serif-led hierarchy; unchanged geometry |
 | swiss | 1.0.0 | production | Asymmetric grid, disciplined alignment |
 | expressive | 1.0.0 | production | Expressive placement; unchanged geometry |
+| document | 0.1.0 | experimental | Technical-manual voice: dense hierarchy-stack with meta column; provisional grammar (merged G4 stubs), no verbatim/monospace role, fixed two-zone geometry. Renderable via CLI/API but NOT production — say so when selected, and never default to it. |
 
 Stored decks pin `{system, systemVersion}` (`layout.ts` stamps
 `systemVersion`; `schema.ts` validates it). A version bump means geometry
@@ -48,7 +49,8 @@ New systems arrive ONLY via the research-import pipeline as
 When the visual system is NOT already selected:
 
 1. Generate once — all systems render the SAME narrative
-   (`POST /api/generate` returns every system; Studio gallery).
+   (`POST /api/generate` returns every system; Studio gallery;
+   programmatic `planDecksAll` — see `engine.md`).
 2. Compare side by side; judge by evidence fit and hierarchy,
    not decoration.
 3. Export only the chosen system.
