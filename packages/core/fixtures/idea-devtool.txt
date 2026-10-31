@@ -1,0 +1,7 @@
+Shipgate is a deployment CLI for small teams that dread release Fridays. Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15.
+
+Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure. The old YAML format is deprecated and will be removed in 2.0, after commit a91c4e2 migrated the last team off it.
+
+Previously the founders shelled out to bash scripts that only one person understood. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds.
+
+Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy.

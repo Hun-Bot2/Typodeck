@@ -1,0 +1,7029 @@
+{
+ "generatedBy": "pre-preset baseline capture",
+ "cases": [
+  {
+   "fixture": "idea-f4",
+   "purpose": null,
+   "lang": "en",
+   "narrative": {
+    "title": "The average test household wastes about 40 percent of the fresh…",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "The average test household wastes about 40 percent of the fresh…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "TYPODECK"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "90-second — Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "90-second"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph groceries as they come home, and the app tracks all 12 storage zones across the fridge, freezer, and pantry cabinets."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "The product is designed for households of 3 to 5 people who cook at…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "The product is designed for households of 3 to 5 people who cook at…"
+       },
+       {
+        "role": "body",
+        "content": "Business model is a flat subscription of 6 dollars per month per household, with a 30-day free trial."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n6-results",
+      "thesis": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "RESULTS"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n7-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n8-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "LIMITS"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n9-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "results",
+     "differentiation",
+     "limitations",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-f4",
+   "purpose": null,
+   "lang": "ko",
+   "narrative": {
+    "title": "The average test household wastes about 40 percent of the fresh…",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "The average test household wastes about 40 percent of the fresh…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "TYPODECK"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "90-second — Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "90-second"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph groceries as they come home, and the app tracks all 12 storage zones across the fridge, freezer, and pantry cabinets."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "The product is designed for households of 3 to 5 people who cook at…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "The product is designed for households of 3 to 5 people who cook at…"
+       },
+       {
+        "role": "body",
+        "content": "Business model is a flat subscription of 6 dollars per month per household, with a 30-day free trial."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n6-results",
+      "thesis": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "성과"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n7-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n8-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "한계"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n9-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "results",
+     "differentiation",
+     "limitations",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-f4",
+   "purpose": "hackathon",
+   "lang": "en",
+   "narrative": {
+    "title": "The average test household wastes about 40 percent of the fresh…",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "The average test household wastes about 40 percent of the fresh…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "HACKATHON"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "90-second — Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "90-second"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph groceries as they come home, and the app tracks all 12 storage zones across the fridge, freezer, and pantry cabinets."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "The product is designed for households of 3 to 5 people who cook at…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "The product is designed for households of 3 to 5 people who cook at…"
+       },
+       {
+        "role": "body",
+        "content": "Business model is a flat subscription of 6 dollars per month per household, with a 30-day free trial."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n6-results",
+      "thesis": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "RESULTS"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n7-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n8-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n9-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "LIMITS"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "results",
+     "differentiation",
+     "future",
+     "limitations"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-f4",
+   "purpose": "hackathon",
+   "lang": "ko",
+   "narrative": {
+    "title": "The average test household wastes about 40 percent of the fresh…",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "The average test household wastes about 40 percent of the fresh…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해커톤"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "90-second — Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "90-second"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph groceries as they come home, and the app tracks all 12 storage zones across the fridge, freezer, and pantry cabinets."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "The product is designed for households of 3 to 5 people who cook at…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "The product is designed for households of 3 to 5 people who cook at…"
+       },
+       {
+        "role": "body",
+        "content": "Business model is a flat subscription of 6 dollars per month per household, with a 30-day free trial."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n6-results",
+      "thesis": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "성과"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n7-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n8-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n9-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "한계"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "results",
+     "differentiation",
+     "future",
+     "limitations"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-f4",
+   "purpose": "competition",
+   "lang": "en",
+   "narrative": {
+    "title": "The average test household wastes about 40 percent of the fresh…",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "The average test household wastes about 40 percent of the fresh…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "COMPETITION"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "25 households — Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "25 households"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in expired items and 45 dollars in average monthly savings, which pays for the subscription more than 7 times over."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n4-results",
+      "thesis": "Support load is light: only 11 tickets in the whole pilot, and 9 of…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "RESULTS"
+       },
+       {
+        "role": "title",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n5-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n6-solution",
+      "thesis": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "The product is designed for households of 3 to 5 people who cook at least 4 dinners a week."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n7-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n8-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n9-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "LIMITS"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "results",
+     "differentiation",
+     "solution",
+     "capabilities",
+     "future",
+     "limitations"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-f4",
+   "purpose": "competition",
+   "lang": "ko",
+   "narrative": {
+    "title": "The average test household wastes about 40 percent of the fresh…",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "The average test household wastes about 40 percent of the fresh…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "경진대회"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "25 households — Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "25 households"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in expired items and 45 dollars in average monthly savings, which pays for the subscription more than 7 times over."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n4-results",
+      "thesis": "Support load is light: only 11 tickets in the whole pilot, and 9 of…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "성과"
+       },
+       {
+        "role": "title",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n5-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n6-solution",
+      "thesis": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "The product is designed for households of 3 to 5 people who cook at least 4 dinners a week."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n7-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n8-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n9-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "한계"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "results",
+     "differentiation",
+     "solution",
+     "capabilities",
+     "future",
+     "limitations"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-f4",
+   "purpose": "showcase",
+   "lang": "en",
+   "narrative": {
+    "title": "The average test household wastes about 40 percent of the fresh…",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "The average test household wastes about 40 percent of the fresh…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SHOWCASE"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "90-second — Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "90-second"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph groceries as they come home, and the app tracks all 12 storage zones across the fridge, freezer, and pantry cabinets."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "The product is designed for households of 3 to 5 people who cook at…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "The product is designed for households of 3 to 5 people who cook at…"
+       },
+       {
+        "role": "body",
+        "content": "Business model is a flat subscription of 6 dollars per month per household, with a 30-day free trial."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n6-results",
+      "thesis": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "RESULTS"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n7-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n8-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "LIMITS"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n9-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "results",
+     "differentiation",
+     "limitations",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-f4",
+   "purpose": "showcase",
+   "lang": "ko",
+   "narrative": {
+    "title": "The average test household wastes about 40 percent of the fresh…",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "The average test household wastes about 40 percent of the fresh…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "쇼케이스"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "90-second — Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "90-second"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph groceries as they come home, and the app tracks all 12 storage zones across the fridge, freezer, and pantry cabinets."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "The product is designed for households of 3 to 5 people who cook at…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "The product is designed for households of 3 to 5 people who cook at…"
+       },
+       {
+        "role": "body",
+        "content": "Business model is a flat subscription of 6 dollars per month per household, with a 30-day free trial."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n6-results",
+      "thesis": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "성과"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n7-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n8-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "한계"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n9-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "results",
+     "differentiation",
+     "limitations",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-f4",
+   "purpose": "showcase: Acme",
+   "lang": "en",
+   "narrative": {
+    "title": "Acme",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SHOWCASE"
+       },
+       {
+        "role": "title",
+        "content": "Acme"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "90-second — Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "90-second"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph groceries as they come home, and the app tracks all 12 storage zones across the fridge, freezer, and pantry cabinets."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "The product is designed for households of 3 to 5 people who cook at…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "The product is designed for households of 3 to 5 people who cook at…"
+       },
+       {
+        "role": "body",
+        "content": "Business model is a flat subscription of 6 dollars per month per household, with a 30-day free trial."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n6-results",
+      "thesis": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "RESULTS"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n7-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n8-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "LIMITS"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n9-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "results",
+     "differentiation",
+     "limitations",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-f4",
+   "purpose": "showcase: Acme",
+   "lang": "ko",
+   "narrative": {
+    "title": "Acme",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "쇼케이스"
+       },
+       {
+        "role": "title",
+        "content": "Acme"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "90-second — Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "90-second"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph groceries as they come home, and the app tracks all 12 storage zones across the fridge, freezer, and pantry cabinets."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "The product is designed for households of 3 to 5 people who cook at…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "The product is designed for households of 3 to 5 people who cook at…"
+       },
+       {
+        "role": "body",
+        "content": "Business model is a flat subscription of 6 dollars per month per household, with a 30-day free trial."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n6-results",
+      "thesis": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "성과"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n7-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n8-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "한계"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n9-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "results",
+     "differentiation",
+     "limitations",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-f4",
+   "purpose": "Acme Corp",
+   "lang": "en",
+   "narrative": {
+    "title": "Acme Corp",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme Corp",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "ACME CORP"
+       },
+       {
+        "role": "title",
+        "content": "Acme Corp"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "90-second — Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "90-second"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph groceries as they come home, and the app tracks all 12 storage zones across the fridge, freezer, and pantry cabinets."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "The product is designed for households of 3 to 5 people who cook at…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "The product is designed for households of 3 to 5 people who cook at…"
+       },
+       {
+        "role": "body",
+        "content": "Business model is a flat subscription of 6 dollars per month per household, with a 30-day free trial."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n6-results",
+      "thesis": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "RESULTS"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n7-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n8-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "LIMITS"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n9-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "results",
+     "differentiation",
+     "limitations",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-f4",
+   "purpose": "Acme Corp",
+   "lang": "ko",
+   "narrative": {
+    "title": "Acme Corp",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme Corp",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "ACME CORP"
+       },
+       {
+        "role": "title",
+        "content": "Acme Corp"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "40 percent — The average test household wastes about 40 percent of the fresh food it…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "40 percent"
+       },
+       {
+        "role": "title",
+        "content": "The average test household wastes about 40 percent of the fresh food it…"
+       },
+       {
+        "role": "body",
+        "content": "The average test household wastes about 40 percent of the fresh food it buys, roughly 80 dollars a month, mostly because items expire silently at the back of a shelf."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "90-second — Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "90-second"
+       },
+       {
+        "role": "title",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph…"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog fixes this with a 90-second weekly ritual: scan or photograph groceries as they come home, and the app tracks all 12 storage zones across the fridge, freezer, and pantry cabinets."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "The product is designed for households of 3 to 5 people who cook at…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "The product is designed for households of 3 to 5 people who cook at…"
+       },
+       {
+        "role": "body",
+        "content": "Business model is a flat subscription of 6 dollars per month per household, with a 30-day free trial."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Onboarding takes under 5 minutes: the household creates a shared…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Onboarding takes under 5 minutes: the household creates a shared…"
+       },
+       {
+        "role": "body",
+        "content": "Each item carries a predicted shelf life, for example 7 days for milk and 21 days for carrots, and the app sends a nudge 2 days before the predicted expiry date."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n6-results",
+      "thesis": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "성과"
+       },
+       {
+        "role": "title",
+        "content": "Pilot data from 25 households over 8 weeks shows a 32 percent drop in…"
+       },
+       {
+        "role": "body",
+        "content": "Support load is light: only 11 tickets in the whole pilot, and 9 of them were feature requests."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n7-differentiation",
+      "thesis": "Competition falls into 3 buckets: generic list apps with over 50…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Competition falls into 3 buckets: generic list apps with over 50…"
+       },
+       {
+        "role": "body",
+        "content": "The team of 4 founders brings 30 combined years across food retail, mobile apps, and logistics, and the plan is to reach 10000 paying households within 18 months of launch."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n8-limitations",
+      "thesis": "The main risks are 2-fold: capture fatigue if logging takes longer than…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "한계"
+       },
+       {
+        "role": "title",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than…"
+       },
+       {
+        "role": "body",
+        "content": "The main risks are 2-fold: capture fatigue if logging takes longer than 90 seconds a week, and catalog gaps in the 14 ethnic grocery categories the pilot flagged."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:11"
+       }
+      ]
+     },
+     {
+      "id": "n9-future",
+      "thesis": "The roadmap has 3 phases.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap has 3 phases."
+       },
+       {
+        "role": "body",
+        "content": "Phase three explores partnerships with 10 regional grocery chains for receipt-level import."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:9"
+       }
+      ]
+     },
+     {
+      "id": "n10-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Pantrylog is a pantry inventory app for busy households that keep losing track of what they already own. The roadmap has 3 phases."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "results",
+     "differentiation",
+     "limitations",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": null,
+   "lang": "en",
+   "narrative": {
+    "title": "Every release used to need 14 manual checklist steps, and a…",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Every release used to need 14 manual checklist steps, and a…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "TYPODECK"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n5-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "capabilities",
+     "differentiation",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": null,
+   "lang": "ko",
+   "narrative": {
+    "title": "Every release used to need 14 manual checklist steps, and a…",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Every release used to need 14 manual checklist steps, and a…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "TYPODECK"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n5-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "capabilities",
+     "differentiation",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": "hackathon",
+   "lang": "en",
+   "narrative": {
+    "title": "Every release used to need 14 manual checklist steps, and a…",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Every release used to need 14 manual checklist steps, and a…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "HACKATHON"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n5-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "capabilities",
+     "differentiation",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": "hackathon",
+   "lang": "ko",
+   "narrative": {
+    "title": "Every release used to need 14 manual checklist steps, and a…",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Every release used to need 14 manual checklist steps, and a…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해커톤"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n5-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "capabilities",
+     "differentiation",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": "competition",
+   "lang": "en",
+   "narrative": {
+    "title": "Every release used to need 14 manual checklist steps, and a…",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Every release used to need 14 manual checklist steps, and a…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "COMPETITION"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n6-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "differentiation",
+     "capabilities",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": "competition",
+   "lang": "ko",
+   "narrative": {
+    "title": "Every release used to need 14 manual checklist steps, and a…",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Every release used to need 14 manual checklist steps, and a…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "경진대회"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n6-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "differentiation",
+     "capabilities",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": "showcase",
+   "lang": "en",
+   "narrative": {
+    "title": "Every release used to need 14 manual checklist steps, and a…",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Every release used to need 14 manual checklist steps, and a…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SHOWCASE"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n5-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "capabilities",
+     "differentiation",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": "showcase",
+   "lang": "ko",
+   "narrative": {
+    "title": "Every release used to need 14 manual checklist steps, and a…",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Every release used to need 14 manual checklist steps, and a…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "쇼케이스"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n5-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "capabilities",
+     "differentiation",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": "showcase: Acme",
+   "lang": "en",
+   "narrative": {
+    "title": "Acme",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SHOWCASE"
+       },
+       {
+        "role": "title",
+        "content": "Acme"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "Shipgate is a deployment CLI for small teams that dread release Fridays.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n6-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n8-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "differentiation",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": "showcase: Acme",
+   "lang": "ko",
+   "narrative": {
+    "title": "Acme",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "쇼케이스"
+       },
+       {
+        "role": "title",
+        "content": "Acme"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "Shipgate is a deployment CLI for small teams that dread release Fridays.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n6-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n8-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "differentiation",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": "Acme Corp",
+   "lang": "en",
+   "narrative": {
+    "title": "Acme Corp",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme Corp",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "ACME CORP"
+       },
+       {
+        "role": "title",
+        "content": "Acme Corp"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "Shipgate is a deployment CLI for small teams that dread release Fridays.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT IT DOES"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n6-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHY DIFFERENT"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n8-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "differentiation",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-devtool",
+   "purpose": "Acme Corp",
+   "lang": "ko",
+   "narrative": {
+    "title": "Acme Corp",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme Corp",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "ACME CORP"
+       },
+       {
+        "role": "title",
+        "content": "Acme Corp"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "47 minutes — Every release used to need 14 manual checklist steps, and a missed step…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "47 minutes"
+       },
+       {
+        "role": "title",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step…"
+       },
+       {
+        "role": "body",
+        "content": "Every release used to need 14 manual checklist steps, and a missed step once took down checkout for 47 minutes on 2026-09-15."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "9 seconds — Shipgate turns the checklist into a single reviewed file: version 1.4.2…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "9 seconds"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2…"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate turns the checklist into a single reviewed file: version 1.4.2 runs 22 preflight checks in about 9 seconds and blocks the deploy on any failure."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "Shipgate is a deployment CLI for small teams that dread release Fridays.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-capabilities",
+      "thesis": "Pilot teams report calm releases: failed deploys dropped 80 percent…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "주요 기능"
+       },
+       {
+        "role": "title",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent…"
+       },
+       {
+        "role": "body",
+        "content": "Pilot teams report calm releases: failed deploys dropped 80 percent across 300 releases, and onboarding takes 11 minutes from install to first green deploy."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:7"
+       }
+      ]
+     },
+     {
+      "id": "n6-differentiation",
+      "thesis": "Previously the founders shelled out to bash scripts that only one…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "차별점"
+       },
+       {
+        "role": "title",
+        "content": "Previously the founders shelled out to bash scripts that only one…"
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · historical · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n7-future",
+      "thesis": "The roadmap will add progressive rollouts in phase two and one-click…",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click…"
+       },
+       {
+        "role": "body",
+        "content": "The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n8-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "Shipgate is a deployment CLI for small teams that dread release Fridays. The roadmap will add progressive rollouts in phase two and one-click rollbacks that restore service in under 60 seconds."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 100,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 100
+    },
+    "coverage": [
+     "solution",
+     "capabilities",
+     "differentiation",
+     "future"
+    ],
+    "issues": []
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": null,
+   "lang": "en",
+   "narrative": {
+    "title": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "TYPODECK"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": null,
+   "lang": "ko",
+   "narrative": {
+    "title": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "TYPODECK"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": "hackathon",
+   "lang": "en",
+   "narrative": {
+    "title": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "HACKATHON"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": "hackathon",
+   "lang": "ko",
+   "narrative": {
+    "title": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해커톤"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": "competition",
+   "lang": "en",
+   "narrative": {
+    "title": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "COMPETITION"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": "competition",
+   "lang": "ko",
+   "narrative": {
+    "title": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "경진대회"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": "showcase",
+   "lang": "en",
+   "narrative": {
+    "title": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SHOWCASE"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": "showcase",
+   "lang": "ko",
+   "narrative": {
+    "title": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "쇼케이스"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": "showcase: Acme",
+   "lang": "en",
+   "narrative": {
+    "title": "Acme",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SHOWCASE"
+       },
+       {
+        "role": "title",
+        "content": "Acme"
+       },
+       {
+        "role": "body",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": "showcase: Acme",
+   "lang": "ko",
+   "narrative": {
+    "title": "Acme",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "쇼케이스"
+       },
+       {
+        "role": "title",
+        "content": "Acme"
+       },
+       {
+        "role": "body",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": "Acme Corp",
+   "lang": "en",
+   "narrative": {
+    "title": "Acme Corp",
+    "lang": "en",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme Corp",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "ACME CORP"
+       },
+       {
+        "role": "title",
+        "content": "Acme Corp"
+       },
+       {
+        "role": "body",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "BY THE NUMBERS"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "SOLUTION"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "WHAT'S NEXT"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "The thesis, restated",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "CLOSING"
+       },
+       {
+        "role": "title",
+        "content": "The thesis, restated"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  },
+  {
+   "fixture": "idea-ko",
+   "purpose": "Acme Corp",
+   "lang": "ko",
+   "narrative": {
+    "title": "Acme Corp",
+    "lang": "ko",
+    "slides": [
+     {
+      "id": "n1-cover",
+      "thesis": "Acme Corp",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "ACME CORP"
+       },
+       {
+        "role": "title",
+        "content": "Acme Corp"
+       },
+       {
+        "role": "body",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       }
+      ]
+     },
+     {
+      "id": "n2-number",
+      "thesis": "70% — 파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "70%"
+       },
+       {
+        "role": "title",
+        "content": "파일럿 측정 결과, 40명 중 32명이 2주 동안 매일 사용했고 점심 고민 시간이 70% 줄었다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n3-number",
+      "thesis": "20분 — 매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "핵심 숫자"
+       },
+       {
+        "role": "number",
+        "content": "20분"
+       },
+       {
+        "role": "title",
+        "content": "매일 점심 메뉴를 정하는 데 평균 20분을 낭비하고, 한 달에 약 3만원을 충동적으로 쓴다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:1"
+       }
+      ]
+     },
+     {
+      "id": "n4-solution",
+      "thesis": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "해결책"
+       },
+       {
+        "role": "title",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다."
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 바쁜 직장인을 위한 점심 기록 앱이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · idea.txt:3"
+       }
+      ]
+     },
+     {
+      "id": "n5-future",
+      "thesis": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다.",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "다음 단계"
+       },
+       {
+        "role": "title",
+        "content": "로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       },
+       {
+        "role": "caption",
+        "content": "unverified · illustrative · proposed · idea.txt:5"
+       }
+      ]
+     },
+     {
+      "id": "n6-closing",
+      "thesis": "핵심 메시지, 다시 한 번",
+      "blocks": [
+       {
+        "role": "kicker",
+        "content": "마무리"
+       },
+       {
+        "role": "title",
+        "content": "핵심 메시지, 다시 한 번"
+       },
+       {
+        "role": "body",
+        "content": "맛집로그는 30초 만에 메뉴를 추천하고 지난 선택을 자동으로 기록한다. 로드맵은 두 단계로, 먼저 5000개 식당 데이터베이스를 구축하고 다음에는 팀 점심 정산 기능을 출시할 예정이다."
+       }
+      ]
+     }
+    ]
+   },
+   "quality": {
+    "pass": true,
+    "scores": {
+     "meaningfulness": 90,
+     "coherence": 100,
+     "fidelity": 100,
+     "infoValue": 100,
+     "overall": 98
+    },
+    "coverage": [
+     "solution",
+     "future"
+    ],
+    "issues": [
+     {
+      "code": "missing-dimension-coverage",
+      "severity": "warning",
+      "detail": "only 2 narrative dimension(s) covered: solution, future"
+     }
+    ]
+   }
+  }
+ ]
+}
