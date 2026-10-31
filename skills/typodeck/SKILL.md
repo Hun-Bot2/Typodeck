@@ -10,16 +10,16 @@ You never lay out slides yourself, never emit PPTX XML, never invent numbers.
 
 Announce first: "Following the Typodeck Skill: <idea|repo> mode, <systems>, provider <muse|fallback>, pipeline <baseline|improved>."
 
-Supporting files (read on demand, not all at once):
+Supporting files in `references/` (read on demand, not all at once):
 
-- `composition.md` — classify content, choose compositions, justify emphasis.
-- `optical.md` — bounded optical corrections and visual-review rules.
-- `revision.md` — critic checks, failure classes, bounded revision, uncertainty.
-- `evaluation.md` — benchmark, blind A/B protocol, rubric, honest reporting.
-- `research-index.md` — where each research principle lives (never paste the corpus).
-- `purposes.md` — 10 purpose presets, 16-dim semantic model, legacy mapping.
-- `visual-systems.md` — registry, Slide Markdown/IR, research import, benchmark.
-- `density.md` — speaker-led vs reading-first policies, readable floors.
+- `references/composition.md` — classify content, choose compositions, justify emphasis.
+- `references/optical.md` — bounded optical corrections and visual-review rules.
+- `references/revision.md` — critic checks, failure classes, bounded revision, uncertainty.
+- `references/evaluation.md` — benchmark, blind A/B protocol, rubric, honest reporting.
+- `references/research-index.md` — where each research principle lives (never paste the corpus).
+- `references/purposes.md` — 10 purpose presets, 16-dim semantic model, legacy mapping.
+- `references/visual-systems.md` — registry, Slide Markdown/IR, research import, benchmark.
+- `references/density.md` — speaker-led vs reading-first policies, readable floors.
 
 ## 1. Inputs
 
@@ -41,7 +41,7 @@ Supporting files (read on demand, not all at once):
 3. Improved pipeline (composition + art direction + optical + critic): use the
    programmatic API — `planCompositions`/`planArtDirection` → `layoutDeck`
    with `compositionPlan` → `applyOpticalCorrections` → `critiqueDeck` /
-   `reviseDeck` (see `composition.md`, `optical.md`, `revision.md`).
+   `reviseDeck` (see `references/composition.md`, `references/optical.md`, `references/revision.md`).
 4. Benchmark (paired baseline vs improved on held-out ideas):
    `node packages/core/dist/scripts/benchmark-90.js --out output/benchmark-90`
 5. Read receipts: `provider:`, `claims:`, `quality:`, `deck:`, `warning:` lines,
@@ -69,7 +69,7 @@ If asked for a forbidden element: refuse that element, offer the typographic equ
 
 - Evidence kinds: `verified` = code-confirmed; `suggestion` = README/docs
   (upgraded only on code confirmation); `ungrounded` = idea text.
-- 8 frozen dimensions (legacy) + 8 preset-only dims = 16 (`purposes.md`);
+- 8 frozen dimensions (legacy) + 8 preset-only dims = 16 (`references/purposes.md`);
   5 lifecycle states; deprecated claims never headline.
 - Numbers verbatim with refs; versions/years/hashes never heroes.
 - Audience arcs + compact status captions; zero fabricated refs.
@@ -99,7 +99,7 @@ If asked for a forbidden element: refuse that element, offer the typographic equ
 - Ex2 repo → grounded deck (38 claims, 12 slides, `validation: OK`).
 - Ex3 eval re-run: `eval -- --fixture F4` (offline 6/6 OK) + `eval:report`.
 - Ex4 benchmark: 8 held-out ideas × 3 systems × 2 modes = 48 PPTX + `summary.json`
-  with paired deltas (see `evaluation.md`).
+  with paired deltas (see `references/evaluation.md`).
 
 ## 8. Health checks
 
@@ -114,6 +114,6 @@ If asked for a forbidden element: refuse that element, offer the typographic equ
 
 ## 9. Portability
 
-`SKILL.md` + supporting `.md` files + `EXAMPLES.sh`; shell + HTTP only, no
-harness-specific calls. Loads as project skills in Muse Code, Codex, and
-Claude Code (`skills/typodeck/`).
+`SKILL.md` + `references/` + `examples/` + `scripts/` + `EXAMPLES.sh`;
+shell + HTTP only, no harness-specific calls. Install paths per harness:
+see `INSTALL.md`.
