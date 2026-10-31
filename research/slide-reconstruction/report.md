@@ -1,26 +1,27 @@
-# Slide Reconstruction — Final Report (pilot)
+# Slide Reconstruction — Final Report (12-slide benchmark)
 
-Branch: `research/slide-reconstruction`. Evidence commit: `5452aa6`
+Branch: `research/slide-reconstruction`. Evidence commit: `5f5ce9e`
 (this report committed separately on top, per Phase 10 separation rule).
 
-## 1. Sources examined: 9 (`sources.json`)
+## 1. Sources examined: 10 (`sources.json`)
 
-Selected 2 (Gapminder TQ set, CC-BY 4.0; Whose Knowledge? Wikidatacon 2021,
-CC BY-SA 4.0). Link-only 1 (FOSDEM 2017 opendesign, license UNVERIFIED —
+Selected 3 (Gapminder TQ set, CC-BY 4.0; Whose Knowledge? Wikidatacon 2021,
+CC BY-SA 4.0; Wikimania 2012 Foster keynote, CC BY-SA 3.0 verified via
+Commons API). Link-only 1 (FOSDEM 2017 opendesign, license UNVERIFIED —
 paraphrase only, no stored pixels). Rejected 6 (447-corpus has 0 slide decks;
-Lessig 2002 .ppt unrenderable; UBC/stat221 default templates; WMF keynotes
+Lessig 2002 .ppt unrenderable; UBC/stat221 default templates; WCNA/SotM
 photo-led; OSP2014 A4 report).
 
-## 2. Slides reconstructed: 5 benchmark + 2 Tier-A twins + 8 probes
+## 2. Slides reconstructed: 12 benchmark + 2 Tier-A twins + 8 probes
 
-Tier B (hand-placed, renderer ceiling): gapminder-tq2-p1, wk-p1, fosdem-p4,
-fosdem-p14, gapminder-tle-p5. Tier A (engine unassisted): tq2 + wk twins.
-Generalization probes (fixed geometry, swapped content): 4× G1, 4× G3.
+Tier B: gapminder-tq2-p1/-tierA-twin, wk-p1/-twin, fosdem-p4, fosdem-p14,
+gapminder-tle-p5, gapminder-tlit-p1/-p2/-p5, foster-p2/-p13/-p15/-p37.
+Tier A (engine unassisted): tq2 + wk twins. Probes: 4× G1, 4× G3.
 
 ## 3. Verdicts
 
-- Tier B: 4 PASS (tq2, wk, fosdem-p4, tle-p5), 1 PARTIAL (fosdem-p14: 400pt cap
-+ weight mismatch). All validation OK + export OK.
+- Tier B: 11 PASS, 1 PARTIAL (fosdem-p14: 400pt cap + weight mismatch).
+All validation OK + export OK; PPTX parity 14/14 MATCH (incl. Tier-A twins).
 - Tier A: 2 STRUCTURE-OK/DRAMA-ABSENT (correct roles, `opening-statement`;
 no monumental scale, orphans, default palettes).
 - Probes: 5 PASS, 2 PARTIAL (g3-long body1 clip; g1-metric "98%"→"9"),
@@ -37,11 +38,12 @@ sizes (EST), byte-identical PPTX text parity 7/7 (box counts match). PPTX
 Substitutions documented with costs: pattern→solid, logo→caption,
 serif-italic→sans, ornament→★/© glyphs, 4:3→16:9 right-field extension.
 
-## 5. Missing rendering capabilities (`implementation-gaps.md`, 10 items)
+## 5. Missing rendering capabilities (`implementation-gaps.md`, 13 items)
 
 Silent overflow, numeral-box sizing, title wrap rule, 400pt cap, no
 italic/per-block serif, no rules (sanctioned: gap-as-separator), no condensed
-grotesque, Tier-A repertoire, PPTX rendering unverified, FOSDEM license.
+grotesque, Tier-A repertoire, PPTX rendering unverified, FOSDEM license, no
+underline, no slab serif, no badge/circle shapes (sanctioned: bare glyph).
 
 ## 6. Proposed Composition Grammars (`grammar-candidates.md`)
 
@@ -50,7 +52,10 @@ G2 CENTERED-KEYNOTE-STACK (untested, probes deferred); G3
 STARRED-EXPLAINER-COLUMNS (conditional: needs R3 reflow rule; KO + FAQ
 purpose-swap passed); G4 MONUMENTAL-GLYPH (blocked by 400pt cap).
 Cross-cutting: Q1 overflow-must-be-visible, Q2 script-aware wrap rules,
-Q3 substitutions-are-part-of-the-grammar.
+Q3 substitutions-are-part-of-the-grammar. Scale adds: G1 second instance
+(tlit-p1, identical geometry), G3 single-column variant (tlit-p5), and 5
+single-instance observations O1–O5 (quiz, stat-stack, quote, constellation,
+dark title stack) deliberately unpromoted pending second instances + probes.
 
 ## 7. Proposed changes to the design registry
 
@@ -78,7 +83,7 @@ engine; the Skill only instructs selection.
 ## 10. Reproduction
 
 Worktree: `.muse/worktrees/slide-recon`, branch
-`research/slide-reconstruction`, evidence `5452aa6`. Rebuild: `npx tsc -p
+`research/slide-reconstruction`, evidence `5f5ce9e`. Rebuild: `npx tsc -p
 research/slide-reconstruction/tools/tsconfig.json`; run any case: `node
 research/slide-reconstruction/tools/dist/.../recon.js
 research/slide-reconstruction/cases/<id>`; screenshot `recon.html` at
