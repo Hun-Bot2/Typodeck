@@ -1367,3 +1367,176 @@ body[data-studio="editing"] main.wrap {
     grid-template-columns: 1fr;
   }
 }
+
+/* Showcase page (Agent D) */
+
+.sc-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  padding: 0.7rem 0;
+  font-size: 0.92rem;
+}
+
+.sc-nav a {
+  color: var(--muted);
+}
+
+.sc-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 52rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sc-legend li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.6rem;
+}
+
+.badge.sc-label-verified {
+  border-color: var(--good);
+  color: var(--good);
+  font-weight: 700;
+}
+
+.badge.sc-label-experimental {
+  border-style: dashed;
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.badge.sc-label-research {
+  border-color: var(--muted);
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.sc-deck {
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: 1.25rem 1.25rem 1rem;
+  margin: 0 0 2rem;
+}
+
+.sc-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 0.75rem;
+}
+
+.sc-badges .badge {
+  margin-right: 0;
+}
+
+.sc-deck-title {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  margin: 0 0 0.35rem;
+}
+
+.sc-source {
+  margin: 0 0 0.5rem;
+  font-size: 0.92rem;
+}
+
+.sc-source a {
+  color: var(--accent);
+}
+
+.sc-source code {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.sc-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+
+.sc-note {
+  margin: 0 0 1rem;
+  max-width: 52rem;
+}
+
+.sc-strip img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+
+.sc-strip-cap {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0.4rem 0 0;
+}
+
+.sc-files {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.1rem;
+  margin: 1rem 0;
+}
+
+.sc-files a:not(.btn-secondary) {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.sc-repro {
+  border-top: 1px dotted var(--line);
+  padding-top: 0.75rem;
+  margin: 0;
+}
+
+.sc-repro summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.sc-repro pre {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  background: var(--wash);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.sc-colophon {
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding: 0 0 2rem;
+}
+
+.sc-page .block-lede a {
+  color: var(--accent);
+}
+
+@media (max-width: 40rem) {
+  .sc-deck {
+    padding: 1rem 0.9rem 0.75rem;
+  }
+
+  .sc-deck-title {
+    font-size: 1.2rem;
+  }
+}

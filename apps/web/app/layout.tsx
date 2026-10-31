@@ -22,8 +22,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="site-footer">
           <div className="wrap">
             <p>
-              Phase 3 · Next.js studio on the Typodeck core pipeline (ingest → evidence → narrative →
-              layout → export → validate).
+              Typodeck Studio on the core pipeline (ingest → evidence → narrative → layout → export
+              → validate).
             </p>
           </div>
         </footer>
