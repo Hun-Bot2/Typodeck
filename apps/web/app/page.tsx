@@ -1,235 +1,26 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import type { Deck, Narrative } from '@typodeck/core';
 import { SlideView } from '../components/SlideView';
-
-const STAGES = ['ingest', 'evidence', 'narrative', 'layout'] as const;
-type Stage = (typeof STAGES)[number];
-type StageState = 'pending' | 'active' | 'done';
-type Phase = 'idle' | 'generating' | 'done' | 'error';
-
-type SystemId = string;
-
-interface CatalogPreset {
-  id: string;
-  version: string;
-  name: { en: string; ko: string };
-  audience: { en: string; ko: string };
-  goal: { en: string; ko: string };
-  steps: Array<{ id: string; dim: string; label: { en: string; ko: string }; optional: boolean }>;
-  langNotes: { en: string; ko: string };
-}
-
-interface CatalogSystem {
-  id: string;
-  version: string;
-  status: 'production' | 'experimental' | 'deprecated';
-  philosophy: string;
-  supports: string[];
-  limitations: string[];
-  renderable: boolean;
-  fonts: { heading: string; body: string } | null;
-}
-
-interface Catalog {
-  purposes: CatalogPreset[];
-  systems: CatalogSystem[];
-}
-
-const LEGACY_PURPOSES = [
-  { id: 'hackathon', label: 'Hackathon (legacy)' },
-  { id: 'competition', label: 'Competition (legacy)' },
-  { id: 'showcase', label: 'Showcase (legacy)' },
-];
-
-/** Fallback preset ids when /api/catalog is unreachable; core still validates. */
-const FALLBACK_PRESETS = ['P01', 'P02', 'P03', 'P04', 'P05', 'P06', 'P07', 'P08', 'P09', 'P10'];
-
-interface ClaimCounts {
-  total: number;
-  verified: number;
-  suggestion: number;
-  ungrounded: number;
-}
-
-interface Provenance {
-  provider: string;
-  generatedBy: string;
-  claims: ClaimCounts;
-  warnings: string[];
-  requests?: { api: number; blobs: number; cached: number };
-}
-
-interface GenerateSource {
-  kind: 'repo' | 'idea';
-  owner?: string;
-  repo?: string;
-  branch?: string;
-  sha?: string | null;
-}
-
-interface GenerateResult {
-  narrative: Narrative;
-  decks: Record<SystemId, Deck>;
-  provenance: Provenance;
-  slideMarkdown?: string;
-  source?: GenerateSource;
-}
-
-interface TypedError {
-  code: string;
-  message: string;
-  resetAt?: string;
-  retryAfterMs?: number;
-}
-
-interface EvidenceClaimView {
-  id: string;
-  text: string;
-  kind: 'verified' | 'suggestion' | 'ungrounded';
-  status: 'implemented' | 'proposed' | 'historical' | 'unverified' | 'deprecated';
-  refs: Array<{ path: string; lines?: [number, number] }>;
-  numbers: string[];
-  url: string | null;
-}
-
-interface EvidenceResult {
-  source: GenerateSource;
-  files: Array<{ path: string; lines: number; bytes: number; truncated: boolean }>;
-  claims: EvidenceClaimView[];
-  counts: ClaimCounts;
-  warnings: string[];
-  degraded: boolean;
-  requests?: { api: number; blobs: number; cached: number };
-}
-
-/** One-click demo inputs; the first is the smallest and fastest. */
-const SAMPLE_REPOS = ['sindresorhus/is', 'psf/requests', 'facebook/react'];
-
-const STAGE_LABEL: Record<StageState, string> = {
-  pending: 'waiting',
-  active: 'working…',
-  done: 'done',
-};
-
-/** Plain-language guidance per typed error code. */
-const ERROR_GUIDE: Record<string, string> = {
-  'rate-limited':
-    'GitHub refused with a rate limit, so nothing was invented. Wait for the reset, or continue with pasted text below.',
-  'not-found': 'That repository was not found. Check the spelling, or paste the text directly instead.',
-  'private-repo': 'Private repositories are rejected on purpose. Paste the text you want presented instead.',
-  timeout: 'The request timed out. Smaller repositories respond faster; pasted text always works.',
-  network: 'GitHub could not be reached. Check the connection, or continue with pasted text.',
-  'idea-length': 'Idea text needs 100–20,000 characters. Add detail, or point at a repository instead.',
-  'invalid-input': 'That input was not understood. Use owner/repo, a github.com URL, or pasted text.',
-};
-
-function formatResetAt(resetAt: string): string {
-  const d = new Date(resetAt);
-  return Number.isNaN(d.getTime()) ? resetAt : d.toLocaleTimeString();
-}
-
-function formatEvidenceRef(ref: { path: string; lines?: [number, number] }): string {
-  if (!ref.lines) return ref.path;
-  const [a, b] = ref.lines;
-  return a === b ? `${ref.path}:${a}` : `${ref.path}:${a}–${b}`;
-}
-
-function FriendlyError({
-  error,
-  onUseIdea,
-}: {
-  error: TypedError;
-  onUseIdea?: () => void;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    ref.current?.focus();
-  }, []);
-  return (
-    <div className="error-box" role="alert" ref={ref} tabIndex={-1}>
-      <p className="error-code">Error · {error.code}</p>
-      <p>{error.message}</p>
-      {error.resetAt ? <p className="guide">Quota resets at {formatResetAt(error.resetAt)}.</p> : null}
-      {ERROR_GUIDE[error.code] ? <p className="guide">{ERROR_GUIDE[error.code]}</p> : null}
-      {onUseIdea ? (
-        <div className="error-actions">
-          <button type="button" className="btn-secondary" onClick={onUseIdea}>
-            Continue with pasted text instead
-          </button>
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-async function postGenerate(
-  body: {
-    mode: string;
-    input: string;
-    purpose: string;
-    lang: string;
-    durationMin?: number;
-    selection?: { sha?: string | null; excluded?: string[]; reframed?: Array<{ id: string; text: string }> };
-  },
-  onStage: (stage: Stage) => void,
-): Promise<GenerateResult> {
-  const res = await fetch('/api/generate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream' },
-    body: JSON.stringify(body),
-  });
-  const contentType = res.headers.get('content-type') ?? '';
-  if (!contentType.includes('text/event-stream')) {
-    const data = (await res.json().catch(() => null)) as { error?: TypedError } | null;
-    throw {
-      code: data?.error?.code ?? `http-${res.status}`,
-      message: data?.error?.message ?? res.statusText,
-      ...(data?.error?.resetAt ? { resetAt: data.error.resetAt } : {}),
-      ...(data?.error?.retryAfterMs !== undefined ? { retryAfterMs: data.error.retryAfterMs } : {}),
-    } satisfies TypedError;
-  }
-  const reader = res.body?.getReader();
-  if (!reader) throw { code: 'network', message: 'empty response stream' } satisfies TypedError;
-  const decoder = new TextDecoder();
-  let buf = '';
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    buf += decoder.decode(value, { stream: true });
-    let idx: number;
-    while ((idx = buf.indexOf('\n\n')) >= 0) {
-      const raw = buf.slice(0, idx);
-      buf = buf.slice(idx + 2);
-      let event = 'message';
-      let data = '';
-      for (const line of raw.split('\n')) {
-        if (line.startsWith('event:')) event = line.slice(6).trim();
-        else if (line.startsWith('data:')) data += line.slice(5).trim();
-      }
-      if (event === 'stage') {
-        try {
-          const s = JSON.parse(data) as { stage: Stage };
-          if ((STAGES as readonly string[]).includes(s.stage)) onStage(s.stage);
-        } catch {
-          /* ignore malformed progress frames */
-        }
-      } else if (event === 'result') {
-        return JSON.parse(data) as GenerateResult;
-      } else if (event === 'error') {
-        const e = JSON.parse(data) as TypedError;
-        throw {
-          code: e.code ?? 'internal',
-          message: e.message ?? 'generation failed',
-          ...(e.resetAt ? { resetAt: e.resetAt } : {}),
-          ...(e.retryAfterMs !== undefined ? { retryAfterMs: e.retryAfterMs } : {}),
-        } satisfies TypedError;
-      }
-    }
-  }
-  throw { code: 'internal', message: 'stream ended without a result' } satisfies TypedError;
-}
+import { postGenerate } from '../components/studio/api';
+import { FriendlyError } from '../components/studio/FriendlyError';
+import {
+  FALLBACK_PRESETS,
+  LEGACY_PURPOSES,
+  SAMPLE_REPOS,
+  STAGES,
+  STAGE_LABEL,
+  formatEvidenceRef,
+  type Catalog,
+  type EvidenceClaimView,
+  type EvidenceResult,
+  type GenerateResult,
+  type Phase,
+  type Stage,
+  type StageState,
+  type SystemId,
+  type TypedError,
+} from '../components/studio/types';
 
 export default function StudioPage() {
   const [idea, setIdea] = useState('');
