@@ -143,8 +143,12 @@ function FriendlyError({
   error: TypedError;
   onUseIdea?: () => void;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    ref.current?.focus();
+  }, []);
   return (
-    <div className="error-box" role="alert">
+    <div className="error-box" role="alert" ref={ref} tabIndex={-1}>
       <p className="error-code">Error · {error.code}</p>
       <p>{error.message}</p>
       {error.resetAt ? <p className="guide">Quota resets at {formatResetAt(error.resetAt)}.</p> : null}
@@ -265,6 +269,10 @@ export default function StudioPage() {
   const viewerRef = useRef<HTMLDivElement>(null);
 
   const repoMode = repo.trim() !== '';
+  const canSubmit =
+    phase !== 'generating' &&
+    evidencePhase !== 'working' &&
+    (idea.trim() !== '' || repo.trim() !== '');
   const canonicalInput = repoMode ? `repo:${repo.trim()}` : `idea:${idea}`;
   const evidenceFresh = evidence !== null && evidencePhase === 'done' && evidenceInput === canonicalInput;
 
@@ -421,6 +429,14 @@ export default function StudioPage() {
     } catch (err) {
       setError(err as TypedError);
       setPhase('error');
+      // A failed run must not leave a stage stuck on "working…".
+      setStages((prev) => {
+        const next = { ...prev };
+        for (const s of STAGES) {
+          if (next[s] === 'active') next[s] = 'pending';
+        }
+        return next;
+      });
     }
   };
 
@@ -660,7 +676,7 @@ export default function StudioPage() {
             type="button"
             className="btn-secondary"
             onClick={inspect}
-            disabled={phase === 'generating' || evidencePhase === 'working'}
+            disabled={!canSubmit}
           >
             {evidencePhase === 'working' ? 'Inspecting…' : 'Inspect evidence'}
           </button>
@@ -668,7 +684,7 @@ export default function StudioPage() {
             type="button"
             className="btn-primary"
             onClick={() => generate(false)}
-            disabled={phase === 'generating' || evidencePhase === 'working'}
+            disabled={!canSubmit}
           >
             {phase === 'generating' ? 'Generating…' : 'Generate decks'}
           </button>
@@ -967,7 +983,17 @@ export default function StudioPage() {
                     {isSelected ? <span className="selected-note">selected for export</span> : null}
                   </div>
                   <p className="system-desc">{meta?.philosophy ?? ''}</p>
-                  <div className="filmstrip" role="list" aria-label={`${id} slides`}>
+                  <div
+                    className="filmstrip"
+                    role="list"
+                    aria-label={`${id} slides, horizontally scrollable. Use left and right arrow keys to scroll.`}
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+                      e.preventDefault();
+                      e.currentTarget.scrollBy({ left: e.key === 'ArrowRight' ? 220 : -220 });
+                    }}
+                  >
                     {d.slides.map((s, i) => (
                       <figure className="thumb" key={s.id} role="listitem">
                         <SlideView

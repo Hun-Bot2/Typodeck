@@ -12,9 +12,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <header className="site-header">
           <div className="wrap">
-            <p className="wordmark">
+            <h1 className="wordmark">
               Typodeck <span className="wordmark-sub">Studio</span>
-            </p>
+            </h1>
             <p className="tagline">Typography-only pitch decks. No shapes, no stock, no clip art.</p>
           </div>
         </header>

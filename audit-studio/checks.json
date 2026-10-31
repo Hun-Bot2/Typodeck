@@ -1,0 +1,132 @@
+{
+  "routes": [
+    "GET / -> Typodeck Studio — typography-only decks"
+  ],
+  "checks": [
+    {
+      "name": "html-lang",
+      "pass": true,
+      "detail": "lang=\"en\""
+    },
+    {
+      "name": "h1-present",
+      "pass": false,
+      "detail": "h1 count=0, h2 count=2"
+    },
+    {
+      "name": "no-dialogs",
+      "pass": true,
+      "detail": "dialog count=0 (modal behavior N/A by construction)"
+    },
+    {
+      "name": "main-landmark",
+      "pass": true,
+      "detail": "main count=1"
+    },
+    {
+      "name": "label-idea",
+      "pass": true,
+      "detail": "label[for=idea] count=1"
+    },
+    {
+      "name": "label-repo",
+      "pass": true,
+      "detail": "label[for=repo] count=1"
+    },
+    {
+      "name": "label-purpose",
+      "pass": true,
+      "detail": "label[for=purpose] count=1"
+    },
+    {
+      "name": "label-lang",
+      "pass": true,
+      "detail": "label[for=lang] count=1"
+    },
+    {
+      "name": "error-empty-shown",
+      "pass": true,
+      "detail": "\"Error · invalid-input\\n\\ninput must be a non-empty string\" role=alert"
+    },
+    {
+      "name": "error-short-shown",
+      "pass": true,
+      "detail": "\"Error · idea-length\\n\\nidea text must be 100–20000 chars, got 10\""
+    },
+    {
+      "name": "mode-detects-repo",
+      "pass": true,
+      "detail": "\"Mode: repository — not a repo!!!\""
+    },
+    {
+      "name": "error-repo-shown",
+      "pass": true,
+      "detail": "\"Error · invalid-input\\n\\nrepo input must be \\\"owner/repo\\\" or a public github.com URL\""
+    },
+    {
+      "name": "generate-success",
+      "pass": true,
+      "detail": "prov: Provider |  | fallbackgenerated_by: fallback |  | Progress above is reported live by the server over an event stream. |  | Claims | verified 0 | suggestion 0 | ungrounded 6 | total 6 | Warnings (2) | idea mode: all claim"
+    },
+    {
+      "name": "generate-btn-disabled-while-working",
+      "pass": false,
+      "detail": "disabled during generation=false"
+    },
+    {
+      "name": "slides-have-labels",
+      "pass": true,
+      "detail": "25 role=img slides, 0 missing aria-label"
+    },
+    {
+      "name": "viewer-next",
+      "pass": true,
+      "detail": "1 / 8 -> 2 / 8"
+    },
+    {
+      "name": "viewer-arrow-keys",
+      "pass": true,
+      "detail": "2 / 8 -> 3 / 8 -> 2 / 8"
+    },
+    {
+      "name": "system-switch",
+      "pass": true,
+      "detail": "Slide viewer — swiss"
+    },
+    {
+      "name": "export-download",
+      "pass": true,
+      "detail": "typodeck-swiss.pptx 102912 bytes (button: \"Download swiss.pptx\")"
+    },
+    {
+      "name": "focus-visible-outline",
+      "pass": true,
+      "detail": "textarea focused: outline=2px solid rgb(26, 26, 26)"
+    },
+    {
+      "name": "no-h-overflow-desktop",
+      "pass": true,
+      "detail": "scrollWidth=1440 innerWidth=1440"
+    },
+    {
+      "name": "no-h-overflow-mobile-idle",
+      "pass": true,
+      "detail": "scrollWidth=390 innerWidth=390"
+    },
+    {
+      "name": "no-h-overflow-mobile-done",
+      "pass": true,
+      "detail": "scrollWidth=390 innerWidth=390"
+    },
+    {
+      "name": "mobile-viewer-next",
+      "pass": true,
+      "detail": "1 / 8 -> 2 / 8"
+    },
+    {
+      "name": "ko-generation",
+      "pass": true,
+      "detail": "\"hackathon · 8 slides · ko\""
+    }
+  ]
+}
