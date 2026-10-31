@@ -79,6 +79,11 @@ export interface CompositionConstraints {
   rhythmScale: number;
 }
 
+/** Density tag for agent shortlisting (see candidateIndex). */
+export type CandidateDensity = 'sparse' | 'balanced' | 'dense';
+/** Formality tag for agent shortlisting (see candidateIndex). */
+export type CandidateFormality = 'formal' | 'neutral' | 'expressive';
+
 export interface CompositionCandidate {
   id: string;
   semanticTypes: SemanticSlideType[];
@@ -90,6 +95,21 @@ export interface CompositionCandidate {
   rationale: string;
   /** Exceptions: when NOT to use this composition. */
   exceptions: string[];
+  /** Selection metadata: what this composition is best for (agent shortlisting). */
+  bestFor?: string[];
+  /** Selection metadata: explicit avoid-for list. Defaults to `exceptions` when absent. */
+  avoidFor?: string[];
+  /** Selection metadata: density tag. Derived from columns/primitives when absent. */
+  density?: CandidateDensity;
+  /** Selection metadata: formality tag. Derived from systems when absent. */
+  formality?: CandidateFormality;
+}
+
+export interface CandidateMeta {
+  bestFor?: string[];
+  avoidFor?: string[];
+  density?: CandidateDensity;
+  formality?: CandidateFormality;
 }
 
 const C = (
@@ -101,8 +121,10 @@ const C = (
   constraints: CompositionConstraints,
   rationale: string,
   exceptions: string[],
+  meta: CandidateMeta = {},
 ): CompositionCandidate => ({
   id, semanticTypes, systems, primitives, preconditions, constraints, rationale, exceptions,
+  ...meta,
 });
 
 const TITLE2: CompositionConstraints = { maxTitleLines: 2, maxBodyCharsPerLine: 60, columns: 1, rhythmScale: 1 };
@@ -124,6 +146,18 @@ export const COMPOSITION_CANDIDATES: Record<string, CompositionCandidate> = {
     { requiresRoles: ['title'], maxTitleChars: 50, maxBodyBlocks: 0 }, { ...TITLE2, rhythmScale: 1.4 },
     'Expressive opening breath: very short title alone at display scale (2nd expressive option).',
     ['Do not use with body copy or titles over 50 chars — use opening-statement.']),
+  // G1 MONUMENTAL-NUMERAL-COVER (research/slide-reconstruction, conditional
+  // pass with R1 numeral-width + R2 title-wrap rules; two Tier-B instances on
+  // identical geometry). Planner path: planMonumentalNumeral in layout.ts.
+  'opening-monumental-numeral': C('opening-monumental-numeral', ['opening'], ['swiss', 'editorial'],
+    ['number-led', 'scale-contrast', 'negative-space', 'reading-flow'],
+    { requiresRoles: ['number', 'title'], maxTitleChars: 80 }, { ...TITLE2, rhythmScale: 1.2 },
+    'G1 monumental-numeral cover: kicker, giant numeral (~30% canvas height), title (~1/4 numeral), footer triad.',
+    ['Do not use without a hero number — use opening-statement.',
+     'Do not use for centered-hero systems (expressive) — geometry is left-edge anchored.'],
+    { bestFor: ['report and test-question covers led by one hero figure', 'openings where a single number carries the thesis'],
+      avoidFor: ['slides without a hero number', 'titles over ~80 chars even after R2 step-down'],
+      density: 'sparse', formality: 'formal' }),
   // Problem — tension vs narrative.
   'problem-tension': C('problem-tension', ['problem'], ['editorial', 'expressive'],
     ['scale-contrast', 'weight-contrast', 'negative-space'],
@@ -216,6 +250,19 @@ export const COMPOSITION_CANDIDATES: Record<string, CompositionCandidate> = {
     { requiresRoles: ['title', 'body'], maxBodyBlocks: 1, needsEvidenceRef: true }, { ...TITLE2, rhythmScale: 1.2 },
     'Evidence focused: single finding with adjacent source caption (2nd option for 1-body evidence).',
     ['Do not use beyond 1 body block — use evidence-anchored or evidence-collated.']),
+  // G3 STARRED-EXPLAINER-COLUMNS (research/slide-reconstruction, conditional
+  // pass with R3 body-reflow rule; grouped 2-column + single-column variant).
+  // Star bullets are a text-glyph convention (★ in content), not a primitive.
+  // Planner path: planExplainerColumns in layout.ts.
+  'evidence-explainer-columns': C('evidence-explainer-columns', ['evidence', 'insight'], ['swiss', 'editorial'],
+    ['column-rhythm', 'typographic-grouping', 'baseline-relations', 'reading-flow'],
+    { requiresRoles: ['title', 'body'], minBodyBlocks: 3, maxBodyBlocks: 8 }, { ...TITLE2, columns: 2 },
+    'G3 explainer columns: runhead/headline/lede full-width, bodies grouped in 2 columns (single column at <=3 bodies).',
+    ['Do not use below 3 bodies — use evidence-anchored or insight-unpacked.',
+     'Do not use beyond 8 bodies — Tier-B holds 8; split the slide past that.'],
+    { bestFor: ['dense explainers with a lede plus grouped findings', 'FAQ-style evidence slides with parallel answers'],
+      avoidFor: ['single-finding slides', 'unrelated body fragments without parallel structure'],
+      density: 'dense', formality: 'neutral' }),
   // Metric — hero vs anchored. Metric NEVER auto-centers: it must be
   // meaningful (hero-eligible), supported (ref), and relevant (thesis-tied).
   'metric-hero': C('metric-hero', ['metric'], ['expressive', 'editorial'],
@@ -306,6 +353,111 @@ export const COMPOSITION_CANDIDATES: Record<string, CompositionCandidate> = {
 };
 
 export const CANDIDATE_IDS = Object.keys(COMPOSITION_CANDIDATES);
+
+// ---------------------------------------------------------------------------
+// Selection metadata backfill (§4.4 + research/slide-reconstruction §7).
+// G1/G3 carry inline meta above; pre-existing candidates get one curated row
+// each here (merged into the records below, so every record carries
+// best_for/avoid_for/density/formality for the candidate-index).
+// ---------------------------------------------------------------------------
+
+const CANDIDATE_META_BACKFILL: Record<string, Required<Pick<CandidateMeta, 'bestFor' | 'density' | 'formality'>>> = {
+  'opening-statement': { bestFor: ['thesis-led openings with a short hero title'], density: 'sparse', formality: 'neutral' },
+  'opening-context': { bestFor: ['openings that need title plus supporting context'], density: 'balanced', formality: 'formal' },
+  'opening-breath': { bestFor: ['expressive section covers with a very short title'], density: 'sparse', formality: 'expressive' },
+  'problem-tension': { bestFor: ['problem slides where whitespace carries severity'], density: 'sparse', formality: 'neutral' },
+  'problem-narrative': { bestFor: ['problem slides needing sequenced explanation'], density: 'balanced', formality: 'formal' },
+  'insight-punchline': { bestFor: ['insights where the takeaway is the title'], density: 'sparse', formality: 'neutral' },
+  'insight-unpacked': { bestFor: ['claims with 2-4 supporting chunks'], density: 'dense', formality: 'formal' },
+  'thesis-statement': { bestFor: ['default argument slides, title-first'], density: 'balanced', formality: 'neutral' },
+  'thesis-grouped': { bestFor: ['theses with grouped multi-point support'], density: 'dense', formality: 'formal' },
+  'thesis-sparse': { bestFor: ['single-body theses with whitespace-led treatment'], density: 'sparse', formality: 'expressive' },
+  'comparison-columns': { bestFor: ['parallel before/after contrasts on a strict grid'], density: 'dense', formality: 'formal' },
+  'comparison-stacked': { bestFor: ['editorial before/after with repeated labels'], density: 'balanced', formality: 'neutral' },
+  'comparison-rows': { bestFor: ['row-separated option contrasts'], density: 'balanced', formality: 'neutral' },
+  'process-sequenced': { bestFor: ['ordered multi-step procedures'], density: 'dense', formality: 'formal' },
+  'process-compact': { bestFor: ['short 1-2 step sequences'], density: 'sparse', formality: 'neutral' },
+  'architecture-map': { bestFor: ['component maps on a grid'], density: 'dense', formality: 'formal' },
+  'architecture-layered': { bestFor: ['layered stacks expressed via indentation'], density: 'balanced', formality: 'neutral' },
+  'evidence-anchored': { bestFor: ['claims with an adjacent source caption'], density: 'balanced', formality: 'formal' },
+  'evidence-collated': { bestFor: ['parallel findings with repeated citation shape'], density: 'dense', formality: 'formal' },
+  'evidence-focused': { bestFor: ['single findings with one source caption'], density: 'sparse', formality: 'neutral' },
+  'metric-hero': { bestFor: ['hero-eligible numbers with evidence refs'], density: 'sparse', formality: 'expressive' },
+  'metric-anchored': { bestFor: ['numbers subordinate to a thesis title'], density: 'balanced', formality: 'formal' },
+  'quote-voice': { bestFor: ['short quoted passages as hero text'], density: 'sparse', formality: 'expressive' },
+  'quote-attributed': { bestFor: ['quotes with explicit attribution bodies'], density: 'balanced', formality: 'formal' },
+  'tradeoff-balanced': { bestFor: ['open options in parallel columns'], density: 'dense', formality: 'formal' },
+  'tradeoff-decided': { bestFor: ['decided paths with a subordinate rejected option'], density: 'balanced', formality: 'neutral' },
+  'transition-breath': { bestFor: ['sparse section markers'], density: 'sparse', formality: 'neutral' },
+  'transition-bridge': { bestFor: ['bridges with one linking line'], density: 'balanced', formality: 'neutral' },
+  'conclusion-restatement': { bestFor: ['informational closes restating the thesis'], density: 'balanced', formality: 'formal' },
+  'conclusion-charge': { bestFor: ['imperative closes at display scale'], density: 'sparse', formality: 'expressive' },
+  'manual-opening': { bestFor: ['manual chapter openings with section markers'], density: 'balanced', formality: 'formal' },
+  'series-opening': { bestFor: ['series covers with repeated kicker identity'], density: 'balanced', formality: 'formal' },
+  'manual-section': { bestFor: ['dense manual procedures and claims'], density: 'dense', formality: 'formal' },
+  'manual-reference': { bestFor: ['collated manual findings at reference density'], density: 'dense', formality: 'formal' },
+  'margin-evidence': { bestFor: ['tight-measure claims with adjacent source'], density: 'balanced', formality: 'formal' },
+  'manual-metric': { bestFor: ['manual figures with one grounding line'], density: 'balanced', formality: 'formal' },
+};
+
+for (const [id, meta] of Object.entries(CANDIDATE_META_BACKFILL)) {
+  const c = COMPOSITION_CANDIDATES[id];
+  if (c && c.bestFor === undefined) Object.assign(c, meta);
+}
+
+/** Derived density when a record omits the tag (columns/primitives heuristic). */
+export function densityOfCandidate(c: CompositionCandidate): CandidateDensity {
+  if (c.density) return c.density;
+  if (c.constraints.columns >= 2) return 'dense';
+  if (c.primitives.includes('negative-space')) return 'sparse';
+  return 'balanced';
+}
+
+/** Derived formality when a record omits the tag (system heuristic). */
+export function formalityOfCandidate(c: CompositionCandidate): CandidateFormality {
+  if (c.formality) return c.formality;
+  if (c.systems.includes('expressive') && c.systems.length === 1) return 'expressive';
+  if (c.systems.includes('swiss') || c.systems.includes('document')) return 'formal';
+  return 'neutral';
+}
+
+/** Effective avoid-for list: explicit `avoidFor`, else `exceptions`. */
+export function avoidForOfCandidate(c: CompositionCandidate): string[] {
+  return c.avoidFor ?? c.exceptions;
+}
+
+export interface CandidateIndexRow {
+  id: string;
+  semanticTypes: SemanticSlideType[];
+  systems: SystemId[];
+  density: CandidateDensity;
+  formality: CandidateFormality;
+  bestFor: string[];
+  avoidFor: string[];
+}
+
+export const CANDIDATE_INDEX_VERSION = '1.0.0' as const;
+
+/**
+ * Compact candidate-index for agent shortlisting (research §7, analogue of
+ * frontend-slides selection-index.json fitted to type+system scoring):
+ * read index -> shortlist from metadata -> read only shortlisted records.
+ * Derived from records at call time, so it can never go stale.
+ */
+export function candidateIndex(): CandidateIndexRow[] {
+  return CANDIDATE_IDS.map((id) => {
+    const c = COMPOSITION_CANDIDATES[id];
+    return {
+      id,
+      semanticTypes: [...c.semanticTypes],
+      systems: [...c.systems],
+      density: densityOfCandidate(c),
+      formality: formalityOfCandidate(c),
+      bestFor: [...(c.bestFor ?? [])],
+      avoidFor: [...avoidForOfCandidate(c)],
+    };
+  });
+}
 
 // Validation: every semantic type needs >=2 candidates (§4.1).
 const _coverageCheck = (() => {
@@ -494,6 +646,10 @@ export function scoreCandidate(c: CompositionCandidate, ctx: SelectionContext): 
   // Evidence density: metric/evidence candidates want refs (already gated);
   // bonus when refs present.
   if (captionHasRef(ctx.slide) && (c.semanticTypes.includes('metric') || c.semanticTypes.includes('evidence'))) s += 6;
+  // Specialization: a candidate built around the number role (G1 monumental
+  // numeral, metric heroes) beats generic same-type candidates on numeral
+  // slides. Cancels out within number-requiring pools (all get it).
+  if (hasRole(ctx.slide, 'number') && c.preconditions.requiresRoles?.includes('number')) s += 8;
   // Language: Korean bodies prefer single-column keep-all handling downstream;
   // slight penalty for 2-col Korean bodies until keep-all lands (D03).
   if (ctx.lang === 'ko' && c.constraints.columns >= 2 && bodies.length >= 2) s -= 4;
@@ -639,7 +795,7 @@ export function validateCompositionPlan(plan: CompositionPlanItem[], narrative: 
 // ---------------------------------------------------------------------------
 
 export const COMPOSITION_GRAMMAR = {
-  version: '0.1.0',
+  version: '0.2.0',
   semanticTypes: SEMANTIC_TYPES,
   primitives: PRIMITIVES,
   candidates: COMPOSITION_CANDIDATES,

@@ -1,0 +1,7 @@
+Tier-B geometry + probe contents copied (read-only) from research/slide-reconstruction@088e510
+for Agent C before/after evidence. Do not edit: regenerate via the loop in generate.mjs header.
+- gapminder-tq2-p1.case.json : G1 Tier-B fixed geometry (7 blocks, swiss)
+- gapminder-tle-p5.case.json : G3 Tier-B fixed geometry (17 blocks, swiss)
+- gen-g1-long-en.case.json   : probe content (number "12", long title)
+- gen-g1-metric.case.json    : probe content (number "98%")
+- gen-g3-long-en.case.json   : probe content (long body1 etc.)

@@ -1,0 +1,124 @@
+{
+  "meta": {
+    "title": "G1 metric after",
+    "lang": "en",
+    "system": "swiss",
+    "systemVersion": "1.0.0",
+    "seed": 7,
+    "generatedBy": "typodeck-core/phase1"
+  },
+  "slides": [
+    {
+      "id": "n0-cover",
+      "thesis": "G1 metric after",
+      "background": "#FFFFFF",
+      "blocks": [
+        {
+          "id": "n0-cover-b0",
+          "role": "kicker",
+          "content": "Q3 RELIABILITY",
+          "x": 0.5999999999999996,
+          "y": 0.72,
+          "w": 12.13,
+          "h": 0.522361111111111,
+          "fontSize": 35,
+          "fontWeight": 700,
+          "tracking": 0.18,
+          "lineHeight": 1.3,
+          "align": "left",
+          "color": "#E30613"
+        },
+        {
+          "id": "n0-cover-b1",
+          "role": "number",
+          "content": "98%",
+          "x": 0.6,
+          "y": 1.506361111111111,
+          "w": 6.943175000000001,
+          "h": 2.3258333333333336,
+          "fontSize": 231,
+          "fontWeight": 700,
+          "tracking": -0.02,
+          "lineHeight": 1,
+          "align": "left",
+          "color": "#111111"
+        },
+        {
+          "id": "n0-cover-b2",
+          "role": "title",
+          "content": "Uptime, Last Quarter",
+          "x": 0.5999999999999996,
+          "y": 4.0961944444444445,
+          "w": 12.13,
+          "h": 0.6785,
+          "fontSize": 57,
+          "fontWeight": 700,
+          "tracking": -0.015,
+          "lineHeight": 1.08,
+          "align": "left",
+          "color": "#111111"
+        },
+        {
+          "id": "n0-cover-b3",
+          "role": "caption",
+          "content": "status.probe.example/q3",
+          "x": 0.5999999999999996,
+          "y": 5.038694444444444,
+          "w": 12.13,
+          "h": 0.2025,
+          "fontSize": 9,
+          "fontWeight": 400,
+          "tracking": 0.02,
+          "lineHeight": 1.4,
+          "align": "right",
+          "color": "#6E6E6E"
+        },
+        {
+          "id": "n0-cover-b4",
+          "role": "caption",
+          "content": "probe.example.org",
+          "x": 0.6,
+          "y": 6.6000000000000005,
+          "w": 4.043333333333334,
+          "h": 0.2025,
+          "fontSize": 9,
+          "fontWeight": 400,
+          "tracking": 0.02,
+          "lineHeight": 1.4,
+          "align": "left",
+          "color": "#6E6E6E"
+        },
+        {
+          "id": "n0-cover-b5",
+          "role": "caption",
+          "content": "Generalization probe — synthetic content",
+          "x": 4.6433333333333335,
+          "y": 6.6000000000000005,
+          "w": 4.043333333333334,
+          "h": 0.2025,
+          "fontSize": 9,
+          "fontWeight": 400,
+          "tracking": 0.02,
+          "lineHeight": 1.4,
+          "align": "center",
+          "color": "#6E6E6E"
+        },
+        {
+          "id": "n0-cover-b6",
+          "role": "caption",
+          "content": "Probe v1",
+          "x": 8.686666666666667,
+          "y": 6.6000000000000005,
+          "w": 4.043333333333334,
+          "h": 0.2025,
+          "fontSize": 9,
+          "fontWeight": 400,
+          "tracking": 0.02,
+          "lineHeight": 1.4,
+          "align": "right",
+          "color": "#6E6E6E"
+        }
+      ]
+    }
+  ]
+}

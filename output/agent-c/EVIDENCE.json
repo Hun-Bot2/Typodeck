@@ -1,0 +1,154 @@
+{
+  "generatedAt": "2026-10-31T10:42:27.932Z",
+  "grammar": "0.2.0",
+  "cases": [
+    {
+      "name": "before-g1-long-en",
+      "kind": "before-fixed-geometry",
+      "validation": "OK",
+      "staticOverflowRisk": [
+        "block number estimate 1.97x5.45in exceeds box 3.00x2.50in (char-model)",
+        "block title estimate 11.98x1.55in exceeds box 12.00x1.25in (char-model)"
+      ],
+      "renderedClips": [
+        "block number clips in the render: height 639px > 240px client (tol 154.0px)",
+        "block title clips in the render: height 175px > 120px client (tol 49.4px)"
+      ],
+      "expectedClipsFound": true,
+      "pptx": {
+        "ok": true,
+        "editableChars": 156,
+        "expectedChars": 156
+      }
+    },
+    {
+      "name": "before-g1-metric",
+      "kind": "before-fixed-geometry",
+      "validation": "OK",
+      "staticOverflowRisk": [
+        "block number estimate 2.89x8.66in exceeds box 3.00x2.50in (char-model)"
+      ],
+      "renderedClips": [
+        "block number clips in the render: width 308px > 288px client (tol 15.4px); height 947px > 240px client (tol 154.0px)"
+      ],
+      "expectedClipsFound": true,
+      "pptx": {
+        "ok": true,
+        "editableChars": 125,
+        "expectedChars": 125
+      }
+    },
+    {
+      "name": "before-g3-long-en",
+      "kind": "before-fixed-geometry",
+      "validation": "OK",
+      "staticOverflowRisk": [
+        "block body1 estimate 5.54x1.44in exceeds box 5.50x1.35in (char-model)"
+      ],
+      "renderedClips": [],
+      "expectedClipsFound": true,
+      "pptx": {
+        "ok": true,
+        "editableChars": 1417,
+        "expectedChars": 1417
+      }
+    },
+    {
+      "name": "before-g3-deep",
+      "kind": "before-fixed-geometry",
+      "validation": "OK",
+      "staticOverflowRisk": [
+        "block body1 estimate 5.54x2.20in exceeds box 5.50x1.35in (char-model)"
+      ],
+      "renderedClips": [
+        "block body1 clips in the render: height 170px > 130px client (tol 15.6px)"
+      ],
+      "expectedClipsFound": true,
+      "pptx": {
+        "ok": true,
+        "editableChars": 1570,
+        "expectedChars": 1570
+      }
+    },
+    {
+      "name": "after-g1-long-en",
+      "kind": "after-engine",
+      "system": "swiss",
+      "candidate": "opening-monumental-numeral",
+      "forced": null,
+      "validation": "OK",
+      "staticOverflowRisk": [],
+      "renderedClips": [],
+      "clean": true,
+      "pptx": {
+        "ok": true,
+        "editableChars": 156,
+        "expectedChars": 156
+      }
+    },
+    {
+      "name": "after-g1-metric",
+      "kind": "after-engine",
+      "system": "swiss",
+      "candidate": "opening-monumental-numeral",
+      "forced": null,
+      "validation": "OK",
+      "staticOverflowRisk": [],
+      "renderedClips": [],
+      "clean": true,
+      "pptx": {
+        "ok": true,
+        "editableChars": 125,
+        "expectedChars": 125
+      }
+    },
+    {
+      "name": "after-g3-long-en",
+      "kind": "after-engine",
+      "system": "swiss",
+      "candidate": "evidence-explainer-columns",
+      "forced": "evidence-explainer-columns",
+      "validation": "OK",
+      "staticOverflowRisk": [],
+      "renderedClips": [],
+      "clean": true,
+      "pptx": {
+        "ok": true,
+        "editableChars": 1441,
+        "expectedChars": 1441
+      }
+    },
+    {
+      "name": "after-g1-long-ko",
+      "kind": "after-engine",
+      "system": "editorial",
+      "candidate": "opening-monumental-numeral",
+      "forced": null,
+      "validation": "OK",
+      "staticOverflowRisk": [],
+      "renderedClips": [],
+      "clean": true,
+      "pptx": {
+        "ok": true,
+        "editableChars": 89,
+        "expectedChars": 89
+      }
+    },
+    {
+      "name": "after-g3-long-ko",
+      "kind": "after-engine",
+      "system": "editorial",
+      "candidate": "evidence-explainer-columns",
+      "forced": "evidence-explainer-columns",
+      "validation": "OK",
+      "staticOverflowRisk": [],
+      "renderedClips": [],
+      "clean": true,
+      "pptx": {
+        "ok": true,
+        "editableChars": 588,
+        "expectedChars": 588
+      }
+    }
+  ]
+}
