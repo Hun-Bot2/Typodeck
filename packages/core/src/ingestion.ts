@@ -235,6 +235,16 @@ function resetSuffix(headers: Record<string, string>): string {
   return resetAt ? ` (quota resets at ${resetAt})` : '';
 }
 
+/** Typed quota-exhaustion error for the fail-fast API calls (meta/tree). */
+function rateLimitedError(status: number, headers: Record<string, string>, what: string): IngestionError {
+  return new IngestionError(
+    'rate-limited',
+    `GitHub rate limit (HTTP ${status}) ${what}` +
+      `${resetSuffix(headers)}. Authenticate for higher quota or retry after the reset.`,
+    rateLimitInfo(headers),
+  );
+}
+
 /**
  * Accept `owner/repo` or a full `github.com/owner/repo` URL (with .git,
  * branch paths, queries). Returns null for anything else — callers must
@@ -388,12 +398,7 @@ export async function fetchRepo(
       metaRes = await maybeRetry('api', `https://api.github.com/repos/${owner}/${repo}`, metaRes);
     }
     if (isLimitStatus(metaRes.status)) {
-      throw new IngestionError(
-        'rate-limited',
-        `GitHub rate limit (HTTP ${metaRes.status}) fetching repo metadata for ${owner}/${repo}` +
-          `${resetSuffix(metaRes.headers)}. Authenticate for higher quota or retry after the reset.`,
-        rateLimitInfo(metaRes.headers),
-      );
+      throw rateLimitedError(metaRes.status, metaRes.headers, `fetching repo metadata for ${owner}/${repo}`);
     }
     if (metaRes.status !== 200) {
       throw new IngestionError('network', `repo metadata HTTP ${metaRes.status} for ${owner}/${repo}`);
@@ -419,11 +424,10 @@ export async function fetchRepo(
       treeRes = await maybeRetry('api', treeUrl, treeRes);
     }
     if (isLimitStatus(treeRes.status)) {
-      throw new IngestionError(
-        'rate-limited',
-        `GitHub rate limit (HTTP ${treeRes.status}) fetching the file tree for ${owner}/${repo}@${branch}` +
-          `${resetSuffix(treeRes.headers)}. Authenticate for higher quota or retry after the reset.`,
-        rateLimitInfo(treeRes.headers),
+      throw rateLimitedError(
+        treeRes.status,
+        treeRes.headers,
+        `fetching the file tree for ${owner}/${repo}@${branch}`,
       );
     }
     if (treeRes.status !== 200) {
