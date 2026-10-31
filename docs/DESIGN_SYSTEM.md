@@ -1,5 +1,11 @@
 # Typodeck — Design System (Phase 0)
 
+> Note (2026-10-31): §3 "Three Systems" predates the versioned
+> registry — the baseline ships editorial / swiss / expressive as
+> production plus `document` as experimental
+> (`packages/core/src/visual-systems.ts`). Constraint text (§1/§2/§4/§5)
+> verified current.
+
 ## 1. Typography-Only Constraint
 Every slide is composed exclusively of editable text, numbers, whitespace, and flat
 color/background. No other visual primitives exist in the renderer or exporter.

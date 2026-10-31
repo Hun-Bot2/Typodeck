@@ -1,5 +1,11 @@
 # Typodeck — Evaluation (Phase 0)
 
+> Historical record (2026-10-30): the committed matrix is still the
+> 3-system / 24-run shape described here, but metric threshold
+> semantics (notably diversity) live in `packages/core/scripts/eval.ts`
+> and a 4th system now exists. See `evals/summary.json` for current
+> numbers and `docs/DOCS_AUDIT.md` for the audit.
+
 ## 1. Fixtures (`evals/fixtures/`)
 | ID | Type | Content |
 |----|------|---------|

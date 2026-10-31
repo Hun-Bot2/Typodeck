@@ -1,5 +1,31 @@
 # Typodeck — Implementation Log
 
+## Docs release pass — Agent E (2026-10-31)
+
+Branch `agent/e-docs`, baseline `b09865c`. Docs only; no code touched.
+
+- Audited every maintained doc (root README, `docs/`, read-only:
+  `skills/`, `showcase/`, `gallery/`, `landing/`, `evals/`,
+  `research/slide-reconstruction/report.md` via `git show`):
+  classifications + evidence in `docs/DOCS_AUDIT.md`. No duplicates,
+  no fully obsolete docs, no broken internal links (one regex false
+  positive: `` `a[i](x)` `` inline code).
+- Rewrote root README in 15 sections from verified runs only; fixed
+  stale guarantees (S2 `144/180 80.0%`, S7 `p95 204ms/max 624ms` per
+  committed `evals/summary.json`, not the Phase 4 values).
+- Reconstructed 9 ADRs (`docs/engineering/decisions/ADR-0001..0009`),
+  each marked RECONSTRUCTED with file-level evidence: prior ADRs exist
+  only on `docs/launch-readme@aecb800`, not on this baseline
+  (verified via `merge-base`; numbering differs — reconcile at merge).
+- Added dated notes to Phase 0 specs (ARCHITECTURE/PRD/EVALUATION),
+  DESIGN_SYSTEM (4th system), FAQ (build-status entry),
+  LANDING_COPY (page now exists), GITHUB_JOURNEY (branch-local paths);
+  created `packages/core/README.md`.
+- Verified: `npm ci` OK, `tsc` clean, 270/270 tests, deck CLI receipt
+  (21 claims, 10 slides/40 boxes, `validation: OK`), samples 4×7/24,
+  `eval -- --fixture F4` 8/8, `EXAMPLES.sh` exit 0, web prod build
+  (routes `/`, `/landing`, 5 APIs). All eval side effects reverted.
+
 ## Phase 5 — Narrative Intelligence (2026-10-30, W1)
 
 **Status: COMPLETE and validated 2026-10-30 ~06:45 UTC — suite
