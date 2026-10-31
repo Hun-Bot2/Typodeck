@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><title>measure</title><style>.slide{position:relative;aspect-ratio:1333/750;width:1280px;overflow:hidden;container-type:inline-size;background:#FFFFFF}.slide-block{position:absolute;overflow:hidden;white-space:pre-wrap;overflow-wrap:break-word}</style></head><body style="margin:0"><div class="slide"><div class="slide-block" data-block-id="kicker" style="left:4.5011%;top:9.6000%;width:90.0225%;height:8.2667%;font-size:3.6467cqw;font-weight:700;line-height:1.15;letter-spacing:0.04em;text-align:left;color:#FDC933;font-family:Pretendard, Inter, "Noto Sans KR", system-ui, sans-serif">Q3 RELIABILITY</div><div class="slide-block" data-block-id="number" style="left:4.5011%;top:18.6667%;width:22.5056%;height:33.3333%;font-size:24.0685cqw;font-weight:700;line-height:1;letter-spacing:0em;text-align:left;color:#FDC933;font-family:Pretendard, Inter, "Noto Sans KR", system-ui, sans-serif">98%</div><div class="slide-block" data-block-id="title" style="left:4.5011%;top:52.6667%;width:90.0225%;height:16.6667%;font-size:5.9390cqw;font-weight:700;line-height:1.15;letter-spacing:0em;text-align:left;color:#53819F;font-family:Pretendard, Inter, "Noto Sans KR", system-ui, sans-serif">Uptime, Last Quarter</div><div class="slide-block" data-block-id="url" style="left:4.5011%;top:71.3333%;width:90.0225%;height:4.6667%;font-size:1.5629cqw;font-weight:400;line-height:1.15;letter-spacing:0em;text-align:left;color:#FDC933;font-family:Pretendard, Inter, "Noto Sans KR", system-ui, sans-serif">status.probe.example/q3</div><div class="slide-block" data-block-id="foot-l" style="left:4.5011%;top:94.0000%;width:30.0075%;height:2.9333%;font-size:1.0419cqw;font-weight:400;line-height:1.15;letter-spacing:0em;text-align:left;color:#7F7F7F;font-family:Pretendard, Inter, "Noto Sans KR", system-ui, sans-serif">probe.example.org</div><div class="slide-block" data-block-id="foot-c" style="left:29.2573%;top:94.0000%;width:41.2603%;height:2.9333%;font-size:1.0419cqw;font-weight:400;line-height:1.15;letter-spacing:0em;text-align:center;color:#7F7F7F;font-family:Pretendard, Inter, "Noto Sans KR", system-ui, sans-serif">Generalization probe — synthetic content</div><div class="slide-block" data-block-id="foot-r" style="left:72.7682%;top:94.0000%;width:22.5056%;height:2.9333%;font-size:1.0419cqw;font-weight:400;line-height:1.15;letter-spacing:0em;text-align:right;color:#7F7F7F;font-family:Pretendard, Inter, "Noto Sans KR", system-ui, sans-serif">Probe v1</div></div><script>(function(){
+  function collect(){
+    var els = document.querySelectorAll('.slide-block');
+    var out = [];
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var cs = window.getComputedStyle(el);
+      var fs = parseFloat(cs.fontSize) || 0;
+      var lh = cs.lineHeight === 'normal' ? fs * 1.2 : (parseFloat(cs.lineHeight) || fs * 1.2);
+      out.push({
+        index: i,
+        blockId: el.getAttribute('data-block-id'),
+        scrollWidth: el.scrollWidth, scrollHeight: el.scrollHeight,
+        clientWidth: el.clientWidth, clientHeight: el.clientHeight,
+        fontSizePx: fs, lineHeightPx: lh
+      });
+    }
+    if (!document.getElementById('typodeck-overflow')) {
+      var s = document.createElement('script');
+      s.id = 'typodeck-overflow'; s.type = 'application/json';
+      s.textContent = JSON.stringify(out);
+      document.body.appendChild(s);
+    }
+  }
+  if (document.readyState === 'complete') collect();
+  else window.addEventListener('load', collect);
+})();</script></body></html>

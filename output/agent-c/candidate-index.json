@@ -1,0 +1,693 @@
+{
+  "indexVersion": "1.0.0",
+  "grammar": "0.2.0",
+  "rows": [
+    {
+      "id": "opening-statement",
+      "semanticTypes": [
+        "opening"
+      ],
+      "systems": [
+        "editorial",
+        "swiss",
+        "expressive"
+      ],
+      "density": "sparse",
+      "formality": "neutral",
+      "bestFor": [
+        "thesis-led openings with a short hero title"
+      ],
+      "avoidFor": [
+        "Do not use when the title exceeds 60 chars — fall back to opening-context."
+      ]
+    },
+    {
+      "id": "opening-context",
+      "semanticTypes": [
+        "opening"
+      ],
+      "systems": [
+        "editorial",
+        "swiss"
+      ],
+      "density": "balanced",
+      "formality": "formal",
+      "bestFor": [
+        "openings that need title plus supporting context"
+      ],
+      "avoidFor": [
+        "Do not use for expressive — expressive openings stay single-statement."
+      ]
+    },
+    {
+      "id": "opening-breath",
+      "semanticTypes": [
+        "opening"
+      ],
+      "systems": [
+        "expressive"
+      ],
+      "density": "sparse",
+      "formality": "expressive",
+      "bestFor": [
+        "expressive section covers with a very short title"
+      ],
+      "avoidFor": [
+        "Do not use with body copy or titles over 50 chars — use opening-statement."
+      ]
+    },
+    {
+      "id": "opening-monumental-numeral",
+      "semanticTypes": [
+        "opening"
+      ],
+      "systems": [
+        "swiss",
+        "editorial"
+      ],
+      "density": "sparse",
+      "formality": "formal",
+      "bestFor": [
+        "report and test-question covers led by one hero figure",
+        "openings where a single number carries the thesis"
+      ],
+      "avoidFor": [
+        "slides without a hero number",
+        "titles over ~80 chars even after R2 step-down"
+      ]
+    },
+    {
+      "id": "problem-tension",
+      "semanticTypes": [
+        "problem"
+      ],
+      "systems": [
+        "editorial",
+        "expressive"
+      ],
+      "density": "sparse",
+      "formality": "neutral",
+      "bestFor": [
+        "problem slides where whitespace carries severity"
+      ],
+      "avoidFor": [
+        "Do not use when body exceeds 2 blocks — use problem-narrative."
+      ]
+    },
+    {
+      "id": "problem-narrative",
+      "semanticTypes": [
+        "problem"
+      ],
+      "systems": [
+        "editorial",
+        "swiss"
+      ],
+      "density": "balanced",
+      "formality": "formal",
+      "bestFor": [
+        "problem slides needing sequenced explanation"
+      ],
+      "avoidFor": [
+        "Do not use when bodies are unrelated fragments — split the slide."
+      ]
+    },
+    {
+      "id": "insight-punchline",
+      "semanticTypes": [
+        "insight"
+      ],
+      "systems": [
+        "editorial",
+        "swiss",
+        "expressive"
+      ],
+      "density": "sparse",
+      "formality": "neutral",
+      "bestFor": [
+        "insights where the takeaway is the title"
+      ],
+      "avoidFor": [
+        "Do not use when the insight needs >2 supporting ideas — use insight-unpacked."
+      ]
+    },
+    {
+      "id": "insight-unpacked",
+      "semanticTypes": [
+        "insight"
+      ],
+      "systems": [
+        "swiss",
+        "editorial"
+      ],
+      "density": "dense",
+      "formality": "formal",
+      "bestFor": [
+        "claims with 2-4 supporting chunks"
+      ],
+      "avoidFor": [
+        "Do not use beyond 4 body blocks — chunk into two slides."
+      ]
+    },
+    {
+      "id": "thesis-statement",
+      "semanticTypes": [
+        "thesis"
+      ],
+      "systems": [
+        "editorial",
+        "swiss",
+        "expressive"
+      ],
+      "density": "balanced",
+      "formality": "neutral",
+      "bestFor": [
+        "default argument slides, title-first"
+      ],
+      "avoidFor": [
+        "Do not use when title is contextless — fix narrative instead."
+      ]
+    },
+    {
+      "id": "thesis-grouped",
+      "semanticTypes": [
+        "thesis"
+      ],
+      "systems": [
+        "swiss",
+        "editorial"
+      ],
+      "density": "dense",
+      "formality": "formal",
+      "bestFor": [
+        "theses with grouped multi-point support"
+      ],
+      "avoidFor": [
+        "Do not use for single-body slides — use thesis-statement."
+      ]
+    },
+    {
+      "id": "thesis-sparse",
+      "semanticTypes": [
+        "thesis"
+      ],
+      "systems": [
+        "expressive",
+        "editorial"
+      ],
+      "density": "sparse",
+      "formality": "expressive",
+      "bestFor": [
+        "single-body theses with whitespace-led treatment"
+      ],
+      "avoidFor": [
+        "Do not use beyond 1 body block — use thesis-grouped or thesis-statement."
+      ]
+    },
+    {
+      "id": "comparison-columns",
+      "semanticTypes": [
+        "comparison"
+      ],
+      "systems": [
+        "swiss"
+      ],
+      "density": "dense",
+      "formality": "formal",
+      "bestFor": [
+        "parallel before/after contrasts on a strict grid"
+      ],
+      "avoidFor": [
+        "Do not use beyond 4 bodies or without parallel structure."
+      ]
+    },
+    {
+      "id": "comparison-stacked",
+      "semanticTypes": [
+        "comparison"
+      ],
+      "systems": [
+        "editorial",
+        "expressive"
+      ],
+      "density": "balanced",
+      "formality": "neutral",
+      "bestFor": [
+        "editorial before/after with repeated labels"
+      ],
+      "avoidFor": [
+        "Do not use when labels are not parallel — rewrite labels first."
+      ]
+    },
+    {
+      "id": "comparison-rows",
+      "semanticTypes": [
+        "comparison"
+      ],
+      "systems": [
+        "editorial",
+        "swiss",
+        "expressive"
+      ],
+      "density": "balanced",
+      "formality": "neutral",
+      "bestFor": [
+        "row-separated option contrasts"
+      ],
+      "avoidFor": [
+        "Do not use beyond 3 bodies — use comparison-columns (swiss) or split."
+      ]
+    },
+    {
+      "id": "process-sequenced",
+      "semanticTypes": [
+        "process"
+      ],
+      "systems": [
+        "swiss",
+        "editorial"
+      ],
+      "density": "dense",
+      "formality": "formal",
+      "bestFor": [
+        "ordered multi-step procedures"
+      ],
+      "avoidFor": [
+        "Do not use beyond 4 steps — split across slides."
+      ]
+    },
+    {
+      "id": "process-compact",
+      "semanticTypes": [
+        "process"
+      ],
+      "systems": [
+        "editorial",
+        "expressive"
+      ],
+      "density": "sparse",
+      "formality": "neutral",
+      "bestFor": [
+        "short 1-2 step sequences"
+      ],
+      "avoidFor": [
+        "Do not use for 3+ steps — use process-sequenced."
+      ]
+    },
+    {
+      "id": "architecture-map",
+      "semanticTypes": [
+        "architecture"
+      ],
+      "systems": [
+        "swiss"
+      ],
+      "density": "dense",
+      "formality": "formal",
+      "bestFor": [
+        "component maps on a grid"
+      ],
+      "avoidFor": [
+        "Do not use for single-component slides — use thesis-statement."
+      ]
+    },
+    {
+      "id": "architecture-layered",
+      "semanticTypes": [
+        "architecture"
+      ],
+      "systems": [
+        "editorial"
+      ],
+      "density": "balanced",
+      "formality": "neutral",
+      "bestFor": [
+        "layered stacks expressed via indentation"
+      ],
+      "avoidFor": [
+        "Do not use when layer order is ambiguous — name layers explicitly in text."
+      ]
+    },
+    {
+      "id": "evidence-anchored",
+      "semanticTypes": [
+        "evidence"
+      ],
+      "systems": [
+        "editorial",
+        "swiss"
+      ],
+      "density": "balanced",
+      "formality": "formal",
+      "bestFor": [
+        "claims with an adjacent source caption"
+      ],
+      "avoidFor": [
+        "Do not use without a valid ref — demote to thesis-statement."
+      ]
+    },
+    {
+      "id": "evidence-collated",
+      "semanticTypes": [
+        "evidence"
+      ],
+      "systems": [
+        "swiss"
+      ],
+      "density": "dense",
+      "formality": "formal",
+      "bestFor": [
+        "parallel findings with repeated citation shape"
+      ],
+      "avoidFor": [
+        "Do not use when findings lack parallel structure."
+      ]
+    },
+    {
+      "id": "evidence-focused",
+      "semanticTypes": [
+        "evidence"
+      ],
+      "systems": [
+        "editorial",
+        "swiss",
+        "expressive"
+      ],
+      "density": "sparse",
+      "formality": "neutral",
+      "bestFor": [
+        "single findings with one source caption"
+      ],
+      "avoidFor": [
+        "Do not use beyond 1 body block — use evidence-anchored or evidence-collated."
+      ]
+    },
+    {
+      "id": "evidence-explainer-columns",
+      "semanticTypes": [
+        "evidence",
+        "insight"
+      ],
+      "systems": [
+        "swiss",
+        "editorial"
+      ],
+      "density": "dense",
+      "formality": "neutral",
+      "bestFor": [
+        "dense explainers with a lede plus grouped findings",
+        "FAQ-style evidence slides with parallel answers"
+      ],
+      "avoidFor": [
+        "single-finding slides",
+        "unrelated body fragments without parallel structure"
+      ]
+    },
+    {
+      "id": "metric-hero",
+      "semanticTypes": [
+        "metric"
+      ],
+      "systems": [
+        "expressive",
+        "editorial"
+      ],
+      "density": "sparse",
+      "formality": "expressive",
+      "bestFor": [
+        "hero-eligible numbers with evidence refs"
+      ],
+      "avoidFor": [
+        "Do not use when the number lacks a ref or is a version/year/hash — use metric-anchored."
+      ]
+    },
+    {
+      "id": "metric-anchored",
+      "semanticTypes": [
+        "metric"
+      ],
+      "systems": [
+        "editorial",
+        "swiss"
+      ],
+      "density": "balanced",
+      "formality": "formal",
+      "bestFor": [
+        "numbers subordinate to a thesis title"
+      ],
+      "avoidFor": [
+        "Do not use as hero — this is the fallback when metric-hero preconditions fail."
+      ]
+    },
+    {
+      "id": "quote-voice",
+      "semanticTypes": [
+        "quote"
+      ],
+      "systems": [
+        "editorial",
+        "expressive"
+      ],
+      "density": "sparse",
+      "formality": "expressive",
+      "bestFor": [
+        "short quoted passages as hero text"
+      ],
+      "avoidFor": [
+        "Do not use beyond ~140 chars — trim or split the quote."
+      ]
+    },
+    {
+      "id": "quote-attributed",
+      "semanticTypes": [
+        "quote"
+      ],
+      "systems": [
+        "swiss",
+        "editorial"
+      ],
+      "density": "balanced",
+      "formality": "formal",
+      "bestFor": [
+        "quotes with explicit attribution bodies"
+      ],
+      "avoidFor": [
+        "Do not use without attribution — add the source in text."
+      ]
+    },
+    {
+      "id": "tradeoff-balanced",
+      "semanticTypes": [
+        "tradeoff"
+      ],
+      "systems": [
+        "swiss",
+        "editorial"
+      ],
+      "density": "dense",
+      "formality": "formal",
+      "bestFor": [
+        "open options in parallel columns"
+      ],
+      "avoidFor": [
+        "Do not use when a decision is already made — use tradeoff-decided."
+      ]
+    },
+    {
+      "id": "tradeoff-decided",
+      "semanticTypes": [
+        "tradeoff"
+      ],
+      "systems": [
+        "editorial",
+        "expressive"
+      ],
+      "density": "balanced",
+      "formality": "neutral",
+      "bestFor": [
+        "decided paths with a subordinate rejected option"
+      ],
+      "avoidFor": [
+        "Do not use when options are still open — use tradeoff-balanced."
+      ]
+    },
+    {
+      "id": "transition-breath",
+      "semanticTypes": [
+        "transition"
+      ],
+      "systems": [
+        "editorial",
+        "swiss",
+        "expressive"
+      ],
+      "density": "sparse",
+      "formality": "neutral",
+      "bestFor": [
+        "sparse section markers"
+      ],
+      "avoidFor": [
+        "Do not use with body copy — move bodies to adjacent slides."
+      ]
+    },
+    {
+      "id": "transition-bridge",
+      "semanticTypes": [
+        "transition"
+      ],
+      "systems": [
+        "editorial",
+        "swiss"
+      ],
+      "density": "balanced",
+      "formality": "neutral",
+      "bestFor": [
+        "bridges with one linking line"
+      ],
+      "avoidFor": [
+        "Do not use beyond one body block."
+      ]
+    },
+    {
+      "id": "conclusion-restatement",
+      "semanticTypes": [
+        "conclusion"
+      ],
+      "systems": [
+        "editorial",
+        "swiss",
+        "expressive"
+      ],
+      "density": "balanced",
+      "formality": "formal",
+      "bestFor": [
+        "informational closes restating the thesis"
+      ],
+      "avoidFor": [
+        "Do not use when introducing new claims — conclusions restate only."
+      ]
+    },
+    {
+      "id": "conclusion-charge",
+      "semanticTypes": [
+        "conclusion"
+      ],
+      "systems": [
+        "expressive",
+        "editorial"
+      ],
+      "density": "sparse",
+      "formality": "expressive",
+      "bestFor": [
+        "imperative closes at display scale"
+      ],
+      "avoidFor": [
+        "Do not use for informational closes — use conclusion-restatement."
+      ]
+    },
+    {
+      "id": "manual-opening",
+      "semanticTypes": [
+        "opening"
+      ],
+      "systems": [
+        "document"
+      ],
+      "density": "balanced",
+      "formality": "formal",
+      "bestFor": [
+        "manual chapter openings with section markers"
+      ],
+      "avoidFor": [
+        "Do not use beyond 60-char titles — use series-opening."
+      ]
+    },
+    {
+      "id": "series-opening",
+      "semanticTypes": [
+        "opening"
+      ],
+      "systems": [
+        "document"
+      ],
+      "density": "balanced",
+      "formality": "formal",
+      "bestFor": [
+        "series covers with repeated kicker identity"
+      ],
+      "avoidFor": [
+        "Do not use without a kicker — the repeated label IS the series signal."
+      ]
+    },
+    {
+      "id": "manual-section",
+      "semanticTypes": [
+        "thesis",
+        "process"
+      ],
+      "systems": [
+        "document"
+      ],
+      "density": "dense",
+      "formality": "formal",
+      "bestFor": [
+        "dense manual procedures and claims"
+      ],
+      "avoidFor": [
+        "Do not use for single-idea display slides — use manual-opening."
+      ]
+    },
+    {
+      "id": "manual-reference",
+      "semanticTypes": [
+        "evidence",
+        "comparison"
+      ],
+      "systems": [
+        "document"
+      ],
+      "density": "dense",
+      "formality": "formal",
+      "bestFor": [
+        "collated manual findings at reference density"
+      ],
+      "avoidFor": [
+        "Do not use without parallel structure — rewrite bodies first."
+      ]
+    },
+    {
+      "id": "margin-evidence",
+      "semanticTypes": [
+        "evidence"
+      ],
+      "systems": [
+        "document"
+      ],
+      "density": "balanced",
+      "formality": "formal",
+      "bestFor": [
+        "tight-measure claims with adjacent source"
+      ],
+      "avoidFor": [
+        "Do not use beyond 1 body block — use manual-reference."
+      ]
+    },
+    {
+      "id": "manual-metric",
+      "semanticTypes": [
+        "metric"
+      ],
+      "systems": [
+        "document"
+      ],
+      "density": "balanced",
+      "formality": "formal",
+      "bestFor": [
+        "manual figures with one grounding line"
+      ],
+      "avoidFor": [
+        "Do not use without a ref or for versions/years — fall back to anchored forms."
+      ]
+    }
+  ]
+}
