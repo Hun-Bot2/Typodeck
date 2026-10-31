@@ -1,0 +1,6 @@
+reviewer_id,background_years,fixture,system,order_AB,clarity,hierarchy,professional_quality,readability,balance,narrative_appropriateness,choice,choice_tie_allowed,failure_note,renderer,viewing_setup,date
+# Example row (DELETE before use; never invent ballots):
+# R1,8-typography,B1,swiss,baseline-first,5,6,5,6,5,5,B,no,"slide 3 title wraps 3 lines in A",PowerPoint-16.99,27in-monitor-1m,2026-11-01
+# Q1-Q6 + narrative_appropriateness: 1 strongly prefer A ... 4 tie ... 7 strongly prefer B
+# choice: A | B | tie — "Which deck would you present?"
+# distinctiveness is rated once per fixture across the 3-system SET (separate sheet).

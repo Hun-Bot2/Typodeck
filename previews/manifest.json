@@ -1,0 +1,96 @@
+{
+  "narrativeTitle": "Typodeck Experimental — Comparable Preview",
+  "narrativeSha256": "eacc503739f5c1e16ae8ea74cd4aa9759985bb31ca3df0347d7d935c29846785",
+  "seed": 7,
+  "slideCount": 6,
+  "systems": [
+    {
+      "system": "document",
+      "version": "0.1.0",
+      "status": "experimental",
+      "pptx": "previews/pptx/typodeck-document.pptx",
+      "html": "previews/html/document.html",
+      "slides": 6,
+      "textBoxes": 21,
+      "bytes": 85702,
+      "editableChars": 892,
+      "validationOk": true,
+      "validationErrors": [],
+      "htmlParityOk": true,
+      "candidates": [
+        "series-opening",
+        "problem-tension",
+        "manual-metric",
+        "manual-reference",
+        "margin-evidence",
+        "conclusion-restatement"
+      ]
+    },
+    {
+      "system": "editorial",
+      "version": "1.0.0",
+      "status": "production",
+      "pptx": "previews/pptx/typodeck-editorial.pptx",
+      "html": "previews/html/editorial.html",
+      "slides": 6,
+      "textBoxes": 21,
+      "bytes": 86120,
+      "editableChars": 892,
+      "validationOk": true,
+      "validationErrors": [],
+      "htmlParityOk": true,
+      "candidates": [
+        "opening-statement",
+        "problem-tension",
+        "metric-anchored",
+        "comparison-stacked",
+        "evidence-focused",
+        "conclusion-charge"
+      ]
+    },
+    {
+      "system": "expressive",
+      "version": "1.0.0",
+      "status": "production",
+      "pptx": "previews/pptx/typodeck-expressive.pptx",
+      "html": "previews/html/expressive.html",
+      "slides": 6,
+      "textBoxes": 21,
+      "bytes": 86208,
+      "editableChars": 892,
+      "validationOk": true,
+      "validationErrors": [],
+      "htmlParityOk": true,
+      "candidates": [
+        "opening-statement",
+        "problem-tension",
+        "metric-hero",
+        "comparison-stacked",
+        "evidence-focused",
+        "conclusion-charge"
+      ]
+    },
+    {
+      "system": "swiss",
+      "version": "1.0.0",
+      "status": "production",
+      "pptx": "previews/pptx/typodeck-swiss.pptx",
+      "html": "previews/html/swiss.html",
+      "slides": 6,
+      "textBoxes": 21,
+      "bytes": 85708,
+      "editableChars": 892,
+      "validationOk": true,
+      "validationErrors": [],
+      "htmlParityOk": true,
+      "candidates": [
+        "opening-statement",
+        "problem-narrative",
+        "metric-anchored",
+        "comparison-columns",
+        "evidence-focused",
+        "conclusion-restatement"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typodeck — Human Review Gallery</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>Typodeck Review Gallery</h1>
+    <p id="buildLine" class="sub"></p>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="references" role="tab">References</button>
+    <button class="tab" data-tab="interpretations" role="tab">Interpretations</button>
+    <button class="tab" data-tab="compare" role="tab">Compare</button>
+    <button class="tab" data-tab="decisions" role="tab">Decisions <span id="decCount" class="pill">0</span></button>
+  </nav>
+</header>
+
+<div id="missingBar" class="missingbar" hidden></div>
+
+<main>
+  <!-- REFERENCES -->
+  <section id="tab-references" class="panel">
+    <div class="toolbar">
+      <label>Category <select id="fCat"></select></label>
+      <label>Status <select id="fStatus"></select></label>
+      <label class="grow">Search <input id="fQ" type="search" placeholder="id, title, url, designer…"></label>
+      <span id="refCount" class="muted"></span>
+    </div>
+    <div id="refList" class="refgrid"></div>
+  </section>
+
+  <!-- INTERPRETATIONS -->
+  <section id="tab-interpretations" class="panel" hidden>
+    <p class="muted" id="interpIntro"></p>
+    <div id="sysList"></div>
+  </section>
+
+  <!-- COMPARE -->
+  <section id="tab-compare" class="panel" hidden>
+    <div class="toolbar">
+      <label>Slide <select id="cSlide"></select></label>
+      <span id="cSysChecks" class="checks"></span>
+    </div>
+    <p class="muted">Same narrative content, same slide index, rendered per system. Candidate ids are the
+    composition candidate selected for that slide in that system.</p>
+    <div id="cmpGrid" class="cmpgrid"></div>
+  </section>
+
+  <!-- DECISIONS -->
+  <section id="tab-decisions" class="panel" hidden>
+    <div class="toolbar">
+      <label>Reviewer <input id="reviewer" type="text" placeholder="name" autocomplete="off"></label>
+      <button id="expJson">Export JSON</button>
+      <button id="expCsv">Export CSV</button>
+      <label class="filebtn">Import JSON <input id="impFile" type="file" accept="application/json" hidden></label>
+      <button id="clearAll" class="danger">Clear all</button>
+      <span id="decProgress" class="muted"></span>
+    </div>
+    <p class="muted">No finals are auto-selected. Every verdict below is a human decision; export captures them.</p>
+    <table class="dectable">
+      <thead><tr><th>System</th><th>Candidate</th><th>Preview</th><th>Verdict</th><th>Comment</th><th>Updated</th></tr></thead>
+      <tbody id="decBody"></tbody>
+    </table>
+  </section>
+</main>
+
+<footer class="foot muted">
+  <span id="footLine"></span>
+  <span>Docs: <a href="../research/candidate_visual_systems.md">candidate_visual_systems.md</a> ·
+  <a href="../research/implementation_notes.md">implementation_notes.md</a> ·
+  <a href="../research/merge_report.md">merge_report.md</a> ·
+  <a href="../previews/html/index.html">preview index</a></span>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
