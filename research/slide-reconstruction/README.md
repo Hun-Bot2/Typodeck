@@ -20,6 +20,11 @@ All new work lives under `research/slide-reconstruction/`.
 - `grammar-candidates.md` — proposed reusable rules with
   generalization evidence.
 - `implementation-gaps.md` — missing engine capabilities.
+- `skill-assessment.md` — Skill integration + reference-repo comparison.
+- `report.md` — final report (counts, verdicts, priorities, SHA).
+- `tools/` — recon Tier A/B tool + generalization probe generator.
+- Tier-A twins (`cases/*-tierA/`), probes (`cases/gen-*/`) alongside
+  the 5 Tier-B benchmark cases.
 
 ## Phase 1 findings (existing project, read-only survey)
 
