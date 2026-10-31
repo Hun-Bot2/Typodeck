@@ -1,0 +1,85 @@
+{
+  "repo": "sindresorhus/is",
+  "url": "https://github.com/sindresorhus/is",
+  "branch": "main",
+  "treeSha": "e9c026c611c1160eaad50da00be4e676b626018f",
+  "files": [
+    {
+      "path": "readme.md",
+      "bytes": 23604,
+      "lines": 925,
+      "truncated": false
+    },
+    {
+      "path": ".github/security.md",
+      "bytes": 170,
+      "lines": 6,
+      "truncated": false
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 781,
+      "lines": 10,
+      "truncated": false
+    },
+    {
+      "path": "CLAUDE.md",
+      "bytes": 9,
+      "lines": 1,
+      "truncated": false
+    },
+    {
+      "path": "license",
+      "bytes": 1117,
+      "lines": 10,
+      "truncated": false
+    },
+    {
+      "path": "source/utilities.ts",
+      "bytes": 211,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "source/types.ts",
+      "bytes": 6071,
+      "lines": 200,
+      "truncated": false
+    }
+  ],
+  "totalBytes": 31963,
+  "degraded": false,
+  "purpose": "Tool showcase: is",
+  "lang": "en",
+  "system": "swiss",
+  "seed": 1143001754,
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "claims": {
+    "total": 38,
+    "verified": 29,
+    "suggestion": 9,
+    "ungrounded": 0
+  },
+  "warnings": [
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "pptx": {
+    "path": "showcase/decks/is-swiss.pptx",
+    "slideCount": 12,
+    "textBoxCount": 46
+  },
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "stats": {
+      "slides": 12,
+      "textShapes": 46,
+      "editableChars": 1332,
+      "slideSizeIn": {
+        "w": 13.33,
+        "h": 7.5
+      }
+    }
+  }
+}
