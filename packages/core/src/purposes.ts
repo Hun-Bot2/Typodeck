@@ -396,23 +396,29 @@ export function variantForDuration(durationMin: number | undefined, explicit?: P
   return 'extended';
 }
 
+/**
+ * Kicker casing rule (single source of truth): Korean labels keep their
+ * native case; English labels shout in upper case.
+ */
+export function kickerCase(label: string, lang: NarrLang): string {
+  return lang === 'ko' ? label : label.toUpperCase();
+}
+
 /** Kicker label for a preset step (falls back to the dimension label). */
 export function stepKicker(preset: PurposePreset, stepId: string, lang: NarrLang): string {
   const step = preset.steps.find((s) => s.id === stepId);
   if (!step) throw new Error(`unknown step "${stepId}" in preset ${preset.id}`);
-  const label = step.label[lang];
-  return lang === 'ko' ? label : label.toUpperCase();
+  return kickerCase(step.label[lang], lang);
 }
 
 /** Cover kicker for a preset (its name). */
 export function presetKicker(preset: PurposePreset, lang: NarrLang): string {
-  return lang === 'ko' ? preset.name.ko : preset.name.en.toUpperCase();
+  return kickerCase(preset.name[lang], lang);
 }
 
 export function legacyKicker(audience: Audience, lang: NarrLang, customTitle?: string): string {
   if (audience === 'general') {
     return customTitle ? customTitle.toUpperCase().slice(0, 48) : 'TYPODECK';
   }
-  const label = AUDIENCE_LABEL[lang][audience];
-  return lang === 'ko' ? label : label.toUpperCase();
+  return kickerCase(AUDIENCE_LABEL[lang][audience], lang);
 }
