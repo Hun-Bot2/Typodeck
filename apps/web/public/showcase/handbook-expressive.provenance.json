@@ -1,0 +1,164 @@
+{
+  "repo": "microsoft/TypeScript-Handbook",
+  "url": "https://github.com/microsoft/TypeScript-Handbook",
+  "branch": "master",
+  "treeSha": "543d2dff18ef2a081fba88753931142ffe887a1e",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1152,
+      "lines": 20,
+      "truncated": false
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "bytes": 717,
+      "lines": 18,
+      "truncated": false
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 475,
+      "lines": 13,
+      "truncated": false
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 11358,
+      "lines": 203,
+      "truncated": false
+    },
+    {
+      "path": "pages/Advanced Types.md",
+      "bytes": 45016,
+      "lines": 1312,
+      "truncated": false
+    },
+    {
+      "path": "pages/Basic Types.md",
+      "bytes": 10632,
+      "lines": 311,
+      "truncated": false
+    },
+    {
+      "path": "pages/Classes.md",
+      "bytes": 19657,
+      "lines": 552,
+      "truncated": false
+    },
+    {
+      "path": "pages/Compiler Options in MSBuild.md",
+      "bytes": 9998,
+      "lines": 122,
+      "truncated": false
+    },
+    {
+      "path": "pages/Compiler Options.md",
+      "bytes": 22418,
+      "lines": 130,
+      "truncated": false
+    },
+    {
+      "path": "pages/Configuring Watch.md",
+      "bytes": 4123,
+      "lines": 31,
+      "truncated": false
+    },
+    {
+      "path": "pages/declaration files/By Example.md",
+      "bytes": 5161,
+      "lines": 278,
+      "truncated": false
+    },
+    {
+      "path": "pages/declaration files/Consumption.md",
+      "bytes": 1637,
+      "lines": 41,
+      "truncated": false
+    },
+    {
+      "path": "pages/declaration files/Deep Dive.md",
+      "bytes": 7087,
+      "lines": 232,
+      "truncated": false
+    },
+    {
+      "path": "pages/declaration files/Do's and Don'ts.md",
+      "bytes": 6239,
+      "lines": 223,
+      "truncated": false
+    },
+    {
+      "path": "pages/declaration files/Introduction.md",
+      "bytes": 2504,
+      "lines": 50,
+      "truncated": false
+    },
+    {
+      "path": "pages/declaration files/Library Structures.md",
+      "bytes": 12861,
+      "lines": 401,
+      "truncated": false
+    },
+    {
+      "path": "pages/declaration files/Publishing.md",
+      "bytes": 4255,
+      "lines": 97,
+      "truncated": false
+    },
+    {
+      "path": "pages/declaration files/Templates.md",
+      "bytes": 399,
+      "lines": 7,
+      "truncated": false
+    },
+    {
+      "path": "pages/declaration files/templates/global-modifying-module.d.ts.md",
+      "bytes": 1237,
+      "lines": 35,
+      "truncated": false
+    },
+    {
+      "path": "pages/declaration files/templates/global-plugin.d.ts.md",
+      "bytes": 911,
+      "lines": 27,
+      "truncated": false
+    }
+  ],
+  "totalBytes": 167837,
+  "degraded": false,
+  "purpose": "Docs guide: TypeScript Handbook",
+  "lang": "en",
+  "system": "expressive",
+  "seed": 33113867,
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "claims": {
+    "total": 40,
+    "verified": 0,
+    "suggestion": 40,
+    "ungrounded": 0
+  },
+  "warnings": [
+    "file cap reached (20); remaining files skipped",
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "pptx": {
+    "path": "showcase/decks/handbook-expressive.pptx",
+    "slideCount": 12,
+    "textBoxCount": 46
+  },
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "stats": {
+      "slides": 12,
+      "textShapes": 46,
+      "editableChars": 1909,
+      "slideSizeIn": {
+        "w": 13.33,
+        "h": 7.5
+      }
+    }
+  }
+}

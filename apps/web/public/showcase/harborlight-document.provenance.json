@@ -1,0 +1,39 @@
+{
+  "source": "original idea text (harborlight-document.idea.txt)",
+  "purpose": "P01",
+  "lang": "en",
+  "system": "document",
+  "status": "experimental",
+  "seed": 1526367637,
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "claims": {
+    "total": 6,
+    "verified": 0,
+    "suggestion": 0,
+    "ungrounded": 6
+  },
+  "warnings": [
+    "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+    "quality warning [missing-dimension-coverage]: only 1 narrative dimension(s) covered: capabilities",
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "slides": 6,
+  "pptx": {
+    "slideCount": 6,
+    "textBoxCount": 24
+  },
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "stats": {
+      "slides": 6,
+      "textShapes": 24,
+      "editableChars": 1267,
+      "slideSizeIn": {
+        "w": 13.33,
+        "h": 7.5
+      }
+    }
+  }
+}

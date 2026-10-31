@@ -1,0 +1,164 @@
+{
+  "repo": "iamkun/dayjs",
+  "url": "https://github.com/iamkun/dayjs",
+  "branch": "dev",
+  "treeSha": "436bde0bcded312781cbe45dc2b0ef079a36d8e3",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7864,
+      "lines": 179,
+      "truncated": false
+    },
+    {
+      "path": "docs/zh-cn/README.zh-CN.md",
+      "bytes": 3882,
+      "lines": 114,
+      "truncated": false
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/--bug-report.md",
+      "bytes": 430,
+      "lines": 21,
+      "truncated": false
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 1124,
+      "lines": 25,
+      "truncated": false
+    },
+    {
+      "path": "docs/demo/index.js",
+      "bytes": 867,
+      "lines": 55,
+      "truncated": false
+    },
+    {
+      "path": "docs/en/API-reference.md",
+      "bytes": 79,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "docs/en/I18n.md",
+      "bytes": 79,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "docs/en/Installation.md",
+      "bytes": 79,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "docs/en/Plugin.md",
+      "bytes": 79,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "docs/es-es/API-reference.md",
+      "bytes": 80,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "docs/es-es/I18n.md",
+      "bytes": 80,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "docs/es-es/Installation.md",
+      "bytes": 80,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "docs/es-es/Plugin.md",
+      "bytes": 80,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "docs/es-es/README-es-es.md",
+      "bytes": 5286,
+      "lines": 131,
+      "truncated": false
+    },
+    {
+      "path": "docs/fr/README-fr.md",
+      "bytes": 4703,
+      "lines": 115,
+      "truncated": false
+    },
+    {
+      "path": "docs/he/README-he.md",
+      "bytes": 5163,
+      "lines": 137,
+      "truncated": false
+    },
+    {
+      "path": "docs/ja/API-reference.md",
+      "bytes": 80,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "docs/ja/I18n.md",
+      "bytes": 80,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "docs/ja/Installation.md",
+      "bytes": 80,
+      "lines": 4,
+      "truncated": false
+    },
+    {
+      "path": "docs/ja/Plugin.md",
+      "bytes": 80,
+      "lines": 4,
+      "truncated": false
+    }
+  ],
+  "totalBytes": 30275,
+  "degraded": false,
+  "purpose": "Adoption case for Day.js",
+  "lang": "en",
+  "system": "editorial",
+  "seed": 1713200736,
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "claims": {
+    "total": 40,
+    "verified": 3,
+    "suggestion": 37,
+    "ungrounded": 0
+  },
+  "warnings": [
+    "file cap reached (20); remaining files skipped",
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "pptx": {
+    "path": "showcase/decks/dayjs-editorial.pptx",
+    "slideCount": 12,
+    "textBoxCount": 46
+  },
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "stats": {
+      "slides": 12,
+      "textShapes": 46,
+      "editableChars": 1987,
+      "slideSizeIn": {
+        "w": 13.33,
+        "h": 7.5
+      }
+    }
+  }
+}
