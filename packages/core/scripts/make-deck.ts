@@ -1,6 +1,6 @@
 // Typodeck Phase 2 — demo CLI: build a PPTX deck from a repo or an idea.
 // Usage:
-//   node dist/scripts/make-deck.js --repo owner/repo --system swiss --out out.pptx [--purpose ..] [--lang ko|en]
+//   node dist/scripts/make-deck.js --repo owner/repo --system swiss --out out.pptx [--purpose ..] [--preset P04] [--lang ko|en]
 //   node dist/scripts/make-deck.js --idea "..." --system editorial --out out.pptx
 //   node dist/scripts/make-deck.js --idea-file path.txt --system expressive --out out.pptx
 // Prints the provider used + warnings; exits non-zero on validation failure.
@@ -14,7 +14,7 @@ function usage(): string {
   return [
     'Usage: make-deck --repo owner/repo | --idea "..." | --idea-file path',
     '               --system editorial|swiss|expressive --out file.pptx',
-    '               [--purpose text] [--lang ko|en]',
+    '               [--purpose text] [--preset P01..P10] [--lang ko|en]',
   ].join('\n');
 }
 
@@ -32,6 +32,7 @@ async function main(): Promise<void> {
   const systemArg = argValue(args, '--system');
   const outArg = argValue(args, '--out');
   const purpose = argValue(args, '--purpose');
+  const preset = argValue(args, '--preset');
   const lang = argValue(args, '--lang') ?? 'en';
 
   const modes = [repoArg, ideaArg, ideaFileArg].filter((v) => v !== undefined);
@@ -60,7 +61,7 @@ async function main(): Promise<void> {
   }
 
   try {
-    const result = await planDeck(input, { system: systemArg as SystemId, purpose, lang });
+    const result = await planDeck(input, { system: systemArg as SystemId, purpose, preset, lang });
     const res = await exportToPptx(result.deck, outArg);
     const expectedChars = result.deck.slides
       .flatMap((s) => s.blocks)
@@ -71,6 +72,10 @@ async function main(): Promise<void> {
     console.log(
       `claims: total=${result.provenance.claims.total} verified=${result.provenance.claims.verified} ` +
         `suggestion=${result.provenance.claims.suggestion} ungrounded=${result.provenance.claims.ungrounded}`,
+    );
+    const q = result.provenance.quality;
+    console.log(
+      `quality: ${q.pass ? 'pass' : 'review'} overall=${q.overall} errors=${q.errors} warnings=${q.warnings}`,
     );
     console.log(`deck: ${res.slideCount} slides, ${res.textBoxCount} text boxes -> ${res.path}`);
     for (const w of result.provenance.warnings) console.log(`warning: ${w}`);

@@ -545,6 +545,56 @@ button {
   }
 }
 
+.preset-card {
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+}
+
+.preset-id {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  margin: 0 0 0.4rem;
+}
+
+.preset-goal {
+  margin: 0 0 0.4rem;
+}
+
+.arc-preview {
+  font-size: 0.85rem;
+  margin: 0.5rem 0 0;
+}
+
+.markdown-editor {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  min-height: 22rem;
+  white-space: pre;
+}
+
+.compare-field {
+  max-width: 22rem;
+  margin-bottom: 1rem;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.system-section.is-muted {
+  opacity: 0.75;
+}
+
+@media (max-width: 60rem) {
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

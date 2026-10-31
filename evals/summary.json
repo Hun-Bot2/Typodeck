@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T03:49:57.974Z",
+  "generatedAt": "2026-10-30T06:39:38.668Z",
   "seed": 42,
   "provider": "fallback",
   "runs": [
@@ -172,8 +172,14 @@
       "success": true
     }
   ],
-  "p95LatencyMs": 1814,
-  "maxLatencyMs": 4679,
+  "p95LatencyMs": 204,
+  "maxLatencyMs": 624,
+  "narrativeQuality": {
+    "runs": 24,
+    "passCount": 24,
+    "meanOverall": 99,
+    "minOverall": 98
+  },
   "diversityPairs": [
     {
       "fixture": "F1",
@@ -448,9 +454,9 @@
   },
   "s2": {
     "pass": true,
-    "value": "180/216 (83.3%)",
+    "value": "144/180 (80.0%)",
     "target": ">= 80%",
-    "detail": "micro-average over 18 successful repo run(s); content slides (excl. cover/closing): 180/180 (100.0%)"
+    "detail": "micro-average over 18 successful repo run(s); content slides (excl. cover/closing): 144/144 (100.0%)"
   },
   "s3": {
     "pass": true,
@@ -478,13 +484,15 @@
   },
   "s7": {
     "pass": true,
-    "value": "p95 1814ms, max 4679ms (n=24)",
+    "value": "p95 204ms, max 624ms (n=24)",
     "target": "<= 120000ms",
     "detail": "planDeck wall time (submit -> deck), successful runs only"
   },
   "allPass": true,
   "notes": [
     "design-diversity PASS on all 24 pair(s) (>=2 of blocks-mean>=0.5, headline-rel>=0.15, align-L1>=0.2)",
-    "idea mode: max fabricated refs 0 (target 0), max unlabeled captions 0 (target 0), over 6 run(s)"
+    "idea mode: max fabricated refs 0 (target 0), max unlabeled captions 0 (target 0), over 6 run(s)",
+    "narrative quality (report-only): 24/24 pass, mean overall 99.0, min 98",
+    "fetch cache: 15/24 runs served warm (S7 mixes cold/warm latency; --no-cache for cold-only)"
   ]
 }

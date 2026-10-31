@@ -1,3 +1,33 @@
+# Typodeck Skill — Revision (read on demand)
+
+Source: `packages/core/src/critic.ts`.
+
+## Critic checks
+
+Structural (deterministic): bounds, overlap, plus the `validate.ts` PPTX gate
+(forbidden objects, editable text, 16:9, overflow). Perceptual/design
+(GEOMETRIC PROXIES, honestly labeled): title≤2 lines, body≤~60 chars/line
+(both derived heuristics), widow/rag scores, hierarchy (title > body size),
+WCAG AA contrast (projection transfer unvalidated, C06), unsupported-metric
+semantics. `visionUnmeasured` always lists what proxies cannot see: real wrap
+(T11), font substitution, clipping, optical verdicts, vision-model scores
+(no verified integration — never fabricate them).
+
+## Failure classes and fixes
+
+`critiqueDeck(deck, narrative?, plan?)` → findings with
+`semantic|structural|typographic|perceptual` class + `suggestedFix`.
+`reviseDeck(narrative, systemId, {maxAttempts=3})` loops: critique → fix the
+first error by class (semantic demotion to `metric-anchored`, or alternate
+same-type candidate) → regenerate → re-evaluate. Bounded: stops on clean,
+on no-alternate, or at max attempts. Content is NEVER rewritten for looks.
+
+## Provenance and uncertainty
+
+Every attempt appends a provenance line (what failed, what was tried).
+Report: attempts used, residual errors/warnings, and all `visionUnmeasured`
+items as unverified. An AI critic — or these proxies — is not ground truth.
+
 ## Adversarial inspection checklist (typography-only)
 
 Adapted from presentation-skill's "assume problems" visual-QA pass.

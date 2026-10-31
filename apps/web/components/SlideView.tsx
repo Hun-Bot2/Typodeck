@@ -5,7 +5,10 @@ const SANS = 'Pretendard, Inter, "Noto Sans KR", system-ui, sans-serif';
 const DISPLAY = '"Archivo Black", Pretendard, Inter, "Noto Sans KR", system-ui, sans-serif';
 
 /** Preview-only font mapping that mirrors each system's export faces. */
-function fontFor(system: string, role: string): string {
+function fontFor(system: string, role: string, fonts?: { heading: string; body: string }): string {
+  if (fonts) {
+    return role === 'body' || role === 'caption' ? fonts.body : fonts.heading;
+  }
   if (system === 'editorial') {
     return role === 'body' || role === 'caption' ? SANS : SERIF;
   }
@@ -22,7 +25,18 @@ const CANVAS_H_IN = 7.5;
  * Text-only slide preview: absolutely-positioned text divs scaled from the
  * deck's inch geometry. No canvas rasterization, no decorative shapes.
  */
-export function SlideView({ slide, system, label }: { slide: Slide; system: string; label?: string }) {
+export function SlideView({
+  slide,
+  system,
+  label,
+  fonts,
+}: {
+  slide: Slide;
+  system: string;
+  label?: string;
+  /** Registry-driven font stacks (from /api/catalog); falls back to the built-in map. */
+  fonts?: { heading: string; body: string };
+}) {
   return (
     <div className="slide" style={{ backgroundColor: slide.background }} role="img" aria-label={label ?? slide.thesis}>
       {slide.blocks.map((b) => (
@@ -40,7 +54,7 @@ export function SlideView({ slide, system, label }: { slide: Slide; system: stri
             letterSpacing: `${b.tracking}em`,
             textAlign: b.align,
             color: b.color,
-            fontFamily: fontFor(system, b.role),
+            fontFamily: fontFor(system, b.role, fonts),
           }}
         >
           {b.content}

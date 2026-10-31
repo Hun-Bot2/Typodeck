@@ -4,9 +4,9 @@
 
 import type { TextAlign, TextRole } from './schema';
 
-export type SystemId = 'editorial' | 'swiss' | 'expressive';
+export type SystemId = 'editorial' | 'swiss' | 'expressive' | 'document';
 
-export const SYSTEM_IDS: readonly SystemId[] = ['editorial', 'swiss', 'expressive'];
+export const SYSTEM_IDS: readonly SystemId[] = ['editorial', 'swiss', 'expressive', 'document'];
 
 /** Role -> default presentation. Sizes in points. */
 export interface RoleStyle {
@@ -31,7 +31,7 @@ export interface TypographySystem {
   /** Side margin in inches. */
   margin: number;
   /** Placement strategy tag consumed by the layout engine. */
-  placement: 'asymmetric-stack' | 'grid-columns' | 'centered-hero';
+  placement: 'asymmetric-stack' | 'grid-columns' | 'centered-hero' | 'hierarchy-stack';
   colors: {
     background: string;
     backgroundAlt: string;
@@ -121,15 +121,43 @@ export const EXPRESSIVE: TypographySystem = {
   },
 };
 
+/** Experimental (registry status): technical-manual voice. See research/implementation_notes.md. */
+export const DOCUMENT: TypographySystem = {
+  id: 'document',
+  fonts: {
+    heading: ['Inter', '"Helvetica Neue"', ...KR_SANS],
+    body: ['Inter', '"Helvetica Neue"', ...KR_SANS],
+  },
+  scale: {
+    // Dense reference hierarchy; section markers live in the meta column.
+    kicker: { fontSize: 10, minFontSize: 8, fontWeight: 700, tracking: 0.22, lineHeight: 1.3, align: 'left' },
+    title: { fontSize: 34, minFontSize: 20, fontWeight: 700, tracking: -0.01, lineHeight: 1.15, align: 'left' },
+    body: { fontSize: 12.5, minFontSize: 8, fontWeight: 400, tracking: 0, lineHeight: 1.5, align: 'left' },
+    number: { fontSize: 60, minFontSize: 36, fontWeight: 700, tracking: -0.02, lineHeight: 1.0, align: 'left' },
+    caption: { fontSize: 9, minFontSize: 7, fontWeight: 400, tracking: 0.02, lineHeight: 1.4, align: 'right' },
+  },
+  rhythm: 0.18,
+  margin: 0.7,
+  placement: 'hierarchy-stack',
+  colors: {
+    background: '#F1F4F6',
+    backgroundAlt: '#F1F4F6',
+    ink: '#16232E',
+    accent: '#0F4CAA',
+    muted: '#52606E',
+  },
+};
+
 export const SYSTEMS: Record<SystemId, TypographySystem> = {
   editorial: EDITORIAL,
   swiss: SWISS,
   expressive: EXPRESSIVE,
+  document: DOCUMENT,
 };
 
 export function getSystem(id: string): TypographySystem {
   const s = (SYSTEMS as Record<string, TypographySystem>)[id];
-  if (!s) throw new Error(`unknown typography system "${id}" (want editorial|swiss|expressive)`);
+  if (!s) throw new Error(`unknown typography system "${id}" (want ${SYSTEM_IDS.join('|')})`);
   return s;
 }
 

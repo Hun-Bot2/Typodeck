@@ -1,5 +1,14 @@
 import { NextRequest } from 'next/server';
-import { IngestionError, planDecksAll } from '@typodeck/core';
+import {
+  EXTENDED_DIMENSIONS,
+  IngestionError,
+  getPreset,
+  narrativeToSlideIR,
+  parsePurpose,
+  planDecksAll,
+  serializeSlideMarkdown,
+  type Dimension,
+} from '@typodeck/core';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -12,7 +21,8 @@ const REQUEST_TIMEOUT_MS = 115_000;
 /** Bound for the GitHub fetch inside the pipeline (core default is 30 s). */
 const REPO_TIMEOUT_MS = 60_000;
 
-const PURPOSES = new Set(['hackathon', 'competition', 'showcase']);
+const LEGACY_PURPOSES = new Set(['hackathon', 'competition', 'showcase']);
+const VARIANTS = new Set(['short', 'standard', 'extended']);
 
 function jsonError(status: number, code: string, message: string): Response {
   return Response.json({ error: { code, message } }, { status });
@@ -57,6 +67,9 @@ interface GenerateBody {
   input?: unknown;
   purpose?: unknown;
   lang?: unknown;
+  variant?: unknown;
+  durationMin?: unknown;
+  emphasis?: unknown;
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
@@ -85,12 +98,42 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
   const purpose =
     typeof parsed.purpose === 'string' && parsed.purpose.trim() !== ''
-      ? parsed.purpose.trim().slice(0, 64)
+      ? parsed.purpose.trim().slice(0, 80)
       : '';
-  if (purpose !== '' && !PURPOSES.has(purpose)) {
-    return jsonError(400, 'invalid-input', 'purpose must be hackathon, competition, or showcase');
+  // Legacy audiences, preset ids (P01–P10, bare or "P04: Title"), and custom
+  // titles all flow through; only malformed preset ids are rejected here.
+  if (purpose !== '') {
+    const resolved = parsePurpose(purpose);
+    if (resolved.preset) {
+      try {
+        getPreset(resolved.preset);
+      } catch {
+        return jsonError(400, 'invalid-input', `unknown purpose preset "${resolved.preset}" (want P01–P10)`);
+      }
+    }
+    // Anything else ("audience: title", free text) passes through to core parsing.
   }
   const lang = typeof parsed.lang === 'string' && parsed.lang.toLowerCase().startsWith('ko') ? 'ko' : 'en';
+  const variant =
+    typeof parsed.variant === 'string' && VARIANTS.has(parsed.variant) ? parsed.variant : undefined;
+  if (parsed.variant !== undefined && variant === undefined) {
+    return jsonError(400, 'invalid-input', 'variant must be short, standard, or extended');
+  }
+  const durationMin =
+    typeof parsed.durationMin === 'number' && Number.isFinite(parsed.durationMin)
+      ? Math.max(1, Math.min(180, Math.floor(parsed.durationMin)))
+      : undefined;
+  if (parsed.durationMin !== undefined && durationMin === undefined) {
+    return jsonError(400, 'invalid-input', 'durationMin must be a number of minutes');
+  }
+  const emphasis =
+    Array.isArray(parsed.emphasis) &&
+    parsed.emphasis.every((e) => typeof e === 'string' && (EXTENDED_DIMENSIONS as readonly string[]).includes(e))
+      ? (parsed.emphasis as string[])
+      : undefined;
+  if (parsed.emphasis !== undefined && emphasis === undefined) {
+    return jsonError(400, 'invalid-input', 'emphasis must be an array of dimension ids');
+  }
 
   const planInput =
     mode === 'repo'
@@ -114,11 +157,23 @@ export async function POST(req: NextRequest): Promise<Response> {
     const raced = (async () => {
       const result = await planDecksAll(
         planInput,
-        { purpose, lang, timeoutMs: REPO_TIMEOUT_MS },
+        {
+          purpose,
+          lang,
+          timeoutMs: REPO_TIMEOUT_MS,
+          variant: variant as 'short' | 'standard' | 'extended' | undefined,
+          durationMin,
+          emphasis: emphasis as Dimension[] | undefined,
+        },
         onStage ? (stage, detail) => onStage(stage, detail) : undefined,
       );
       // Claims/raw files stay server-side; the client needs decks + provenance.
-      return { narrative: result.narrative, decks: result.decks, provenance: result.provenance };
+      // Slide Markdown is included so the narrative step can display and edit it.
+      const parsed = parsePurpose(purpose);
+      const slideMarkdown = serializeSlideMarkdown(
+        narrativeToSlideIR(result.narrative, result.claims, { preset: parsed.preset }),
+      );
+      return { narrative: result.narrative, decks: result.decks, provenance: result.provenance, slideMarkdown };
     })();
     const timer = new Promise<never>((_resolve, reject) => {
       setTimeout(() => reject(new Error('typodeck-request-timeout')), REQUEST_TIMEOUT_MS);

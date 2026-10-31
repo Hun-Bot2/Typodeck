@@ -31,14 +31,84 @@ export interface Claim {
   numbers: string[];
 }
 
-export const MAX_CLAIMS_PER_FILE = 12;
-export const MAX_CLAIMS_TOTAL = 40;
+export const MAX_CLAIMS_PER_FILE = 24;
+export const MAX_CLAIMS_TOTAL = 60;
 
-/** Numeric tokens: 1,000 / 3.5 / 98% / v2 / 2kB. Copied, never computed. */
-const NUMBER_RE = /\bv?\d[\d,]*(?:\.\d+)?(?:\s?(?:%|kB|KB|MB|ms|s|x))?/g;
+/**
+ * Numeric tokens, copied verbatim from the source — never computed.
+ * Captures compact units (98%, 120ms, 2kB), hyphenated units (90-second,
+ * 30-day), one following unit word optionally scaled (40 percent,
+ * 50 million downloads), and directly-attached Korean counters (20분, 3만원).
+ * Guarded on both ends: no fabricated units from following words
+ * ("12 storage" stays "12", never "12 s"), and no digit prefixes of
+ * hashes/identifiers ("436bde0…" and "utf8" yield nothing).
+ * Versions (v2.1, 3.2) and date fragments are still copied — hero-metric
+ * eligibility is decided later by the semantics module, not here.
+ */
+const NUMBER_UNIT_WORD =
+  'percent|dollars?|cents?|seconds?|minutes?|hours?|days?|weeks?|months?|years?' +
+  '|times|fold|people|households?|users?|teams?|members?|customers?|downloads?' +
+  '|products?|items?|orders?|tickets?|phases?|steps?|zones?|services?|stores?' +
+  '|chains?|panels?|functions?|palettes?|plugins?|endpoints?|requests?|models?|experiments?|lines?';
+const NUMBER_SCALE_WORD = 'thousand|million|billion';
+const NUMBER_HYPHEN_UNIT =
+  'second|minute|hour|day|week|month|year|dollar|percent|fold|time|star';
+// Korean counter units attach directly: 20분, 3만원, 5000개, 30초, 2주.
+// Deliberately no 월 (month names are date fragments, rejected downstream).
+const NUMBER_KO_UNIT = '시간|개월|만?원|초|분|주|년|명|개|번|회|배|일';
+const NUMBER_RE = new RegExp(
+  // Tokens must end with a digit: ".add(1, 'day')" yields "1", never "1,".
+  '\\bv?\\d(?:[\\d,]*\\d)?(?:\\.\\d+)?' +
+    `(?:\\s?(?:%|kB|KB|MB|ms|s|x)|(?:${NUMBER_KO_UNIT}))?` +
+    `(?:-(?:${NUMBER_HYPHEN_UNIT})s?)?` +
+    '(?![0-9a-zA-Z_])' +
+    `(?:\\s(?:${NUMBER_SCALE_WORD})(?:\\s(?:${NUMBER_UNIT_WORD}))?|\\s(?:${NUMBER_UNIT_WORD}))?` +
+    '(?![a-zA-Z])',
+  'g',
+);
 
 const MIN_CLAIM_CHARS = 20;
 const MAX_CLAIM_CHARS = 280;
+
+/** Relocation notices are repo metadata, not project content. */
+const RELOCATION_NOTICE = /this repos?(itory)? has moved|please file (issues|bugs|tickets|prs)/i;
+
+function isRelocationNotice(line: string): boolean {
+  return RELOCATION_NOTICE.test(line);
+}
+
+function isLicenseBoilerplate(line: string): boolean {
+  const lowered = line.toLowerCase();
+  return LICENSE_BOILERPLATE.some((p) => lowered.includes(p));
+}
+
+/** License boilerplate carries no narrative content; never let it headline a slide. */
+const LICENSE_BOILERPLATE = [
+  'permission is hereby granted',
+  'without warranty',
+  'express or implied',
+  'including but not limited to',
+  'furnished to do so',
+  'in no event shall',
+  'copies or substantial portions',
+  'the above copyright notice',
+  'all rights reserved',
+  'redistribution and use',
+  'licensed under the apache',
+  'you may not use this file except',
+  'deal in the software',
+  // Wrapped MIT/BSD fragments (single lines of wrapped headers).
+  'copyright',
+  'without limitation the rights',
+  'a copy of this software',
+  'associated documentation files',
+  'liable for any',
+  'damages or other liability',
+  'other dealings in the',
+  'fitness for a particular purpose',
+  'merchantability',
+  'the software is provided',
+];
 
 function extractNumbers(text: string): string[] {
   return text.match(NUMBER_RE) ?? [];
@@ -52,6 +122,20 @@ function isIdeaPath(path: string): boolean {
   return path === 'idea.txt';
 }
 
+/**
+ * Conservative inline-markup strip for kept code lines (comments, TSDoc
+ * bodies). Links are unwrapped only when URL-targeted, so `a[i](x)`-style
+ * code can never be mangled into prose.
+ */
+function stripCodeMarkup(line: string): string {
+  return line
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)]*)\)/g, '$1')
+    .replace(/`([^`]*)`/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/<\/?[a-zA-Z][^<>]*>/g, '')
+    .trim();
+}
+
 /** Strip markdown/code noise; returns null for lines that carry no claims. */
 function cleanLine(raw: string, code: boolean): string | null {
   let line = raw.trim();
@@ -61,21 +145,38 @@ function cleanLine(raw: string, code: boolean): string | null {
     const comment = line.match(/^(?:\/\/|#|;|\*|<!--|\/\*)\s?(.*)$/);
     if (comment) {
       line = comment[1].replace(/(\*\/|-->)\s*$/, '').trim();
+      if (isLicenseBoilerplate(line) || isRelocationNotice(line)) return null;
+      if (/eslint-disable\b/i.test(line)) return null; // linter directives are tooling, not narrative
+      if (/extracted from https?:\/\//i.test(line)) return null; // URL attributions carry no project meaning
+      line = stripCodeMarkup(line);
     } else if (/^[{}()[\];:=<>|&!?.+\-/*%@$]/.test(line) || /[{};]\s*$/.test(line)) {
       return null;
-    } else if (/^(import|export|require|const|let|var|function|class|def|return|if|for|while)\b/.test(line)) {
+    } else if (/(&&|\|\||===|==|!=|=>|->|\+\+|--|<<|>>)/.test(line)) {
+      return null; // boolean/comparison/bitwise logic is code, never narrative
+    } else if (/^(defined\?|(import|export|require|const|let|var|function|class|def|return|if|for|while)\b)/.test(line)) {
       return null;
+    } else {
+      line = stripCodeMarkup(line); // TSDoc bodies keep markdown links/spans
     }
   } else {
+    line = line.replace(/^(\s*>)+\s*/, ''); // blockquote prefixes
     if (/^#{1,6}\s/.test(line)) line = line.replace(/^#{1,6}\s+/, '');
     if (/^(\s*[-*+]|\d+[.)])\s+/.test(line)) line = line.replace(/^(\s*[-*+]|\d+[.)])\s+/, '');
     if (/^(!\[|https?:\/\/|```|<[a-z/!])/.test(line)) return null;
     if (/^(\||\s*:?-{2,}:?)(\s*\|)+/.test(line)) return null; // tables
+    if (/^\|.*\|$/.test(line)) return null; // full-pipe table rows
     if (/^[\s|:-]+$/.test(line)) return null;
-    // Markdown links -> link text.
+    // Badge images -> nothing; links -> link text; then any bare HTML tags.
+    line = line.replace(/!\[[^\]]*\]\([^)]*\)/g, '');
     line = line.replace(/\[([^\]]+)\]\([^)]*\)/g, '$1');
+    line = line.replace(/\[\]\([^)]*\)/g, '');
     line = line.replace(/`([^`]*)`/g, '$1');
+    line = line.replace(/\*\*([^*]+)\*\*/g, '$1');
+    line = line.replace(/<\/?[a-zA-Z][^<>]*>/g, '');
+    line = line.trim();
+    if (/^\w+="[^"]*"\s*\/?>?$/.test(line)) return null; // wrapped-tag attribute residue
     if (/^(\[[^\]]*\]:\s*\S+)/.test(line)) return null; // ref defs
+    if (isLicenseBoilerplate(line) || isRelocationNotice(line)) return null;
   }
   line = line.replace(/\s+/g, ' ').trim();
   if (line.length < MIN_CLAIM_CHARS || line.length > MAX_CLAIM_CHARS) return null;
@@ -94,11 +195,18 @@ function candidatesFor(file: IngestedFile): Candidate[] {
   const code = isCodePath(file.path);
   const lines = file.text.split('\n');
   const out: Candidate[] = [];
+  // License/copyright headers cluster at the top of code files; wrapped
+  // legalese lines read as fragments, so comment claims from a marker-dense
+  // head are dropped wholesale (narrative rarely lives in headers).
+  const headText = code ? lines.slice(0, 30).join('\n').toLowerCase() : '';
+  const headMarkers = ['copyright', 'license', 'permission', 'warranty', 'merchantability', 'liability', 'furnished', 'redistribution']
+    .filter((m) => headText.includes(m)).length;
+  const inLicenseHead = headMarkers >= 2;
   let buf = '';
   let bufStart = 1;
   const flush = (endLine: number): void => {
     const cleaned = cleanLine(buf, code);
-    if (cleaned) out.push({ text: cleaned, startLine: bufStart, endLine });
+    if (cleaned && !(inLicenseHead && endLine <= 30)) out.push({ text: cleaned, startLine: bufStart, endLine });
     buf = '';
   };
   lines.forEach((raw, i) => {

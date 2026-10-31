@@ -12,12 +12,20 @@ export interface RecordedRepo {
 }
 
 export function loadRecordedRepo(): RecordedRepo {
-  const p = path.resolve(__dirname, '..', '..', 'fixtures', 'recorded-repo.json');
+  return loadRecordedRepoFrom('recorded-repo.json');
+}
+
+export function loadRecordedRepoFrom(file: string): RecordedRepo {
+  const p = path.resolve(__dirname, '..', '..', 'fixtures', file);
   return JSON.parse(readFileSync(p, 'utf8')) as RecordedRepo;
 }
 
 export function loadIdeaF4(): string {
-  const p = path.resolve(__dirname, '..', '..', 'fixtures', 'idea-f4.txt');
+  return loadFixtureText('idea-f4.txt');
+}
+
+export function loadFixtureText(file: string): string {
+  const p = path.resolve(__dirname, '..', '..', 'fixtures', file);
   return readFileSync(p, 'utf8');
 }
 

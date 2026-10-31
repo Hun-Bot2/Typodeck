@@ -145,10 +145,30 @@ function isDoc(path: string): boolean {
     lower.endsWith('.mdx') ||
     lower.endsWith('.rst') ||
     lower.endsWith('.txt') ||
-    lower === 'license' ||
     lower === 'changelog' ||
     lower === 'history.rdoc'
   );
+}
+
+/**
+ * Files with no narrative value, skipped before blob fetch: license/
+ * attribution texts anywhere, GitHub meta-templates (issue/PR forms),
+ * and contributor-process docs (contributing guides, conduct codes,
+ * support/security/sponsor pages).
+ */
+function isSkipped(path: string): boolean {
+  const lower = path.toLowerCase();
+  const base = lower.split('/').pop() ?? '';
+  if (/^(license|licence|copying|notice|patents)(\..*)?$/.test(base)) return true;
+  if (
+    /^(contributing|code_of_conduct|code-of-conduct|support|security|sponsors|funding|authors|maintainers)(\..*)?$/.test(
+      base,
+    )
+  ) {
+    return true;
+  }
+  if (lower.includes('.github/') && lower.includes('template')) return true;
+  return false;
 }
 
 const CODE_EXTENSIONS = new Set([
@@ -233,9 +253,10 @@ export async function fetchRepo(
     ) as Array<{ path: string; type: string; size?: number }>;
 
     // 3. Prioritize: README first, then docs, then selective code sample.
-    const readmes = blobs.filter((e) => isReadme(e.path));
-    const docs = blobs.filter((e) => !isReadme(e.path) && isDoc(e.path) && (e.size ?? 0) <= 60 * 1024);
-    const code = blobs.filter((e) => isCode(e.path) && (e.size ?? 0) <= 40 * 1024);
+    const kept = blobs.filter((e) => !isSkipped(e.path));
+    const readmes = kept.filter((e) => isReadme(e.path));
+    const docs = kept.filter((e) => !isReadme(e.path) && isDoc(e.path) && (e.size ?? 0) <= 60 * 1024);
+    const code = kept.filter((e) => isCode(e.path) && (e.size ?? 0) <= 40 * 1024);
     docs.sort((a, b) => a.path.localeCompare(b.path));
     // Prefer shallow, small, non-vendored code files.
     const vendored = (p: string): boolean =>

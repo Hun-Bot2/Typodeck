@@ -9,12 +9,42 @@ type Stage = (typeof STAGES)[number];
 type StageState = 'pending' | 'active' | 'done';
 type Phase = 'idle' | 'generating' | 'done' | 'error';
 
-const SYSTEMS = [
-  { id: 'editorial', blurb: 'Asymmetric single column, serif titles, generous whitespace. One large idea per slide.' },
-  { id: 'swiss', blurb: 'Four-column grid, tight leading, high density. Title left, supporting text right.' },
-  { id: 'expressive', blurb: 'Centered hero composition with dramatic scale contrast on alternating ink/paper.' },
-] as const;
-type SystemId = (typeof SYSTEMS)[number]['id'];
+type SystemId = string;
+
+interface CatalogPreset {
+  id: string;
+  version: string;
+  name: { en: string; ko: string };
+  audience: { en: string; ko: string };
+  goal: { en: string; ko: string };
+  steps: Array<{ id: string; dim: string; label: { en: string; ko: string }; optional: boolean }>;
+  langNotes: { en: string; ko: string };
+}
+
+interface CatalogSystem {
+  id: string;
+  version: string;
+  status: 'production' | 'experimental' | 'deprecated';
+  philosophy: string;
+  supports: string[];
+  limitations: string[];
+  renderable: boolean;
+  fonts: { heading: string; body: string } | null;
+}
+
+interface Catalog {
+  purposes: CatalogPreset[];
+  systems: CatalogSystem[];
+}
+
+const LEGACY_PURPOSES = [
+  { id: 'hackathon', label: 'Hackathon (legacy)' },
+  { id: 'competition', label: 'Competition (legacy)' },
+  { id: 'showcase', label: 'Showcase (legacy)' },
+];
+
+/** Fallback preset ids when /api/catalog is unreachable; core still validates. */
+const FALLBACK_PRESETS = ['P01', 'P02', 'P03', 'P04', 'P05', 'P06', 'P07', 'P08', 'P09', 'P10'];
 
 interface ClaimCounts {
   total: number;
@@ -34,6 +64,7 @@ interface GenerateResult {
   narrative: Narrative;
   decks: Record<SystemId, Deck>;
   provenance: Provenance;
+  slideMarkdown?: string;
 }
 
 interface TypedError {
@@ -48,7 +79,7 @@ const STAGE_LABEL: Record<StageState, string> = {
 };
 
 async function postGenerate(
-  body: { mode: string; input: string; purpose: string; lang: string },
+  body: { mode: string; input: string; purpose: string; lang: string; durationMin?: number },
   onStage: (stage: Stage) => void,
 ): Promise<GenerateResult> {
   const res = await fetch('/api/generate', {
@@ -103,8 +134,11 @@ async function postGenerate(
 export default function StudioPage() {
   const [idea, setIdea] = useState('');
   const [repo, setRepo] = useState('');
-  const [purpose, setPurpose] = useState('hackathon');
+  const [purpose, setPurpose] = useState('P01');
   const [lang, setLang] = useState('en');
+  const [duration, setDuration] = useState('auto');
+  const [customTitle, setCustomTitle] = useState('');
+  const [catalog, setCatalog] = useState<Catalog | null>(null);
   const [phase, setPhase] = useState<Phase>('idle');
   const [stages, setStages] = useState<Record<Stage, StageState>>({
     ingest: 'pending',
@@ -119,9 +153,29 @@ export default function StudioPage() {
   const [elapsed, setElapsed] = useState(0);
   const [exportState, setExportState] = useState<'idle' | 'working' | 'done' | 'error'>('idle');
   const [exportError, setExportError] = useState<TypedError | null>(null);
+  const [markdown, setMarkdown] = useState('');
+  const [markdownState, setMarkdownState] = useState<'idle' | 'working' | 'done' | 'error'>('idle');
+  const [markdownError, setMarkdownError] = useState<TypedError | null>(null);
+  const [edited, setEdited] = useState(false);
+  const [compare, setCompare] = useState<SystemId | ''>('');
   const viewerRef = useRef<HTMLDivElement>(null);
 
   const repoMode = repo.trim() !== '';
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/catalog')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (!cancelled && data) setCatalog(data as Catalog);
+      })
+      .catch(() => {
+        /* catalog is progressive enhancement; the Studio works without it */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (phase !== 'generating') return;
@@ -152,21 +206,64 @@ export default function StudioPage() {
     setResult(null);
     setExportState('idle');
     setExportError(null);
+    setMarkdown('');
+    setMarkdownState('idle');
+    setMarkdownError(null);
+    setEdited(false);
     setElapsed(0);
     setStages({ ingest: 'pending', evidence: 'pending', narrative: 'pending', layout: 'pending' });
     try {
+      const titled = customTitle.trim() !== '' ? `${purpose}: ${customTitle.trim()}` : purpose;
       const payload = await postGenerate(
-        { mode: repoMode ? 'repo' : 'idea', input: repoMode ? repo.trim() : idea, purpose, lang },
+        {
+          mode: repoMode ? 'repo' : 'idea',
+          input: repoMode ? repo.trim() : idea,
+          purpose: titled,
+          lang,
+          durationMin: duration === 'auto' ? undefined : Number(duration),
+        },
         markStage,
       );
       setResult(payload);
+      setMarkdown(payload.slideMarkdown ?? '');
       setStages({ ingest: 'done', evidence: 'done', narrative: 'done', layout: 'done' });
-      setSelected('editorial');
+      const firstRenderable = catalog?.systems.find((s) => s.renderable)?.id ?? 'editorial';
+      setSelected(firstRenderable);
+      setCompare('');
       setSlideIndex(0);
       setPhase('done');
     } catch (err) {
       setError(err as TypedError);
       setPhase('error');
+    }
+  };
+
+  const applyMarkdown = async (): Promise<void> => {
+    setMarkdownState('working');
+    setMarkdownError(null);
+    try {
+      const res = await fetch('/api/markdown', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ markdown }),
+      });
+      const data = (await res.json().catch(() => null)) as (GenerateResult & { error?: TypedError }) | null;
+      if (!res.ok || !data || data.error) {
+        throw {
+          code: data?.error?.code ?? `http-${res.status}`,
+          message: data?.error?.message ?? res.statusText,
+        } satisfies TypedError;
+      }
+      setResult(data);
+      setMarkdown(data.slideMarkdown ?? markdown);
+      setEdited(true);
+      setSlideIndex(0);
+      setExportState('idle');
+      setExportError(null);
+      setMarkdownState('done');
+    } catch (err) {
+      setMarkdownError(err as TypedError);
+      setMarkdownState('error');
     }
   };
 
@@ -211,6 +308,15 @@ export default function StudioPage() {
   const slideCount = deck?.slides.length ?? 0;
   const current = deck && slideCount > 0 ? deck.slides[Math.min(slideIndex, slideCount - 1)] : null;
   const captions = current?.blocks.filter((b) => b.role === 'caption') ?? [];
+  const compareDeck = compare !== '' ? result?.decks[compare] : undefined;
+  const compareCurrent =
+    compareDeck && compareDeck.slides.length > 0
+      ? compareDeck.slides[Math.min(slideIndex, compareDeck.slides.length - 1)]
+      : null;
+  const systems = catalog?.systems ?? [];
+  const selectedPreset = catalog?.purposes.find((p) => p.id === purpose) ?? null;
+  const fontsFor = (id: string): { heading: string; body: string } | undefined =>
+    systems.find((s) => s.id === id)?.fonts ?? undefined;
 
   const prev = (): void => setSlideIndex((i) => (slideCount === 0 ? 0 : (i + slideCount - 1) % slideCount));
   const next = (): void => setSlideIndex((i) => (slideCount === 0 ? 0 : (i + 1) % slideCount));
@@ -261,9 +367,26 @@ export default function StudioPage() {
           <div className="field">
             <label htmlFor="purpose">Purpose</label>
             <select id="purpose" value={purpose} onChange={(e) => setPurpose(e.target.value)} disabled={phase === 'generating'}>
-              <option value="hackathon">Hackathon</option>
-              <option value="competition">Competition</option>
-              <option value="showcase">Showcase</option>
+              <optgroup label="Purpose presets">
+                {catalog
+                  ? catalog.purposes.map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.id} — {lang === 'ko' ? p.name.ko : p.name.en}
+                      </option>
+                    ))
+                  : FALLBACK_PRESETS.map((id) => (
+                      <option key={id} value={id}>
+                        {id}
+                      </option>
+                    ))}
+              </optgroup>
+              <optgroup label="Legacy">
+                {LEGACY_PURPOSES.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.label}
+                  </option>
+                ))}
+              </optgroup>
             </select>
           </div>
           <div className="field">
@@ -274,6 +397,49 @@ export default function StudioPage() {
             </select>
           </div>
         </div>
+
+        <div className="form-row">
+          <div className="field">
+            <label htmlFor="duration">Duration</label>
+            <select id="duration" value={duration} onChange={(e) => setDuration(e.target.value)} disabled={phase === 'generating'}>
+              <option value="auto">Auto (standard)</option>
+              <option value="5">Short · ~5 min</option>
+              <option value="15">Standard · ~15 min</option>
+              <option value="30">Extended · ~30 min</option>
+            </select>
+          </div>
+          <div className="field">
+            <label htmlFor="customTitle">Custom title (optional)</label>
+            <input
+              id="customTitle"
+              type="text"
+              value={customTitle}
+              onChange={(e) => setCustomTitle(e.target.value)}
+              placeholder="Deck title (default: strongest claim)"
+              disabled={phase === 'generating'}
+              autoComplete="off"
+            />
+          </div>
+        </div>
+
+        {selectedPreset ? (
+          <div className="preset-card">
+            <p className="preset-id">
+              {selectedPreset.id} · v{selectedPreset.version}
+            </p>
+            <p className="preset-goal">{lang === 'ko' ? selectedPreset.goal.ko : selectedPreset.goal.en}</p>
+            <p className="hint">
+              Audience: {lang === 'ko' ? selectedPreset.audience.ko : selectedPreset.audience.en}
+            </p>
+            <p className="arc-preview" aria-label="Narrative arc preview">
+              {selectedPreset.steps
+                .map((s) => (lang === 'ko' ? s.label.ko : s.label.en))
+                .join(' → ')}
+            </p>
+          </div>
+        ) : (
+          <p className="hint">Legacy purpose: frozen pre-preset narrative behavior, unchanged.</p>
+        )}
 
         <p className="mode-line" aria-live="polite">
           Mode: <strong>{repoMode ? 'repository' : 'idea'}</strong>
@@ -363,44 +529,93 @@ export default function StudioPage() {
 
       {result ? (
         <>
-          <section className="studio-block" aria-labelledby="designs-title">
+          <section className="studio-block" aria-labelledby="narrative-title">
             <p className="block-index">03</p>
+            <h2 className="block-title" id="narrative-title">
+              Narrative · Slide Markdown {edited ? <span className="badge">edited</span> : null}
+            </h2>
+            <p className="block-lede">
+              The planned narrative as editable Slide Markdown. Change wording, reorder emphasis, or
+              delete slides — then re-render every system from the edited text.
+            </p>
+            <div className="field">
+              <label htmlFor="markdown">Slide Markdown (v1)</label>
+              <textarea
+                id="markdown"
+                className="markdown-editor"
+                value={markdown}
+                onChange={(e) => {
+                  setMarkdown(e.target.value);
+                  setMarkdownState('idle');
+                  setMarkdownError(null);
+                }}
+                spellCheck={false}
+              />
+            </div>
+            {markdownState === 'error' && markdownError ? (
+              <div className="error-box" role="alert">
+                <p className="error-code">Markdown rejected · {markdownError.code}</p>
+                <p>{markdownError.message}</p>
+              </div>
+            ) : null}
+            <div className="actions">
+              <button
+                type="button"
+                className="btn-primary"
+                onClick={applyMarkdown}
+                disabled={markdownState === 'working' || markdown.trim() === ''}
+              >
+                {markdownState === 'working' ? 'Re-rendering…' : 'Apply edits & re-render'}
+              </button>
+              {markdownState === 'done' ? <span className="export-status">Previews updated.</span> : null}
+            </div>
+          </section>
+
+          <section className="studio-block" aria-labelledby="designs-title">
+            <p className="block-index">04</p>
             <h2 className="block-title" id="designs-title">
               Design directions
             </h2>
             <p className="block-lede">
-              All three systems are laid out from the same narrative, so the previews are directly
+              Every system is laid out from the same narrative, so the previews are directly
               comparable. Select one to inspect and export.
             </p>
-            {SYSTEMS.map((sys) => {
-              const d = result.decks[sys.id];
-              const isSelected = selected === sys.id;
+            {Object.keys(result.decks).map((id) => {
+              const d = result.decks[id];
+              const meta = systems.find((s) => s.id === id);
+              const isSelected = selected === id;
               return (
-                <div key={sys.id} className={`system-section${isSelected ? ' is-selected' : ''}`}>
+                <div key={id} className={`system-section${isSelected ? ' is-selected' : ''}`}>
                   <div className="system-head">
                     <h3 className="system-name">
-                      {sys.id.charAt(0).toUpperCase() + sys.id.slice(1)} · {d.slides.length} slides
+                      {id.charAt(0).toUpperCase() + id.slice(1)} · {d.slides.length} slides
                     </h3>
+                    <span className="badge">{meta?.status ?? 'production'} · v{meta?.version ?? '1.0.0'}</span>
                     <button
                       type="button"
                       className="btn-secondary"
                       aria-pressed={isSelected}
                       onClick={() => {
-                        setSelected(sys.id);
+                        setSelected(id);
                         setSlideIndex(0);
                         setExportState('idle');
                         setExportError(null);
                       }}
                     >
-                      {isSelected ? 'Selected' : `Select ${sys.id}`}
+                      {isSelected ? 'Selected' : `Select ${id}`}
                     </button>
                     {isSelected ? <span className="selected-note">selected for export</span> : null}
                   </div>
-                  <p className="system-desc">{sys.blurb}</p>
-                  <div className="filmstrip" role="list" aria-label={`${sys.id} slides`}>
+                  <p className="system-desc">{meta?.philosophy ?? ''}</p>
+                  <div className="filmstrip" role="list" aria-label={`${id} slides`}>
                     {d.slides.map((s, i) => (
                       <figure className="thumb" key={s.id} role="listitem">
-                        <SlideView slide={s} system={sys.id} label={`${sys.id} slide ${i + 1}: ${s.thesis}`} />
+                        <SlideView
+                          slide={s}
+                          system={id}
+                          fonts={fontsFor(id)}
+                          label={`${id} slide ${i + 1}: ${s.thesis}`}
+                        />
                         <figcaption>
                           {i + 1}. {s.thesis}
                         </figcaption>
@@ -410,39 +625,81 @@ export default function StudioPage() {
                 </div>
               );
             })}
+            {systems
+              .filter((s) => !s.renderable)
+              .map((s) => (
+                <div key={s.id} className="system-section is-muted">
+                  <div className="system-head">
+                    <h3 className="system-name">{s.id}</h3>
+                    <span className="badge">{s.status} · not yet renderable</span>
+                  </div>
+                  <p className="system-desc">{s.philosophy}</p>
+                </div>
+              ))}
+            <p className="hint">
+              Experimental candidates arrive through the research-import pipeline after human review;
+              nothing here is auto-promoted.
+            </p>
           </section>
 
           <section className="studio-block" aria-labelledby="viewer-title">
-            <p className="block-index">04</p>
+            <p className="block-index">05</p>
             <h2 className="block-title" id="viewer-title">
               Slide viewer — {selected}
+              {compare !== '' ? ` vs ${compare}` : ''}
             </h2>
             <p className="block-lede">
               {result.narrative.title} · {slideCount} slides · {result.narrative.lang}
             </p>
+            <div className="field compare-field">
+              <label htmlFor="compare">Side-by-side comparison</label>
+              <select id="compare" value={compare} onChange={(e) => setCompare(e.target.value)}>
+                <option value="">Off</option>
+                {Object.keys(result.decks)
+                  .filter((id) => id !== selected)
+                  .map((id) => (
+                    <option key={id} value={id}>
+                      {selected} vs {id}
+                    </option>
+                  ))}
+              </select>
+            </div>
             {current ? (
               <>
-                <div
-                  className="viewer-frame"
-                  ref={viewerRef}
-                  tabIndex={0}
-                  role="group"
-                  aria-label={`Slide viewer, ${selected}. Use left and right arrow keys to move between slides.`}
-                  onKeyDown={(e) => {
-                    if (e.key === 'ArrowLeft') {
-                      e.preventDefault();
-                      prev();
-                    } else if (e.key === 'ArrowRight') {
-                      e.preventDefault();
-                      next();
-                    }
-                  }}
-                >
-                  <SlideView
-                    slide={current}
-                    system={selected}
-                    label={`${selected} slide ${Math.min(slideIndex, slideCount - 1) + 1} of ${slideCount}: ${current.thesis}`}
-                  />
+                <div className={compare !== '' && compareCurrent ? 'compare-grid' : undefined}>
+                  <div
+                    className="viewer-frame"
+                    ref={viewerRef}
+                    tabIndex={0}
+                    role="group"
+                    aria-label={`Slide viewer, ${selected}. Use left and right arrow keys to move between slides.`}
+                    onKeyDown={(e) => {
+                      if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        prev();
+                      } else if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        next();
+                      }
+                    }}
+                  >
+                    <SlideView
+                      slide={current}
+                      system={selected}
+                      fonts={fontsFor(selected)}
+                      label={`${selected} slide ${Math.min(slideIndex, slideCount - 1) + 1} of ${slideCount}: ${current.thesis}`}
+                    />
+                  </div>
+                  {compare !== '' && compareCurrent ? (
+                    <div className="viewer-frame" role="group" aria-label={`Comparison viewer, ${compare}`}>
+                      <SlideView
+                        slide={compareCurrent}
+                        system={compare}
+                        fonts={fontsFor(compare)}
+                        label={`${compare} slide ${Math.min(slideIndex, slideCount - 1) + 1}: ${compareCurrent.thesis}`}
+                      />
+                    </div>
+                  ) : null}
                 </div>
                 <div className="viewer-controls">
                   <button type="button" className="btn-secondary" onClick={prev} aria-label="Previous slide">

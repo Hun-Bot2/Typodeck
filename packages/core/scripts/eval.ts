@@ -6,11 +6,14 @@
 //     untouched (inline/recorded idea text).
 //
 //   node dist/scripts/eval.js run [--lang ko|en|all] [--direction <id>|all]
-//       [--fixture F1] [--seed 42]
+//       [--fixture F1] [--seed 42] [--no-cache]
 //     Full matrix (default 4 fixtures x 2 langs x 3 systems = 24 runs).
 //     Per run: planDeck (live GitHub for repos, recorded text for F4),
 //     export PPTX bytes, structural-validate, compute metrics. Writes one
 //     JSON + one .pptx per run under evals/reports/.
+//     Repeat fixture fetches are served from an in-process cache (first
+//     touch always live; per-run fetchCached flags warm runs; --no-cache
+//     forces every run cold).
 //     Exit 0 iff every attempted run succeeded end-to-end.
 //
 //   node dist/scripts/eval.js report
@@ -48,6 +51,8 @@ import * as path from 'node:path';
 import type { ClaimRef } from '../src/evidence';
 import { exportToPptxBuffer } from '../src/export';
 import { planDeck, type PlanDeckInput } from '../src/narrative';
+import { evaluateNarrative } from '../src/quality';
+import { CAPTION_STATUS_TAGS } from '../src/semantics';
 import type { Deck } from '../src/schema';
 import { SYSTEM_IDS, type SystemId } from '../src/systems';
 import { validatePptxBytes } from '../src/validate';
@@ -195,22 +200,47 @@ export interface ParsedRef {
   lines?: [number, number];
 }
 
+const CAPTION_TAGS = CAPTION_STATUS_TAGS;
+
 /**
- * Parse "Source:"/"출처:" caption segments into refs. Non-source captions
- * (proposal/unverified bare labels) yield []. Trailing honesty tags
- * ("· unverified ...") are stripped before parsing.
+ * Parse caption refs in both formats. Legacy "Source:"/"출처:" captions keep
+ * their original parsing; compact v2 captions ("verified · src/pack.js:2",
+ * "unverified · illustrative · idea.txt:5") parse tag segments out and read
+ * every remaining path-like segment as a ref. Bare labels yield [].
  */
 export function parseCaptionRefs(caption: string): ParsedRef[] {
   const m = caption.match(/^(?:Source|출처):\s*(.+)$/s);
-  if (!m) return [];
+  if (m) {
+    const out: ParsedRef[] = [];
+    for (const seg of m[1].split(';')) {
+      const head = seg.split('·')[0].trim();
+      if (head === '') continue;
+      const lm = head.match(/^(.*?)(?::(\d+)(?:–(\d+))?)?$/);
+      if (!lm || lm[1].trim() === '') continue;
+      const p: ParsedRef = { path: lm[1].trim() };
+      if (lm[2] !== undefined) {
+        const a = Number(lm[2]);
+        const b = lm[3] !== undefined ? Number(lm[3]) : a;
+        p.lines = [a, b];
+      }
+      out.push(p);
+    }
+    return out;
+  }
   const out: ParsedRef[] = [];
-  for (const seg of m[1].split(';')) {
-    const head = seg.split('·')[0].trim();
-    if (head === '') continue;
+  for (const seg of caption.split(/[·;]/)) {
+    const head = seg.split('—')[0].trim();
+    if (head === '' || CAPTION_TAGS.has(head.toLowerCase())) continue;
     const lm = head.match(/^(.*?)(?::(\d+)(?:–(\d+))?)?$/);
     if (!lm || lm[1].trim() === '') continue;
-    const p: ParsedRef = { path: lm[1].trim() };
-    if (lm[2] !== undefined) {
+    const path = lm[1].trim();
+    const dotted = /\.[a-z0-9]+$/i.test(path);
+    const hasLines = lm[2] !== undefined;
+    // Extensionless files (LICENSE) and spaced dotted paths ("My Doc.md:3")
+    // are refs; bare prose ("a suggested direction") is not.
+    if (/\s/.test(path) && !(dotted && hasLines)) continue;
+    const p: ParsedRef = { path };
+    if (hasLines) {
       const a = Number(lm[2]);
       const b = lm[3] !== undefined ? Number(lm[3]) : a;
       p.lines = [a, b];
@@ -218,6 +248,38 @@ export function parseCaptionRefs(caption: string): ParsedRef[] {
     out.push(p);
   }
   return out;
+}
+
+/** In-process GET cache: one live fetch per URL, clones served after. */
+export interface FetchCache {
+  impl: typeof fetch;
+  /** Hits since the last call (resets the counter). */
+  takeHits(): number;
+}
+
+export function createFetchCache(inner: typeof fetch = fetch): FetchCache {
+  const cache = new Map<string, Response>();
+  let hits = 0;
+  const impl = (async (url: Parameters<typeof fetch>[0], init?: Parameters<typeof fetch>[1]) => {
+    const key = `${String(url)}`;
+    const hit = cache.get(key);
+    if (hit) {
+      hits += 1;
+      return hit.clone();
+    }
+    const res = await inner(url, init);
+    // Cache successes only: a transient 403/429 must never poison later runs.
+    if (res.status === 200) cache.set(key, res.clone());
+    return res;
+  }) as typeof fetch;
+  return {
+    impl,
+    takeHits: () => {
+      const h = hits;
+      hits = 0;
+      return h;
+    },
+  };
 }
 
 /** Valid when the path was ingested and the line range is in bounds. */
@@ -268,9 +330,36 @@ export interface RunMetrics {
   contentSlideEvidenceCoverage: number;
 }
 
+export interface RunQuality {
+  pass: boolean;
+  overall: number;
+  meaningfulness: number;
+  coherence: number;
+  fidelity: number;
+  infoValue: number;
+  errors: number;
+  warnings: number;
+  coverage: string[];
+  codes: string[];
+}
+
+const EMPTY_QUALITY: RunQuality = {
+  pass: false,
+  overall: 0,
+  meaningfulness: 0,
+  coherence: 0,
+  fidelity: 0,
+  infoValue: 0,
+  errors: 0,
+  warnings: 0,
+  coverage: [],
+  codes: [],
+};
+
 export interface RunReport {
   fixture: string;
   fixtureType: string;
+  quality: RunQuality;
   pinnedSha: string | null;
   observedSha: string | null;
   branch: string | null;
@@ -288,6 +377,8 @@ export interface RunReport {
   warnings: string[];
   latencyMs: number;
   exportMs: number;
+  /** True when this run served its repo fetch from the in-process cache. */
+  fetchCached: boolean;
   success: boolean;
   error: string | null;
   timestamp: string;
@@ -347,11 +438,13 @@ export async function runOne(
   lang: Lang,
   system: SystemId,
   seed: number,
+  fetchCache?: FetchCache,
 ): Promise<{ report: RunReport; pptx: Buffer | null }> {
   const timestamp = new Date().toISOString();
   const base: Omit<RunReport, 'metrics'> = {
     fixture: fixture.id,
     fixtureType: fixture.type,
+    quality: { ...EMPTY_QUALITY },
     pinnedSha: isRepoFixture(fixture) ? fixture.commit_sha : null,
     observedSha: null,
     branch: isRepoFixture(fixture) ? fixture.branch : null,
@@ -373,6 +466,7 @@ export async function runOne(
     warnings: [],
     latencyMs: 0,
     exportMs: 0,
+    fetchCached: false,
     success: false,
     error: null,
     timestamp,
@@ -415,8 +509,16 @@ export async function runOne(
     const branch = isRepoFixture(fixture) ? fixture.branch : undefined;
 
     const t0 = Date.now();
-    const result = await planDeck(input, { system, lang, seed, ...(branch ? { branch } : {}) });
+    const result = await planDeck(input, {
+      system,
+      lang,
+      seed,
+      ...(branch ? { branch } : {}),
+      ...(fetchCache ? { fetchImpl: fetchCache.impl as typeof fetch } : {}),
+    });
     const latencyMs = Date.now() - t0;
+    // Eval runs planDeck without a purpose, so the general arc applies here too.
+    const gate = evaluateNarrative(result.narrative, result.claims, { audience: 'general' });
 
     const t1 = Date.now();
     const { buffer } = await exportToPptxBuffer(result.deck);
@@ -469,6 +571,18 @@ export async function runOne(
     return {
       report: {
         ...base,
+        quality: {
+          pass: gate.pass,
+          overall: gate.scores.overall,
+          meaningfulness: gate.scores.meaningfulness,
+          coherence: gate.scores.coherence,
+          fidelity: gate.scores.fidelity,
+          infoValue: gate.scores.infoValue,
+          errors: gate.issues.filter((i) => i.severity === 'error').length,
+          warnings: gate.issues.filter((i) => i.severity === 'warning').length,
+          coverage: [...gate.coverage],
+          codes: [...new Set(gate.issues.map((i) => i.code))].sort(),
+        },
         observedSha: result.ingested.kind === 'repo' ? result.ingested.sha : null,
         provider: result.provenance.provider,
         generatedBy: result.provenance.generatedBy,
@@ -501,6 +615,7 @@ export async function runOne(
         warnings: [...result.provenance.warnings],
         latencyMs,
         exportMs,
+        fetchCached: (fetchCache?.takeHits() ?? 0) > 0,
         success,
         error: success ? null : `end-to-end gate failed (slides=${slideCount}, validatorOk=${e.validatorOk})`,
       },
@@ -521,10 +636,17 @@ function flagValue(args: string[], flag: string): string | undefined {
   return args[i + 1];
 }
 
-function parseRunArgs(args: string[]): { langs: Lang[]; systems: SystemId[]; fixtureId?: string; seed: number } {
+function parseRunArgs(args: string[]): {
+  langs: Lang[];
+  systems: SystemId[];
+  fixtureId?: string;
+  seed: number;
+  noCache: boolean;
+} {
   const langArg = flagValue(args, '--lang') ?? 'all';
   const dirArg = flagValue(args, '--direction') ?? 'all';
   const fixtureId = flagValue(args, '--fixture');
+  const noCache = args.includes('--no-cache');
   const seed = Number(flagValue(args, '--seed') ?? String(DEFAULT_SEED));
   if (!Number.isInteger(seed)) throw new Error(`--seed must be an integer, got "${flagValue(args, '--seed')}"`);
   const langs: Lang[] =
@@ -539,15 +661,19 @@ function parseRunArgs(args: string[]): { langs: Lang[]; systems: SystemId[]; fix
   if (systems.length === 0) {
     throw new Error(`--direction must be ${SYSTEM_IDS.join('|')}|all, got "${dirArg}"`);
   }
-  return { langs, systems, fixtureId, seed };
+  return { langs, systems, fixtureId, seed, noCache };
 }
 
 async function cmdRun(args: string[]): Promise<number> {
   const root = repoRoot();
   const { doc } = await loadFixtures(root);
-  const { langs, systems, fixtureId, seed } = parseRunArgs(args);
+  const { langs, systems, fixtureId, seed, noCache } = parseRunArgs(args);
   const fixtures = fixtureId ? doc.fixtures.filter((f) => f.id === fixtureId) : doc.fixtures;
   if (fixtures.length === 0) throw new Error(`no fixture matches "${fixtureId}"`);
+  // One live fetch per fixture URL per process; repeats serve clones.
+  // S1 still measures live-fetch success (first touch is always live);
+  // per-run fetchCached flags which runs measured warm latency.
+  const fetchCache = noCache ? undefined : createFetchCache();
 
   const reportsDir = path.join(root, 'evals', 'reports');
   await fs.mkdir(reportsDir, { recursive: true });
@@ -561,7 +687,7 @@ async function cmdRun(args: string[]): Promise<number> {
         attempted += 1;
         const name = `${fixture.id}-${lang}-${system}`;
         process.stdout.write(`[${attempted}] ${name} ... `);
-        const { report, pptx } = await runOne(fixture, lang, system, seed);
+        const { report, pptx } = await runOne(fixture, lang, system, seed, fetchCache);
         await fs.writeFile(path.join(reportsDir, `${name}.json`), `${JSON.stringify(report, null, 2)}\n`);
         if (pptx) await fs.writeFile(path.join(reportsDir, `${name}.pptx`), pptx);
         if (report.success) succeeded += 1;
@@ -570,7 +696,8 @@ async function cmdRun(args: string[]): Promise<number> {
           `${report.success ? 'OK' : 'FAIL'} slides=${report.slideCount} ` +
             `forbid=${m.forbiddenCount} edit=${m.editability.toFixed(3)} over=${m.overflowCount} ` +
             `cov=${m.evidenceCoverage.toFixed(3)} unsup=${m.unsupportedClaims} ` +
-            `lat=${report.latencyMs}ms prov=${report.provider}` +
+            `qual=${report.quality.overall}${report.quality.pass ? '' : '!'} ` +
+            `lat=${report.latencyMs}ms${report.fetchCached ? '~' : ''} prov=${report.provider}` +
             (report.error ? ` error=${report.error}` : ''),
         );
       }
@@ -603,10 +730,18 @@ interface PairVerdict {
   pass: boolean;
 }
 
+export interface NarrativeQualityAggregate {
+  runs: number;
+  passCount: number;
+  meanOverall: number;
+  minOverall: number;
+}
+
 interface EvalSummary {
   generatedAt: string;
   seed: number | null;
   provider: string | null;
+  narrativeQuality: NarrativeQualityAggregate;
   runs: { file: string; fixture: string; lang: string; direction: string; success: boolean }[];
   p95LatencyMs: number;
   maxLatencyMs: number;
@@ -764,6 +899,26 @@ export async function buildSummary(reportsDir: string): Promise<EvalSummary> {
   notes.push(
     `idea mode: max fabricated refs ${maxFab} (target 0), max unlabeled captions ${maxUnlabeled} (target 0), over ${ideaRuns.length} run(s)`,
   );
+  // Narrative quality is report-only (advisory gate, not an S-criterion).
+  const withQuality = ok.filter((r) => r.report.quality && typeof r.report.quality.overall === 'number');
+  const passCount = withQuality.filter((r) => r.report.quality.pass).length;
+  const overalls = withQuality.map((r) => r.report.quality.overall);
+  const narrativeQuality: NarrativeQualityAggregate = {
+    runs: withQuality.length,
+    passCount,
+    meanOverall: overalls.length === 0 ? 0 : overalls.reduce((a, b) => a + b, 0) / overalls.length,
+    minOverall: overalls.length === 0 ? 0 : Math.min(...overalls),
+  };
+  notes.push(
+    `narrative quality (report-only): ${passCount}/${withQuality.length} pass, ` +
+      `mean overall ${narrativeQuality.meanOverall.toFixed(1)}, min ${narrativeQuality.minOverall}`,
+  );
+  const cached = ok.filter((r) => r.report.fetchCached).length;
+  if (cached > 0) {
+    notes.push(
+      `fetch cache: ${cached}/${ok.length} runs served warm (S7 mixes cold/warm latency; --no-cache for cold-only)`,
+    );
+  }
   const shaDrift = repoRuns.filter(
     (r) => r.report.pinnedSha && r.report.observedSha && r.report.pinnedSha !== r.report.observedSha,
   );
@@ -791,6 +946,7 @@ export async function buildSummary(reportsDir: string): Promise<EvalSummary> {
     })),
     p95LatencyMs: p95,
     maxLatencyMs: maxLat,
+    narrativeQuality,
     diversityPairs,
     s1,
     s2,

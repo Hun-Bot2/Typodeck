@@ -1,6 +1,23 @@
 {
   "fixture": "F2",
   "fixtureType": "code-heavy repo",
+  "quality": {
+    "pass": true,
+    "overall": 98,
+    "meaningfulness": 90,
+    "coherence": 100,
+    "fidelity": 100,
+    "infoValue": 100,
+    "errors": 0,
+    "warnings": 1,
+    "coverage": [
+      "solution",
+      "capabilities"
+    ],
+    "codes": [
+      "missing-dimension-coverage"
+    ]
+  },
   "pinnedSha": "d10fc03ce9d44a0a34bb913df99dded4a0bd5287",
   "observedSha": "d10fc03ce9d44a0a34bb913df99dded4a0bd5287",
   "branch": "master",
@@ -9,13 +26,13 @@
   "provider": "fallback",
   "generatedBy": "fallback",
   "seed": 42,
-  "slideCount": 12,
-  "textBoxCount": 46,
-  "pptxBytes": 136020,
+  "slideCount": 10,
+  "textBoxCount": 38,
+  "pptxBytes": 119755,
   "claimCounts": {
-    "total": 39,
-    "verified": 29,
-    "suggestion": 10,
+    "total": 24,
+    "verified": 5,
+    "suggestion": 19,
     "ungrounded": 0
   },
   "features": {
@@ -29,11 +46,9 @@
       4,
       4,
       4,
-      4,
-      4,
       3
     ],
-    "meanBlocksPerSlide": 3.8333333333333335,
+    "meanBlocksPerSlide": 3.8,
     "medianHeadlineSize": 46,
     "alignmentMix": {
       "left": 1,
@@ -42,31 +57,33 @@
     }
   },
   "warnings": [
+    "quality warning [missing-dimension-coverage]: only 2 narrative dimension(s) covered: solution, capabilities",
     "built with the deterministic fallback (not model inference)"
   ],
-  "latencyMs": 125,
-  "exportMs": 23,
+  "latencyMs": 6,
+  "exportMs": 4,
+  "fetchCached": true,
   "success": true,
   "error": null,
-  "timestamp": "2026-10-30T03:23:11.575Z",
+  "timestamp": "2026-10-30T06:39:37.402Z",
   "metrics": {
     "forbiddenCount": 0,
     "otherErrorCount": 0,
     "validatorOk": true,
     "validatorErrors": [],
-    "editableChars": 1740,
-    "totalChars": 1740,
+    "editableChars": 1610,
+    "totalChars": 1610,
     "editability": 1,
     "overflowCount": 0,
-    "factualClaims": 39,
-    "factualWithValidRef": 39,
+    "factualClaims": 24,
+    "factualWithValidRef": 24,
     "evidenceCoverage": 1,
     "unsupportedClaims": 0,
     "fabricatedRefs": 0,
     "unlabeledCaptions": 0,
-    "slidesWithValidRef": 10,
-    "slideEvidenceCoverage": 0.8333333333333334,
-    "contentSlidesWithValidRef": 10,
+    "slidesWithValidRef": 8,
+    "slideEvidenceCoverage": 0.8,
+    "contentSlidesWithValidRef": 8,
     "contentSlideEvidenceCoverage": 1
   }
 }

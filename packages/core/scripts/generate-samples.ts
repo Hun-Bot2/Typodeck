@@ -1,4 +1,4 @@
-// Emits output/typodeck-<system>.pptx for all three systems from the fixed
+// Emits output/typodeck-<system>.pptx for all systems from the fixed
 // sample narrative. Run: `npm run samples` from the repo root.
 import { promises as fs } from 'node:fs';
 import * as path from 'node:path';

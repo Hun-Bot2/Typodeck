@@ -1,6 +1,23 @@
 {
   "fixture": "F3",
   "fixtureType": "repo with numbers",
+  "quality": {
+    "pass": true,
+    "overall": 98,
+    "meaningfulness": 90,
+    "coherence": 100,
+    "fidelity": 100,
+    "infoValue": 100,
+    "errors": 0,
+    "warnings": 1,
+    "coverage": [
+      "capabilities",
+      "differentiation"
+    ],
+    "codes": [
+      "missing-dimension-coverage"
+    ]
+  },
   "pinnedSha": "436bde0bcded312781cbe45dc2b0ef079a36d8e3",
   "observedSha": "436bde0bcded312781cbe45dc2b0ef079a36d8e3",
   "branch": "dev",
@@ -9,22 +26,20 @@
   "provider": "fallback",
   "generatedBy": "fallback",
   "seed": 42,
-  "slideCount": 12,
-  "textBoxCount": 46,
-  "pptxBytes": 136456,
+  "slideCount": 10,
+  "textBoxCount": 37,
+  "pptxBytes": 119047,
   "claimCounts": {
-    "total": 40,
-    "verified": 3,
-    "suggestion": 37,
+    "total": 60,
+    "verified": 26,
+    "suggestion": 34,
     "ungrounded": 0
   },
   "features": {
     "blocksPerSlide": [
       3,
       4,
-      4,
-      4,
-      4,
+      3,
       4,
       4,
       4,
@@ -33,7 +48,7 @@
       4,
       3
     ],
-    "meanBlocksPerSlide": 3.8333333333333335,
+    "meanBlocksPerSlide": 3.7,
     "medianHeadlineSize": 46,
     "alignmentMix": {
       "left": 1,
@@ -43,31 +58,33 @@
   },
   "warnings": [
     "file cap reached (20); remaining files skipped",
+    "quality warning [missing-dimension-coverage]: only 2 narrative dimension(s) covered: capabilities, differentiation",
     "built with the deterministic fallback (not model inference)"
   ],
-  "latencyMs": 184,
-  "exportMs": 5,
+  "latencyMs": 12,
+  "exportMs": 3,
+  "fetchCached": true,
   "success": true,
   "error": null,
-  "timestamp": "2026-10-30T03:32:14.385Z",
+  "timestamp": "2026-10-30T06:39:37.707Z",
   "metrics": {
     "forbiddenCount": 0,
     "otherErrorCount": 0,
     "validatorOk": true,
     "validatorErrors": [],
-    "editableChars": 2007,
-    "totalChars": 2007,
+    "editableChars": 1722,
+    "totalChars": 1722,
     "editability": 1,
     "overflowCount": 0,
-    "factualClaims": 40,
-    "factualWithValidRef": 40,
+    "factualClaims": 60,
+    "factualWithValidRef": 60,
     "evidenceCoverage": 1,
     "unsupportedClaims": 0,
     "fabricatedRefs": 0,
     "unlabeledCaptions": 0,
-    "slidesWithValidRef": 10,
-    "slideEvidenceCoverage": 0.8333333333333334,
-    "contentSlidesWithValidRef": 10,
+    "slidesWithValidRef": 8,
+    "slideEvidenceCoverage": 0.8,
+    "contentSlidesWithValidRef": 8,
     "contentSlideEvidenceCoverage": 1
   }
 }

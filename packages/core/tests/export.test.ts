@@ -24,8 +24,8 @@ before(async () => {
 });
 
 describe('export + structural validation', () => {
-  it('exports all three systems to non-trivial files', async () => {
-    assert.equal(outFiles.length, 3);
+  it('exports all systems to non-trivial files', async () => {
+    assert.equal(outFiles.length, SYSTEM_IDS.length);
     for (const f of outFiles) {
       const stat = await fs.stat(f);
       assert.ok(stat.size > 10_000, `${f} suspiciously small (${stat.size} bytes)`);

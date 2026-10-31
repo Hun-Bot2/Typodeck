@@ -59,6 +59,8 @@ export interface DeckMeta {
   title: string;
   lang: string;
   system: string;
+  /** Pinned visual-system version; absent on pre-registry decks (= latest). */
+  systemVersion?: string;
   seed: number;
   generatedBy: string;
 }

@@ -1,5 +1,99 @@
 # Typodeck — Implementation Log
 
+## Phase 5 — Narrative Intelligence (2026-10-30, W1)
+
+**Status: COMPLETE and validated 2026-10-30 ~06:45 UTC — suite
+182/182 green; final live matrix 24/24 OVERALL PASS (post-R4 code):
+S1 24/24, S2 144/180 (80.0%), S3/S4/S5/S6 PASS, S7 p95 204 ms / max
+624 ms (15/24 warm cache, documented), diversity 24/24, fabricated
+refs 0, narrative quality 24/24 pass (mean 99.0, min 98).**
+
+Started from the defect audit (`docs/NARRATIVE_AUDIT.md`), reproduced each
+finding against the built core before fixing.
+
+**`evidence.ts`** — boundary-safe number regex with verbatim unit capture
+(`40 percent`, `90-second`, `50 million downloads`, `20분`, `3만원`); no
+more fabricated units (`12 storage` → `12`, never `12 s`); digit prefixes
+of hashes/identifiers yield nothing. Claim caps raised 12→24/file,
+40→60 total so later paragraphs survive. License boilerplate (13 MIT/
+Apache patterns) is dropped at extraction — it once headlined a live F1
+slide. Korean counters attach directly; month names stay date fragments.
+
+**`semantics.ts` (new)** — deterministic analysis, no LLM: 8-dimension
+importance rank (problem/solution/results/differentiation/limitations/
+future/capabilities/architecture) with phrase-weighted EN+KO lexicons and
+a documented tie-break (pain must be predicated, not merely mentioned);
+5-way lifecycle status (implemented/proposed/historical/deprecated/
+unverified); hero validation rejecting versions (context-aware decimals:
+`3.2 release` out, `0.31` recall in), years, dates, hashes; ranges hero
+the target bound (`15 minutes`); Jaccard redundancy (0.55) and repeated-
+thesis (0.6) thresholds; contextless/thin/pointer detection; audience
+parsing (`hackathon`, `competition: Title`, `쇼케이스`, …) with per-
+audience argument arcs.
+
+**`narrative.ts` (rewrite of planning)** — cover (custom title or top
+problem/solution claim + hook body) → ≤2 validated-hero number slides
+(distinct metrics/dims) → one thesis per dimension in arc order with
+support bodies (never duplicated title/body) → encore passes to ~10
+slides before any proposal filler → sourced closing (restate + forward).
+Deprecated claims never headline; cover/closing quote claims with no
+caption machinery; captions compacted to status tags + refs
+(`verified · src/pack.js:2`).
+
+**`quality.ts` (new)** — Narrative Quality Gate: meaningfulness,
+coherence, fidelity, information value + overall, errors (fabricated
+metric, invalid hero, repeated/redundant, weak conclusion, identical
+title/body, deprecated-as-fact) vs warnings (contextless, thin, pads,
+coverage, arc disorder, missing caption). Advisory: reported in
+`planDeck` warnings, `provenance.quality`, eval reports (report-only
+aggregate), and the CLI receipt — never fails a build.
+
+**Fixtures** — new recommendation-engine recorded repo (versions, dates,
+hash, deprecated/historical/proposed claims, redundancy pair,
+contextless + pointer sentences), devtool idea (outage history,
+deprecated format, roadmap), KO consumer idea; F4 kept and now yields
+21 claims (was 12).
+
+**Tests** — 75 → 182/182 green (152 baseline+W1; 30 peer W2
+composition/critic/optical/art-direction tests coexist untouched),
+incl. new `semantics` (38), `quality` (13), evidence verbatim/KO/
+license/cap tests, encore + dedupe + audience-divergence tests, v2
+caption parser tests. Every fixture deck passes the gate; audiences
+produce provably different arc orders.
+
+**Eval/CLI** — `parseCaptionRefs` accepts v2 + legacy captions; reports
+carry the quality block; `make-deck` prints the quality line; SKILL.md
+§2/§4 rewritten for the new behavior.
+
+**Observed reading results** (not just tests): F4 reads as a coherent
+10–11 slide argument in all audiences × EN/KO; recsys heroes `40ms` /
+`15 minutes`, never `2.1`/`2026`/`9f3c1ab`; devtool excludes its
+deprecated format; KO decks use native templates with unit heroes
+(`70%`, `20분`). Live F1/F2/F3 narratives read in three rounds:
+R1 killed badge alt-texts, issue templates, language tables, HTML
+wrappers, process docs, `vision` false-positives, and version heroes;
+R2 killed wrapped MIT lines, dotted-version fragments (`4.2.1`→`4.2`),
+and process-doc ingestion; R3 (tests-first, this entry) kills wrapped
+legalese via marker-dense code-header regions (first 30 lines, ≥2
+markers), boolean/comparison operator lines (`&&`, `==`), relocation
+follow-ups (`please file issues`), and strips `**bold**` residue.
+R4 (tests-first, final round) killed blockquote prefixes in theses
+(F3 cover `> Day.js…`), linter directives (`eslint-disable`) and URL
+attributions (`Extracted from <url>`) in code comments, and raw
+TSDoc markup in kept code lines (conservative URL-only link unwrap
+so `a[i](x)` code is never mangled) — F1 n7/n8/n9 now genuine
+content theses, F1 qual 100, F3/F2 qual 98 (honest coverage
+warnings), zero number slides on F2/F3 (honest hero absence), F1
+hero `754` (genuine IEEE-754 content, not a version).
+
+**Known limitations** — multi-metric claims surface one hero; step
+sequences (First/Second/Third) aren't grouped; lexicon ties are
+heuristic (documented per case); moved-repo stubs (F2-class) yield
+changelog-led decks and API-reference repos (F3-class) thin API-
+surface arcs with honest coverage warnings — both are the content
+ceiling, not planner failure; no number slides appear when no hero
+validates (honest absence, e.g. post-fix F2/F3).
+
 ## Phase 0 — Specifications (2026-10-30)
 - Authored `docs/PRD.md`: two input modes, 7 measurable success criteria (S1–S7),
   explicit out-of-scope (no DB/auth/cloud/microservices).
@@ -197,6 +291,120 @@
   is sandbox-blocked and the unsandboxed start produced no output). `npm run
   --silent test` 75/75 green. Artifacts under `/tmp/typodeck-skill/`.
 - No commits (parent commits after review).
+
+## 90+ Program — Research & Composition System (2026-10-30)
+
+- Audit first: 10-agent workflow sweep (repo audit, 4 research tracks,
+  grammar/optical audit, critic/eval/skill audit, critic, synthesis) with
+  inspected-evidence contract. Baseline adjudicated by fresh runs: 149/149
+  pre-existing tests green (not the stale 75/75 or 131 claims), F4 offline
+  eval 6/6 OK, full matrix quota-blocked (7/24 at audit time).
+- Evidence registry: `research/typography/evidence-registry.json` (46
+  principles A/B/C/D with author/source/year/URL/type/access/summary/
+  derived/applicability/limitations/confidence/implementation/evaluation) +
+  `research/typography/SYNTHESIS.md`. Only Butterick FULL + Rutter FULL +
+  Bringhurst-via-Rutter secondary count as source-supported slide rules;
+  all other classical numeric values are DERIVED HEURISTICS.
+- Composition Grammar (`src/composition.ts`, 31 candidates): 13 semantic
+  types x >=2 strategies, 13 typography-only primitives, deck-aware
+  deterministic selection (10 factors), hard no-triple-repeat,
+  repetition-aware fallback, `COMPOSITION_GRAMMAR` machine bundle.
+  Classification: content signals beat id stems; metric-hero requires
+  meaningful+supported+relevant. Doc: `docs/COMPOSITION_GRAMMAR.md`.
+- Renderer integration: `layoutDeck(..., {compositionPlan})` applies rhythm
+  scale + body measure cap (~60 chars) + body-align overrides; absent plan
+  = byte-identical baseline (all prior tests untouched-green).
+- Optical engine (`src/optical.ts`): O1 measurable hang (<=0.12in), O2
+  heuristic center nudge (<=0.06in), O3/O4 scorers without auto-fix, O5
+  experimental proposals never applied. Every correction has rationale +
+  bound + regression test.
+- Art direction (`src/art-direction.ts`): density/emphasis annotation +
+  bounded dense-run re-selection + advisory repetition/identity checks.
+- Critic + revision (`src/critic.ts`): deterministic structural checks +
+  labeled geometric proxies + `visionUnmeasured` list + bounded (<=3)
+  revision loop with provenance; content never rewritten.
+- Benchmark (`evals/benchmark-90/`, 8 held-out ideas B1-B8, never tuned
+  on): 48/48 runs OK (seed 42), 0 forbidden, 0 overflow, 0 critic errors,
+  0 triple-repeats. Paired deltas: body>60 lines 118->31, title>2 137->136
+  (narrative issue, by design unfixed), widow 119->128 (REGRESSION from
+  narrower columns; T8 guard deferred). Baseline-better pairs 14/24.
+- Rendered inspection (Quick Look covers, 3 pairs): B2 swiss clean with
+  truncated title both modes; B1 Korean expressive renders well, improved
+  avoids a mid-eojeol split by line-width luck (keep-all still missing);
+  B4 editorial shows the widow regression ("was." orphan). Inner slides
+  UNINSPECTED (qlmanage covers only); font substitution, T11 wrap
+  divergence, clipping UNMEASURED (no rasterizer).
+- Skill upgrade: `SKILL.md` concise + composition/optical/revision/
+  evaluation/research-index supporting files (progressive disclosure);
+  counts corrected (164), benchmark + improved pipeline documented.
+- Human package: `protocol.md` + `rubric.md` (100-pt, pre-registered pass
+  criteria) + `ballot-template.csv`. Study PENDING — no reviewers, no
+  invented results.
+- Report: `evals/90-program-report.md` — PROVISIONAL 73/100 with missing
+  validation. No 90+ claim.
+- Tests: 179/179 green (149 working-tree baseline + 30 new), verified by
+  clean rebuild (`rm -rf dist`, tsc, `node --test`). New suites:
+  composition (13), optical (9), art-direction (4), critic (4). Note: an
+  early in-session reading of 134/164 was a stale-dist artifact (build
+  output piped through `tail` masked the rebuild state); the clean rebuild
+  supersedes it.
+- Failed/iterated experiments (kept in history): triple-repeat hard rule
+  needed 3 grammar gaps fixed (comparison-rows, evidence-focused,
+  repetition-aware fallback after finding a body-less evidence slide);
+  benchmark script had a duplicate-key type error (fixed, re-ran clean).
+- No commits (parent commits after review).
+
+## Foundation-first: purpose presets + Slide IR + registry + import + Studio + visual benchmark (2026-10-30)
+
+- Scope: 10 purpose presets (P01-P10), Slide Markdown v1 + Slide IR v1,
+  planner/visual separation, versioned registry (3 production systems,
+  geometry UNCHANGED), research-import (candidate specs only), Studio UX
+  (purpose selector, Markdown edit, gallery, compare), 10x3 visual
+  benchmark + merge-preserving decisions.json, Skill docs. NO mass
+  20-system creation (foundation-first; new systems come from research).
+- Correction 1 (legacy showcase): NOT auto-mapped to P04. `resolvePurpose`
+  + `LEGACY_PURPOSE_MAP` keep frozen arcs; bit-identical replay over 36
+  cases (`fixtures/legacy-narrative-baselines.json`).
+- Correction 2 (semantic model): `DIMENSIONS` frozen 8; `NEW_DIMENSIONS`
+  8 preset-only dims (decisions, methodology, market, model, experience,
+  objectives, context, lessons); `EXTENDED_DIMENSIONS` = 16. Classifiers
+  default to legacy 8.
+- Correction 3 (regression): byte-identical PPTX comparison REPLACED by
+  semantic/structural equivalence — `geometrySignature()`, `textParityOk`,
+  `validatePptxBytes`, editable-char counts (`src/visual-review.ts`).
+- Correction 4 (importer): emits experimental-only `CandidateSpec`
+  (status always `experimental`); no registry write, no promotion path.
+- New modules: purposes, slide-markdown, slide-ir, visual-systems,
+  research-import, visual-review. Extended: semantics, narrative
+  (preset dispatcher), quality (arc override), composition (new dims),
+  layout (systemVersion stamp), schema, index exports.
+- Scripts: `import-research.ts`, `visual-benchmark.ts`; `make-deck.ts`
+  gained `--preset P01..P10`. Web: `/api/catalog`, `/api/markdown` new;
+  generate (preset/audience/duration/emphasis + slideMarkdown), export
+  (registry validation), page.tsx (presets, Markdown editor, gallery,
+  compare), SlideView (registry fonts).
+- Visual benchmark: 10 fixed fixtures (cover/problem/comparison/metric/
+  conclusion x EN/KO) x 3 systems = 30 PPTX + 30 HTML + index.html +
+  summary.json + decisions.json; 30/30 PASS structural gates on first
+  run. Human KEEP survived a live re-run (merge-preserving scaffold
+  verified; scaffold restored to PENDING after the check).
+- Tests: 243/243 green (`npm run --silent test`, full rebuild). New:
+  purposes (19), slide-ir, slide-markdown, registry (7),
+  import-research (11), visual-review (6).
+- Studio smoke (live `next start -p 3101`): catalog 200, generate P04
+  200 (3 decks + Slide Markdown), markdown re-render 200, export 200
+  (63,393 bytes, `validatePptx ok=true`). One export probe failed with
+  http=000 under sandbox proxy — sandbox artifact, direct retry OK.
+- Skill: new `purposes.md` + `visual-systems.md`; SKILL.md updated
+  (preset flag, 16 dims, 243 tests, legacy-mapping note).
+- Ownership held: `research/*`, `.muse/worktrees/*` untouched (this
+  session used the main checkout; no worktree needed — no writes near
+  research paths). No commits (parent commits after review).
+- UNRESOLVED (carried): human blind A/B still pending (protocol ready);
+  inner slides never raster-inspected (no in-repo rasterizer); font
+  substitution / T11 wrap / clipping unmeasured; widowed-line +9
+  regression from measure caps (T8 guard deferred); live GitHub eval
+  matrix quota-blocked (offline F4 6/6 OK).
 
 ## Skill benchmark & refinement vs 3 external Skills (2026-10-30)
 

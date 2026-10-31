@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import {
+  createFetchCache,
   diversityFeatures,
   editabilityOfSlideXml,
   median,
@@ -57,9 +58,64 @@ describe('parseCaptionRefs', () => {
       { path: 'idea.txt', lines: [1, 4] },
     ]);
   });
+  it('parses compact v2 captions with status tags', () => {
+    assert.deepEqual(parseCaptionRefs('verified · src/pack.js:2'), [
+      { path: 'src/pack.js', lines: [2, 2] },
+    ]);
+    assert.deepEqual(parseCaptionRefs('unverified · illustrative · idea.txt:5'), [
+      { path: 'idea.txt', lines: [5, 5] },
+    ]);
+    assert.deepEqual(parseCaptionRefs('verified · README.md:3–7; docs/a.md'), [
+      { path: 'README.md', lines: [3, 7] },
+      { path: 'docs/a.md' },
+    ]);
+  });
+  it('accepts extensionless and spaced paths, still rejects prose', () => {
+    assert.deepEqual(parseCaptionRefs('unverified · historical · History.rdoc:8'), [
+      { path: 'History.rdoc', lines: [8, 8] },
+    ]);
+    assert.deepEqual(parseCaptionRefs('verified · My Doc.md:3'), [
+      { path: 'My Doc.md', lines: [3, 3] },
+    ]);
+    assert.deepEqual(
+      parseCaptionRefs('unverified · illustrative · proposed · idea.txt:9'),
+      [{ path: 'idea.txt', lines: [9, 9] }],
+    );
+    assert.deepEqual(parseCaptionRefs('verified · a suggested direction'), []);
+  });
+  it('caches repeat fetches and serves consumable clones', async () => {
+    let calls = 0;
+    const inner = (async (url: unknown) => {
+      calls += 1;
+      return new Response(`body-for-${String(url)}`, { status: 200 });
+    }) as typeof fetch;
+    const cache = createFetchCache(inner);
+    const a = await cache.impl('https://x.test/one');
+    const b = await cache.impl('https://x.test/one');
+    const c = await cache.impl('https://x.test/two');
+    assert.equal(await a.text(), 'body-for-https://x.test/one');
+    assert.equal(await b.text(), 'body-for-https://x.test/one');
+    assert.equal(await c.text(), 'body-for-https://x.test/two');
+    assert.equal(calls, 2);
+    assert.equal(cache.takeHits(), 1);
+    assert.equal(cache.takeHits(), 0);
+  });
+  it('never caches error responses', async () => {
+    let calls = 0;
+    const inner = (async () => {
+      calls += 1;
+      return new Response('limited', { status: 429 });
+    }) as typeof fetch;
+    const cache = createFetchCache(inner);
+    await cache.impl('https://x.test/flaky');
+    await cache.impl('https://x.test/flaky');
+    assert.equal(calls, 2);
+    assert.equal(cache.takeHits(), 0);
+  });
   it('bare labels yield no refs', () => {
     assert.deepEqual(parseCaptionRefs('proposal · unverified — a suggested direction'), []);
     assert.deepEqual(parseCaptionRefs('unverified'), []);
+    assert.deepEqual(parseCaptionRefs('verified'), []);
     assert.deepEqual(parseCaptionRefs(''), []);
   });
 });

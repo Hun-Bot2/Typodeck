@@ -1,6 +1,22 @@
 {
   "fixture": "F1",
   "fixtureType": "doc-rich repo",
+  "quality": {
+    "pass": true,
+    "overall": 100,
+    "meaningfulness": 100,
+    "coherence": 100,
+    "fidelity": 100,
+    "infoValue": 100,
+    "errors": 0,
+    "warnings": 0,
+    "coverage": [
+      "capabilities",
+      "architecture",
+      "limitations"
+    ],
+    "codes": []
+  },
   "pinnedSha": "e9c026c611c1160eaad50da00be4e676b626018f",
   "observedSha": "e9c026c611c1160eaad50da00be4e676b626018f",
   "branch": "main",
@@ -9,12 +25,12 @@
   "provider": "fallback",
   "generatedBy": "fallback",
   "seed": 42,
-  "slideCount": 12,
-  "textBoxCount": 46,
-  "pptxBytes": 134716,
+  "slideCount": 10,
+  "textBoxCount": 37,
+  "pptxBytes": 118409,
   "claimCounts": {
-    "total": 38,
-    "verified": 29,
+    "total": 56,
+    "verified": 47,
     "suggestion": 9,
     "ungrounded": 0
   },
@@ -24,49 +40,48 @@
       4,
       4,
       4,
-      4,
-      4,
-      4,
+      3,
       4,
       4,
       4,
       4,
       3
     ],
-    "meanBlocksPerSlide": 3.8333333333333335,
+    "meanBlocksPerSlide": 3.7,
     "medianHeadlineSize": 30,
     "alignmentMix": {
-      "left": 0.782608695652174,
+      "left": 0.7837837837837838,
       "center": 0,
-      "right": 0.21739130434782608
+      "right": 0.21621621621621623
     }
   },
   "warnings": [
     "built with the deterministic fallback (not model inference)"
   ],
-  "latencyMs": 81,
-  "exportMs": 8,
+  "latencyMs": 11,
+  "exportMs": 3,
+  "fetchCached": true,
   "success": true,
   "error": null,
-  "timestamp": "2026-10-30T03:23:09.325Z",
+  "timestamp": "2026-10-30T06:39:36.703Z",
   "metrics": {
     "forbiddenCount": 0,
     "otherErrorCount": 0,
     "validatorOk": true,
     "validatorErrors": [],
-    "editableChars": 1357,
-    "totalChars": 1357,
+    "editableChars": 1791,
+    "totalChars": 1791,
     "editability": 1,
     "overflowCount": 0,
-    "factualClaims": 38,
-    "factualWithValidRef": 38,
+    "factualClaims": 56,
+    "factualWithValidRef": 56,
     "evidenceCoverage": 1,
     "unsupportedClaims": 0,
     "fabricatedRefs": 0,
     "unlabeledCaptions": 0,
-    "slidesWithValidRef": 10,
-    "slideEvidenceCoverage": 0.8333333333333334,
-    "contentSlidesWithValidRef": 10,
+    "slidesWithValidRef": 8,
+    "slideEvidenceCoverage": 0.8,
+    "contentSlidesWithValidRef": 8,
     "contentSlideEvidenceCoverage": 1
   }
 }

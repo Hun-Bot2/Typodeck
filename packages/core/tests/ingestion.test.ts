@@ -18,6 +18,30 @@ import {
 const record = loadRecordedRepo();
 
 describe('fetchRepo (offline, recorded fixture)', () => {
+  it('skips license files and GitHub meta-templates before fetching', async () => {
+    const ing = await fetchRepo('acme', 'widgets', {
+      fetchImpl: recordedRepoFetch(record, {
+        extraTree: [
+          { path: 'LICENSE', size: 1000 },
+          { path: '.github/ISSUE_TEMPLATE/bug.md', size: 500 },
+          { path: 'CONTRIBUTING.md', size: 400 },
+          { path: 'docs/notes.md', size: 100 },
+        ],
+        blobOverrides: {
+          LICENSE: 'MIT license text '.repeat(60),
+          '.github/ISSUE_TEMPLATE/bug.md': 'Bug report form '.repeat(30),
+          'CONTRIBUTING.md': 'Contributor guide text '.repeat(30),
+          'docs/notes.md': 'Release notes live here for the whole team today.',
+        },
+      }),
+    });
+    const paths = ing.files.map((f) => f.path);
+    assert.ok(!paths.includes('LICENSE'), `LICENSE ingested: ${paths}`);
+    assert.ok(!paths.some((p) => p.includes('ISSUE_TEMPLATE')), `template ingested: ${paths}`);
+    assert.ok(!paths.includes('CONTRIBUTING.md'), `process doc ingested: ${paths}`);
+    assert.ok(paths.includes('docs/notes.md'), `docs missing: ${paths}`);
+  });
+
   it('fetches README + docs + code sample with evidence pointers', async () => {
     const ing = await fetchRepo('acme', 'widgets', { fetchImpl: recordedRepoFetch(record) });
     assert.equal(ing.kind, 'repo');

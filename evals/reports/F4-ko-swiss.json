@@ -1,6 +1,25 @@
 {
   "fixture": "F4",
   "fixtureType": "raw idea",
+  "quality": {
+    "pass": true,
+    "overall": 100,
+    "meaningfulness": 100,
+    "coherence": 100,
+    "fidelity": 100,
+    "infoValue": 100,
+    "errors": 0,
+    "warnings": 0,
+    "coverage": [
+      "solution",
+      "capabilities",
+      "results",
+      "differentiation",
+      "limitations",
+      "future"
+    ],
+    "codes": []
+  },
   "pinnedSha": null,
   "observedSha": null,
   "branch": null,
@@ -9,22 +28,20 @@
   "provider": "fallback",
   "generatedBy": "fallback",
   "seed": 42,
-  "slideCount": 12,
-  "textBoxCount": 46,
-  "pptxBytes": 135945,
+  "slideCount": 10,
+  "textBoxCount": 40,
+  "pptxBytes": 121640,
   "claimCounts": {
-    "total": 12,
+    "total": 21,
     "verified": 0,
     "suggestion": 0,
-    "ungrounded": 12
+    "ungrounded": 21
   },
   "features": {
     "blocksPerSlide": [
       3,
-      4,
-      4,
-      4,
-      4,
+      5,
+      5,
       4,
       4,
       4,
@@ -33,30 +50,31 @@
       4,
       3
     ],
-    "meanBlocksPerSlide": 3.8333333333333335,
+    "meanBlocksPerSlide": 4,
     "medianHeadlineSize": 30,
     "alignmentMix": {
-      "left": 0.782608695652174,
+      "left": 0.8,
       "center": 0,
-      "right": 0.21739130434782608
+      "right": 0.2
     }
   },
   "warnings": [
     "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
     "built with the deterministic fallback (not model inference)"
   ],
-  "latencyMs": 1,
-  "exportMs": 5,
+  "latencyMs": 3,
+  "exportMs": 3,
+  "fetchCached": false,
   "success": true,
   "error": null,
-  "timestamp": "2026-10-30T03:49:56.981Z",
+  "timestamp": "2026-10-30T06:39:37.772Z",
   "metrics": {
     "forbiddenCount": 0,
     "otherErrorCount": 0,
     "validatorOk": true,
     "validatorErrors": [],
-    "editableChars": 2388,
-    "totalChars": 2388,
+    "editableChars": 2335,
+    "totalChars": 2335,
     "editability": 1,
     "overflowCount": 0,
     "factualClaims": 0,
@@ -65,9 +83,9 @@
     "unsupportedClaims": 0,
     "fabricatedRefs": 0,
     "unlabeledCaptions": 0,
-    "slidesWithValidRef": 10,
-    "slideEvidenceCoverage": 0.8333333333333334,
-    "contentSlidesWithValidRef": 10,
+    "slidesWithValidRef": 8,
+    "slideEvidenceCoverage": 0.8,
+    "contentSlidesWithValidRef": 8,
     "contentSlideEvidenceCoverage": 1
   }
 }

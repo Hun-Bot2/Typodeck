@@ -22,6 +22,11 @@ import {
   type SystemId,
   type TypographySystem,
 } from './systems';
+import {
+  COMPOSITION_CANDIDATES,
+  type CompositionPlanItem,
+} from './composition';
+import { VISUAL_SYSTEMS } from './visual-systems';
 
 // ---------------------------------------------------------------------------
 // Deterministic hashing / PRNG
@@ -267,6 +272,34 @@ interface Ctx {
   rng: () => number;
   /** Global size scale for overflow relaxation (1 = full size). */
   sizeScale: number;
+  /** Composition-plan overrides (1 / null = baseline behavior). */
+  rhythmScale: number;
+  bodyAlignOverride: TextAlign | null;
+  /** Body measure cap in chars/line (derived heuristic; null = no cap). */
+  bodyMeasureCap: number | null;
+}
+
+/** Resolve per-slide composition overrides. Absent plan = baseline. */
+function overridesFromPlan(planItem: CompositionPlanItem | undefined): Pick<Ctx, 'rhythmScale' | 'bodyAlignOverride' | 'bodyMeasureCap'> {
+  if (!planItem) return { rhythmScale: 1, bodyAlignOverride: null, bodyMeasureCap: null };
+  const c = COMPOSITION_CANDIDATES[planItem.candidateId];
+  if (!c) return { rhythmScale: 1, bodyAlignOverride: null, bodyMeasureCap: null };
+  return {
+    rhythmScale: c.constraints.rhythmScale,
+    bodyAlignOverride: c.constraints.bodyAlign ?? null,
+    bodyMeasureCap: c.constraints.maxBodyCharsPerLine,
+  };
+}
+
+/**
+ * Narrow a body box to the measure cap. Avg latin advance ~0.5em is a
+ * conservative derived heuristic (A01/A07); CJK chars are wider so capped
+ * Korean lines stay shorter, which matches D01 extra-leading intent.
+ */
+function applyMeasureCap(ctx: Ctx, role: TextRole, baseW: number, fontSizePt: number): number {
+  if (role !== 'body' || ctx.bodyMeasureCap === null) return baseW;
+  const capW = (ctx.bodyMeasureCap * 0.5 * fontSizePt) / 72;
+  return Math.min(baseW, Math.max(2.5, capW));
 }
 
 const BLOCK_PAD = 0.04; // breathing room inside fitted boxes
@@ -285,18 +318,20 @@ function styleFor(ctx: Ctx, role: TextRole) {
 function planEditorial(ctx: Ctx): Plan[] {
   const { system, slide, slideIndex } = ctx;
   const m = system.margin;
+  const R = system.rhythm * ctx.rhythmScale;
   const indent = slideIndex % 2 === 1 ? 1.4 : 0; // asymmetry, deterministic
   const x = m + indent;
-  const w = Math.min(8.6, SLIDE_WIDTH_IN - x - m);
+  const baseW = Math.min(8.6, SLIDE_WIDTH_IN - x - m);
   let y = 1.5;
   const plans: Plan[] = [];
   for (const b of slide.blocks) {
     const st = styleFor(ctx, b.role);
+    const w = applyMeasureCap(ctx, b.role, baseW, st.fontSize);
     const maxH = SLIDE_HEIGHT_IN - m - y;
     plans.push({ role: b.role, content: b.content, x, y, w, maxH, align: st.align });
     // Advance cursor by fitted height (computed in materialize via same fit).
     const fit = fitText(b.content, w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-    y += fit.heightIn + BLOCK_PAD * 2 + system.rhythm + (b.role === 'title' ? 0.1 : 0);
+    y += fit.heightIn + BLOCK_PAD * 2 + R + (b.role === 'title' ? 0.1 : 0);
   }
   return plans;
 }
@@ -305,6 +340,7 @@ function planEditorial(ctx: Ctx): Plan[] {
 function planSwiss(ctx: Ctx): Plan[] {
   const { system, slide } = ctx;
   const m = system.margin;
+  const R = system.rhythm * ctx.rhythmScale;
   const gutter = 0.3;
   const gridW = SLIDE_WIDTH_IN - m * 2;
   const colW = (gridW - gutter * 3) / 4;
@@ -332,7 +368,7 @@ function planSwiss(ctx: Ctx): Plan[] {
       const maxH = Math.max(0.4, SLIDE_HEIGHT_IN - m - leftY);
       const fit = fitText(b.content, s.w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
       plans.push({ role: b.role, content: b.content, x: s.x, y: leftY, w: s.w, maxH, align: st.align });
-      leftY += fit.heightIn + BLOCK_PAD * 2 + system.rhythm;
+      leftY += fit.heightIn + BLOCK_PAD * 2 + R;
       titleBottom = Math.max(titleBottom, leftY);
     } else if (b.role === 'caption') {
       const s = span(2, 2);
@@ -344,24 +380,27 @@ function planSwiss(ctx: Ctx): Plan[] {
       const idx = rightColUsed.length;
       if (idx === 0) {
         const s = span(2, 2);
-        const fit = fitText(b.content, s.w, SLIDE_HEIGHT_IN - m - bodyTopY - 0.8, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-        plans.push({ role: b.role, content: b.content, x: s.x, y: bodyTopY, w: s.w, maxH: SLIDE_HEIGHT_IN - m - bodyTopY - 0.8, align: st.align });
-        stackY = bodyTopY + fit.heightIn + BLOCK_PAD * 2 + system.rhythm;
+        const w = applyMeasureCap(ctx, b.role, s.w, st.fontSize);
+        const fit = fitText(b.content, w, SLIDE_HEIGHT_IN - m - bodyTopY - 0.8, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+        plans.push({ role: b.role, content: b.content, x: s.x, y: bodyTopY, w, maxH: SLIDE_HEIGHT_IN - m - bodyTopY - 0.8, align: st.align });
+        stackY = bodyTopY + fit.heightIn + BLOCK_PAD * 2 + R;
         rightColUsed.push(plans[plans.length - 1]);
       } else if (idx === 1) {
         // Second body: right column continuation (comparison-style).
         const s = span(2, 2);
+        const w = applyMeasureCap(ctx, b.role, s.w, st.fontSize);
         const y = stackY;
         const maxH = Math.max(0.4, SLIDE_HEIGHT_IN - m - 0.8 - y);
-        const fit2 = fitText(b.content, s.w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-        plans.push({ role: b.role, content: b.content, x: s.x, y, w: s.w, maxH, align: st.align });
-        stackY = y + fit2.heightIn + BLOCK_PAD * 2 + system.rhythm;
+        const fit2 = fitText(b.content, w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+        plans.push({ role: b.role, content: b.content, x: s.x, y, w, maxH, align: st.align });
+        stackY = y + fit2.heightIn + BLOCK_PAD * 2 + R;
         rightColUsed.push(plans[plans.length - 1]);
       } else {
         const s = span(0, 4);
+        const w = applyMeasureCap(ctx, b.role, s.w, st.fontSize);
         const y = Math.max(stackY, titleBottom);
         stackY = y;
-        plans.push({ role: b.role, content: b.content, x: s.x, y, w: s.w, maxH: SLIDE_HEIGHT_IN - m - 0.8 - y, align: st.align });
+        plans.push({ role: b.role, content: b.content, x: s.x, y, w, maxH: SLIDE_HEIGHT_IN - m - 0.8 - y, align: st.align });
         rightColUsed.push(plans[plans.length - 1]);
       }
     }
@@ -373,6 +412,7 @@ function planSwiss(ctx: Ctx): Plan[] {
 function planExpressive(ctx: Ctx): Plan[] {
   const { system, slide, rng } = ctx;
   const m = system.margin;
+  const R = system.rhythm * ctx.rhythmScale;
   const cx = SLIDE_WIDTH_IN / 2;
   const plans: Plan[] = [];
 
@@ -393,7 +433,7 @@ function planExpressive(ctx: Ctx): Plan[] {
     const st = styleFor(ctx, b.role);
     return fitText(b.content, heroW, 5.2, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
   });
-  const heroBandH = heroFits.reduce((a, f) => a + f.heightIn + BLOCK_PAD * 2, 0) + system.rhythm * Math.max(0, heroes.length - 1);
+  const heroBandH = heroFits.reduce((a, f) => a + f.heightIn + BLOCK_PAD * 2, 0) + R * Math.max(0, heroes.length - 1);
   const captionTop = SLIDE_HEIGHT_IN - m - 0.55;
   const centeredY = (SLIDE_HEIGHT_IN - heroBandH) / 2 - (kickers.length > 0 ? 0.25 : 0) - (bodies.length > 0 ? 0.35 : 0);
   // Top-anchor when centering would push bodies into the caption zone.
@@ -408,18 +448,64 @@ function planExpressive(ctx: Ctx): Plan[] {
     const st = styleFor(ctx, b.role);
     void heroFits[i];
     plans.push({ role: b.role, content: b.content, x: heroX, y: hy, w: heroW, maxH: 5.2, align: st.align });
-    hy += heroFits[i].heightIn + BLOCK_PAD * 2 + system.rhythm;
+    hy += heroFits[i].heightIn + BLOCK_PAD * 2 + R;
   });
   let by = hy + 0.05;
   for (const b of bodies) {
     const st = styleFor(ctx, b.role);
-    const fit = fitText(b.content, bodyW, SLIDE_HEIGHT_IN - m - 0.55 - by, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-    plans.push({ role: b.role, content: b.content, x: bodyX, y: by, w: bodyW, maxH: Math.max(0.4, SLIDE_HEIGHT_IN - m - 0.55 - by), align: st.align });
-    by += fit.heightIn + BLOCK_PAD * 2 + system.rhythm;
+    const w = applyMeasureCap(ctx, b.role, bodyW, st.fontSize);
+    const x = cx - w / 2;
+    const fit = fitText(b.content, w, SLIDE_HEIGHT_IN - m - 0.55 - by, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+    plans.push({ role: b.role, content: b.content, x, y: by, w, maxH: Math.max(0.4, SLIDE_HEIGHT_IN - m - 0.55 - by), align: st.align });
+    by += fit.heightIn + BLOCK_PAD * 2 + R;
   }
   for (const b of captions) {
     const st = styleFor(ctx, b.role);
     plans.push({ role: b.role, content: b.content, x: bodyX, y: SLIDE_HEIGHT_IN - m - 0.45, w: bodyW, maxH: 0.45, align: st.align });
+  }
+  return plans;
+}
+
+/**
+ * Document (experimental): hierarchy-stack. A narrow left meta column holds
+ * section markers (kicker/number); titles and bodies stack densely in the
+ * wide right content zone; captions sit bottom-right as source lines.
+ * Single pass over narrative blocks, so emission order matches content order.
+ */
+function planDocument(ctx: Ctx): Plan[] {
+  const { system, slide } = ctx;
+  const m = system.margin;
+  const R = system.rhythm * ctx.rhythmScale;
+  const metaW = 2.0;
+  const gutter = 0.5;
+  const contentX = m + metaW + gutter;
+  const contentW = SLIDE_WIDTH_IN - contentX - m;
+  const topY = 1.0;
+  const captionH = 0.6;
+  const captionY = SLIDE_HEIGHT_IN - m - captionH;
+
+  const plans: Plan[] = [];
+  let metaY = topY;
+  let contentY = topY;
+  for (const b of slide.blocks) {
+    const st = styleFor(ctx, b.role);
+    const bold = st.fontWeight >= 700;
+    if (b.role === 'kicker' || b.role === 'number') {
+      const maxH = Math.max(0.4, SLIDE_HEIGHT_IN - m - metaY);
+      const fit = fitText(b.content, metaW, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, bold);
+      plans.push({ role: b.role, content: b.content, x: m, y: metaY, w: metaW, maxH, align: st.align });
+      metaY += fit.heightIn + BLOCK_PAD * 2 + R;
+    } else if (b.role === 'caption') {
+      plans.push({
+        role: b.role, content: b.content, x: contentX, y: captionY, w: contentW, maxH: captionH, align: st.align,
+      });
+    } else {
+      const w = applyMeasureCap(ctx, b.role, contentW, st.fontSize);
+      const maxH = Math.max(0.4, captionY - R - contentY);
+      const fit = fitText(b.content, w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, bold);
+      plans.push({ role: b.role, content: b.content, x: contentX, y: contentY, w, maxH, align: st.align });
+      contentY += fit.heightIn + BLOCK_PAD * 2 + R;
+    }
   }
   return plans;
 }
@@ -448,21 +534,22 @@ function materialize(ctx: Ctx, plans: Plan[], background: string): TextBlock[] {
       fontWeight: st.fontWeight,
       tracking: st.tracking,
       lineHeight: st.lineHeight,
-      align: p.align,
+      align: p.role === 'body' && ctx.bodyAlignOverride ? ctx.bodyAlignOverride : p.align,
       color: colorFor(system, p.role, background),
     };
   });
 }
 
-function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: number, system: TypographySystem, seed: number): import('./schema').Slide {
+function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: number, system: TypographySystem, seed: number, planItem?: CompositionPlanItem): import('./schema').Slide {
   const background = backgroundFor(system, slideIndex);
+  const overrides = overridesFromPlan(planItem);
   // Overflow relaxation: if a scale produces overlapping blocks, retry the
   // whole slide deterministically at a smaller size. First clean scale wins.
   const scales = [1, 0.85, 0.7, 0.55, 0.45, 0.35, 0.28, 0.22, 0.17, 0.13];
   let lastError: unknown = null;
   for (const sizeScale of scales) {
     const rng = mulberry32(hashString(`${seed}:${system.id}:${slide.id}`));
-    const ctx: Ctx = { system, slide, slideIndex, rng, sizeScale };
+    const ctx: Ctx = { system, slide, slideIndex, rng, sizeScale, ...overrides };
     let plans: Plan[];
     switch (system.placement) {
       case 'asymmetric-stack':
@@ -473,6 +560,9 @@ function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: nu
         break;
       case 'centered-hero':
         plans = planExpressive(ctx);
+        break;
+      case 'hierarchy-stack':
+        plans = planDocument(ctx);
         break;
     }
     const blocks = materialize(ctx, plans, background);
@@ -496,6 +586,12 @@ function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: nu
 export interface LayoutOptions {
   /** Optional explicit seed; defaults to a hash of the narrative bytes. */
   seed?: number;
+  /**
+   * Optional per-slide composition plan (see planCompositions). Absent plan
+   * preserves baseline behavior exactly; present plan applies rhythm, body
+   * measure-cap, and body-align overrides within the typography-only schema.
+   */
+  compositionPlan?: CompositionPlanItem[];
 }
 
 export function layoutSeed(narrative: Narrative, systemId: SystemId): number {
@@ -510,12 +606,14 @@ export function layoutDeck(input: unknown, systemId: SystemId, opts: LayoutOptio
   const narrative = validateNarrative(input);
   const system = getSystem(systemId);
   const seed = opts.seed ?? layoutSeed(narrative, systemId);
-  const slides = narrative.slides.map((s, i) => layoutSlide(narrative, s, i, system, seed));
+  const planBySlide = new Map((opts.compositionPlan ?? []).map((p) => [p.slideId, p]));
+  const slides = narrative.slides.map((s, i) => layoutSlide(narrative, s, i, system, seed, planBySlide.get(s.id)));
   return {
     meta: {
       title: narrative.title,
       lang: narrative.lang,
       system: system.id,
+      systemVersion: VISUAL_SYSTEMS[system.id]?.version,
       seed,
       generatedBy: 'typodeck-core/phase1',
     },

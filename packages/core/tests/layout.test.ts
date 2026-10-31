@@ -15,6 +15,7 @@ const decks: Record<SystemId, Deck> = {
   editorial: layoutDeck(SAMPLE_NARRATIVE, 'editorial'),
   swiss: layoutDeck(SAMPLE_NARRATIVE, 'swiss'),
   expressive: layoutDeck(SAMPLE_NARRATIVE, 'expressive'),
+  document: layoutDeck(SAMPLE_NARRATIVE, 'document'),
 };
 
 function center(b: TextBlock): [number, number] {
@@ -91,6 +92,9 @@ describe('layout', () => {
       ['editorial', 'swiss'],
       ['editorial', 'expressive'],
       ['swiss', 'expressive'],
+      ['document', 'editorial'],
+      ['document', 'swiss'],
+      ['document', 'expressive'],
     ];
     for (const [a, b] of pairs) {
       let sum = 0;

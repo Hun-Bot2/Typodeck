@@ -2,9 +2,10 @@ import { NextRequest } from 'next/server';
 import {
   DeckValidationError,
   exportToPptxBuffer,
-  getSystem,
   layoutDeck,
+  resolveVisualSystem,
   validatePptxBytes,
+  type SystemId,
 } from '@typodeck/core';
 
 export const runtime = 'nodejs';
@@ -34,16 +35,18 @@ export async function POST(req: NextRequest): Promise<Response> {
     return jsonError(400, 'invalid-input', 'request body is not valid JSON');
   }
 
-  // Validate the system id; never trust client geometry — layout is recomputed.
+  // Validate the system id against the registry; never trust client
+  // geometry — layout is recomputed. Registered-but-unrenderable systems
+  // fail loudly here instead of exporting the wrong design.
   if (typeof parsed.system !== 'string') {
-    return jsonError(400, 'invalid-system', 'system must be editorial, swiss, or expressive');
+    return jsonError(400, 'invalid-system', 'system must be a registered visual system id');
   }
   try {
-    getSystem(parsed.system);
+    resolveVisualSystem(parsed.system);
   } catch {
-    return jsonError(400, 'invalid-system', `unknown system "${parsed.system}" (want editorial|swiss|expressive)`);
+    return jsonError(400, 'invalid-system', `unknown or unrenderable system "${parsed.system}"`);
   }
-  const system = parsed.system as 'editorial' | 'swiss' | 'expressive';
+  const system = parsed.system as SystemId;
 
   let deck;
   try {
