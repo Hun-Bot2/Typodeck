@@ -298,6 +298,11 @@ export default function StudioPage() {
     return () => clearInterval(timer);
   }, [phase]);
 
+  useEffect(() => {
+    if (phase !== 'done') return;
+    document.getElementById('designs-title')?.scrollIntoView();
+  }, [phase]);
+
   const markStage = (stage: Stage): void => {
     setStages((prev) => {
       const next = { ...prev };
@@ -421,7 +426,8 @@ export default function StudioPage() {
       setResult(payload);
       setMarkdown(payload.slideMarkdown ?? '');
       setStages({ ingest: 'done', evidence: 'done', narrative: 'done', layout: 'done' });
-      const firstRenderable = catalog?.systems.find((s) => s.renderable)?.id ?? 'editorial';
+      const firstRenderable =
+        catalog?.systems.find((s) => s.renderable && s.status === 'production')?.id ?? 'editorial';
       setSelected(firstRenderable);
       setCompare('');
       setSlideIndex(0);
@@ -729,7 +735,7 @@ export default function StudioPage() {
                 <li key={f.path}>
                   <span>{f.path}</span>
                   <span className="file-lines">
-                    {f.lines} lines{f.truncated ? ' · truncated' : ''}
+                    {f.lines} line{f.lines === 1 ? '' : 's'}{f.truncated ? ' · truncated' : ''}
                   </span>
                 </li>
               ))}
@@ -995,7 +1001,27 @@ export default function StudioPage() {
                     }}
                   >
                     {d.slides.map((s, i) => (
-                      <figure className="thumb" key={s.id} role="listitem">
+                      <figure
+                        className="thumb"
+                        key={s.id}
+                        role="listitem"
+                        tabIndex={0}
+                        style={{ cursor: 'pointer' }}
+                        title={`Jump to slide ${i + 1} in the viewer`}
+                        aria-label={`${id} slide ${i + 1}: ${s.thesis}. Activate to jump to this slide in the viewer.`}
+                        onClick={() => {
+                          setSelected(id);
+                          setSlideIndex(i);
+                          document.getElementById('viewer-title')?.scrollIntoView();
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key !== 'Enter' && e.key !== ' ') return;
+                          e.preventDefault();
+                          setSelected(id);
+                          setSlideIndex(i);
+                          document.getElementById('viewer-title')?.scrollIntoView();
+                        }}
+                      >
                         <SlideView
                           slide={s}
                           system={id}
