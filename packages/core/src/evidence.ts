@@ -68,7 +68,8 @@ const NUMBER_RE = new RegExp(
 );
 
 const MIN_CLAIM_CHARS = 20;
-const MAX_CLAIM_CHARS = 280;
+/** Upper bound for claim text; user reframes are held to the same limit. */
+export const MAX_CLAIM_CHARS = 280;
 
 /** Relocation notices are repo metadata, not project content. */
 const RELOCATION_NOTICE = /this repos?(itory)? has moved|please file (issues|bugs|tickets|prs)/i;

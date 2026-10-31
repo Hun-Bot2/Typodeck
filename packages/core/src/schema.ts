@@ -63,6 +63,12 @@ export interface DeckMeta {
   systemVersion?: string;
   seed: number;
   generatedBy: string;
+  /** Source provenance for export metadata; absent on edited/legacy decks. */
+  provenance?: {
+    repo?: string;
+    branch?: string;
+    sha?: string | null;
+  };
 }
 
 export interface Deck {

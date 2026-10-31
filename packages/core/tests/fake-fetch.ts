@@ -63,9 +63,19 @@ export interface RecordedFetchOptions {
   extraTree?: Array<{ path: string; size: number }>;
   /** Replace the whole tree entry list. */
   treeOverride?: Array<{ path: string; size: number }>;
+  /** Report the GitHub tree as truncated. */
+  treeTruncated?: boolean;
+  /** Force the tree response status (for rate-limit tests). */
+  treeStatus?: number;
+  /** Response headers for the tree request. */
+  treeHeaders?: Record<string, string>;
   /** Force repo-meta response (e.g. private:true, or a status). */
   metaOverride?: Record<string, unknown>;
   metaStatus?: number;
+  /** Response headers for the repo-meta request. */
+  metaHeaders?: Record<string, string>;
+  /** Number of failing meta attempts before meta requests succeed (retry tests). */
+  failFirstNMetaRequests?: number;
   /** Force every raw-blob request to this status (for rate-limit tests). */
   blobStatus?: number;
   /** Fail only paths matching this predicate with blobStatus. */
@@ -80,14 +90,26 @@ export interface RecordedFetchOptions {
 export function recordedRepoFetch(record: RecordedRepo, opts: RecordedFetchOptions = {}): FetchImpl {
   const apiBase = `https://api.github.com/repos/${record.owner}/${record.repo}`;
   let blobCalls = 0;
+  let metaCalls = 0;
   return fakeFetch((url) => {
     if (url === apiBase) {
+      metaCalls += 1;
+      const failing = opts.metaStatus !== undefined && metaCalls <= (opts.failFirstNMetaRequests ?? Number.MAX_SAFE_INTEGER);
+      if (failing) {
+        const status = opts.metaStatus as number;
+        const body = status === 404 ? '{"message":"Not Found"}' : '{"message":"API rate limit exceeded"}';
+        return { status, headers: opts.metaHeaders, body };
+      }
       return {
-        status: opts.metaStatus ?? 200,
+        status: 200,
+        headers: opts.metaHeaders,
         body: JSON.stringify(opts.metaOverride ?? record.meta),
       };
     }
     if (url.startsWith(`${apiBase}/git/trees/`)) {
+      if (opts.treeStatus !== undefined) {
+        return { status: opts.treeStatus, headers: opts.treeHeaders, body: '{"message":"API rate limit exceeded"}' };
+      }
       const entries = opts.treeOverride ?? [
         ...Object.keys(record.blobs).map((p) => ({
           path: p,
@@ -97,9 +119,10 @@ export function recordedRepoFetch(record: RecordedRepo, opts: RecordedFetchOptio
       ];
       return {
         status: 200,
+        headers: opts.treeHeaders,
         body: JSON.stringify({
           sha: record.treeSha,
-          truncated: false,
+          truncated: opts.treeTruncated ?? false,
           tree: entries.map((e) => ({ path: e.path, type: 'blob', size: e.size })),
         }),
       };

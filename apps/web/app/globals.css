@@ -604,3 +604,180 @@ button {
     scroll-behavior: auto !important;
   }
 }
+
+/* First use + evidence inspector */
+
+.sample-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.chip {
+  background: transparent;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  border-radius: 2px;
+  padding: 0.3rem 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+}
+
+.chip:hover:not(:disabled) {
+  background: var(--wash);
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.chip:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.guide {
+  margin-top: 0.5rem !important;
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+
+.error-actions {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.evidence-source {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  margin: 0 0 1rem;
+}
+
+.file-list {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  max-width: 60rem;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.file-list li {
+  padding: 0.3rem 0;
+  border-bottom: 1px dotted var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.file-list .file-lines {
+  color: var(--muted);
+}
+
+.claim-list {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  max-width: 60rem;
+}
+
+.claim {
+  padding: 0.7rem 0;
+  border-bottom: 1px dotted var(--line);
+}
+
+.claim-head {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+
+.claim-check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  flex: none;
+}
+
+.claim-check input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--accent);
+}
+
+.claim-text {
+  margin: 0.35rem 0 0.3rem;
+}
+
+.claim.is-excluded .claim-text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.claim-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: baseline;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.claim-meta .badge {
+  font-size: 0.75rem;
+  margin-right: 0;
+}
+
+.badge.kind-verified {
+  border-color: var(--good);
+  color: var(--good);
+}
+
+.badge.kind-suggestion {
+  border-style: dashed;
+}
+
+.badge.kind-ungrounded {
+  color: var(--muted);
+  border-color: var(--muted);
+}
+
+.badge.status-deprecated {
+  color: var(--bad);
+  border-color: var(--bad);
+}
+
+.claim-ref {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.claim-ref a {
+  color: var(--accent);
+}
+
+.reframe-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  align-items: center;
+}
+
+.reframe-row input[type="text"] {
+  flex: 1 1 20rem;
+}
+
+.link-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--accent);
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

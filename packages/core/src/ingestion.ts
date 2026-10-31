@@ -3,6 +3,13 @@
 // Bounds (ARCHITECTURE.md §6): ≤20 files, ≤200KB total, code sample ≤5
 // files / 10KB each, default branch only, 30s timeout, 403/429 back-off
 // then degrade to README-only or typed error. Private repos rejected.
+//
+// Rate-limit handling (GitHub answers quota exhaustion with HTTP 403, not
+// 429): every GitHub response is inspected for x-ratelimit-remaining,
+// x-ratelimit-reset, and retry-after. Quota exhaustion surfaces as typed
+// 'rate-limited' with the reset time — never a bare 'network' error. A
+// single retry happens only when retry-after is present; otherwise the
+// failure is immediate so callers can show the reset time right away.
 
 export type FetchImpl = typeof fetch;
 
@@ -24,12 +31,22 @@ export type IngestionErrorCode =
   | 'idea-length'
   | 'network';
 
+/** Structured rate-limit detail attached to 'rate-limited' errors. Never secret. */
+export interface RateLimitInfo {
+  /** ISO timestamp of the x-ratelimit-reset header when GitHub sent one. */
+  resetAt?: string;
+  /** Honored retry-after delay in ms when GitHub sent one. */
+  retryAfterMs?: number;
+}
+
 export class IngestionError extends Error {
   readonly code: IngestionErrorCode;
-  constructor(code: IngestionErrorCode, message: string) {
+  readonly rateLimit?: RateLimitInfo;
+  constructor(code: IngestionErrorCode, message: string, rateLimit?: RateLimitInfo) {
     super(message);
     this.name = 'IngestionError';
     this.code = code;
+    if (rateLimit) this.rateLimit = rateLimit;
   }
 }
 
@@ -55,6 +72,16 @@ export interface EvidencePointer {
   path: string;
 }
 
+/** Request budget accounting for one fetchRepo call (retries counted). */
+export interface IngestRequestStats {
+  /** Network calls to api.github.com (meta + tree + retries). */
+  api: number;
+  /** Network calls to raw.githubusercontent.com (blobs + retries). */
+  blobs: number;
+  /** Logical calls served from the response cache (no network). */
+  cached: number;
+}
+
 export interface IngestedRepo {
   kind: 'repo';
   owner: string;
@@ -66,6 +93,8 @@ export interface IngestedRepo {
   degraded: boolean;
   warnings: string[];
   evidence: EvidencePointer[];
+  /** Present on fresh ingests; absent on older/hand-built fixtures. */
+  requests?: IngestRequestStats;
 }
 
 export interface IngestedIdea {
@@ -86,6 +115,57 @@ export interface FetchRepoOptions {
   authToken?: string;
   /** Pin a branch (default: repo default branch). Used by eval fixtures. */
   branch?: string;
+  /**
+   * Optional response cache (200s only, TTL-bounded). Share one across
+   * calls to keep repeated ingests of the same repo off the rate limit.
+   * Absent by default so offline tests stay deterministic.
+   */
+  cache?: ResponseCache;
+}
+
+/**
+ * Minimal GET response cache: URL -> 200 body. Implementations must be
+ * synchronous and TTL-bounded; see createMemoryCache.
+ */
+export interface ResponseCache {
+  get(key: string): string | undefined;
+  set(key: string, body: string): void;
+}
+
+export interface MemoryCacheOptions {
+  /** Entry time-to-live. Default 120000ms. */
+  ttlMs?: number;
+  /** Max entries (oldest evicted first). Default 100. */
+  maxEntries?: number;
+  /** Bodies larger than this are never cached. Default 512KB. */
+  maxEntryBytes?: number;
+}
+
+/** Small in-process TTL cache for successful GitHub GETs. No timers. */
+export function createMemoryCache(opts: MemoryCacheOptions = {}): ResponseCache {
+  const ttlMs = opts.ttlMs ?? 120000;
+  const maxEntries = opts.maxEntries ?? 100;
+  const maxEntryBytes = opts.maxEntryBytes ?? 512 * 1024;
+  const store = new Map<string, { body: string; expires: number }>();
+  return {
+    get(key: string): string | undefined {
+      const hit = store.get(key);
+      if (!hit) return undefined;
+      if (Date.now() > hit.expires) {
+        store.delete(key);
+        return undefined;
+      }
+      return hit.body;
+    },
+    set(key: string, body: string): void {
+      if (Buffer.byteLength(body, 'utf8') > maxEntryBytes) return;
+      if (!store.has(key) && store.size >= maxEntries) {
+        const oldest = store.keys().next().value as string | undefined;
+        if (oldest !== undefined) store.delete(oldest);
+      }
+      store.set(key, { body, expires: Date.now() + ttlMs });
+    },
+  };
 }
 
 function toIngestedFile(path: string, text: string, truncated: boolean): IngestedFile {
@@ -128,6 +208,67 @@ async function httpGet(
     /* ignore header-read failures */
   }
   return { status: res.status, headers: outHeaders, text };
+}
+
+/** True for the statuses GitHub uses for quota/abuse limiting. */
+function isLimitStatus(status: number): boolean {
+  return status === 403 || status === 429;
+}
+
+/** Structured rate-limit detail from response headers (never secret). */
+function rateLimitInfo(headers: Record<string, string>): RateLimitInfo {
+  const info: RateLimitInfo = {};
+  const resetSec = Number(headers['x-ratelimit-reset']);
+  if (Number.isFinite(resetSec) && resetSec > 0) {
+    info.resetAt = new Date(resetSec * 1000).toISOString();
+  }
+  const retrySec = Number(headers['retry-after']);
+  if (Number.isFinite(retrySec) && retrySec >= 0) {
+    info.retryAfterMs = retrySec * 1000;
+  }
+  return info;
+}
+
+/** Human suffix naming the quota reset, for errors and warnings. */
+function resetSuffix(headers: Record<string, string>): string {
+  const { resetAt } = rateLimitInfo(headers);
+  return resetAt ? ` (quota resets at ${resetAt})` : '';
+}
+
+/**
+ * Accept `owner/repo` or a full `github.com/owner/repo` URL (with .git,
+ * branch paths, queries). Returns null for anything else — callers must
+ * reject with 'invalid-input', never guess.
+ */
+export function parseRepoInput(input: string): { owner: string; repo: string } | null {
+  const t = input.trim();
+  const url = t.match(/^https?:\/\/(?:www\.)?github\.com\/([^/\s?#]+)\/([^/\s?#]+?)(?:\.git)?(?:[/?#].*)?$/i);
+  if (url) return { owner: url[1], repo: url[2] };
+  const short = t.match(/^([\w.-]+)\/([\w.-]+?)(?:\.git)?$/);
+  if (short) return { owner: short[1], repo: short[2] };
+  return null;
+}
+
+/**
+ * Deep link to a source line range on github.com. The branch is passed
+ * through unencoded (slash branches stay navigable); owner/repo/path
+ * segments are encoded. Only build links from ingested branch + real
+ * extraction line spans — never from guessed locations.
+ */
+export function githubBlobUrl(
+  owner: string,
+  repo: string,
+  branch: string,
+  path: string,
+  lines?: [number, number],
+): string {
+  const encoded = path.split('/').map(encodeURIComponent).join('/');
+  const base =
+    `https://github.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}` +
+    `/blob/${branch}/${encoded}`;
+  if (!lines) return base;
+  const [a, b] = lines;
+  return a === b ? `${base}#L${a}` : `${base}#L${a}-L${b}`;
 }
 
 function isReadme(path: string): boolean {
@@ -187,7 +328,10 @@ function isCode(path: string): boolean {
 
 /**
  * Fetch a public GitHub repo with hard bounds. README + docs first, then a
- * selective code sample. Degrades to README-only on persistent 403/429.
+ * selective code sample. Degrades to README-only on persistent blob 403/429;
+ * API-call limits fail fast as typed 'rate-limited' with reset info. Every
+ * call is counted on the returned `requests` budget; pass `cache` to serve
+ * repeat ingests without spending quota.
  */
 export async function fetchRepo(
   owner: string,
@@ -201,19 +345,55 @@ export async function fetchRepo(
   const timeoutMs = opts.timeoutMs ?? DEFAULT_TIMEOUT_MS;
   const headers: Record<string, string> = {
     accept: 'application/vnd.github+json',
-    'user-agent': 'typodeck-phase2',
+    'user-agent': 'typodeck',
   };
   if (opts.authToken) headers['authorization'] = `Bearer ${opts.authToken}`;
 
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+
+  // Request budgeting: every network call is counted by kind; cache hits
+  // are counted separately so callers can see quota actually consumed.
+  // The cache key includes the auth mode so authed and anonymous views of
+  // the same URL never share entries.
+  const requests: IngestRequestStats = { api: 0, blobs: 0, cached: 0 };
+  const cachePrefix = opts.authToken ? 'a:' : 'u:';
+  const get = async (kind: 'api' | 'blobs', url: string): Promise<HttpResult> => {
+    const cached = opts.cache?.get(`${cachePrefix}${url}`);
+    if (cached !== undefined) {
+      requests.cached += 1;
+      return { status: 200, headers: {}, text: cached };
+    }
+    const res = await httpGet(fetchImpl, url, headers, ctrl.signal);
+    requests[kind] += 1;
+    if (res.status === 200) opts.cache?.set(`${cachePrefix}${url}`, res.text);
+    return res;
+  };
+  // A single retry happens only when GitHub names a delay; quota exhaustion
+  // without retry-after fails fast with the reset time attached.
+  const maybeRetry = async (kind: 'api' | 'blobs', url: string, res: HttpResult): Promise<HttpResult> => {
+    const { retryAfterMs } = rateLimitInfo(res.headers);
+    if (retryAfterMs === undefined) return res;
+    await sleep(Math.min(retryAfterMs, 10000));
+    return get(kind, url);
+  };
+
   try {
     // 1. Repo metadata: default branch + visibility gate.
-    const metaRes = await httpGet(
-      fetchImpl, `https://api.github.com/repos/${owner}/${repo}`, headers, ctrl.signal,
-    );
+    let metaRes = await get('api', `https://api.github.com/repos/${owner}/${repo}`);
     if (metaRes.status === 404) {
-      throw new IngestionError('not-found', `repo not found: ${owner}/${repo}`);
+      throw new IngestionError('not-found', `repo not found: ${owner}/${repo} (missing, renamed, or private)`);
+    }
+    if (isLimitStatus(metaRes.status)) {
+      metaRes = await maybeRetry('api', `https://api.github.com/repos/${owner}/${repo}`, metaRes);
+    }
+    if (isLimitStatus(metaRes.status)) {
+      throw new IngestionError(
+        'rate-limited',
+        `GitHub rate limit (HTTP ${metaRes.status}) fetching repo metadata for ${owner}/${repo}` +
+          `${resetSuffix(metaRes.headers)}. Authenticate for higher quota or retry after the reset.`,
+        rateLimitInfo(metaRes.headers),
+      );
     }
     if (metaRes.status !== 200) {
       throw new IngestionError('network', `repo metadata HTTP ${metaRes.status} for ${owner}/${repo}`);
@@ -230,14 +410,21 @@ export async function fetchRepo(
     const branch = opts.branch ?? meta.default_branch ?? 'main';
 
     // 2. Single recursive tree call (N blobs fetched after, N ≤ 20).
-    const treeRes = await httpGet(
-      fetchImpl,
-      `https://api.github.com/repos/${owner}/${repo}/git/trees/${branch}?recursive=1`,
-      headers,
-      ctrl.signal,
-    );
+    const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${branch}?recursive=1`;
+    let treeRes = await get('api', treeUrl);
     if (treeRes.status === 404) {
       throw new IngestionError('not-found', `branch not found: ${owner}/${repo}@${branch}`);
+    }
+    if (isLimitStatus(treeRes.status)) {
+      treeRes = await maybeRetry('api', treeUrl, treeRes);
+    }
+    if (isLimitStatus(treeRes.status)) {
+      throw new IngestionError(
+        'rate-limited',
+        `GitHub rate limit (HTTP ${treeRes.status}) fetching the file tree for ${owner}/${repo}@${branch}` +
+          `${resetSuffix(treeRes.headers)}. Authenticate for higher quota or retry after the reset.`,
+        rateLimitInfo(treeRes.headers),
+      );
     }
     if (treeRes.status !== 200) {
       throw new IngestionError('network', `tree HTTP ${treeRes.status} for ${owner}/${repo}@${branch}`);
@@ -278,6 +465,9 @@ export async function fetchRepo(
     const files: IngestedFile[] = [];
     const evidence: EvidencePointer[] = [];
     const warnings: string[] = [];
+    if (tree.truncated === true) {
+      warnings.push('GitHub truncated the file tree; selection may miss files in large repos');
+    }
     let totalBytes = 0;
     let codeCount = 0;
     let degraded = false;
@@ -290,24 +480,28 @@ export async function fetchRepo(
       }
       if (isCode && codeCount >= MAX_CODE_FILES) return false; // skip quietly; cap is structural
       const url = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${path}`;
-      const res = await httpGet(fetchImpl, url, headers, ctrl.signal);
-      if (res.status === 403 || res.status === 429) {
+      const res = await get('blobs', url);
+      if (isLimitStatus(res.status)) {
         // Single back-off retry, then degrade to README-only or fail.
-        const retryAfter = Number(res.headers['retry-after']);
-        const delay = Number.isFinite(retryAfter) && retryAfter > 0
-          ? Math.min(retryAfter * 1000, 10000)
+        // Raw-blob limits are usually transient abuse throttles, so the
+        // retry always runs (unlike the fail-fast API calls above).
+        const { retryAfterMs } = rateLimitInfo(res.headers);
+        const delay = retryAfterMs !== undefined && retryAfterMs > 0
+          ? Math.min(retryAfterMs, 10000)
           : (opts.retryDelayMs ?? 1000);
         await sleep(delay);
-        const retry = await httpGet(fetchImpl, url, headers, ctrl.signal);
-        if (retry.status === 403 || retry.status === 429) {
+        const retry = await get('blobs', url);
+        if (isLimitStatus(retry.status)) {
           if (readmeFetched) {
             degraded = true;
-            warnings.push(`rate limited (HTTP ${retry.status}); degraded to README-only`);
+            warnings.push(`rate limited (HTTP ${retry.status}); degraded to README-only${resetSuffix(retry.headers)}`);
             return false;
           }
           throw new IngestionError(
             'rate-limited',
-            `GitHub rate limit (HTTP ${retry.status}) before README could be fetched`,
+            `GitHub rate limit (HTTP ${retry.status}) before README could be fetched` +
+              `${resetSuffix(retry.headers)}. Authenticate for higher quota or retry after the reset.`,
+            rateLimitInfo(retry.headers),
           );
         }
         return storeBlob(path, isCode, retry.text, retry.status);
@@ -365,6 +559,7 @@ export async function fetchRepo(
       degraded,
       warnings,
       evidence,
+      requests,
     };
   } finally {
     clearTimeout(timer);

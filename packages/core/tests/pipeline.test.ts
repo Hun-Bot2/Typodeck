@@ -55,6 +55,40 @@ describe('pipeline (planDeck on recorded fixtures, all systems)', () => {
     });
   }
 
+  it('carries repo provenance on the deck meta', async () => {
+    const res = await planDeck(
+      { type: 'repo', owner: 'acme', repo: 'widgets' },
+      { system: 'swiss', purpose: 'Widgets', lang: 'en', fetchImpl: recordedRepoFetch(record) },
+    );
+    assert.deepEqual(res.deck.meta.provenance, {
+      repo: 'acme/widgets',
+      branch: 'main',
+      sha: record.treeSha,
+    });
+  });
+
+  it('applies an evidence selection between extraction and planning', async () => {
+    const base = await planDeck(
+      { type: 'repo', owner: 'acme', repo: 'widgets' },
+      { system: 'swiss', purpose: 'Widgets', lang: 'en', fetchImpl: recordedRepoFetch(record) },
+    );
+    const sha = base.ingested.kind === 'repo' ? base.ingested.sha : null;
+    const drop = base.claims[0].id;
+    const reviewed = await planDeck(
+      { type: 'repo', owner: 'acme', repo: 'widgets' },
+      {
+        system: 'swiss',
+        purpose: 'Widgets',
+        lang: 'en',
+        fetchImpl: recordedRepoFetch(record),
+        selection: { sha, excluded: [drop] },
+      },
+    );
+    assert.equal(reviewed.claims.length, base.claims.length - 1);
+    assert.ok(!reviewed.claims.some((c) => c.id === drop));
+    assert.ok(reviewed.provenance.warnings.some((w) => w.includes('excluded during evidence review')));
+  });
+
   it('is deterministic end-to-end for a fixed seed', async () => {
     const opts = (system: (typeof SYSTEM_IDS)[number]) => ({
       system,

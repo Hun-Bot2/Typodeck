@@ -28,11 +28,32 @@ export async function POST(req: NextRequest): Promise<Response> {
   if (Buffer.byteLength(raw, 'utf8') > BODY_CAP_BYTES) {
     return jsonError(413, 'body-too-large', `request body exceeds the ${BODY_CAP_BYTES}-byte cap`);
   }
-  let parsed: { narrative?: unknown; system?: unknown; generatedBy?: unknown };
+  let parsed: { narrative?: unknown; system?: unknown; generatedBy?: unknown; provenance?: unknown };
   try {
     parsed = (JSON.parse(raw) || {}) as typeof parsed;
   } catch {
     return jsonError(400, 'invalid-input', 'request body is not valid JSON');
+  }
+  // Optional provenance echo from /api/generate (validated, never trusted blindly).
+  let provenance: { repo?: string; branch?: string; sha?: string | null } | undefined;
+  if (parsed.provenance !== undefined) {
+    if (parsed.provenance === null || typeof parsed.provenance !== 'object' || Array.isArray(parsed.provenance)) {
+      return jsonError(400, 'invalid-input', 'provenance must be an object');
+    }
+    const p = parsed.provenance as Record<string, unknown>;
+    for (const key of ['repo', 'branch'] as const) {
+      if (p[key] !== undefined && (typeof p[key] !== 'string' || (p[key] as string).length > 200)) {
+        return jsonError(400, 'invalid-input', `provenance.${key} must be a string of ≤200 chars`);
+      }
+    }
+    if (p.sha !== undefined && p.sha !== null && (typeof p.sha !== 'string' || (p.sha as string).length > 100)) {
+      return jsonError(400, 'invalid-input', 'provenance.sha must be a string of ≤100 chars or null');
+    }
+    provenance = {
+      ...(typeof p.repo === 'string' ? { repo: p.repo } : {}),
+      ...(typeof p.branch === 'string' ? { branch: p.branch } : {}),
+      ...(p.sha === null || typeof p.sha === 'string' ? { sha: p.sha } : {}),
+    };
   }
 
   // Validate the system id against the registry; never trust client
@@ -61,6 +82,9 @@ export async function POST(req: NextRequest): Promise<Response> {
     typeof parsed.generatedBy === 'string' && parsed.generatedBy.trim() !== ''
       ? parsed.generatedBy.trim().slice(0, 64)
       : 'typodeck-studio/phase3';
+  if (provenance && (provenance.repo !== undefined || provenance.branch !== undefined)) {
+    deck.meta.provenance = provenance;
+  }
 
   const { buffer, slideCount } = await exportToPptxBuffer(deck);
   const check = await validatePptxBytes(buffer, 100);

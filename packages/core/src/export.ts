@@ -54,6 +54,14 @@ function buildPresentation(deck: Deck): { pptx: PptxGenJS; slideCount: number; t
   pptx.defineLayout({ name: LAYOUT_16x9, width: SLIDE_WIDTH_IN, height: SLIDE_HEIGHT_IN });
   pptx.layout = LAYOUT_16x9;
   pptx.title = deck.meta.title;
+  // Provenance travels in the core properties (File > Info), never on slides.
+  pptx.author = deck.meta.generatedBy;
+  pptx.company = 'Typodeck';
+  const prov = deck.meta.provenance;
+  if (prov?.repo) {
+    const pin = prov.sha ? prov.sha.slice(0, 12) : (prov.branch ?? '?');
+    pptx.subject = `source: ${prov.repo}@${pin}`;
+  }
 
   let textBoxCount = 0;
   for (const slide of deck.slides) {

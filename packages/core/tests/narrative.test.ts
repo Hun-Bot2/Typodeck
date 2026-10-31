@@ -2,7 +2,7 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { extractClaims, type Claim } from '../src/evidence';
 import { acceptIdea } from '../src/ingestion';
-import { captionFor, planDeck, planNarrative, planNarrativeWithQuality } from '../src/narrative';
+import { applyEvidenceSelection, captionFor, planDeck, planNarrative, planNarrativeWithQuality } from '../src/narrative';
 import { loadIdeaF4, loadRecordedRepo, recordedRepoFetch } from './fake-fetch';
 
 const record = loadRecordedRepo();
@@ -161,5 +161,62 @@ describe('planDeck', () => {
     assert.ok(res.deck.slides.length >= 5 && res.deck.slides.length <= 12);
     assert.ok(res.provenance.claims.verified > 0);
     assert.equal(res.deck.meta.system, 'editorial');
+  });
+});
+
+describe('applyEvidenceSelection', () => {
+  const claims = () => [
+    mkClaim('c1', 'Widgets renders dashboards in under 120ms on modest hardware.', 'verified', 'src/index.js'),
+    mkClaim('c2', 'More than 40 teams use widgets in production today worldwide.', 'suggestion', 'README.md'),
+    mkClaim('c3', 'The layout engine packs panels without any overlap at all.', 'verified', 'src/pack.js'),
+  ];
+
+  it('drops excluded claims and reports the count', () => {
+    const { claims: kept, warnings } = applyEvidenceSelection(claims(), { excluded: ['c2'] }, 'sha');
+    assert.deepEqual(kept.map((c) => c.id), ['c1', 'c3']);
+    assert.ok(warnings.some((w) => w.includes('1 claim(s) excluded during evidence review')));
+  });
+
+  it('reframes text while keeping refs and verbatim numbers only', () => {
+    const { claims: kept, warnings } = applyEvidenceSelection(
+      claims(),
+      { reframed: [{ id: 'c1', text: 'Widgets renders dashboards in under 120ms, even on old laptops.' }] },
+      'sha',
+    );
+    assert.equal(kept[0].text, 'Widgets renders dashboards in under 120ms, even on old laptops.');
+    assert.deepEqual(kept[0].refs, [{ path: 'src/index.js', lines: [1, 2] }]);
+    assert.deepEqual(kept[0].numbers, ['120ms']);
+    assert.ok(warnings.some((w) => w.includes('reframed by user')));
+  });
+
+  it('drops numbers the reframe no longer states verbatim', () => {
+    const { claims: kept } = applyEvidenceSelection(
+      claims(),
+      { reframed: [{ id: 'c1', text: 'Widgets renders dashboards quickly on modest hardware setups.' }] },
+      'sha',
+    );
+    assert.deepEqual(kept[0].numbers, []);
+  });
+
+  it('ignores out-of-bounds reframes with a warning', () => {
+    const { claims: kept, warnings } = applyEvidenceSelection(
+      claims(),
+      { reframed: [{ id: 'c1', text: 'too short' }] },
+      'sha',
+    );
+    assert.equal(kept[0].text, claims()[0].text);
+    assert.ok(warnings.some((w) => w.includes('reframe for c1 ignored')));
+  });
+
+  it('resets the review when the repo moved since', () => {
+    const { claims: kept, warnings } = applyEvidenceSelection(claims(), { sha: 'old', excluded: ['c1', 'c2', 'c3'] }, 'new');
+    assert.equal(kept.length, 3);
+    assert.ok(warnings.some((w) => w.includes('selection was reset')));
+  });
+
+  it('flags reviewed ids that no longer exist', () => {
+    const { claims: kept, warnings } = applyEvidenceSelection(claims(), { excluded: ['c99'] }, 'sha');
+    assert.equal(kept.length, 3);
+    assert.ok(warnings.some((w) => w.includes('no longer exist')));
   });
 });

@@ -442,3 +442,45 @@ validates (honest absence, e.g. post-fix F2/F3).
   before/after benchmark (frozen manifest, failures in
   denominator, conjunctive superiority rule). Ownership held:
   research/* and worktrees untouched.
+
+## GitHub-to-Presentation Journey (2026-10-30)
+
+Branch `feat/github-presentation-journey`, worktree
+`.muse/worktrees/github-journey` (state moved via stash, byte-verified;
+stash `wip-before-github-journey` retained as backup). Ownership held:
+research/, gallery/, composition.ts, visual-systems.ts, and all
+subagent worktrees untouched.
+
+- 403 root cause: meta/tree 403 (quota 0 answers 403, not 429) surfaced
+  as generic 'network', no header inspection, and no route ever passed
+  `authToken`. Fix: fail-fast typed 'rate-limited' with `resetAt` on
+  API calls (single retry only with retry-after), reset-enriched blob
+  messages, `GITHUB_TOKEN`/`GH_TOKEN` wiring, user-agent `typodeck`,
+  truncated-tree warning, per-call `requests` budget, TTL response
+  cache (200s only, auth-separated), shared across /api/evidence +
+  /api/generate via globalThis (Next bundles routes separately).
+- Evidence Inspector: new `POST /api/evidence` (files + claims with
+  kind/status/numbers/deep links); `displayStatus` single source of
+  truth (captionFor refactored onto it, byte-identical captions);
+  `EvidenceSelection` (exclude/reframe, sha guard) applied between
+  extraction and planning; Studio section 02 with checkboxes, reframe
+  editing, staleness gating.
+- Provenance: `DeckMeta.provenance` (repo/branch/sha) set by the
+  pipeline, echoed through /api/export, written to PPTX core
+  properties (`author`/`company`/`subject`); slide content untouched.
+- First use: repo-first input + sample chips, guided per-code errors
+  with idea-mode fallback, section renumber 01–06.
+- Fixes on the way: markdown route allowlist predated the `document`
+  system (edits dropped it); now renders all 4.
+- Tests: 270/270 green (250 baseline + 20 new: 403/cache/budget,
+  parseRepoInput/githubBlobUrl, displayStatus, selection incl.
+  pipeline wiring, provenance incl. core.xml). Web `tsc --noEmit`
+  clean. New `npm run journey` live e2e: 9/9 PASS on
+  sindresorhus/is, psf/requests, facebook/react (evidence 0.1–6.7 s,
+  generate <200 ms, export <50 ms; bottleneck = sequential blob
+  fetch); missing repo fails honestly as typed not-found. HTTP
+  Studio probe: evidence/generate-SSE/markdown/export all 200 with
+  review + provenance verified in artifacts.
+- Not production-ready: see docs/GITHUB_JOURNEY.md limitations
+  (docs-filled 20-file cap, sequential fetch, env-only token, no
+  local-file ingest, positional claim ids, untuned pick quality).

@@ -5,10 +5,13 @@ import {
   getPreset,
   narrativeToSlideIR,
   parsePurpose,
+  parseRepoInput,
   planDecksAll,
   serializeSlideMarkdown,
   type Dimension,
+  type EvidenceSelection,
 } from '@typodeck/core';
+import { githubResponseCache, githubToken } from '@/lib/github-cache';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -24,8 +27,8 @@ const REPO_TIMEOUT_MS = 60_000;
 const LEGACY_PURPOSES = new Set(['hackathon', 'competition', 'showcase']);
 const VARIANTS = new Set(['short', 'standard', 'extended']);
 
-function jsonError(status: number, code: string, message: string): Response {
-  return Response.json({ error: { code, message } }, { status });
+function jsonError(status: number, code: string, message: string, extra?: Record<string, unknown>): Response {
+  return Response.json({ error: { code, message, ...extra } }, { status });
 }
 
 function toErrorResponse(err: unknown): Response {
@@ -44,22 +47,12 @@ function toErrorResponse(err: unknown): Response {
                 : err.code === 'network'
                   ? 502
                   : 400;
-    return jsonError(status, err.code, err.message);
+    return jsonError(status, err.code, err.message, err.rateLimit ? { ...err.rateLimit } : undefined);
   }
   if (err instanceof Error && err.message === 'typodeck-request-timeout') {
     return jsonError(504, 'timeout', 'generation exceeded 115s and was aborted');
   }
   return jsonError(500, 'internal', err instanceof Error ? err.message : String(err));
-}
-
-/** Accept `owner/repo` or a full `github.com/owner/repo` URL (with .git, branch paths, queries). */
-export function parseRepoInput(input: string): { owner: string; repo: string } | null {
-  const t = input.trim();
-  const url = t.match(/^https?:\/\/(?:www\.)?github\.com\/([^/\s?#]+)\/([^/\s?#]+?)(?:\.git)?(?:[/?#].*)?$/i);
-  if (url) return { owner: url[1], repo: url[2] };
-  const short = t.match(/^([\w.-]+)\/([\w.-]+?)(?:\.git)?$/);
-  if (short) return { owner: short[1], repo: short[2] };
-  return null;
 }
 
 interface GenerateBody {
@@ -70,6 +63,54 @@ interface GenerateBody {
   variant?: unknown;
   durationMin?: unknown;
   emphasis?: unknown;
+  selection?: unknown;
+}
+
+/** Strict validation for the inspector's evidence review (never trusted blindly). */
+function parseSelection(value: unknown): EvidenceSelection | undefined {
+  if (value === undefined) return undefined;
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) {
+    throw new Error('selection must be an object');
+  }
+  const v = value as Record<string, unknown>;
+  const out: EvidenceSelection = {};
+  if (v.sha !== undefined) {
+    if (v.sha !== null && typeof v.sha !== 'string') throw new Error('selection.sha must be a string or null');
+    if (typeof v.sha === 'string' && (v.sha.length === 0 || v.sha.length > 100)) {
+      throw new Error('selection.sha must be 1–100 chars or null');
+    }
+    out.sha = v.sha;
+  }
+  if (v.excluded !== undefined) {
+    if (!Array.isArray(v.excluded) || v.excluded.length > 100) {
+      throw new Error('selection.excluded must be an array of ≤100 claim ids');
+    }
+    for (const id of v.excluded) {
+      if (typeof id !== 'string' || !/^c\d{1,4}$/.test(id)) {
+        throw new Error('selection.excluded must contain claim ids like "c12"');
+      }
+    }
+    out.excluded = v.excluded as string[];
+  }
+  if (v.reframed !== undefined) {
+    if (!Array.isArray(v.reframed) || v.reframed.length > 100) {
+      throw new Error('selection.reframed must be an array of ≤100 edits');
+    }
+    for (const r of v.reframed) {
+      if (r === null || typeof r !== 'object' || Array.isArray(r)) {
+        throw new Error('selection.reframed entries must be {id, text} objects');
+      }
+      const { id, text } = r as Record<string, unknown>;
+      if (typeof id !== 'string' || !/^c\d{1,4}$/.test(id)) {
+        throw new Error('selection.reframed entries need a claim id like "c12"');
+      }
+      if (typeof text !== 'string' || text.length === 0 || text.length > 1000) {
+        throw new Error('selection.reframed text must be 1–1000 chars');
+      }
+    }
+    out.reframed = v.reframed as Array<{ id: string; text: string }>;
+  }
+  return out;
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
@@ -152,6 +193,12 @@ export async function POST(req: NextRequest): Promise<Response> {
       'repo input must be "owner/repo" or a public github.com URL',
     );
   }
+  let selection: EvidenceSelection | undefined;
+  try {
+    selection = parseSelection(parsed.selection);
+  } catch (err) {
+    return jsonError(400, 'invalid-input', err instanceof Error ? err.message : String(err));
+  }
 
   const run = async (onStage?: (stage: string, detail?: string) => void) => {
     const raced = (async () => {
@@ -161,6 +208,9 @@ export async function POST(req: NextRequest): Promise<Response> {
           purpose,
           lang,
           timeoutMs: REPO_TIMEOUT_MS,
+          authToken: githubToken(),
+          cache: githubResponseCache(),
+          selection,
           variant: variant as 'short' | 'standard' | 'extended' | undefined,
           durationMin,
           emphasis: emphasis as Dimension[] | undefined,
@@ -173,7 +223,17 @@ export async function POST(req: NextRequest): Promise<Response> {
       const slideMarkdown = serializeSlideMarkdown(
         narrativeToSlideIR(result.narrative, result.claims, { preset: parsed.preset }),
       );
-      return { narrative: result.narrative, decks: result.decks, provenance: result.provenance, slideMarkdown };
+      const source =
+        result.ingested.kind === 'repo'
+          ? {
+              kind: 'repo' as const,
+              owner: result.ingested.owner,
+              repo: result.ingested.repo,
+              branch: result.ingested.branch,
+              sha: result.ingested.sha,
+            }
+          : { kind: 'idea' as const };
+      return { narrative: result.narrative, decks: result.decks, provenance: result.provenance, slideMarkdown, source };
     })();
     const timer = new Promise<never>((_resolve, reject) => {
       setTimeout(() => reject(new Error('typodeck-request-timeout')), REQUEST_TIMEOUT_MS);

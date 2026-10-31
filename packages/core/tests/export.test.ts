@@ -65,6 +65,22 @@ describe('export + structural validation', () => {
     assert.ok(!slideXml?.includes('UNIQUE-NOTE-MARKER'), 'notes text leaked onto slide');
   });
 
+  it('writes provenance to core properties, never onto slides', async () => {
+    const deck = layoutDeck(SAMPLE_NARRATIVE, 'swiss', { seed: 7 });
+    deck.meta.generatedBy = 'typodeck:test';
+    deck.meta.provenance = { repo: 'acme/widgets', branch: 'main', sha: 'abc123def456789' };
+    const { buffer } = await exportToPptxBuffer(deck);
+    const zip = await JSZip.loadAsync(buffer);
+    const core = await zip.file('docProps/core.xml')?.async('string');
+    assert.ok(core?.includes('typodeck:test'), 'author missing from core properties');
+    assert.ok(core?.includes('Typodeck'), 'company missing from core properties');
+    assert.ok(core?.includes('source: acme/widgets@abc123def456'), `subject missing: ${core}`);
+    for (const name of Object.keys(zip.files).filter((n) => /^ppt\/slides\/slide\d+\.xml$/.test(n))) {
+      const slideXml = await zip.file(name)?.async('string');
+      assert.ok(!slideXml?.includes('source: acme/widgets'), 'provenance leaked onto a slide');
+    }
+  });
+
   it('exporter source never calls forbidden drawing APIs', async () => {
     const src = await fs.readFile(path.join(__dirname, '..', '..', 'src', 'export.ts'), 'utf8');
     for (const api of ['Shape', 'Image', 'Table', 'Chart', 'Media'].map((k) => `add${k}`)) {

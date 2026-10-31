@@ -4,8 +4,8 @@
 // planDeck / planDecksAll: ingestion -> evidence -> narrative -> layout -> validate.
 
 import type { Claim, ClaimKind, ClaimRef } from './evidence';
-import { extractClaims } from './evidence';
-import { acceptIdea, fetchRepo, type FetchRepoOptions, type Ingested } from './ingestion';
+import { extractClaims, MAX_CLAIM_CHARS } from './evidence';
+import { acceptIdea, fetchRepo, type FetchRepoOptions, type Ingested, type IngestRequestStats } from './ingestion';
 import { layoutDeck } from './layout';
 import { resolveProvider, type ModelProvider } from './provider';
 import { evaluateNarrative, type QualityReport } from './quality';
@@ -14,8 +14,8 @@ import {
   ARC,
   AUDIENCE_LABEL,
   claimSimilarity,
-  classifyStatus,
   DIM_LABEL,
+  displayStatus,
   EXTENDED_DIMENSIONS,
   isChangelogClaim,
   SIM_REDUNDANT,
@@ -114,11 +114,9 @@ export function captionFor(claim: Claim, lang: Lang): string {
   void lang;
   const tags: string[] = [claim.kind === 'verified' ? 'verified' : 'unverified'];
   if (claim.kind === 'ungrounded') tags.push('illustrative');
-  const status = classifyStatus(claim.text, claim.kind);
+  const status = displayStatus(claim);
   if (status === 'proposed' || status === 'historical' || status === 'deprecated') {
     tags.push(status);
-  } else if (isChangelogClaim(claim)) {
-    tags.push('historical');
   }
   const refs = claim.refs.length > 0 ? formatRefs(claim.refs) : '';
   return refs === '' ? tags.join(' · ') : `${tags.join(' · ')} · ${refs}`;
@@ -683,6 +681,77 @@ export function planNarrative(claims: Claim[], opts: PlanNarrativeOptions = {}):
   return planNarrativeWithQuality(claims, opts).narrative;
 }
 
+/**
+ * User evidence review, applied between extraction and planning. Claim ids
+ * are deterministic per ingest, so a review from /api/evidence lines up
+ * with the generate call that follows it — unless the repo moved, in
+ * which case the sha guard resets the selection honestly.
+ */
+export interface EvidenceSelection {
+  /** Ingested sha at review time (repo mode). Mismatch resets the review. */
+  sha?: string | null;
+  /** Claim ids to drop before planning. */
+  excluded?: string[];
+  /** Claim reframes: text is replaced, refs still point at the source. */
+  reframed?: Array<{ id: string; text: string }>;
+}
+
+const REFRAME_MIN_CHARS = 10;
+
+/**
+ * Apply an evidence review to extracted claims. Pure: the input array is
+ * never mutated. Reframed numbers keep only tokens still verbatim in the
+ * new text (same guard as rephraseClaims); refs always stay attached to
+ * the original source lines.
+ */
+export function applyEvidenceSelection(
+  claims: Claim[],
+  selection: EvidenceSelection,
+  currentSha?: string | null,
+): { claims: Claim[]; warnings: string[] } {
+  const warnings: string[] = [];
+  if (selection.sha !== undefined && selection.sha !== (currentSha ?? null)) {
+    warnings.push('repository changed since evidence review; selection was reset');
+    return { claims, warnings };
+  }
+  const byId = new Map(claims.map((c) => [c.id, c]));
+  const excluded = new Set(selection.excluded ?? []);
+  let unknown = 0;
+  for (const id of excluded) {
+    if (!byId.has(id)) unknown += 1;
+  }
+  let kept = claims.filter((c) => !excluded.has(c.id));
+  const dropped = claims.length - kept.length;
+  if (dropped > 0) {
+    warnings.push(`${dropped} claim(s) excluded during evidence review`);
+  }
+  const reframes = selection.reframed ?? [];
+  let reframed = 0;
+  kept = kept.map((claim) => {
+    const edit = reframes.find((r) => r.id === claim.id);
+    if (!edit) return claim;
+    const text = edit.text.replace(/\s+/g, ' ').trim();
+    if (text.length < REFRAME_MIN_CHARS || text.length > MAX_CLAIM_CHARS) {
+      warnings.push(
+        `reframe for ${claim.id} ignored (must be ${REFRAME_MIN_CHARS}–${MAX_CLAIM_CHARS} chars)`,
+      );
+      return claim;
+    }
+    reframed += 1;
+    return { ...claim, text, numbers: claim.numbers.filter((n) => text.includes(n)) };
+  });
+  for (const r of reframes) {
+    if (!byId.has(r.id)) unknown += 1;
+  }
+  if (reframed > 0) {
+    warnings.push(`${reframed} claim(s) reframed by user; refs still point at the original source lines`);
+  }
+  if (unknown > 0) {
+    warnings.push(`${unknown} reviewed claim(s) no longer exist; ignored`);
+  }
+  return { claims: kept, warnings };
+}
+
 // ---------------------------------------------------------------------------
 // End-to-end pipeline
 // ---------------------------------------------------------------------------
@@ -701,6 +770,8 @@ export interface PlanDeckOptions extends FetchRepoOptions {
   variant?: PresetVariant;
   durationMin?: number;
   emphasis?: Dimension[];
+  /** Evidence review from the inspector; applied between extraction and planning. */
+  selection?: EvidenceSelection;
 }
 
 export interface ClaimCounts {
@@ -728,6 +799,8 @@ export interface PlanDeckResult {
     claims: ClaimCounts;
     warnings: string[];
     quality: NarrativeQualitySummary;
+    /** Request budget consumed (repo mode only). */
+    requests?: IngestRequestStats;
   };
 }
 
@@ -747,7 +820,7 @@ interface NarrativeRun {
 /** Shared ingestion -> evidence -> narrative run for planDeck/planDecksAll. */
 async function runToNarrative(
   input: PlanDeckInput,
-  opts: { purpose?: string; lang?: string; preset?: string; variant?: PresetVariant; durationMin?: number; emphasis?: Dimension[] } & FetchRepoOptions,
+  opts: { purpose?: string; lang?: string; preset?: string; variant?: PresetVariant; durationMin?: number; emphasis?: Dimension[]; selection?: EvidenceSelection } & FetchRepoOptions,
   onStage?: StageCallback,
 ): Promise<NarrativeRun> {
   const warnings: string[] = [];
@@ -758,7 +831,13 @@ async function runToNarrative(
   warnings.push(...ingested.warnings);
 
   onStage?.('evidence');
-  const claims = extractClaims(ingested);
+  let claims = extractClaims(ingested);
+  if (opts.selection) {
+    const currentSha = ingested.kind === 'repo' ? ingested.sha : null;
+    const reviewed = applyEvidenceSelection(claims, opts.selection, currentSha);
+    claims = reviewed.claims;
+    warnings.push(...reviewed.warnings);
+  }
   if (claims.length === 0) {
     warnings.push('no claims extracted; deck is cover + proposal slides only');
   }
@@ -802,10 +881,14 @@ function labelDeck(
   system: SystemId,
   seed: number | undefined,
   provider: ModelProvider,
+  ingested?: Ingested,
 ): Deck {
   const deck = layoutDeck(narrative, system, seed === undefined ? {} : { seed });
   // Label the producing provider on the deck itself.
   deck.meta.generatedBy = provider.id === 'fallback' ? 'fallback' : `typodeck:${provider.id}`;
+  if (ingested?.kind === 'repo') {
+    deck.meta.provenance = { repo: `${ingested.owner}/${ingested.repo}`, branch: ingested.branch, sha: ingested.sha };
+  }
   validateDeck(deck);
   return deck;
 }
@@ -833,7 +916,7 @@ export async function planDeck(
   const run = await runToNarrative(input, opts, onStage);
 
   onStage?.('layout', opts.system);
-  const deck = labelDeck(run.narrative, opts.system, opts.seed, provider);
+  const deck = labelDeck(run.narrative, opts.system, opts.seed, provider, run.ingested);
   if (provider.id === 'fallback') {
     run.warnings.push('built with the deterministic fallback (not model inference)');
   }
@@ -849,6 +932,7 @@ export async function planDeck(
       claims: run.counts,
       warnings: run.warnings,
       quality: summarizeQuality(run.quality),
+      ...(run.ingested.kind === 'repo' && run.ingested.requests ? { requests: run.ingested.requests } : {}),
     },
   };
 }
@@ -862,6 +946,8 @@ export interface PlanDecksAllOptions extends FetchRepoOptions {
   variant?: PresetVariant;
   durationMin?: number;
   emphasis?: Dimension[];
+  /** Evidence review from the inspector; applied between extraction and planning. */
+  selection?: EvidenceSelection;
 }
 
 export interface PlanDecksAllResult {
@@ -875,6 +961,8 @@ export interface PlanDecksAllResult {
     claims: ClaimCounts;
     warnings: string[];
     quality: NarrativeQualitySummary;
+    /** Request budget consumed (repo mode only). */
+    requests?: IngestRequestStats;
   };
 }
 
@@ -894,7 +982,7 @@ export async function planDecksAll(
   const decks = {} as Record<SystemId, Deck>;
   for (const system of systems) {
     onStage?.('layout', system);
-    decks[system] = labelDeck(run.narrative, system, opts.seed, provider);
+    decks[system] = labelDeck(run.narrative, system, opts.seed, provider, run.ingested);
   }
   const generatedBy = provider.id === 'fallback' ? 'fallback' : `typodeck:${provider.id}`;
   if (provider.id === 'fallback') {
@@ -912,6 +1000,7 @@ export async function planDecksAll(
       claims: run.counts,
       warnings: run.warnings,
       quality: summarizeQuality(run.quality),
+      ...(run.ingested.kind === 'repo' && run.ingested.requests ? { requests: run.ingested.requests } : {}),
     },
   };
 }
