@@ -1,0 +1,12 @@
+{
+  "tier": "A",
+  "system": "swiss",
+  "validation": "OK",
+  "export": {
+    "ok": true,
+    "editableChars": 63
+  },
+  "notes": [
+    "engine candidates: s1=opening-statement"
+  ]
+}

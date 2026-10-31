@@ -1,0 +1,12 @@
+{
+  "tier": "A",
+  "system": "expressive",
+  "validation": "OK",
+  "export": {
+    "ok": true,
+    "editableChars": 154
+  },
+  "notes": [
+    "engine candidates: s1=opening-statement"
+  ]
+}
