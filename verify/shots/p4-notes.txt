@@ -1,0 +1,15 @@
+F5 empty-state: generate disabled=true inspect disabled=true
+F1 error focus: active=error-box#alert
+F2 stages after error: waiting|waiting|waiting|waiting
+idea done lede: Paste a public GitHub repository URL to present a real project — or paste idea t
+viewer counter: 1 / 10 -> 2 / 10 -> 2 / 10 (mouse+keys)
+F3 filmstrip scrollLeft: 0 -> 220
+markdown re-render: Previews updated.
+export: typodeck-document.pptx 121732 bytes
+evidence: Generate from 56 claims
+after exclude: Generate from 55 claims
+reframe box NOT FOUND (see screenshot)
+selection warnings: 1 claim(s) excluded during evidence review
+ko lede: Paste a public GitHub repository URL to present a real project — or paste idea t
+mobile viewer counter after tap: 2 / 10
+mobile export visible: true
