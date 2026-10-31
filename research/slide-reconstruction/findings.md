@@ -106,7 +106,30 @@ Tier A proves the pipeline is reliable; Tier B proves the renderer ceiling is
 high. The gap between them is engine selection + planner repertoire, not
 rendering capability. That gap is the input to `grammar-candidates.md.
 
-## 7. Failure / limitation log (honest)
+## 7. Scale cases (7 new, all Tier B PASS)
+
+SBS: `comparisons/sbs-<id>.png` per case; strips `strip-scale-*.png`.
+PPTX parity 7/7 MATCH (box counts + byte-identical runs).
+
+- gapminder-tlit-p1 (cover, 7 blocks/136 chars): PASS. Second G1 instance
+with identical geometry — first reusability evidence for the grammar.
+- gapminder-tlit-p2 (quiz, 17/239): PASS. "?" mark, 2-line question, A/B/C +
+"☐" (U+2610 native glyph) + options. Circle badges reduced to bare letters
+(recorded shape gap); checkbox glyph is exact in role/position.
+- gapminder-tlit-p5 (single-col explainer, 20/1907): PASS. Full text incl.
+closing + blue (#0000FF) URL blocks; underline missing (no underline style —
+new gap F8). Bodies at 12.5pt hold everything on one 16:9 slide; no clipping.
+- foster-p2 (title stack, 4/72): PASS. Archivo Black substitutes slab serif
+credibly at display scale; solid black for pattern+flourish.
+- foster-p13 (term constellation, 10/137): PASS. Six scattered terms, no
+collisions after one de-collision nudge (CC block +0.3in x); footer intact.
+- foster-p15 (stat stack, 8/212): PASS. "●" bullets exact, #DD4814 URL,
+descending-magnitude stack preserved.
+- foster-p37 (quote, 3/304): PASS with designed tradeoff: single 38pt block,
+natural wrap (5 lines vs source 6) — size fidelity over break fidelity;
+HTML/PPTX wraps may differ (extends F6).
+
+## 8. Failure / limitation log (honest)
 
 - F1: 400pt fontSize cap (fosdem-p14 clamp). Engine limit, hit on real content.
 - F2: no italic, no per-block serif in swiss (fosdem-p4 substitution).
@@ -116,3 +139,8 @@ rendering capability. That gap is the input to `grammar-candidates.md.
 - F6: PPTX visual rendering unverified (no Office automation); parity is
 structural (content/box-count/geometry byte checks) plus validator acceptance.
 - F7: FOSDEM license UNVERIFIED → paraphrase-only, weaker evidence than licensed SBS.
+- F8: no underline style (tlit-p5/foster-p15 links keep color only).
+- F9: no slab-serif face (Foster titles use Archivo Black; credible but
+letterform-different — same class as F4 condensed gap).
+- F10: badge/circle shapes unrepresentable (tlit-p2 letters, Gapminder
+checkmarks) — bare-glyph reduction is the sanctioned fallback.

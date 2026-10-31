@@ -36,6 +36,15 @@ paths (grammar-candidates.md), not prompt tweaks.
 (byte-identical `<a:t>` runs, box counts) + validator acceptance, not visual.
 Smallest fix: Office-automation or LibreOffice render step in benchmark
 tooling (environment change, not engine change).
-10. FOSDEM LICENSE UNVERIFIED. Cost: 2 of 7 cases are paraphrase-only, weaker
+10. FOSDEM LICENSE UNVERIFIED. Cost: 2 of 12 cases are paraphrase-only, weaker
 evidence. Smallest fix: rights-holder confirmation or replacement with a
 licensed monumental-glyph source.
+11. NO UNDERLINE STYLE (tlit-p5, foster-p15 links). Cost: links keep color
+only. Smallest fix: none proposed — single-style-per-block is a schema
+property; record as expressive ceiling with #5.
+12. NO SLAB-SERIF FACE (Foster titles). Cost: Archivo Black substitution is
+credible but letterform-different. Smallest fix: font-stack addition
+(licensing review), same class as #7.
+13. NO BADGE/CIRCLE SHAPES (tlit-p2 letters, Gapminder checkmarks). Cost:
+bare-glyph reduction loses the badge register. Smallest fix: none —
+typography-only constraint; bare glyph is the sanctioned fallback.

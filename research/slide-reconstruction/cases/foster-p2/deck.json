@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "Fostering diversity — keynote title",
+    "lang": "en",
+    "system": "expressive",
+    "seed": 7,
+    "generatedBy": "recon-research"
+  },
+  "slides": [
+    {
+      "id": "r1",
+      "thesis": "dark slab title stack",
+      "background": "#000000",
+      "blocks": [
+        {
+          "id": "title",
+          "role": "title",
+          "content": "Fostering diversity",
+          "x": 0.9,
+          "y": 1,
+          "w": 11.53,
+          "h": 1,
+          "fontSize": 60,
+          "fontWeight": 900,
+          "tracking": 0,
+          "lineHeight": 1.15,
+          "align": "center",
+          "color": "#FFFFFF"
+        },
+        {
+          "id": "name",
+          "role": "body",
+          "content": "Mary Gardiner",
+          "x": 0.9,
+          "y": 3.3,
+          "w": 11.53,
+          "h": 0.8,
+          "fontSize": 44,
+          "fontWeight": 700,
+          "tracking": 0,
+          "lineHeight": 1.15,
+          "align": "center",
+          "color": "#FFFFFF"
+        },
+        {
+          "id": "org",
+          "role": "body",
+          "content": "The Ada Initiative",
+          "x": 0.9,
+          "y": 4.4,
+          "w": 11.53,
+          "h": 0.8,
+          "fontSize": 44,
+          "fontWeight": 700,
+          "tracking": 0,
+          "lineHeight": 1.15,
+          "align": "center",
+          "color": "#FFFFFF"
+        },
+        {
+          "id": "email",
+          "role": "body",
+          "content": "mary@adainitiative.org",
+          "x": 0.9,
+          "y": 5.5,
+          "w": 11.53,
+          "h": 0.8,
+          "fontSize": 44,
+          "fontWeight": 700,
+          "tracking": 0,
+          "lineHeight": 1.15,
+          "align": "center",
+          "color": "#FFFFFF"
+        }
+      ]
+    }
+  ]
+}

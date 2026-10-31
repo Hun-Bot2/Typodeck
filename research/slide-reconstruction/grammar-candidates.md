@@ -57,6 +57,28 @@ mismatch (system © vs custom vector mark). Grammar is expressible but the
 engine cannot render its defining instance. Promote only after cap review
 (see `implementation-gaps.md` F1).
 
+## Scale evidence (12-slide benchmark)
+
+- G1 now has TWO instances (tq2-p1, tlit-p1) on identical geometry — first
+reusability evidence beyond a single screenshot. Conditional status holds
+(R1/R2 still required).
+- G3 now has a single-column variant (tlit-p5) alongside the grouped 2-column
+(tle-p5): the grammar generalizes to column-count as a parameter, not a fixed
+layout. Conditional status holds (R3 still required).
+- G2 still untested (no dark-centered-stack probes); Foster title (p2) is a
+related but distinct pattern (top-anchored slab stack, no subtitle/captions).
+
+## Single-instance observations (NOT promoted — one case each, no probes)
+
+- O1 QUIZ-OPTIONS (tlit-p2): runhead + mark + question + letter/checkbox rows.
+- O2 STAT-STACK (foster-p15): title + bulleted descending-magnitude lines + link.
+- O3 MONUMENTAL-QUOTE (foster-p37): centered large quote, size-over-breaks rule.
+- O4 TERM-CONSTELLATION (foster-p13): scattered same-size terms + title.
+- O5 DARK-TITLE-STACK (foster-p2): top-anchored title/credits on dark field.
+Per the mission's anti-template rule, these stay observations until a second
+instance + probes exist. O3's size-over-breaks decision is the only portable
+rule claimed today.
+
 ## Cross-cutting rules (all candidates)
 
 - Q1 OVERFLOW-MUST-BE-VISIBLE: no grammar ships on fixed boxes without a
