@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typodeck — PPT 검수 채점</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>PPT 검수 채점 <span class="muted">0 = 나쁨 · 10 = 좋음</span></h1>
+    <p id="progress" class="sub"></p>
+  </div>
+  <div class="toolbar">
+    <label>검수자 <input id="reviewer" type="text" placeholder="이름" autocomplete="off"></label>
+    <button id="expJson">Export JSON</button>
+    <button id="expCsv">Export CSV</button>
+    <label class="filebtn">Import JSON <input id="impFile" type="file" accept="application/json" hidden></label>
+    <button id="clearAll" class="danger">전체 지우기</button>
+  </div>
+</header>
+<main>
+  <div class="toolbar">
+    <label>그룹 <select id="fGroup"></select></label>
+    <label>상태 <select id="fStatus">
+      <option value="">전체</option>
+      <option value="scored">채점됨</option>
+      <option value="unscored">미채점</option>
+    </select></label>
+    <label class="grow">검색 <input id="fQ" type="search" placeholder="파일명…"></label>
+    <label>정렬 <select id="fSort">
+      <option value="group">그룹순</option>
+      <option value="score-desc">점수 높은순</option>
+      <option value="score-asc">점수 낮은순</option>
+    </select></label>
+  </div>
+  <p class="muted">PPT 열기 버튼으로 PowerPoint에서 직접 확인하고 점수를 매기세요.
+  HTML 미리보기가 있는 파일은 같이 표시됩니다 (PPT 렌더링과 다를 수 있음).
+  점수는 브라우저에 자동 저장됩니다.</p>
+  <div id="list"></div>
+</main>
+<footer class="foot muted"><span id="footLine"></span></footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
