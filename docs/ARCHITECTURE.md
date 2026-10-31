@@ -1,5 +1,11 @@
 # Typodeck — Architecture (Phase 0)
 
+> Historical record (2026-10-30): this spec predates the 4th system
+> (`document`, experimental), the 5-route Studio API, purpose presets,
+> and Slide Markdown/IR. For current behavior see
+> `packages/core/README.md` and `docs/engineering/decisions/`.
+> Preserved as written — see `docs/DOCS_AUDIT.md`.
+
 ## 1. Stack
 TypeScript-first Next.js monolith (App Router). Server Actions / route handlers for pipeline;
 client components for outline review, direction picker, slide preview/edit. No DB, no auth.

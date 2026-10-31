@@ -1,5 +1,11 @@
 # Typodeck — Product Requirements Document (Phase 0)
 
+> Historical record (2026-10-30): MVP checkboxes predate
+> implementation; "three design directions" predates the experimental
+> 4th system; and §7's "no speaker notes" is superseded — notes now
+> ride along to native PPTX notes (see `docs/engineering/decisions/ADR-0006-slide-markdown-ir.md`).
+> Preserved as written — see `docs/DOCS_AUDIT.md`.
+
 ## 1. Product
 Typodeck is an AI-powered typography-native presentation studio: paste a GitHub URL or an idea
 description, pick a design direction, get an editable PPTX composed only of type, numbers,
