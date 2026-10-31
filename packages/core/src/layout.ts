@@ -58,7 +58,10 @@ export function mulberry32(seed: number): () => number {
 // Text measurement (approximate char-width model, CJK-aware)
 // ---------------------------------------------------------------------------
 
-const NARROW = new Set('il.,:;!\'"|()[]1·∙'.split(''));
+const NARROW = new Set('il.,:;!\'"|()[]·∙'.split(''));
+// NOTE: '1' is deliberately NOT narrow: digits render tabular in most stacks
+// (Georgia/serif '1' ≈ 0.6em, not 0.35em). Narrow-'1' underflowed R1 numeral
+// boxes and wrapped "12" under honest font measurement.
 const WIDE_LATIN = new Set('mwMW@$%&_~QO'.split(''));
 
 function isWideCjk(code: number): boolean {

@@ -227,3 +227,29 @@ describe('headless Chrome measurement', { skip: !HAS_CHROME }, () => {
     assert.equal(errs[0].severity, 'error');
   });
 });
+
+describe('renderMeasureHtml style integrity (Agent G finding: font quoting)', () => {
+  const slide = {
+    id: 's1', thesis: 't', background: '#FFFFFF',
+    blocks: [{
+      id: 's1-b0', role: 'title', content: 'Quoted stack check',
+      x: 1, y: 1, w: 4, h: 1, fontSize: 32, fontWeight: 700, tracking: 0, lineHeight: 1.15, align: 'left', color: '#111111',
+    }],
+  } as unknown as Slide;
+  // Title-role stack per system (must match mirrorFontFor in critic.ts).
+  const stacks: Record<string, string> = {
+    swiss: 'Noto Sans KR',
+    editorial: 'Noto Serif KR',
+    expressive: 'Archivo Black',
+  };
+  for (const [system, family] of Object.entries(stacks)) {
+    it(`escapes font-stack quotes inside style attributes (${system})`, () => {
+      const html = renderMeasureHtml(slide, system);
+      // Mirror stacks contain quoted families. A raw double-quote would
+      // terminate the style="..." attribute and the mirror would measure in
+      // fallback fonts instead of the system stack.
+      assert.ok(!html.includes(`"${family}"`), `raw quotes in ${system} mirror HTML`);
+      assert.ok(html.includes(`&quot;${family}&quot;`), `escaped stack missing in ${system} mirror HTML`);
+    });
+  }
+});
