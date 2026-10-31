@@ -2,7 +2,9 @@
 
 Local, static review UI for the product owner. No build step, no backend —
 decisions live in the browser until exported. **Nothing here auto-selects
-finals**; every verdict is a human decision captured on export.
+finals**; every verdict is a human decision captured on export. Start human
+review at [REVIEW-GUIDE.md](REVIEW-GUIDE.md) (comparisons matrix, per-candidate
+evidence, unsupported list, decision backup procedure).
 
 ## Open it
 
@@ -17,19 +19,23 @@ and synthesis docs are relative paths and also work from `file://`.
 Option B — serve the repo root (needed only if your browser blocks local files):
 
 ```sh
-cd /Users/jeonghun/Typodeck
+cd <repo-root>
 python3 -m http.server 8080
 # then open http://localhost:8080/gallery/
 ```
 
 ## Review flow
 
-1. **References** — browse the 370 verified research records from
-   `research/merged_registry.json` by category (`swiss-international`,
-   `editorial`, `web-type`, …), inspection status
-   (`inspected-reproduction` / `secondary-description` / `not-inspected`),
-   or free-text search. Each card links to its source URL. These are the
-   evidence behind the interpretations.
+1. **References** — browse the 447 research records from
+   `research/merged_registry.json` (full-field rebuild from agents A–E) by
+   category, agent, verification status, or free-text search. Verification
+   status is shown first on every card and never blurred:
+   **VISUALLY INSPECTED** (235, page/surrogate seen) vs **SEARCH-CHECKED**
+   (190, metadata/description only) vs **NOT INSPECTED** (22,
+   inaccessible). Each card carries the agent's composition observations
+   plus provenance (original category, verification method/notes); capped
+   confidences and reassembled summaries are badged. Each card links to its
+   source URL. These are the evidence behind the interpretations.
 2. **Interpretations** — inspect each generated Typodeck system (`document`
    experimental + `editorial` / `swiss` / `expressive` production baselines):
    validation/parity badges, per-slide renders with the selected composition

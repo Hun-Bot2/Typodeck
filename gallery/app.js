@@ -107,19 +107,66 @@
   }
 
   // ---------- references ----------
+  // Verification status is the primary trust signal: visually inspected
+  // references are never shown as equivalent to search-checked ones.
+  var STATUS_LABEL = {
+    'inspected-reproduction': 'VISUALLY INSPECTED',
+    'secondary-description': 'SEARCH-CHECKED',
+    'not-inspected': 'NOT INSPECTED'
+  };
   function statusBadge(st) {
     var cls = st === 'inspected-reproduction' ? 'verified'
       : st === 'secondary-description' ? 'secondary' : 'uninsp';
-    return '<span class="badge ' + cls + '">' + esc(st) + '</span>';
+    return '<span class="badge status ' + cls + '" title="schema status: ' + esc(st) + '">' +
+      esc(STATUS_LABEL[st] || st) + '</span>';
   }
+  function statusClass(st) {
+    return st === 'inspected-reproduction' ? 'st-inspected'
+      : st === 'secondary-description' ? 'st-secondary' : 'st-uninsp';
+  }
+  // Candidate evidence panel (refs joined to live registry statuses at build time).
+  function evidenceHtml(ev, label) {
+    if (!ev) return '';
+    var refs = (ev.refs || []).map(function (r) {
+      if (r.missing) return '<li><span class="badge missing">MISSING REF</span> ' + esc(r.id) + '</li>';
+      return '<li>' + statusBadge(r.status) + ' <span class="id">' + esc(r.id) + '</span> ' +
+        esc(r.title || '') + ' <a href="' + esc(r.source_url) + '" target="_blank" rel="noopener">source ↗</a></li>';
+    }).join('');
+    var rules = (ev.rules || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
+    var gaps = (ev.gaps || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('');
+    return '<details class="ev"><summary>' + esc(label) + ' — refs, rules, known gaps (' +
+      (ev.refs || []).length + ' refs)</summary>' +
+      '<ul class="evrefs">' + refs + '</ul>' +
+      (rules ? '<p class="muted">interpreted rules:</p><ul>' + rules + '</ul>' : '') +
+      (gaps ? '<p class="muted">known differences / unsupported:</p><ul>' + gaps + '</ul>' : '') +
+      '</details>';
+  }
+  var reviewByKey = {};
+  D.reviewItems.forEach(function (r) { reviewByKey[r.key] = r; });
   var cats = D.registryStats ? Object.keys(D.registryStats.byCategory).sort() : [];
   var stats = D.registryStats ? Object.keys(D.registryStats.byStatus).sort() : [];
+  var agents = D.registryStats && D.registryStats.byAgent
+    ? Object.keys(D.registryStats.byAgent).sort() : [];
   $('fCat').innerHTML = '<option value="">all categories</option>' + cats.map(function (c) {
     return '<option>' + esc(c) + '</option>';
   }).join('');
   $('fStatus').innerHTML = '<option value="">all statuses</option>' + stats.map(function (s) {
-    return '<option>' + esc(s) + '</option>';
+    return '<option value="' + esc(s) + '">' + esc(STATUS_LABEL[s] || s) + '</option>';
   }).join('');
+  if ($('fAgent')) {
+    $('fAgent').innerHTML = '<option value="">all agents</option>' + agents.map(function (a) {
+      var n = D.registryStats.byAgent[a];
+      return '<option value="' + esc(a) + '">' + esc(a) + ' (' + n + ')</option>';
+    }).join('');
+  }
+  if ($('statusLegend') && D.registryStats) {
+    var bs = D.registryStats.byStatus;
+    $('statusLegend').innerHTML = Object.keys(STATUS_LABEL).map(function (st) {
+      return statusBadge(st) + ' <strong>' + (bs[st] || 0) + '</strong>';
+    }).join(' &nbsp; ') + ' <span class="muted">— verification status is shown first on every card; ' +
+      'inspected = page/surrogate seen, search-checked = metadata/description only, ' +
+      'not inspected = inaccessible.</span>';
+  }
   function renderRefs() {
     var list = $('refList');
     if (!D.registry) {
@@ -127,30 +174,64 @@
       $('refCount').textContent = '';
       return;
     }
-    var fc = $('fCat').value, fs = $('fStatus').value, q = $('fQ').value.trim().toLowerCase();
+    var fc = $('fCat').value, fs = $('fStatus').value,
+      fa = $('fAgent') ? $('fAgent').value : '',
+      q = $('fQ').value.trim().toLowerCase();
     var rows = D.registry.filter(function (r) {
       if (fc && r.category !== fc) return false;
       if (fs && r.status !== fs) return false;
+      if (fa && r.agent !== fa) return false;
       if (q) {
-        var hay = [r.id, r.title, r.designer, r.source_url, r.agent, r.source_type].join(' ').toLowerCase();
+        var hay = [r.id, r.title, r.designer, r.source_url, r.agent,
+          r.source_type, r.category, r.origCategory, r.summary,
+          (r.primitives || []).join(' ')].join(' ').toLowerCase();
         if (hay.indexOf(q) < 0) return false;
       }
       return true;
     });
     $('refCount').textContent = rows.length + ' / ' + D.registry.length + ' records';
     list.innerHTML = rows.slice(0, 400).map(function (r) {
-      return '<article class="refcard"><h3><span class="id">' + esc(r.id) + '</span>' + esc(r.title) + '</h3>' +
-        '<div class="meta">' + esc(r.category) + ' · ' + esc(r.source_type) + ' · ' + esc(r.agent) +
-        (r.year ? ' · ' + esc(r.year) : '') + '</div>' +
+      var prims = (r.primitives || []).map(function (p) {
+        return '<span class="badge">' + esc(p) + '</span>';
+      }).join('');
+      return '<article class="refcard ' + statusClass(r.status) + '">' +
         '<div>' + statusBadge(r.status) +
-        '<span class="badge">' + esc((r.adaptability && r.adaptability.rating) || '?') + ' adaptability</span>' +
-        '<span class="badge">' + esc(r.confidence || '?') + ' confidence</span></div>' +
-        '<p><a href="' + esc(r.source_url) + '" target="_blank" rel="noopener">source ↗</a></p>' +
-        '<details><summary>composition summary</summary><p>' + esc(r.summary || '—') + '</p>' +
-        '<p class="muted">limitations: ' + esc(r.limitations || '—') + '</p></details></article>';
+        (r.summaryRecon ? '<span class="badge secondary">summary reassembled from own fields</span>' : '') +
+        (r.confCapped ? '<span class="badge secondary">confidence capped (was ' + esc(r.confClaimed || '?') + ')</span>' : '') + '</div>' +
+        '<h3><span class="id">' + esc(r.id) + '</span>' + esc(r.title) + '</h3>' +
+        '<div class="meta">' + esc(r.designer || 'unknown') +
+        (r.year ? ' · ' + esc(r.year) : ' · year unknown') + ' · ' + esc(r.agent) + '</div>' +
+        '<div class="meta">' + esc(r.category) +
+        (r.origCategory && r.origCategory !== r.category ? ' (agent: ' + esc(r.origCategory) + ')' : '') +
+        ' · ' + esc(r.source_type) + ' · ' + esc((r.adaptability && r.adaptability.rating) || '?') +
+        ' adaptability · ' + esc(r.confidence || '?') + ' confidence</div>' +
+        '<p><a href="' + esc(r.source_url) + '" target="_blank" rel="noopener">source ↗</a>' +
+        (r.method ? ' <span class="muted">via ' + esc(r.method) + '</span>' : '') + '</p>' +
+        (prims ? '<p>' + prims + '</p>' : '') +
+        '<details open><summary>composition (agent observations)</summary><p>' + esc(r.summary || '—') + '</p>' +
+        '<dl class="obs">' +
+        '<dt>reading order</dt><dd>' + esc(r.reading_order || '—') + '</dd>' +
+        '<dt>hierarchy</dt><dd>' + esc(r.hierarchy || '—') + '</dd>' +
+        '<dt>grid</dt><dd>' + esc(r.grid || '—') + '</dd>' +
+        '<dt>whitespace</dt><dd>' + esc(r.whitespace || '—') + '</dd>' +
+        '<dt>techniques</dt><dd>' + esc((r.techniques || []).join('; ') || '—') + '</dd>' +
+        (r.align ? '<dt>alignment</dt><dd>' + esc(r.align) + '</dd>' : '') +
+        (r.rhythm ? '<dt>rhythm</dt><dd>' + esc(r.rhythm) + '</dd>' : '') +
+        (r.scale ? '<dt>scale</dt><dd>' + esc(r.scale) + '</dd>' : '') +
+        '</dl></details>' +
+        '<details><summary>transfer + provenance</summary>' +
+        '<p class="muted">adaptability: ' + esc((r.adaptability && r.adaptability.notes) || '—') + '</p>' +
+        '<p class="muted">capabilities: ' + esc((r.capabilities || []).join('; ') || '—') + '</p>' +
+        '<p class="muted">limitations: ' + esc(r.limitations || '—') + '</p>' +
+        (r.context ? '<p class="muted">context: ' + esc(r.context) + '</p>' : '') +
+        (r.publication ? '<p class="muted">publication: ' + esc(r.publication) + '</p>' : '') +
+        (r.visualNotes ? '<p class="muted">agent verification note: ' + esc(r.visualNotes) + '</p>' : '') +
+        '</details></article>';
     }).join('') + (rows.length > 400 ? '<p class="muted">First 400 of ' + rows.length + ' shown — narrow the filters.</p>' : '');
   }
-  ['fCat', 'fStatus'].forEach(function (id) { $(id).addEventListener('change', renderRefs); });
+  ['fCat', 'fStatus', 'fAgent'].forEach(function (id) {
+    if ($(id)) $(id).addEventListener('change', renderRefs);
+  });
   $('fQ').addEventListener('input', renderRefs);
   renderRefs();
 
@@ -182,6 +263,9 @@
         '</span></div>';
       head += '<div class="muted">' + s.slides + ' slides · ' + s.textBoxes + ' text boxes · ' +
         s.editableChars + ' editable chars · ' + s.bytes + ' bytes</div>';
+      head += '<div class="muted">Inline slides below are HTML renders, not PPTX proof — ' +
+        'open the linked PPTX to judge editable output.</div>';
+      if (s.evidence) head += evidenceHtml(s.evidence, 'system evidence');
       card.innerHTML = head;
       var shots = document.createElement('div');
       shots.className = 'shots';
@@ -192,8 +276,14 @@
           var cand = (s.candidates && s.candidates[i]) || 'unknown-candidate';
           var key = s.system + ':' + cand;
           var cell = document.createElement('div');
-          var shot = slideShot(sl.stageHtml, esc(sl.meta));
+          var shot = slideShot(sl.stageHtml, 'HTML render · ' + esc(sl.meta));
           cell.appendChild(shot);
+          var ri = reviewByKey[key];
+          if (ri && ri.evidence) {
+            var evd = document.createElement('div');
+            evd.innerHTML = evidenceHtml(ri.evidence, 'candidate evidence');
+            cell.appendChild(evd);
+          }
           cell.appendChild(verdictWidget(key));
           shots.appendChild(cell);
         });
@@ -206,7 +296,8 @@
         u.innerHTML = '<p class="muted">Composition candidates with <strong>no rendered preview</strong> (missing, not faked):</p>';
         unex.forEach(function (r) {
           var row = document.createElement('div');
-          row.innerHTML = '<p><span class="badge missing">NO PREVIEW</span> <code>' + esc(r.candidate) + '</code></p>';
+          row.innerHTML = '<p><span class="badge missing">NO PREVIEW</span> <code>' + esc(r.candidate) + '</code></p>' +
+            evidenceHtml(r.evidence, 'candidate evidence');
           row.appendChild(verdictWidget(r.key));
           u.appendChild(row);
         });
@@ -246,7 +337,13 @@
       } else {
         var cand = (s.candidates && s.candidates[idx]) || 'unknown-candidate';
         col.innerHTML = '<div class="cap"><strong>' + esc(name) + '</strong> · <code>' +
-          esc(cand) + '</code></div>' + s.renderedSlides[idx].stageHtml;
+          esc(cand) + '</code> <span class="muted">(HTML render)</span></div>' + s.renderedSlides[idx].stageHtml;
+        var cri = reviewByKey[name + ':' + cand];
+        if (cri && cri.evidence) {
+          var cev = document.createElement('div');
+          cev.innerHTML = evidenceHtml(cri.evidence, 'candidate evidence');
+          col.appendChild(cev);
+        }
         col.appendChild(verdictWidget(name + ':' + cand));
       }
       grid.appendChild(col);
@@ -275,8 +372,18 @@
       var d = getDec(r.key);
       var tr = document.createElement('tr');
       var rev = d.updatedAt ? d.updatedAt.slice(0, 16).replace('T', ' ') : '—';
+      var evCell = '<span class="muted">—</span>';
+      if (r.evidence && r.evidence.refs && r.evidence.refs.length) {
+        evCell = r.evidence.refs.map(function (e) {
+          if (e.missing) return '<span class="badge missing">MISSING ' + esc(e.id) + '</span>';
+          var cls = e.status === 'inspected-reproduction' ? 'verified'
+            : e.status === 'secondary-description' ? 'secondary' : 'uninsp';
+          return '<span class="badge ' + cls + '" title="' + esc(e.title || '') + '">' + esc(e.id) + '</span>';
+        }).join(' ');
+      }
       tr.innerHTML = '<td>' + esc(r.system) + (r.docOnly ? ' <span class="badge experimental">doc-only</span>' : '') + '</td>' +
         '<td><code>' + esc(r.candidate) + '</code></td>' +
+        '<td>' + evCell + '</td>' +
         '<td>' + (r.previewRendered
           ? esc(r.slideIndexes.map(function (i) { return 'slide ' + (i + 1); }).join(', '))
           : '<span class="badge missing">NO PREVIEW</span>') + '</td>' +

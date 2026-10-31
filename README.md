@@ -1,138 +1,126 @@
 # Typodeck
 
-Paste a repo URL or an idea. Get a slide deck where every number traces to a source — as an editable `.pptx`, not a screenshot.
-
-Generic AI deck generators invent facts, overflow text boxes, and hand you flattened images you can't edit. Typodeck does the opposite: it extracts claims with file-and-line evidence, lays them out with a deterministic typography engine, and exports native PowerPoint text boxes. Zero images. Zero decorative shapes. Every character editable.
-
-```sh
-npm run --silent deck -- --idea-file idea.txt --system swiss --out deck.pptx
-# provider: fallback (generated_by=fallback)
-# claims: total=4 verified=0 suggestion=0 ungrounded=4
-# deck: 6 slides, 22 text boxes -> deck.pptx
-# validation: OK
-```
-
-## Quick start
-
-Prerequisites: Node.js ≥20.9.0 (`engines` in `package.json`; required by Next.js) and npm. No other system dependencies. Verified on Node v26.8.1 / npm 12.0.2.
+Typodeck turns a product idea or a public GitHub repo into a
+typography-only pitch deck: real editable PowerPoint text, no stock imagery,
+no chart junk, no same-y AI styling. Every number on a slide traces back to
+extracted evidence, and the exporter refuses anything that is not text —
+verified structurally on every run.
 
 ```sh
-git clone https://github.com/Hun-Bot2/Typodeck.git
-cd Typodeck
-npm ci                      # reproducible; package-lock.json, no churn
-cp .env.example .env        # optional — only for the live model provider or GitHub auth
-npm run build -w @typodeck/core
-npm test                                    # core suite, expect 270/270 green
-npm run --silent deck -- --idea-file packages/core/fixtures/idea-f4.txt --system swiss --out deck.pptx
+npm ci
+npm run deck -- --idea-file idea.txt --system swiss --out deck.pptx
 ```
 
-That last command writes a 10-slide editable `deck.pptx` (21 claims, 40 text boxes, `quality: pass overall=100`) and prints a receipt: provider, claim counts, slide/box counts, warnings, and `validation: OK`. No API key needed — without model credentials, Typodeck uses its labeled deterministic fallback (see [Configuration](#configuration)).
+```text
+provider: fallback (generated_by=fallback)
+claims: total=1 verified=0 suggestion=0 ungrounded=1
+deck: 5 slides, 17 text boxes -> deck.pptx
+validation: OK
+```
 
-Other entry points:
-
-| Command | What it does |
-|---|---|
-| `npm run samples` | Emit one fixed 7-slide deck per design system (Editorial / Swiss / Expressive / Document) |
-| `npm run dev` | Start the Web Studio at `http://localhost:3000` (evidence inspector → purposes → 4-system preview → Slide Markdown editing → export) |
-| `npm run eval -- --fixture F4` | Offline eval subset (idea fixture, all systems × languages) |
-| `npm run eval:report` | Aggregate `evals/reports/` into `evals/summary.json` with PASS/FAIL per criterion |
-| `npm run journey` | Live repo→deck→export end-to-end script (needs GitHub quota; exits 2 without quota/network — see `docs/GITHUB_JOURNEY.md`) |
-
-Verified on this branch (`integrate/release-readiness`) from a clean checkout: fresh `npm ci`, core `tsc` clean, 270/270 tests, web production build, and the offline quick-start above.
+Repo mode grounds claims in code instead — `sindresorhus/is` just produced
+`claims: total=56 verified=47` with the same `validation: OK`.
 
 ## How it works
 
-Two input modes, one pipeline:
+One deterministic pipeline, same for CLI, Studio, and agents:
 
-1. **Repository mode** — give a public `owner/repo`. Typodeck fetches README/docs plus a bounded code sample (≤20 files, ≤200 KB, ≤5 code files, 30 s timeout), then extracts atomic claims. Code-backed claims are `verified`; README/docs claims are `suggestion` until a code file confirms a distinctive term.
-2. **Idea mode** — paste 100–20,000 characters of product description. All claims are labeled `ungrounded`; captions say `unverified · illustrative`. Numbers are copied verbatim — never computed, never invented.
+1. **Ingest** — idea text (100–20,000 chars) or a public `owner/repo`,
+   bounded to 20 files / 200 KB, README first. Private repos are rejected;
+   quota exhaustion surfaces as a typed `rate-limited` error with reset time.
+2. **Evidence** — claims are graded `verified` (code), `suggestion` (docs),
+   or `ungrounded` (idea). Numbers stay verbatim and carry references;
+   ungrounded numbers are labeled illustrative, never presented as fact.
+3. **Narrative** — 5–12 slides: cover, number slides from verified claims,
+   proposals, closing. Works without any API key via the labeled
+   deterministic fallback; an optional Muse provider activates only when both
+   endpoint and key are configured.
+4. **Layout** — one of three typography systems (`editorial`, `swiss`,
+   `expressive`), seeded and overlap-free on a 16:9 canvas. Five text roles,
+   flat backgrounds, WCAG AA contrast.
+5. **Validate + export** — the PPTX is unzipped and re-checked: 16:9, zero
+   pictures/charts/tables/groups/gradients, all text in editable runs, every
+   box in bounds. Anything else fails the run instead of shipping.
 
-Then: claims → 5–12 slide outline (one thesis per slide) → deterministic layout in your chosen system → PPTX export → structural validation. Number slides are built only from claims that carry both a number and a source ref.
+A fourth system, `document` (technical-manual voice), exists as
+**experimental** and is not covered by the production guarantees.
 
-```
-ingestion → evidence → narrative → layout → export → validation
-```
+## Output
 
-### Four design systems, same facts
+- `.pptx` with native editable text (`a:t` runs, no locks) plus a machine
+  receipt (slides, boxes, editable chars, validation verdict).
+- Deck JSON for programmatic use, and a human review gallery for the
+  underlying design research (`gallery/index.html`).
+- Real examples in this repo: [`showcase/decks/`](showcase/decks/)
+  (three generated decks with provenance JSON) and
+  [`previews/`](previews/) (the same narrative rendered in all four systems).
 
-| System | Composition | Density |
-|---|---|---|
-| Editorial | Asymmetric single column, serif titles, generous whitespace | Low (≤3 blocks/slide typical) |
-| Swiss | Four-column grid, tight leading, title left / text right | High (≤6 blocks/slide) |
-| Expressive | Centered hero, dramatic scale contrast, alternating ink/paper | Medium (≤4 blocks/slide) |
-| Document (experimental) | Dense reference hierarchy, technical-manual voice | High |
+English and Korean are both supported inputs; layout, wrapping, and the
+evaluation matrix cover `en` and `ko`. The bundled preview set itself is
+English-only.
 
-The same narrative rendered in every system differs measurably (see Guarantees). The Web Studio lays out all four from one narrative so previews are directly comparable.
+## Run it
 
-## Why not a generic AI deck generator
+Prerequisite: Node.js ≥ 20.9.
 
-| | Typodeck | Typical AI deck tool |
-|---|---|---|
-| Factual claims | Cited with file path + line range, printed on-slide | Uncited or plausibly-worded |
-| Ungrounded text | Labeled `unverified` / `illustrative` / `proposal` in captions | Presented as fact |
-| Numbers | Copied verbatim from source; number slides require refs | Frequently hallucinated |
-| Output | Native `.pptx` text boxes, 100% editable | Flattened images or locked layouts |
-| Layout | Deterministic engine, seeded, same input → same geometry | Non-reproducible |
-| Validation | Every export scanned: forbidden objects, bounds, editability | None |
-
-## Guarantees (measured, not promised)
-
-Full-matrix eval, 4 fixtures × 2 languages × 3 systems = 24 runs, seed 42, provider `fallback`, measured 2026-10-30 on the pre-integration 3-system build. Source: [`evals/summary.json`](evals/summary.json); procedure: [`docs/EVALUATION.md`](docs/EVALUATION.md). A 4-system re-run (32 runs) on the integrated tree is pending; numbers below are the labeled baseline, not a claim about this revision.
-
-| Criterion | Result | Target |
-|---|---|---|
-| End-to-end success (S1) | 24/24 (100%) | ≥90% |
-| Repo slides with ≥1 valid ref (S2) | 180/216 (83.3%); content slides 100% (cover/closing carry none by design) | ≥80% |
-| Unsupported factual claims (S3) | max 0/deck | ≤1/deck |
-| Forbidden objects in PPTX (S4) | 0 | 0 |
-| Text editability (S5) | 100% | 100% |
-| Overflowing boxes (S6) | 0 | 0 |
-| Latency, submit → deck (S7) | p95 1.8 s, max 4.7 s | ≤120 s |
-| Idea-mode fabricated refs | 0 over 6 runs | 0 |
-
-Design diversity passes 24/24 pairs via headline size + alignment mix. Honest footnote: blocks-per-slide is identical across systems because layout preserves narrative block counts 1:1 — recorded in the eval, not tuned away.
-
-## Repository layout
-
-```
-packages/core/   Pipeline: ingestion, evidence, narrative, layout, export, validation, CLI, eval
-apps/web/        Web Studio (Next.js): source form, SSE stage progress, 4-system preview, .pptx download
-skills/typodeck/ Agent skill: CLI-first workflow, grounding rules, worked examples (run: skills/typodeck/EXAMPLES.sh)
-evals/           Pinned fixtures, per-run reports, summary.json
-docs/            PRD, architecture, design system, evaluation spec, provider investigation, log
+```sh
+git clone <this-repo> && cd typodeck
+npm ci
+printf '%s' "A neighborhood tool library: members borrow tools for a small
+monthly fee. Each branch stocks 400 items and runs repair workshops." \
+> idea.txt
+npm run deck -- --idea-file idea.txt --system swiss --out deck.pptx
 ```
 
-No database, no auth, no cloud services. The API surface is five routes: `POST /api/evidence` (inspect files + claims with deep links), `POST /api/generate` (JSON or SSE stages; accepts an optional claim-exclusion/reframe selection), `POST /api/markdown` (re-render from edited Slide Markdown), `POST /api/export` (re-lays-out server-side from the posted narrative; client geometry is never trusted), and `GET /api/catalog` (system registry). The repo-to-deck flow is documented in [`docs/GITHUB_JOURNEY.md`](docs/GITHUB_JOURNEY.md).
+Other entry points, same engine:
 
-## Configuration
+- **Studio (web):** `npm run dev`, open http://localhost:3000, paste an idea
+  or repo, preview, export. API: `POST /api/generate`, `POST /api/export`.
+- **Samples:** `npm run samples` writes one deck per production system.
+- **Eval:** `npm run eval` re-runs the 24-case matrix into `evals/reports/`.
+- **Agent Skill:** `skills/typodeck/` is a portable project skill
+  (Muse Code, Codex, Claude Code — check out the repo and point the harness
+  at that directory). `skills/typodeck/EXAMPLES.sh` is an executable
+  transcript; it passes end to end. The skill is not marketplace-listed.
 
-| Variable | Effect |
-|---|---|
-| `TYPOdeck_MUSE_ENDPOINT` + `TYPOdeck_MUSE_API_KEY` | Both set → `MetaMuseProvider` (OpenAI-compatible chat-completions POST to your endpoint). Either missing → deterministic fallback, every output labeled `generated_by=fallback`. |
-| `TYPOdeck_MUSE_MODEL` | Optional model name (default `muse-spark`) |
-| `GITHUB_TOKEN` (or `GH_TOKEN`) | Optional GitHub token, read by the Studio evidence/generate routes and `eval fixtures --token-env` for higher rate limits. Without it, repo ingestion runs unauthenticated (60 req/hour/IP); quota exhaustion fails honestly as typed `rate-limited` with a reset time. |
+## Quality evidence
 
-Plainly stated: no live model endpoint has been verified — see [`docs/MUSE_PROVIDER.md`](docs/MUSE_PROVIDER.md). Until one is, every run uses the fallback and says so in its receipt. Never present fallback output as model inference.
+- **Tests:** 270/270 pass (`npm test`), covering ingestion bounds, claim
+  grading, narrative shape, per-system layout, PPTX validation, and contrast.
+- **Phase-4 eval:** 24/24 runs pass (4 fixtures × EN/KO × 3 systems),
+  S2 144/180 content slides (80.0%), latency p95 204 ms. Reports and summary
+  in [`evals/`](evals/).
+- **Design research:** 447 inspected references with a provenance-preserving
+  merge, browsable with verification status in the gallery.
+  See [`research/`](research/) and
+  [`gallery/REVIEW-GUIDE.md`](gallery/REVIEW-GUIDE.md).
 
-## Limitations
+What is **not** claimed: no human-preference wins, no 90+ benchmark score
+(the blind A/B protocol in `evals/benchmark-90/` is defined but unexecuted —
+zero ballots exist), and no pixel proof that HTML previews match PPTX
+rendering. The gallery labels renders accordingly; judge the `.pptx` files.
 
-- Public repos only; private repos are rejected with a typed error. Unauthenticated GitHub calls share hourly quota — quota exhaustion fails fast as typed `rate-limited` with a reset time (no silent degrade); the Studio offers pasted-text idea mode as an offline fallback.
-- Typography only, by design: no images, icons, charts, tables, shapes, or animations. No PDF export, no collaboration. Speaker notes ride along to native PPTX notes (never rendered on slides).
-- KO/EN only. Font embedding licenses are not yet verified — check before redistributing decks commercially.
-- The deterministic fallback produces template-structured outlines; it guarantees grounding mechanics, not prose quality.
+## Not supported
 
-More: [`docs/FAQ.md`](docs/FAQ.md), [`docs/PRD.md`](docs/PRD.md) §7 (out of scope).
+Images, charts, tables, shapes, animations, PDF export, private-repo access,
+and speaker-note authoring (notes present in input pass through to the native
+notes part untouched). Repo fetch is unauthenticated public GitHub only.
 
-## Troubleshooting
+## Layout
 
-- **`Module not found: Can't resolve '@typodeck/core'`** (HTTP 500 from `/api/generate` while the homepage still renders): `dist/` was never emitted — run `npm run build -w @typodeck/core` once.
-- **GitHub `rate-limited` / 403 errors in repo mode:** the public quota is small; the error names the reset time — wait for it, set `GITHUB_TOKEN`, or use idea mode. Private repos are rejected by design.
-- **`next dev` rewrites `apps/web/next-env.d.ts`, and `eval run` rewrites `evals/reports/*.json`:** both are tool side effects — do not commit them.
+```text
+packages/core   Engine: pipeline, typography systems, PPTX export + validator
+apps/web        Typodeck Studio (Next.js) + API routes
+skills/typodeck Portable Agent Skill + worked examples
+research/       447-reference design corpus, merge tooling, synthesis
+gallery/        Static human-review UI over research + generated slides
+evals/          Fixtures, eval harness, benchmark protocols, skill benchmark
+showcase/       Pinned generated decks with manifests and previews
+docs/           Architecture, design system, evaluation, launch readiness
+```
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md). Short version: strict TypeScript, `node --test` suites beside the code, every `.pptx` must pass the structural validator (0 forbidden objects, all boxes in-bounds, 16:9).
-
-## License
-
-MIT — see [`LICENSE`](LICENSE).
+See [CONTRIBUTING.md](CONTRIBUTING.md). Please keep the honesty rules that the
+test suite enforces: no invented numbers, no silent fallbacks, no unverified
+claims in docs. MIT licensed — see [LICENSE](LICENSE).

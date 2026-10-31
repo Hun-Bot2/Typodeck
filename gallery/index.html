@@ -28,9 +28,11 @@
     <div class="toolbar">
       <label>Category <select id="fCat"></select></label>
       <label>Status <select id="fStatus"></select></label>
+      <label>Agent <select id="fAgent"></select></label>
       <label class="grow">Search <input id="fQ" type="search" placeholder="id, title, url, designer…"></label>
       <span id="refCount" class="muted"></span>
     </div>
+    <p id="statusLegend" class="legend"></p>
     <div id="refList" class="refgrid"></div>
   </section>
 
@@ -47,7 +49,8 @@
       <span id="cSysChecks" class="checks"></span>
     </div>
     <p class="muted">Same narrative content, same slide index, rendered per system. Candidate ids are the
-    composition candidate selected for that slide in that system.</p>
+    composition candidate selected for that slide in that system. Inline columns are HTML renders,
+    not PPTX proof — open each system's linked PPTX to judge editable output.</p>
     <div id="cmpGrid" class="cmpgrid"></div>
   </section>
 
@@ -63,7 +66,7 @@
     </div>
     <p class="muted">No finals are auto-selected. Every verdict below is a human decision; export captures them.</p>
     <table class="dectable">
-      <thead><tr><th>System</th><th>Candidate</th><th>Preview</th><th>Verdict</th><th>Comment</th><th>Updated</th></tr></thead>
+      <thead><tr><th>System</th><th>Candidate</th><th>Refs</th><th>Preview</th><th>Verdict</th><th>Comment</th><th>Updated</th></tr></thead>
       <tbody id="decBody"></tbody>
     </table>
   </section>

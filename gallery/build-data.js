@@ -63,30 +63,56 @@ out.slideLabels = [];
 const first = out.systems.find(s => s.renderedSlides.length);
 if (first) out.slideLabels = first.renderedSlides.map(s => s.meta);
 
-// --- Research registry ---
+// --- Research registry + provenance sidecar ---
 out.registry = null;
 out.registryStats = null;
 const regPath = expect('research/merged_registry.json');
+const provPath = expect('research/merge_provenance.json');
+let prov = {};
+if (provPath) {
+  try { prov = JSON.parse(read(provPath)); }
+  catch (e) { out.warnings.push('research/merge_provenance.json unparseable: ' + e.message); }
+}
 if (regPath) {
   try {
     const records = JSON.parse(read(regPath));
-    out.registry = records.map(r => ({
-      id: r.id, agent: r.agent, category: r.category, title: r.title,
-      designer: r.designer, year: r.year, source_url: r.source_url,
-      source_type: r.source_type, status: r.visual_inspection_status,
-      summary: r.composition_analysis && r.composition_analysis.summary,
-      reading_order: r.composition_analysis && r.composition_analysis.reading_order,
-      hierarchy: r.hierarchy, grid: r.grid_strategy, whitespace: r.whitespace_strategy,
-      techniques: r.typographic_techniques, adaptability: r.slide_adaptability,
-      capabilities: r.required_engine_capabilities, confidence: r.evidence_confidence,
-      originality: r.originality_notes, limitations: r.limitations,
-    }));
-    const byCat = {}, byStatus = {};
+    out.registry = records.map(r => {
+      const p = prov[r.id] || {};
+      const cv = p.composition_verbatim || {};
+      return {
+        id: r.id, agent: r.agent, category: r.category, title: r.title,
+        designer: r.designer, year: r.year, source_url: r.source_url,
+        source_type: r.source_type, status: r.visual_inspection_status,
+        summary: r.composition_analysis && r.composition_analysis.summary,
+        primitives: (r.composition_analysis && r.composition_analysis.primitives) || [],
+        reading_order: r.composition_analysis && r.composition_analysis.reading_order,
+        hierarchy: r.hierarchy, grid: r.grid_strategy, whitespace: r.whitespace_strategy,
+        techniques: r.typographic_techniques, adaptability: r.slide_adaptability,
+        capabilities: r.required_engine_capabilities, confidence: r.evidence_confidence,
+        originality: r.originality_notes, limitations: r.limitations,
+        // provenance (original agent values; null when the sidecar lacks them)
+        origCategory: p.original_category || null,
+        origSourceType: p.original_source_type || null,
+        agentStatus: p.agent_status || null,
+        method: p.check_method || p.verification_method || null,
+        visualNotes: p.visual_notes || p.notes || null,
+        context: p.context || null,
+        publication: p.publication || null,
+        align: cv.alignment || null, rhythm: cv.rhythm || null,
+        scale: cv.scale || null, textTreatment: cv.text_treatment || null,
+        confClaimed: p.confidence_claimed || null,
+        confCapped: !!p.confidence_capped,
+        summaryRecon: !!p.summary_reconstructed,
+      };
+    });
+    const byCat = {}, byStatus = {}, byAgent = {};
     for (const r of out.registry) {
       byCat[r.category] = (byCat[r.category] || 0) + 1;
       byStatus[r.status] = (byStatus[r.status] || 0) + 1;
+      byAgent[r.agent] = (byAgent[r.agent] || 0) + 1;
+      if (!prov[r.id]) out.warnings.push('no provenance for ' + r.id);
     }
-    out.registryStats = { total: out.registry.length, byCategory: byCat, byStatus: byStatus };
+    out.registryStats = { total: out.registry.length, byCategory: byCat, byStatus: byStatus, byAgent: byAgent };
   } catch (e) { out.warnings.push('research/merged_registry.json unparseable: ' + e.message); }
 }
 
@@ -145,6 +171,36 @@ for (const r of out.reviewItems) {
   const sys = out.systems.find(s => s.system === r.system);
   r.slideIndexes = [];
   if (sys) (sys.candidates || []).forEach((c, i) => { if (c === r.candidate) r.slideIndexes.push(i); });
+}
+
+// --- Candidate evidence: refs joined to LIVE registry statuses (never stored) ---
+let evidence = null;
+const evPath = expect('gallery/candidate-evidence.json');
+if (evPath) {
+  try { evidence = JSON.parse(read(evPath)); }
+  catch (e) { out.warnings.push('gallery/candidate-evidence.json unparseable: ' + e.message); }
+}
+const regById = {};
+if (out.registry) for (const r of out.registry) regById[r.id] = r;
+function resolveEvidence(entry) {
+  if (!entry) return null;
+  const refs = (entry.refs || []).map(id => {
+    const r = regById[id];
+    if (!r) {
+      out.warnings.push('candidate-evidence.json references unknown record ' + id);
+      return { id: id, missing: true };
+    }
+    return { id: r.id, title: r.title, source_url: r.source_url, status: r.status, confidence: r.confidence };
+  });
+  return { refs: refs, rules: entry.rules || [], gaps: entry.gaps || [] };
+}
+for (const s of out.systems) {
+  s.evidence = (evidence && evidence.systems && evidence.systems[s.system])
+    ? resolveEvidence(evidence.systems[s.system]) : null;
+}
+for (const r of out.reviewItems) {
+  r.evidence = (evidence && evidence.candidates && evidence.candidates[r.key])
+    ? resolveEvidence(evidence.candidates[r.key]) : null;
 }
 
 const js = 'window.TYPODECK_DATA = ' + JSON.stringify(out) + ';\n';
