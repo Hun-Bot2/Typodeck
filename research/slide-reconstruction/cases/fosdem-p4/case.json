@@ -1,0 +1,56 @@
+{
+ "background": "#4FAB96",
+ "blocks": [
+  {
+   "align": "center",
+   "color": "#FFFFFF",
+   "h": 1.1,
+   "id": "title",
+   "role": "title",
+   "w": 11.33,
+   "x": 1.0,
+   "y": 2.5,
+   "content": "Visual Systems",
+   "fontSize": 60,
+   "fontWeight": 700,
+   "tracking": 0,
+   "lineHeight": 1.15
+  },
+  {
+   "align": "center",
+   "color": "#FFFFFF",
+   "h": 0.6,
+   "id": "talk",
+   "role": "body",
+   "w": 11.33,
+   "x": 1.0,
+   "y": 3.9,
+   "content": "\u201cThe Grid, Revisited\u201d",
+   "fontSize": 32,
+   "fontWeight": 400,
+   "tracking": 0,
+   "lineHeight": 1.15
+  },
+  {
+   "align": "center",
+   "color": "#FFFFFF",
+   "h": 0.45,
+   "id": "speaker",
+   "role": "body",
+   "w": 11.33,
+   "x": 1.0,
+   "y": 4.7,
+   "content": "Mara Ellingsen",
+   "fontSize": 21,
+   "fontWeight": 400,
+   "tracking": 0,
+   "lineHeight": 1.15
+  }
+ ],
+ "notes": "LINK-ONLY paraphrase: no stored source pixels (license UNVERIFIED). Serif-italic talk title substituted with SANS 400 \u2014 Typodeck has no italic style flag; fidelity cost recorded. Geometry paraphrased from memory of capture (EST).",
+ "slideId": "fosdem-p4",
+ "system": "swiss",
+ "tier": "B",
+ "title": "Visual Systems \u2014 talk title (paraphrase)",
+ "thesis": "title card paraphrase: title, talk, speaker"
+}

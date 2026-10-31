@@ -1,0 +1,123 @@
+{
+  "meta": {
+    "title": "gen-g1-med-ko",
+    "lang": "en",
+    "system": "swiss",
+    "seed": 7,
+    "generatedBy": "recon-research"
+  },
+  "slides": [
+    {
+      "id": "r1",
+      "thesis": "G1 medium-KO report cover.",
+      "background": "#FFFFFF",
+      "blocks": [
+        {
+          "align": "left",
+          "color": "#FDC933",
+          "h": 0.62,
+          "id": "kicker",
+          "role": "kicker",
+          "tracking": 0.04,
+          "w": 12,
+          "x": 0.6,
+          "y": 0.72,
+          "content": "기획 특집",
+          "fontSize": 35,
+          "fontWeight": 700,
+          "lineHeight": 1.15
+        },
+        {
+          "align": "left",
+          "color": "#FDC933",
+          "h": 2.5,
+          "id": "number",
+          "lineHeight": 1,
+          "role": "number",
+          "w": 3,
+          "x": 0.6,
+          "y": 1.4,
+          "content": "3",
+          "fontSize": 231,
+          "fontWeight": 700,
+          "tracking": 0
+        },
+        {
+          "align": "left",
+          "color": "#53819F",
+          "h": 1.25,
+          "id": "title",
+          "role": "title",
+          "w": 12,
+          "x": 0.6,
+          "y": 3.95,
+          "content": "한반도의 새",
+          "fontSize": 57,
+          "fontWeight": 700,
+          "tracking": 0,
+          "lineHeight": 1.15
+        },
+        {
+          "align": "left",
+          "color": "#FDC933",
+          "h": 0.35,
+          "id": "url",
+          "role": "caption",
+          "w": 12,
+          "x": 0.6,
+          "y": 5.35,
+          "content": "www.probe.example/ko-birds",
+          "fontSize": 15,
+          "fontWeight": 400,
+          "tracking": 0,
+          "lineHeight": 1.15
+        },
+        {
+          "align": "left",
+          "color": "#7F7F7F",
+          "h": 0.22,
+          "id": "foot-l",
+          "role": "caption",
+          "w": 4,
+          "x": 0.6,
+          "y": 7.05,
+          "content": "probe.example.org",
+          "fontSize": 10,
+          "fontWeight": 400,
+          "tracking": 0,
+          "lineHeight": 1.15
+        },
+        {
+          "align": "center",
+          "color": "#7F7F7F",
+          "h": 0.22,
+          "id": "foot-c",
+          "role": "caption",
+          "w": 5.5,
+          "x": 3.9,
+          "y": 7.05,
+          "content": "Generalization probe — synthetic content",
+          "fontSize": 10,
+          "fontWeight": 400,
+          "tracking": 0,
+          "lineHeight": 1.15
+        },
+        {
+          "align": "right",
+          "color": "#7F7F7F",
+          "h": 0.22,
+          "id": "foot-r",
+          "role": "caption",
+          "w": 3,
+          "x": 9.7,
+          "y": 7.05,
+          "content": "Probe v1",
+          "fontSize": 10,
+          "fontWeight": 400,
+          "tracking": 0,
+          "lineHeight": 1.15
+        }
+      ]
+    }
+  ]
+}

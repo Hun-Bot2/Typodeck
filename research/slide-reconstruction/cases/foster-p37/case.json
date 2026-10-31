@@ -1,0 +1,55 @@
+{
+ "tier": "B",
+ "system": "expressive",
+ "background": "#000000",
+ "title": "Southern African news sources \u2014 quote",
+ "thesis": "monumental centered quote",
+ "blocks": [
+  {
+   "id": "quote",
+   "role": "body",
+   "content": "\u201cacross the 12 countries of the Southern African region, women constitute just 17% of news sources. Women constitute just 19% of news sources in South Africa and black women, who constitute 41% of the population, account for a mere 7% of news sources.\u201d",
+   "x": 0.5,
+   "y": 1.0,
+   "w": 12.33,
+   "h": 5.5,
+   "fontSize": 38,
+   "fontWeight": 700,
+   "tracking": 0,
+   "lineHeight": 1.3,
+   "align": "center",
+   "color": "#E6E6E6"
+  },
+  {
+   "id": "foot-1",
+   "role": "caption",
+   "content": "Wikimania 2012, Thu Jul 12",
+   "x": 4.16,
+   "y": 6.6,
+   "w": 5.0,
+   "h": 0.25,
+   "fontSize": 12,
+   "fontWeight": 400,
+   "tracking": 0,
+   "lineHeight": 1.15,
+   "align": "center",
+   "color": "#E6E6E6"
+  },
+  {
+   "id": "foot-2",
+   "role": "caption",
+   "content": "\u00a9 Ada Initiative, CC BY-SA",
+   "x": 4.16,
+   "y": 6.85,
+   "w": 5.0,
+   "h": 0.25,
+   "fontSize": 12,
+   "fontWeight": 400,
+   "tracking": 0,
+   "lineHeight": 1.15,
+   "align": "center",
+   "color": "#E6E6E6"
+  }
+ ],
+ "notes": "Tier-B hand placement. See analysis.md for substitutions."
+}

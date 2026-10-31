@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "node16",
+    "moduleResolution": "node16",
+    "rootDir": "../../..",
+    "jsx": "react-jsx",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["../../../apps/web/node_modules/@types", "/Users/jeonghun/Typodeck/node_modules/@types"]
+  },
+  "include": ["recon.tsx", "../../../apps/web/components/SlideView.tsx", "../../../packages/core/src/**/*"]
+}

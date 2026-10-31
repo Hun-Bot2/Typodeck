@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "title": "Section mark (paraphrase)",
+    "lang": "en",
+    "system": "swiss",
+    "seed": 7,
+    "generatedBy": "recon-research"
+  },
+  "slides": [
+    {
+      "id": "r1",
+      "thesis": "single monumental glyph on white",
+      "background": "#FFFFFF",
+      "blocks": [
+        {
+          "align": "center",
+          "color": "#000000",
+          "h": 5.7,
+          "id": "mark",
+          "lineHeight": 1,
+          "role": "title",
+          "w": 13.33,
+          "x": 0,
+          "y": 0.9,
+          "content": "©",
+          "fontSize": 400,
+          "fontWeight": 400,
+          "tracking": 0
+        }
+      ]
+    }
+  ]
+}

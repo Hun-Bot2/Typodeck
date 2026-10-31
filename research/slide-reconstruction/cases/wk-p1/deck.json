@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "Decolonising Wikidata — keynote title",
+    "lang": "en",
+    "system": "expressive",
+    "seed": 7,
+    "generatedBy": "recon-research"
+  },
+  "slides": [
+    {
+      "id": "r1",
+      "thesis": "keynote title: centered stack on navy",
+      "background": "#0B1159",
+      "blocks": [
+        {
+          "align": "center",
+          "color": "#FFFFFF",
+          "h": 1.05,
+          "id": "title",
+          "role": "title",
+          "w": 12.33,
+          "x": 0.5,
+          "y": 1.85,
+          "content": "Decolonising Wikidata",
+          "fontSize": 66,
+          "fontWeight": 900,
+          "tracking": 0,
+          "lineHeight": 1.15
+        },
+        {
+          "align": "center",
+          "color": "#FFFFFF",
+          "h": 0.475,
+          "id": "subtitle-l1",
+          "role": "body",
+          "tracking": 0.12,
+          "w": 12.33,
+          "x": 0.5,
+          "y": 3.15,
+          "content": "WHY DOES KNOWLEDGE JUSTICE MATTER",
+          "fontSize": 30,
+          "fontWeight": 700,
+          "lineHeight": 1.15
+        },
+        {
+          "align": "center",
+          "color": "#FFFFFF",
+          "h": 0.475,
+          "id": "subtitle-l2",
+          "role": "body",
+          "tracking": 0.12,
+          "w": 12.33,
+          "x": 0.5,
+          "y": 3.625,
+          "content": "FOR STRUCTURED DATA?",
+          "fontSize": 30,
+          "fontWeight": 700,
+          "lineHeight": 1.15
+        },
+        {
+          "align": "center",
+          "color": "#FFFFFF",
+          "h": 0.283,
+          "id": "attr-l1",
+          "lineHeight": 1.5,
+          "role": "body",
+          "w": 12.33,
+          "x": 0.5,
+          "y": 4.5,
+          "content": "Keisha Miranda",
+          "fontSize": 17,
+          "fontWeight": 400,
+          "tracking": 0
+        },
+        {
+          "align": "center",
+          "color": "#FFFFFF",
+          "h": 0.283,
+          "id": "attr-l2",
+          "lineHeight": 1.5,
+          "role": "body",
+          "w": 12.33,
+          "x": 0.5,
+          "y": 4.783,
+          "content": "Co-founder and co-director, Whose Knowledge?",
+          "fontSize": 17,
+          "fontWeight": 400,
+          "tracking": 0
+        },
+        {
+          "align": "center",
+          "color": "#FFFFFF",
+          "h": 0.283,
+          "id": "attr-l3",
+          "lineHeight": 1.5,
+          "role": "body",
+          "w": 12.33,
+          "x": 0.5,
+          "y": 5.066,
+          "content": "WIKIDATACON 2021",
+          "fontSize": 17,
+          "fontWeight": 400,
+          "tracking": 0
+        },
+        {
+          "align": "left",
+          "color": "#FFFFFF",
+          "h": 0.25,
+          "id": "cap-l",
+          "role": "caption",
+          "w": 4,
+          "x": 0.4,
+          "y": 6.85,
+          "content": "Whose Knowledge?",
+          "fontSize": 12,
+          "fontWeight": 400,
+          "tracking": 0,
+          "lineHeight": 1.15
+        },
+        {
+          "align": "right",
+          "color": "#FFFFFF",
+          "h": 0.25,
+          "id": "cap-r",
+          "role": "caption",
+          "w": 5.5,
+          "x": 7.4,
+          "y": 6.85,
+          "content": "2021 — A SUSTAINABLE FUTURE FOR WIKIDATA",
+          "fontSize": 12,
+          "fontWeight": 400,
+          "tracking": 0,
+          "lineHeight": 1.15
+        }
+      ]
+    }
+  ]
+}

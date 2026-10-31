@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "title": "Decolonising Wikidata",
+    "lang": "en",
+    "system": "expressive",
+    "systemVersion": "1.0.0",
+    "seed": 2055067531,
+    "generatedBy": "typodeck-core/phase1"
+  },
+  "slides": [
+    {
+      "id": "s1",
+      "thesis": "keynote title: centered stack on navy",
+      "background": "#0E0E0E",
+      "blocks": [
+        {
+          "id": "s1-b0",
+          "role": "title",
+          "content": "Decolonising Wikidata",
+          "x": 1.9650000000000007,
+          "y": 2.4266666666666663,
+          "w": 9.399999999999999,
+          "h": 1.9466666666666668,
+          "fontSize": 64,
+          "fontWeight": 900,
+          "tracking": -0.01,
+          "lineHeight": 1.05,
+          "align": "center",
+          "color": "#F5F2EA"
+        },
+        {
+          "id": "s1-b1",
+          "role": "body",
+          "content": "WHY DOES KNOWLEDGE JUSTICE MATTER FOR STRUCTURED DATA?",
+          "x": 3.7483333333333335,
+          "y": 4.783333333333332,
+          "w": 5.833333333333333,
+          "h": 0.7022222222222222,
+          "fontSize": 14,
+          "fontWeight": 400,
+          "tracking": 0,
+          "lineHeight": 1.6,
+          "align": "center",
+          "color": "#F5F2EA"
+        },
+        {
+          "id": "s1-b2",
+          "role": "body",
+          "content": "Keisha Miranda, Co-founder and co-director, Whose Knowledge? — WIKIDATACON 2021",
+          "x": 3.7483333333333335,
+          "y": 5.8455555555555545,
+          "w": 5.833333333333333,
+          "h": 0.28,
+          "fontSize": 9,
+          "fontWeight": 400,
+          "tracking": 0,
+          "lineHeight": 1.6,
+          "align": "center",
+          "color": "#F5F2EA"
+        }
+      ]
+    }
+  ]
+}
