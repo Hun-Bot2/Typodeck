@@ -8,7 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(here, '..', '..', '..');
+const root = path.resolve(here, '..', '..', '..', '..', '..');
 const distEntry = path.join(root, 'packages/core/dist/src/index.js');
 if (!existsSync(distEntry)) {
   console.error('FAIL 04: core not built — run: npm run build -w @typodeck/core');

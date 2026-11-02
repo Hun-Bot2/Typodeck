@@ -1,6 +1,7 @@
 ---
 name: typodeck
 description: Build typography-only pitch decks from a product idea, a local repo, or a public GitHub repo by orchestrating Typodeck Core (CLI, Studio API, validator) — never hand-drawn slides. Use when the user asks for a pitch deck, slide deck, PPTX, Demo Day or investor materials, or names Typodeck.
+version: 0.1.0
 ---
 
 # Typodeck Skill
@@ -90,7 +91,7 @@ If asked for a forbidden element: refuse that element, offer the typographic equ
   `too-large`/`body-too-large`→413, `network`→502, `timeout`→504, `invalid-*`→400,
   `internal`/`layout-failed`/`export-validation-failed`→500.
 
-## Worked examples (runnable: `skills/typodeck/EXAMPLES.sh [OUT]`)
+## Worked examples (runnable: `plugins/typodeck/skills/typodeck/EXAMPLES.sh [OUT]`)
 
 - `examples/01-idea-deck.sh` — real idea fixture → 3 production systems → export.
 - `examples/02-local-analysis.sh` — bounded local walk → idea text → deck (offline).

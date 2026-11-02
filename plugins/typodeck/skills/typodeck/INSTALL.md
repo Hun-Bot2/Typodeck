@@ -1,27 +1,31 @@
 # Typodeck Skill — Install Notes
 
-Source of truth: this directory (`skills/typodeck/`). It is the
-authoring location; each harness links or copies it into its own
-discovery path. The Skill is shell + HTTP only — no harness-specific
-calls — so the same files serve all three agents below.
+Source of truth: this directory (`plugins/typodeck/skills/typodeck/`).
+It is the authoring location, packaged as a Claude plugin
+(`plugins/typodeck/`) and installable as a plain skill everywhere
+else. Each harness links or copies it into its own discovery path.
+The Skill is shell + HTTP only — no harness-specific calls — so the
+same files serve all three agents below.
 
 Layout (progressive disclosure): `SKILL.md` (orchestrator, always
 loaded) → `references/` (one file per workflow step, on demand) →
 `examples/` + `scripts/` (runnable). Verify after any install with
-`skills/typodeck/EXAMPLES.sh [OUT]` (exit 0, 6 examples).
+`plugins/typodeck/skills/typodeck/EXAMPLES.sh [OUT]` (exit 0, 6 examples).
 
 ## Muse Code (verified live on this machine)
 
-- Validate: `muse skills validate skills/typodeck` → `valid typodeck`.
+- Validate: `muse skills validate plugins/typodeck/skills/typodeck`
+  → `valid typodeck`.
 - Project install: copy or symlink this directory to
   `.agents/skills/typodeck/` in a TRUSTED workspace; verify with
   `muse skills list --source project --workspace <ws> --trust-workspace`
   (lists `typodeck project on`). Untrusted workspaces skip project
   skills with a `project-skills-untrusted` diagnostic.
-- Personal install (user-run): `muse skills install skills/typodeck`
-  from the repo root → managed `$CONFIG_DIR/skills/typodeck`
+- Personal install (user-run): `muse skills install
+  plugins/typodeck/skills/typodeck` from the repo root → managed
+  `$CONFIG_DIR/skills/typodeck`
   (`$XDG_CONFIG_HOME/muse`, else `$HOME/.config/muse`).
-- Note: `skills/typodeck/` at the repo root is NOT auto-discovered;
+- Note: the repo-root plugin directory is NOT auto-discovered;
   it must be installed into one of the paths above.
 
 ## Codex (binary + docs evidence, session load not executed)
@@ -38,12 +42,15 @@ loaded) → `references/` (one file per workflow step, on demand) →
 
 ## Claude Code (official-docs evidence, session load not executed)
 
-- Follows the Agent Skills open standard (`SKILL.md` + supporting
-  files; directory name or frontmatter `name` becomes `/typodeck`).
-- Project install: copy or symlink to `.claude/skills/typodeck/`
-  (committed to version control). Personal install:
-  `~/.claude/skills/typodeck/`. Symlinks at either location are
-  read from their target.
+- Preferred: install as a plugin from this repo's marketplace
+  (`.claude-plugin/marketplace.json` → `./plugins/typodeck`,
+  manifest `plugins/typodeck/.claude-plugin/plugin.json`).
+- Fallback: plain skill install per the Agent Skills open standard
+  (`SKILL.md` + supporting files; directory name or frontmatter
+  `name` becomes `/typodeck`). Project: copy or symlink to
+  `.claude/skills/typodeck/` (committed to version control).
+  Personal: `~/.claude/skills/typodeck/`. Symlinks at either
+  location are read from their target.
 - Do not name the folder `synced` (reserved).
 
 ## Compatibility matrix

@@ -51,7 +51,7 @@ The agent Skill and the Web Studio both drive the same core pipeline (`packages/
 
 | Interface | Entry point | Best for |
 |---|---|---|
-| Agent Skill | [skills/typodeck/SKILL.md](skills/typodeck/SKILL.md) | Agentic decks from your coding assistant — the Skill orchestrates Core (CLI/API) and never lays out slides itself |
+| Agent Skill | [plugins/typodeck/skills/typodeck/SKILL.md](plugins/typodeck/skills/typodeck/SKILL.md) | Agentic decks from your coding assistant — the Skill orchestrates Core (CLI/API) and never lays out slides itself |
 | Web Studio | `npm run dev` → `http://localhost:3000` | Evidence inspection, Slide Markdown editing, visual preview, `.pptx` download |
 
 The Studio adds an evidence inspector (review files + claims, exclude or reframe before generating), all-systems preview from one narrative, Slide Markdown editing with server-side re-render, and `.pptx` download. The Skill adds purpose presets, composition planning, and critic/revision loops on top of the same functions. Neither invents its own geometry: the Studio server re-lays-out from the posted narrative, and the Skill ships only on `validation: OK`.
@@ -83,20 +83,20 @@ Flow: paste a repo URL or idea → **Inspect evidence** → optionally exclude/r
 
 ## Skill install & usage
 
-The Skill is a portable project skill — checkout-and-point, no installer, marketplace, or registry:
+The Skill is a portable project skill — checkout-and-point, no installer or registry publish. It is also packaged as a Claude plugin (`.claude-plugin/marketplace.json` → `plugins/typodeck/`):
 
 1. Check out this repo (same clone as above).
-2. Point your agent at [skills/typodeck/SKILL.md](skills/typodeck/SKILL.md). It loads as a project skill in Muse Code, Codex, and Claude Code (`SKILL.md` + Markdown guides + `EXAMPLES.sh`; shell + HTTP only, no harness calls).
+2. Point your agent at [plugins/typodeck/skills/typodeck/SKILL.md](plugins/typodeck/skills/typodeck/SKILL.md). It loads as a project skill in Muse Code, Codex, and Claude Code (`SKILL.md` + Markdown guides + `EXAMPLES.sh`; shell + HTTP only, no harness calls).
 3. The Skill builds Core once, runs `deck --idea-file|--repo --system`, reads the provider/claims/deck/validation receipt, and ships only on `validation: OK`.
 
 Verify with the worked transcript (idea + live repo + offline eval; skips honestly without network/quota):
 
 ```sh
-bash skills/typodeck/EXAMPLES.sh /tmp/typodeck-skill
+bash plugins/typodeck/skills/typodeck/EXAMPLES.sh /tmp/typodeck-skill
 # exit 0
 ```
 
-Skill reference: [skills/typodeck/SKILL.md](skills/typodeck/SKILL.md).
+Skill reference: [plugins/typodeck/skills/typodeck/SKILL.md](plugins/typodeck/skills/typodeck/SKILL.md).
 
 ## Outputs & editability
 
@@ -208,7 +208,7 @@ Repository layout:
 ```
 packages/core/   Pipeline: ingestion, evidence, narrative, layout, export, validation, CLI, eval
 apps/web/        Web Studio (Next.js): evidence inspector, SSE progress, preview, .pptx download
-skills/typodeck/ Agent skill: CLI-first workflow, grounding rules, worked examples (EXAMPLES.sh)
+plugins/typodeck/ Claude plugin + Agent skill: CLI-first workflow, grounding rules, worked examples (EXAMPLES.sh)
 evals/           Pinned fixtures, per-run reports, summary.json
 docs/            Specs, audits, research, ADRs (docs/engineering/decisions/), log
 brand/           Brand identity SVGs (illustrations, not engine output)

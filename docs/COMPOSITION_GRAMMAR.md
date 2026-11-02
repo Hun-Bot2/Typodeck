@@ -2,7 +2,7 @@
 
 Machine-readable source: `packages/core/src/composition.ts` (`COMPOSITION_GRAMMAR`).
 Tests: `packages/core/tests/composition.test.ts`. Selection details for agents:
-`skills/typodeck/composition.md`.
+`plugins/typodeck/skills/typodeck/composition.md`.
 
 ## Semantic types (13, each with ≥2 strategies)
 

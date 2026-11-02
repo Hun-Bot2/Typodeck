@@ -79,7 +79,7 @@ by E. This report + research/NOTICE.md added by integrator.
 
 ## F. Agent Skill
 
-- Install: `skills/typodeck/INSTALL.md` (per-harness paths, evidence levels).
+- Install: `plugins/typodeck/skills/typodeck/INSTALL.md` (per-harness paths, evidence levels).
 - Compat: Muse Code VERIFIED live (project/user/symlink discovery, negatives,
 marketplace via local git); Codex DOCUMENTED (binary strings v0.165.0, official docs);
 Claude Code DOCUMENTED (official docs; `claude doctor` hung); skills.sh VERIFIED
@@ -111,7 +111,7 @@ native text. Restart: `cd <rc-worktree>/apps/web && PORT=3211 npm run start -- -
 ## H. Hackathon demonstration
 
 1. Real repo: `sindresorhus/is` (E: 56 claims/47 verified) or offline FX fixtures (G).
-2. Agent with Typodeck Skill: `bash skills/typodeck/EXAMPLES.sh /tmp/out` (exit 0).
+2. Agent with Typodeck Skill: `bash plugins/typodeck/skills/typodeck/EXAMPLES.sh` /tmp/out` (exit 0).
 3. Inspect: `04-evidence-report.md` + Review step (exclude/reframe, sha guard).
 4. Generate: Studio Create→Review→Studio→Export, or `deck` CLI; G1/G3 compositions.
 5. Quality: overflow gate clean on showcase decks; editable PPTX (validatePptxBytes).

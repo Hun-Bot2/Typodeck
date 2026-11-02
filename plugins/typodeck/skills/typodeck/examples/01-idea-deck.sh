@@ -4,7 +4,7 @@
 # Usage: examples/01-idea-deck.sh [OUT_DIR]
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
+ROOT="$(cd "$(dirname "$0")/../../../../.." && pwd)"
 OUT="${1:-/tmp/typodeck-skill}"
 cd "$ROOT"
 mkdir -p "$OUT"

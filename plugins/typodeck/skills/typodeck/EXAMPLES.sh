@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Typodeck Skill — executable transcript of the SKILL.md worked examples.
-# Usage: skills/typodeck/EXAMPLES.sh [OUT_DIR]   (default OUT_DIR=/tmp/typodeck-skill)
+# Usage: plugins/typodeck/skills/typodeck/EXAMPLES.sh [OUT_DIR]   (default OUT_DIR=/tmp/typodeck-skill)
 # Exit 0 with PASS when every runnable example produces its stated artifacts.
 # Prints SKIP (still exit 0) only when an external precondition is missing
 # (GitHub quota exhausted, or Phase 4 eval scripts absent). Any FAIL exits 1.
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+ROOT="$(cd "$(dirname "$0")/../../../.." && pwd)"
 OUT="${1:-/tmp/typodeck-skill}"
-SKILL="$ROOT/skills/typodeck"
+SKILL="$ROOT/plugins/typodeck/skills/typodeck"
 
 pass=0
 skip=0

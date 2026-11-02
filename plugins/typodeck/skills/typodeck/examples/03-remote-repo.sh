@@ -6,12 +6,12 @@
 # Usage: examples/03-remote-repo.sh [OUT_DIR]
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
+ROOT="$(cd "$(dirname "$0")/../../../../.." && pwd)"
 OUT="${1:-/tmp/typodeck-skill}"
 cd "$ROOT"
 mkdir -p "$OUT"
 
-probe="$(bash skills/typodeck/scripts/check-quota.sh)"
+probe="$(bash plugins/typodeck/skills/typodeck/scripts/check-quota.sh)"
 echo "$probe"
 remaining="$(echo "$probe" | sed -n 's/.*quota_remaining=\([^ ]*\).*/\1/p')"
 if [ "$remaining" = "0" ] || [ "$remaining" = "unknown" ]; then
