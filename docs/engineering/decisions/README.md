@@ -23,6 +23,10 @@ pending. No ADR changes policy by itself.
 - [ADR-0017](ADR-0017-system-registry.md) — Versioned visual-system registry (Reconstructed; overlaps 0006)
 - [ADR-0018](ADR-0018-validation-repair.md) — Validation gates with advisory repair (Reconstructed)
 - [ADR-0019](ADR-0019-fallback-distribution.md) — Zero-config distribution via fallback provider (Reconstructed; overlaps 0009)
+- [ADR-0020](ADR-0020-visual-hierarchy-alignment.md) — Visual Hierarchy Alignment: intended importance vs perceived prominence (Proposed, Stage 2)
+- [ADR-0021](ADR-0021-typed-relationships.md) — Typed spatial and semantic relationships, scoped minimal pair (Proposed, Stage 2)
+- [ADR-0022](ADR-0022-rendered-text-fitting.md) — Rendered text fitting and geometry validation (Proposed, Stage 2)
+- [ADR-0023](ADR-0023-generator-evaluator-separation.md) — Separation of generator and evaluator, extends ADR-0018 (Proposed, Stage 2)
 
 ## Numbering reconciliation (main-consolidation merge)
 
