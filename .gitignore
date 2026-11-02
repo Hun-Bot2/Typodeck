@@ -5,3 +5,4 @@ output/
 evals/reports/*.pptx
 .env
 .env*.local
+frontend-slides/
