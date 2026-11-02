@@ -10,7 +10,7 @@
 // - Narration: C08; density: C04 (no caps enforced); Korean: D01-D10
 // All numeric slide values below are DERIVED HEURISTICS, not attributed rules.
 
-import type { Narrative, NarrativeSlide } from './schema';
+import type { Narrative, NarrativeBlock, NarrativeSlide } from './schema';
 import type { SystemId, ThemeOverride } from './systems';
 
 // ---------------------------------------------------------------------------
@@ -831,8 +831,81 @@ function preconditionsMet(c: CompositionCandidate, slide: NarrativeSlide, lang: 
   return true;
 }
 
-/** Deterministic score: higher wins. Weights are derived heuristics (H). */
-export function scoreCandidate(c: CompositionCandidate, ctx: SelectionContext): number {
+// ---------------------------------------------------------------------------
+// Intent-aware adjustments (Stage 3, C6; IMPL-OWNED weights). Intent arrives
+// via SelectionContext.slide.blocks[].intent (C1, optional; never assumed
+// present). Absent intent = zero adjustment = byte-identical legacy output.
+// deliberateCrop is intentionally unscored here: it is a critic opt-in (C5),
+// not a composition signal.
+// ---------------------------------------------------------------------------
+
+/** Structural read of C1 BlockIntent without owning schema.ts (B owns it). */
+interface IntentLike {
+  emphasis?: string;
+  groupId?: string;
+  relation?: string;
+  deliberateCrop?: boolean;
+}
+
+function blockIntent(b: NarrativeBlock): IntentLike | undefined {
+  return (b as NarrativeBlock & { intent?: IntentLike }).intent;
+}
+
+/**
+ * Bonus when a primary-emphasis title/number meets a display-led candidate
+ * (scale/number-led hero treatment). 7: beats epsilon races and the 6pt
+ * single-column penalty, stays below hard mismatch penalties (12+).
+ */
+export const INTENT_PRIMARY_DISPLAY_BONUS = 7;
+/**
+ * Bonus when grouped blocks (>=2 sharing a groupId) meet a proximity/column
+ * candidate (B01/B02 grouping). 6: beats the 5pt system-signature bonus so an
+ * explicit author group can overrule house style, below hard penalties.
+ */
+export const INTENT_GROUPING_BONUS = 6;
+/**
+ * Bonus when a label-value/evidence/support relation meets an adjacency-led
+ * candidate (grouping/alignment keeps related blocks adjacent, B07). 5: flips
+ * epsilon-tied pools without overruling structural penalties.
+ */
+export const INTENT_RELATION_ADJACENCY_BONUS = 5;
+
+function hasPrimitive(c: CompositionCandidate, p: CompositionPrimitive): boolean {
+  return c.primitives.includes(p);
+}
+
+function intentAdjustments(c: CompositionCandidate, ctx: SelectionContext): { delta: number; reasons: string[] } {
+  let delta = 0;
+  const reasons: string[] = [];
+  const blocks = ctx.slide.blocks;
+  const primaryDisplay = blocks.some(
+    (b) => (b.role === 'title' || b.role === 'number') && blockIntent(b)?.emphasis === 'primary',
+  );
+  if (primaryDisplay && (hasPrimitive(c, 'scale-contrast') || hasPrimitive(c, 'editorial-headline') || hasPrimitive(c, 'number-led'))) {
+    delta += INTENT_PRIMARY_DISPLAY_BONUS;
+    reasons.push('primary emphasis favoring display treatment');
+  }
+  const groupCounts = new Map<string, number>();
+  for (const b of blocks) {
+    const g = blockIntent(b)?.groupId;
+    if (typeof g === 'string' && g.length > 0) groupCounts.set(g, (groupCounts.get(g) ?? 0) + 1);
+  }
+  const topGroup = [...groupCounts.entries()].find(([, n]) => n >= 2)?.[0];
+  if (topGroup !== undefined && (hasPrimitive(c, 'typographic-grouping') || hasPrimitive(c, 'column-rhythm'))) {
+    delta += INTENT_GROUPING_BONUS;
+    reasons.push(`group ${topGroup} favoring proximity treatment`);
+  }
+  const relation = blocks.map((b) => blockIntent(b)?.relation)
+    .find((r) => r === 'label-value' || r === 'evidence' || r === 'support');
+  if (relation !== undefined && (hasPrimitive(c, 'typographic-grouping') || hasPrimitive(c, 'alignment'))) {
+    delta += INTENT_RELATION_ADJACENCY_BONUS;
+    reasons.push(`relation ${relation} favoring adjacent treatment`);
+  }
+  return { delta, reasons };
+}
+
+/** Legacy intent-blind score (deterministic; higher wins). */
+function scoreCandidateBase(c: CompositionCandidate, ctx: SelectionContext): number {
   let s = 100;
   // Semantic fit is primary (exact type match guaranteed by candidate pool).
   // Content-length fit: penalize overflow beyond constraints.
@@ -875,6 +948,14 @@ export function scoreCandidate(c: CompositionCandidate, ctx: SelectionContext): 
   for (let i = 0; i < c.id.length; i++) h = (Math.imul(h, 31) + c.id.charCodeAt(i)) | 0;
   s += (Math.abs(h) % 100) / 1000;
   return s;
+}
+
+/**
+ * Deterministic score: higher wins. Weights are derived heuristics (H);
+ * intent adjustments (C6) stack additively and are zero when intent is absent.
+ */
+export function scoreCandidate(c: CompositionCandidate, ctx: SelectionContext): number {
+  return scoreCandidateBase(c, ctx) + intentAdjustments(c, ctx).delta;
 }
 
 function fallbackCandidate(type: SemanticSlideType, systemId: SystemId, priorCandidates: string[] = []): CompositionCandidate {
@@ -937,6 +1018,17 @@ export function selectComposition(ctx: SelectionContext): CompositionPlanItem {
   const reasons: string[] = [ctx.classification.rationale];
   if (ctx.prevType === ctx.classification.type) reasons.push('same-type neighbor: repetition penalty applied');
   reasons.push(`chose ${best.id} (${best.primitives.join('+')}) score=${bestScore.toFixed(2)}`);
+  // C6: cite intent only when it changed the outcome (re-run intent-blind).
+  let baseBest = pool[0];
+  let baseBestScore = scoreCandidateBase(pool[0], ctx);
+  for (const c of pool.slice(1)) {
+    const sc = scoreCandidateBase(c, ctx);
+    if (sc > baseBestScore) { baseBest = c; baseBestScore = sc; }
+  }
+  if (baseBest.id !== best.id) {
+    const cited = intentAdjustments(best, ctx).reasons;
+    reasons.push(`intent: ${cited.length > 0 ? cited.join(', ') : 'adjustments decisive'}`);
+  }
   return {
     slideId: ctx.slide.id,
     semanticType: ctx.classification.type,
@@ -1001,7 +1093,7 @@ export const COMPOSITION_GRAMMAR = {
   primitives: PRIMITIVES,
   candidates: COMPOSITION_CANDIDATES,
   scoring: {
-    weights: 'semantic-fit primary; length/idea/evidence/language/neighbor/repetition/system-signature adjustments (see scoreCandidate)',
+    weights: 'semantic-fit primary; length/idea/evidence/language/neighbor/repetition/system-signature adjustments (see scoreCandidate); additive intent bonuses primary-display/grouping/relation when intent present (C6)',
     repetitionRule: 'no identical neighbor preferred (-25), no 3x row (validation error), soft 40% budget in decks >=5',
     tieBreak: 'deterministic id-hash epsilon (no RNG state)',
   },
