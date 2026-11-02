@@ -14,10 +14,10 @@ import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { planArtDirection } from './art-direction';
-import { COMPOSITION_CANDIDATES, planCompositions, type CompositionPlanItem } from './composition';
+import { COMPOSITION_CANDIDATES, planCompositions, type CompositionCandidate, type CompositionPlanItem } from './composition';
 import { estimateWrap, inkHeightIn, layoutDeck, rectsOverlap } from './layout';
 import { applyOpticalCorrections, ragScore, widowRisk } from './optical';
-import { SLIDE_HEIGHT_IN, SLIDE_WIDTH_IN, validateDeck, type Deck, type Narrative, type Slide } from './schema';
+import { SLIDE_HEIGHT_IN, SLIDE_WIDTH_IN, validateDeck, type Deck, type Narrative, type Slide, type TextBlock } from './schema';
 import type { SystemId } from './systems';
 
 export type FailureClass = 'semantic' | 'structural' | 'typographic' | 'perceptual';
@@ -29,6 +29,14 @@ export interface CriticFinding {
   severity: 'error' | 'warning';
   detail: string;
   suggestedFix: string;
+  /** Positioned-block ids; absent = slide-level. (Stage 3, C3.) */
+  blockIds?: string[];
+  /** Measured values behind the finding. (Stage 3, C3.) */
+  evidence?: string;
+  /** Default 'high' for deterministic checks. (Stage 3, C3.) */
+  confidence?: 'high' | 'medium' | 'low';
+  /** Stage 3 emits 'deterministic' only. (Stage 3, C3.) */
+  source?: 'deterministic' | 'model-inferred';
 }
 
 export interface CriticScores {
@@ -156,6 +164,8 @@ export function critiqueDeck(deck: Deck, narrative?: Narrative, plan?: Compositi
         });
       }
     }
+    // Stage-3 intent checks (C4): additive; absent intent = no findings.
+    findings.push(...critiqueSlideIntent(slide));
     // Semantic: unsupported metric hero (number without caption ref).
     const hasNumber = slide.blocks.some((b) => b.role === 'number');
     const hasRef = slide.blocks.some((b) => b.role === 'caption' && /[:/]/.test(b.content));
@@ -216,6 +226,96 @@ export function critiqueDeck(deck: Deck, narrative?: Narrative, plan?: Compositi
   };
 }
 
+// ---------------------------------------------------------------------------
+// Stage-3 intent checks (C3/C4). Deterministic only: every finding carries
+// source 'deterministic'. Absent intent = skip silently, so intent-less decks
+// produce identical finding sets.
+// ---------------------------------------------------------------------------
+
+/** Structural mirror of C1 BlockIntent (schema.ts carries the authoritative
+ * field under owner B; this alias keeps D compiling before/after it lands). */
+interface BlockIntentLike {
+  emphasis?: string;
+  groupId?: string;
+  relation?: string;
+  deliberateCrop?: boolean;
+}
+
+function blockIntentOf(block: unknown): BlockIntentLike | undefined {
+  if (block === null || typeof block !== 'object') return undefined;
+  const v = (block as { intent?: unknown }).intent;
+  if (v === null || typeof v !== 'object') return undefined;
+  return v as BlockIntentLike;
+}
+
+/** Frozen prominence proxy (C4): P = size x (1 + (weight-400)/400 x 0.25). Purely typographic. */
+export function prominenceProxy(fontSize: number, fontWeight: number): number {
+  return fontSize * (1 + ((fontWeight - 400) / 400) * 0.25);
+}
+
+/** Intent-aware checks for one positioned slide (C4). Pure + deterministic. */
+export function critiqueSlideIntent(slide: Slide): CriticFinding[] {
+  const findings: CriticFinding[] = [];
+  // hierarchy/primary-subordinate (frozen predicate): primary-emphasis blocks
+  // exist AND the max-P block is non-primary AND exceeds max primary P by >5%.
+  const primaries = slide.blocks.filter((b) => blockIntentOf(b)?.emphasis === 'primary');
+  if (primaries.length > 0) {
+    const pOf = (b: TextBlock): number => prominenceProxy(b.fontSize, b.fontWeight);
+    let maxPrimary = primaries[0];
+    for (const b of primaries) if (pOf(b) > pOf(maxPrimary)) maxPrimary = b;
+    const others = slide.blocks.filter((b) => blockIntentOf(b)?.emphasis !== 'primary');
+    if (others.length > 0) {
+      let maxOther = others[0];
+      for (const b of others) if (pOf(b) > pOf(maxOther)) maxOther = b;
+      const pP = pOf(maxPrimary);
+      const pO = pOf(maxOther);
+      if (pO > pP * 1.05) {
+        const pct = ((pO / pP - 1) * 100).toFixed(1);
+        findings.push({
+          slideId: slide.id, failureClass: 'perceptual', check: 'hierarchy/primary-subordinate',
+          severity: 'warning', confidence: 'medium', source: 'deterministic',
+          blockIds: [maxOther.id, maxPrimary.id],
+          evidence: `${maxOther.id} P=${pO.toFixed(2)} exceeds primary ${maxPrimary.id} P=${pP.toFixed(2)} by ${pct}% (>5%)`,
+          detail: `primary-emphasis block ${maxPrimary.id} is typographically subordinate to ${maxOther.id}`,
+          suggestedFix: `raise ${maxPrimary.id} size/weight or demote ${maxOther.id}`,
+        });
+      }
+    }
+  }
+  // grouping/related-isolated (IMPL-OWNED predicate): members of a multi-block
+  // group whose bounding box is cut by a non-member read as split. One finding
+  // per group (first intruder in slide order); edge-touching is not a cut.
+  const groups = new Map<string, TextBlock[]>();
+  for (const b of slide.blocks) {
+    const gid = blockIntentOf(b)?.groupId;
+    if (typeof gid !== 'string' || gid.length === 0) continue;
+    const list = groups.get(gid);
+    if (list) list.push(b);
+    else groups.set(gid, [b]);
+  }
+  for (const [gid, members] of groups) {
+    if (members.length < 2) continue;
+    const minX = Math.min(...members.map((b) => b.x));
+    const minY = Math.min(...members.map((b) => b.y));
+    const maxX = Math.max(...members.map((b) => b.x + b.w));
+    const maxY = Math.max(...members.map((b) => b.y + b.h));
+    const memberIds = new Set(members.map((b) => b.id));
+    const intruder = slide.blocks.find((b) =>
+      !memberIds.has(b.id) && rectsOverlap(b, { x: minX, y: minY, w: maxX - minX, h: maxY - minY }));
+    if (intruder) {
+      findings.push({
+        slideId: slide.id, failureClass: 'perceptual', check: 'grouping/related-isolated',
+        severity: 'warning', confidence: 'medium', source: 'deterministic',
+        blockIds: [...memberIds, intruder.id],
+        evidence: `group ${gid} bbox x[${minX.toFixed(2)},${maxX.toFixed(2)}] y[${minY.toFixed(2)},${maxY.toFixed(2)}] cut by ${intruder.id} at (${intruder.x.toFixed(2)},${intruder.y.toFixed(2)} ${intruder.w.toFixed(2)}x${intruder.h.toFixed(2)})`,
+        detail: `related blocks in group ${gid} are split by block ${intruder.id}`,
+        suggestedFix: `move group ${gid} members adjacent (proximity) or re-plan composition`,
+      });
+    }
+  }
+  return findings;
+}
+
 export interface ReviseOptions {
   maxAttempts?: number;
   seed?: number;
@@ -230,6 +330,80 @@ export interface ReviseResult {
   attempts: number;
 }
 
+// ---------------------------------------------------------------------------
+// Stage-3 revision tweaks (C6 revise part): no-ping-pong ledger + intent-aware
+// alternate ordering. Signature and budget (maxAttempts 3, seed 42,
+// first-error fix) are frozen; intent-absent runs are byte-identical.
+// ---------------------------------------------------------------------------
+
+/** Slide-level intent summary that influences alternate choice. */
+export interface RevisionIntent {
+  /** >=2 blocks share one groupId. */
+  hasGroup: boolean;
+  /** >=1 block carries emphasis. */
+  hasEmphasis: boolean;
+}
+
+/** Derive RevisionIntent from narrative blocks (reads C1 intent structurally). Pure. */
+export function revisionIntentOfBlocks(blocks: readonly unknown[]): RevisionIntent {
+  let hasEmphasis = false;
+  const groups = new Map<string, number>();
+  for (const b of blocks) {
+    const intent = blockIntentOf(b);
+    if (!intent) continue;
+    if (typeof intent.emphasis === 'string' && intent.emphasis.length > 0) hasEmphasis = true;
+    if (typeof intent.groupId === 'string' && intent.groupId.length > 0) {
+      groups.set(intent.groupId, (groups.get(intent.groupId) ?? 0) + 1);
+    }
+  }
+  return { hasGroup: [...groups.values()].some((n) => n >= 2), hasEmphasis };
+}
+
+/**
+ * IMPL-OWNED intent support: group intent prefers the proximity-grouping
+ * primitive (keeps related blocks adjacent); emphasis intent prefers
+ * scale-contrast (carries primary/subordinate hierarchy).
+ */
+function candidateSupportsIntent(
+  c: Pick<CompositionCandidate, 'primitives'>,
+  intent: RevisionIntent,
+): boolean {
+  if (intent.hasGroup && c.primitives.includes('typographic-grouping')) return true;
+  if (intent.hasEmphasis && c.primitives.includes('scale-contrast')) return true;
+  return false;
+}
+
+/**
+ * Choose one revision alternate: skip ledger ids (no ping-pong), otherwise
+ * registry order; intent reorders only when it changes the pick (then
+ * intentAware is true and the rationale gains '; intent-aware').
+ * Pure + deterministic.
+ */
+export function chooseRevisionAlternate(
+  qualified: readonly CompositionCandidate[],
+  failedIds: ReadonlySet<string>,
+  intent: RevisionIntent,
+): { candidate: CompositionCandidate; intentAware: boolean } | undefined {
+  const alts = qualified.filter((c) => !failedIds.has(c.id));
+  if (alts.length === 0) return undefined;
+  const plain = alts[0];
+  if (!intent.hasGroup && !intent.hasEmphasis) return { candidate: plain, intentAware: false };
+  const preferred = alts.find((c) => candidateSupportsIntent(c, intent));
+  if (preferred && preferred !== plain) return { candidate: preferred, intentAware: true };
+  return { candidate: plain, intentAware: false };
+}
+
+/** Revision rationale format; gains '; intent-aware' iff intent changed the pick. Pure. */
+export function revisionRationale(
+  base: string,
+  failureClass: string,
+  check: string,
+  alternateId: string,
+  intentAware: boolean,
+): string {
+  return `${base}; revision: ${failureClass}/${check} -> ${alternateId}${intentAware ? '; intent-aware' : ''}`;
+}
+
 /**
  * Bounded revision loop: critique -> targeted fix -> regenerate -> re-evaluate.
  * Fixes operate on the composition plan + layout/optical pipeline (content
@@ -240,6 +414,9 @@ export function reviseDeck(narrative: Narrative, systemId: SystemId, opts: Revis
   const seed = opts.seed ?? 42;
   const provenance: string[] = [];
   const reports: CriticReport[] = [];
+  // No-ping-pong ledger (C6): candidateIds that already failed `check` on
+  // `slideId` in this run, keyed `${slideId}\n${check}`.
+  const failedAlternates = new Map<string, Set<string>>();
 
   let plan = planCompositions(narrative, systemId);
   // Art-direction rhythm balancing is attempt 0 (part of improved pipeline).
@@ -268,10 +445,17 @@ export function reviseDeck(narrative: Narrative, systemId: SystemId, opts: Revis
       provenance.push(`attempt ${attempt}: ${target.check} on unknown slide — stop`);
       return { deck, plan, reports, provenance, attempts: attempt };
     }
+    const ledgerKey = `${target.slideId}\n${target.check}`;
+    let failed = failedAlternates.get(ledgerKey);
+    if (!failed) {
+      failed = new Set<string>();
+      failedAlternates.set(ledgerKey, failed);
+    }
+    failed.add(plan[idx].candidateId);
     if (target.failureClass === 'semantic' && target.check === 'unsupported-metric') {
       const anchored = Object.values(COMPOSITION_CANDIDATES).find((c) =>
         c.id === 'metric-anchored' && c.systems.includes(systemId));
-      if (anchored && plan[idx].candidateId !== anchored.id) {
+      if (anchored && plan[idx].candidateId !== anchored.id && !failed.has(anchored.id)) {
         plan[idx] = { ...plan[idx], candidateId: anchored.id, rationale: `${plan[idx].rationale}; revision: demoted to metric-anchored` };
         provenance.push(`attempt ${attempt}: semantic/unsupported-metric on ${target.slideId} -> metric-anchored`);
         continue;
@@ -279,14 +463,15 @@ export function reviseDeck(narrative: Narrative, systemId: SystemId, opts: Revis
     }
     // Structural/perceptual errors: try alternate same-type candidate.
     const slide = narrative.slides[idx];
-    const alt = Object.values(COMPOSITION_CANDIDATES).find((c) =>
+    const qualified = Object.values(COMPOSITION_CANDIDATES).filter((c) =>
       c.id !== plan[idx].candidateId
       && c.semanticTypes.includes(plan[idx].semanticType)
       && c.systems.includes(systemId)
       && (!c.preconditions.requiresRoles || c.preconditions.requiresRoles.every((r) => slide.blocks.some((b) => b.role === r))));
-    if (alt) {
-      plan[idx] = { ...plan[idx], candidateId: alt.id, rationale: `${plan[idx].rationale}; revision: ${target.failureClass}/${target.check} -> ${alt.id}` };
-      provenance.push(`attempt ${attempt}: ${target.failureClass}/${target.check} on ${target.slideId} -> ${alt.id}`);
+    const choice = chooseRevisionAlternate(qualified, failed, revisionIntentOfBlocks(slide.blocks));
+    if (choice) {
+      plan[idx] = { ...plan[idx], candidateId: choice.candidate.id, rationale: revisionRationale(plan[idx].rationale, target.failureClass, target.check, choice.candidate.id, choice.intentAware) };
+      provenance.push(`attempt ${attempt}: ${target.failureClass}/${target.check} on ${target.slideId} -> ${choice.candidate.id}`);
     } else {
       provenance.push(`attempt ${attempt}: ${target.failureClass}/${target.check} on ${target.slideId} — no alternate (stop)`);
       return { deck, plan, reports, provenance, attempts: attempt };
@@ -303,7 +488,8 @@ export function reviseDeck(narrative: Narrative, systemId: SystemId, opts: Revis
 // validation-OK. This gate measures the RENDER (headless-Chrome scroll vs
 // client size per text block) instead of trusting the char-width estimate.
 // Intentional cropping is distinguished ONLY by explicit opt-in (per-block
-// `allowOverflow` flag or the `intentional` allowlist) — never inferred.
+// `allowOverflow` flag, the `intentional` allowlist, or
+// `intent.deliberateCrop`) — never inferred.
 // ---------------------------------------------------------------------------
 
 /** One block's rendered box metrics, collected by OVERFLOW_PROBE_JS. */
@@ -318,6 +504,10 @@ export interface RenderedBlockMeasurement {
   clientHeight: number;
   fontSizePx: number;
   lineHeightPx: number;
+  /** Resolved rendered face; absent = unmeasured. (Stage 3, C5.) */
+  fontUsed?: string;
+  /** Rendered line count; absent = unmeasured. (Stage 3, C5.) */
+  wrappedLines?: number;
 }
 
 export interface RenderedOverflowOptions {
@@ -402,8 +592,9 @@ export interface RenderedOverflowReport {
  * ERROR (check `overflow-visible`); unmeasured blocks are WARNINGS
  * (`overflow-unmeasured`); opted-in blocks never produce findings.
  * Block-level opt-in (`allowOverflow: true` on the block object, provisional
- * until the schema carries the flag) and the `intentional` allowlist are the
- * only two opt-in channels, and both are explicit.
+ * until the schema carries the flag), the `intentional` allowlist, and
+ * `TextBlock.intent.deliberateCrop === true` (Stage 3, C5) are the only three
+ * opt-in channels, and all are explicit.
  */
 export function critiqueRenderedOverflow(
   slide: Slide,
@@ -419,8 +610,9 @@ export function critiqueRenderedOverflow(
   for (const row of rows) {
     const block = slide.blocks.find((b) => b.id === row.blockId);
     const flagged = (block as unknown as { allowOverflow?: unknown })?.allowOverflow === true;
+    const deliberate = blockIntentOf(block)?.deliberateCrop === true;
     if (!row.overflowX && !row.overflowY) continue;
-    if (row.intentional || flagged) {
+    if (row.intentional || flagged || deliberate) {
       intentional.push(row.blockId);
       continue;
     }
@@ -441,6 +633,76 @@ export function critiqueRenderedOverflow(
     });
   }
   return { findings, measured, unmeasured, intentional };
+}
+
+export interface RenderedTextOptions {
+  /**
+   * Requested typeface per block id. Fallback when `TextBlock.fontFace` is
+   * absent; absent entry = unmeasured (skip silently).
+   */
+  requestedFonts?: Readonly<Record<string, string>>;
+}
+
+function normalizeFace(face: string): string {
+  return face.trim().replace(/^['"]+|['"]+$/g, '').toLowerCase();
+}
+
+/**
+ * Rendered-text checks over collected measurements (C4 rendered/*). Pure +
+ * deterministic. Absent probe signals (no measurement, no fontUsed /
+ * wrappedLines, no requested face) = skip silently, never a finding.
+ */
+export function critiqueRenderedText(
+  slide: Slide,
+  measurements: RenderedBlockMeasurement[],
+  opts: RenderedTextOptions = {},
+): CriticFinding[] {
+  const findings: CriticFinding[] = [];
+  const ids = slide.blocks.map((b) => b.id);
+  const byId = new Map<string, RenderedBlockMeasurement>();
+  for (const m of measurements) {
+    const id = m.blockId ?? ids[m.index] ?? `block-${m.index}`;
+    if (!byId.has(id)) byId.set(id, m);
+  }
+  for (const b of slide.blocks) {
+    const m = byId.get(b.id);
+    if (!m) continue;
+    // rendered/substitution (IMPL-OWNED predicate): resolved rendered face
+    // differs from the requested face (block.fontFace, else requestedFonts).
+    const requested = b.fontFace ?? opts.requestedFonts?.[b.id];
+    const used = m.fontUsed;
+    if (requested !== undefined && used !== undefined) {
+      const reqNorm = normalizeFace(requested);
+      const usedNorm = normalizeFace(used);
+      if (reqNorm.length > 0 && usedNorm.length > 0 && reqNorm !== usedNorm) {
+        findings.push({
+          slideId: slide.id, failureClass: 'typographic', check: 'rendered/substitution',
+          severity: 'warning', confidence: 'high', source: 'deterministic',
+          blockIds: [b.id],
+          evidence: `block ${b.id}: requested "${requested}" but rendered "${used}"`,
+          detail: `block ${b.id} rendered in ${used} instead of requested ${requested}`,
+          suggestedFix: 'embed or install the requested face, or pin a fallback stack',
+        });
+      }
+    }
+    // rendered/unintended-wrap (IMPL-OWNED predicate): the render wrapped to
+    // more lines than the char model predicted, so the wrap was unintended.
+    const wrapped = m.wrappedLines;
+    if (typeof wrapped === 'number' && Number.isFinite(wrapped) && wrapped > 0) {
+      const estimated = estimateWrap(b.content, b.fontSize, b.w, b.tracking, b.lineHeight, b.fontWeight >= 700).lines.length;
+      if (wrapped > estimated) {
+        findings.push({
+          slideId: slide.id, failureClass: 'typographic', check: 'rendered/unintended-wrap',
+          severity: 'warning', confidence: 'high', source: 'deterministic',
+          blockIds: [b.id],
+          evidence: `block ${b.id}: rendered ${wrapped} lines vs ${estimated} estimated`,
+          detail: `block ${b.id} wrapped to ${wrapped} rendered lines (model predicted ${estimated})`,
+          suggestedFix: 'widen the box, shorten the copy, or step the size down (R1-R3)',
+        });
+      }
+    }
+  }
+  return findings;
 }
 
 // Font stacks mirror apps/web SlideView fontFor (preview-only mapping);
