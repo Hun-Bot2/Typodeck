@@ -39,3 +39,21 @@ npm run eval:report            # aggregate reports → evals/summary.json
 ```
 Reports must include: fixture ID, commit SHA, direction, lang, provider
 (muse|fallback), all metric values, and seed.
+
+## 5. Hierarchy alignment eval (Stage 4, 2026-11-02)
+
+Branch `integrate/research-visual-hierarchy`. Suite `evals/hierarchy/`:
+16 intent-annotated fixtures, arms A (text-only) + C (layout-only) executed,
+BEFORE/AFTER (`--revise`) comparison, arms B/D (screenshot/model) staged
+with a binding human-review gate. Reproduce:
+
+```sh
+./node_modules/.bin/tsc -p evals/hierarchy/tsconfig.json
+node evals/hierarchy/dist/run.js
+node evals/hierarchy/capture-screenshots.mjs
+```
+
+Report: `evals/hierarchy/STAGE4-REPORT.md` (8/8 gates, per-metric results,
+explicit NOT-PROVEN list: no B/D superiority claim, no human-agreement
+number, repair-on-genuine-errors unmeasured). Related ADRs: 0020–0023
+(Proposed).
