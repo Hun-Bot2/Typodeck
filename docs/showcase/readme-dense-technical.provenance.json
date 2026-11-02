@@ -1,0 +1,46 @@
+{
+  "ideaFile": "docs/showcase/ideas/dense-technical.txt",
+  "system": "swiss",
+  "purpose": "Architecture review: Meridian Edge 2.0",
+  "lang": "en",
+  "seed": 3479134762,
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "claims": {
+    "total": 15,
+    "verified": 0,
+    "suggestion": 0,
+    "ungrounded": 15
+  },
+  "warnings": [
+    "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "slides": 10,
+  "textBoxes": 39,
+  "candidates": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "stats": {
+      "slides": 10,
+      "textShapes": 39,
+      "editableChars": 2392,
+      "slideSizeIn": {
+        "w": 13.33,
+        "h": 7.5
+      }
+    }
+  }
+}

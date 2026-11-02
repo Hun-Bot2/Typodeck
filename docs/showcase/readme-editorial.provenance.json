@@ -1,0 +1,47 @@
+{
+  "ideaFile": "docs/showcase/ideas/editorial.txt",
+  "system": "editorial",
+  "purpose": "Flagship roastery investment case",
+  "lang": "en",
+  "seed": 256969275,
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "claims": {
+    "total": 10,
+    "verified": 0,
+    "suggestion": 0,
+    "ungrounded": 10
+  },
+  "warnings": [
+    "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+    "quality warning [missing-dimension-coverage]: only 2 narrative dimension(s) covered: capabilities, differentiation",
+    "quality warning [thin-slide] on n8-point: thesis slide has no supporting body",
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "slides": 9,
+  "textBoxes": 35,
+  "candidates": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "stats": {
+      "slides": 9,
+      "textShapes": 35,
+      "editableChars": 2087,
+      "slideSizeIn": {
+        "w": 13.33,
+        "h": 7.5
+      }
+    }
+  }
+}

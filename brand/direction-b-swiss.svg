@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="title desc">
+  <title id="title">Typodeck brand direction B: Swiss (selected)</title>
+  <desc id="desc">Grid grotesk wordmark exploration on white background. Selected final direction.</desc>
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+  <!-- direction label -->
+  <text x="80" y="96" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="24" font-weight="600" letter-spacing="6" fill="#5C5C5C">DIRECTION B &#8212; SWISS</text>
+  <text x="1120" y="96" text-anchor="end" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="22" fill="#9A3B26">grid grotesk &#183; SELECTED</text>
+  <!-- wordmark: tight grotesk + rust period -->
+  <text x="76" y="300" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="150" font-weight="700" letter-spacing="-3" fill="#111111">Typodeck<tspan fill="#9A3B26">.</tspan></text>
+  <!-- descriptor -->
+  <text x="80" y="368" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="30" font-weight="600" letter-spacing="7" fill="#5C5C5C">TYPOGRAPHY-ONLY PITCH DECKS</text>
+  <!-- spec block -->
+  <text x="80" y="452" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="21" fill="#111111">typeface&#160;&#160;Inter (OFL) / Archivo / system sans</text>
+  <text x="80" y="484" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="21" fill="#111111">tracking&#160;&#160;&#160;&#8722;0.02 em wordmark, +0.22 em descriptor caps</text>
+  <text x="80" y="516" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="21" fill="#111111">palette&#160;&#160;&#160;#FFFFFF white &#183; #111111 ink &#183; #9A3B26 rust</text>
+  <text x="80" y="548" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="21" fill="#111111">baseline&#160;&#160;8-pt grid, left-aligned, strict rhythm</text>
+  <!-- palette chips -->
+  <rect x="880" y="424" width="56" height="56" fill="#FFFFFF" stroke="#E2DDD4" stroke-width="2"/>
+  <rect x="948" y="424" width="56" height="56" fill="#111111"/>
+  <rect x="1016" y="424" width="56" height="56" fill="#9A3B26"/>
+  <text x="880" y="512" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="18" fill="#5C5C5C">white</text>
+  <text x="948" y="512" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="18" fill="#5C5C5C">ink</text>
+  <text x="1016" y="512" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="18" fill="#5C5C5C">rust</text>
+  <!-- verdict -->
+  <text x="80" y="600" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="22" fill="#111111">Selected &#8212; legible 16 px to hero; the grid embodies the deterministic engine.</text>
+</svg>

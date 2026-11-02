@@ -1,0 +1,45 @@
+{
+  "ideaFile": "docs/showcase/ideas/swiss.txt",
+  "system": "swiss",
+  "purpose": "Tool showcase: Ledgerline",
+  "lang": "en",
+  "seed": 420076315,
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "claims": {
+    "total": 10,
+    "verified": 0,
+    "suggestion": 0,
+    "ungrounded": 10
+  },
+  "warnings": [
+    "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+    "quality warning [missing-dimension-coverage]: only 2 narrative dimension(s) covered: capabilities, results",
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "slides": 8,
+  "textBoxes": 31,
+  "candidates": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "stats": {
+      "slides": 8,
+      "textShapes": 31,
+      "editableChars": 1750,
+      "slideSizeIn": {
+        "w": 13.33,
+        "h": 7.5
+      }
+    }
+  }
+}

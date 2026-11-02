@@ -1,0 +1,47 @@
+{
+  "ideaFile": "docs/showcase/ideas/expressive.txt",
+  "system": "expressive",
+  "purpose": "Festival launch: Fieldnotes Live",
+  "lang": "en",
+  "seed": 954000230,
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "claims": {
+    "total": 11,
+    "verified": 0,
+    "suggestion": 0,
+    "ungrounded": 11
+  },
+  "warnings": [
+    "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+    "quality warning [missing-dimension-coverage]: only 1 narrative dimension(s) covered: capabilities",
+    "quality warning [thin-slide] on n8-point: thesis slide has no supporting body",
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "slides": 9,
+  "textBoxes": 34,
+  "candidates": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "stats": {
+      "slides": 9,
+      "textShapes": 34,
+      "editableChars": 1677,
+      "slideSizeIn": {
+        "w": 13.33,
+        "h": 7.5
+      }
+    }
+  }
+}

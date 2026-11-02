@@ -1,0 +1,5 @@
+Ledgerline is a command-line invoicing tool for freelance developers. It turns a Markdown timesheet into a validated invoice PDF in under two seconds, with no account and no cloud upload. Version 3.2 supports 14 currencies, 9 tax templates, and sequential invoice numbering with collision detection across 50,000 stored records.
+
+The tool is a single 8.4 megabyte static binary for macOS, Linux, and Windows. It reads timesheet entries, checks that hours sum to the billed total within a 0.01 rounding tolerance, applies the selected tax template, and writes a PDF/A-compliant invoice plus a JSON receipt. Every run prints the parser version, the template checksum, and the validation result to stdout.
+
+Ledgerline has 4,100 weekly active users, 380 GitHub stars, and a median issue-resolution time of 2.3 days. The 3.2 release fixed 17 bugs, added support for reverse-charge VAT notes, and cut PDF generation time from 3.1 to 1.7 seconds on the benchmark suite of 200 invoices. Documentation is a single 60-page manual with 42 worked examples. The roadmap for 4.0 lists e-invoicing export for three European formats and a watch mode that re-renders on file save.

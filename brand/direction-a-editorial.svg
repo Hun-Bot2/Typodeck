@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="title desc">
+  <title id="title">Typodeck brand direction A: Editorial</title>
+  <desc id="desc">Refined high-contrast serif wordmark exploration on paper background.</desc>
+  <rect width="1200" height="630" fill="#FAF7F2"/>
+  <!-- direction label -->
+  <text x="80" y="96" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="24" font-weight="600" letter-spacing="6" fill="#5C5C5C">DIRECTION A &#8212; EDITORIAL</text>
+  <text x="1120" y="96" text-anchor="end" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="22" fill="#5C5C5C">refined high-contrast</text>
+  <!-- wordmark: roman Typo + italic deck + rust period -->
+  <text x="80" y="300" font-family="'Source Serif 4','Noto Serif KR',Georgia,serif" font-size="150" fill="#1A1A1A">Typo<tspan font-style="italic">deck</tspan><tspan fill="#9A3B26">.</tspan></text>
+  <!-- tagline -->
+  <text x="84" y="368" font-family="'Source Serif 4','Noto Serif KR',Georgia,serif" font-size="34" font-style="italic" fill="#5C5C5C">Decks that cite their sources.</text>
+  <!-- spec block -->
+  <text x="80" y="452" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="21" fill="#1A1A1A">typeface&#160;&#160;Source Serif 4 (OFL) / Noto Serif KR / Georgia</text>
+  <text x="80" y="484" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="21" fill="#1A1A1A">tracking&#160;&#160;&#160;0 on serif roman, italic deck unadjusted</text>
+  <text x="80" y="516" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="21" fill="#1A1A1A">palette&#160;&#160;&#160;#FAF7F2 paper &#183; #1A1A1A ink &#183; #9A3B26 rust</text>
+  <text x="80" y="548" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="21" fill="#1A1A1A">baseline&#160;&#160;8-pt grid, generous leading, hairlines thinned</text>
+  <!-- palette chips -->
+  <rect x="880" y="424" width="56" height="56" fill="#FAF7F2" stroke="#E2DDD4" stroke-width="2"/>
+  <rect x="948" y="424" width="56" height="56" fill="#1A1A1A"/>
+  <rect x="1016" y="424" width="56" height="56" fill="#9A3B26"/>
+  <text x="880" y="512" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="18" fill="#5C5C5C">paper</text>
+  <text x="948" y="512" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="18" fill="#5C5C5C">ink</text>
+  <text x="1016" y="512" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="18" fill="#5C5C5C">rust</text>
+  <!-- verdict -->
+  <text x="80" y="600" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="22" fill="#5C5C5C">Not selected &#8212; premium publishing voice, but hairlines fail below 24 px and in small UI.</text>
+</svg>

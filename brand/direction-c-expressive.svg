@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="title desc">
+  <title id="title">Typodeck brand direction C: Expressive</title>
+  <desc id="desc">Bold stacked scale-contrast wordmark exploration on near-black background.</desc>
+  <rect width="1200" height="630" fill="#0E0E0E"/>
+  <!-- direction label -->
+  <text x="80" y="96" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="24" font-weight="600" letter-spacing="6" fill="#F5F2EA" opacity="0.65">DIRECTION C &#8212; EXPRESSIVE</text>
+  <text x="1120" y="96" text-anchor="end" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="22" fill="#F5F2EA" opacity="0.65">bold scale</text>
+  <!-- wordmark: stacked black weight -->
+  <text x="76" y="262" font-family="'Archivo Black',Inter,Archivo,sans-serif" font-size="148" letter-spacing="-4" fill="#F5F2EA">TYPO</text>
+  <text x="76" y="398" font-family="'Archivo Black',Inter,Archivo,sans-serif" font-size="148" letter-spacing="-4" fill="#F5F2EA">DECK<tspan fill="#FFD400">.</tspan></text>
+  <!-- side note: scale ratio demo -->
+  <text x="880" y="252" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" fill="#F5F2EA" opacity="0.65">hero : body</text>
+  <text x="880" y="330" font-family="'Archivo Black',Inter,Archivo,sans-serif" font-size="96" fill="#FFD400">4:1</text>
+  <text x="880" y="372" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="24" fill="#F5F2EA" opacity="0.65">extreme ratio,</text>
+  <text x="880" y="402" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="24" fill="#F5F2EA" opacity="0.65">tight leading</text>
+  <!-- spec block -->
+  <text x="80" y="476" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="21" fill="#F5F2EA">typeface&#160;&#160;Archivo Black (OFL) / Space Grotesk 700</text>
+  <text x="80" y="508" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="21" fill="#F5F2EA">tracking&#160;&#160;&#160;&#8722;0.03 em, leading 0.92, stacked lockup</text>
+  <text x="80" y="540" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="21" fill="#F5F2EA">palette&#160;&#160;&#160;#0E0E0E black &#183; #F5F2EA bone &#183; #FFD400 signal</text>
+  <!-- palette chips -->
+  <rect x="880" y="448" width="56" height="56" fill="#0E0E0E" stroke="#F5F2EA" stroke-width="2" opacity="1"/>
+  <rect x="948" y="448" width="56" height="56" fill="#F5F2EA"/>
+  <rect x="1016" y="448" width="56" height="56" fill="#FFD400"/>
+  <text x="880" y="536" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="18" fill="#F5F2EA" opacity="0.65">black</text>
+  <text x="948" y="536" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="18" fill="#F5F2EA" opacity="0.65">bone</text>
+  <text x="1016" y="536" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="18" fill="#F5F2EA" opacity="0.65">signal</text>
+  <!-- verdict -->
+  <text x="80" y="600" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="22" fill="#F5F2EA" opacity="0.65">Not selected &#8212; highest impact, lowest flexibility; stacked lockup fails inline and mobile.</text>
+</svg>
