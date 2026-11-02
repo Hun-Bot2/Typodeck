@@ -6,3 +6,6 @@ evals/reports/*.pptx
 .env
 .env*.local
 frontend-slides/
+# Stage-1 paper PDFs: local working copies (~49MB), re-fetchable via
+# research/paper-survey/source-manifest.md URLs; hashes recorded there.
+research/paper-survey/sources/*.pdf
