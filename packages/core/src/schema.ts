@@ -43,6 +43,8 @@ export interface TextBlock {
   align: TextAlign;
   /** Solid text color, #rrggbb. */
   color: string;
+  /** Resolved font face. Present only when a candidate theme overrode fonts. */
+  fontFace?: string;
 }
 
 export interface Slide {

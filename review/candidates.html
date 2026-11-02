@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typodeck — 후보 전시관 (38)</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.cand-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:14px; }
+.cand { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 12px; }
+.cand h3 { margin:0 0 2px; font-size:14px; }
+.cand h3 code { font-size:13px; }
+.cand .meta { font-size:12px; color:var(--muted); margin:2px 0 8px; }
+.cand details { font-size:12px; margin-top:6px; }
+.cand summary { cursor:pointer; color:var(--accent); }
+.cand ul { margin:4px 0; padding-left:18px; }
+.stage { position:relative; width:100%; aspect-ratio:16/9; container-type:inline-size; border-radius:6px; overflow:hidden; }
+.block { position:absolute; overflow:hidden; white-space:pre-wrap; }
+.err { color:var(--lo); font-size:12px; }
+.badge { display:inline-block; font-size:11px; padding:1px 8px; border-radius:999px; border:1px solid var(--line); margin:0 4px 4px 0; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>후보 전시관 <span class="muted">38 composition candidates, 동일 픽스처 렌더</span></h1>
+    <p id="count" class="sub"></p>
+  </div>
+  <div class="toolbar"><a href="index.html">← PPT 채점으로</a></div>
+</header>
+<main>
+  <div class="toolbar">
+    <label>시스템 <select id="fSys"><option value="">전체</option></select></label>
+    <label>타입 <select id="fType"><option value="">전체</option></select></label>
+    <label class="grow">검색 <input id="fQ" type="search" placeholder="id, rationale…"></label>
+  </div>
+  <p class="muted">모든 카드는 같은 영문 픽스처(seed 7)를 해당 후보로 강제 지정해 렌더한 HTML이며, PPTX 증거가 아닙니다.
+  후보별 rationale·제약·bestFor/avoidFor는 코드의 사양 그대로입니다.</p>
+  <div id="grid" class="cand-grid"></div>
+</main>
+<script src="candidate-data.js"></script>
+<script>
+(function () {
+  'use strict';
+  var D = window.CANDIDATE_DATA;
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  var systems = {}, types = {};
+  D.candidates.forEach(function (c) {
+    (c.systems || []).forEach(function (s) { systems[s] = 1; });
+    (c.semanticTypes || []).forEach(function (t) { types[t] = 1; });
+  });
+  Object.keys(systems).sort().forEach(function (s) {
+    $('fSys').innerHTML += '<option>' + esc(s) + '</option>'; });
+  Object.keys(types).sort().forEach(function (t) {
+    $('fType').innerHTML += '<option>' + esc(t) + '</option>'; });
+  function render() {
+    var fs = $('fSys').value, ft = $('fType').value, q = $('fQ').value.trim().toLowerCase();
+    var rows = D.candidates.filter(function (c) {
+      if (fs && (c.systems || []).indexOf(fs) < 0) return false;
+      if (ft && (c.semanticTypes || []).indexOf(ft) < 0) return false;
+      if (q && (c.id + ' ' + (c.rationale || '')).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    $('count').textContent = rows.length + ' / ' + D.candidates.length + ' candidates · ' + D.sampleNote;
+    $('grid').innerHTML = rows.map(function (c) {
+      var badges = (c.themeId ? '<span class="badge">theme:' + esc(c.themeId) + '</span>' : '<span class="badge">system-native</span>') +
+        (c.systems || []).map(function (s) { return '<span class="badge">' + esc(s) + '</span>'; }).join('') +
+        (c.semanticTypes || []).map(function (t) { return '<span class="badge">' + esc(t) + '</span>'; }).join('') +
+        (c.density ? '<span class="badge">density:' + esc(c.density) + '</span>' : '') +
+        (c.formality ? '<span class="badge">formality:' + esc(c.formality) + '</span>' : '');
+      var spec = '<ul>' +
+        '<li>rationale: ' + esc(c.rationale || '—') + '</li>' +
+        '<li>primitives: ' + esc((c.primitives || []).join(', ') || '—') + '</li>' +
+        '<li>constraints: ' + esc(JSON.stringify(c.constraints || {})) + '</li>' +
+        (c.bestFor ? '<li>bestFor: ' + esc(c.bestFor.join('; ')) + '</li>' : '') +
+        (c.avoidFor ? '<li>avoidFor: ' + esc(c.avoidFor.join('; ')) + '</li>' : '') +
+        (c.exceptions || []).map(function (e) { return '<li>예외: ' + esc(e) + '</li>'; }).join('') +
+        (c.titleTrimmed ? '<li>픽스처 제목이 maxTitleChars(' + c.maxTitleChars + ')에 맞춰 잘림</li>' : '') +
+        '</ul>';
+      return '<article class="cand"><h3><code>' + esc(c.id) + '</code></h3>' +
+        '<div class="meta">rendered as ' + esc(c.renderedSystem) + '</div>' +
+        '<div>' + badges + '</div>' +
+        (c.error ? '<p class="err">렌더 실패: ' + esc(c.error) + '</p>' : c.slideHtml) +
+        '<details><summary>사양 (design.md 상당)</summary>' + spec + '</details></article>';
+    }).join('');
+  }
+  ['fSys', 'fType'].forEach(function (id) { $(id).addEventListener('change', render); });
+  $('fQ').addEventListener('input', render);
+  render();
+})();
+</script>
+</body>
+</html>

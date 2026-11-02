@@ -69,7 +69,7 @@ function buildPresentation(deck: Deck): { pptx: PptxGenJS; slideCount: number; t
     // Background fill only — the single allowed background primitive.
     pSlide.background = { color: stripHash(slide.background) };
     for (const block of slide.blocks) {
-      const face = fontFaceFor(system, block.role);
+      const face = block.fontFace ?? fontFaceFor(system, block.role);
       // The ONLY drawing call in the exporter: native editable text boxes.
       pSlide.addText(block.content, textOptions(block, face));
       textBoxCount += 1;

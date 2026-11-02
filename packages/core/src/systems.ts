@@ -189,3 +189,31 @@ export function backgroundFor(system: TypographySystem, slideIndex: number): str
   if (system.id === 'expressive' && slideIndex % 2 === 1) return system.colors.backgroundAlt;
   return system.colors.background;
 }
+
+/** Theme shape mirrored here to avoid a composition→systems import cycle. */
+export interface ThemeOverride {
+  fonts?: { heading?: string[]; body?: string[] };
+  colors?: {
+    background?: string;
+    backgroundAlt?: string;
+    ink?: string;
+    accent?: string;
+    muted?: string;
+  };
+}
+
+/**
+ * Effective system for a themed candidate: same id/placement/scale,
+ * fonts + colors merged from the theme. No theme = identity.
+ */
+export function themedSystem(system: TypographySystem, theme?: ThemeOverride): TypographySystem {
+  if (!theme) return system;
+  return {
+    ...system,
+    fonts: {
+      heading: theme.fonts?.heading ?? system.fonts.heading,
+      body: theme.fonts?.body ?? system.fonts.body,
+    },
+    colors: { ...system.colors, ...theme.colors },
+  };
+}

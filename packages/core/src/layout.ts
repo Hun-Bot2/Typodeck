@@ -18,7 +18,9 @@ import {
 import {
   backgroundFor,
   colorFor,
+  fontFaceFor,
   getSystem,
+  themedSystem,
   type SystemId,
   type TypographySystem,
 } from './systems';
@@ -308,6 +310,8 @@ interface Ctx {
   bodyAlignOverride: TextAlign | null;
   /** Body measure cap in chars/line (derived heuristic; null = no cap). */
   bodyMeasureCap: number | null;
+  /** True when a candidate theme overrode fonts/colors (stamp fontFace). */
+  themed: boolean;
 }
 
 /** Resolve per-slide composition overrides. Absent plan = baseline. */
@@ -789,12 +793,15 @@ function materialize(ctx: Ctx, plans: Plan[], background: string): TextBlock[] {
       lineHeight: st.lineHeight,
       align: p.role === 'body' && ctx.bodyAlignOverride ? ctx.bodyAlignOverride : p.align,
       color: colorFor(system, p.role, background),
+      ...(ctx.themed ? { fontFace: fontFaceFor(ctx.system, p.role) } : {}),
     };
   });
 }
 
 function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: number, system: TypographySystem, seed: number, planItem?: CompositionPlanItem): import('./schema').Slide {
-  const background = backgroundFor(system, slideIndex);
+  const candTheme = planItem ? COMPOSITION_CANDIDATES[planItem.candidateId]?.theme : undefined;
+  const eff = themedSystem(system, candTheme);
+  const background = backgroundFor(eff, slideIndex);
   const overrides = overridesFromPlan(planItem);
   // Overflow relaxation: if a scale produces overlapping blocks or
   // estimated text overflow (silent-clip class), retry the whole slide
@@ -806,7 +813,7 @@ function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: nu
   for (let si = 0; si < scales.length; si++) {
     const sizeScale = scales[si];
     const rng = mulberry32(hashString(`${seed}:${system.id}:${slide.id}`));
-    const ctx: Ctx = { system, slide, slideIndex, rng, sizeScale, ...overrides };
+    const ctx: Ctx = { system: eff, slide, slideIndex, rng, sizeScale, ...overrides, themed: candTheme !== undefined };
     let plans: Plan[];
     // Composition-driven planners (G1/G3) win over system placement when the
     // plan selects them; all other candidates keep system placement.

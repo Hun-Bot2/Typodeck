@@ -11,7 +11,7 @@
 // All numeric slide values below are DERIVED HEURISTICS, not attributed rules.
 
 import type { Narrative, NarrativeSlide } from './schema';
-import type { SystemId } from './systems';
+import type { SystemId, ThemeOverride } from './systems';
 
 // ---------------------------------------------------------------------------
 // Semantic slide types (§4.1)
@@ -103,6 +103,14 @@ export interface CompositionCandidate {
   density?: CandidateDensity;
   /** Selection metadata: formality tag. Derived from systems when absent. */
   formality?: CandidateFormality;
+  /** Visual identity override (B: per-candidate themes). Absent = system-native. */
+  theme?: CandidateTheme;
+}
+
+/** Named visual-identity override (see THEMES.md registry doc). */
+export interface CandidateTheme extends ThemeOverride {
+  /** Theme id. */
+  id: string;
 }
 
 export interface CandidateMeta {
@@ -403,6 +411,95 @@ const CANDIDATE_META_BACKFILL: Record<string, Required<Pick<CandidateMeta, 'best
 for (const [id, meta] of Object.entries(CANDIDATE_META_BACKFILL)) {
   const c = COMPOSITION_CANDIDATES[id];
   if (c && c.bestFor === undefined) Object.assign(c, meta);
+}
+
+// ---------------------------------------------------------------------------
+// Candidate themes (B: per-candidate visual identity).
+// Grounded in research records (see THEMES.md). Pairs are WCAG AA
+// (verified by tests/theme.test.ts). Transitions stay system-native.
+// ---------------------------------------------------------------------------
+
+const SANS_KR = ['Noto Sans KR', 'sans-serif'];
+const SERIF_KR = ['Noto Serif KR', 'serif'];
+
+const THEME_DEFS: Record<string, Omit<CandidateTheme, 'id'>> = {
+  'signal-grotesk': {
+    fonts: { heading: ['Helvetica Neue', 'Helvetica', 'Arial', ...SANS_KR], body: ['Helvetica Neue', 'Helvetica', 'Arial', ...SANS_KR] },
+    colors: { background: '#FFFFFF', backgroundAlt: '#FFFFFF', ink: '#111111', accent: '#B00020', muted: '#5A5A5A' },
+  },
+  'paper-serif': {
+    fonts: { heading: ['Georgia', ...SERIF_KR], body: ['Georgia', ...SERIF_KR] },
+    colors: { background: '#FAF7F2', backgroundAlt: '#FAF7F2', ink: '#1A1A1A', accent: '#7B2D26', muted: '#6B6259' },
+  },
+  'mono-manual': {
+    fonts: { heading: ['Arial', 'Helvetica', ...SANS_KR], body: ['Courier New', 'Noto Sans Mono', 'monospace'] },
+    colors: { background: '#F7F7F5', backgroundAlt: '#F7F7F5', ink: '#1A1A1A', accent: '#0B4F9C', muted: '#5F6B6B' },
+  },
+  'hangul-gothic': {
+    fonts: { heading: ['Apple SD Gothic Neo', 'Malgun Gothic', ...SANS_KR], body: ['Apple SD Gothic Neo', 'Malgun Gothic', ...SANS_KR] },
+    colors: { background: '#FFFFFF', backgroundAlt: '#FFFFFF', ink: '#111111', accent: '#003FD6', muted: '#5A5A5A' },
+  },
+  'brutal-dark': {
+    fonts: { heading: ['Archivo Black', 'Arial Black', 'sans-serif'], body: ['Arial', 'Helvetica', ...SANS_KR] },
+    colors: { background: '#111111', backgroundAlt: '#111111', ink: '#F5F2EA', accent: '#FFD400', muted: '#B0B0B0' },
+  },
+  'grid-blue': {
+    fonts: { heading: ['Inter', 'Helvetica Neue', 'Arial', ...SANS_KR], body: ['Inter', 'Helvetica Neue', 'Arial', ...SANS_KR] },
+    colors: { background: '#F1F4F6', backgroundAlt: '#F1F4F6', ink: '#16232E', accent: '#0B4F9C', muted: '#54616E' },
+  },
+  'mincho-shu': {
+    fonts: { heading: ['Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', 'serif'], body: ['Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', 'serif'] },
+    colors: { background: '#FFFFFF', backgroundAlt: '#FFFFFF', ink: '#1A1A1A', accent: '#8C1D18', muted: '#666666' },
+  },
+  'evidence-slate': {
+    fonts: { heading: ['Palatino Linotype', 'Georgia', 'serif'], body: ['Georgia', 'Palatino Linotype', ...SERIF_KR] },
+    colors: { background: '#FFFFFF', backgroundAlt: '#FFFFFF', ink: '#222222', accent: '#2F5D62', muted: '#5A6B6B' },
+  },
+};
+
+const CANDIDATE_THEME_IDS: Record<string, string> = {
+  'opening-monumental-numeral': 'signal-grotesk',
+  'insight-punchline': 'signal-grotesk',
+  'comparison-columns': 'signal-grotesk',
+  'metric-anchored': 'signal-grotesk',
+  'conclusion-charge': 'signal-grotesk',
+  'series-opening': 'signal-grotesk',
+  'manual-metric': 'signal-grotesk',
+  'opening-statement': 'paper-serif',
+  'thesis-statement': 'paper-serif',
+  'comparison-stacked': 'paper-serif',
+  'evidence-focused': 'paper-serif',
+  'quote-attributed': 'paper-serif',
+  'conclusion-restatement': 'paper-serif',
+  'process-sequenced': 'mono-manual',
+  'architecture-map': 'mono-manual',
+  'evidence-collated': 'mono-manual',
+  'manual-opening': 'mono-manual',
+  'manual-section': 'mono-manual',
+  'margin-evidence': 'mono-manual',
+  'thesis-sparse': 'hangul-gothic',
+  'opening-breath': 'brutal-dark',
+  'problem-tension': 'brutal-dark',
+  'metric-hero': 'brutal-dark',
+  'tradeoff-decided': 'brutal-dark',
+  'opening-context': 'grid-blue',
+  'problem-narrative': 'grid-blue',
+  'thesis-grouped': 'grid-blue',
+  'process-compact': 'grid-blue',
+  'evidence-explainer-columns': 'grid-blue',
+  'quote-voice': 'mincho-shu',
+  'insight-unpacked': 'evidence-slate',
+  'comparison-rows': 'evidence-slate',
+  'architecture-layered': 'evidence-slate',
+  'evidence-anchored': 'evidence-slate',
+  'manual-reference': 'evidence-slate',
+  'tradeoff-balanced': 'evidence-slate',
+};
+
+for (const [id, themeId] of Object.entries(CANDIDATE_THEME_IDS)) {
+  const c = COMPOSITION_CANDIDATES[id];
+  const def = THEME_DEFS[themeId];
+  if (c && def && c.theme === undefined) c.theme = { id: themeId, ...def };
 }
 
 /** Derived density when a record omits the tag (columns/primitives heuristic). */
