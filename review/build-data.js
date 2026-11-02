@@ -13,6 +13,7 @@ const GROUPS = [
   { id: 'previews', label: '핵심 비교 (4)', desc: '같은 6장 내러티브 × 4개 시스템', dir: 'previews/pptx' },
   { id: 'showcase', label: '대표작 (3)', desc: '실제 깃헙 리포로 생성 + provenance', dir: 'review/assets', only: ['is-swiss.pptx', 'dayjs-editorial.pptx', 'handbook-expressive.pptx'] },
   { id: 'verify', label: 'Studio/API 검증 (2)', desc: 'Studio·API 경로 산출물', dir: 'review/assets', only: ['api-repo-swiss.pptx', 'studio-export.pptx'] },
+  { id: 'themes', label: '테마 실물 (38)', desc: '38 candidates × 고정 픽스처, 테마 적용 검증필 PPTX', dir: 'review/assets/candidates' },
   { id: 'samples', label: '샘플 (4)', desc: 'npm run samples 산출물', dir: 'output', topOnly: true },
   { id: 'evals', label: 'Phase-4 평가 (24)', desc: 'F1~F4 × 한영 × 3시스템', dir: 'evals/reports' },
   { id: 'visual', label: '비주얼 벤치마크 (30)', desc: '10 픽스처 × 3시스템 (한영 쌍)', dir: 'evals/visual-benchmark/output' },

@@ -79,8 +79,9 @@
         (c.exceptions || []).map(function (e) { return '<li>예외: ' + esc(e) + '</li>'; }).join('') +
         (c.titleTrimmed ? '<li>픽스처 제목이 maxTitleChars(' + c.maxTitleChars + ')에 맞춰 잘림</li>' : '') +
         '</ul>';
+      var proof = c.pptx ? '<a class="proof" href="' + esc(c.pptx) + '">PPTX 실물 ↓</a> ' : '<span class="meta">PPTX 없음</span> ';
       return '<article class="cand"><h3><code>' + esc(c.id) + '</code></h3>' +
-        '<div class="meta">rendered as ' + esc(c.renderedSystem) + '</div>' +
+        '<div class="meta">rendered as ' + esc(c.renderedSystem) + ' · ' + proof + '</div>' +
         '<div>' + badges + '</div>' +
         (c.error ? '<p class="err">렌더 실패: ' + esc(c.error) + '</p>' : c.slideHtml) +
         '<details><summary>사양 (design.md 상당)</summary>' + spec + '</details></article>';
