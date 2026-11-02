@@ -1,0 +1,6289 @@
+{
+  "generatedBy": "evals/hierarchy stage-4 runner (deterministic; timings are measurements)",
+  "counts": {
+    "fixtures": 16,
+    "cleanDecks": 17,
+    "scoredItems": 124,
+    "narrativeSeeds": 44,
+    "deckSeeds": 63,
+    "beforeAfterInputs": 61
+  },
+  "gates": {
+    "fixtures-valid": true,
+    "fixture-drift": true,
+    "prominence-parity": true,
+    "c4-agreement": true,
+    "pptx-editability": true,
+    "text-parity": true,
+    "clean-stays-clean": true,
+    "no-ping-pong": true
+  },
+  "gateDetail": {
+    "drift": [],
+    "prominenceChecked": 82,
+    "prominenceMismatched": 0,
+    "c4Primary": {
+      "agree": 124,
+      "total": 124
+    },
+    "c4Contrast": {
+      "agree": 124,
+      "total": 124
+    },
+    "c4Grouping": {
+      "agree": 124,
+      "total": 124
+    }
+  },
+  "hierarchyAgreement": {
+    "summary": {
+      "n": 17,
+      "mean": 0.9489724128800124,
+      "median": 1,
+      "min": 0.5797509043642028,
+      "max": 1,
+      "sd": 0.10495603986054322,
+      "excluded": 0
+    },
+    "perSlide": [
+      {
+        "deckId": "F01/swiss",
+        "rho": 0.9486832980505138,
+        "n": 4,
+        "note": ""
+      },
+      {
+        "deckId": "F02/swiss",
+        "rho": 0.9837387536759294,
+        "n": 6,
+        "note": ""
+      },
+      {
+        "deckId": "F03/editorial",
+        "rho": 0.9486832980505138,
+        "n": 4,
+        "note": ""
+      },
+      {
+        "deckId": "F04/swiss",
+        "rho": 1,
+        "n": 5,
+        "note": ""
+      },
+      {
+        "deckId": "F05/document",
+        "rho": 1,
+        "n": 6,
+        "note": ""
+      },
+      {
+        "deckId": "F06/document",
+        "rho": 1,
+        "n": 7,
+        "note": ""
+      },
+      {
+        "deckId": "F07/swiss",
+        "rho": 0.9486832980505138,
+        "n": 4,
+        "note": ""
+      },
+      {
+        "deckId": "F08/swiss",
+        "rho": 0.9837387536759294,
+        "n": 6,
+        "note": ""
+      },
+      {
+        "deckId": "F09/editorial",
+        "rho": 0.9486832980505138,
+        "n": 4,
+        "note": ""
+      },
+      {
+        "deckId": "F10/document",
+        "rho": 1,
+        "n": 5,
+        "note": ""
+      },
+      {
+        "deckId": "F11/document",
+        "rho": 1,
+        "n": 6,
+        "note": ""
+      },
+      {
+        "deckId": "F12/editorial",
+        "rho": 1,
+        "n": 7,
+        "note": ""
+      },
+      {
+        "deckId": "F13/expressive",
+        "rho": 1,
+        "n": 3,
+        "note": ""
+      },
+      {
+        "deckId": "F14/expressive",
+        "rho": 1,
+        "n": 3,
+        "note": ""
+      },
+      {
+        "deckId": "F15/document",
+        "rho": 0.7905694150420948,
+        "n": 5,
+        "note": ""
+      },
+      {
+        "deckId": "F15/swiss",
+        "rho": 0.5797509043642028,
+        "n": 5,
+        "note": ""
+      },
+      {
+        "deckId": "F16/editorial",
+        "rho": 1,
+        "n": 2,
+        "note": ""
+      }
+    ]
+  },
+  "primaryEmphasisAccuracy": {
+    "hits": 15,
+    "total": 17,
+    "excluded": 0,
+    "tiesForMax": 0,
+    "accuracy": 0.8823529411764706
+  },
+  "groupingConsistency": {
+    "uncut": 5,
+    "total": 12,
+    "consistency": 0.4166666666666667
+  },
+  "prTables": [
+    {
+      "arm": "A",
+      "scope": "primary(narrative-seeds)",
+      "rows": {
+        "headline-prominence": {
+          "tp": 34,
+          "fp": 0,
+          "fn": 0,
+          "positives": 34,
+          "negatives": 17,
+          "precision": 1,
+          "recall": 1
+        },
+        "number-scale": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "positives": 0,
+          "negatives": 17,
+          "precision": null,
+          "recall": null
+        },
+        "grouping": {
+          "tp": 10,
+          "fp": 0,
+          "fn": 0,
+          "positives": 10,
+          "negatives": 17,
+          "precision": 1,
+          "recall": 1
+        },
+        "clip": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "positives": 0,
+          "negatives": 17,
+          "precision": null,
+          "recall": null
+        },
+        "contrast": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "positives": 0,
+          "negatives": 17,
+          "precision": null,
+          "recall": null
+        }
+      }
+    },
+    {
+      "arm": "C",
+      "scope": "primary(deck-seeds)",
+      "rows": {
+        "headline-prominence": {
+          "tp": 17,
+          "fp": 2,
+          "fn": 0,
+          "positives": 17,
+          "negatives": 17,
+          "precision": 0.8947368421052632,
+          "recall": 1
+        },
+        "number-scale": {
+          "tp": 2,
+          "fp": 2,
+          "fn": 0,
+          "positives": 2,
+          "negatives": 17,
+          "precision": 0.5,
+          "recall": 1
+        },
+        "grouping": {
+          "tp": 10,
+          "fp": 7,
+          "fn": 0,
+          "positives": 10,
+          "negatives": 17,
+          "precision": 0.5882352941176471,
+          "recall": 1
+        },
+        "clip": {
+          "tp": 17,
+          "fp": 3,
+          "fn": 0,
+          "positives": 17,
+          "negatives": 17,
+          "precision": 0.85,
+          "recall": 1
+        },
+        "contrast": {
+          "tp": 17,
+          "fp": 0,
+          "fn": 0,
+          "positives": 17,
+          "negatives": 17,
+          "precision": 1,
+          "recall": 1
+        }
+      }
+    },
+    {
+      "arm": "A",
+      "scope": "cross(deck-seeds, blind-by-design)",
+      "rows": {
+        "headline-prominence": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 17,
+          "positives": 17,
+          "negatives": 17,
+          "precision": null,
+          "recall": 0
+        },
+        "number-scale": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 2,
+          "positives": 2,
+          "negatives": 17,
+          "precision": null,
+          "recall": 0
+        },
+        "grouping": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 10,
+          "positives": 10,
+          "negatives": 17,
+          "precision": null,
+          "recall": 0
+        },
+        "clip": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 17,
+          "positives": 17,
+          "negatives": 17,
+          "precision": null,
+          "recall": 0
+        },
+        "contrast": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 17,
+          "positives": 17,
+          "negatives": 17,
+          "precision": null,
+          "recall": 0
+        }
+      }
+    },
+    {
+      "arm": "C",
+      "scope": "cross(narrative-seeds)",
+      "rows": {
+        "headline-prominence": {
+          "tp": 17,
+          "fp": 2,
+          "fn": 17,
+          "positives": 34,
+          "negatives": 17,
+          "precision": 0.8947368421052632,
+          "recall": 0.5
+        },
+        "number-scale": {
+          "tp": 0,
+          "fp": 2,
+          "fn": 0,
+          "positives": 0,
+          "negatives": 17,
+          "precision": 0,
+          "recall": null
+        },
+        "grouping": {
+          "tp": 10,
+          "fp": 7,
+          "fn": 0,
+          "positives": 10,
+          "negatives": 17,
+          "precision": 0.5882352941176471,
+          "recall": 1
+        },
+        "clip": {
+          "tp": 0,
+          "fp": 3,
+          "fn": 0,
+          "positives": 0,
+          "negatives": 17,
+          "precision": 0,
+          "recall": null
+        },
+        "contrast": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "positives": 0,
+          "negatives": 17,
+          "precision": null,
+          "recall": null
+        }
+      }
+    }
+  ],
+  "repair": {
+    "inputsWithBeforeErrors": 0,
+    "totalBeforeErrors": 0,
+    "totalCleared": 0,
+    "totalNewErrors": 0,
+    "warnDelta": 0,
+    "attempts": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "rows": [
+      {
+        "inputId": "F01/swiss:clean",
+        "fixtureId": "F01",
+        "system": "swiss",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 61,
+        "afterChars": 61,
+        "msBefore": 0.07487499999999159,
+        "msAfter": 0.7314170000000075,
+        "msExport": 19.711416999999997
+      },
+      {
+        "inputId": "F01/swiss:narr:strip-emphasis: removed ",
+        "fixtureId": "F01",
+        "system": "swiss",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 61,
+        "afterChars": 61,
+        "msBefore": 0.12554199999999582,
+        "msAfter": 0.17370800000000486,
+        "msExport": 6.452666999999991
+      },
+      {
+        "inputId": "F01/swiss:narr:primary-on-caption: move",
+        "fixtureId": "F01",
+        "system": "swiss",
+        "seeded": "primary-on-caption: moved primary from #1 to caption #3",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 2 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 2,
+        "afterErrors": 0,
+        "afterWarnings": 2,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 61,
+        "afterChars": 61,
+        "msBefore": 0.09833399999999415,
+        "msAfter": 0.15987499999999955,
+        "msExport": 6.411541999999997
+      },
+      {
+        "inputId": "F01/swiss:narr:dangle-group: group hero",
+        "fixtureId": "F01",
+        "system": "swiss",
+        "seeded": "dangle-group: group hero reduced 2 -> 1 member",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 61,
+        "afterChars": 61,
+        "msBefore": 0.11129100000000847,
+        "msAfter": 0.17833399999999244,
+        "msExport": 5.672667000000004
+      },
+      {
+        "inputId": "F02/swiss:clean",
+        "fixtureId": "F02",
+        "system": "swiss",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 120,
+        "afterChars": 120,
+        "msBefore": 0.11479199999999423,
+        "msAfter": 0.19079199999998764,
+        "msExport": 6.428083000000015
+      },
+      {
+        "inputId": "F02/swiss:narr:strip-emphasis: removed ",
+        "fixtureId": "F02",
+        "system": "swiss",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 120,
+        "afterChars": 120,
+        "msBefore": 0.1598329999999919,
+        "msAfter": 0.2272079999999903,
+        "msExport": 5.786791999999991
+      },
+      {
+        "inputId": "F02/swiss:narr:primary-on-caption: move",
+        "fixtureId": "F02",
+        "system": "swiss",
+        "seeded": "primary-on-caption: moved primary from #1 to caption #5",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 2 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 2,
+        "afterErrors": 0,
+        "afterWarnings": 2,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 120,
+        "afterChars": 120,
+        "msBefore": 0.12020800000001941,
+        "msAfter": 0.2587919999999997,
+        "msExport": 5.111707999999993
+      },
+      {
+        "inputId": "F02/swiss:narr:dangle-group: group stat",
+        "fixtureId": "F02",
+        "system": "swiss",
+        "seeded": "dangle-group: group stats reduced 3 -> 1 member",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 120,
+        "afterChars": 120,
+        "msBefore": 0.13475000000002524,
+        "msAfter": 0.24966599999999062,
+        "msExport": 5.109708000000012
+      },
+      {
+        "inputId": "F03/editorial:clean",
+        "fixtureId": "F03",
+        "system": "editorial",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 189,
+        "afterChars": 189,
+        "msBefore": 0.12320800000000531,
+        "msAfter": 0.21262500000000273,
+        "msExport": 4.516250000000014
+      },
+      {
+        "inputId": "F03/editorial:narr:strip-emphasis: removed ",
+        "fixtureId": "F03",
+        "system": "editorial",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 189,
+        "afterChars": 189,
+        "msBefore": 0.08320799999998485,
+        "msAfter": 0.19724999999999682,
+        "msExport": 4.82291699999999
+      },
+      {
+        "inputId": "F03/editorial:narr:primary-on-caption: move",
+        "fixtureId": "F03",
+        "system": "editorial",
+        "seeded": "primary-on-caption: moved primary from #1 to caption #3",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 189,
+        "afterChars": 189,
+        "msBefore": 0.12683400000000233,
+        "msAfter": 0.25483399999998824,
+        "msExport": 4.558915999999982
+      },
+      {
+        "inputId": "F04/swiss:clean",
+        "fixtureId": "F04",
+        "system": "swiss",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 167,
+        "afterChars": 167,
+        "msBefore": 0.11054200000000947,
+        "msAfter": 0.20900000000000318,
+        "msExport": 6.343084000000005
+      },
+      {
+        "inputId": "F04/swiss:narr:strip-emphasis: removed ",
+        "fixtureId": "F04",
+        "system": "swiss",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 167,
+        "afterChars": 167,
+        "msBefore": 0.12266600000000949,
+        "msAfter": 0.22399999999998954,
+        "msExport": 4.7055830000000185
+      },
+      {
+        "inputId": "F04/swiss:narr:primary-on-caption: move",
+        "fixtureId": "F04",
+        "system": "swiss",
+        "seeded": "primary-on-caption: moved primary from #0 to caption #4",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 2 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 2,
+        "afterErrors": 0,
+        "afterWarnings": 2,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 167,
+        "afterChars": 167,
+        "msBefore": 0.08758299999999508,
+        "msAfter": 0.34062499999998863,
+        "msExport": 5.400749999999988
+      },
+      {
+        "inputId": "F04/swiss:narr:dangle-group: group step",
+        "fixtureId": "F04",
+        "system": "swiss",
+        "seeded": "dangle-group: group steps reduced 3 -> 1 member",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 167,
+        "afterChars": 167,
+        "msBefore": 0.12549999999998818,
+        "msAfter": 0.22145899999998164,
+        "msExport": 4.498542000000015
+      },
+      {
+        "inputId": "F05/document:clean",
+        "fixtureId": "F05",
+        "system": "document",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 160,
+        "afterChars": 160,
+        "msBefore": 0.1057920000000081,
+        "msAfter": 0.18562500000001592,
+        "msExport": 5.408500000000004
+      },
+      {
+        "inputId": "F05/document:narr:strip-emphasis: removed ",
+        "fixtureId": "F05",
+        "system": "document",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 160,
+        "afterChars": 160,
+        "msBefore": 0.11079200000000355,
+        "msAfter": 0.20070899999998915,
+        "msExport": 5.236082999999979
+      },
+      {
+        "inputId": "F05/document:narr:primary-on-caption: move",
+        "fixtureId": "F05",
+        "system": "document",
+        "seeded": "primary-on-caption: moved primary from #0 to caption #5",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 160,
+        "afterChars": 160,
+        "msBefore": 0.10974999999999113,
+        "msAfter": 0.18241700000001515,
+        "msExport": 5.095958000000024
+      },
+      {
+        "inputId": "F05/document:narr:dangle-group: group left",
+        "fixtureId": "F05",
+        "system": "document",
+        "seeded": "dangle-group: group left reduced 2 -> 1 member",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 160,
+        "afterChars": 160,
+        "msBefore": 0.09450000000001069,
+        "msAfter": 0.1717909999999847,
+        "msExport": 5.078291999999976
+      },
+      {
+        "inputId": "F06/document:clean",
+        "fixtureId": "F06",
+        "system": "document",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 6 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 6,
+        "afterErrors": 0,
+        "afterWarnings": 6,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 394,
+        "afterChars": 394,
+        "msBefore": 0.14475000000001614,
+        "msAfter": 0.2920000000000016,
+        "msExport": 5.317374999999998
+      },
+      {
+        "inputId": "F06/document:narr:strip-emphasis: removed ",
+        "fixtureId": "F06",
+        "system": "document",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 6 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 6,
+        "afterErrors": 0,
+        "afterWarnings": 6,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 394,
+        "afterChars": 394,
+        "msBefore": 0.17637500000000728,
+        "msAfter": 0.3225410000000011,
+        "msExport": 4.991874999999993
+      },
+      {
+        "inputId": "F06/document:narr:primary-on-caption: move",
+        "fixtureId": "F06",
+        "system": "document",
+        "seeded": "primary-on-caption: moved primary from #0 to caption #6",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 7 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 7,
+        "afterErrors": 0,
+        "afterWarnings": 7,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 394,
+        "afterChars": 394,
+        "msBefore": 0.15891600000000494,
+        "msAfter": 0.28891699999999787,
+        "msExport": 4.804167000000007
+      },
+      {
+        "inputId": "F07/swiss:clean",
+        "fixtureId": "F07",
+        "system": "swiss",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 34,
+        "afterChars": 34,
+        "msBefore": 0.11149999999997817,
+        "msAfter": 0.16449999999997544,
+        "msExport": 4.91033299999998
+      },
+      {
+        "inputId": "F07/swiss:narr:strip-emphasis: removed ",
+        "fixtureId": "F07",
+        "system": "swiss",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 34,
+        "afterChars": 34,
+        "msBefore": 0.10349999999999682,
+        "msAfter": 0.16412500000001273,
+        "msExport": 4.744708000000003
+      },
+      {
+        "inputId": "F07/swiss:narr:primary-on-caption: move",
+        "fixtureId": "F07",
+        "system": "swiss",
+        "seeded": "primary-on-caption: moved primary from #1 to caption #3",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 2 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 2,
+        "afterErrors": 0,
+        "afterWarnings": 2,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 34,
+        "afterChars": 34,
+        "msBefore": 0.1436249999999859,
+        "msAfter": 0.16208300000002396,
+        "msExport": 4.719832999999994
+      },
+      {
+        "inputId": "F07/swiss:narr:dangle-group: group hero",
+        "fixtureId": "F07",
+        "system": "swiss",
+        "seeded": "dangle-group: group hero reduced 2 -> 1 member",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 34,
+        "afterChars": 34,
+        "msBefore": 0.10458399999998846,
+        "msAfter": 0.13500000000001933,
+        "msExport": 4.634500000000003
+      },
+      {
+        "inputId": "F08/swiss:clean",
+        "fixtureId": "F08",
+        "system": "swiss",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 89,
+        "afterChars": 89,
+        "msBefore": 0.12054200000000037,
+        "msAfter": 0.20395800000000008,
+        "msExport": 4.249083999999982
+      },
+      {
+        "inputId": "F08/swiss:narr:strip-emphasis: removed ",
+        "fixtureId": "F08",
+        "system": "swiss",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 89,
+        "afterChars": 89,
+        "msBefore": 0.09883300000001327,
+        "msAfter": 0.1762499999999818,
+        "msExport": 4.391415999999992
+      },
+      {
+        "inputId": "F08/swiss:narr:primary-on-caption: move",
+        "fixtureId": "F08",
+        "system": "swiss",
+        "seeded": "primary-on-caption: moved primary from #1 to caption #5",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 2 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 2,
+        "afterErrors": 0,
+        "afterWarnings": 2,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 89,
+        "afterChars": 89,
+        "msBefore": 0.09604200000001129,
+        "msAfter": 0.17804199999994808,
+        "msExport": 4.562791000000004
+      },
+      {
+        "inputId": "F08/swiss:narr:dangle-group: group stat",
+        "fixtureId": "F08",
+        "system": "swiss",
+        "seeded": "dangle-group: group stats reduced 3 -> 1 member",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 89,
+        "afterChars": 89,
+        "msBefore": 0.11487499999998363,
+        "msAfter": 0.20129199999996672,
+        "msExport": 4.657958000000008
+      },
+      {
+        "inputId": "F09/editorial:clean",
+        "fixtureId": "F09",
+        "system": "editorial",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 76,
+        "afterChars": 76,
+        "msBefore": 0.10708399999998619,
+        "msAfter": 0.17779200000001083,
+        "msExport": 4.9793750000000045
+      },
+      {
+        "inputId": "F09/editorial:narr:strip-emphasis: removed ",
+        "fixtureId": "F09",
+        "system": "editorial",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 76,
+        "afterChars": 76,
+        "msBefore": 0.07783299999999826,
+        "msAfter": 0.1267909999999688,
+        "msExport": 4.192292000000009
+      },
+      {
+        "inputId": "F09/editorial:narr:primary-on-caption: move",
+        "fixtureId": "F09",
+        "system": "editorial",
+        "seeded": "primary-on-caption: moved primary from #1 to caption #3",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 76,
+        "afterChars": 76,
+        "msBefore": 0.10962499999999409,
+        "msAfter": 0.17258300000003146,
+        "msExport": 4.2654999999999745
+      },
+      {
+        "inputId": "F10/document:clean",
+        "fixtureId": "F10",
+        "system": "document",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 90,
+        "afterChars": 90,
+        "msBefore": 0.07645800000000236,
+        "msAfter": 0.16304199999996172,
+        "msExport": 4.487707999999998
+      },
+      {
+        "inputId": "F10/document:narr:strip-emphasis: removed ",
+        "fixtureId": "F10",
+        "system": "document",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 90,
+        "afterChars": 90,
+        "msBefore": 0.08470800000003464,
+        "msAfter": 0.15158400000001393,
+        "msExport": 4.473916000000031
+      },
+      {
+        "inputId": "F10/document:narr:primary-on-caption: move",
+        "fixtureId": "F10",
+        "system": "document",
+        "seeded": "primary-on-caption: moved primary from #0 to caption #4",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 90,
+        "afterChars": 90,
+        "msBefore": 0.06520799999998417,
+        "msAfter": 0.15179099999994605,
+        "msExport": 4.474667000000011
+      },
+      {
+        "inputId": "F10/document:narr:dangle-group: group step",
+        "fixtureId": "F10",
+        "system": "document",
+        "seeded": "dangle-group: group steps reduced 3 -> 1 member",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 90,
+        "afterChars": 90,
+        "msBefore": 0.058334000000002106,
+        "msAfter": 0.1195409999999697,
+        "msExport": 4.487082999999984
+      },
+      {
+        "inputId": "F11/document:clean",
+        "fixtureId": "F11",
+        "system": "document",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 85,
+        "afterChars": 85,
+        "msBefore": 0.08129199999996217,
+        "msAfter": 0.1612079999999878,
+        "msExport": 5.209333000000015
+      },
+      {
+        "inputId": "F11/document:narr:strip-emphasis: removed ",
+        "fixtureId": "F11",
+        "system": "document",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 85,
+        "afterChars": 85,
+        "msBefore": 0.09120799999999463,
+        "msAfter": 0.14962500000001455,
+        "msExport": 5.079584000000011
+      },
+      {
+        "inputId": "F11/document:narr:primary-on-caption: move",
+        "fixtureId": "F11",
+        "system": "document",
+        "seeded": "primary-on-caption: moved primary from #0 to caption #5",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 85,
+        "afterChars": 85,
+        "msBefore": 0.10566699999998264,
+        "msAfter": 0.17933400000003985,
+        "msExport": 4.342207999999971
+      },
+      {
+        "inputId": "F11/document:narr:dangle-group: group left",
+        "fixtureId": "F11",
+        "system": "document",
+        "seeded": "dangle-group: group left reduced 2 -> 1 member",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 85,
+        "afterChars": 85,
+        "msBefore": 0.07474999999999454,
+        "msAfter": 0.14675000000005411,
+        "msExport": 4.620292000000006
+      },
+      {
+        "inputId": "F12/editorial:clean",
+        "fixtureId": "F12",
+        "system": "editorial",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 187,
+        "afterChars": 187,
+        "msBefore": 0.08875000000000455,
+        "msAfter": 0.17124999999998636,
+        "msExport": 3.936791000000028
+      },
+      {
+        "inputId": "F12/editorial:narr:strip-emphasis: removed ",
+        "fixtureId": "F12",
+        "system": "editorial",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 187,
+        "afterChars": 187,
+        "msBefore": 0.07675000000000409,
+        "msAfter": 0.16145899999997937,
+        "msExport": 4.346457999999984
+      },
+      {
+        "inputId": "F12/editorial:narr:primary-on-caption: move",
+        "fixtureId": "F12",
+        "system": "editorial",
+        "seeded": "primary-on-caption: moved primary from #0 to caption #6",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 2 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 2,
+        "afterErrors": 0,
+        "afterWarnings": 2,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 187,
+        "afterChars": 187,
+        "msBefore": 0.09687500000001137,
+        "msAfter": 0.21033299999999144,
+        "msExport": 4.1340000000000146
+      },
+      {
+        "inputId": "F13/expressive:clean",
+        "fixtureId": "F13",
+        "system": "expressive",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 134,
+        "afterChars": 134,
+        "msBefore": 0.11291599999998425,
+        "msAfter": 0.12716700000004266,
+        "msExport": 4.19604099999998
+      },
+      {
+        "inputId": "F13/expressive:narr:strip-emphasis: removed ",
+        "fixtureId": "F13",
+        "system": "expressive",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 134,
+        "afterChars": 134,
+        "msBefore": 0.11112500000001546,
+        "msAfter": 0.13429199999995944,
+        "msExport": 3.884166999999991
+      },
+      {
+        "inputId": "F13/expressive:narr:primary-on-caption: move",
+        "fixtureId": "F13",
+        "system": "expressive",
+        "seeded": "primary-on-caption: moved primary from #0 to caption #2",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 2 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 2,
+        "afterErrors": 0,
+        "afterWarnings": 2,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 134,
+        "afterChars": 134,
+        "msBefore": 0.10300000000000864,
+        "msAfter": 0.11670900000001438,
+        "msExport": 3.8842920000000163
+      },
+      {
+        "inputId": "F14/expressive:clean",
+        "fixtureId": "F14",
+        "system": "expressive",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 67,
+        "afterChars": 67,
+        "msBefore": 0.062415999999984706,
+        "msAfter": 0.09316599999999653,
+        "msExport": 3.9468329999999696
+      },
+      {
+        "inputId": "F14/expressive:narr:strip-emphasis: removed ",
+        "fixtureId": "F14",
+        "system": "expressive",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 67,
+        "afterChars": 67,
+        "msBefore": 0.0519170000000031,
+        "msAfter": 0.08608299999997371,
+        "msExport": 3.979959000000008
+      },
+      {
+        "inputId": "F14/expressive:narr:primary-on-caption: move",
+        "fixtureId": "F14",
+        "system": "expressive",
+        "seeded": "primary-on-caption: moved primary from #0 to caption #2",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 67,
+        "afterChars": 67,
+        "msBefore": 0.06387499999999591,
+        "msAfter": 0.09295800000001009,
+        "msExport": 4.132915999999966
+      },
+      {
+        "inputId": "F15/document:clean",
+        "fixtureId": "F15",
+        "system": "document",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 2 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 2,
+        "afterErrors": 0,
+        "afterWarnings": 2,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 105,
+        "afterChars": 105,
+        "msBefore": 0.08474999999998545,
+        "msAfter": 0.129291999999964,
+        "msExport": 4.797041999999976
+      },
+      {
+        "inputId": "F15/document:narr:strip-emphasis: removed ",
+        "fixtureId": "F15",
+        "system": "document",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 105,
+        "afterChars": 105,
+        "msBefore": 0.11608400000000074,
+        "msAfter": 0.15825000000000955,
+        "msExport": 8.831624999999974
+      },
+      {
+        "inputId": "F15/document:narr:primary-on-caption: move",
+        "fixtureId": "F15",
+        "system": "document",
+        "seeded": "primary-on-caption: moved primary from #1 to caption #4",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 2 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 2,
+        "afterErrors": 0,
+        "afterWarnings": 2,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 105,
+        "afterChars": 105,
+        "msBefore": 0.10229200000003402,
+        "msAfter": 0.14154200000001538,
+        "msExport": 7.592042000000049
+      },
+      {
+        "inputId": "F15/document:narr:dangle-group: group hero",
+        "fixtureId": "F15",
+        "system": "document",
+        "seeded": "dangle-group: group hero reduced 2 -> 1 member",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 105,
+        "afterChars": 105,
+        "msBefore": 0.08745799999996962,
+        "msAfter": 0.12233399999996664,
+        "msExport": 8.701958999999988
+      },
+      {
+        "inputId": "F15/swiss:clean",
+        "fixtureId": "F15",
+        "system": "swiss",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 2 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 2,
+        "afterErrors": 0,
+        "afterWarnings": 2,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 105,
+        "afterChars": 105,
+        "msBefore": 0.1052090000000021,
+        "msAfter": 0.14995799999996962,
+        "msExport": 4.365375000000029
+      },
+      {
+        "inputId": "F15/swiss:narr:strip-emphasis: removed ",
+        "fixtureId": "F15",
+        "system": "swiss",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 105,
+        "afterChars": 105,
+        "msBefore": 0.10612500000002001,
+        "msAfter": 0.16816699999998264,
+        "msExport": 4.570666999999958
+      },
+      {
+        "inputId": "F15/swiss:narr:primary-on-caption: move",
+        "fixtureId": "F15",
+        "system": "swiss",
+        "seeded": "primary-on-caption: moved primary from #1 to caption #4",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 2 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 2,
+        "afterErrors": 0,
+        "afterWarnings": 2,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 105,
+        "afterChars": 105,
+        "msBefore": 0.08400000000000318,
+        "msAfter": 0.1337920000000281,
+        "msExport": 4.079082999999969
+      },
+      {
+        "inputId": "F15/swiss:narr:dangle-group: group hero",
+        "fixtureId": "F15",
+        "system": "swiss",
+        "seeded": "dangle-group: group hero reduced 2 -> 1 member",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 105,
+        "afterChars": 105,
+        "msBefore": 0.09608400000001893,
+        "msAfter": 0.13266600000002882,
+        "msExport": 4.270416999999952
+      },
+      {
+        "inputId": "F16/editorial:clean",
+        "fixtureId": "F16",
+        "system": "editorial",
+        "seeded": "",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 30,
+        "afterChars": 30,
+        "msBefore": 0.0736660000000029,
+        "msAfter": 0.08612499999998136,
+        "msExport": 4.6049580000000105
+      },
+      {
+        "inputId": "F16/editorial:narr:strip-emphasis: removed ",
+        "fixtureId": "F16",
+        "system": "editorial",
+        "seeded": "strip-emphasis: removed all emphasis annotations",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 0 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 0,
+        "afterErrors": 0,
+        "afterWarnings": 0,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 30,
+        "afterChars": 30,
+        "msBefore": 0.0439169999999649,
+        "msAfter": 0.1741660000000138,
+        "msExport": 3.861500000000035
+      },
+      {
+        "inputId": "F16/editorial:narr:primary-on-caption: move",
+        "fixtureId": "F16",
+        "system": "editorial",
+        "seeded": "primary-on-caption: moved primary from #0 to caption #1",
+        "attempts": 1,
+        "provenance": [
+          "attempt 1: clean (0 errors, 1 warnings) — stop"
+        ],
+        "beforeErrors": 0,
+        "beforeWarnings": 1,
+        "afterErrors": 0,
+        "afterWarnings": 1,
+        "errorsCleared": 0,
+        "newErrors": 0,
+        "textParity": true,
+        "beforePptxOk": true,
+        "afterPptxOk": true,
+        "beforeChars": 30,
+        "afterChars": 30,
+        "msBefore": 0.05916700000000219,
+        "msAfter": 0.08650000000000091,
+        "msExport": 3.8380410000000325
+      }
+    ]
+  },
+  "diversity": [
+    {
+      "stage": "before",
+      "docCandidates": [
+        "manual-opening"
+      ],
+      "swissCandidates": [
+        "opening-monumental-numeral"
+      ],
+      "sameCandidates": false,
+      "sameGeometry": false
+    },
+    {
+      "stage": "after",
+      "docCandidates": [
+        "manual-opening"
+      ],
+      "swissCandidates": [
+        "opening-monumental-numeral"
+      ],
+      "sameCandidates": false,
+      "sameGeometry": false
+    }
+  ],
+  "timingsMs": {
+    "total": 367.209375,
+    "beforeAfter": [
+      {
+        "input": "F01/swiss:clean",
+        "before": 0.07487499999999159,
+        "after": 0.7314170000000075,
+        "export": 19.711416999999997
+      },
+      {
+        "input": "F01/swiss:narr:strip-emphasis: removed ",
+        "before": 0.12554199999999582,
+        "after": 0.17370800000000486,
+        "export": 6.452666999999991
+      },
+      {
+        "input": "F01/swiss:narr:primary-on-caption: move",
+        "before": 0.09833399999999415,
+        "after": 0.15987499999999955,
+        "export": 6.411541999999997
+      },
+      {
+        "input": "F01/swiss:narr:dangle-group: group hero",
+        "before": 0.11129100000000847,
+        "after": 0.17833399999999244,
+        "export": 5.672667000000004
+      },
+      {
+        "input": "F02/swiss:clean",
+        "before": 0.11479199999999423,
+        "after": 0.19079199999998764,
+        "export": 6.428083000000015
+      },
+      {
+        "input": "F02/swiss:narr:strip-emphasis: removed ",
+        "before": 0.1598329999999919,
+        "after": 0.2272079999999903,
+        "export": 5.786791999999991
+      },
+      {
+        "input": "F02/swiss:narr:primary-on-caption: move",
+        "before": 0.12020800000001941,
+        "after": 0.2587919999999997,
+        "export": 5.111707999999993
+      },
+      {
+        "input": "F02/swiss:narr:dangle-group: group stat",
+        "before": 0.13475000000002524,
+        "after": 0.24966599999999062,
+        "export": 5.109708000000012
+      },
+      {
+        "input": "F03/editorial:clean",
+        "before": 0.12320800000000531,
+        "after": 0.21262500000000273,
+        "export": 4.516250000000014
+      },
+      {
+        "input": "F03/editorial:narr:strip-emphasis: removed ",
+        "before": 0.08320799999998485,
+        "after": 0.19724999999999682,
+        "export": 4.82291699999999
+      },
+      {
+        "input": "F03/editorial:narr:primary-on-caption: move",
+        "before": 0.12683400000000233,
+        "after": 0.25483399999998824,
+        "export": 4.558915999999982
+      },
+      {
+        "input": "F04/swiss:clean",
+        "before": 0.11054200000000947,
+        "after": 0.20900000000000318,
+        "export": 6.343084000000005
+      },
+      {
+        "input": "F04/swiss:narr:strip-emphasis: removed ",
+        "before": 0.12266600000000949,
+        "after": 0.22399999999998954,
+        "export": 4.7055830000000185
+      },
+      {
+        "input": "F04/swiss:narr:primary-on-caption: move",
+        "before": 0.08758299999999508,
+        "after": 0.34062499999998863,
+        "export": 5.400749999999988
+      },
+      {
+        "input": "F04/swiss:narr:dangle-group: group step",
+        "before": 0.12549999999998818,
+        "after": 0.22145899999998164,
+        "export": 4.498542000000015
+      },
+      {
+        "input": "F05/document:clean",
+        "before": 0.1057920000000081,
+        "after": 0.18562500000001592,
+        "export": 5.408500000000004
+      },
+      {
+        "input": "F05/document:narr:strip-emphasis: removed ",
+        "before": 0.11079200000000355,
+        "after": 0.20070899999998915,
+        "export": 5.236082999999979
+      },
+      {
+        "input": "F05/document:narr:primary-on-caption: move",
+        "before": 0.10974999999999113,
+        "after": 0.18241700000001515,
+        "export": 5.095958000000024
+      },
+      {
+        "input": "F05/document:narr:dangle-group: group left",
+        "before": 0.09450000000001069,
+        "after": 0.1717909999999847,
+        "export": 5.078291999999976
+      },
+      {
+        "input": "F06/document:clean",
+        "before": 0.14475000000001614,
+        "after": 0.2920000000000016,
+        "export": 5.317374999999998
+      },
+      {
+        "input": "F06/document:narr:strip-emphasis: removed ",
+        "before": 0.17637500000000728,
+        "after": 0.3225410000000011,
+        "export": 4.991874999999993
+      },
+      {
+        "input": "F06/document:narr:primary-on-caption: move",
+        "before": 0.15891600000000494,
+        "after": 0.28891699999999787,
+        "export": 4.804167000000007
+      },
+      {
+        "input": "F07/swiss:clean",
+        "before": 0.11149999999997817,
+        "after": 0.16449999999997544,
+        "export": 4.91033299999998
+      },
+      {
+        "input": "F07/swiss:narr:strip-emphasis: removed ",
+        "before": 0.10349999999999682,
+        "after": 0.16412500000001273,
+        "export": 4.744708000000003
+      },
+      {
+        "input": "F07/swiss:narr:primary-on-caption: move",
+        "before": 0.1436249999999859,
+        "after": 0.16208300000002396,
+        "export": 4.719832999999994
+      },
+      {
+        "input": "F07/swiss:narr:dangle-group: group hero",
+        "before": 0.10458399999998846,
+        "after": 0.13500000000001933,
+        "export": 4.634500000000003
+      },
+      {
+        "input": "F08/swiss:clean",
+        "before": 0.12054200000000037,
+        "after": 0.20395800000000008,
+        "export": 4.249083999999982
+      },
+      {
+        "input": "F08/swiss:narr:strip-emphasis: removed ",
+        "before": 0.09883300000001327,
+        "after": 0.1762499999999818,
+        "export": 4.391415999999992
+      },
+      {
+        "input": "F08/swiss:narr:primary-on-caption: move",
+        "before": 0.09604200000001129,
+        "after": 0.17804199999994808,
+        "export": 4.562791000000004
+      },
+      {
+        "input": "F08/swiss:narr:dangle-group: group stat",
+        "before": 0.11487499999998363,
+        "after": 0.20129199999996672,
+        "export": 4.657958000000008
+      },
+      {
+        "input": "F09/editorial:clean",
+        "before": 0.10708399999998619,
+        "after": 0.17779200000001083,
+        "export": 4.9793750000000045
+      },
+      {
+        "input": "F09/editorial:narr:strip-emphasis: removed ",
+        "before": 0.07783299999999826,
+        "after": 0.1267909999999688,
+        "export": 4.192292000000009
+      },
+      {
+        "input": "F09/editorial:narr:primary-on-caption: move",
+        "before": 0.10962499999999409,
+        "after": 0.17258300000003146,
+        "export": 4.2654999999999745
+      },
+      {
+        "input": "F10/document:clean",
+        "before": 0.07645800000000236,
+        "after": 0.16304199999996172,
+        "export": 4.487707999999998
+      },
+      {
+        "input": "F10/document:narr:strip-emphasis: removed ",
+        "before": 0.08470800000003464,
+        "after": 0.15158400000001393,
+        "export": 4.473916000000031
+      },
+      {
+        "input": "F10/document:narr:primary-on-caption: move",
+        "before": 0.06520799999998417,
+        "after": 0.15179099999994605,
+        "export": 4.474667000000011
+      },
+      {
+        "input": "F10/document:narr:dangle-group: group step",
+        "before": 0.058334000000002106,
+        "after": 0.1195409999999697,
+        "export": 4.487082999999984
+      },
+      {
+        "input": "F11/document:clean",
+        "before": 0.08129199999996217,
+        "after": 0.1612079999999878,
+        "export": 5.209333000000015
+      },
+      {
+        "input": "F11/document:narr:strip-emphasis: removed ",
+        "before": 0.09120799999999463,
+        "after": 0.14962500000001455,
+        "export": 5.079584000000011
+      },
+      {
+        "input": "F11/document:narr:primary-on-caption: move",
+        "before": 0.10566699999998264,
+        "after": 0.17933400000003985,
+        "export": 4.342207999999971
+      },
+      {
+        "input": "F11/document:narr:dangle-group: group left",
+        "before": 0.07474999999999454,
+        "after": 0.14675000000005411,
+        "export": 4.620292000000006
+      },
+      {
+        "input": "F12/editorial:clean",
+        "before": 0.08875000000000455,
+        "after": 0.17124999999998636,
+        "export": 3.936791000000028
+      },
+      {
+        "input": "F12/editorial:narr:strip-emphasis: removed ",
+        "before": 0.07675000000000409,
+        "after": 0.16145899999997937,
+        "export": 4.346457999999984
+      },
+      {
+        "input": "F12/editorial:narr:primary-on-caption: move",
+        "before": 0.09687500000001137,
+        "after": 0.21033299999999144,
+        "export": 4.1340000000000146
+      },
+      {
+        "input": "F13/expressive:clean",
+        "before": 0.11291599999998425,
+        "after": 0.12716700000004266,
+        "export": 4.19604099999998
+      },
+      {
+        "input": "F13/expressive:narr:strip-emphasis: removed ",
+        "before": 0.11112500000001546,
+        "after": 0.13429199999995944,
+        "export": 3.884166999999991
+      },
+      {
+        "input": "F13/expressive:narr:primary-on-caption: move",
+        "before": 0.10300000000000864,
+        "after": 0.11670900000001438,
+        "export": 3.8842920000000163
+      },
+      {
+        "input": "F14/expressive:clean",
+        "before": 0.062415999999984706,
+        "after": 0.09316599999999653,
+        "export": 3.9468329999999696
+      },
+      {
+        "input": "F14/expressive:narr:strip-emphasis: removed ",
+        "before": 0.0519170000000031,
+        "after": 0.08608299999997371,
+        "export": 3.979959000000008
+      },
+      {
+        "input": "F14/expressive:narr:primary-on-caption: move",
+        "before": 0.06387499999999591,
+        "after": 0.09295800000001009,
+        "export": 4.132915999999966
+      },
+      {
+        "input": "F15/document:clean",
+        "before": 0.08474999999998545,
+        "after": 0.129291999999964,
+        "export": 4.797041999999976
+      },
+      {
+        "input": "F15/document:narr:strip-emphasis: removed ",
+        "before": 0.11608400000000074,
+        "after": 0.15825000000000955,
+        "export": 8.831624999999974
+      },
+      {
+        "input": "F15/document:narr:primary-on-caption: move",
+        "before": 0.10229200000003402,
+        "after": 0.14154200000001538,
+        "export": 7.592042000000049
+      },
+      {
+        "input": "F15/document:narr:dangle-group: group hero",
+        "before": 0.08745799999996962,
+        "after": 0.12233399999996664,
+        "export": 8.701958999999988
+      },
+      {
+        "input": "F15/swiss:clean",
+        "before": 0.1052090000000021,
+        "after": 0.14995799999996962,
+        "export": 4.365375000000029
+      },
+      {
+        "input": "F15/swiss:narr:strip-emphasis: removed ",
+        "before": 0.10612500000002001,
+        "after": 0.16816699999998264,
+        "export": 4.570666999999958
+      },
+      {
+        "input": "F15/swiss:narr:primary-on-caption: move",
+        "before": 0.08400000000000318,
+        "after": 0.1337920000000281,
+        "export": 4.079082999999969
+      },
+      {
+        "input": "F15/swiss:narr:dangle-group: group hero",
+        "before": 0.09608400000001893,
+        "after": 0.13266600000002882,
+        "export": 4.270416999999952
+      },
+      {
+        "input": "F16/editorial:clean",
+        "before": 0.0736660000000029,
+        "after": 0.08612499999998136,
+        "export": 4.6049580000000105
+      },
+      {
+        "input": "F16/editorial:narr:strip-emphasis: removed ",
+        "before": 0.0439169999999649,
+        "after": 0.1741660000000138,
+        "export": 3.861500000000035
+      },
+      {
+        "input": "F16/editorial:narr:primary-on-caption: move",
+        "before": 0.05916700000000219,
+        "after": 0.08650000000000091,
+        "export": 3.8380410000000325
+      }
+    ]
+  },
+  "items": [
+    {
+      "itemId": "F01/swiss:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F01-s1-b1",
+            "F01-s1-b3",
+            "F01-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F01-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F01-s1-b2"
+          ],
+          "evidence": "block F01-s1-b2 estimate 10.29x0.68in exceeds box 12.13x0.68in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F01/swiss:narr:S001",
+      "seeds": [
+        {
+          "fixtureId": "F01",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S001"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F01-s1"
+          ],
+          "evidence": "4 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F01-s1-b1",
+            "F01-s1-b3",
+            "F01-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F01-s1-b2"
+        }
+      ]
+    },
+    {
+      "itemId": "F01/swiss:narr:S002",
+      "seeds": [
+        {
+          "fixtureId": "F01",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #1 to caption #3",
+          "id": "S002"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#3"
+          ],
+          "evidence": "block #3 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F01-s1-b1",
+            "F01-s1-b3"
+          ],
+          "evidence": "F01-s1-b1 P=274.31 exceeds primary F01-s1-b3 P=9.00 by 2947.9% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F01-s1-b1",
+            "F01-s1-b3",
+            "F01-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F01-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F01-s1-b1"
+          ],
+          "evidence": "number F01-s1-b1 P=274.31 exceeds max primary P=9.00 by 2947.9% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F01-s1-b1"
+          ],
+          "evidence": "block F01-s1-b1 estimate 5.19x2.57in exceeds box 6.94x2.33in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F01/swiss:narr:S003",
+      "seeds": [
+        {
+          "fixtureId": "F01",
+          "category": "grouping",
+          "level": "narrative",
+          "mutation": "dangle-group: group hero reduced 2 -> 1 member",
+          "id": "S003"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "#1"
+          ],
+          "evidence": "group hero has 1 member (block #1)"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "F01-s1-b1"
+          ],
+          "evidence": "group hero has 1 member (F01-s1-b1)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F01-s1-b2"
+          ],
+          "evidence": "block F01-s1-b2 estimate 10.29x0.68in exceeds box 12.13x0.68in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F01/swiss:deck:S004",
+      "seeds": [
+        {
+          "fixtureId": "F01",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 14pt/400 (verified c/primary-subordinate)",
+          "id": "S004"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F01-s1-b2",
+            "F01-s1-b1"
+          ],
+          "evidence": "F01-s1-b2 P=67.69 exceeds primary F01-s1-b1 P=14.00 by 383.5% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F01-s1-b1",
+            "F01-s1-b3",
+            "F01-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F01-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F01-s1-b2"
+          ],
+          "evidence": "block F01-s1-b2 estimate 10.29x0.68in exceeds box 12.13x0.68in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F01/swiss:deck:S005",
+      "seeds": [
+        {
+          "fixtureId": "F01",
+          "category": "grouping",
+          "level": "deck",
+          "mutation": "grouping-swap: rect F01-s1-b1 <-> F01-s1-b0 (verified c/grouping-split)",
+          "id": "S005"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F01-s1-b1",
+            "F01-s1-b3",
+            "F01-s1-b0"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[0.72,5.24] cut by F01-s1-b0"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F01-s1-b2"
+          ],
+          "evidence": "block F01-s1-b2 estimate 10.29x0.68in exceeds box 12.13x0.68in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F01/swiss:deck:S006",
+      "seeds": [
+        {
+          "fixtureId": "F01",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F01-s1-b0 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S006"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F01-s1-b1",
+            "F01-s1-b3",
+            "F01-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F01-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F01-s1-b0"
+          ],
+          "evidence": "block F01-s1-b0 estimate 3.79x0.51in exceeds box 12.13x0.18in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F01/swiss:deck:S007",
+      "seeds": [
+        {
+          "fixtureId": "F01",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F01-s1-b0 mixed 50% toward bg (verified c/contrast)",
+          "id": "S007"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F01-s1-b1",
+            "F01-s1-b3",
+            "F01-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F01-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F01-s1-b2"
+          ],
+          "evidence": "block F01-s1-b2 estimate 10.29x0.68in exceeds box 12.13x0.68in (ESTIMATE-ONLY)"
+        },
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F01-s1-b0"
+          ],
+          "evidence": "block F01-s1-b0 contrast 2.83:1 < 3:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F02/swiss:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F02-s1-b2",
+            "F02-s1-b3",
+            "F02-s1-b4",
+            "F02-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.58] cut by F02-s1-b1"
+        }
+      ]
+    },
+    {
+      "itemId": "F02/swiss:narr:S008",
+      "seeds": [
+        {
+          "fixtureId": "F02",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S008"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F02-s1"
+          ],
+          "evidence": "6 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F02-s1-b2",
+            "F02-s1-b3",
+            "F02-s1-b4",
+            "F02-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.58] cut by F02-s1-b1"
+        }
+      ]
+    },
+    {
+      "itemId": "F02/swiss:narr:S009",
+      "seeds": [
+        {
+          "fixtureId": "F02",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #1 to caption #5",
+          "id": "S009"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#5"
+          ],
+          "evidence": "block #5 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F02-s1-b1",
+            "F02-s1-b5"
+          ],
+          "evidence": "F02-s1-b1 P=35.63 exceeds primary F02-s1-b5 P=9.00 by 295.8% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F02-s1-b2",
+            "F02-s1-b3",
+            "F02-s1-b4",
+            "F02-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.58] cut by F02-s1-b1"
+        }
+      ]
+    },
+    {
+      "itemId": "F02/swiss:narr:S010",
+      "seeds": [
+        {
+          "fixtureId": "F02",
+          "category": "grouping",
+          "level": "narrative",
+          "mutation": "dangle-group: group stats reduced 3 -> 1 member",
+          "id": "S010"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "#2"
+          ],
+          "evidence": "group stats has 1 member (block #2)"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "F02-s1-b2"
+          ],
+          "evidence": "group stats has 1 member (F02-s1-b2)"
+        }
+      ]
+    },
+    {
+      "itemId": "F02/swiss:deck:S011",
+      "seeds": [
+        {
+          "fixtureId": "F02",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 10pt/400 (verified c/primary-subordinate)",
+          "id": "S011"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F02-s1-b2",
+            "F02-s1-b1"
+          ],
+          "evidence": "F02-s1-b2 P=12.00 exceeds primary F02-s1-b1 P=10.00 by 20.0% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F02-s1-b2",
+            "F02-s1-b3",
+            "F02-s1-b4",
+            "F02-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.58] cut by F02-s1-b1"
+        }
+      ]
+    },
+    {
+      "itemId": "F02/swiss:deck:S012",
+      "seeds": [
+        {
+          "fixtureId": "F02",
+          "category": "grouping",
+          "level": "deck",
+          "mutation": "grouping-swap: rect F02-s1-b2 <-> F02-s1-b0 (verified c/grouping-split)",
+          "id": "S012"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F02-s1-b2",
+            "F02-s1-b3",
+            "F02-s1-b4",
+            "F02-s1-b0"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[1.10,3.58] cut by F02-s1-b0"
+        }
+      ]
+    },
+    {
+      "itemId": "F02/swiss:deck:S013",
+      "seeds": [
+        {
+          "fixtureId": "F02",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F02-s1-b0 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S013"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F02-s1-b2",
+            "F02-s1-b3",
+            "F02-s1-b4",
+            "F02-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.58] cut by F02-s1-b1"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F02-s1-b0"
+          ],
+          "evidence": "block F02-s1-b0 estimate 0.99x0.14in exceeds box 5.92x0.07in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F02/swiss:deck:S014",
+      "seeds": [
+        {
+          "fixtureId": "F02",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F02-s1-b0 mixed 50% toward bg (verified c/contrast)",
+          "id": "S014"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F02-s1-b2",
+            "F02-s1-b3",
+            "F02-s1-b4",
+            "F02-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.58] cut by F02-s1-b1"
+        },
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F02-s1-b0"
+          ],
+          "evidence": "block F02-s1-b0 contrast 2.41:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F03/editorial:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": []
+    },
+    {
+      "itemId": "F03/editorial:narr:S015",
+      "seeds": [
+        {
+          "fixtureId": "F03",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S015"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F03-s1"
+          ],
+          "evidence": "4 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": []
+    },
+    {
+      "itemId": "F03/editorial:narr:S016",
+      "seeds": [
+        {
+          "fixtureId": "F03",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #1 to caption #3",
+          "id": "S016"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#3"
+          ],
+          "evidence": "block #3 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F03-s1-b1",
+            "F03-s1-b3"
+          ],
+          "evidence": "F03-s1-b1 P=54.63 exceeds primary F03-s1-b3 P=10.00 by 446.3% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F03-s1-b1"
+          ],
+          "evidence": "block F03-s1-b1 estimate 5.91x1.14in exceeds box 8.60x0.58in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F03/editorial:deck:S017",
+      "seeds": [
+        {
+          "fixtureId": "F03",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 14pt/400 (verified c/primary-subordinate)",
+          "id": "S017"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F03-s1-b2",
+            "F03-s1-b1"
+          ],
+          "evidence": "F03-s1-b2 P=15.00 exceeds primary F03-s1-b1 P=14.00 by 7.1% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F03/editorial:deck:S018",
+      "seeds": [
+        {
+          "fixtureId": "F03",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F03-s1-b0 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S018"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F03-s1-b0"
+          ],
+          "evidence": "block F03-s1-b0 estimate 1.08x0.17in exceeds box 8.60x0.08in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F03/editorial:deck:S019",
+      "seeds": [
+        {
+          "fixtureId": "F03",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F03-s1-b0 mixed 50% toward bg (verified c/contrast)",
+          "id": "S019"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F03-s1-b0"
+          ],
+          "evidence": "block F03-s1-b0 contrast 2.58:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F04/swiss:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F04-s1-b1",
+            "F04-s1-b2",
+            "F04-s1-b3",
+            "F04-s1-b0"
+          ],
+          "evidence": "group steps bbox x[0.60,11.81] y[2.35,3.54] cut by F04-s1-b0"
+        }
+      ]
+    },
+    {
+      "itemId": "F04/swiss:narr:S020",
+      "seeds": [
+        {
+          "fixtureId": "F04",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S020"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F04-s1"
+          ],
+          "evidence": "5 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F04-s1-b1",
+            "F04-s1-b2",
+            "F04-s1-b3",
+            "F04-s1-b0"
+          ],
+          "evidence": "group steps bbox x[0.60,11.81] y[2.35,3.54] cut by F04-s1-b0"
+        }
+      ]
+    },
+    {
+      "itemId": "F04/swiss:narr:S021",
+      "seeds": [
+        {
+          "fixtureId": "F04",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #0 to caption #4",
+          "id": "S021"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#4"
+          ],
+          "evidence": "block #4 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F04-s1-b0",
+            "F04-s1-b4"
+          ],
+          "evidence": "F04-s1-b0 P=35.63 exceeds primary F04-s1-b4 P=9.00 by 295.8% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F04-s1-b1",
+            "F04-s1-b2",
+            "F04-s1-b3",
+            "F04-s1-b0"
+          ],
+          "evidence": "group steps bbox x[0.60,11.81] y[2.35,3.54] cut by F04-s1-b0"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F04-s1-b0"
+          ],
+          "evidence": "block F04-s1-b0 estimate 4.97x0.72in exceeds box 5.92x0.40in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F04/swiss:narr:S022",
+      "seeds": [
+        {
+          "fixtureId": "F04",
+          "category": "grouping",
+          "level": "narrative",
+          "mutation": "dangle-group: group steps reduced 3 -> 1 member",
+          "id": "S022"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "#1"
+          ],
+          "evidence": "group steps has 1 member (block #1)"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "F04-s1-b1"
+          ],
+          "evidence": "group steps has 1 member (F04-s1-b1)"
+        }
+      ]
+    },
+    {
+      "itemId": "F04/swiss:deck:S023",
+      "seeds": [
+        {
+          "fixtureId": "F04",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 10pt/400 (verified c/primary-subordinate)",
+          "id": "S023"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F04-s1-b1",
+            "F04-s1-b0"
+          ],
+          "evidence": "F04-s1-b1 P=12.00 exceeds primary F04-s1-b0 P=10.00 by 20.0% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F04-s1-b1",
+            "F04-s1-b2",
+            "F04-s1-b3",
+            "F04-s1-b0"
+          ],
+          "evidence": "group steps bbox x[0.60,11.81] y[2.35,3.54] cut by F04-s1-b0"
+        }
+      ]
+    },
+    {
+      "itemId": "F04/swiss:deck:S024",
+      "seeds": [
+        {
+          "fixtureId": "F04",
+          "category": "grouping",
+          "level": "deck",
+          "mutation": "grouping-swap: rect F04-s1-b1 <-> F04-s1-b0 (verified c/grouping-split)",
+          "id": "S024"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F04-s1-b1",
+            "F04-s1-b2",
+            "F04-s1-b3",
+            "F04-s1-b0"
+          ],
+          "evidence": "group steps bbox x[0.60,11.81] y[2.35,3.54] cut by F04-s1-b0"
+        }
+      ]
+    },
+    {
+      "itemId": "F04/swiss:deck:S025",
+      "seeds": [
+        {
+          "fixtureId": "F04",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F04-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S025"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F04-s1-b1",
+            "F04-s1-b2",
+            "F04-s1-b3",
+            "F04-s1-b0"
+          ],
+          "evidence": "group steps bbox x[0.60,11.81] y[2.35,3.54] cut by F04-s1-b0"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F04-s1-b1"
+          ],
+          "evidence": "block F04-s1-b1 estimate 3.92x0.19in exceeds box 5.00x0.09in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F04/swiss:deck:S026",
+      "seeds": [
+        {
+          "fixtureId": "F04",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F04-s1-b1 mixed 50% toward bg (verified c/contrast)",
+          "id": "S026"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F04-s1-b1",
+            "F04-s1-b2",
+            "F04-s1-b3",
+            "F04-s1-b0"
+          ],
+          "evidence": "group steps bbox x[0.60,11.81] y[2.35,3.54] cut by F04-s1-b0"
+        },
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F04-s1-b1"
+          ],
+          "evidence": "block F04-s1-b1 contrast 3.85:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F05/document:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": []
+    },
+    {
+      "itemId": "F05/document:narr:S027",
+      "seeds": [
+        {
+          "fixtureId": "F05",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S027"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F05-s1"
+          ],
+          "evidence": "6 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": []
+    },
+    {
+      "itemId": "F05/document:narr:S028",
+      "seeds": [
+        {
+          "fixtureId": "F05",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #0 to caption #5",
+          "id": "S028"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#5"
+          ],
+          "evidence": "block #5 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F05-s1-b0",
+            "F05-s1-b5"
+          ],
+          "evidence": "F05-s1-b0 P=40.38 exceeds primary F05-s1-b5 P=9.00 by 348.6% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F05/document:narr:S029",
+      "seeds": [
+        {
+          "fixtureId": "F05",
+          "category": "grouping",
+          "level": "narrative",
+          "mutation": "dangle-group: group left reduced 2 -> 1 member",
+          "id": "S029"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "#1"
+          ],
+          "evidence": "group left has 1 member (block #1)"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "F05-s1-b1"
+          ],
+          "evidence": "group left has 1 member (F05-s1-b1)"
+        }
+      ]
+    },
+    {
+      "itemId": "F05/document:deck:S030",
+      "seeds": [
+        {
+          "fixtureId": "F05",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 10pt/400 (verified c/primary-subordinate)",
+          "id": "S030"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F05-s1-b1",
+            "F05-s1-b0"
+          ],
+          "evidence": "F05-s1-b1 P=12.50 exceeds primary F05-s1-b0 P=10.00 by 25.0% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F05/document:deck:S031",
+      "seeds": [
+        {
+          "fixtureId": "F05",
+          "category": "grouping",
+          "level": "deck",
+          "mutation": "grouping-swap: rect F05-s1-b1 <-> F05-s1-b0 (verified c/grouping-split)",
+          "id": "S031"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F05-s1-b1",
+            "F05-s1-b2",
+            "F05-s1-b0"
+          ],
+          "evidence": "group left bbox x[3.20,12.63] y[1.00,2.31] cut by F05-s1-b0"
+        }
+      ]
+    },
+    {
+      "itemId": "F05/document:deck:S032",
+      "seeds": [
+        {
+          "fixtureId": "F05",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F05-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S032"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F05-s1-b1"
+          ],
+          "evidence": "block F05-s1-b1 estimate 2.78x0.21in exceeds box 5.56x0.09in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F05/document:deck:S033",
+      "seeds": [
+        {
+          "fixtureId": "F05",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F05-s1-b1 mixed 50% toward bg (verified c/contrast)",
+          "id": "S033"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F05-s1-b1"
+          ],
+          "evidence": "block F05-s1-b1 contrast 2.91:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F06/document:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": []
+    },
+    {
+      "itemId": "F06/document:narr:S034",
+      "seeds": [
+        {
+          "fixtureId": "F06",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S034"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F06-s1"
+          ],
+          "evidence": "7 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": []
+    },
+    {
+      "itemId": "F06/document:narr:S035",
+      "seeds": [
+        {
+          "fixtureId": "F06",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #0 to caption #6",
+          "id": "S035"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#6"
+          ],
+          "evidence": "block #6 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F06-s1-b0",
+            "F06-s1-b6"
+          ],
+          "evidence": "F06-s1-b0 P=40.38 exceeds primary F06-s1-b6 P=9.00 by 348.6% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F06/document:deck:S036",
+      "seeds": [
+        {
+          "fixtureId": "F06",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 10pt/400 (verified c/primary-subordinate)",
+          "id": "S036"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F06-s1-b1",
+            "F06-s1-b0"
+          ],
+          "evidence": "F06-s1-b1 P=12.50 exceeds primary F06-s1-b0 P=10.00 by 25.0% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F06/document:deck:S037",
+      "seeds": [
+        {
+          "fixtureId": "F06",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F06-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S037"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F06-s1-b1"
+          ],
+          "evidence": "block F06-s1-b1 estimate 4.43x0.42in exceeds box 5.21x0.18in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F06/document:deck:S038",
+      "seeds": [
+        {
+          "fixtureId": "F06",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F06-s1-b1 mixed 50% toward bg (verified c/contrast)",
+          "id": "S038"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F06-s1-b1"
+          ],
+          "evidence": "block F06-s1-b1 contrast 2.91:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F07/swiss:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F07-s1-b1",
+            "F07-s1-b3",
+            "F07-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F07-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F07-s1-b2"
+          ],
+          "evidence": "block F07-s1-b2 estimate 3.43x0.68in exceeds box 12.13x0.68in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F07/swiss:narr:S039",
+      "seeds": [
+        {
+          "fixtureId": "F07",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S039"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F07-s1"
+          ],
+          "evidence": "4 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F07-s1-b1",
+            "F07-s1-b3",
+            "F07-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F07-s1-b2"
+        }
+      ]
+    },
+    {
+      "itemId": "F07/swiss:narr:S040",
+      "seeds": [
+        {
+          "fixtureId": "F07",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #1 to caption #3",
+          "id": "S040"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#3"
+          ],
+          "evidence": "block #3 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F07-s1-b1",
+            "F07-s1-b3"
+          ],
+          "evidence": "F07-s1-b1 P=274.31 exceeds primary F07-s1-b3 P=9.00 by 2947.9% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F07-s1-b1",
+            "F07-s1-b3",
+            "F07-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F07-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F07-s1-b1"
+          ],
+          "evidence": "number F07-s1-b1 P=274.31 exceeds max primary P=9.00 by 2947.9% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F07-s1-b1"
+          ],
+          "evidence": "block F07-s1-b1 estimate 5.19x2.57in exceeds box 6.94x2.33in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F07/swiss:narr:S041",
+      "seeds": [
+        {
+          "fixtureId": "F07",
+          "category": "grouping",
+          "level": "narrative",
+          "mutation": "dangle-group: group hero reduced 2 -> 1 member",
+          "id": "S041"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "#1"
+          ],
+          "evidence": "group hero has 1 member (block #1)"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "F07-s1-b1"
+          ],
+          "evidence": "group hero has 1 member (F07-s1-b1)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F07-s1-b2"
+          ],
+          "evidence": "block F07-s1-b2 estimate 3.43x0.68in exceeds box 12.13x0.68in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F07/swiss:deck:S042",
+      "seeds": [
+        {
+          "fixtureId": "F07",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 14pt/400 (verified c/primary-subordinate)",
+          "id": "S042"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F07-s1-b2",
+            "F07-s1-b1"
+          ],
+          "evidence": "F07-s1-b2 P=67.69 exceeds primary F07-s1-b1 P=14.00 by 383.5% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F07-s1-b1",
+            "F07-s1-b3",
+            "F07-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F07-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F07-s1-b2"
+          ],
+          "evidence": "block F07-s1-b2 estimate 3.43x0.68in exceeds box 12.13x0.68in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F07/swiss:deck:S043",
+      "seeds": [
+        {
+          "fixtureId": "F07",
+          "category": "grouping",
+          "level": "deck",
+          "mutation": "grouping-swap: rect F07-s1-b1 <-> F07-s1-b0 (verified c/grouping-split)",
+          "id": "S043"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F07-s1-b1",
+            "F07-s1-b3",
+            "F07-s1-b0"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[0.72,5.24] cut by F07-s1-b0"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F07-s1-b2"
+          ],
+          "evidence": "block F07-s1-b2 estimate 3.43x0.68in exceeds box 12.13x0.68in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F07/swiss:deck:S044",
+      "seeds": [
+        {
+          "fixtureId": "F07",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F07-s1-b0 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S044"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F07-s1-b1",
+            "F07-s1-b3",
+            "F07-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F07-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F07-s1-b0"
+          ],
+          "evidence": "block F07-s1-b0 estimate 1.89x0.51in exceeds box 12.13x0.18in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F07/swiss:deck:S045",
+      "seeds": [
+        {
+          "fixtureId": "F07",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F07-s1-b0 mixed 50% toward bg (verified c/contrast)",
+          "id": "S045"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F07-s1-b1",
+            "F07-s1-b3",
+            "F07-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.24] cut by F07-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F07-s1-b2"
+          ],
+          "evidence": "block F07-s1-b2 estimate 3.43x0.68in exceeds box 12.13x0.68in (ESTIMATE-ONLY)"
+        },
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F07-s1-b0"
+          ],
+          "evidence": "block F07-s1-b0 contrast 2.83:1 < 3:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F08/swiss:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F08-s1-b2",
+            "F08-s1-b3",
+            "F08-s1-b4",
+            "F08-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.54] cut by F08-s1-b1"
+        }
+      ]
+    },
+    {
+      "itemId": "F08/swiss:narr:S046",
+      "seeds": [
+        {
+          "fixtureId": "F08",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S046"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F08-s1"
+          ],
+          "evidence": "6 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F08-s1-b2",
+            "F08-s1-b3",
+            "F08-s1-b4",
+            "F08-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.54] cut by F08-s1-b1"
+        }
+      ]
+    },
+    {
+      "itemId": "F08/swiss:narr:S047",
+      "seeds": [
+        {
+          "fixtureId": "F08",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #1 to caption #5",
+          "id": "S047"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#5"
+          ],
+          "evidence": "block #5 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F08-s1-b1",
+            "F08-s1-b5"
+          ],
+          "evidence": "F08-s1-b1 P=35.63 exceeds primary F08-s1-b5 P=9.00 by 295.8% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F08-s1-b2",
+            "F08-s1-b3",
+            "F08-s1-b4",
+            "F08-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.54] cut by F08-s1-b1"
+        }
+      ]
+    },
+    {
+      "itemId": "F08/swiss:narr:S048",
+      "seeds": [
+        {
+          "fixtureId": "F08",
+          "category": "grouping",
+          "level": "narrative",
+          "mutation": "dangle-group: group stats reduced 3 -> 1 member",
+          "id": "S048"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "#2"
+          ],
+          "evidence": "group stats has 1 member (block #2)"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "F08-s1-b2"
+          ],
+          "evidence": "group stats has 1 member (F08-s1-b2)"
+        }
+      ]
+    },
+    {
+      "itemId": "F08/swiss:deck:S049",
+      "seeds": [
+        {
+          "fixtureId": "F08",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 10pt/400 (verified c/primary-subordinate)",
+          "id": "S049"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F08-s1-b2",
+            "F08-s1-b1"
+          ],
+          "evidence": "F08-s1-b2 P=12.00 exceeds primary F08-s1-b1 P=10.00 by 20.0% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F08-s1-b2",
+            "F08-s1-b3",
+            "F08-s1-b4",
+            "F08-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.54] cut by F08-s1-b1"
+        }
+      ]
+    },
+    {
+      "itemId": "F08/swiss:deck:S050",
+      "seeds": [
+        {
+          "fixtureId": "F08",
+          "category": "grouping",
+          "level": "deck",
+          "mutation": "grouping-swap: rect F08-s1-b2 <-> F08-s1-b0 (verified c/grouping-split)",
+          "id": "S050"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F08-s1-b2",
+            "F08-s1-b3",
+            "F08-s1-b4",
+            "F08-s1-b0"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[1.10,3.54] cut by F08-s1-b0"
+        }
+      ]
+    },
+    {
+      "itemId": "F08/swiss:deck:S051",
+      "seeds": [
+        {
+          "fixtureId": "F08",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F08-s1-b0 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S051"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F08-s1-b2",
+            "F08-s1-b3",
+            "F08-s1-b4",
+            "F08-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.54] cut by F08-s1-b1"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F08-s1-b0"
+          ],
+          "evidence": "block F08-s1-b0 estimate 0.63x0.14in exceeds box 5.92x0.07in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F08/swiss:deck:S052",
+      "seeds": [
+        {
+          "fixtureId": "F08",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F08-s1-b0 mixed 50% toward bg (verified c/contrast)",
+          "id": "S052"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F08-s1-b2",
+            "F08-s1-b3",
+            "F08-s1-b4",
+            "F08-s1-b1"
+          ],
+          "evidence": "group stats bbox x[0.60,11.81] y[2.35,3.54] cut by F08-s1-b1"
+        },
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F08-s1-b0"
+          ],
+          "evidence": "block F08-s1-b0 contrast 2.36:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F09/editorial:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": []
+    },
+    {
+      "itemId": "F09/editorial:narr:S053",
+      "seeds": [
+        {
+          "fixtureId": "F09",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S053"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F09-s1"
+          ],
+          "evidence": "4 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": []
+    },
+    {
+      "itemId": "F09/editorial:narr:S054",
+      "seeds": [
+        {
+          "fixtureId": "F09",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #1 to caption #3",
+          "id": "S054"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#3"
+          ],
+          "evidence": "block #3 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F09-s1-b1",
+            "F09-s1-b3"
+          ],
+          "evidence": "F09-s1-b1 P=54.63 exceeds primary F09-s1-b3 P=10.00 by 446.3% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F09/editorial:deck:S055",
+      "seeds": [
+        {
+          "fixtureId": "F09",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 14pt/400 (verified c/primary-subordinate)",
+          "id": "S055"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F09-s1-b2",
+            "F09-s1-b1"
+          ],
+          "evidence": "F09-s1-b2 P=15.00 exceeds primary F09-s1-b1 P=14.00 by 7.1% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F09/editorial:deck:S056",
+      "seeds": [
+        {
+          "fixtureId": "F09",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F09-s1-b0 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S056"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F09-s1-b0"
+          ],
+          "evidence": "block F09-s1-b0 estimate 0.20x0.17in exceeds box 8.60x0.08in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F09/editorial:deck:S057",
+      "seeds": [
+        {
+          "fixtureId": "F09",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F09-s1-b0 mixed 50% toward bg (verified c/contrast)",
+          "id": "S057"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F09-s1-b0"
+          ],
+          "evidence": "block F09-s1-b0 contrast 2.58:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F10/document:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": []
+    },
+    {
+      "itemId": "F10/document:narr:S058",
+      "seeds": [
+        {
+          "fixtureId": "F10",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S058"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F10-s1"
+          ],
+          "evidence": "5 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": []
+    },
+    {
+      "itemId": "F10/document:narr:S059",
+      "seeds": [
+        {
+          "fixtureId": "F10",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #0 to caption #4",
+          "id": "S059"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#4"
+          ],
+          "evidence": "block #4 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F10-s1-b0",
+            "F10-s1-b4"
+          ],
+          "evidence": "F10-s1-b0 P=40.38 exceeds primary F10-s1-b4 P=9.00 by 348.6% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F10/document:narr:S060",
+      "seeds": [
+        {
+          "fixtureId": "F10",
+          "category": "grouping",
+          "level": "narrative",
+          "mutation": "dangle-group: group steps reduced 3 -> 1 member",
+          "id": "S060"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "#1"
+          ],
+          "evidence": "group steps has 1 member (block #1)"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "F10-s1-b1"
+          ],
+          "evidence": "group steps has 1 member (F10-s1-b1)"
+        }
+      ]
+    },
+    {
+      "itemId": "F10/document:deck:S061",
+      "seeds": [
+        {
+          "fixtureId": "F10",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 10pt/400 (verified c/primary-subordinate)",
+          "id": "S061"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F10-s1-b1",
+            "F10-s1-b0"
+          ],
+          "evidence": "F10-s1-b1 P=12.50 exceeds primary F10-s1-b0 P=10.00 by 25.0% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F10/document:deck:S062",
+      "seeds": [
+        {
+          "fixtureId": "F10",
+          "category": "grouping",
+          "level": "deck",
+          "mutation": "grouping-swap: rect F10-s1-b1 <-> F10-s1-b0 (verified c/grouping-split)",
+          "id": "S062"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F10-s1-b1",
+            "F10-s1-b2",
+            "F10-s1-b3",
+            "F10-s1-b0"
+          ],
+          "evidence": "group steps bbox x[3.20,12.63] y[1.00,2.73] cut by F10-s1-b0"
+        }
+      ]
+    },
+    {
+      "itemId": "F10/document:deck:S063",
+      "seeds": [
+        {
+          "fixtureId": "F10",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F10-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S063"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F10-s1-b1"
+          ],
+          "evidence": "block F10-s1-b1 estimate 1.56x0.21in exceeds box 6.08x0.09in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F10/document:deck:S064",
+      "seeds": [
+        {
+          "fixtureId": "F10",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F10-s1-b1 mixed 50% toward bg (verified c/contrast)",
+          "id": "S064"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F10-s1-b1"
+          ],
+          "evidence": "block F10-s1-b1 contrast 3.26:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F11/document:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": []
+    },
+    {
+      "itemId": "F11/document:narr:S065",
+      "seeds": [
+        {
+          "fixtureId": "F11",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S065"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F11-s1"
+          ],
+          "evidence": "6 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": []
+    },
+    {
+      "itemId": "F11/document:narr:S066",
+      "seeds": [
+        {
+          "fixtureId": "F11",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #0 to caption #5",
+          "id": "S066"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#5"
+          ],
+          "evidence": "block #5 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F11-s1-b0",
+            "F11-s1-b5"
+          ],
+          "evidence": "F11-s1-b0 P=40.38 exceeds primary F11-s1-b5 P=9.00 by 348.6% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F11/document:narr:S067",
+      "seeds": [
+        {
+          "fixtureId": "F11",
+          "category": "grouping",
+          "level": "narrative",
+          "mutation": "dangle-group: group left reduced 2 -> 1 member",
+          "id": "S067"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "#1"
+          ],
+          "evidence": "group left has 1 member (block #1)"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "F11-s1-b1"
+          ],
+          "evidence": "group left has 1 member (F11-s1-b1)"
+        }
+      ]
+    },
+    {
+      "itemId": "F11/document:deck:S068",
+      "seeds": [
+        {
+          "fixtureId": "F11",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 10pt/400 (verified c/primary-subordinate)",
+          "id": "S068"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F11-s1-b1",
+            "F11-s1-b0"
+          ],
+          "evidence": "F11-s1-b1 P=12.50 exceeds primary F11-s1-b0 P=10.00 by 25.0% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F11/document:deck:S069",
+      "seeds": [
+        {
+          "fixtureId": "F11",
+          "category": "grouping",
+          "level": "deck",
+          "mutation": "grouping-swap: rect F11-s1-b1 <-> F11-s1-b0 (verified c/grouping-split)",
+          "id": "S069"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F11-s1-b1",
+            "F11-s1-b2",
+            "F11-s1-b0"
+          ],
+          "evidence": "group left bbox x[3.20,12.63] y[1.00,2.31] cut by F11-s1-b0"
+        }
+      ]
+    },
+    {
+      "itemId": "F11/document:deck:S070",
+      "seeds": [
+        {
+          "fixtureId": "F11",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F11-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S070"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F11-s1-b1"
+          ],
+          "evidence": "block F11-s1-b1 estimate 1.56x0.21in exceeds box 5.56x0.09in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F11/document:deck:S071",
+      "seeds": [
+        {
+          "fixtureId": "F11",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F11-s1-b1 mixed 50% toward bg (verified c/contrast)",
+          "id": "S071"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F11-s1-b1"
+          ],
+          "evidence": "block F11-s1-b1 contrast 2.91:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F12/editorial:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": []
+    },
+    {
+      "itemId": "F12/editorial:narr:S072",
+      "seeds": [
+        {
+          "fixtureId": "F12",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S072"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F12-s1"
+          ],
+          "evidence": "7 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": []
+    },
+    {
+      "itemId": "F12/editorial:narr:S073",
+      "seeds": [
+        {
+          "fixtureId": "F12",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #0 to caption #6",
+          "id": "S073"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#6"
+          ],
+          "evidence": "block #6 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F12-s1-b0",
+            "F12-s1-b6"
+          ],
+          "evidence": "F12-s1-b0 P=54.63 exceeds primary F12-s1-b6 P=10.00 by 446.3% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F12/editorial:deck:S074",
+      "seeds": [
+        {
+          "fixtureId": "F12",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 14pt/400 (verified c/primary-subordinate)",
+          "id": "S074"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F12-s1-b1",
+            "F12-s1-b0"
+          ],
+          "evidence": "F12-s1-b1 P=15.00 exceeds primary F12-s1-b0 P=14.00 by 7.1% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F12/editorial:deck:S075",
+      "seeds": [
+        {
+          "fixtureId": "F12",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F12-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S075"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F12-s1-b1"
+          ],
+          "evidence": "block F12-s1-b1 estimate 4.06x0.27in exceeds box 6.25x0.23in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F12/editorial:deck:S076",
+      "seeds": [
+        {
+          "fixtureId": "F12",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F12-s1-b1 mixed 50% toward bg (verified c/contrast)",
+          "id": "S076"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F12-s1-b1"
+          ],
+          "evidence": "block F12-s1-b1 contrast 2.90:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F13/expressive:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": []
+    },
+    {
+      "itemId": "F13/expressive:narr:S077",
+      "seeds": [
+        {
+          "fixtureId": "F13",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S077"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F13-s1"
+          ],
+          "evidence": "3 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": []
+    },
+    {
+      "itemId": "F13/expressive:narr:S078",
+      "seeds": [
+        {
+          "fixtureId": "F13",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #0 to caption #2",
+          "id": "S078"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#2"
+          ],
+          "evidence": "block #2 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F13-s1-b0",
+            "F13-s1-b2"
+          ],
+          "evidence": "F13-s1-b0 P=84.00 exceeds primary F13-s1-b2 P=10.63 by 690.6% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F13-s1-b0"
+          ],
+          "evidence": "block F13-s1-b0 estimate 6.78x0.75in exceeds box 10.30x0.73in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F13/expressive:deck:S079",
+      "seeds": [
+        {
+          "fixtureId": "F13",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 12pt/400 (verified c/primary-subordinate)",
+          "id": "S079"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F13-s1-b1",
+            "F13-s1-b0"
+          ],
+          "evidence": "F13-s1-b1 P=13.00 exceeds primary F13-s1-b0 P=12.00 by 8.3% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F13/expressive:deck:S080",
+      "seeds": [
+        {
+          "fixtureId": "F13",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F13-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S080"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F13-s1-b1"
+          ],
+          "evidence": "block F13-s1-b1 estimate 5.51x0.46in exceeds box 5.83x0.20in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F13/expressive:deck:S081",
+      "seeds": [
+        {
+          "fixtureId": "F13",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F13-s1-b1 mixed 50% toward bg (verified c/contrast)",
+          "id": "S081"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F13-s1-b1"
+          ],
+          "evidence": "block F13-s1-b1 contrast 3.27:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F14/expressive:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": []
+    },
+    {
+      "itemId": "F14/expressive:narr:S082",
+      "seeds": [
+        {
+          "fixtureId": "F14",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S082"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F14-s1"
+          ],
+          "evidence": "3 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": []
+    },
+    {
+      "itemId": "F14/expressive:narr:S083",
+      "seeds": [
+        {
+          "fixtureId": "F14",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #0 to caption #2",
+          "id": "S083"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#2"
+          ],
+          "evidence": "block #2 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F14-s1-b0",
+            "F14-s1-b2"
+          ],
+          "evidence": "F14-s1-b0 P=84.00 exceeds primary F14-s1-b2 P=10.63 by 690.6% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F14-s1-b0"
+          ],
+          "evidence": "block F14-s1-b0 estimate 4.36x0.75in exceeds box 10.30x0.73in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F14/expressive:deck:S084",
+      "seeds": [
+        {
+          "fixtureId": "F14",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 12pt/400 (verified c/primary-subordinate)",
+          "id": "S084"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F14-s1-b1",
+            "F14-s1-b0"
+          ],
+          "evidence": "F14-s1-b1 P=14.00 exceeds primary F14-s1-b0 P=12.00 by 16.7% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F14/expressive:deck:S085",
+      "seeds": [
+        {
+          "fixtureId": "F14",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F14-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S085"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F14-s1-b1"
+          ],
+          "evidence": "block F14-s1-b1 estimate 4.76x0.25in exceeds box 5.83x0.21in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F14/expressive:deck:S086",
+      "seeds": [
+        {
+          "fixtureId": "F14",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F14-s1-b1 mixed 50% toward bg (verified c/contrast)",
+          "id": "S086"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F14-s1-b1"
+          ],
+          "evidence": "block F14-s1-b1 contrast 3.27:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/document:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b1"
+          ],
+          "evidence": "F15-s1-b2 P=71.25 exceeds primary F15-s1-b1 P=40.38 by 76.5% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b4",
+            "F15-s1-b1"
+          ],
+          "evidence": "group hero bbox x[0.70,12.63] y[1.40,6.40] cut by F15-s1-b1"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b2"
+          ],
+          "evidence": "number F15-s1-b2 P=71.25 exceeds max primary P=40.38 by 76.5% (>50%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/document:narr:S087",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S087"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1"
+          ],
+          "evidence": "5 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b4",
+            "F15-s1-b1"
+          ],
+          "evidence": "group hero bbox x[0.70,12.63] y[1.40,6.40] cut by F15-s1-b1"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/document:narr:S088",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #1 to caption #4",
+          "id": "S088"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#4"
+          ],
+          "evidence": "block #4 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b4"
+          ],
+          "evidence": "F15-s1-b2 P=71.25 exceeds primary F15-s1-b4 P=9.00 by 691.7% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b4",
+            "F15-s1-b1"
+          ],
+          "evidence": "group hero bbox x[0.70,12.63] y[1.40,6.40] cut by F15-s1-b1"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b2"
+          ],
+          "evidence": "number F15-s1-b2 P=71.25 exceeds max primary P=9.00 by 691.7% (>50%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/document:narr:S089",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "grouping",
+          "level": "narrative",
+          "mutation": "dangle-group: group hero reduced 2 -> 1 member",
+          "id": "S089"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "#2"
+          ],
+          "evidence": "group hero has 1 member (block #2)"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b1"
+          ],
+          "evidence": "F15-s1-b2 P=71.25 exceeds primary F15-s1-b1 P=40.38 by 76.5% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b2"
+          ],
+          "evidence": "group hero has 1 member (F15-s1-b2)"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b2"
+          ],
+          "evidence": "number F15-s1-b2 P=71.25 exceeds max primary P=40.38 by 76.5% (>50%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/document:deck:S090",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 14pt/400 (verified c/primary-subordinate)",
+          "id": "S090"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b1"
+          ],
+          "evidence": "F15-s1-b2 P=71.25 exceeds primary F15-s1-b1 P=14.00 by 408.9% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b4",
+            "F15-s1-b1"
+          ],
+          "evidence": "group hero bbox x[0.70,12.63] y[1.40,6.40] cut by F15-s1-b1"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b2"
+          ],
+          "evidence": "number F15-s1-b2 P=71.25 exceeds max primary P=14.00 by 408.9% (>50%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/document:deck:S091",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "number-scale",
+          "level": "deck",
+          "mutation": "number-scale: number F15-s1-b2 -> 52pt/900 (verified c/number-scale)",
+          "id": "S091"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b1"
+          ],
+          "evidence": "F15-s1-b2 P=68.25 exceeds primary F15-s1-b1 P=40.38 by 69.0% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b4",
+            "F15-s1-b1"
+          ],
+          "evidence": "group hero bbox x[0.70,12.63] y[1.40,6.40] cut by F15-s1-b1"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b2"
+          ],
+          "evidence": "number F15-s1-b2 P=68.25 exceeds max primary P=40.38 by 69.0% (>50%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/document:deck:S092",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "grouping",
+          "level": "deck",
+          "mutation": "grouping-swap: rect F15-s1-b2 <-> F15-s1-b0 (verified c/grouping-split)",
+          "id": "S092"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b1"
+          ],
+          "evidence": "F15-s1-b2 P=71.25 exceeds primary F15-s1-b1 P=40.38 by 76.5% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b4",
+            "F15-s1-b0"
+          ],
+          "evidence": "group hero bbox x[0.70,12.63] y[1.00,6.40] cut by F15-s1-b0"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b2"
+          ],
+          "evidence": "number F15-s1-b2 P=71.25 exceeds max primary P=40.38 by 76.5% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F15-s1-b2"
+          ],
+          "evidence": "block F15-s1-b2 estimate 1.35x0.67in exceeds box 2.00x0.21in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/document:deck:S093",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F15-s1-b0 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S093"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b1"
+          ],
+          "evidence": "F15-s1-b2 P=71.25 exceeds primary F15-s1-b1 P=40.38 by 76.5% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b4",
+            "F15-s1-b1"
+          ],
+          "evidence": "group hero bbox x[0.70,12.63] y[1.40,6.40] cut by F15-s1-b1"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b2"
+          ],
+          "evidence": "number F15-s1-b2 P=71.25 exceeds max primary P=40.38 by 76.5% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F15-s1-b0"
+          ],
+          "evidence": "block F15-s1-b0 estimate 1.40x0.14in exceeds box 2.00x0.07in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/document:deck:S094",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F15-s1-b0 mixed 50% toward bg (verified c/contrast)",
+          "id": "S094"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b1"
+          ],
+          "evidence": "F15-s1-b2 P=71.25 exceeds primary F15-s1-b1 P=40.38 by 76.5% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b2",
+            "F15-s1-b4",
+            "F15-s1-b1"
+          ],
+          "evidence": "group hero bbox x[0.70,12.63] y[1.40,6.40] cut by F15-s1-b1"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b2"
+          ],
+          "evidence": "number F15-s1-b2 P=71.25 exceeds max primary P=40.38 by 76.5% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F15-s1-b0"
+          ],
+          "evidence": "block F15-s1-b0 contrast 1.97:1 < 4.5:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/swiss:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b2"
+          ],
+          "evidence": "F15-s1-b1 P=274.31 exceeds primary F15-s1-b2 P=67.69 by 305.3% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b4",
+            "F15-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.75] cut by F15-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "number F15-s1-b1 P=274.31 exceeds max primary P=67.69 by 305.3% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "block F15-s1-b1 estimate 5.19x2.57in exceeds box 6.94x2.33in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/swiss:narr:S095",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S095"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1"
+          ],
+          "evidence": "5 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b4",
+            "F15-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.75] cut by F15-s1-b2"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/swiss:narr:S096",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #1 to caption #4",
+          "id": "S096"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#4"
+          ],
+          "evidence": "block #4 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b4"
+          ],
+          "evidence": "F15-s1-b1 P=274.31 exceeds primary F15-s1-b4 P=9.00 by 2947.9% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b4",
+            "F15-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.75] cut by F15-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "number F15-s1-b1 P=274.31 exceeds max primary P=9.00 by 2947.9% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "block F15-s1-b1 estimate 5.19x2.57in exceeds box 6.94x2.33in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/swiss:narr:S097",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "grouping",
+          "level": "narrative",
+          "mutation": "dangle-group: group hero reduced 2 -> 1 member",
+          "id": "S097"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "#2"
+          ],
+          "evidence": "group hero has 1 member (block #2)"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b2"
+          ],
+          "evidence": "F15-s1-b1 P=274.31 exceeds primary F15-s1-b2 P=67.69 by 305.3% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/dangling-group",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "group hero has 1 member (F15-s1-b1)"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "number F15-s1-b1 P=274.31 exceeds max primary P=67.69 by 305.3% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "block F15-s1-b1 estimate 5.19x2.57in exceeds box 6.94x2.33in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/swiss:deck:S098",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 14pt/400 (verified c/primary-subordinate)",
+          "id": "S098"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b2"
+          ],
+          "evidence": "F15-s1-b1 P=274.31 exceeds primary F15-s1-b2 P=14.00 by 1859.4% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b4",
+            "F15-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.75] cut by F15-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "number F15-s1-b1 P=274.31 exceeds max primary P=14.00 by 1859.4% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "block F15-s1-b1 estimate 5.19x2.57in exceeds box 6.94x2.33in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/swiss:deck:S099",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "number-scale",
+          "level": "deck",
+          "mutation": "number-scale: number F15-s1-b1 -> 87pt/900 (verified c/number-scale)",
+          "id": "S099"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b2"
+          ],
+          "evidence": "F15-s1-b1 P=114.19 exceeds primary F15-s1-b2 P=67.69 by 68.7% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b4",
+            "F15-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.75] cut by F15-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "number F15-s1-b1 P=114.19 exceeds max primary P=67.69 by 68.7% (>50%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/swiss:deck:S100",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "grouping",
+          "level": "deck",
+          "mutation": "grouping-swap: rect F15-s1-b1 <-> F15-s1-b0 (verified c/grouping-split)",
+          "id": "S100"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b2"
+          ],
+          "evidence": "F15-s1-b1 P=274.31 exceeds primary F15-s1-b2 P=67.69 by 305.3% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b4",
+            "F15-s1-b0"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[0.72,5.75] cut by F15-s1-b0"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "number F15-s1-b1 P=274.31 exceeds max primary P=67.69 by 305.3% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "block F15-s1-b1 estimate 5.19x2.57in exceeds box 12.13x0.52in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/swiss:deck:S101",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F15-s1-b0 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S101"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b2"
+          ],
+          "evidence": "F15-s1-b1 P=274.31 exceeds primary F15-s1-b2 P=67.69 by 305.3% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b4",
+            "F15-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.75] cut by F15-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "number F15-s1-b1 P=274.31 exceeds max primary P=67.69 by 305.3% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F15-s1-b0"
+          ],
+          "evidence": "block F15-s1-b0 estimate 4.73x0.51in exceeds box 12.13x0.18in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F15/swiss:deck:S102",
+      "seeds": [
+        {
+          "fixtureId": "F15",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F15-s1-b0 mixed 50% toward bg (verified c/contrast)",
+          "id": "S102"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b2"
+          ],
+          "evidence": "F15-s1-b1 P=274.31 exceeds primary F15-s1-b2 P=67.69 by 305.3% (>5%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/grouping-split",
+          "category": "grouping",
+          "targets": [
+            "F15-s1-b1",
+            "F15-s1-b4",
+            "F15-s1-b2"
+          ],
+          "evidence": "group hero bbox x[0.60,12.73] y[1.51,5.75] cut by F15-s1-b2"
+        },
+        {
+          "arm": "C",
+          "check": "c/number-scale",
+          "category": "number-scale",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "number F15-s1-b1 P=274.31 exceeds max primary P=67.69 by 305.3% (>50%)"
+        },
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F15-s1-b1"
+          ],
+          "evidence": "block F15-s1-b1 estimate 5.19x2.57in exceeds box 6.94x2.33in (ESTIMATE-ONLY)"
+        },
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F15-s1-b0"
+          ],
+          "evidence": "block F15-s1-b0 contrast 2.83:1 < 3:1"
+        }
+      ]
+    },
+    {
+      "itemId": "F16/editorial:clean",
+      "seeds": [],
+      "findingsA": [],
+      "findingsC": []
+    },
+    {
+      "itemId": "F16/editorial:narr:S103",
+      "seeds": [
+        {
+          "fixtureId": "F16",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "strip-emphasis: removed all emphasis annotations",
+          "id": "S103"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/no-primary",
+          "category": "headline-prominence",
+          "targets": [
+            "F16-s1"
+          ],
+          "evidence": "2 blocks, 0 with primary emphasis"
+        }
+      ],
+      "findingsC": []
+    },
+    {
+      "itemId": "F16/editorial:narr:S104",
+      "seeds": [
+        {
+          "fixtureId": "F16",
+          "category": "headline-prominence",
+          "level": "narrative",
+          "mutation": "primary-on-caption: moved primary from #0 to caption #1",
+          "id": "S104"
+        }
+      ],
+      "findingsA": [
+        {
+          "arm": "A",
+          "check": "a/primary-on-caption",
+          "category": "headline-prominence",
+          "targets": [
+            "#1"
+          ],
+          "evidence": "block #1 (caption) carries primary emphasis"
+        }
+      ],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F16-s1-b0",
+            "F16-s1-b1"
+          ],
+          "evidence": "F16-s1-b0 P=54.63 exceeds primary F16-s1-b1 P=10.00 by 446.3% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F16/editorial:deck:S105",
+      "seeds": [
+        {
+          "fixtureId": "F16",
+          "category": "headline-prominence",
+          "level": "deck",
+          "mutation": "demote-primary: primary type -> 8pt/400 (verified c/primary-subordinate)",
+          "id": "S105"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/primary-subordinate",
+          "category": "headline-prominence",
+          "targets": [
+            "F16-s1-b1",
+            "F16-s1-b0"
+          ],
+          "evidence": "F16-s1-b1 P=10.00 exceeds primary F16-s1-b0 P=8.00 by 25.0% (>5%)"
+        }
+      ]
+    },
+    {
+      "itemId": "F16/editorial:deck:S106",
+      "seeds": [
+        {
+          "fixtureId": "F16",
+          "category": "clip",
+          "level": "deck",
+          "mutation": "clip-support: box F16-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)",
+          "id": "S106"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/support-clip",
+          "category": "clip",
+          "targets": [
+            "F16-s1-b1"
+          ],
+          "evidence": "block F16-s1-b1 estimate 0.87x0.17in exceeds box 8.60x0.08in (ESTIMATE-ONLY)"
+        }
+      ]
+    },
+    {
+      "itemId": "F16/editorial:deck:S107",
+      "seeds": [
+        {
+          "fixtureId": "F16",
+          "category": "contrast",
+          "level": "deck",
+          "mutation": "contrast-fail: color F16-s1-b1 mixed 50% toward bg (verified c/contrast)",
+          "id": "S107"
+        }
+      ],
+      "findingsA": [],
+      "findingsC": [
+        {
+          "arm": "C",
+          "check": "c/contrast",
+          "category": "contrast",
+          "targets": [
+            "F16-s1-b1"
+          ],
+          "evidence": "block F16-s1-b1 contrast 2.08:1 < 4.5:1"
+        }
+      ]
+    }
+  ]
+}

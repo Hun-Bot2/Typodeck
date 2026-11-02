@@ -1,0 +1,2 @@
+screenshot,block_id,role,proposed_rank_by_P,proposed_emphasis_guess,label_status,human_rank,human_emphasis,human_notes
+EXAMPLE-F01-swiss.png,block-0,kicker,4,supporting?,PROPOSED-NOT-GROUND-TRUTH,,,

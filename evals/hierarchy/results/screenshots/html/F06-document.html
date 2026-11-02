@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><title>measure</title><style>.slide{position:relative;aspect-ratio:1333/750;width:1280px;overflow:hidden;container-type:inline-size;background:#EDE6D6}.slide-block{position:absolute;overflow:hidden;white-space:pre-wrap;overflow-wrap:break-word}</style></head><body style="margin:0"><div class="slide"><div class="slide-block" data-block-id="F06-s1-b0" style="left:24.0060%;top:13.3333%;width:70.7427%;height:6.1352%;font-size:3.5426cqw;font-weight:700;line-height:1.15;letter-spacing:-0.01em;text-align:left;color:#292524;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">What the audit found</div><div class="slide-block" data-block-id="F06-s1-b1" style="left:24.0060%;top:22.1085%;width:39.0723%;height:6.9694%;font-size:1.3024cqw;font-weight:400;line-height:1.5;letter-spacing:0em;text-align:left;color:#292524;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">Finding 1: 3 silent clips passed validation because estimates trusted declarations</div><div class="slide-block" data-block-id="F06-s1-b2" style="left:24.0060%;top:31.7180%;width:39.0723%;height:6.9694%;font-size:1.3024cqw;font-weight:400;line-height:1.5;letter-spacing:0em;text-align:left;color:#292524;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">Finding 2: 53% of residual deductions trace to text rendering fit</div><div class="slide-block" data-block-id="F06-s1-b3" style="left:24.0060%;top:41.3274%;width:39.0723%;height:6.9694%;font-size:1.3024cqw;font-weight:400;line-height:1.5;letter-spacing:0em;text-align:left;color:#292524;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">Finding 3: inspection count predicts quality far better than edit count</div><div class="slide-block" data-block-id="F06-s1-b4" style="left:24.0060%;top:50.9369%;width:39.0723%;height:6.9694%;font-size:1.3024cqw;font-weight:400;line-height:1.5;letter-spacing:0em;text-align:left;color:#292524;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">Finding 4: 31.7% of reproductions pass every gate on the first attempt</div><div class="slide-block" data-block-id="F06-s1-b5" style="left:24.0060%;top:60.5463%;width:39.0723%;height:6.9694%;font-size:1.3024cqw;font-weight:400;line-height:1.5;letter-spacing:0em;text-align:left;color:#292524;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">Finding 5: the median reproduction scores 24.38 against a best of 77.34</div><div class="slide-block" data-block-id="F06-s1-b6" style="left:24.0060%;top:82.6667%;width:70.7427%;height:2.7000%;font-size:0.9377cqw;font-weight:400;line-height:1.4;letter-spacing:0.02em;text-align:right;color:#656054;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">audit · gates:7</div></div><script>(function(){
+  function collect(){
+    var els = document.querySelectorAll('.slide-block');
+    var out = [];
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var cs = window.getComputedStyle(el);
+      var fs = parseFloat(cs.fontSize) || 0;
+      var lh = cs.lineHeight === 'normal' ? fs * 1.2 : (parseFloat(cs.lineHeight) || fs * 1.2);
+      out.push({
+        index: i,
+        blockId: el.getAttribute('data-block-id'),
+        scrollWidth: el.scrollWidth, scrollHeight: el.scrollHeight,
+        clientWidth: el.clientWidth, clientHeight: el.clientHeight,
+        fontSizePx: fs, lineHeightPx: lh
+      });
+    }
+    if (!document.getElementById('typodeck-overflow')) {
+      var s = document.createElement('script');
+      s.id = 'typodeck-overflow'; s.type = 'application/json';
+      s.textContent = JSON.stringify(out);
+      document.body.appendChild(s);
+    }
+  }
+  if (document.readyState === 'complete') collect();
+  else window.addEventListener('load', collect);
+})();</script></body></html>

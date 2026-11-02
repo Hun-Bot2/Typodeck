@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><title>measure</title><style>.slide{position:relative;aspect-ratio:1333/750;width:1280px;overflow:hidden;container-type:inline-size;background:#FAF7F2}.slide-block{position:absolute;overflow:hidden;white-space:pre-wrap;overflow-wrap:break-word}</style></head><body style="margin:0"><div class="slide"><div class="slide-block" data-block-id="F03-s1-b0" style="left:7.5019%;top:20.0000%;width:64.5161%;height:3.0630%;font-size:1.1461cqw;font-weight:500;line-height:1.4;letter-spacing:0.28em;text-align:left;color:#7B2D26;font-family:&quot;Noto Serif KR&quot;, &quot;Source Serif 4&quot;, Georgia, serif">CHAPTER ONE</div><div class="slide-block" data-block-id="F03-s1-b1" style="left:7.5019%;top:28.1830%;width:64.5161%;height:7.7452%;font-size:4.7929cqw;font-weight:700;line-height:1.12;letter-spacing:-0.01em;text-align:left;color:#1A1A1A;font-family:&quot;Noto Serif KR&quot;, &quot;Source Serif 4&quot;, Georgia, serif">The quiet cost of clutter</div><div class="slide-block" data-block-id="F03-s1-b2" style="left:7.5019%;top:42.3815%;width:46.8867%;height:13.0667%;font-size:1.5629cqw;font-weight:400;line-height:1.6;letter-spacing:0em;text-align:left;color:#1A1A1A;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">Every extra element on a slide taxes attention. Readers pay the price in slower comprehension and weaker recall of the point that matters.</div><div class="slide-block" data-block-id="F03-s1-b3" style="left:7.5019%;top:60.5681%;width:64.5161%;height:3.0111%;font-size:1.0419cqw;font-weight:400;line-height:1.5;letter-spacing:0.04em;text-align:left;color:#6B6259;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">essay · draft 4</div></div><script>(function(){
+  function collect(){
+    var els = document.querySelectorAll('.slide-block');
+    var out = [];
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var cs = window.getComputedStyle(el);
+      var fs = parseFloat(cs.fontSize) || 0;
+      var lh = cs.lineHeight === 'normal' ? fs * 1.2 : (parseFloat(cs.lineHeight) || fs * 1.2);
+      out.push({
+        index: i,
+        blockId: el.getAttribute('data-block-id'),
+        scrollWidth: el.scrollWidth, scrollHeight: el.scrollHeight,
+        clientWidth: el.clientWidth, clientHeight: el.clientHeight,
+        fontSizePx: fs, lineHeightPx: lh
+      });
+    }
+    if (!document.getElementById('typodeck-overflow')) {
+      var s = document.createElement('script');
+      s.id = 'typodeck-overflow'; s.type = 'application/json';
+      s.textContent = JSON.stringify(out);
+      document.body.appendChild(s);
+    }
+  }
+  if (document.readyState === 'complete') collect();
+  else window.addEventListener('load', collect);
+})();</script></body></html>

@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><title>measure</title><style>.slide{position:relative;aspect-ratio:1333/750;width:1280px;overflow:hidden;container-type:inline-size;background:#FAF7F2}.slide-block{position:absolute;overflow:hidden;white-space:pre-wrap;overflow-wrap:break-word}</style></head><body style="margin:0"><div class="slide"><div class="slide-block" data-block-id="F13-s1-b0" style="left:11.3653%;top:40.4444%;width:77.2693%;height:9.7778%;font-size:6.6683cqw;font-weight:900;line-height:1.05;letter-spacing:-0.01em;text-align:center;color:#1A1A1A;font-family:&quot;Archivo Black&quot;, Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">LOUD TYPE WINS</div><div class="slide-block" data-block-id="F13-s1-b1" style="left:28.1195%;top:55.6889%;width:43.7609%;height:7.6148%;font-size:1.3545cqw;font-weight:400;line-height:1.6;letter-spacing:0em;text-align:center;color:#1A1A1A;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">A deliberate bleed runs past the edge on purpose. The crop is the design: no finding, no repair, no apology.</div><div class="slide-block" data-block-id="F13-s1-b2" style="left:22.2431%;top:84.6667%;width:55.5139%;height:3.0111%;font-size:1.0419cqw;font-weight:500;line-height:1.5;letter-spacing:0.08em;text-align:center;color:#6B6259;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">poster · n°7</div></div><script>(function(){
+  function collect(){
+    var els = document.querySelectorAll('.slide-block');
+    var out = [];
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var cs = window.getComputedStyle(el);
+      var fs = parseFloat(cs.fontSize) || 0;
+      var lh = cs.lineHeight === 'normal' ? fs * 1.2 : (parseFloat(cs.lineHeight) || fs * 1.2);
+      out.push({
+        index: i,
+        blockId: el.getAttribute('data-block-id'),
+        scrollWidth: el.scrollWidth, scrollHeight: el.scrollHeight,
+        clientWidth: el.clientWidth, clientHeight: el.clientHeight,
+        fontSizePx: fs, lineHeightPx: lh
+      });
+    }
+    if (!document.getElementById('typodeck-overflow')) {
+      var s = document.createElement('script');
+      s.id = 'typodeck-overflow'; s.type = 'application/json';
+      s.textContent = JSON.stringify(out);
+      document.body.appendChild(s);
+    }
+  }
+  if (document.readyState === 'complete') collect();
+  else window.addEventListener('load', collect);
+})();</script></body></html>

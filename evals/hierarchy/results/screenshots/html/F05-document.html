@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><title>measure</title><style>.slide{position:relative;aspect-ratio:1333/750;width:1280px;overflow:hidden;container-type:inline-size;background:#F7F3E8}.slide-block{position:absolute;overflow:hidden;white-space:pre-wrap;overflow-wrap:break-word}</style></head><body style="margin:0"><div class="slide"><div class="slide-block" data-block-id="F05-s1-b0" style="left:24.0060%;top:13.3333%;width:70.7427%;height:6.1352%;font-size:3.5426cqw;font-weight:700;line-height:1.15;letter-spacing:-0.01em;text-align:left;color:#2B2B2B;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">Before vs after the rollout</div><div class="slide-block" data-block-id="F05-s1-b1" style="left:24.0060%;top:21.6285%;width:41.6771%;height:3.4972%;font-size:1.3024cqw;font-weight:400;line-height:1.5;letter-spacing:0em;text-align:left;color:#2B2B2B;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">Before: 11 broken-main incidents</div><div class="slide-block" data-block-id="F05-s1-b2" style="left:24.0060%;top:27.2857%;width:41.6771%;height:3.4972%;font-size:1.3024cqw;font-weight:400;line-height:1.5;letter-spacing:0em;text-align:left;color:#2B2B2B;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">Before: 4h median merge time</div><div class="slide-block" data-block-id="F05-s1-b3" style="left:24.0060%;top:32.9430%;width:41.6771%;height:3.4972%;font-size:1.3024cqw;font-weight:400;line-height:1.5;letter-spacing:0em;text-align:left;color:#2B2B2B;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">After: 2 incidents in 6 weeks</div><div class="slide-block" data-block-id="F05-s1-b4" style="left:24.0060%;top:38.6002%;width:41.6771%;height:3.4972%;font-size:1.3024cqw;font-weight:400;line-height:1.5;letter-spacing:0em;text-align:left;color:#2B2B2B;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">After: 50 min median merge</div><div class="slide-block" data-block-id="F05-s1-b5" style="left:24.0060%;top:82.6667%;width:70.7427%;height:2.7000%;font-size:0.9377cqw;font-weight:400;line-height:1.4;letter-spacing:0.02em;text-align:right;color:#6E675C;font-family:Pretendard, Inter, &quot;Noto Sans KR&quot;, system-ui, sans-serif">trial · shipgate:1</div></div><script>(function(){
+  function collect(){
+    var els = document.querySelectorAll('.slide-block');
+    var out = [];
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      var cs = window.getComputedStyle(el);
+      var fs = parseFloat(cs.fontSize) || 0;
+      var lh = cs.lineHeight === 'normal' ? fs * 1.2 : (parseFloat(cs.lineHeight) || fs * 1.2);
+      out.push({
+        index: i,
+        blockId: el.getAttribute('data-block-id'),
+        scrollWidth: el.scrollWidth, scrollHeight: el.scrollHeight,
+        clientWidth: el.clientWidth, clientHeight: el.clientHeight,
+        fontSizePx: fs, lineHeightPx: lh
+      });
+    }
+    if (!document.getElementById('typodeck-overflow')) {
+      var s = document.createElement('script');
+      s.id = 'typodeck-overflow'; s.type = 'application/json';
+      s.textContent = JSON.stringify(out);
+      document.body.appendChild(s);
+    }
+  }
+  if (document.readyState === 'complete') collect();
+  else window.addEventListener('load', collect);
+})();</script></body></html>
