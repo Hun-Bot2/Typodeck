@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
 import {
+  critiqueDeck,
   DeckValidationError,
   exportToPptxBuffer,
   layoutDeck,
@@ -28,7 +29,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   if (Buffer.byteLength(raw, 'utf8') > BODY_CAP_BYTES) {
     return jsonError(413, 'body-too-large', `request body exceeds the ${BODY_CAP_BYTES}-byte cap`);
   }
-  let parsed: { narrative?: unknown; system?: unknown; generatedBy?: unknown; provenance?: unknown };
+  let parsed: { narrative?: unknown; system?: unknown; generatedBy?: unknown; provenance?: unknown; critique?: unknown };
   try {
     parsed = (JSON.parse(raw) || {}) as typeof parsed;
   } catch {
@@ -54,6 +55,16 @@ export async function POST(req: NextRequest): Promise<Response> {
       ...(typeof p.branch === 'string' ? { branch: p.branch } : {}),
       ...(p.sha === null || typeof p.sha === 'string' ? { sha: p.sha } : {}),
     };
+  }
+
+  // Optional advisory critique (C7): runs critiqueDeck and reports it in
+  // response headers. Defaults OFF; never blocks export.
+  let wantCritique = false;
+  if (parsed.critique !== undefined) {
+    if (typeof parsed.critique !== 'boolean') {
+      return jsonError(400, 'invalid-input', 'critique must be a boolean');
+    }
+    wantCritique = parsed.critique;
   }
 
   // Validate the system id against the registry; never trust client
@@ -94,12 +105,26 @@ export async function POST(req: NextRequest): Promise<Response> {
     });
   }
 
-  return new Response(new Uint8Array(buffer), {
-    headers: {
-      'Content-Type': 'application/vnd.openxmlformats-officedocument.presentationml+xml',
-      'Content-Disposition': `attachment; filename="typodeck-${system}.pptx"`,
-      'Content-Length': String(buffer.length),
-      'X-Typodeck-Slides': String(slideCount),
-    },
-  });
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/vnd.openxmlformats-officedocument.presentationml+xml',
+    'Content-Disposition': `attachment; filename="typodeck-${system}.pptx"`,
+    'Content-Length': String(buffer.length),
+    'X-Typodeck-Slides': String(slideCount),
+  };
+  if (wantCritique) {
+    try {
+      const report = critiqueDeck(deck);
+      const errors = report.findings.filter((f) => f.severity === 'error').length;
+      const warnings = report.findings.filter((f) => f.severity === 'warning').length;
+      const checks = [...new Set(report.findings.map((f) => f.check))].sort();
+      headers['X-Typodeck-Critique-Errors'] = String(errors);
+      headers['X-Typodeck-Critique-Warnings'] = String(warnings);
+      headers['X-Typodeck-Critique-Checks'] = checks.join(',');
+      headers['X-Typodeck-Critique-Report'] = Buffer.from(JSON.stringify(report)).toString('base64url');
+    } catch {
+      // Advisory only: a critique failure never blocks export.
+    }
+  }
+
+  return new Response(new Uint8Array(buffer), { headers });
 }

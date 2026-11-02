@@ -3,8 +3,13 @@
 //   node dist/scripts/make-deck.js --repo owner/repo --system swiss --out out.pptx [--purpose ..] [--preset P04] [--lang ko|en]
 //   node dist/scripts/make-deck.js --idea "..." --system editorial --out out.pptx
 //   node dist/scripts/make-deck.js --idea-file path.txt --system expressive --out out.pptx
+//   node dist/scripts/make-deck.js --idea-file path.txt --system swiss --out out.pptx --critique
+//   node dist/scripts/make-deck.js --idea-file path.txt --system swiss --out out.pptx --revise[=N]
 // Prints the provider used + warnings; exits non-zero on validation failure.
+// --critique appends an advisory critique receipt (exit code unchanged).
+// --revise[=N] (default N=3) exports the bounded-revision deck instead.
 import { promises as fs } from 'node:fs';
+import { critiqueDeck, reviseDeck, type CriticReport } from '../src/critic';
 import { exportToPptx } from '../src/export';
 import { planDeck, type PlanDeckInput } from '../src/narrative';
 import { SYSTEM_IDS, type SystemId } from '../src/systems';
@@ -15,6 +20,7 @@ function usage(): string {
     'Usage: make-deck --repo owner/repo | --idea "..." | --idea-file path',
     '               --system editorial|swiss|expressive --out file.pptx',
     '               [--purpose text] [--preset P01..P10] [--lang ko|en]',
+    '               [--critique] [--revise[=N]]',
   ].join('\n');
 }
 
@@ -22,6 +28,38 @@ function argValue(args: string[], flag: string): string | undefined {
   const i = args.indexOf(flag);
   if (i < 0 || i + 1 >= args.length) return undefined;
   return args[i + 1];
+}
+
+/** Stage-3 receipt block (C7): appended to the console receipt only when flagged. */
+export interface CritiqueReceipt {
+  attempts: number;
+  errors: number;
+  warnings: number;
+  checks: string[];
+}
+
+function toCritiqueReceipt(attempts: number, report: CriticReport): CritiqueReceipt {
+  const errors = report.findings.filter((f) => f.severity === 'error').length;
+  const warnings = report.findings.filter((f) => f.severity === 'warning').length;
+  const checks = [...new Set(report.findings.map((f) => f.check))].sort();
+  return { attempts, errors, warnings, checks };
+}
+
+function formatCritiqueReceipt(c: CritiqueReceipt): string {
+  return `critique: attempts=${c.attempts} errors=${c.errors} warnings=${c.warnings} checks=${c.checks.length > 0 ? c.checks.join(',') : '-'}`;
+}
+
+/** Parse `--revise` (default 3) / `--revise=N`. Returns undefined when absent. */
+function reviseAttempts(args: string[]): number | undefined | 'invalid' {
+  for (const a of args) {
+    if (a === '--revise') return 3;
+    if (a.startsWith('--revise=')) {
+      const n = Number(a.slice('--revise='.length));
+      if (!Number.isInteger(n) || n < 1) return 'invalid';
+      return n;
+    }
+  }
+  return undefined;
 }
 
 async function main(): Promise<void> {
@@ -35,8 +73,16 @@ async function main(): Promise<void> {
   const preset = argValue(args, '--preset');
   const lang = argValue(args, '--lang') ?? 'en';
 
+  const wantCritique = args.includes('--critique');
+  const reviseOpt = reviseAttempts(args);
+
   const modes = [repoArg, ideaArg, ideaFileArg].filter((v) => v !== undefined);
   if (modes.length !== 1 || !systemArg || !outArg) {
+    console.error(usage());
+    process.exit(2);
+  }
+  if (reviseOpt === 'invalid') {
+    console.error('--revise[=N] requires a positive integer N (default 3)');
     console.error(usage());
     process.exit(2);
   }
@@ -62,8 +108,18 @@ async function main(): Promise<void> {
 
   try {
     const result = await planDeck(input, { system: systemArg as SystemId, purpose, preset, lang });
-    const res = await exportToPptx(result.deck, outArg);
-    const expectedChars = result.deck.slides
+    let deck = result.deck;
+    let critique: CritiqueReceipt | undefined;
+    let reviseProvenance: string[] = [];
+    if (reviseOpt !== undefined) {
+      const revised = reviseDeck(result.narrative, systemArg as SystemId, { maxAttempts: reviseOpt });
+      deck = revised.deck;
+      reviseProvenance = revised.provenance;
+      const finalReport = revised.reports[revised.reports.length - 1];
+      critique = toCritiqueReceipt(revised.attempts, finalReport);
+    }
+    const res = await exportToPptx(deck, outArg);
+    const expectedChars = deck.slides
       .flatMap((s) => s.blocks)
       .reduce((a, b) => a + b.content.length, 0);
     const check = await validatePptx(outArg, expectedChars);
@@ -78,7 +134,12 @@ async function main(): Promise<void> {
       `quality: ${q.pass ? 'pass' : 'review'} overall=${q.overall} errors=${q.errors} warnings=${q.warnings}`,
     );
     console.log(`deck: ${res.slideCount} slides, ${res.textBoxCount} text boxes -> ${res.path}`);
+    for (const line of reviseProvenance) console.log(`revise: ${line}`);
     for (const w of result.provenance.warnings) console.log(`warning: ${w}`);
+    if (wantCritique && critique === undefined) {
+      critique = toCritiqueReceipt(1, critiqueDeck(deck));
+    }
+    if (critique !== undefined) console.log(formatCritiqueReceipt(critique));
     if (!check.ok) {
       for (const e of check.errors) console.error(`validation error: ${e}`);
       process.exit(1);

@@ -30,8 +30,10 @@ Announce first: "Following the Typodeck Skill: <idea|local|repo> mode, <systems>
    heroes; deprecated never headlines. (`references/evidence.md`)
 5. **Purpose-aware narrative** — `--preset P01..P10` (or legacy frozen
    `hackathon|competition|showcase`; `showcase` is NOT P04), 16-dim
-   semantic model, integrity rules. (`references/purposes.md`,
-   `references/density.md` for speaker-led vs reading-first)
+   semantic model, integrity rules; author `intent:` lines for
+   emphasis/grouping when the story needs them.
+   (`references/purposes.md`, `references/density.md` for
+   speaker-led vs reading-first, `references/semantic-hierarchy.md`)
 6. **Engine invocation** — CLI-first (`npm run --silent deck -- …`);
    programmatic (`planDeck`/`planDecksAll`, `layoutDeck`, export,
    validate) for the improved pipeline and previews; Studio API is
@@ -44,12 +46,15 @@ Announce first: "Following the Typodeck Skill: <idea|local|repo> mode, <systems>
 8. **Render inspection incl. overflow detection** — structural gates
    first (`validation: OK`), overflow via layout estimates + critic
    proxies (true PPTX wrapping is UNMEASURED — say so), then the
-   adversarial eyes-on checklist. (`references/inspection.md`,
-   `references/optical.md`)
-9. **Revision/repair** — bounded `reviseDeck` loop (≤3 attempts, first
-   error by class, content never rewritten for looks); provenance per
-   attempt; residual findings + `visionUnmeasured` reported.
-   (`references/revision.md`)
+   adversarial eyes-on checklist; `--critique` appends the advisory
+   receipt, findings read per the inspection guide.
+   (`references/inspection.md`, `references/optical.md`,
+   `references/visual-inspection.md`)
+9. **Revision/repair** — bounded `reviseDeck` loop (`--revise[=N]`,
+   ≤3 attempts, first error by class, content never rewritten for
+   looks); provenance per attempt; residual findings +
+   `visionUnmeasured` reported. (`references/revision.md`,
+   `references/repair-policy.md`)
 10. **Editable PPTX export** — Core export + immediate re-validation;
     native editable text, 0 forbidden objects, 16:9; notes to native
     PPTX notes; never patch a generated PPTX.
@@ -99,6 +104,7 @@ If asked for a forbidden element: refuse that element, offer the typographic equ
 - `examples/04-evidence-report.mjs` — offline evidence report from real Core APIs.
 - `examples/05-improved-pipeline.mjs` — offline improved pipeline → critic → validated PPTX bytes.
 - `examples/06-eval-rerun.sh` — eval matrix + report when Phase 4 scripts exist.
+- `examples/07-revise-loop.sh` — `--critique` receipt + `--revise[=N]` end-to-end.
 - `scripts/check-quota.sh` — GitHub quota probe (remaining + reset).
 
 Each example asserts its own artifacts and prints PASS/SKIP/FAIL; the Skill
