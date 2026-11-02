@@ -8,6 +8,7 @@ import {
   SLIDE_HEIGHT_IN,
   SLIDE_WIDTH_IN,
   validateNarrative,
+  type BlockIntent,
   type Deck,
   type Narrative,
   type NarrativeSlide,
@@ -288,6 +289,8 @@ export function assertNoOverlaps(blocks: Rect[], slideId: string): void {
 interface Plan {
   role: TextRole;
   content: string;
+  /** Author intent carried through untouched; never read by geometry (Stage 3, C1). */
+  intent?: BlockIntent;
   x: number;
   y: number;
   w: number;
@@ -363,7 +366,7 @@ function planEditorial(ctx: Ctx): Plan[] {
     const st = styleFor(ctx, b.role);
     const w = applyMeasureCap(ctx, b.role, baseW, st.fontSize);
     const maxH = SLIDE_HEIGHT_IN - m - y;
-    plans.push({ role: b.role, content: b.content, x, y, w, maxH, align: st.align });
+    plans.push({ role: b.role, content: b.content, intent: b.intent, x, y, w, maxH, align: st.align });
     // Advance cursor by fitted height (computed in materialize via same fit).
     const fit = fitText(b.content, w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
     y += fit.heightIn + BLOCK_PAD * 2 + R + (b.role === 'title' ? 0.1 : 0);
@@ -397,18 +400,18 @@ function planSwiss(ctx: Ctx): Plan[] {
     const st = styleFor(ctx, b.role);
     if (b.role === 'kicker') {
       const s = span(0, 2);
-      plans.push({ role: b.role, content: b.content, x: s.x, y: topY, w: s.w, maxH: 0.8, align: st.align });
+      plans.push({ role: b.role, content: b.content, intent: b.intent, x: s.x, y: topY, w: s.w, maxH: 0.8, align: st.align });
     } else if (b.role === 'title' || b.role === 'number') {
       const s = span(0, 2);
       const maxH = Math.max(0.4, SLIDE_HEIGHT_IN - m - leftY);
       const fit = fitText(b.content, s.w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-      plans.push({ role: b.role, content: b.content, x: s.x, y: leftY, w: s.w, maxH, align: st.align });
+      plans.push({ role: b.role, content: b.content, intent: b.intent, x: s.x, y: leftY, w: s.w, maxH, align: st.align });
       leftY += fit.heightIn + BLOCK_PAD * 2 + R;
       titleBottom = Math.max(titleBottom, leftY);
     } else if (b.role === 'caption') {
       const s = span(2, 2);
       plans.push({
-        role: b.role, content: b.content, x: s.x, y: SLIDE_HEIGHT_IN - m - 0.6, w: s.w, maxH: 0.6, align: st.align,
+        role: b.role, content: b.content, intent: b.intent, x: s.x, y: SLIDE_HEIGHT_IN - m - 0.6, w: s.w, maxH: 0.6, align: st.align,
       });
     } else {
       // Bodies: first body goes to right column block; extras stack below title.
@@ -417,7 +420,7 @@ function planSwiss(ctx: Ctx): Plan[] {
         const s = span(2, 2);
         const w = applyMeasureCap(ctx, b.role, s.w, st.fontSize);
         const fit = fitText(b.content, w, SLIDE_HEIGHT_IN - m - bodyTopY - 0.8, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-        plans.push({ role: b.role, content: b.content, x: s.x, y: bodyTopY, w, maxH: SLIDE_HEIGHT_IN - m - bodyTopY - 0.8, align: st.align });
+        plans.push({ role: b.role, content: b.content, intent: b.intent, x: s.x, y: bodyTopY, w, maxH: SLIDE_HEIGHT_IN - m - bodyTopY - 0.8, align: st.align });
         stackY = bodyTopY + fit.heightIn + BLOCK_PAD * 2 + R;
         rightColUsed.push(plans[plans.length - 1]);
       } else if (idx === 1) {
@@ -427,7 +430,7 @@ function planSwiss(ctx: Ctx): Plan[] {
         const y = stackY;
         const maxH = Math.max(0.4, SLIDE_HEIGHT_IN - m - 0.8 - y);
         const fit2 = fitText(b.content, w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-        plans.push({ role: b.role, content: b.content, x: s.x, y, w, maxH, align: st.align });
+        plans.push({ role: b.role, content: b.content, intent: b.intent, x: s.x, y, w, maxH, align: st.align });
         stackY = y + fit2.heightIn + BLOCK_PAD * 2 + R;
         rightColUsed.push(plans[plans.length - 1]);
       } else {
@@ -435,7 +438,7 @@ function planSwiss(ctx: Ctx): Plan[] {
         const w = applyMeasureCap(ctx, b.role, s.w, st.fontSize);
         const y = Math.max(stackY, titleBottom);
         stackY = y;
-        plans.push({ role: b.role, content: b.content, x: s.x, y, w, maxH: SLIDE_HEIGHT_IN - m - 0.8 - y, align: st.align });
+        plans.push({ role: b.role, content: b.content, intent: b.intent, x: s.x, y, w, maxH: SLIDE_HEIGHT_IN - m - 0.8 - y, align: st.align });
         rightColUsed.push(plans[plans.length - 1]);
       }
     }
@@ -476,13 +479,13 @@ function planExpressive(ctx: Ctx): Plan[] {
 
   for (const b of kickers) {
     const st = styleFor(ctx, b.role);
-    plans.push({ role: b.role, content: b.content, x: bodyX, y: heroBandY - 0.75, w: bodyW, maxH: 0.65, align: st.align });
+    plans.push({ role: b.role, content: b.content, intent: b.intent, x: bodyX, y: heroBandY - 0.75, w: bodyW, maxH: 0.65, align: st.align });
   }
   let hy = heroBandY;
   heroes.forEach((b, i) => {
     const st = styleFor(ctx, b.role);
     void heroFits[i];
-    plans.push({ role: b.role, content: b.content, x: heroX, y: hy, w: heroW, maxH: 5.2, align: st.align });
+    plans.push({ role: b.role, content: b.content, intent: b.intent, x: heroX, y: hy, w: heroW, maxH: 5.2, align: st.align });
     hy += heroFits[i].heightIn + BLOCK_PAD * 2 + R;
   });
   let by = hy + 0.05;
@@ -491,12 +494,12 @@ function planExpressive(ctx: Ctx): Plan[] {
     const w = applyMeasureCap(ctx, b.role, bodyW, st.fontSize);
     const x = cx - w / 2;
     const fit = fitText(b.content, w, SLIDE_HEIGHT_IN - m - 0.55 - by, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-    plans.push({ role: b.role, content: b.content, x, y: by, w, maxH: Math.max(0.4, SLIDE_HEIGHT_IN - m - 0.55 - by), align: st.align });
+    plans.push({ role: b.role, content: b.content, intent: b.intent, x, y: by, w, maxH: Math.max(0.4, SLIDE_HEIGHT_IN - m - 0.55 - by), align: st.align });
     by += fit.heightIn + BLOCK_PAD * 2 + R;
   }
   for (const b of captions) {
     const st = styleFor(ctx, b.role);
-    plans.push({ role: b.role, content: b.content, x: bodyX, y: SLIDE_HEIGHT_IN - m - 0.45, w: bodyW, maxH: 0.45, align: st.align });
+    plans.push({ role: b.role, content: b.content, intent: b.intent, x: bodyX, y: SLIDE_HEIGHT_IN - m - 0.45, w: bodyW, maxH: 0.45, align: st.align });
   }
   return plans;
 }
@@ -528,17 +531,17 @@ function planDocument(ctx: Ctx): Plan[] {
     if (b.role === 'kicker' || b.role === 'number') {
       const maxH = Math.max(0.4, SLIDE_HEIGHT_IN - m - metaY);
       const fit = fitText(b.content, metaW, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, bold);
-      plans.push({ role: b.role, content: b.content, x: m, y: metaY, w: metaW, maxH, align: st.align });
+      plans.push({ role: b.role, content: b.content, intent: b.intent, x: m, y: metaY, w: metaW, maxH, align: st.align });
       metaY += fit.heightIn + BLOCK_PAD * 2 + R;
     } else if (b.role === 'caption') {
       plans.push({
-        role: b.role, content: b.content, x: contentX, y: captionY, w: contentW, maxH: captionH, align: st.align,
+        role: b.role, content: b.content, intent: b.intent, x: contentX, y: captionY, w: contentW, maxH: captionH, align: st.align,
       });
     } else {
       const w = applyMeasureCap(ctx, b.role, contentW, st.fontSize);
       const maxH = Math.max(0.4, captionY - R - contentY);
       const fit = fitText(b.content, w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, bold);
-      plans.push({ role: b.role, content: b.content, x: contentX, y: contentY, w, maxH, align: st.align });
+      plans.push({ role: b.role, content: b.content, intent: b.intent, x: contentX, y: contentY, w, maxH, align: st.align });
       contentY += fit.heightIn + BLOCK_PAD * 2 + R;
     }
   }
@@ -562,7 +565,7 @@ function gSize(ctx: Ctx, role: TextRole, basePt: number): { fontSize: number; mi
 /** Footer triad (Tier-B: thirds at the footer line) + stacked overflow captions. */
 function planCaptions(
   ctx: Ctx,
-  captions: Array<{ role: TextRole; content: string }>,
+  captions: Array<{ role: TextRole; content: string; intent?: BlockIntent }>,
   x0: number,
   fullW: number,
   contentEndY: number,
@@ -578,7 +581,7 @@ function planCaptions(
   for (const b of rest) {
     const st = styleFor(ctx, b.role);
     const maxH = Math.max(0.25, footerY - R - y);
-    plans.push({ role: b.role, content: b.content, x: x0, y, w: fullW, maxH, align: st.align });
+    plans.push({ role: b.role, content: b.content, intent: b.intent, x: x0, y, w: fullW, maxH, align: st.align });
     const fit = fitText(b.content, fullW, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
     y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
   }
@@ -587,7 +590,7 @@ function planCaptions(
     const aligns: TextAlign[] = ['left', 'center', 'right'];
     triad.forEach((b, i) => {
       const st = styleFor(ctx, b.role);
-      plans.push({ role: b.role, content: b.content, x: x0 + tw * i, y: footerY, w: tw, maxH: footerH, align: aligns[i] });
+      plans.push({ role: b.role, content: b.content, intent: b.intent, x: x0 + tw * i, y: footerY, w: tw, maxH: footerH, align: aligns[i] });
     });
   }
   return plans;
@@ -619,7 +622,7 @@ function planMonumentalNumeral(ctx: Ctx): Plan[] {
     const size = gSize(ctx, b.role, 35);
     const maxH = 0.7;
     const fit = fitText(b.content, fullW, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-    plans.push({ role: b.role, content: b.content, x: x0, y, w: fullW, maxH, align: st.align, size });
+    plans.push({ role: b.role, content: b.content, intent: b.intent, x: x0, y, w: fullW, maxH, align: st.align, size });
     y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
   }
   const hero = numbers[0];
@@ -633,7 +636,7 @@ function planMonumentalNumeral(ctx: Ctx): Plan[] {
     const w = Math.min(fullW, Math.max(2.0, measured + 0.3));
     const maxH = 2.5;
     const fit = fitText(hero.content, w, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, bold);
-    plans.push({ role: hero.role, content: hero.content, x: x0, y, w, maxH, align: st.align, size });
+    plans.push({ role: hero.role, content: hero.content, intent: hero.intent, x: x0, y, w, maxH, align: st.align, size });
     y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
   }
   const head = titles[0];
@@ -649,7 +652,7 @@ function planMonumentalNumeral(ctx: Ctx): Plan[] {
     const est = estimateWrap(head.content, size.fontSize, fullW, st.tracking, st.lineHeight, bold);
     const maxH = Math.max(0.4, est.heightIn + BLOCK_PAD * 2 + 0.1);
     const fit = fitText(head.content, fullW, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, bold);
-    plans.push({ role: head.role, content: head.content, x: x0, y, w: fullW, maxH, align: st.align, size });
+    plans.push({ role: head.role, content: head.content, intent: head.intent, x: x0, y, w: fullW, maxH, align: st.align, size });
     y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
   }
   // Degenerate extras (further numbers/titles) stack at title scale; bodies
@@ -659,7 +662,7 @@ function planMonumentalNumeral(ctx: Ctx): Plan[] {
     const size = gSize(ctx, b.role, 57);
     const maxH = Math.max(0.4, SLIDE_HEIGHT_IN - m - 0.7 - y);
     const fit = fitText(b.content, fullW, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-    plans.push({ role: b.role, content: b.content, x: x0, y, w: fullW, maxH, align: st.align, size });
+    plans.push({ role: b.role, content: b.content, intent: b.intent, x: x0, y, w: fullW, maxH, align: st.align, size });
     y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
   }
   for (const b of bodies) {
@@ -667,7 +670,7 @@ function planMonumentalNumeral(ctx: Ctx): Plan[] {
     const w = applyMeasureCap(ctx, b.role, fullW, st.fontSize);
     const maxH = Math.max(0.4, SLIDE_HEIGHT_IN - m - 0.7 - y);
     const fit = fitText(b.content, w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-    plans.push({ role: b.role, content: b.content, x: x0, y, w, maxH, align: st.align });
+    plans.push({ role: b.role, content: b.content, intent: b.intent, x: x0, y, w, maxH, align: st.align });
     y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
   }
   plans.push(...planCaptions(ctx, captions, x0, fullW, y));
@@ -704,7 +707,7 @@ function planExplainerColumns(ctx: Ctx): Plan[] {
     const size = gSize(ctx, run.role, 12);
     const maxH = 0.4;
     const fit = fitText(run.content, fullW, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-    plans.push({ role: run.role, content: run.content, x: x0, y, w: fullW, maxH, align: st.align, size });
+    plans.push({ role: run.role, content: run.content, intent: run.intent, x: x0, y, w: fullW, maxH, align: st.align, size });
     y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
   }
   const head = titles[0];
@@ -713,7 +716,7 @@ function planExplainerColumns(ctx: Ctx): Plan[] {
     const size = gSize(ctx, head.role, 30);
     const maxH = 1.2;
     const fit = fitText(head.content, fullW, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-    plans.push({ role: head.role, content: head.content, x: x0, y, w: fullW, maxH, align: st.align, size });
+    plans.push({ role: head.role, content: head.content, intent: head.intent, x: x0, y, w: fullW, maxH, align: st.align, size });
     y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
   }
   const lede = bodies[0];
@@ -723,23 +726,23 @@ function planExplainerColumns(ctx: Ctx): Plan[] {
     const w = applyMeasureCap(ctx, lede.role, fullW, size.fontSize);
     const maxH = Math.max(0.4, footerTop - R - y);
     const fit = fitText(lede.content, w, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-    plans.push({ role: lede.role, content: lede.content, x: x0, y, w, maxH, align: st.align, size });
+    plans.push({ role: lede.role, content: lede.content, intent: lede.intent, x: x0, y, w, maxH, align: st.align, size });
     y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
   }
   // Middle queue: degenerate extra kickers/titles join the column flow.
-  let middle: Array<{ role: TextRole; content: string }> = [...kickers.slice(1), ...titles.slice(1), ...bodies.slice(1)];
-  let closing: { role: TextRole; content: string } | null = null;
+  let middle: Array<{ role: TextRole; content: string; intent?: BlockIntent }> = [...kickers.slice(1), ...titles.slice(1), ...bodies.slice(1)];
+  let closing: { role: TextRole; content: string; intent?: BlockIntent } | null = null;
   if (middle.length >= 3 && bodies.length >= 3) {
     closing = middle[middle.length - 1];
     middle = middle.slice(0, -1);
   }
-  const placeBody = (b: { role: TextRole; content: string }, bx: number, by: number, bw: number): number => {
+  const placeBody = (b: { role: TextRole; content: string; intent?: BlockIntent }, bx: number, by: number, bw: number): number => {
     const st = styleFor(ctx, b.role);
     const size = gSize(ctx, b.role, 13);
     const w = applyMeasureCap(ctx, b.role, bw, size.fontSize);
     const maxH = Math.max(0.25, footerTop - R - by);
     const fit = fitText(b.content, w, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-    plans.push({ role: b.role, content: b.content, x: bx, y: by, w, maxH, align: st.align, size });
+    plans.push({ role: b.role, content: b.content, intent: b.intent, x: bx, y: by, w, maxH, align: st.align, size });
     return by + Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
   };
   if (middle.length <= 2) {
@@ -759,7 +762,7 @@ function planExplainerColumns(ctx: Ctx): Plan[] {
     const w = applyMeasureCap(ctx, closing.role, fullW, size.fontSize);
     const maxH = Math.max(0.25, footerTop - R - y);
     const fit = fitText(closing.content, w, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
-    plans.push({ role: closing.role, content: closing.content, x: x0, y, w, maxH, align: st.align, size });
+    plans.push({ role: closing.role, content: closing.content, intent: closing.intent, x: x0, y, w, maxH, align: st.align, size });
     y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
   }
   plans.push(...planCaptions(ctx, captions, x0, fullW, y));
@@ -783,6 +786,8 @@ function materialize(ctx: Ctx, plans: Plan[], background: string): TextBlock[] {
       id: `${slide.id}-b${i}`,
       role: p.role,
       content: p.content,
+      // C1 passthrough: intent copied verbatim; absent intent adds no key.
+      ...(p.intent !== undefined ? { intent: { ...p.intent } } : {}),
       x: Math.min(p.x, SLIDE_WIDTH_IN - system.margin - p.w),
       y: Math.max(0, y),
       w: p.w,

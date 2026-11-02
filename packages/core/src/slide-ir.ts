@@ -55,6 +55,16 @@ export interface SlideIR {
 
 const norm = (s: string): string => s.replace(/\s+/g, ' ').trim();
 
+/** Copy blocks with their C1 intent preserved verbatim (never dropped). */
+function copyBlocks(blocks: NarrativeBlock[]): NarrativeBlock[] {
+  return blocks.map((b) =>
+    b.intent !== null && typeof b.intent === 'object'
+      ? { ...b, intent: { ...b.intent } }
+      : // Non-object intent is kept as-is so downstream validation still rejects it.
+        { ...b },
+  );
+}
+
 /** True when a title/body block carries (part of) a claim's text. */
 function linksBlockToClaim(blockText: string, claimText: string): boolean {
   const b = norm(blockText);
@@ -106,7 +116,7 @@ export function narrativeToSlideIR(
       id: slide.id,
       type,
       thesis: slide.thesis,
-      blocks: slide.blocks,
+      blocks: copyBlocks(slide.blocks),
       refs,
       statuses,
       ...(slide.notes !== undefined ? { notes: slide.notes } : {}),
@@ -133,7 +143,7 @@ export function slideIRToNarrative(ir: SlideIR): Narrative {
     slides: ir.slides.map((s) => ({
       id: s.id,
       thesis: s.thesis,
-      blocks: s.blocks,
+      blocks: copyBlocks(s.blocks),
       ...(s.notes !== undefined ? { notes: s.notes } : {}),
     })),
   };
@@ -179,7 +189,8 @@ export function validateSlideIR(ir: unknown): SlideIR {
     if (s.emphasis !== undefined && typeof s.emphasis !== 'string') fail(`slide "${s.id}" emphasis must be a string`);
     if (s.notes !== undefined && typeof s.notes !== 'string') fail(`slide "${s.id}" notes must be a string`);
   }
-  // Blocks must satisfy the same contract renderers enforce.
+  // Blocks must satisfy the same contract renderers enforce (roles, content,
+  // and strict C1 intent via validateNarrative).
   slideIRToNarrative(v as unknown as SlideIR);
   return v as unknown as SlideIR;
 }

@@ -21,6 +21,25 @@ export const TEXT_ROLES: readonly TextRole[] = [
 
 export type TextAlign = 'left' | 'center' | 'right';
 
+/** Author-declared prominence of a block (Stage 3, C1; user/Skill-authored only). */
+export type EmphasisLevel = 'primary' | 'secondary' | 'supporting';
+
+/** Author-declared rhetorical link between grouped blocks (Stage 3, C1). */
+export type BlockRelation = 'label-value' | 'evidence' | 'support';
+
+/**
+ * Optional author intent on a block (Stage 3, C1). Pure metadata: validators
+ * enforce it strictly, layout copies it verbatim, planners never emit it.
+ */
+export interface BlockIntent {
+  emphasis?: EmphasisLevel;
+  /** 1–64 chars, [A-Za-z0-9_-]. */
+  groupId?: string;
+  relation?: BlockRelation;
+  /** Explicit intentional-crop opt-in (ADR-0022). */
+  deliberateCrop?: boolean;
+}
+
 /** A single editable text box. Geometry in inches on the 16:9 canvas. */
 export interface TextBlock {
   id: string;
@@ -45,6 +64,8 @@ export interface TextBlock {
   color: string;
   /** Resolved font face. Present only when a candidate theme overrode fonts. */
   fontFace?: string;
+  /** Author intent copied verbatim from the narrative block (Stage 3, C1). */
+  intent?: BlockIntent;
 }
 
 export interface Slide {
@@ -82,6 +103,8 @@ export interface Deck {
 export interface NarrativeBlock {
   role: TextRole;
   content: string;
+  /** Optional author intent (Stage 3, C1; user/Skill-authored only). */
+  intent?: BlockIntent;
 }
 
 export interface NarrativeSlide {
@@ -173,6 +196,34 @@ function isRecord(v: unknown): v is Record<string, unknown> {
   return v !== null && typeof v === 'object' && !Array.isArray(v);
 }
 
+const EMPHASIS_LEVELS: readonly string[] = ['primary', 'secondary', 'supporting'];
+const BLOCK_RELATIONS: readonly string[] = ['label-value', 'evidence', 'support'];
+const GROUP_ID_PATTERN = /^[A-Za-z0-9_-]{1,64}$/;
+const INTENT_KEYS = new Set(['emphasis', 'groupId', 'relation', 'deliberateCrop']);
+
+/** Strict C1 validation for BlockIntent: exact enums, groupId pattern, no unknown keys. */
+function checkIntent(intent: unknown, path: string): asserts intent is BlockIntent {
+  if (!isRecord(intent)) fail(`${path} must be an object`);
+  for (const key of Object.keys(intent)) {
+    if (!INTENT_KEYS.has(key)) fail(`${path} has unknown key "${key}"`);
+  }
+  if (intent.emphasis !== undefined && !EMPHASIS_LEVELS.includes(intent.emphasis as string)) {
+    fail(`${path}.emphasis must be one of primary|secondary|supporting, got ${JSON.stringify(intent.emphasis)}`);
+  }
+  if (
+    intent.groupId !== undefined &&
+    (typeof intent.groupId !== 'string' || !GROUP_ID_PATTERN.test(intent.groupId))
+  ) {
+    fail(`${path}.groupId must match [A-Za-z0-9_-]{1,64}, got ${JSON.stringify(intent.groupId)}`);
+  }
+  if (intent.relation !== undefined && !BLOCK_RELATIONS.includes(intent.relation as string)) {
+    fail(`${path}.relation must be one of label-value|evidence|support, got ${JSON.stringify(intent.relation)}`);
+  }
+  if (intent.deliberateCrop !== undefined && typeof intent.deliberateCrop !== 'boolean') {
+    fail(`${path}.deliberateCrop must be a boolean, got ${JSON.stringify(intent.deliberateCrop)}`);
+  }
+}
+
 function checkBlock(b: unknown, path: string): asserts b is TextBlock {
   if (!isRecord(b)) fail(`${path} must be an object`);
   if (typeof b.id !== 'string' || b.id.length === 0) fail(`${path}.id must be a non-empty string`);
@@ -210,6 +261,7 @@ function checkBlock(b: unknown, path: string): asserts b is TextBlock {
   if (typeof b.color !== 'string' || !HEX_COLOR.test(b.color)) {
     fail(`${path}.color must be #rrggbb, got ${JSON.stringify(b.color)}`);
   }
+  if (b.intent !== undefined) checkIntent(b.intent, `${path}.intent`);
 }
 
 /**
@@ -266,6 +318,7 @@ export function validateNarrative(n: unknown): Narrative {
       if (typeof b.content !== 'string' || b.content.length === 0) {
         fail(`${path}.blocks[${j}].content must be a non-empty string`);
       }
+      if (b.intent !== undefined) checkIntent(b.intent, `${path}.blocks[${j}].intent`);
     });
   });
   return n as unknown as Narrative;

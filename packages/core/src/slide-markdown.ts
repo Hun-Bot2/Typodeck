@@ -7,6 +7,7 @@
 // the fixed `key: value` vocabulary.
 
 import { SEMANTIC_TYPES, type SemanticSlideType } from './composition';
+import type { BlockIntent } from './schema';
 import { SLIDE_IR_VERSION, validateSlideIR, type SlideIR, type SlideIRSlide } from './slide-ir';
 
 export const SLIDE_MARKDOWN_VERSION = 1 as const;
@@ -20,6 +21,65 @@ function fail(message: string): never {
   throw new Error(`invalid Slide Markdown: ${message}`);
 }
 
+const GROUP_ID_PATTERN = /^[A-Za-z0-9_-]{1,64}$/;
+
+/**
+ * Canonical C2 serialization of one BlockIntent (token order
+ * `emphasis group relation crop`, absent parts omitted). Returns null when
+ * there is nothing to emit (absent intent, or present-but-empty which the
+ * grammar cannot represent and the parser can never produce).
+ */
+function intentLine(intent: BlockIntent | undefined): string | null {
+  if (intent === undefined) return null;
+  const parts: string[] = [];
+  if (intent.emphasis !== undefined) parts.push(`emphasis=${intent.emphasis}`);
+  if (intent.groupId !== undefined) parts.push(`group=${intent.groupId}`);
+  if (intent.relation !== undefined) parts.push(`relation=${intent.relation}`);
+  if (intent.deliberateCrop === true) parts.push('crop');
+  if (parts.length === 0) return null;
+  return `intent: ${parts.join(' ')}`;
+}
+
+/** Strict C2 parse of an `intent:` value: space-separated tokens, no dupes. */
+function parseIntentValue(value: string, lineNo: number): BlockIntent {
+  const tokens = value.split(/\s+/).filter((t) => t !== '');
+  if (tokens.length === 0) fail(`line ${lineNo}: intent value must be non-empty`);
+  const seen = new Set<string>();
+  const intent: BlockIntent = {};
+  for (const tok of tokens) {
+    if (tok === 'crop') {
+      if (seen.has('crop')) fail(`line ${lineNo}: duplicate intent key "crop"`);
+      seen.add('crop');
+      intent.deliberateCrop = true;
+      continue;
+    }
+    const eq = tok.indexOf('=');
+    if (eq <= 0) fail(`line ${lineNo}: unknown intent token "${tok}"`);
+    const key = tok.slice(0, eq);
+    const val = tok.slice(eq + 1);
+    if (key !== 'emphasis' && key !== 'group' && key !== 'relation') {
+      fail(`line ${lineNo}: unknown intent token "${tok}"`);
+    }
+    if (seen.has(key)) fail(`line ${lineNo}: duplicate intent key "${key}"`);
+    seen.add(key);
+    if (key === 'emphasis') {
+      if (val !== 'primary' && val !== 'secondary' && val !== 'supporting') {
+        fail(`line ${lineNo}: bad emphasis "${val}"`);
+      }
+      intent.emphasis = val;
+    } else if (key === 'group') {
+      if (!GROUP_ID_PATTERN.test(val)) fail(`line ${lineNo}: bad group id "${val}"`);
+      intent.groupId = val;
+    } else {
+      if (val !== 'label-value' && val !== 'evidence' && val !== 'support') {
+        fail(`line ${lineNo}: bad relation "${val}"`);
+      }
+      intent.relation = val;
+    }
+  }
+  return intent;
+}
+
 /** Serialize Slide IR to canonical Slide Markdown (byte-stable). */
 export function serializeSlideMarkdown(ir: SlideIR): string {
   validateSlideIR(ir);
@@ -27,7 +87,11 @@ export function serializeSlideMarkdown(ir: SlideIR): string {
   if (ir.preset) lines.push(`> preset: ${ir.preset}`);
   for (const s of ir.slides) {
     lines.push('', `## [${s.id}] ${s.type}`, `thesis: ${s.thesis}`);
-    for (const b of s.blocks) lines.push(`${b.role}: ${b.content}`);
+    for (const b of s.blocks) {
+      lines.push(`${b.role}: ${b.content}`);
+      const il = intentLine(b.intent);
+      if (il !== null) lines.push(il);
+    }
     lines.push(`refs: ${s.refs.join(', ')}`);
     lines.push(`statuses: ${s.statuses.join(', ')}`);
     if (s.emphasis !== undefined) lines.push(`emphasis: ${s.emphasis}`);
@@ -40,7 +104,11 @@ interface PendingSlide {
   id: string;
   type: SemanticSlideType;
   thesis?: string;
-  blocks: Array<{ role: 'kicker' | 'title' | 'body' | 'number' | 'caption'; content: string }>;
+  blocks: Array<{
+    role: 'kicker' | 'title' | 'body' | 'number' | 'caption';
+    content: string;
+    intent?: BlockIntent;
+  }>;
   refs?: string[];
   statuses?: SlideIRSlide['statuses'];
   emphasis?: string;
@@ -80,6 +148,11 @@ export function parseSlideMarkdown(text: string): SlideIR {
   const slides: SlideIRSlide[] = [];
   const ids = new Set<string>();
   let current: PendingSlide | null = null;
+  // C2: an `intent:` line attaches to the immediately preceding block line
+  // only. Any singleton/meta/slide-header line — or any gap (blank line
+  // means the raw index is no longer adjacent) — clears the target.
+  let intentTarget: PendingSlide['blocks'][number] | null = null;
+  let intentTargetLine = -1;
   let i = 2;
   const pushCurrent = (): void => {
     if (current) {
@@ -120,6 +193,7 @@ export function parseSlideMarkdown(text: string): SlideIR {
         fail(`line ${lineNo}: unknown slide type "${type}"`);
       }
       current = { id, type: type as SemanticSlideType, blocks: [], seen: new Set() };
+      intentTarget = null;
       continue;
     }
     if (!current) fail(`line ${lineNo}: content outside any slide (want "## [id] type")`);
@@ -128,9 +202,24 @@ export function parseSlideMarkdown(text: string): SlideIR {
     const [, key, value] = field;
     if (BLOCK_KEYS.has(key)) {
       if (value === '') fail(`line ${lineNo}: block content must be non-empty`);
-      current.blocks.push({ role: key as PendingSlide['blocks'][number]['role'], content: value });
+      const block: PendingSlide['blocks'][number] = {
+        role: key as PendingSlide['blocks'][number]['role'],
+        content: value,
+      };
+      current.blocks.push(block);
+      intentTarget = block;
+      intentTargetLine = i;
       continue;
     }
+    if (key === 'intent') {
+      if (intentTarget === null || intentTargetLine !== i - 1) {
+        fail(`line ${lineNo}: intent must immediately follow a block line`);
+      }
+      intentTarget.intent = parseIntentValue(value, lineNo);
+      intentTarget = null;
+      continue;
+    }
+    intentTarget = null;
     if (!SINGLETON_KEYS.has(key)) fail(`line ${lineNo}: unknown field "${key}"`);
     if (current.seen.has(key)) fail(`line ${lineNo}: duplicate field "${key}"`);
     current.seen.add(key);
