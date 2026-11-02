@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "title": "G1 KO after",
+    "lang": "ko",
+    "system": "editorial",
+    "systemVersion": "1.0.0",
+    "seed": 7,
+    "generatedBy": "typodeck-core/phase1"
+  },
+  "slides": [
+    {
+      "id": "n0-cover",
+      "thesis": "G1 KO",
+      "background": "#FAF7F2",
+      "blocks": [
+        {
+          "id": "n0-cover-b0",
+          "role": "kicker",
+          "content": "심층 보도",
+          "x": 1,
+          "y": 0.72,
+          "w": 11.33,
+          "h": 0.5563888888888888,
+          "fontSize": 35,
+          "fontWeight": 500,
+          "tracking": 0.28,
+          "lineHeight": 1.4,
+          "align": "left",
+          "color": "#9A3B26"
+        },
+        {
+          "id": "n0-cover-b1",
+          "role": "number",
+          "content": "98%",
+          "x": 1,
+          "y": 1.660388888888889,
+          "w": 6.943175000000001,
+          "h": 2.3258333333333336,
+          "fontSize": 231,
+          "fontWeight": 700,
+          "tracking": -0.02,
+          "lineHeight": 1,
+          "align": "left",
+          "color": "#1A1A1A"
+        },
+        {
+          "id": "n0-cover-b2",
+          "role": "title",
+          "content": "국경을 넘어 밤에도 정시에 달리는 야간 열차의 비밀",
+          "x": 1,
+          "y": 4.370222222222223,
+          "w": 11.33,
+          "h": 1.16528,
+          "fontSize": 41.04,
+          "fontWeight": 700,
+          "tracking": -0.01,
+          "lineHeight": 1.12,
+          "align": "left",
+          "color": "#1A1A1A"
+        },
+        {
+          "id": "n0-cover-b3",
+          "role": "caption",
+          "content": "probe.example.org/ko-teach",
+          "x": 1,
+          "y": 6.2,
+          "w": 3.776666666666667,
+          "h": 0.22583333333333333,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "tracking": 0.04,
+          "lineHeight": 1.5,
+          "align": "left",
+          "color": "#6B6B6B"
+        },
+        {
+          "id": "n0-cover-b4",
+          "role": "caption",
+          "content": "사실 기반 세계관을 위한 무료 교육 자료",
+          "x": 4.776666666666667,
+          "y": 6.2,
+          "w": 3.776666666666667,
+          "h": 0.22583333333333333,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "tracking": 0.04,
+          "lineHeight": 1.5,
+          "align": "center",
+          "color": "#6B6B6B"
+        },
+        {
+          "id": "n0-cover-b5",
+          "role": "caption",
+          "content": "버전: 6",
+          "x": 8.553333333333333,
+          "y": 6.2,
+          "w": 3.776666666666667,
+          "h": 0.22583333333333333,
+          "fontSize": 10,
+          "fontWeight": 400,
+          "tracking": 0.04,
+          "lineHeight": 1.5,
+          "align": "right",
+          "color": "#6B6B6B"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-10-31T10:52:08.636Z",
+  "fixtures": {
+    "FX1-ledgerly": {
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 2662,
+          "lines": 75,
+          "sha256": "84fb0ad2ff16e6e8129a78738a3b2bc06652fb19611bac83848ff0c05615d0e6"
+        },
+        {
+          "path": "package.json",
+          "bytes": 344,
+          "lines": 16,
+          "sha256": "9a0c88bac510bbd99b8acbec259351b41b64ebade3d6fb91a7b35cae43b7f914"
+        },
+        {
+          "path": "src/import.js",
+          "bytes": 860,
+          "lines": 28,
+          "sha256": "ef8bb98db66668999f0f346023698b00f124d1acd7692b3b4d59d035fa33384b"
+        }
+      ],
+      "totalFiles": 3,
+      "totalBytes": 3866
+    },
+    "FX2-pipecheck": {
+      "files": [
+        {
+          "path": "README.md",
+          "bytes": 2423,
+          "lines": 69,
+          "sha256": "69d25c67cc2879a0468fc6d73196dc887f5bf93e726097aa5a6fdc3dd04a1dd1"
+        },
+        {
+          "path": "package.json",
+          "bytes": 341,
+          "lines": 16,
+          "sha256": "26851a2d3aeba07c619e6e2a43ff3af4379bf27db1683c0594a38bf21f7b1b58"
+        },
+        {
+          "path": "src/rules.js",
+          "bytes": 590,
+          "lines": 20,
+          "sha256": "ab9e5592c484419ed4b721c3a974fd90069f47cbe3d21f06e1befccf404ce826"
+        }
+      ],
+      "totalFiles": 3,
+      "totalBytes": 3354
+    }
+  }
+}

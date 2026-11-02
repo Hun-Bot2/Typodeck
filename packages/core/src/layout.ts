@@ -58,7 +58,10 @@ export function mulberry32(seed: number): () => number {
 // Text measurement (approximate char-width model, CJK-aware)
 // ---------------------------------------------------------------------------
 
-const NARROW = new Set('il.,:;!\'"|()[]1·∙'.split(''));
+const NARROW = new Set('il.,:;!\'"|()[]·∙'.split(''));
+// NOTE: '1' is deliberately NOT narrow: digits render tabular in most stacks
+// (Georgia/serif '1' ≈ 0.6em, not 0.35em). Narrow-'1' underflowed R1 numeral
+// boxes and wrapped "12" under honest font measurement.
 const WIDE_LATIN = new Set('mwMW@$%&_~QO'.split(''));
 
 function isWideCjk(code: number): boolean {
@@ -196,6 +199,17 @@ export interface FitResult {
   heightIn: number;
 }
 
+/**
+ * Ink height of a wrap: line-box total minus the last line's sub-cap excess
+ * (~0.3 line box; cap ≈ 0.7em EST, research findings). Rendering clips ink,
+ * not line boxes — a 231pt single line in a 2.5in div is clean (Tier-B G1),
+ * and the static estimate must agree with the rendered gate on that.
+ */
+export function inkHeightIn(wrap: WrapResult, fontSizePt: number, lineHeight: number): number {
+  if (wrap.lines.length === 0) return 0;
+  return Math.max(0, wrap.heightIn - ((fontSizePt / 72) * lineHeight * 0.3));
+}
+
 /** Shrink font size until the text fits the box (or min size reached). */
 export function fitText(
   content: string,
@@ -209,11 +223,11 @@ export function fitText(
 ): FitResult {
   let size = startSize;
   let r = estimateWrap(content, size, boxW, trackingEm, lineHeight, bold);
-  while ((r.heightIn > boxH || r.maxWidthIn > boxW) && size > minSize) {
+  while ((inkHeightIn(r, size, lineHeight) > boxH || r.maxWidthIn > boxW) && size > minSize) {
     size = Math.max(minSize, size - Math.max(1, Math.round(size * 0.08)));
     r = estimateWrap(content, size, boxW, trackingEm, lineHeight, bold);
   }
-  return { fontSize: size, lines: r.lines, widthIn: Math.min(r.maxWidthIn, boxW), heightIn: Math.min(r.heightIn, boxH) };
+  return { fontSize: size, lines: r.lines, widthIn: Math.min(r.maxWidthIn, boxW), heightIn: Math.min(inkHeightIn(r, size, lineHeight), boxH) };
 }
 
 // ---------------------------------------------------------------------------
@@ -237,6 +251,21 @@ export function rectsOverlap(a: Rect, b: Rect): boolean {
     a.y + EPS < b.y + b.h - EPS &&
     b.y + EPS < a.y + a.h - EPS
   );
+}
+
+/**
+ * First block whose char-model estimate exceeds its box (the silent-clip
+ * class), or null. Same tolerance as the critic's overflow-risk check; the
+ * layout loop retries smaller scales on a hit (R3 "shrink"), the critic
+ * warns on residue, and the rendered gate measures the truth.
+ */
+export function estimatedOverflowBlock(blocks: TextBlock[]): string | null {
+  for (const b of blocks) {
+    const bold = b.fontWeight >= 700;
+    const est = estimateWrap(b.content, b.fontSize, b.w, b.tracking, b.lineHeight, bold);
+    if (inkHeightIn(est, b.fontSize, b.lineHeight) > b.h + 0.005 || est.maxWidthIn > b.w + 0.005) return b.id;
+  }
+  return null;
 }
 
 /** Throw if any pair of blocks overlaps. Returns void on success. */
@@ -263,6 +292,8 @@ interface Plan {
   /** Max allowed height; final h is fitted to content. */
   maxH: number;
   align: TextAlign;
+  /** Display-size override for composition-driven planners (G1/G3). */
+  size?: { fontSize: number; minFontSize: number };
 }
 
 interface Ctx {
@@ -511,13 +542,235 @@ function planDocument(ctx: Ctx): Plan[] {
 }
 
 // ---------------------------------------------------------------------------
+// Composition-driven planners: G1/G3 (research/slide-reconstruction).
+// Geometry is evidence-derived (Tier-B gapminder-tq2-p1/tle-p5 heuristics);
+// every size scales with ctx.sizeScale so the overflow-relaxation loop
+// converges. Palette/faces stay system-driven (materialize/colorFor):
+// the grammar is geometry, not paint.
+// ---------------------------------------------------------------------------
+
+/** G-series display size: Tier-B base points × sizeScale, system min. */
+function gSize(ctx: Ctx, role: TextRole, basePt: number): { fontSize: number; minFontSize: number } {
+  const st = styleFor(ctx, role);
+  return { fontSize: Math.min(400, Math.max(5, basePt * ctx.sizeScale)), minFontSize: st.minFontSize };
+}
+
+/** Footer triad (Tier-B: thirds at the footer line) + stacked overflow captions. */
+function planCaptions(
+  ctx: Ctx,
+  captions: Array<{ role: TextRole; content: string }>,
+  x0: number,
+  fullW: number,
+  contentEndY: number,
+): Plan[] {
+  const m = ctx.system.margin;
+  const R = ctx.system.rhythm * ctx.rhythmScale;
+  const footerH = 0.3;
+  const footerY = SLIDE_HEIGHT_IN - m - footerH;
+  const plans: Plan[] = [];
+  const triad = captions.length >= 3 ? captions.slice(-3) : [];
+  const rest = captions.length >= 3 ? captions.slice(0, -3) : captions;
+  let y = contentEndY;
+  for (const b of rest) {
+    const st = styleFor(ctx, b.role);
+    const maxH = Math.max(0.25, footerY - R - y);
+    plans.push({ role: b.role, content: b.content, x: x0, y, w: fullW, maxH, align: st.align });
+    const fit = fitText(b.content, fullW, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+    y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
+  }
+  if (triad.length === 3) {
+    const tw = fullW / 3;
+    const aligns: TextAlign[] = ['left', 'center', 'right'];
+    triad.forEach((b, i) => {
+      const st = styleFor(ctx, b.role);
+      plans.push({ role: b.role, content: b.content, x: x0 + tw * i, y: footerY, w: tw, maxH: footerH, align: aligns[i] });
+    });
+  }
+  return plans;
+}
+
+/**
+ * G1 monumental-numeral cover: kicker → giant numeral (~30% canvas height)
+ * → title (~1/4 numeral) → footer triad, left-edge anchored.
+ * R1: numeral box width grows with digit count (measured advance + pad).
+ * R2: titles wrapping past 1 line step down ×0.72 and grow to 2 lines.
+ */
+function planMonumentalNumeral(ctx: Ctx): Plan[] {
+  const { system, slide } = ctx;
+  const m = system.margin;
+  const R = system.rhythm * ctx.rhythmScale;
+  const x0 = Math.max(m, 0.6);
+  const fullW = SLIDE_WIDTH_IN - x0 - m;
+  const plans: Plan[] = [];
+
+  const kickers = slide.blocks.filter((b) => b.role === 'kicker');
+  const numbers = slide.blocks.filter((b) => b.role === 'number');
+  const titles = slide.blocks.filter((b) => b.role === 'title');
+  const bodies = slide.blocks.filter((b) => b.role === 'body');
+  const captions = slide.blocks.filter((b) => b.role === 'caption');
+
+  let y = 0.72;
+  for (const b of kickers) {
+    const st = styleFor(ctx, b.role);
+    const size = gSize(ctx, b.role, 35);
+    const maxH = 0.7;
+    const fit = fitText(b.content, fullW, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+    plans.push({ role: b.role, content: b.content, x: x0, y, w: fullW, maxH, align: st.align, size });
+    y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
+  }
+  const hero = numbers[0];
+  if (hero) {
+    const st = styleFor(ctx, 'number');
+    const bold = st.fontWeight >= 700;
+    const size = gSize(ctx, 'number', 231);
+    // R1: width from measured advance (chars × width + tracking) + pad.
+    const emIn = size.fontSize / 72;
+    const measured = [...hero.content].reduce((a, ch) => a + charWidthEm(ch, bold) + st.tracking, 0) * emIn;
+    const w = Math.min(fullW, Math.max(2.0, measured + 0.3));
+    const maxH = 2.5;
+    const fit = fitText(hero.content, w, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, bold);
+    plans.push({ role: hero.role, content: hero.content, x: x0, y, w, maxH, align: st.align, size });
+    y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
+  }
+  const head = titles[0];
+  if (head) {
+    const st = styleFor(ctx, 'title');
+    const bold = st.fontWeight >= 700;
+    // R2: single-line display size, else one step down + 2-line box.
+    const base = gSize(ctx, 'title', 57);
+    const lines0 = estimateWrap(head.content, base.fontSize, fullW, st.tracking, st.lineHeight, bold).lines.length;
+    const size = lines0 > 1
+      ? { fontSize: Math.max(base.minFontSize, base.fontSize * 0.72), minFontSize: base.minFontSize }
+      : base;
+    const est = estimateWrap(head.content, size.fontSize, fullW, st.tracking, st.lineHeight, bold);
+    const maxH = Math.max(0.4, est.heightIn + BLOCK_PAD * 2 + 0.1);
+    const fit = fitText(head.content, fullW, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, bold);
+    plans.push({ role: head.role, content: head.content, x: x0, y, w: fullW, maxH, align: st.align, size });
+    y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
+  }
+  // Degenerate extras (further numbers/titles) stack at title scale; bodies
+  // stack at system body scale. Roles preserved, never dropped.
+  for (const b of [...numbers.slice(1), ...titles.slice(1)]) {
+    const st = styleFor(ctx, b.role);
+    const size = gSize(ctx, b.role, 57);
+    const maxH = Math.max(0.4, SLIDE_HEIGHT_IN - m - 0.7 - y);
+    const fit = fitText(b.content, fullW, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+    plans.push({ role: b.role, content: b.content, x: x0, y, w: fullW, maxH, align: st.align, size });
+    y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
+  }
+  for (const b of bodies) {
+    const st = styleFor(ctx, b.role);
+    const w = applyMeasureCap(ctx, b.role, fullW, st.fontSize);
+    const maxH = Math.max(0.4, SLIDE_HEIGHT_IN - m - 0.7 - y);
+    const fit = fitText(b.content, w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+    plans.push({ role: b.role, content: b.content, x: x0, y, w, maxH, align: st.align });
+    y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
+  }
+  plans.push(...planCaptions(ctx, captions, x0, fullW, y));
+  return plans;
+}
+
+/**
+ * G3 explainer columns: runhead/headline/lede full-width, then grouped
+ * columns (single-column variant at <=2 middle bodies, 2-column above),
+ * optional closing, footer triad.
+ * R3: bodies shrink to min, spill into following whitespace (each box may
+ * extend to the footer line), residue is flagged overflow-risk by the critic.
+ */
+function planExplainerColumns(ctx: Ctx): Plan[] {
+  const { system, slide } = ctx;
+  const m = system.margin;
+  const R = system.rhythm * ctx.rhythmScale;
+  const x0 = Math.max(m, 0.6);
+  const fullW = SLIDE_WIDTH_IN - x0 - m;
+  const gutter = 0.4;
+  const colW = (fullW - gutter) / 2;
+  const plans: Plan[] = [];
+
+  const kickers = slide.blocks.filter((b) => b.role === 'kicker');
+  const titles = slide.blocks.filter((b) => b.role === 'title');
+  const bodies = slide.blocks.filter((b) => b.role === 'body');
+  const captions = slide.blocks.filter((b) => b.role === 'caption');
+  const footerTop = SLIDE_HEIGHT_IN - m - 0.35;
+
+  let y = 0.25;
+  const run = kickers[0];
+  if (run) {
+    const st = styleFor(ctx, run.role);
+    const size = gSize(ctx, run.role, 12);
+    const maxH = 0.4;
+    const fit = fitText(run.content, fullW, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+    plans.push({ role: run.role, content: run.content, x: x0, y, w: fullW, maxH, align: st.align, size });
+    y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
+  }
+  const head = titles[0];
+  if (head) {
+    const st = styleFor(ctx, head.role);
+    const size = gSize(ctx, head.role, 30);
+    const maxH = 1.2;
+    const fit = fitText(head.content, fullW, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+    plans.push({ role: head.role, content: head.content, x: x0, y, w: fullW, maxH, align: st.align, size });
+    y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
+  }
+  const lede = bodies[0];
+  if (lede) {
+    const st = styleFor(ctx, lede.role);
+    const size = gSize(ctx, lede.role, 13.5);
+    const w = applyMeasureCap(ctx, lede.role, fullW, size.fontSize);
+    const maxH = Math.max(0.4, footerTop - R - y);
+    const fit = fitText(lede.content, w, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+    plans.push({ role: lede.role, content: lede.content, x: x0, y, w, maxH, align: st.align, size });
+    y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
+  }
+  // Middle queue: degenerate extra kickers/titles join the column flow.
+  let middle: Array<{ role: TextRole; content: string }> = [...kickers.slice(1), ...titles.slice(1), ...bodies.slice(1)];
+  let closing: { role: TextRole; content: string } | null = null;
+  if (middle.length >= 3 && bodies.length >= 3) {
+    closing = middle[middle.length - 1];
+    middle = middle.slice(0, -1);
+  }
+  const placeBody = (b: { role: TextRole; content: string }, bx: number, by: number, bw: number): number => {
+    const st = styleFor(ctx, b.role);
+    const size = gSize(ctx, b.role, 13);
+    const w = applyMeasureCap(ctx, b.role, bw, size.fontSize);
+    const maxH = Math.max(0.25, footerTop - R - by);
+    const fit = fitText(b.content, w, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+    plans.push({ role: b.role, content: b.content, x: bx, y: by, w, maxH, align: st.align, size });
+    return by + Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
+  };
+  if (middle.length <= 2) {
+    for (const b of middle) y = placeBody(b, x0, y, fullW);
+  } else {
+    const left = middle.slice(0, Math.ceil(middle.length / 2));
+    const right = middle.slice(Math.ceil(middle.length / 2));
+    let ly = y;
+    let ry = y;
+    for (const b of left) ly = placeBody(b, x0, ly, colW);
+    for (const b of right) ry = placeBody(b, x0 + colW + gutter, ry, colW);
+    y = Math.max(ly, ry);
+  }
+  if (closing) {
+    const st = styleFor(ctx, closing.role);
+    const size = gSize(ctx, closing.role, 12.5);
+    const w = applyMeasureCap(ctx, closing.role, fullW, size.fontSize);
+    const maxH = Math.max(0.25, footerTop - R - y);
+    const fit = fitText(closing.content, w, maxH, size.fontSize, size.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
+    plans.push({ role: closing.role, content: closing.content, x: x0, y, w, maxH, align: st.align, size });
+    y += Math.min(fit.heightIn, maxH) + BLOCK_PAD * 2 + R;
+  }
+  plans.push(...planCaptions(ctx, captions, x0, fullW, y));
+  return plans;
+}
+
+// ---------------------------------------------------------------------------
 // Materialize: fit text into planned boxes, enforce bounds + no-overlap
 // ---------------------------------------------------------------------------
 
 function materialize(ctx: Ctx, plans: Plan[], background: string): TextBlock[] {
   const { system, slide } = ctx;
   return plans.map((p, i) => {
-    const st = styleFor(ctx, p.role);
+    const base = styleFor(ctx, p.role);
+    const st = p.size ? { ...base, fontSize: p.size.fontSize, minFontSize: p.size.minFontSize } : base;
     const maxH = Math.max(0.25, p.maxH);
     const fit = fitText(p.content, p.w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
     const h = Math.min(maxH, fit.heightIn + BLOCK_PAD * 2);
@@ -543,15 +796,25 @@ function materialize(ctx: Ctx, plans: Plan[], background: string): TextBlock[] {
 function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: number, system: TypographySystem, seed: number, planItem?: CompositionPlanItem): import('./schema').Slide {
   const background = backgroundFor(system, slideIndex);
   const overrides = overridesFromPlan(planItem);
-  // Overflow relaxation: if a scale produces overlapping blocks, retry the
-  // whole slide deterministically at a smaller size. First clean scale wins.
+  // Overflow relaxation: if a scale produces overlapping blocks or
+  // estimated text overflow (silent-clip class), retry the whole slide
+  // deterministically at a smaller size. First clean scale wins; the final
+  // scale emits regardless so pathological input warns (critic) instead of
+  // throwing — only true overlap throws.
   const scales = [1, 0.85, 0.7, 0.55, 0.45, 0.35, 0.28, 0.22, 0.17, 0.13];
   let lastError: unknown = null;
-  for (const sizeScale of scales) {
+  for (let si = 0; si < scales.length; si++) {
+    const sizeScale = scales[si];
     const rng = mulberry32(hashString(`${seed}:${system.id}:${slide.id}`));
     const ctx: Ctx = { system, slide, slideIndex, rng, sizeScale, ...overrides };
     let plans: Plan[];
-    switch (system.placement) {
+    // Composition-driven planners (G1/G3) win over system placement when the
+    // plan selects them; all other candidates keep system placement.
+    if (planItem?.candidateId === 'opening-monumental-numeral') {
+      plans = planMonumentalNumeral(ctx);
+    } else if (planItem?.candidateId === 'evidence-explainer-columns') {
+      plans = planExplainerColumns(ctx);
+    } else switch (system.placement) {
       case 'asymmetric-stack':
         plans = planEditorial(ctx);
         break;
@@ -570,6 +833,11 @@ function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: nu
       assertNoOverlaps(blocks, slide.id);
     } catch (e) {
       lastError = e;
+      continue;
+    }
+    const clipped = estimatedOverflowBlock(blocks);
+    if (clipped !== null && si < scales.length - 1) {
+      lastError = new Error(`estimated text overflow in block "${clipped}" on slide "${slide.id}"`);
       continue;
     }
     return {

@@ -1,5 +1,10 @@
 # GitHub-to-Presentation Journey
 
+> Historical record (2026-10-30): validation log for branch
+> `feat/github-presentation-journey`. Worktree paths and ports below
+> are branch-local; behavior claims re-verified on baseline `b09865c`
+> where noted. See `docs/DOCS_AUDIT.md`.
+
 Branch: `feat/github-presentation-journey` (worktree `.muse/worktrees/github-journey`).
 Stash backup of the pre-work tree: `wip-before-github-journey (audit baseline 2026-10-30)`.
 

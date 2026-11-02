@@ -19,6 +19,8 @@ import {
   PRESET_IDS,
   PRESETS,
   getPreset,
+  kickerCase,
+  legacyKicker,
   resolvePurpose,
   stepKicker,
   variantForDuration,
@@ -59,6 +61,17 @@ describe('preset configs', () => {
     assert.equal(stepKicker(PRESETS.P04, 'opportunity', 'en'), 'OPPORTUNITY');
     assert.equal(stepKicker(PRESETS.P04, 'opportunity', 'ko'), '기회');
     assert.throws(() => stepKicker(PRESETS.P04, 'nope', 'en'), /unknown step/);
+  });
+  it('kickerCase uppercases EN and keeps KO', () => {
+    assert.equal(kickerCase('Problem', 'en'), 'PROBLEM');
+    assert.equal(kickerCase('문제', 'ko'), '문제');
+  });
+  it('legacyKicker matches the frozen legacy cover kicker', () => {
+    assert.equal(legacyKicker('hackathon', 'en'), 'HACKATHON');
+    assert.equal(legacyKicker('showcase', 'ko'), '쇼케이스');
+    assert.equal(legacyKicker('general', 'en'), 'TYPODECK');
+    assert.equal(legacyKicker('general', 'en', 'Acme'), 'ACME');
+    assert.equal(legacyKicker('general', 'en', 'x'.repeat(60)), 'X'.repeat(48));
   });
 });
 

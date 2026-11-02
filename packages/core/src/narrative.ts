@@ -12,7 +12,6 @@ import { evaluateNarrative, type QualityReport } from './quality';
 import {
   analyzeClaim,
   ARC,
-  AUDIENCE_LABEL,
   claimSimilarity,
   DIM_LABEL,
   displayStatus,
@@ -26,6 +25,8 @@ import {
   type Dimension,
 } from './semantics';
 import {
+  kickerCase,
+  legacyKicker,
   presetKicker,
   resolvePurpose,
   stepKicker,
@@ -135,8 +136,7 @@ function block(role: NarrativeBlock['role'], content: string): NarrativeBlock {
 }
 
 function dimKicker(dim: Dimension, lang: Lang): string {
-  const label = DIM_LABEL[lang][dim];
-  return lang === 'ko' ? label : label.toUpperCase();
+  return kickerCase(DIM_LABEL[lang][dim], lang);
 }
 
 const KIND_RANK: Record<ClaimKind, number> = { verified: 0, suggestion: 1, ungrounded: 2 };
@@ -329,14 +329,7 @@ function planLegacyNarrative(
   // Cover quotes never consume claims, but theses must add new information.
   const coverEcho: string[] = [];
   const coverBlocks: NarrativeBlock[] = [
-    block(
-      'kicker',
-      audience === 'general'
-        ? (customTitle ? customTitle.toUpperCase().slice(0, 48) : 'TYPODECK')
-        : lang === 'ko'
-          ? AUDIENCE_LABEL[lang][audience]
-          : AUDIENCE_LABEL[lang][audience].toUpperCase(),
-    ),
+    block('kicker', legacyKicker(audience, lang, customTitle)),
     block('title', shorten(title, 72)),
   ];
   if (titleClaim) coverEcho.push(titleClaim.claim.text);

@@ -1,0 +1,26 @@
+{
+ "background": "#FFFFFF",
+ "blocks": [
+  {
+   "align": "center",
+   "color": "#000000",
+   "h": 5.7,
+   "id": "mark",
+   "lineHeight": 1.0,
+   "role": "title",
+   "w": 13.33,
+   "x": 0.0,
+   "y": 0.9,
+   "content": "\u00a9",
+   "fontSize": 400,
+   "fontWeight": 400,
+   "tracking": 0
+  }
+ ],
+ "notes": "LINK-ONLY paraphrase (license UNVERIFIED). Custom ultra-bold vector \u00a9-mark substituted with SANS \u00a9 glyph \u2014 stroke-weight mismatch expected and recorded. Glyph cap ~55% of canvas height (EST). Engine fontSize cap 400pt forced 424->400 clamp (~6% smaller glyph); recorded as implementation gap.",
+ "slideId": "fosdem-p14",
+ "system": "swiss",
+ "tier": "B",
+ "title": "Section mark (paraphrase)",
+ "thesis": "single monumental glyph on white"
+}

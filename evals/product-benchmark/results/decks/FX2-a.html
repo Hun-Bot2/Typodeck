@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Pipecheck — pitch</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#1b2430;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;display:flex;flex-direction:column;align-items:center;min-height:100vh;color:#fff}
+.stage{width:min(1280px,96vw);aspect-ratio:16/9;margin:24px 0 12px}
+.slide{width:100%;height:100%;background:#f7f5f0;color:#17202b;border-radius:12px;padding:56px 72px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.kicker{font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#8a94a6;margin-bottom:12px}
+.slide-title{font-size:44px;line-height:1.15;margin:0 0 20px;color:#0f1722}
+.slide-body{font-size:21px;line-height:1.5;margin:0 0 12px;color:#2b3648}
+.slide[data-kind="cover"] .slide-title{font-size:72px}.slide[data-kind="cover"] .slide-body{font-size:24px}
+.slide-src{font-size:14px;color:#8a94a6;margin-top:16px}
+.nav{display:flex;gap:12px;margin-bottom:24px}.nav button{font-size:16px;padding:8px 20px;border-radius:8px;border:1px solid #3b4a63;background:#24314a;color:#fff;cursor:pointer}
+.count{font-size:14px;color:#8a94a6;margin-bottom:24px}
+</style></head><body>
+<div class="stage"><section class="slide" data-slide-id="FX2-pipecheck-a-s0" data-kind="cover" style="display:flex"><div class="kicker slide-block" data-block-id="FX2-pipecheck-a-s0-kicker" data-slide-id="FX2-pipecheck-a-s0">FX2-pipecheck · 1 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX2-pipecheck-a-s0-title" data-slide-id="FX2-pipecheck-a-s0">Pipecheck</h2>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s0-b0" data-slide-id="FX2-pipecheck-a-s0">Pipecheck lints deployment pipeline files before they fail at 2 AM. It reads a 200line YAML workflow, checks 14 rules, and reports in about 2 seconds — as a CLI or as 1 GitHub PR comment.</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s0-b1" data-slide-id="FX2-pipecheck-a-s0">Version 1.1.0 · Pipeline linter: 14 rules over YAML workflows, 2-second reports, PR comments.</div>
+<div class="slide-src slide-block" data-block-id="FX2-pipecheck-a-s0-src" data-slide-id="FX2-pipecheck-a-s0">Source: README.md + package.json</div></section>
+<section class="slide" data-slide-id="FX2-pipecheck-a-s1" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX2-pipecheck-a-s1-kicker" data-slide-id="FX2-pipecheck-a-s1">FX2-pipecheck · 2 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX2-pipecheck-a-s1-title" data-slide-id="FX2-pipecheck-a-s1">Why</h2>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s1-b0" data-slide-id="FX2-pipecheck-a-s1">A survey of 120 workflows across 30 repositories found 90 issues in 45 files: missing actions/checkout@v4 (22 cases), mixed Node 18 and Node 20 jobs (17 cases),</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s1-b1" data-slide-id="FX2-pipecheck-a-s1">The remaining 20 were 1off mistakes no rule catches yet.</div>
+<div class="slide-src slide-block" data-block-id="FX2-pipecheck-a-s1-src" data-slide-id="FX2-pipecheck-a-s1">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX2-pipecheck-a-s2" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX2-pipecheck-a-s2-kicker" data-slide-id="FX2-pipecheck-a-s2">FX2-pipecheck · 3 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX2-pipecheck-a-s2-title" data-slide-id="FX2-pipecheck-a-s2">Install</h2>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s2-b0" data-slide-id="FX2-pipecheck-a-s2">Needs Node 20+.</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s2-b1" data-slide-id="FX2-pipecheck-a-s2">Supports monorepos with up to 5 packages (pnpm, npm, and yarn workspaces).</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s2-b2" data-slide-id="FX2-pipecheck-a-s2">Opensource projects are free; teams pay $8 per developer per month.</div>
+<div class="slide-src slide-block" data-block-id="FX2-pipecheck-a-s2-src" data-slide-id="FX2-pipecheck-a-s2">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX2-pipecheck-a-s3" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX2-pipecheck-a-s3-kicker" data-slide-id="FX2-pipecheck-a-s3">FX2-pipecheck · 4 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX2-pipecheck-a-s3-title" data-slide-id="FX2-pipecheck-a-s3">Rules</h2>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s3-b0" data-slide-id="FX2-pipecheck-a-s3">Correctness (6 rules): missing checkout, unknown action versions,</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s3-b1" data-slide-id="FX2-pipecheck-a-s3">Consistency (5 rules): mixed Node majors, mixed runners, secretname</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s3-b2" data-slide-id="FX2-pipecheck-a-s3">Cost (3 rules): missing concurrency cancel, cache misses on 2 or more</div>
+<div class="slide-src slide-block" data-block-id="FX2-pipecheck-a-s3-src" data-slide-id="FX2-pipecheck-a-s3">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX2-pipecheck-a-s4" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX2-pipecheck-a-s4-kicker" data-slide-id="FX2-pipecheck-a-s4">FX2-pipecheck · 5 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX2-pipecheck-a-s4-title" data-slide-id="FX2-pipecheck-a-s4">Beta results</h2>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s4-b0" data-slide-id="FX2-pipecheck-a-s4">30 repositories, 120 workflows scanned, 90 issues found, 4 percent false positives.</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s4-b1" data-slide-id="FX2-pipecheck-a-s4">7 teams fixed all findings within 3 days; the other 2 needed a 2nd pass.</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s4-b2" data-slide-id="FX2-pipecheck-a-s4">0 crashes on files up to 800 lines; files past 800 lines get a warning and a partial result (first 800 lines only).</div>
+<div class="slide-src slide-block" data-block-id="FX2-pipecheck-a-s4-src" data-slide-id="FX2-pipecheck-a-s4">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX2-pipecheck-a-s5" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX2-pipecheck-a-s5-kicker" data-slide-id="FX2-pipecheck-a-s5">FX2-pipecheck · 6 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX2-pipecheck-a-s5-title" data-slide-id="FX2-pipecheck-a-s5">Config</h2>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s5-b0" data-slide-id="FX2-pipecheck-a-s5">25 lines of YAML: enable/disable any of the 14 rules, set timeout bounds (5 to 60 minutes), pin the 3 allowed runner labels.</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s5-b1" data-slide-id="FX2-pipecheck-a-s5">Strict mode turns the 5 consistency rules into errors.</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s5-b2" data-slide-id="FX2-pipecheck-a-s5">1 command (pipecheck explain R07) prints the rationale for any rule.</div>
+<div class="slide-src slide-block" data-block-id="FX2-pipecheck-a-s5-src" data-slide-id="FX2-pipecheck-a-s5">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX2-pipecheck-a-s6" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX2-pipecheck-a-s6-kicker" data-slide-id="FX2-pipecheck-a-s6">FX2-pipecheck · 7 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX2-pipecheck-a-s6-title" data-slide-id="FX2-pipecheck-a-s6">Limits (honest)</h2>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s6-b0" data-slide-id="FX2-pipecheck-a-s6">GitHub Actions only; GitLab support is issue 42, not started.</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s6-b1" data-slide-id="FX2-pipecheck-a-s6">4 percent false positives, concentrated in 2 rules (R06 unpinned SHAs</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s6-b2" data-slide-id="FX2-pipecheck-a-s6">800line ceiling per file; monorepos over 5 packages need 2 config files.</div>
+<div class="slide-src slide-block" data-block-id="FX2-pipecheck-a-s6-src" data-slide-id="FX2-pipecheck-a-s6">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX2-pipecheck-a-s7" data-kind="stat" style="display:none"><div class="kicker slide-block" data-block-id="FX2-pipecheck-a-s7-kicker" data-slide-id="FX2-pipecheck-a-s7">FX2-pipecheck · 8 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX2-pipecheck-a-s7-title" data-slide-id="FX2-pipecheck-a-s7">Roadmap</h2>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s7-b0" data-slide-id="FX2-pipecheck-a-s7">Version 1.</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s7-b1" data-slide-id="FX2-pipecheck-a-s7">2.</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s7-b2" data-slide-id="FX2-pipecheck-a-s7">0 plans 2 items: autofix for the 6 correctness rules (1 flag, fix, with a diff preview) and SARIF output so the 90 beta findings replay in any of the 5 tested c</div>
+<div class="slide-src slide-block" data-block-id="FX2-pipecheck-a-s7-src" data-slide-id="FX2-pipecheck-a-s7">Source: README.md</div></section>
+<section class="slide" data-slide-id="FX2-pipecheck-a-s8" data-kind="closing" style="display:none"><div class="kicker slide-block" data-block-id="FX2-pipecheck-a-s8-kicker" data-slide-id="FX2-pipecheck-a-s8">FX2-pipecheck · 9 / 9</div>
+<h2 class="slide-title slide-block" data-block-id="FX2-pipecheck-a-s8-title" data-slide-id="FX2-pipecheck-a-s8">Get started in a minute</h2>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s8-b0" data-slide-id="FX2-pipecheck-a-s8">npm install -g pipecheck@1.1.0 pipecheck --init # writes 1 config file, 25 lines</div>
+<div class="slide-body slide-block" data-block-id="FX2-pipecheck-a-s8-b1" data-slide-id="FX2-pipecheck-a-s8">Pipecheck 1.1.0 — &gt;=20 required</div>
+<div class="slide-src slide-block" data-block-id="FX2-pipecheck-a-s8-src" data-slide-id="FX2-pipecheck-a-s8">Source: README.md</div></section></div>
+<div class="nav"><button id="prev">← Prev</button><button id="next">Next →</button></div>
+<div class="count">9 slides · FX2-pipecheck · generic baseline (Arm A)</div>
+<script>
+let i=0;const S=[...document.querySelectorAll('.slide')];
+function show(n){i=(n+S.length)%S.length;S.forEach((s,k)=>s.style.display=k===i?'flex':'none')}
+document.getElementById('prev').onclick=()=>show(i-1);document.getElementById('next').onclick=()=>show(i+1);
+addEventListener('keydown',e=>{if(e.key==='ArrowRight')show(i+1);if(e.key==='ArrowLeft')show(i-1)});
+</script></body></html>

@@ -568,17 +568,23 @@ export function isChangelogClaim(claim: Pick<Claim, 'refs'>): boolean {
 // Audience parsing: "hackathon" / "competition: Acme" / "쇼케이스: …" / "Acme"
 // ---------------------------------------------------------------------------
 
-const AUDIENCE_PATTERNS: Array<{ re: RegExp; audience: Audience }> = [
-  { re: /^(hackathon|해커톤)$/i, audience: 'hackathon' },
-  { re: /^(competition|contest|경진대회|공모전)$/i, audience: 'competition' },
-  { re: /^(showcase|demo\s*day|demoday|쇼케이스|발표회?|시연회?)$/i, audience: 'showcase' },
+// Single source of truth for legacy audience names: each alternation feeds
+// both the bare matcher ("hackathon") and the titled matcher
+// ("hackathon: Acme"), so the two can never diverge. The constructed
+// patterns are source-identical to the regex literals they replace.
+const AUDIENCE_NAMES: Array<{ names: string; audience: Audience }> = [
+  { names: 'hackathon|해커톤', audience: 'hackathon' },
+  { names: 'competition|contest|경진대회|공모전', audience: 'competition' },
+  { names: 'showcase|demo\\s*day|demoday|쇼케이스|발표회?|시연회?', audience: 'showcase' },
 ];
 
-const AUDIENCE_PREFIX: Array<{ re: RegExp; audience: Audience }> = [
-  { re: /^(hackathon|해커톤)\s*[:\-–]\s*(.+)$/i, audience: 'hackathon' },
-  { re: /^(competition|contest|경진대회|공모전)\s*[:\-–]\s*(.+)$/i, audience: 'competition' },
-  { re: /^(showcase|demo\s*day|demoday|쇼케이스|발표회?|시연회?)\s*[:\-–]\s*(.+)$/i, audience: 'showcase' },
-];
+const AUDIENCE_PATTERNS: Array<{ re: RegExp; audience: Audience }> = AUDIENCE_NAMES.map(
+  ({ names, audience }) => ({ re: new RegExp(`^(${names})$`, 'i'), audience }),
+);
+
+const AUDIENCE_PREFIX: Array<{ re: RegExp; audience: Audience }> = AUDIENCE_NAMES.map(
+  ({ names, audience }) => ({ re: new RegExp(`^(${names})\\s*[:\\-–]\\s*(.+)$`, 'i'), audience }),
+);
 
 export type PresetRef = `P${'01' | '02' | '03' | '04' | '05' | '06' | '07' | '08' | '09' | '10'}`;
 

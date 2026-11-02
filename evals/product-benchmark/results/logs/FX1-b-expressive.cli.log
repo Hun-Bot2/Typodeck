@@ -1,0 +1,9 @@
+provider: fallback (generated_by=fallback)
+claims: total=24 verified=0 suggestion=0 ungrounded=24
+quality: pass overall=96 errors=0 warnings=2
+deck: 10 slides, 36 text boxes -> /tmp/td-g-out/FX1-b-expressive.pptx
+warning: idea mode: all claims ungrounded; number slides labeled unverified/illustrative
+warning: quality warning [thin-slide] on n5-differentiation: thesis slide has no supporting body
+warning: quality warning [thin-slide] on n6-limitations: thesis slide has no supporting body
+warning: built with the deterministic fallback (not model inference)
+validation: OK

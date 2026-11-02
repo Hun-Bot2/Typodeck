@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-10-31T10:59:02.255Z",
+  "note": "Binaries not committed; reproducible via run.sh",
+  "pptx": [
+    {
+      "file": "FX1-b-editorial.pptx",
+      "sha256": "330e240fb28f7317e4b9520a8f585acd2c6470b8d3d93dafc1a3260386b0d8de",
+      "bytes": 117648
+    },
+    {
+      "file": "FX1-b-expressive.pptx",
+      "sha256": "ad0a6b2e76f489acbcc5243617cac28b69a443894bd5f81d9c38553b44ee95ef",
+      "bytes": 117792
+    },
+    {
+      "file": "FX1-b-swiss.pptx",
+      "sha256": "2174dc18fcd5d79dcf7d427252d7bb9bd55250d7a30a3965cb07a083491d6cbb",
+      "bytes": 116939
+    },
+    {
+      "file": "FX2-b-editorial.pptx",
+      "sha256": "0c0c805af9025d6a98149984a541c6b8cb7a13f60121b2a8dea73eb5a37cd721",
+      "bytes": 117819
+    },
+    {
+      "file": "FX2-b-expressive.pptx",
+      "sha256": "4e28134966ea6d8c10fd9d3ce072f5a8a4b767f4afede1c7710faadd16b4c1c0",
+      "bytes": 117963
+    },
+    {
+      "file": "FX2-b-swiss.pptx",
+      "sha256": "46b3c4ea92d8a3f9dc7b75a79d2b0edd24f9cc490feb205ca14729b269dac8f8",
+      "bytes": 117112
+    }
+  ]
+}

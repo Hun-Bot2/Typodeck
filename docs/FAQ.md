@@ -82,13 +82,14 @@ PDF export, private-repo access, or image generation. (Speaker notes do ship:
 they ride along to native PPTX notes, never rendered on slides.) See
 `docs/PRD.md` §7.
 
-## `HEAD` doesn't build — is the repo broken?
+## A commit doesn't build — is the repo broken?
 
-`main` at `ff68b70` intentionally commits code fragments — its message states
-"this snapshot does not build standalone." This branch
-(`integrate/release-readiness`) restores the full context and verifies it
-from a clean checkout (270/270 tests, web build OK); run the README
-quick-start here.
+`main` at `ff68b70` intentionally commits code fragments — its message
+states "this snapshot does not build standalone." This baseline
+(`b09865c`) builds clean: `tsc` with zero errors, 270/270 tests, web
+production build OK (verified 2026-10-31 — run the README quick-start
+here). If you land on a non-building snapshot, check the commit
+message before assuming breakage.
 
 ## How do I re-run the evaluation?
 

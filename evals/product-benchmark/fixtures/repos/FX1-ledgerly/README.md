@@ -1,0 +1,74 @@
+# Ledgerly
+
+Ledgerly is a command-line ledger for people who outgrow spreadsheets but
+don't want accounting software. It tracks cash flow across 9 bank CSV
+dialects, keeps budgets for up to 20 envelopes, and exports to 3 formats.
+
+## Install
+
+Requires Node 18 or newer. Install the 0.4.2 release:
+
+```sh
+npm install -g ledgerly@0.4.2
+ledgerly init
+```
+
+The whole install is 1 dependency and starts in under 300 ms on a cold
+cache. No account, no network calls, no telemetry.
+
+## Commands
+
+12 commands cover the daily loop:
+
+- `init` — create a ledger in the current directory (1 file, `ledger.json`)
+- `add` — record one transaction in about 5 seconds
+- `import` — read bank CSVs (up to 9 dialects, see below)
+- `list` — show the 30 most recent transactions
+- `report` — monthly summary: income, spend, top 5 categories
+- `budget` — set and check up to 20 envelopes
+- `balance` — current balance across at most 6 accounts
+- `search` — find transactions by text (first 200 matches)
+- `edit` — fix the last entry without opening an editor
+- `export` — write CSV, JSON, or OFX
+- `check` — verify the ledger file (runs 11 integrity rules)
+- `help` — 1-page reference for every command
+
+## Import
+
+`ledgerly import statement.csv` reads a 1,200-row bank export in under
+2 seconds on a 2020 laptop — roughly 40 ms per 1,000 rows. 9 dialects ship
+built in (Chase, Amex, N26, and 6 more); unknown columns are reported, never
+guessed, and the import stops after 50 skipped rows instead of corrupting
+your ledger.
+
+Practical ceiling: ledgers under 100,000 rows stay instant. Past that,
+`list` caps at 200 matches and `report` takes about 4 seconds.
+
+## Export
+
+3 formats: CSV (opens in any spreadsheet), JSON (1 transaction per line),
+and OFX 2.1 for legacy desktop tools. Exports include all 6 account fields
+and never drop the 2 running-balance columns.
+
+## Budgets
+
+20 envelopes max, 1 per line in `budget.json`. A $600 groceries envelope
+warns at 80 percent ($480) and blocks `add` at 100 percent unless you pass
+`--force`. Monthly rollover takes weekends into account over a 7-day window.
+
+## Limits (honest)
+
+- 1 currency per ledger; multi-currency is the most-requested feature.
+- No mobile app; the JSON file syncs through any of the 4 tested providers
+  (iCloud, Dropbox, Syncthing, git).
+- `check` covers 11 rules; it does not audit for fraud, only for damage.
+
+## Roadmap
+
+Version 0.5.0 (October 2026) plans 3 items: a 2nd currency per ledger,
+recurring-transaction templates (up to 50 rules), and a 1-command
+`doctor` that repairs the 4 most common file corruptions.
+
+## License
+
+MIT. 1 maintainer, 14 contributors, 212 closed issues.

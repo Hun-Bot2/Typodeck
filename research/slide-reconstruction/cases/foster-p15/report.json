@@ -1,0 +1,12 @@
+{
+  "tier": "B",
+  "system": "expressive",
+  "validation": "OK",
+  "export": {
+    "ok": true,
+    "editableChars": 212
+  },
+  "notes": [
+    "hand-placed 8 blocks through schema + validators"
+  ]
+}

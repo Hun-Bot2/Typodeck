@@ -4,6 +4,12 @@ Status: proposed copy + rationale for a future landing page. Every claim below
 maps to inspected code or measured eval output; the claims ledger at the end
 gives the evidence pointer. "Never claim" list is binding.
 
+> Note (2026-10-31): the landing page now exists
+> (`apps/web/app/landing/`, route `/landing`) with its own verified copy
+> (`data.ts` header cites code refs). The hero/pillar copy below is
+> partially superseded by the live page; the claims ledger and the
+> never-claim list remain normative. See `docs/DOCS_AUDIT.md`.
+
 ## Hero
 
 **Headline:** Decks that cite their sources.

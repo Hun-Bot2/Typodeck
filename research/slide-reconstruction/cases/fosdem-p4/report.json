@@ -1,0 +1,12 @@
+{
+  "tier": "B",
+  "system": "swiss",
+  "validation": "OK",
+  "export": {
+    "ok": true,
+    "editableChars": 49
+  },
+  "notes": [
+    "hand-placed 3 blocks through schema + validators"
+  ]
+}

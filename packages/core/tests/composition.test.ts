@@ -38,7 +38,7 @@ describe('grammar coverage', () => {
     }
   });
   it('grammar bundle exposes version + scoring + fallback + validation', () => {
-    assert.equal(COMPOSITION_GRAMMAR.version, '0.1.0');
+    assert.equal(COMPOSITION_GRAMMAR.version, '0.2.0');
     assert.ok(COMPOSITION_GRAMMAR.scoring.repetitionRule.includes('40%'));
     assert.ok(COMPOSITION_GRAMMAR.fallback.includes('thesis-statement'));
   });
