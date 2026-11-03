@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typodeck Design Diversity Gallery — D01..D27</title>
+<style>
+:root{--bg:#14161a;--card:#1e2127;--line:#2c313a;--fg:#e8eaf0;--dim:#9aa3b2;--acc:#ffb224;--pass:#3fd68c;--chip:#2a2f38}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{padding:28px 28px 8px}header h1{margin:0 0 4px;font-size:26px}header p{margin:4px 0;color:var(--dim)}
+#controls{position:sticky;top:0;z-index:5;background:#14161af2;border-block:1px solid var(--line);padding:12px 28px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#controls input[type=search],#controls select{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px}
+#controls input[type=search]{min-width:220px}
+#count{margin-left:auto;color:var(--dim)}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:18px;padding:20px 28px 60px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#000}
+.card .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px}
+.card h2{margin:0;font-size:18px}.card h2 .did{display:inline-block;background:var(--acc);color:#111;border-radius:6px;font-size:13px;padding:1px 8px;margin-right:8px;vertical-align:2px}
+.slug{color:var(--dim);font-size:13px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chip{background:var(--chip);border:1px solid var(--line);border-radius:20px;padding:1px 10px;font-size:12.5px}
+.chip.tone{border-style:dashed}.meta{font-size:13.5px;color:var(--dim)}
+.meta b{color:var(--fg);font-weight:600}
+.pass{display:inline-block;background:#0e2e1f;color:var(--pass);border:1px solid #1c5c3c;border-radius:6px;font-size:12.5px;padding:1px 8px}
+.bestfor{font-size:13.5px}.paths{font-size:12px;color:var(--dim)}.paths code{font-family:ui-monospace,monospace;font-size:11.5px;color:#c3cad6;word-break:break-all}
+.pick{display:flex;gap:8px;align-items:center;margin-top:2px;font-size:13px;color:var(--dim)}
+#comparebar{position:fixed;left:0;right:0;bottom:0;z-index:9;background:#0d0f12f5;border-top:1px solid var(--line);padding:10px 28px;display:none;gap:12px;align-items:center}
+#comparebar.on{display:flex}#comparebar button{background:var(--acc);border:0;border-radius:8px;padding:8px 16px;font-size:14px;font-weight:700;cursor:pointer}
+#comparebar button.ghost{background:transparent;color:var(--dim);border:1px solid var(--line);font-weight:400}
+#overlay{position:fixed;inset:0;z-index:10;background:#0b0d10fa;display:none;overflow:auto;padding:24px}
+#overlay.on{display:block}#overlay .cols{display:grid;gap:16px}
+#overlay figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+#overlay img{width:100%;display:block}#overlay figcaption{padding:10px 12px;font-size:13px}#overlay figcaption h3{margin:0 0 4px;font-size:16px}
+#closeov{position:sticky;top:0;float:right;background:var(--acc);border:0;border-radius:8px;padding:8px 16px;font-weight:700;cursor:pointer}
+footer{padding:0 28px 80px;color:var(--dim;font-size:13px}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<header>
+<h1>Typodeck Design-Diversity Gallery — D01&ndash;D27</h1>
+<p>Rendered 1920&times;1080 previews from <code>evals/design-diversity/screenshots/</code>. Metadata inlined at build time from <code>bold-template-pack/selection-index.json</code> (works over <code>file://</code>). Repo paths below are plain text, not links.</p>
+</header>
+<div id="controls">
+<input type="search" id="q" placeholder="Search name, slug, mood, best-for&hellip;" aria-label="Search">
+<select id="fmood" aria-label="Mood filter"><option value="">Mood: all</option>
+<option value="airy">airy</option>
+<option value="analytical">analytical</option>
+<option value="antique">antique</option>
+<option value="arcade">arcade</option>
+<option value="bouncy">bouncy</option>
+<option value="bubbly">bubbly</option>
+<option value="calm">calm</option>
+<option value="ceremonial">ceremonial</option>
+<option value="chic">chic</option>
+<option value="cinematic">cinematic</option>
+<option value="cited">cited</option>
+<option value="clashing">clashing</option>
+<option value="confident">confident</option>
+<option value="considered">considered</option>
+<option value="cozy">cozy</option>
+<option value="defiant">defiant</option>
+<option value="didactic">didactic</option>
+<option value="disruptive">disruptive</option>
+<option value="drafted">drafted</option>
+<option value="dramatic">dramatic</option>
+<option value="earthy">earthy</option>
+<option value="electric">electric</option>
+<option value="empty">empty</option>
+<option value="exclusive">exclusive</option>
+<option value="factual">factual</option>
+<option value="flowing">flowing</option>
+<option value="geometric">geometric</option>
+<option value="glamorous">glamorous</option>
+<option value="glossy">glossy</option>
+<option value="glowing">glowing</option>
+<option value="hacker">hacker</option>
+<option value="handmade">handmade</option>
+<option value="honest">honest</option>
+<option value="joyful">joyful</option>
+<option value="kind">kind</option>
+<option value="literary">literary</option>
+<option value="live">live</option>
+<option value="loud">loud</option>
+<option value="methodical">methodical</option>
+<option value="monumental">monumental</option>
+<option value="neon">neon</option>
+<option value="neutral">neutral</option>
+<option value="noir">noir</option>
+<option value="nostalgic">nostalgic</option>
+<option value="operational">operational</option>
+<option value="optimistic">optimistic</option>
+<option value="organic">organic</option>
+<option value="paper">paper</option>
+<option value="plain">plain</option>
+<option value="playful">playful</option>
+<option value="practical">practical</option>
+<option value="precise">precise</option>
+<option value="pressed">pressed</option>
+<option value="primary">primary</option>
+<option value="printed">printed</option>
+<option value="profound">profound</option>
+<option value="quiet">quiet</option>
+<option value="rational">rational</option>
+<option value="rebellious">rebellious</option>
+<option value="refined">refined</option>
+<option value="retro">retro</option>
+<option value="rigorous">rigorous</option>
+<option value="romantic">romantic</option>
+<option value="scholarly">scholarly</option>
+<option value="serene">serene</option>
+<option value="severe">severe</option>
+<option value="solemn">solemn</option>
+<option value="still">still</option>
+<option value="sunny">sunny</option>
+<option value="symmetric">symmetric</option>
+<option value="systematic">systematic</option>
+<option value="technical">technical</option>
+<option value="tense">tense</option>
+<option value="trustworthy">trustworthy</option>
+<option value="urgent">urgent</option>
+<option value="wanderlust">wanderlust</option></select>
+<select id="fdensity" aria-label="Density filter"><option value="">Density: all</option><option>low</option><option>medium</option><option>high</option></select>
+<select id="fform" aria-label="Formality filter"><option value="">Formality: all</option><option>low</option><option>medium</option><option>high</option></select>
+<select id="fscheme" aria-label="Scheme filter"><option value="">Scheme: all</option><option>light</option><option>dark</option></select>
+<span id="count"></span>
+</div>
+<main id="grid"></main>
+<div id="comparebar"><span id="selinfo"></span><button id="gocompare">Compare side-by-side</button><button class="ghost" id="clearsel">Clear</button></div>
+<div id="overlay" role="dialog" aria-label="Comparison"><button id="closeov">Close ✕</button><div class="cols" id="ovcols"></div></div>
+<footer><p>Contact sheet: <code>contact-sheet.png</code> (built from <code>contact.html</code> via headless-Chrome screenshot — see <code>README.md</code>). Validation column = harness <code>validate-design.mjs</code> result at gallery build time.</p></footer>
+<script>
+const DATA = [{"avoidFor": "Playful, warm or decorative contexts; anything needing ornament", "bestFor": "Product launches, keynotes, data stories that need Swiss clarity", "contentTypes": ["title", "bullets", "stats", "closing"], "density": "medium", "designPath": "bold-template-pack/templates/gridline-swiss/design.md", "formality": "medium", "id": "D01", "mood": ["precise", "confident", "rational"], "name": "Gridline", "previewPath": "bold-template-pack/templates/gridline-swiss/preview.md", "scheme": "light", "slug": "gridline-swiss", "status": "ready", "tone": ["direct", "objective", "crisp"], "visualSignature": "Red kicker, giant index numeral, flush-left ragged headlines on matte white", "validation": "PASS", "shot": "../screenshots/D01.png"}, {"avoidFor": "Marketing sizzle, emotional storytelling, luxury branding", "bestFor": "How-to guides, onboarding decks, SOP walkthroughs", "contentTypes": ["title", "bullets", "timeline", "comparison"], "density": "high", "designPath": "bold-template-pack/templates/field-manual/design.md", "formality": "medium", "id": "D02", "mood": ["practical", "methodical", "trustworthy"], "name": "Field Manual", "previewPath": "bold-template-pack/templates/field-manual/preview.md", "scheme": "light", "slug": "field-manual", "status": "ready", "tone": ["instructive", "plain", "reassuring"], "visualSignature": "Numbered steps, bordered callouts, dashed leaders on dotted paper", "validation": "PASS", "shot": "../screenshots/D02.png"}, {"avoidFor": "Formal reports, delicate topics, dense data tables", "bestFor": "Manifestos, rally talks, bold single-idea keynotes", "contentTypes": ["title", "quote", "stats", "closing"], "density": "low", "designPath": "bold-template-pack/templates/monolith/design.md", "formality": "low", "id": "D03", "mood": ["defiant", "monumental", "loud"], "name": "Monolith", "previewPath": "bold-template-pack/templates/monolith/preview.md", "scheme": "dark", "slug": "monolith", "status": "ready", "tone": ["bold", "terse", "confrontational"], "visualSignature": "Full-bleed cropped caps on raw black with orange band", "validation": "PASS", "shot": "../screenshots/D03.png"}, {"avoidFor": "Dashboards, technical specs, playful pitches", "bestFor": "Essays, narratives, investor letters, long-form stories", "contentTypes": ["title", "bullets", "quote", "closing"], "density": "low", "designPath": "bold-template-pack/templates/chapter-verse/design.md", "formality": "high", "id": "D04", "mood": ["literary", "calm", "considered"], "name": "Chapter & Verse", "previewPath": "bold-template-pack/templates/chapter-verse/preview.md", "scheme": "light", "slug": "chapter-verse", "status": "ready", "tone": ["reflective", "elegant", "narrative"], "visualSignature": "Drop cap, chapter kicker, folio rule on book cream", "validation": "PASS", "shot": "../screenshots/D04.png"}, {"avoidFor": "Board meetings, legal or financial disclosures", "bestFor": "Creative reviews, zines, youth culture, brainstorms", "contentTypes": ["title", "bullets", "quote", "closing"], "density": "high", "designPath": "bold-template-pack/templates/cut-paste/design.md", "formality": "low", "id": "D05", "mood": ["playful", "rebellious", "handmade"], "name": "Cut & Paste", "previewPath": "bold-template-pack/templates/cut-paste/preview.md", "scheme": "light", "slug": "cut-paste", "status": "ready", "tone": ["irreverent", "energetic", "collage"], "visualSignature": "Overlapping tilted type layers with tape-strip rules", "validation": "PASS", "shot": "../screenshots/D05.png"}, {"avoidFor": "Pitches, celebrations, visual storytelling", "bestFor": "Lectures, research talks, policy briefs, theses", "contentTypes": ["title", "bullets", "quote", "comparison"], "density": "high", "designPath": "bold-template-pack/templates/seminar/design.md", "formality": "high", "id": "D06", "mood": ["scholarly", "rigorous", "quiet"], "name": "Seminar", "previewPath": "bold-template-pack/templates/seminar/preview.md", "scheme": "light", "slug": "seminar", "status": "ready", "tone": ["measured", "precise", "citational"], "visualSignature": "Sidenote margin, footnote rule, section markers on white", "validation": "PASS", "shot": "../screenshots/D06.png"}, {"avoidFor": "Emotional narratives, luxury, heritage brands", "bestFor": "Design portfolios, system explainers, modular products", "contentTypes": ["title", "bullets", "stats", "comparison"], "density": "medium", "designPath": "bold-template-pack/templates/modulo-grid/design.md", "formality": "medium", "id": "D07", "mood": ["systematic", "geometric", "optimistic"], "name": "Modulo", "previewPath": "bold-template-pack/templates/modulo-grid/preview.md", "scheme": "light", "slug": "modulo-grid", "status": "ready", "tone": ["orderly", "confident", "modular"], "visualSignature": "4x4 tile modules with amber color-block bands", "validation": "PASS", "shot": "../screenshots/D07.png"}, {"avoidFor": "Corporate, healthcare, finance, formal ceremonies", "bestFor": "Retro gaming, demoscene, terminal culture, hobbyist tech", "contentTypes": ["title", "stats", "bullets", "closing"], "density": "medium", "designPath": "bold-template-pack/templates/coin-op/design.md", "formality": "low", "id": "D08", "mood": ["nostalgic", "arcade", "glowing"], "name": "Coin-Op", "previewPath": "bold-template-pack/templates/coin-op/preview.md", "scheme": "dark", "slug": "coin-op", "status": "ready", "tone": ["playful", "geeky", "analog-digital"], "visualSignature": "Phosphor glow type, scanlines, marquee ticker on CRT void", "validation": "PASS", "shot": "../screenshots/D08.png"}, {"avoidFor": "Casual standups, dense specs, playful content", "bestFor": "Luxury brands, private briefings, gallery talks", "contentTypes": ["title", "quote", "bullets", "closing"], "density": "low", "designPath": "bold-template-pack/templates/maison/design.md", "formality": "high", "id": "D09", "mood": ["refined", "exclusive", "serene"], "name": "Maison", "previewPath": "bold-template-pack/templates/maison/preview.md", "scheme": "dark", "slug": "maison", "status": "ready", "tone": ["hushed", "assured", "elegant"], "visualSignature": "Hairline gold rules, single italic accent on ivory/black", "validation": "PASS", "shot": "../screenshots/D09.png"}, {"avoidFor": "Poetry, eulogies, brand manifestos", "bestFor": "Metrics reviews, ops dashboards, KPI readouts", "contentTypes": ["title", "stats", "comparison", "bullets"], "density": "high", "designPath": "bold-template-pack/templates/signal-board/design.md", "formality": "medium", "id": "D10", "mood": ["analytical", "live", "operational"], "name": "Signal Board", "previewPath": "bold-template-pack/templates/signal-board/preview.md", "scheme": "light", "slug": "signal-board", "status": "ready", "tone": ["factual", "brisk", "instrumented"], "visualSignature": "KPI cards, status pills, tabular numerals on mist gray", "validation": "PASS", "shot": "../screenshots/D10.png"}, {"avoidFor": "Startups, casual talks, technical deep-dives", "bestFor": "Galas, awards, heritage brands, premieres", "contentTypes": ["title", "quote", "bullets", "closing"], "density": "low", "designPath": "bold-template-pack/templates/gilded-line/design.md", "formality": "high", "id": "D11", "mood": ["glamorous", "ceremonial", "symmetric"], "name": "Gilded Line", "previewPath": "bold-template-pack/templates/gilded-line/preview.md", "scheme": "dark", "slug": "gilded-line", "status": "ready", "tone": ["grand", "polished", "ceremonial"], "visualSignature": "Symmetrical gold frames with diamond dividers on black", "validation": "PASS", "shot": "../screenshots/D11.png"}, {"avoidFor": "Conservative boardrooms, legal, medical", "bestFor": "Music, streetwear, design festivals, provocations", "contentTypes": ["title", "quote", "stats", "closing"], "density": "high", "designPath": "bold-template-pack/templates/new-wave-static/design.md", "formality": "low", "id": "D12", "mood": ["electric", "disruptive", "neon"], "name": "New Wave Static", "previewPath": "bold-template-pack/templates/new-wave-static/preview.md", "scheme": "light", "slug": "new-wave-static", "status": "ready", "tone": ["defiant", "kinetic", "clashing"], "visualSignature": "Rotated kickers, neon slashes, clashing scale jumps", "validation": "PASS", "shot": "../screenshots/D12.png"}, {"avoidFor": "Dense data, tutorials, celebratory pitches", "bestFor": "Philosophy, meditation, single-idea keynotes", "contentTypes": ["title", "quote", "closing"], "density": "low", "designPath": "bold-template-pack/templates/ma/design.md", "formality": "high", "id": "D13", "mood": ["still", "empty", "profound"], "name": "Ma", "previewPath": "bold-template-pack/templates/ma/preview.md", "scheme": "light", "slug": "ma", "status": "ready", "tone": ["spare", "contemplative", "silent"], "visualSignature": "Vast emptiness, one vertical rule, single red seal accent", "validation": "PASS", "shot": "../screenshots/D13.png"}, {"avoidFor": "Luxury, romance, nuanced editorial", "bestFor": "Design schools, workshops, maker culture", "contentTypes": ["title", "bullets", "stats", "comparison"], "density": "medium", "designPath": "bold-template-pack/templates/dessau/design.md", "formality": "medium", "id": "D14", "mood": ["primary", "didactic", "geometric"], "name": "Dessau", "previewPath": "bold-template-pack/templates/dessau/preview.md", "scheme": "light", "slug": "dessau", "status": "ready", "tone": ["direct", "elemental", "lowercase"], "visualSignature": "Primary color bands with triangle-circle-square bullets", "validation": "PASS", "shot": "../screenshots/D14.png"}, {"avoidFor": "Tech specs, dashboards, corporate updates", "bestFor": "Botanicals, crafts, heritage stories, poetry", "contentTypes": ["title", "quote", "bullets", "closing"], "density": "low", "designPath": "bold-template-pack/templates/whiplash/design.md", "formality": "high", "id": "D15", "mood": ["organic", "flowing", "romantic"], "name": "Whiplash", "previewPath": "bold-template-pack/templates/whiplash/preview.md", "scheme": "light", "slug": "whiplash", "status": "ready", "tone": ["lyrical", "ornate", "curved"], "visualSignature": "Arched headline, fleuron dividers on parchment", "validation": "PASS", "shot": "../screenshots/D15.png"}, {"avoidFor": "Fashion, romance, executive keynotes", "bestFor": "Dev talks, CLIs, RFCs, engineering reviews", "contentTypes": ["title", "bullets", "stats", "comparison"], "density": "medium", "designPath": "bold-template-pack/templates/tty-paper/design.md", "formality": "low", "id": "D16", "mood": ["plain", "hacker", "paper"], "name": "Paper TTY", "previewPath": "bold-template-pack/templates/tty-paper/preview.md", "scheme": "light", "slug": "tty-paper", "status": "ready", "tone": ["terse", "literal", "monospace"], "visualSignature": "Dollar prompts, ASCII rules, block cursor on paper", "validation": "PASS", "shot": "../screenshots/D16.png"}, {"avoidFor": "Minimalists, quiet topics, luxury", "bestFor": "Recaps, announcements, staff briefings", "contentTypes": ["title", "bullets", "quote", "comparison"], "density": "high", "designPath": "bold-template-pack/templates/front-page/design.md", "formality": "medium", "id": "D17", "mood": ["urgent", "factual", "printed"], "name": "Front Page", "previewPath": "bold-template-pack/templates/front-page/preview.md", "scheme": "light", "slug": "front-page", "status": "ready", "tone": ["headlined", "brisk", "reported"], "visualSignature": "Masthead bar, dateline, justified triple columns", "validation": "PASS", "shot": "../screenshots/D17.png"}, {"avoidFor": "Funerals, audits, minimalist brands", "bestFor": "Kids products, parties, playful launches", "contentTypes": ["title", "bullets", "stats", "closing"], "density": "high", "designPath": "bold-template-pack/templates/memphis-squiggle/design.md", "formality": "low", "id": "D18", "mood": ["bouncy", "clashing", "joyful"], "name": "Squiggle Club", "previewPath": "bold-template-pack/templates/memphis-squiggle/preview.md", "scheme": "light", "slug": "memphis-squiggle", "status": "ready", "tone": ["silly", "bold", "confetti"], "visualSignature": "Zigzag rules, outline numerals, pastel-neon chips", "validation": "PASS", "shot": "../screenshots/D18.png"}, {"avoidFor": "Metal bands, courtrooms, horror", "bestFor": "Wellness, edtech, friendly SaaS, onboarding", "contentTypes": ["title", "bullets", "stats", "closing"], "density": "low", "designPath": "bold-template-pack/templates/fika/design.md", "formality": "low", "id": "D19", "mood": ["cozy", "kind", "airy"], "name": "Fika", "previewPath": "bold-template-pack/templates/fika/preview.md", "scheme": "light", "slug": "fika", "status": "ready", "tone": ["warm", "gentle", "lowercase"], "visualSignature": "Rounded pastel panels, lowercase friendly headlines", "validation": "PASS", "shot": "../screenshots/D19.png"}, {"avoidFor": "Tech launches, sports, breaking news", "bestFor": "Archives, museums, classical concerts, law", "contentTypes": ["title", "quote", "bullets", "closing"], "density": "medium", "designPath": "bold-template-pack/templates/iron-press/design.md", "formality": "high", "id": "D20", "mood": ["antique", "solemn", "pressed"], "name": "Iron Press", "previewPath": "bold-template-pack/templates/iron-press/preview.md", "scheme": "light", "slug": "iron-press", "status": "ready", "tone": ["formal", "weighty", "historic"], "visualSignature": "Double-rule border frame, ornamental caps on aged paper", "validation": "PASS", "shot": "../screenshots/D20.png"}, {"avoidFor": "Minimal tech, somber memorials", "bestFor": "Travel, hospitality, place branding, retreats", "contentTypes": ["title", "stats", "bullets", "closing"], "density": "medium", "designPath": "bold-template-pack/templates/vista/design.md", "formality": "medium", "id": "D21", "mood": ["sunny", "wanderlust", "retro"], "name": "Vista", "previewPath": "bold-template-pack/templates/vista/preview.md", "scheme": "dark", "slug": "vista", "status": "ready", "tone": ["inviting", "bright", "postcard"], "visualSignature": "Stacked scenic bands, ticket perforations, sunburst badge", "validation": "PASS", "shot": "../screenshots/D21.png"}, {"avoidFor": "Fashion, comedy, motivational rallies", "bestFor": "Science talks, lab meetings, journal clubs", "contentTypes": ["title", "comparison", "stats", "bullets"], "density": "high", "designPath": "bold-template-pack/templates/peer-review/design.md", "formality": "high", "id": "D22", "mood": ["rigorous", "neutral", "cited"], "name": "Peer Review", "previewPath": "bold-template-pack/templates/peer-review/preview.md", "scheme": "light", "slug": "peer-review", "status": "ready", "tone": ["precise", "hedged", "evidential"], "visualSignature": "Abstract inset box, Figure/Table numbered captions", "validation": "PASS", "shot": "../screenshots/D22.png"}, {"avoidFor": "Daytime corporate, kids content, weddings", "bestFor": "Film, true crime, thrillers, night launches", "contentTypes": ["title", "quote", "stats", "closing"], "density": "low", "designPath": "bold-template-pack/templates/night-reel/design.md", "formality": "medium", "id": "D23", "mood": ["tense", "noir", "cinematic"], "name": "Night Reel", "previewPath": "bold-template-pack/templates/night-reel/preview.md", "scheme": "dark", "slug": "night-reel", "status": "ready", "tone": ["laconic", "ominous", "low-third"], "visualSignature": "Letterbox bars, low-third titles, single blood-red accent", "validation": "PASS", "shot": "../screenshots/D23.png"}, {"avoidFor": "Fintech, luxury, high fashion", "bestFor": "Sustainability, farming, crafts, fieldwork", "contentTypes": ["title", "bullets", "quote", "closing"], "density": "medium", "designPath": "bold-template-pack/templates/fieldnote/design.md", "formality": "low", "id": "D24", "mood": ["earthy", "honest", "handmade"], "name": "Fieldnote", "previewPath": "bold-template-pack/templates/fieldnote/preview.md", "scheme": "light", "slug": "fieldnote", "status": "ready", "tone": ["plainspoken", "warm", "annotated"], "visualSignature": "Kraft ground, stamped badges, hand-annotation asides", "validation": "PASS", "shot": "../screenshots/D24.png"}, {"avoidFor": "Banks, obituaries, enterprise compliance", "bestFor": "Pop launches, gaming casual, teen brands", "contentTypes": ["title", "stats", "bullets", "closing"], "density": "medium", "designPath": "bold-template-pack/templates/bubble-os/design.md", "formality": "low", "id": "D25", "mood": ["bubbly", "glossy", "optimistic"], "name": "Bubble OS", "previewPath": "bold-template-pack/templates/bubble-os/preview.md", "scheme": "light", "slug": "bubble-os", "status": "ready", "tone": ["bubbly", "playful", "sparkle"], "visualSignature": "Glossy pill badges, star glyphs, layered color-words", "validation": "PASS", "shot": "../screenshots/D25.png"}, {"avoidFor": "Weddings, poetry, soft storytelling", "bestFor": "Engineering, architecture, hardware specs", "contentTypes": ["title", "comparison", "stats", "bullets"], "density": "high", "designPath": "bold-template-pack/templates/drafting-table/design.md", "formality": "medium", "id": "D26", "mood": ["precise", "technical", "drafted"], "name": "Drafting Table", "previewPath": "bold-template-pack/templates/drafting-table/preview.md", "scheme": "dark", "slug": "drafting-table", "status": "ready", "tone": ["measured", "dimensioned", "exact"], "visualSignature": "White-line grid, dimension ticks, revision-block footer", "validation": "PASS", "shot": "../screenshots/D26.png"}, {"avoidFor": "Casual meetups, kids, budget brands", "bestFor": "Fashion weeks, lookbooks, design awards", "contentTypes": ["title", "quote", "closing"], "density": "low", "designPath": "bold-template-pack/templates/atelier-noir/design.md", "formality": "high", "id": "D27", "mood": ["severe", "chic", "dramatic"], "name": "Atelier Noir", "previewPath": "bold-template-pack/templates/atelier-noir/preview.md", "scheme": "dark", "slug": "atelier-noir", "status": "ready", "tone": ["aloof", "editorial", "runway"], "visualSignature": "Giant issue numeral, hairline verticals, vast margins", "validation": "PASS", "shot": "../screenshots/D27.png"}];
+const grid = document.getElementById('grid');
+const selected = new Set();
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function card(t){
+  const el = document.createElement('article');
+  el.className = 'card'; el.dataset.id = t.id;
+  el.innerHTML =
+    `<img src="${esc(t.shot)}" alt="${esc(t.id)} ${esc(t.name)} preview" loading="eager">`+
+    `<div class="body"><h2><span class="did">${esc(t.id)}</span>${esc(t.name)}</h2>`+
+    `<div class="slug">${esc(t.slug)} · status: ${esc(t.status)}</div>`+
+    `<div class="chips">${t.mood.map(m=>`<span class="chip">${esc(m)}</span>`).join('')}${t.tone.map(m=>`<span class="chip tone">${esc(m)}</span>`).join('')}</div>`+
+    `<div class="meta">density <b>${esc(t.density)}</b> · formality <b>${esc(t.formality)}</b> · scheme <b>${esc(t.scheme)}</b><br>validation <span class="pass">✓ ${esc(t.validation)}</span></div>`+
+    `<div class="bestfor"><b>Best for:</b> ${esc(t.bestFor)}</div>`+
+    `<div class="paths">design: <code>${esc(t.designPath)}</code><br>preview: <code>${esc(t.previewPath)}</code></div>`+
+    `<label class="pick"><input type="checkbox" data-pick="${esc(t.id)}"> select for comparison</label></div>`;
+  return el;
+}
+DATA.forEach(t=>grid.appendChild(card(t)));
+const q=document.getElementById('q'),fm=document.getElementById('fmood'),fd=document.getElementById('fdensity'),ff=document.getElementById('fform'),fs=document.getElementById('fscheme'),count=document.getElementById('count');
+function apply(){
+  const needle=q.value.trim().toLowerCase();let n=0;
+  document.querySelectorAll('.card').forEach(el=>{
+    const t=DATA.find(x=>x.id===el.dataset.id);
+    const hay=(t.id+' '+t.name+' '+t.slug+' '+t.mood.join(' ')+' '+t.tone.join(' ')+' '+t.bestFor+' '+t.visualSignature).toLowerCase();
+    const ok=(!needle||hay.includes(needle))&&(!fm.value||t.mood.includes(fm.value))&&(!fd.value||t.density===fd.value)&&(!ff.value||t.formality===ff.value)&&(!fs.value||t.scheme===fs.value);
+    el.classList.toggle('hidden',!ok);if(ok)n++;
+  });
+  count.textContent=n+' / '+DATA.length+' shown';
+}
+[q,fm,fd,ff,fs].forEach(c=>c.addEventListener('input',apply));apply();
+const bar=document.getElementById('comparebar'),selinfo=document.getElementById('selinfo');
+grid.addEventListener('change',e=>{
+  const cb=e.target.closest('[data-pick]');if(!cb)return;
+  if(cb.checked){if(selected.size>=4){cb.checked=false;alert('Comparison holds at most 4 designs.');return;}selected.add(cb.dataset.pick);}
+  else selected.delete(cb.dataset.pick);
+  bar.classList.toggle('on',selected.size>0);
+  selinfo.textContent=selected.size+' selected'+(selected.size<2?' (pick at least 2)':'')+': '+[...selected].join(', ');
+});
+document.getElementById('clearsel').onclick=()=>{selected.clear();document.querySelectorAll('[data-pick]').forEach(c=>c.checked=false);bar.classList.remove('on');};
+const ov=document.getElementById('overlay'),ovcols=document.getElementById('ovcols');
+document.getElementById('gocompare').onclick=()=>{
+  if(selected.size<2){alert('Select 2–4 designs to compare.');return;}
+  const items=[...selected].map(id=>DATA.find(x=>x.id===id));
+  ovcols.style.gridTemplateColumns=`repeat(${items.length},minmax(0,1fr))`;
+  ovcols.innerHTML=items.map(t=>`<figure><img src="${esc(t.shot)}" alt="${esc(t.id)} ${esc(t.name)}"><figcaption><h3>${esc(t.id)} · ${esc(t.name)}</h3><div>${t.mood.map(esc).join(' · ')}</div><div>density <b>${esc(t.density)}</b> · formality <b>${esc(t.formality)}</b> · ${esc(t.scheme)}</div><div>${esc(t.bestFor)}</div></figcaption></figure>`).join('');
+  ov.classList.add('on');
+};
+document.getElementById('closeov').onclick=()=>ov.classList.remove('on');
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('on');});
+</script>
+</body>
+</html>

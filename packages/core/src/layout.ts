@@ -23,6 +23,7 @@ import {
   getSystem,
   themedSystem,
   type SystemId,
+  type ThemeOverride,
   type TypographySystem,
 } from './systems';
 import {
@@ -803,8 +804,8 @@ function materialize(ctx: Ctx, plans: Plan[], background: string): TextBlock[] {
   });
 }
 
-function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: number, system: TypographySystem, seed: number, planItem?: CompositionPlanItem): import('./schema').Slide {
-  const candTheme = planItem ? COMPOSITION_CANDIDATES[planItem.candidateId]?.theme : undefined;
+function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: number, system: TypographySystem, seed: number, planItem?: CompositionPlanItem, deckTheme?: ThemeOverride): import('./schema').Slide {
+  const candTheme = (planItem ? COMPOSITION_CANDIDATES[planItem.candidateId]?.theme : undefined) ?? deckTheme;
   const eff = themedSystem(system, candTheme);
   const background = backgroundFor(eff, slideIndex);
   const overrides = overridesFromPlan(planItem);
@@ -872,6 +873,13 @@ export interface LayoutOptions {
    * measure-cap, and body-align overrides within the typography-only schema.
    */
   compositionPlan?: CompositionPlanItem[];
+  /**
+   * Optional deck-level visual identity (see template-pack resolver).
+   * Merged via themedSystem exactly like a candidate theme; a
+   * per-slide candidate theme wins over this deck theme when both exist.
+   * Absent theme preserves baseline behavior exactly.
+   */
+  theme?: ThemeOverride;
 }
 
 export function layoutSeed(narrative: Narrative, systemId: SystemId): number {
@@ -887,7 +895,7 @@ export function layoutDeck(input: unknown, systemId: SystemId, opts: LayoutOptio
   const system = getSystem(systemId);
   const seed = opts.seed ?? layoutSeed(narrative, systemId);
   const planBySlide = new Map((opts.compositionPlan ?? []).map((p) => [p.slideId, p]));
-  const slides = narrative.slides.map((s, i) => layoutSlide(narrative, s, i, system, seed, planBySlide.get(s.id)));
+  const slides = narrative.slides.map((s, i) => layoutSlide(narrative, s, i, system, seed, planBySlide.get(s.id), opts.theme));
   return {
     meta: {
       title: narrative.title,

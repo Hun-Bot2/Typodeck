@@ -163,7 +163,7 @@ The palette is paper and ink: cream ground `{colors.cream}`, warm near-black ink
 
 **Newsreader** is the reading face — an editorial serif with bookish italics and sturdy 600 titles. It sets titles, ledes, body paragraphs, the drop cap, and the page numeral. Its 400 weight at 1.7 leading is the system's body texture.
 
-**Inter** is the furniture face — a neutral grotesque used only at 500 weight in tracked capitals (running head, kicker) or small tracked settings (folio source line). It never sets headlines or paragraphs.
+**Inter** is the furniture face — a neutral grotesque used only at 500 weight in tracked capitals (running head, kicker) or small tracked settings (folio source line). It never sets headlines or paragraphs; its one content-adjacent exception is the stanza head, which counts as a structural navigation label rather than a headline (see Decorative Element Types).
 
 ### Typography Scale
 
@@ -213,6 +213,8 @@ No slide counter beyond the page mark, no navigation chrome, no progress devices
 
 The title block is always centered; the lede paragraph is left-aligned inside its centered 780px measure so the drop cap seats correctly. Kicker sits 0px above title with 36px title margin; the ornament divider sits 40px below the title and 8px above the lede. The folio pins to the bottom via flex layout, never absolutely over content.
 
+Multi-paragraph blocks follow stanza rules: the drop cap opens the first paragraph only; paragraphs separate by 1em of whitespace with no first-line indent; a centered 200px tan hairline may separate distinct stanzas or arguments (at most one per slide beyond the ornament divider); a second ◆ divider is never used as an in-text separator.
+
 ## Depth and Elevation
 
 This system has **no depth**. There are no shadows, no blur, no gradients, no layered surfaces. Hierarchy is carried entirely by scale (100px title vs 31px lede vs 16px furniture), weight (600 vs 400), and color (ink vs oxblood vs smoke). Any `box-shadow` or `text-shadow` value is a defect. Cards and panels do not exist; if content needs grouping, separate it with an ornament divider or a hairline rule.
@@ -242,6 +244,10 @@ Zero everywhere. Rules are hairlines, ornaments are glyphs, and there are no box
 
 **Running head** — Smoke tracked caps (work left, date right) over a tan hairline. Opens every slide.
 
+**Figure procession** — The evidence-slide device for numerals: a centered stack of Newsreader 600 68px ink figures, each followed 12px below by an Inter 500 14px smoke tracked-caps label (0.24em, uppercase). Figures are separated by 32px gaps around a centered 200px 1px tan hairline. No oxblood in figures or labels — the four-mark budget is untouched — and never more than three figures per slide.
+
+**Stanza head** — The sanctioned body subhead and the only subhead form: Inter 500 16px smoke tracked caps (0.34em, uppercase), centered, 40px above and 16px below. Serif caps lines and bolded body openers are not subheads; sequential stanzas (comparison included) are headed this way, never multi-columned.
+
 No badges, no pills, no chips, no arrows, no bullets beyond standard text lists. If an element is not in this list, it does not belong.
 
 ## Do's and Don'ts
@@ -254,6 +260,8 @@ No badges, no pills, no chips, no arrows, no bullets beyond standard text lists.
 - Close every slide with the full folio: hairline, source left, fleuron center, numeral right.
 - Keep the centered 34em measure and 1.7 lede leading on every reading block.
 - Use the ornament divider between title and lede — never stack title directly on text.
+- Stack evidence figures as the figure procession: serif figures, smoke caps labels, tan hairlines.
+- Head stanzas with smoke Inter tracked caps — the stanza head is the only subhead.
 - Keep surfaces matte cream with 1px hairlines only.
 - Render verbatim content (title, subtitle, source) exactly as given; furniture never paraphrases content.
 
@@ -266,6 +274,7 @@ No badges, no pills, no chips, no arrows, no bullets beyond standard text lists.
 - Don't center the lede paragraph — it stays left-aligned so the drop cap seats.
 - Don't track or uppercase Newsreader; don't set Inter furniture in sentence case (folio source excepted).
 - Don't place two ornaments adjacent — one diamond divider, one fleuron per slide.
+- Don't drop-cap beyond the first paragraph, and don't spend a second ◆ as an in-text separator.
 - Don't add badges, pills, cards, or any chrome a printed book would not contain.
 
 ## Responsive Behavior
@@ -305,6 +314,9 @@ Known CJK gap: Noto Serif KR has no true Newsreader-like book italic and its cap
 8. Any new color must come from the five declared tokens; tints via opacity only.
 9. Any new slide keeps the matte cream ground — no texture, no vignette, no gradient wash.
 10. Verify every new slide at 1920×1080 for title wrap (≤4 lines) and folio clearance before capture.
+11. Any new evidence figure uses the figure-procession device: Newsreader 600 68px ink figures with smoke tracked-caps labels, tan hairlines between, at most three per slide.
+12. Any new body subhead uses the stanza-head device — smoke Inter tracked caps — never a serif caps line or a bolded body opener.
+13. Any new multi-paragraph block drops the cap on the first paragraph only, separates paragraphs with whitespace, and spends at most one tan hairline between stanzas; never a second ◆ divider.
 
 ## Known Gaps
 

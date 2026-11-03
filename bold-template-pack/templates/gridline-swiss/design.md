@@ -317,6 +317,10 @@ Borders are always solid and always horizontal or vertical — no diagonals, no 
 
 **Swiss table** — Header row in Inter 500 caps with a 2px black top rule; body rows in Inter 400 with 1px gray dividers; flagged cells marked with red square bullets, never red text.
 
+**Numbered findings list** — The canonical vertical list for findings and takeaways. Each row pairs a two-digit numeral (Archivo 800, 30px, ink) in a fixed 96px lead column with a stacked head + body: `{typography.section-head}` head over `{typography.body-compact}` body. Rows carry 28px vertical padding under a 2px black top rule with 1px rail-gray dividers between; max four rows per slide. Bare bullets, hanging dashes, and unnumbered stacks are not lists in this system.
+
+**Two-zone comparison** — The A/B device: columns 1–5 carry side A, columns 6–8 carry side B, split by a 1px gray vertical divider. Each zone opens with a `{typography.section-head}` zone label; rows beneath follow the Swiss-table row rhythm. Side identity is positional only — zones are never tinted and never red-vs-ink. Red square bullets flag failing or negative cells on *either* side; ink squares mark affirmed cells. A neutral A/B with no good/bad valence uses ink squares on both sides and spends no red beyond the slide's one rule.
+
 ## Do's and Don'ts
 
 ### Do
@@ -330,6 +334,8 @@ Borders are always solid and always horizontal or vertical — no diagonals, no 
 - Populate the rail on every slide: numeral, red baseline, at least two meta rows.
 - Step the headline down (118 → 72 → 48px) as titles lengthen; never squeeze tracking past -0.01em.
 - Mark flagged table cells with red square bullets, keeping cell text ink.
+- Set findings as the numbered list: numeral + section-head + body with 1px dividers under a 2px top rule.
+- Encode comparisons by zone position; reserve red squares for flagged cells on either side.
 - Let whitespace do the work: 64px top, 72px sides, 24px gutters, no exceptions.
 
 ### Don't
@@ -344,6 +350,7 @@ Borders are always solid and always horizontal or vertical — no diagonals, no 
 - Don't justify body text. Left-aligned with a ragged edge, always.
 - Don't place body copy inside the rail. The rail carries numerals and meta only.
 - Don't hide the column grid on "clean" slides. The grid is the identity.
+- Don't tint comparison zones or assign red to one side as its identity color; red marks valence, position marks sides.
 
 ## Responsive Behavior
 
@@ -430,6 +437,8 @@ The grid carries the CJK build. Noto Sans KR 900 at display sizes is sturdy but 
 8. If a headline exceeds ~45 characters, step it down to 72px; past ~80 characters, step to 48px. Never compress tracking past -0.01em.
 9. If a slide needs a second content zone, use columns 1–5 + 6–8 splits with a 1px gray vertical divider — never a card or panel.
 10. New slides are static cuts with no animation. Keep it that way.
+11. Any new findings list uses the numbered-findings pattern: Archivo 800 numeral in a 96px lead column, section-head, body-compact, 1px gray dividers. Never bare bullets or hanging dashes.
+12. Any new comparison uses the two-zone split with positional side identity; red squares mark valence (failures) on either side, never side membership. Neutral A/B comparisons stay all-ink.
 
 ## Known Gaps
 

@@ -21,3 +21,4 @@ export * from './composition';
 export * from './optical';
 export * from './art-direction';
 export * from './critic';
+export * from './template-pack';

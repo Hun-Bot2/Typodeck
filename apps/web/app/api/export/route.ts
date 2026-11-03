@@ -1,12 +1,18 @@
-import { NextRequest } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { existsSync, readFileSync } from 'node:fs';
+import { dirname, join, resolve, sep } from 'node:path';
 import {
   critiqueDeck,
   DeckValidationError,
   exportToPptxBuffer,
   layoutDeck,
+  layoutDeckWithTemplate,
+  parseSelectionIndex,
   resolveVisualSystem,
+  TemplatePackError,
   validatePptxBytes,
   type SystemId,
+  type TemplatePackEntry,
 } from '@typodeck/core';
 
 export const runtime = 'nodejs';
@@ -20,6 +26,74 @@ function jsonError(status: number, code: string, message: string, extra?: Record
   return Response.json({ error: { code, message, ...extra } }, { status });
 }
 
+/** Optional `template` slug -> themed export via the engine template-pack API. */
+const PACK_INDEX_REL = join('bold-template-pack', 'selection-index.json');
+const MAX_SLUG_ECHO = 100;
+
+class TemplateRouteError extends Error {
+  constructor(
+    readonly status: number,
+    readonly code: string,
+    message: string,
+  ) {
+    super(message);
+    this.name = 'TemplateRouteError';
+  }
+}
+
+/** Walk up from the server cwd to the workspace root carrying the template pack. */
+function findPackRoot(): string | null {
+  let dir = process.cwd();
+  for (;;) {
+    if (existsSync(join(dir, PACK_INDEX_REL))) return dir;
+    const parent = dirname(dir);
+    if (parent === dir) return null;
+    dir = parent;
+  }
+}
+
+/**
+ * Resolve a client slug to its selection-index entry + design.md text.
+ * 400 for unknown slugs (client error); 500 when the on-disk pack is
+ * missing or corrupt (server error).
+ */
+function loadTemplate(slug: string): { entry: TemplatePackEntry; designMarkdown: string } {
+  const root = findPackRoot();
+  if (root === null) {
+    throw new TemplateRouteError(500, 'template-pack-unavailable', 'template pack is not available on this server');
+  }
+  let entries: TemplatePackEntry[];
+  try {
+    entries = parseSelectionIndex(JSON.parse(readFileSync(join(root, PACK_INDEX_REL), 'utf8')));
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : String(err);
+    throw new TemplateRouteError(500, 'template-pack-unavailable', `template pack index is unreadable: ${detail}`);
+  }
+  const entry = entries.find((e) => e.slug === slug);
+  if (!entry) {
+    throw new TemplateRouteError(400, 'invalid-template', `unknown template "${slug.slice(0, MAX_SLUG_ECHO)}"`);
+  }
+  // designPath comes from the on-disk index, not the client; still contain it.
+  const designAbs = resolve(root, entry.designPath);
+  if (designAbs !== root && !designAbs.startsWith(root + sep)) {
+    throw new TemplateRouteError(
+      500,
+      'template-pack-unavailable',
+      `template "${entry.slug}" design path escapes the pack root`,
+    );
+  }
+  try {
+    return { entry, designMarkdown: readFileSync(designAbs, 'utf8') };
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : String(err);
+    throw new TemplateRouteError(
+      500,
+      'template-pack-unavailable',
+      `template "${entry.slug}" design file is unreadable: ${detail}`,
+    );
+  }
+}
+
 export async function POST(req: NextRequest): Promise<Response> {
   const contentLength = req.headers.get('content-length');
   if (contentLength !== null && Number(contentLength) > BODY_CAP_BYTES) {
@@ -29,7 +103,14 @@ export async function POST(req: NextRequest): Promise<Response> {
   if (Buffer.byteLength(raw, 'utf8') > BODY_CAP_BYTES) {
     return jsonError(413, 'body-too-large', `request body exceeds the ${BODY_CAP_BYTES}-byte cap`);
   }
-  let parsed: { narrative?: unknown; system?: unknown; generatedBy?: unknown; provenance?: unknown; critique?: unknown };
+  let parsed: {
+    narrative?: unknown;
+    system?: unknown;
+    generatedBy?: unknown;
+    provenance?: unknown;
+    critique?: unknown;
+    template?: unknown;
+  };
   try {
     parsed = (JSON.parse(raw) || {}) as typeof parsed;
   } catch {
@@ -67,6 +148,16 @@ export async function POST(req: NextRequest): Promise<Response> {
     wantCritique = parsed.critique;
   }
 
+  // Optional template slug: resolved via the engine template-pack API.
+  // Absent -> baseline layoutDeck path below, byte for byte unchanged.
+  let templateSlug: string | undefined;
+  if (parsed.template !== undefined) {
+    if (typeof parsed.template !== 'string' || parsed.template.trim() === '') {
+      return jsonError(400, 'invalid-template', 'template must be a non-empty template slug string');
+    }
+    templateSlug = parsed.template.trim();
+  }
+
   // Validate the system id against the registry; never trust client
   // geometry — layout is recomputed. Registered-but-unrenderable systems
   // fail loudly here instead of exporting the wrong design.
@@ -80,12 +171,32 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
   const system = parsed.system as SystemId;
 
+  // Resolve the template before layout; the template's own systemId and
+  // theme govern the themed deck (layoutDeckWithTemplate).
+  let template: { entry: TemplatePackEntry; designMarkdown: string } | undefined;
+  if (templateSlug !== undefined) {
+    try {
+      template = loadTemplate(templateSlug);
+    } catch (err) {
+      if (err instanceof TemplateRouteError) {
+        return jsonError(err.status, err.code, err.message);
+      }
+      throw err;
+    }
+  }
+
   let deck;
   try {
-    deck = layoutDeck(parsed.narrative, system);
+    deck =
+      template !== undefined
+        ? layoutDeckWithTemplate(parsed.narrative, template.entry, template.designMarkdown)
+        : layoutDeck(parsed.narrative, system);
   } catch (err) {
     if (err instanceof DeckValidationError) {
       return jsonError(400, 'invalid-narrative', `narrative rejected: ${err.message}`);
+    }
+    if (err instanceof TemplatePackError) {
+      return jsonError(500, 'template-pack-unavailable', `template design is invalid: ${err.message}`);
     }
     return jsonError(500, 'layout-failed', err instanceof Error ? err.message : String(err));
   }
@@ -105,9 +216,10 @@ export async function POST(req: NextRequest): Promise<Response> {
     });
   }
 
+  const fileSlug = template !== undefined ? template.entry.slug : system;
   const headers: Record<string, string> = {
     'Content-Type': 'application/vnd.openxmlformats-officedocument.presentationml+xml',
-    'Content-Disposition': `attachment; filename="typodeck-${system}.pptx"`,
+    'Content-Disposition': `attachment; filename="typodeck-${fileSlug}.pptx"`,
     'Content-Length': String(buffer.length),
     'X-Typodeck-Slides': String(slideCount),
   };

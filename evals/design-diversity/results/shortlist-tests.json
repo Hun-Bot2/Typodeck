@@ -1,0 +1,76 @@
+{
+  "generatedBy": "evals/design-diversity/shortlist-test.mjs",
+  "indexCount": 27,
+  "readyCount": 27,
+  "filesOpened": [
+    "bold-template-pack/selection-index.json",
+    "bold-template-pack/templates/seminar/preview.md",
+    "bold-template-pack/templates/peer-review/preview.md",
+    "bold-template-pack/templates/cut-paste/preview.md",
+    "bold-template-pack/templates/coin-op/preview.md",
+    "bold-template-pack/templates/new-wave-static/preview.md",
+    "bold-template-pack/templates/memphis-squiggle/preview.md",
+    "bold-template-pack/templates/bubble-os/preview.md",
+    "bold-template-pack/templates/field-manual/preview.md",
+    "bold-template-pack/templates/seminar/preview.md",
+    "bold-template-pack/templates/signal-board/preview.md",
+    "bold-template-pack/templates/front-page/preview.md",
+    "bold-template-pack/templates/peer-review/preview.md",
+    "bold-template-pack/templates/drafting-table/preview.md"
+  ],
+  "designReads": [],
+  "intents": {
+    "formal-report": {
+      "hits": [
+        "D06:seminar",
+        "D22:peer-review"
+      ],
+      "previewReads": [
+        "bold-template-pack/templates/seminar/preview.md",
+        "bold-template-pack/templates/peer-review/preview.md"
+      ],
+      "bestForMatched": 2,
+      "pass": true
+    },
+    "playful-launch": {
+      "hits": [
+        "D05:cut-paste",
+        "D08:coin-op",
+        "D12:new-wave-static",
+        "D18:memphis-squiggle",
+        "D25:bubble-os"
+      ],
+      "previewReads": [
+        "bold-template-pack/templates/cut-paste/preview.md",
+        "bold-template-pack/templates/coin-op/preview.md",
+        "bold-template-pack/templates/new-wave-static/preview.md",
+        "bold-template-pack/templates/memphis-squiggle/preview.md",
+        "bold-template-pack/templates/bubble-os/preview.md"
+      ],
+      "bestForMatched": 5,
+      "pass": true
+    },
+    "dense-technical": {
+      "hits": [
+        "D02:field-manual",
+        "D06:seminar",
+        "D10:signal-board",
+        "D17:front-page",
+        "D22:peer-review",
+        "D26:drafting-table"
+      ],
+      "previewReads": [
+        "bold-template-pack/templates/field-manual/preview.md",
+        "bold-template-pack/templates/seminar/preview.md",
+        "bold-template-pack/templates/signal-board/preview.md",
+        "bold-template-pack/templates/front-page/preview.md",
+        "bold-template-pack/templates/peer-review/preview.md",
+        "bold-template-pack/templates/drafting-table/preview.md"
+      ],
+      "bestForMatched": 6,
+      "pass": true
+    }
+  },
+  "failures": [],
+  "pass": true
+}

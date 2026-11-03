@@ -137,7 +137,7 @@ The type stack is two voices in deliberate tension. **Bebas Neue** is the displa
 
 The palette is near-monochrome: **pure black ground, off-white titles, smoke metadata**, and exactly one saturated beat — a **blood-red rule** opening the low-third block. The red is budgeted like a plot point: one per slide, never repeated in text, charts, or chrome. The surface rhythm is darkness with one light: a radial spotlight glow behind the title that vignettes to pure black, overlaid with a 1%-opacity scanline-grade shimmer.
 
-**Density philosophy: low, held, bottom-weighted.** At least half of every frame stays empty black above the low-third block. A typical slide carries one red rule, one kicker, one title, and one dialogue line — four elements, then darkness. Crowding the frame destroys the cinematic hush; when content grows, it paginates to the next shot instead.
+**Density philosophy: low, held, bottom-weighted.** At least half of every frame stays empty black above the low-third block. A typical title shot carries one red rule, one kicker, one title, and one dialogue line — four elements, then darkness. Dense evidence shots (cue stacks, stat blocks, two-take comparisons) may stack to six low-third elements with the title stepped to 104px, then 88px. Crowding the frame past that ceiling destroys the cinematic hush; when content grows beyond it, it paginates to the next shot instead.
 
 **Key Characteristics:**
 - CinemaScope letterbox bars top and bottom with hairline inner rules, carrying only brand metadata and a scene count.
@@ -209,7 +209,7 @@ These treatments are **non-optional whenever the corresponding element type is u
 
 ### Canvas System
 
-The system targets a fixed **1920×1080 stage** composed as three horizontal bands: a 148px top letterbox bar, a flexible frame region carrying the spotlight and the bottom-anchored low-third block, and a 132px bottom letterbox bar. The low third holds at most four stacked elements (rule, kicker, title, dialogue) with 22–34px gaps; everything above is empty black.
+The system targets a fixed **1920×1080 stage** composed as three horizontal bands: a 148px top letterbox bar, a flexible frame region carrying the spotlight and the bottom-anchored low-third block, and a 132px bottom letterbox bar. The low third holds four stacked elements on title shots (rule, kicker, title, dialogue) with 22–34px gaps; dense evidence shots may stack to six (rule, kicker, title or stat block, up to three cue/stat/take rows); everything above is empty black.
 
 Frame padding is `0 96px 64px`; bar padding is `0 96px`. The dialogue line caps at 1400px measure so it never runs the full frame width. The title box caps at 470px height with hidden overflow, guarded by the fit routine.
 
@@ -254,6 +254,14 @@ Zero everywhere. Bars, frame, rule, and any future panels are all square-cut. Th
 
 **Reel markers** — Near-invisible Bebas metadata in the bars (corpus size, scene count). Rhythmic texture for the frame edges.
 
+**Cue stack** — The list device for text-heavy shots: up to three cue rows beneath the title, each pairing a Bebas 34px 0.3em smoke cue label (`01`, `02`, `03`) with an Inter 300 32px dialogue-color line. 18px gaps between rows; cue labels are never red, never white.
+
+**Stat block** — The evidence device: stacked rows of Bebas 104px white figures, each followed 12px below by an Inter 300 28px smoke label. 24px gaps between rows, at most three rows per shot. Figures speak in the display caps voice; labels stay quiet smoke.
+
+**Two-take stack** — The comparison device: two takes stacked sequentially (never side by side), each opened by a Bebas 34px 0.3em smoke sub-kicker with one dialogue line beneath, separated by 48px of empty black. Spacing is the only separator — no divider, no second red, no panels.
+
+**Title-less low third** — On evidence shots only, the title line may be omitted when the figures are the subject: red rule + kicker + stat block, nothing else. Every other shot carries a title.
+
 ## Do's and Don'ts
 
 ### Do
@@ -265,6 +273,7 @@ Zero everywhere. Bars, frame, rule, and any future panels are all square-cut. Th
 - Let the spotlight vignette and 1% shimmer carry all atmospheric depth; keep text flat.
 - Dim neighbors instead of lifting elements when separation is needed on black.
 - Shrink long titles with the fit routine toward the 56px floor; never tighten tracking to fit.
+- Stack dense evidence as cue, stat, or take rows under a 104px title; omit the title only when figures are the subject.
 
 ### Don't
 
@@ -274,7 +283,7 @@ Zero everywhere. Bars, frame, rule, and any future panels are all square-cut. Th
 - Don't widen title leading past 1.0 or track titles beyond 0.03em; the dense caps stack is the look.
 - Don't introduce gray panels, cards, or bordered boxes on the frame — content floats on black.
 - Don't raise the shimmer past 2% opacity or add visible grain, noise, or starfields.
-- Don't crowd the frame past four low-third elements; extra content paginates to the next shot.
+- Don't crowd the frame past six low-third elements on dense evidence shots (four on title shots); content beyond the ceiling paginates to the next shot.
 
 ## Responsive Behavior
 
@@ -337,10 +346,15 @@ The noir voice in a CJK build lives entirely in the non-typographic elements: th
 4. Any new accent is the single red rule. Don't add red text, red bullets, or a second red shape anywhere.
 5. Any new frame keeps the spotlight vignette and 1% shimmer; don't add grain, noise, or visible texture.
 6. Any new metadata in the bars uses dim Bebas (0.3em+) or light Inter — present for rhythm, never demanding reading.
-7. Any new content beyond four low-third elements paginates to the next shot; don't shrink the empty black.
+7. Any new content beyond the low-third ceiling (four elements on title shots, six on dense evidence shots) paginates to the next shot; don't shrink the empty black.
 8. Any new emphasis on black comes from dimming neighbors, never from shadows, lifts, or panels.
 9. Long titles shrink via the fit routine toward the 56px floor; never tighten tracking or widen leading to fit.
 10. Animated builds (if any) fade the low third up once; the bars and spotlight never animate.
+11. Any new list uses the cue-stack device: Bebas cue labels with Inter dialogue rows, at most three rows.
+12. Any new evidence figure uses the stat-block device: Bebas 104px white figures with smoke labels, at most three rows.
+13. Any new comparison uses the two-take stack: sequential takes under smoke sub-kickers, 48px of black between, no divider.
+14. Any new dense evidence shot may stack to six low-third elements with the title stepped to 104px (then 88px); the 56px floor stays overflow-only, and anything past six elements paginates.
+15. Any new low third keeps its title except on evidence shots, where kicker plus stat block may stand alone beneath the red rule.
 
 ## Known Gaps
 
