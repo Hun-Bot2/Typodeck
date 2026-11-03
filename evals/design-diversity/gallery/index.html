@@ -52,6 +52,10 @@ header{padding:28px 28px 8px}header h1{margin:0 0 4px;font-size:26px}header p{ma
 #detail .deckgrid figure{margin:0}#detail .deckgrid img{width:100%;display:block;border:1px solid var(--line);border-radius:8px}
 #detail .deckgrid figcaption{font-size:12.5px;color:var(--dim);padding:4px 2px}
 #closedetail{position:sticky;top:0;float:right;margin:12px;background:var(--acc);border:0;border-radius:8px;padding:8px 16px;font-weight:700;cursor:pointer;z-index:2}
+.dnav{display:flex;gap:8px;align-items:center;padding:10px 22px 0}
+.dnav button{background:var(--chip);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-size:14px;cursor:pointer}
+.dnav button:hover{border-color:var(--acc)}
+.dnav .pos{margin-left:auto;color:var(--dim);font-size:13px}
 footer{padding:0 28px 80px;color:var(--dim);font-size:13px}
 .hidden{display:none!important}
 </style>
@@ -202,8 +206,16 @@ document.getElementById('gocompare').onclick=()=>{
 document.getElementById('closeov').onclick=()=>ov.classList.remove('on');
 ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('on');});
 const detail=document.getElementById('detail'),detailbody=document.getElementById('detailbody');
+let detailSeq=[];
+function visibleSeq(){
+  const ids=[...document.querySelectorAll('#grid .card:not(.hidden)')].map(el=>el.dataset.id);
+  return ids.length?ids:DATA.map(t=>t.id);
+}
 function openDetail(id){
   const t=DATA.find(x=>x.id===id);if(!t)return;
+  detailSeq=visibleSeq();
+  if(!detailSeq.includes(id))detailSeq=DATA.map(x=>x.id);
+  const pos=detailSeq.indexOf(id);
   const tabs=[['preview','Preview card (preview.md)','previewHtml']];
   tabs.push(['design','Full spec (design.md)','designHtml']);
   if(t.deckShots&&t.deckShots.length)tabs.push(['deck','Full-deck smoke (6 slides)','deck']);
@@ -215,6 +227,7 @@ function openDetail(id){
     `<div class="chips">${t.mood.map(m=>`<span class="chip">${esc(m)}</span>`).join('')}${t.tone.map(m=>`<span class="chip tone">${esc(m)}</span>`).join('')}</div>`+
     `<div class="bestfor"><b>Best for:</b> ${esc(t.bestFor)}</div>`+
     `<div class="bestfor" style="color:var(--dim)">${esc(t.visualSignature||'')}</div></div>`+
+    `<div class="dnav"><button data-nav="-1">◀ Prev</button><button data-nav="1">Next ▶</button><span class="pos">${pos+1} / ${detailSeq.length}</span></div>`+
     `<div class="tabs" role="tablist">${tabs.map((tb,i)=>`<button data-tab="${tb[0]}" class="${i===0?'active':''}" role="tab">${esc(tb[1])}</button>`).join('')}</div>`+
     `<div class="tabbody" id="tabbody"></div>`;
   const tabbody=document.getElementById('tabbody');
@@ -227,6 +240,7 @@ function openDetail(id){
     tabbody.scrollTop=0;
   }
   detailbody.querySelector('.tabs').onclick=e=>{const b=e.target.closest('[data-tab]');if(b)show(b.dataset.tab);};
+  detailbody.querySelector('.dnav').onclick=e=>{const b=e.target.closest('[data-nav]');if(b)stepDetail(parseInt(b.dataset.nav,10));};
   show(tabs[0][0]);
   detail.classList.add('on');detailRestoreScroll=window.scrollY;document.body.style.overflow='hidden';
   history.replaceState(null,'','?d='+t.id);
@@ -235,7 +249,18 @@ let DetailRestoreScroll=0;
 function closeDetail(){detail.classList.remove('on');document.body.style.overflow='';history.replaceState(null,'',location.pathname);window.scrollTo(0,DetailRestoreScroll||0);}
 document.getElementById('closedetail').onclick=closeDetail;
 detail.addEventListener('click',e=>{if(e.target===detail)closeDetail();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDetail();ov.classList.remove('on');}});
+function stepDetail(d){
+  if(!detail.classList.contains('on')||!detailSeq.length)return;
+  const cur=new URLSearchParams(location.search).get('d');
+  let i=detailSeq.indexOf(cur);if(i<0)i=0;
+  const n=detailSeq[(i+d+detailSeq.length)%detailSeq.length];
+  detail.scrollTop=0;openDetail(n);
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeDetail();ov.classList.remove('on');}
+  else if(detail.classList.contains('on')&&e.key==='ArrowRight')stepDetail(1);
+  else if(detail.classList.contains('on')&&e.key==='ArrowLeft')stepDetail(-1);
+});
 grid.addEventListener('click',e=>{
   if(e.target.closest('[data-pick]')||e.target.closest('label.pick'))return;
   const card=e.target.closest('.card');if(card)openDetail(card.dataset.id);

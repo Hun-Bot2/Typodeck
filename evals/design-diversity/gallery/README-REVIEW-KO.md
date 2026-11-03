@@ -32,6 +32,8 @@ cd /Users/jeonghun/Typodeck/evals/design-diversity && python3 -m http.server 832
 - `Full-deck smoke` — D01/D04/D23에 한해 6종 슬라이드(표지/구분/본문/숫자/비교/맺음) 렌더 결과
 
 닫기는 `Close ✕`, 배경 클릭, 또는 `Esc` 키.
+상세 창을 닫지 않고 넘기기: `◀ Prev` / `Next ▶` 버튼 또는 키보드 `←` / `→`.
+필터를 걸어둔 상태에서는 보이는 카드 순서대로 넘어갑니다.
 
 ## 6. 디자인 문서 확인
 
