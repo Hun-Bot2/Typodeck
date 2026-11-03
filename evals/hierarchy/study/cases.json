@@ -1,0 +1,4076 @@
+{
+  "datasetVersion": "study-v1",
+  "seed": 20261103,
+  "order": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24",
+    "S25",
+    "S26",
+    "S27"
+  ],
+  "cases": [
+    {
+      "caseId": "S01",
+      "fixtureId": "F01",
+      "system": "swiss",
+      "slide": {
+        "id": "F01-s1",
+        "thesis": "Accuracy reached 94% after six weeks",
+        "background": "#FFFFFF",
+        "blocks": [
+          {
+            "id": "F01-s1-b0",
+            "role": "kicker",
+            "content": "PILOT RESULT",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 0.5999999999999996,
+            "y": 0.72,
+            "w": 12.13,
+            "h": 0.522361111111111,
+            "fontSize": 35,
+            "fontWeight": 700,
+            "tracking": 0.18,
+            "lineHeight": 1.3,
+            "align": "left",
+            "color": "#B00020",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F01-s1-b1",
+            "role": "number",
+            "content": "94%",
+            "intent": {
+              "emphasis": "primary",
+              "groupId": "hero",
+              "relation": "label-value"
+            },
+            "x": 0.6,
+            "y": 1.506361111111111,
+            "w": 6.943175000000001,
+            "h": 2.3258333333333336,
+            "fontSize": 231,
+            "fontWeight": 700,
+            "tracking": -0.02,
+            "lineHeight": 1,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F01-s1-b2",
+            "role": "title",
+            "content": "Accuracy after six weeks",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 0.5999999999999996,
+            "y": 4.0961944444444445,
+            "w": 12.13,
+            "h": 0.6785,
+            "fontSize": 57,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F01-s1-b3",
+            "role": "caption",
+            "content": "verified · pilot.csv:3",
+            "intent": {
+              "emphasis": "supporting",
+              "groupId": "hero",
+              "relation": "label-value"
+            },
+            "x": 0.5999999999999996,
+            "y": 5.038694444444444,
+            "w": 12.13,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#5A5A5A",
+            "fontFace": "Helvetica Neue"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F01-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "PILOT RESULT"
+        },
+        {
+          "id": "F01-s1-b1",
+          "role": "number",
+          "label": "2 · number",
+          "preview": "94%"
+        },
+        {
+          "id": "F01-s1-b2",
+          "role": "title",
+          "label": "3 · title",
+          "preview": "Accuracy after six weeks"
+        },
+        {
+          "id": "F01-s1-b3",
+          "role": "caption",
+          "label": "4 · caption",
+          "preview": "verified · pilot.csv:3"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F01/swiss); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S02",
+      "fixtureId": "F02",
+      "system": "swiss",
+      "slide": {
+        "id": "F02-s1",
+        "thesis": "Growth held across regions in Q3",
+        "background": "#F1F4F6",
+        "blocks": [
+          {
+            "id": "F02-s1-b0",
+            "role": "kicker",
+            "content": "Q3 SNAPSHOT",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 0.6,
+            "y": 1.1,
+            "w": 5.915,
+            "h": 0.2063888888888889,
+            "fontSize": 10,
+            "fontWeight": 700,
+            "tracking": 0.18,
+            "lineHeight": 1.3,
+            "align": "left",
+            "color": "#0B4F9C",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b1",
+            "role": "title",
+            "content": "Growth held across regions",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 0.6,
+            "y": 2.35,
+            "w": 5.915,
+            "h": 0.3950000000000001,
+            "fontSize": 30,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b2",
+            "role": "body",
+            "content": "NRR 118% · +6pt QoQ",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.35,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b3",
+            "role": "body",
+            "content": "Churn 1.2% · −0.4pt QoQ",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.8411666666666666,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b4",
+            "role": "body",
+            "content": "CAC payback 5.1 mo",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 0.6,
+            "y": 3.332333333333333,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b5",
+            "role": "caption",
+            "content": "source · metrics.csv:12",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 6.8149999999999995,
+            "y": 6.300000000000001,
+            "w": 5.915,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#54616E",
+            "fontFace": "Inter"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F02-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "Q3 SNAPSHOT"
+        },
+        {
+          "id": "F02-s1-b1",
+          "role": "title",
+          "label": "2 · title",
+          "preview": "Growth held across regions"
+        },
+        {
+          "id": "F02-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "NRR 118% · +6pt QoQ"
+        },
+        {
+          "id": "F02-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "Churn 1.2% · −0.4pt QoQ"
+        },
+        {
+          "id": "F02-s1-b4",
+          "role": "body",
+          "label": "5 · body",
+          "preview": "CAC payback 5.1 mo"
+        },
+        {
+          "id": "F02-s1-b5",
+          "role": "caption",
+          "label": "6 · caption",
+          "preview": "source · metrics.csv:12"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F02/swiss); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S03",
+      "fixtureId": "F03",
+      "system": "editorial",
+      "slide": {
+        "id": "F03-s1",
+        "thesis": "Clutter taxes attention and recall",
+        "background": "#FAF7F2",
+        "blocks": [
+          {
+            "id": "F03-s1-b0",
+            "role": "kicker",
+            "content": "CHAPTER ONE",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 1,
+            "y": 1.5,
+            "w": 8.6,
+            "h": 0.22972222222222227,
+            "fontSize": 11,
+            "fontWeight": 500,
+            "tracking": 0.28,
+            "lineHeight": 1.4,
+            "align": "left",
+            "color": "#7B2D26",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F03-s1-b1",
+            "role": "title",
+            "content": "The quiet cost of clutter",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 1,
+            "y": 2.113722222222222,
+            "w": 8.6,
+            "h": 0.5808888888888889,
+            "fontSize": 46,
+            "fontWeight": 700,
+            "tracking": -0.01,
+            "lineHeight": 1.12,
+            "align": "left",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F03-s1-b2",
+            "role": "body",
+            "content": "Every extra element on a slide taxes attention. Readers pay the price in slower comprehension and weaker recall of the point that matters.",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 3.178611111111111,
+            "w": 6.25,
+            "h": 0.98,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F03-s1-b3",
+            "role": "caption",
+            "content": "essay · draft 4",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 1,
+            "y": 4.5426111111111105,
+            "w": 8.6,
+            "h": 0.22583333333333333,
+            "fontSize": 10,
+            "fontWeight": 400,
+            "tracking": 0.04,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#6B6259",
+            "fontFace": "Georgia"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F03-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "CHAPTER ONE"
+        },
+        {
+          "id": "F03-s1-b1",
+          "role": "title",
+          "label": "2 · title",
+          "preview": "The quiet cost of clutter"
+        },
+        {
+          "id": "F03-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "Every extra element on a slide taxes attention. Readers pay "
+        },
+        {
+          "id": "F03-s1-b3",
+          "role": "caption",
+          "label": "4 · caption",
+          "preview": "essay · draft 4"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F03/editorial); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S04",
+      "fixtureId": "F04",
+      "system": "swiss",
+      "slide": {
+        "id": "F04-s1",
+        "thesis": "A three-step weekly loop closes the pantry",
+        "background": "#1E3A8A",
+        "blocks": [
+          {
+            "id": "F04-s1-b0",
+            "role": "title",
+            "content": "Three steps to a clean close",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 0.6,
+            "y": 2.35,
+            "w": 5.915,
+            "h": 0.3950000000000001,
+            "fontSize": 30,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b1",
+            "role": "body",
+            "content": "1. Capture — scan items in about 3 seconds each",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.35,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b2",
+            "role": "body",
+            "content": "2. Plan — five dinners built from stock",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.819166666666667,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b3",
+            "role": "body",
+            "content": "3. Shop — only the missing 6–9 items",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 0.6,
+            "y": 3.2883333333333336,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b4",
+            "role": "caption",
+            "content": "loop · handbook:2",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 6.8149999999999995,
+            "y": 6.300000000000001,
+            "w": 5.915,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#C3D2F5",
+            "fontFace": "Courier New"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F04-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "Three steps to a clean close"
+        },
+        {
+          "id": "F04-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "1. Capture — scan items in about 3 seconds each"
+        },
+        {
+          "id": "F04-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "2. Plan — five dinners built from stock"
+        },
+        {
+          "id": "F04-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "3. Shop — only the missing 6–9 items"
+        },
+        {
+          "id": "F04-s1-b4",
+          "role": "caption",
+          "label": "5 · caption",
+          "preview": "loop · handbook:2"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F04/swiss); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S05",
+      "fixtureId": "F05",
+      "system": "document",
+      "slide": {
+        "id": "F05-s1",
+        "thesis": "The rollout cut incidents and merge time",
+        "background": "#F7F3E8",
+        "blocks": [
+          {
+            "id": "F05-s1-b0",
+            "role": "title",
+            "content": "Before vs after the rollout",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 3.2,
+            "y": 1,
+            "w": 9.43,
+            "h": 0.4601388888888889,
+            "fontSize": 34,
+            "fontWeight": 700,
+            "tracking": -0.01,
+            "lineHeight": 1.15,
+            "align": "left",
+            "color": "#2B2B2B",
+            "fontFace": "Hiragino Mincho ProN"
+          },
+          {
+            "id": "F05-s1-b1",
+            "role": "body",
+            "content": "Before: 11 broken-main incidents",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "left",
+              "relation": "evidence"
+            },
+            "x": 3.2,
+            "y": 1.6221388888888888,
+            "w": 5.555555555555555,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#2B2B2B",
+            "fontFace": "Hiragino Mincho ProN"
+          },
+          {
+            "id": "F05-s1-b2",
+            "role": "body",
+            "content": "Before: 4h median merge time",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "left",
+              "relation": "evidence"
+            },
+            "x": 3.2,
+            "y": 2.0464305555555553,
+            "w": 5.555555555555555,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#2B2B2B",
+            "fontFace": "Hiragino Mincho ProN"
+          },
+          {
+            "id": "F05-s1-b3",
+            "role": "body",
+            "content": "After: 2 incidents in 6 weeks",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "right",
+              "relation": "evidence"
+            },
+            "x": 3.2,
+            "y": 2.470722222222222,
+            "w": 5.555555555555555,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#2B2B2B",
+            "fontFace": "Hiragino Mincho ProN"
+          },
+          {
+            "id": "F05-s1-b4",
+            "role": "body",
+            "content": "After: 50 min median merge",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "right",
+              "relation": "evidence"
+            },
+            "x": 3.2,
+            "y": 2.8950138888888883,
+            "w": 5.555555555555555,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#2B2B2B",
+            "fontFace": "Hiragino Mincho ProN"
+          },
+          {
+            "id": "F05-s1-b5",
+            "role": "caption",
+            "content": "trial · shipgate:1",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 3.2,
+            "y": 6.2,
+            "w": 9.43,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#6E675C",
+            "fontFace": "Hiragino Mincho ProN"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F05-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "Before vs after the rollout"
+        },
+        {
+          "id": "F05-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "Before: 11 broken-main incidents"
+        },
+        {
+          "id": "F05-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "Before: 4h median merge time"
+        },
+        {
+          "id": "F05-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "After: 2 incidents in 6 weeks"
+        },
+        {
+          "id": "F05-s1-b4",
+          "role": "body",
+          "label": "5 · body",
+          "preview": "After: 50 min median merge"
+        },
+        {
+          "id": "F05-s1-b5",
+          "role": "caption",
+          "label": "6 · caption",
+          "preview": "trial · shipgate:1"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F05/document); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S06",
+      "fixtureId": "F06",
+      "system": "document",
+      "slide": {
+        "id": "F06-s1",
+        "thesis": "Five audit findings on rendering fit",
+        "background": "#EDE6D6",
+        "blocks": [
+          {
+            "id": "F06-s1-b0",
+            "role": "title",
+            "content": "What the audit found",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 3.2,
+            "y": 1,
+            "w": 9.43,
+            "h": 0.4601388888888889,
+            "fontSize": 34,
+            "fontWeight": 700,
+            "tracking": -0.01,
+            "lineHeight": 1.15,
+            "align": "left",
+            "color": "#292524",
+            "fontFace": "Trebuchet MS"
+          },
+          {
+            "id": "F06-s1-b1",
+            "role": "body",
+            "content": "Finding 1: 3 silent clips passed validation because estimates trusted declarations",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 3.2,
+            "y": 1.6581388888888888,
+            "w": 5.208333333333333,
+            "h": 0.5227083333333332,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#292524",
+            "fontFace": "Trebuchet MS"
+          },
+          {
+            "id": "F06-s1-b2",
+            "role": "body",
+            "content": "Finding 2: 53% of residual deductions trace to text rendering fit",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 3.2,
+            "y": 2.3788472222222223,
+            "w": 5.208333333333333,
+            "h": 0.5227083333333332,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#292524",
+            "fontFace": "Trebuchet MS"
+          },
+          {
+            "id": "F06-s1-b3",
+            "role": "body",
+            "content": "Finding 3: inspection count predicts quality far better than edit count",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 3.2,
+            "y": 3.099555555555556,
+            "w": 5.208333333333333,
+            "h": 0.5227083333333332,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#292524",
+            "fontFace": "Trebuchet MS"
+          },
+          {
+            "id": "F06-s1-b4",
+            "role": "body",
+            "content": "Finding 4: 31.7% of reproductions pass every gate on the first attempt",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 3.2,
+            "y": 3.8202638888888893,
+            "w": 5.208333333333333,
+            "h": 0.5227083333333332,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#292524",
+            "fontFace": "Trebuchet MS"
+          },
+          {
+            "id": "F06-s1-b5",
+            "role": "body",
+            "content": "Finding 5: the median reproduction scores 24.38 against a best of 77.34",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 3.2,
+            "y": 4.540972222222223,
+            "w": 5.208333333333333,
+            "h": 0.5227083333333332,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#292524",
+            "fontFace": "Trebuchet MS"
+          },
+          {
+            "id": "F06-s1-b6",
+            "role": "caption",
+            "content": "audit · gates:7",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 3.2,
+            "y": 6.2,
+            "w": 9.43,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#656054",
+            "fontFace": "Trebuchet MS"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F06-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "What the audit found"
+        },
+        {
+          "id": "F06-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "Finding 1: 3 silent clips passed validation because estimate"
+        },
+        {
+          "id": "F06-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "Finding 2: 53% of residual deductions trace to text renderin"
+        },
+        {
+          "id": "F06-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "Finding 3: inspection count predicts quality far better than"
+        },
+        {
+          "id": "F06-s1-b4",
+          "role": "body",
+          "label": "5 · body",
+          "preview": "Finding 4: 31.7% of reproductions pass every gate on the fir"
+        },
+        {
+          "id": "F06-s1-b5",
+          "role": "body",
+          "label": "6 · body",
+          "preview": "Finding 5: the median reproduction scores 24.38 against a be"
+        },
+        {
+          "id": "F06-s1-b6",
+          "role": "caption",
+          "label": "7 · caption",
+          "preview": "audit · gates:7"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F06/document); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S07",
+      "fixtureId": "F07",
+      "system": "swiss",
+      "slide": {
+        "id": "F07-s1",
+        "thesis": "6주 후 정확도 94% 달성",
+        "background": "#FFFFFF",
+        "blocks": [
+          {
+            "id": "F07-s1-b0",
+            "role": "kicker",
+            "content": "파일럿 결과",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 0.5999999999999996,
+            "y": 0.72,
+            "w": 12.13,
+            "h": 0.522361111111111,
+            "fontSize": 35,
+            "fontWeight": 700,
+            "tracking": 0.18,
+            "lineHeight": 1.3,
+            "align": "left",
+            "color": "#B00020",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F07-s1-b1",
+            "role": "number",
+            "content": "94%",
+            "intent": {
+              "emphasis": "primary",
+              "groupId": "hero",
+              "relation": "label-value"
+            },
+            "x": 0.6,
+            "y": 1.506361111111111,
+            "w": 6.943175000000001,
+            "h": 2.3258333333333336,
+            "fontSize": 231,
+            "fontWeight": 700,
+            "tracking": -0.02,
+            "lineHeight": 1,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F07-s1-b2",
+            "role": "title",
+            "content": "6주 후 정확도",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 0.5999999999999996,
+            "y": 4.0961944444444445,
+            "w": 12.13,
+            "h": 0.6785,
+            "fontSize": 57,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F07-s1-b3",
+            "role": "caption",
+            "content": "검증됨 · pilot.csv:3",
+            "intent": {
+              "emphasis": "supporting",
+              "groupId": "hero",
+              "relation": "label-value"
+            },
+            "x": 0.5999999999999996,
+            "y": 5.038694444444444,
+            "w": 12.13,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#5A5A5A",
+            "fontFace": "Helvetica Neue"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F07-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "파일럿 결과"
+        },
+        {
+          "id": "F07-s1-b1",
+          "role": "number",
+          "label": "2 · number",
+          "preview": "94%"
+        },
+        {
+          "id": "F07-s1-b2",
+          "role": "title",
+          "label": "3 · title",
+          "preview": "6주 후 정확도"
+        },
+        {
+          "id": "F07-s1-b3",
+          "role": "caption",
+          "label": "4 · caption",
+          "preview": "검증됨 · pilot.csv:3"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F07/swiss); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S08",
+      "fixtureId": "F08",
+      "system": "swiss",
+      "slide": {
+        "id": "F08-s1",
+        "thesis": "3분기 전 지역 성장 유지",
+        "background": "#FFFFFF",
+        "blocks": [
+          {
+            "id": "F08-s1-b0",
+            "role": "kicker",
+            "content": "3분기 스냅샷",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 0.6,
+            "y": 1.1,
+            "w": 5.915,
+            "h": 0.2063888888888889,
+            "fontSize": 10,
+            "fontWeight": 700,
+            "tracking": 0.18,
+            "lineHeight": 1.3,
+            "align": "left",
+            "color": "#1D4ED8",
+            "fontFace": "Arial Narrow"
+          },
+          {
+            "id": "F08-s1-b1",
+            "role": "title",
+            "content": "전 지역에서 성장 유지",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 0.6,
+            "y": 2.35,
+            "w": 5.915,
+            "h": 0.3950000000000001,
+            "fontSize": 30,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Arial Narrow"
+          },
+          {
+            "id": "F08-s1-b2",
+            "role": "body",
+            "content": "NRR 118% · 전분기 대비 +6pt",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.35,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Arial"
+          },
+          {
+            "id": "F08-s1-b3",
+            "role": "body",
+            "content": "이탈률 1.2% · −0.4pt",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.819166666666667,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Arial"
+          },
+          {
+            "id": "F08-s1-b4",
+            "role": "body",
+            "content": "CAC 회수 5.1개월",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 0.6,
+            "y": 3.2883333333333336,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Arial"
+          },
+          {
+            "id": "F08-s1-b5",
+            "role": "caption",
+            "content": "출처 · metrics.csv:12",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 6.8149999999999995,
+            "y": 6.300000000000001,
+            "w": 5.915,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#5A5A5A",
+            "fontFace": "Arial"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F08-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "3분기 스냅샷"
+        },
+        {
+          "id": "F08-s1-b1",
+          "role": "title",
+          "label": "2 · title",
+          "preview": "전 지역에서 성장 유지"
+        },
+        {
+          "id": "F08-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "NRR 118% · 전분기 대비 +6pt"
+        },
+        {
+          "id": "F08-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "이탈률 1.2% · −0.4pt"
+        },
+        {
+          "id": "F08-s1-b4",
+          "role": "body",
+          "label": "5 · body",
+          "preview": "CAC 회수 5.1개월"
+        },
+        {
+          "id": "F08-s1-b5",
+          "role": "caption",
+          "label": "6 · caption",
+          "preview": "출처 · metrics.csv:12"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F08/swiss); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S09",
+      "fixtureId": "F09",
+      "system": "editorial",
+      "slide": {
+        "id": "F09-s1",
+        "thesis": "어수선함은 주의와 기억을 갉아먹는다",
+        "background": "#FAF7F2",
+        "blocks": [
+          {
+            "id": "F09-s1-b0",
+            "role": "kicker",
+            "content": "1장",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 1,
+            "y": 1.5,
+            "w": 8.6,
+            "h": 0.22972222222222227,
+            "fontSize": 11,
+            "fontWeight": 500,
+            "tracking": 0.28,
+            "lineHeight": 1.4,
+            "align": "left",
+            "color": "#7B2D26",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F09-s1-b1",
+            "role": "title",
+            "content": "어수선함의 조용한 대가",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 1,
+            "y": 2.113722222222222,
+            "w": 8.6,
+            "h": 0.5808888888888889,
+            "fontSize": 46,
+            "fontWeight": 700,
+            "tracking": -0.01,
+            "lineHeight": 1.12,
+            "align": "left",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F09-s1-b2",
+            "role": "body",
+            "content": "슬라이드의 요소 하나하나가 주의를 갉아먹는다. 독자는 느린 이해와 약한 기억이라는 대가를 치른다.",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 3.178611111111111,
+            "w": 6.25,
+            "h": 0.6466666666666667,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F09-s1-b3",
+            "role": "caption",
+            "content": "에세이 · 4稿",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 1,
+            "y": 4.209277777777778,
+            "w": 8.6,
+            "h": 0.22583333333333333,
+            "fontSize": 10,
+            "fontWeight": 400,
+            "tracking": 0.04,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#6B6259",
+            "fontFace": "Georgia"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F09-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "1장"
+        },
+        {
+          "id": "F09-s1-b1",
+          "role": "title",
+          "label": "2 · title",
+          "preview": "어수선함의 조용한 대가"
+        },
+        {
+          "id": "F09-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "슬라이드의 요소 하나하나가 주의를 갉아먹는다. 독자는 느린 이해와 약한 기억이라는 대가를 치른다."
+        },
+        {
+          "id": "F09-s1-b3",
+          "role": "caption",
+          "label": "4 · caption",
+          "preview": "에세이 · 4稿"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F09/editorial); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S10",
+      "fixtureId": "F10",
+      "system": "document",
+      "slide": {
+        "id": "F10-s1",
+        "thesis": "팬트리를 닫는 세 단계 순환",
+        "background": "#F7F7F5",
+        "blocks": [
+          {
+            "id": "F10-s1-b0",
+            "role": "title",
+            "content": "깔끔한 마감을 위한 세 단계",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 3.2,
+            "y": 1,
+            "w": 9.43,
+            "h": 0.4601388888888889,
+            "fontSize": 34,
+            "fontWeight": 700,
+            "tracking": -0.01,
+            "lineHeight": 1.15,
+            "align": "left",
+            "color": "#1A1A1A",
+            "fontFace": "Arial"
+          },
+          {
+            "id": "F10-s1-b1",
+            "role": "body",
+            "content": "1. 기록 — 개당 약 3초 스캔",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 3.2,
+            "y": 1.6221388888888888,
+            "w": 6.076388888888889,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#1A1A1A",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F10-s1-b2",
+            "role": "body",
+            "content": "2. 계획 — 재고로 만드는 5가지 저녁",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 3.2,
+            "y": 2.0464305555555553,
+            "w": 6.076388888888889,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#1A1A1A",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F10-s1-b3",
+            "role": "body",
+            "content": "3. 구매 — 부족한 6–9개 품목만",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 3.2,
+            "y": 2.470722222222222,
+            "w": 6.076388888888889,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#1A1A1A",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F10-s1-b4",
+            "role": "caption",
+            "content": "순환 · handbook:2",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 3.2,
+            "y": 6.2,
+            "w": 9.43,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#5F6B6B",
+            "fontFace": "Courier New"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F10-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "깔끔한 마감을 위한 세 단계"
+        },
+        {
+          "id": "F10-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "1. 기록 — 개당 약 3초 스캔"
+        },
+        {
+          "id": "F10-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "2. 계획 — 재고로 만드는 5가지 저녁"
+        },
+        {
+          "id": "F10-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "3. 구매 — 부족한 6–9개 품목만"
+        },
+        {
+          "id": "F10-s1-b4",
+          "role": "caption",
+          "label": "5 · caption",
+          "preview": "순환 · handbook:2"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F10/document); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S11",
+      "fixtureId": "F11",
+      "system": "document",
+      "slide": {
+        "id": "F11-s1",
+        "thesis": "도입 후 장애와 머지 시간 감소",
+        "background": "#F7F3E8",
+        "blocks": [
+          {
+            "id": "F11-s1-b0",
+            "role": "title",
+            "content": "도입 전후 비교",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 3.2,
+            "y": 1,
+            "w": 9.43,
+            "h": 0.4601388888888889,
+            "fontSize": 34,
+            "fontWeight": 700,
+            "tracking": -0.01,
+            "lineHeight": 1.15,
+            "align": "left",
+            "color": "#2B2B2B",
+            "fontFace": "Hiragino Mincho ProN"
+          },
+          {
+            "id": "F11-s1-b1",
+            "role": "body",
+            "content": "도입 전: 11건의 메인 브레이크",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "left",
+              "relation": "evidence"
+            },
+            "x": 3.2,
+            "y": 1.6221388888888888,
+            "w": 5.555555555555555,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#2B2B2B",
+            "fontFace": "Hiragino Mincho ProN"
+          },
+          {
+            "id": "F11-s1-b2",
+            "role": "body",
+            "content": "도입 전: 머지 중앙값 4시간",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "left",
+              "relation": "evidence"
+            },
+            "x": 3.2,
+            "y": 2.0464305555555553,
+            "w": 5.555555555555555,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#2B2B2B",
+            "fontFace": "Hiragino Mincho ProN"
+          },
+          {
+            "id": "F11-s1-b3",
+            "role": "body",
+            "content": "도입 후: 6주간 2건",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "right",
+              "relation": "evidence"
+            },
+            "x": 3.2,
+            "y": 2.470722222222222,
+            "w": 5.555555555555555,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#2B2B2B",
+            "fontFace": "Hiragino Mincho ProN"
+          },
+          {
+            "id": "F11-s1-b4",
+            "role": "body",
+            "content": "도입 후: 머지 중앙값 50분",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "right",
+              "relation": "evidence"
+            },
+            "x": 3.2,
+            "y": 2.8950138888888883,
+            "w": 5.555555555555555,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#2B2B2B",
+            "fontFace": "Hiragino Mincho ProN"
+          },
+          {
+            "id": "F11-s1-b5",
+            "role": "caption",
+            "content": "시범 · shipgate:1",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 3.2,
+            "y": 6.2,
+            "w": 9.43,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#6E675C",
+            "fontFace": "Hiragino Mincho ProN"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F11-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "도입 전후 비교"
+        },
+        {
+          "id": "F11-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "도입 전: 11건의 메인 브레이크"
+        },
+        {
+          "id": "F11-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "도입 전: 머지 중앙값 4시간"
+        },
+        {
+          "id": "F11-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "도입 후: 6주간 2건"
+        },
+        {
+          "id": "F11-s1-b4",
+          "role": "body",
+          "label": "5 · body",
+          "preview": "도입 후: 머지 중앙값 50분"
+        },
+        {
+          "id": "F11-s1-b5",
+          "role": "caption",
+          "label": "6 · caption",
+          "preview": "시범 · shipgate:1"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F11/document); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S12",
+      "fixtureId": "F12",
+      "system": "editorial",
+      "slide": {
+        "id": "F12-s1",
+        "thesis": "렌더링 맞춤에 대한 다섯 가지 발견",
+        "background": "#F5F2EA",
+        "blocks": [
+          {
+            "id": "F12-s1-b0",
+            "role": "title",
+            "content": "감사 결과 요약",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 1,
+            "y": 1.5,
+            "w": 8.6,
+            "h": 0.5808888888888889,
+            "fontSize": 46,
+            "fontWeight": 700,
+            "tracking": -0.01,
+            "lineHeight": 1.12,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b1",
+            "role": "body",
+            "content": "발견 1: 선언만 믿은 추정치 때문에 3건의 조용한 잘림이 검증을 통과",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 2.596888888888889,
+            "w": 6.25,
+            "h": 0.6466666666666667,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b2",
+            "role": "body",
+            "content": "발견 2: 잔여 감점의 53%는 텍스트 렌더링 맞춤에서 발생",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 3.659555555555556,
+            "w": 6.25,
+            "h": 0.31333333333333335,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b3",
+            "role": "body",
+            "content": "발견 3: 검사 횟수가 편집 횟수보다 품질을 훨씬 잘 예측",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 4.388888888888889,
+            "w": 6.25,
+            "h": 0.31333333333333335,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b4",
+            "role": "body",
+            "content": "발견 4: 첫 시도에 모든 게이트를 통과한 재현은 31.7%",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 5.118222222222222,
+            "w": 6.25,
+            "h": 0.31333333333333335,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b5",
+            "role": "body",
+            "content": "발견 5: 최고 77.34점 대비 중앙값은 24.38점",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 5.847555555555555,
+            "w": 6.25,
+            "h": 0.31333333333333335,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b6",
+            "role": "caption",
+            "content": "감사 · gates:7",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 1,
+            "y": 6.274166666666667,
+            "w": 8.6,
+            "h": 0.22583333333333333,
+            "fontSize": 10,
+            "fontWeight": 400,
+            "tracking": 0.04,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#62625A",
+            "fontFace": "Palatino Linotype"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F12-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "감사 결과 요약"
+        },
+        {
+          "id": "F12-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "발견 1: 선언만 믿은 추정치 때문에 3건의 조용한 잘림이 검증을 통과"
+        },
+        {
+          "id": "F12-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "발견 2: 잔여 감점의 53%는 텍스트 렌더링 맞춤에서 발생"
+        },
+        {
+          "id": "F12-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "발견 3: 검사 횟수가 편집 횟수보다 품질을 훨씬 잘 예측"
+        },
+        {
+          "id": "F12-s1-b4",
+          "role": "body",
+          "label": "5 · body",
+          "preview": "발견 4: 첫 시도에 모든 게이트를 통과한 재현은 31.7%"
+        },
+        {
+          "id": "F12-s1-b5",
+          "role": "body",
+          "label": "6 · body",
+          "preview": "발견 5: 최고 77.34점 대비 중앙값은 24.38점"
+        },
+        {
+          "id": "F12-s1-b6",
+          "role": "caption",
+          "label": "7 · caption",
+          "preview": "감사 · gates:7"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F12/editorial); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S13",
+      "fixtureId": "F13",
+      "system": "expressive",
+      "slide": {
+        "id": "F13-s1",
+        "thesis": "The crop is the design",
+        "background": "#FAF7F2",
+        "blocks": [
+          {
+            "id": "F13-s1-b0",
+            "role": "title",
+            "content": "LOUD TYPE WINS",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 1.5150000000000006,
+            "y": 3.033333333333333,
+            "w": 10.299999999999999,
+            "h": 0.7333333333333333,
+            "fontSize": 64,
+            "fontWeight": 900,
+            "tracking": -0.01,
+            "lineHeight": 1.05,
+            "align": "center",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F13-s1-b1",
+            "role": "body",
+            "content": "A deliberate bleed runs past the edge on purpose. The crop is the design: no finding, no repair, no apology.",
+            "intent": {
+              "deliberateCrop": true,
+              "emphasis": "secondary"
+            },
+            "x": 3.7483333333333335,
+            "y": 4.176666666666667,
+            "w": 5.833333333333333,
+            "h": 0.5711111111111111,
+            "fontSize": 13,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "center",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F13-s1-b2",
+            "role": "caption",
+            "content": "poster · n°7",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 2.965,
+            "y": 6.35,
+            "w": 7.4,
+            "h": 0.22583333333333333,
+            "fontSize": 10,
+            "fontWeight": 500,
+            "tracking": 0.08,
+            "lineHeight": 1.5,
+            "align": "center",
+            "color": "#6B6259",
+            "fontFace": "Georgia"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F13-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "LOUD TYPE WINS"
+        },
+        {
+          "id": "F13-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "A deliberate bleed runs past the edge on purpose. The crop i"
+        },
+        {
+          "id": "F13-s1-b2",
+          "role": "caption",
+          "label": "3 · caption",
+          "preview": "poster · n°7"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F13/expressive); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S14",
+      "fixtureId": "F14",
+      "system": "expressive",
+      "slide": {
+        "id": "F14-s1",
+        "thesis": "잘림 자체가 디자인이다",
+        "background": "#FAF7F2",
+        "blocks": [
+          {
+            "id": "F14-s1-b0",
+            "role": "title",
+            "content": "큰 글씨가 이긴다",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 1.5150000000000006,
+            "y": 3.033333333333333,
+            "w": 10.299999999999999,
+            "h": 0.7333333333333333,
+            "fontSize": 64,
+            "fontWeight": 900,
+            "tracking": -0.01,
+            "lineHeight": 1.05,
+            "align": "center",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F14-s1-b1",
+            "role": "body",
+            "content": "의도적 블리드가 가장자리를 넘는다. 잘림 자체가 디자인이다: 지적도 수리도 사과도 없다.",
+            "intent": {
+              "deliberateCrop": true,
+              "emphasis": "secondary"
+            },
+            "x": 3.7483333333333335,
+            "y": 4.176666666666667,
+            "w": 5.833333333333333,
+            "h": 0.6088888888888888,
+            "fontSize": 14,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "center",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F14-s1-b2",
+            "role": "caption",
+            "content": "포스터 · n°7",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 2.965,
+            "y": 6.35,
+            "w": 7.4,
+            "h": 0.22583333333333333,
+            "fontSize": 10,
+            "fontWeight": 500,
+            "tracking": 0.08,
+            "lineHeight": 1.5,
+            "align": "center",
+            "color": "#6B6259",
+            "fontFace": "Georgia"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F14-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "큰 글씨가 이긴다"
+        },
+        {
+          "id": "F14-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "의도적 블리드가 가장자리를 넘는다. 잘림 자체가 디자인이다: 지적도 수리도 사과도 없다."
+        },
+        {
+          "id": "F14-s1-b2",
+          "role": "caption",
+          "label": "3 · caption",
+          "preview": "포스터 · n°7"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F14/expressive); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S15",
+      "fixtureId": "F15",
+      "system": "document",
+      "slide": {
+        "id": "F15-s1",
+        "thesis": "Pantrylog cut waste 32% in 8 weeks",
+        "background": "#EDE6D6",
+        "blocks": [
+          {
+            "id": "F15-s1-b0",
+            "role": "kicker",
+            "content": "PANTRYLOG PILOT",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 0.7,
+            "y": 1,
+            "w": 2,
+            "h": 0.2063888888888889,
+            "fontSize": 10,
+            "fontWeight": 700,
+            "tracking": 0.22,
+            "lineHeight": 1.3,
+            "align": "left",
+            "color": "#5D6B1F",
+            "fontFace": "Trebuchet MS"
+          },
+          {
+            "id": "F15-s1-b1",
+            "role": "title",
+            "content": "32% less waste in 8 weeks",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 3.2,
+            "y": 1,
+            "w": 9.43,
+            "h": 0.4601388888888889,
+            "fontSize": 34,
+            "fontWeight": 700,
+            "tracking": -0.01,
+            "lineHeight": 1.15,
+            "align": "left",
+            "color": "#292524",
+            "fontFace": "Trebuchet MS"
+          },
+          {
+            "id": "F15-s1-b2",
+            "role": "number",
+            "content": "32%",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "hero",
+              "relation": "label-value"
+            },
+            "x": 0.7,
+            "y": 1.404388888888889,
+            "w": 2,
+            "h": 0.6633333333333333,
+            "fontSize": 60,
+            "fontWeight": 700,
+            "tracking": -0.02,
+            "lineHeight": 1,
+            "align": "left",
+            "color": "#292524",
+            "fontFace": "Trebuchet MS"
+          },
+          {
+            "id": "F15-s1-b3",
+            "role": "body",
+            "content": "25 households · 90-second weekly ritual",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 3.2,
+            "y": 1.6581388888888888,
+            "w": 5.208333333333333,
+            "h": 0.26229166666666665,
+            "fontSize": 12.5,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#292524",
+            "fontFace": "Trebuchet MS"
+          },
+          {
+            "id": "F15-s1-b4",
+            "role": "caption",
+            "content": "pilot · pantrylog.csv:8",
+            "intent": {
+              "emphasis": "supporting",
+              "groupId": "hero",
+              "relation": "label-value"
+            },
+            "x": 3.2,
+            "y": 6.2,
+            "w": 9.43,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#656054",
+            "fontFace": "Trebuchet MS"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F15-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "PANTRYLOG PILOT"
+        },
+        {
+          "id": "F15-s1-b1",
+          "role": "title",
+          "label": "2 · title",
+          "preview": "32% less waste in 8 weeks"
+        },
+        {
+          "id": "F15-s1-b2",
+          "role": "number",
+          "label": "3 · number",
+          "preview": "32%"
+        },
+        {
+          "id": "F15-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "25 households · 90-second weekly ritual"
+        },
+        {
+          "id": "F15-s1-b4",
+          "role": "caption",
+          "label": "5 · caption",
+          "preview": "pilot · pantrylog.csv:8"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F15/document); no asserted human label. Designed tension: title carries primary but monumental layouts glorify the number (frozen C4 hierarchy/primary-subordinate fires clean; STAGE4-REPORT §6.1)."
+      }
+    },
+    {
+      "caseId": "S16",
+      "fixtureId": "F15",
+      "system": "swiss",
+      "slide": {
+        "id": "F15-s1",
+        "thesis": "Pantrylog cut waste 32% in 8 weeks",
+        "background": "#FFFFFF",
+        "blocks": [
+          {
+            "id": "F15-s1-b0",
+            "role": "kicker",
+            "content": "PANTRYLOG PILOT",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 0.5999999999999996,
+            "y": 0.72,
+            "w": 12.13,
+            "h": 0.522361111111111,
+            "fontSize": 35,
+            "fontWeight": 700,
+            "tracking": 0.18,
+            "lineHeight": 1.3,
+            "align": "left",
+            "color": "#B00020",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F15-s1-b1",
+            "role": "number",
+            "content": "32%",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "hero",
+              "relation": "label-value"
+            },
+            "x": 0.6,
+            "y": 1.506361111111111,
+            "w": 6.943175000000001,
+            "h": 2.3258333333333336,
+            "fontSize": 231,
+            "fontWeight": 700,
+            "tracking": -0.02,
+            "lineHeight": 1,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F15-s1-b2",
+            "role": "title",
+            "content": "32% less waste in 8 weeks",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 0.5999999999999996,
+            "y": 4.0961944444444445,
+            "w": 12.13,
+            "h": 0.6785,
+            "fontSize": 57,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F15-s1-b3",
+            "role": "body",
+            "content": "25 households · 90-second weekly ritual",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 0.6,
+            "y": 5.038694444444444,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F15-s1-b4",
+            "role": "caption",
+            "content": "pilot · pantrylog.csv:8",
+            "intent": {
+              "emphasis": "supporting",
+              "groupId": "hero",
+              "relation": "label-value"
+            },
+            "x": 0.5999999999999996,
+            "y": 5.551861111111111,
+            "w": 12.13,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#5A5A5A",
+            "fontFace": "Helvetica Neue"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F15-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "PANTRYLOG PILOT"
+        },
+        {
+          "id": "F15-s1-b1",
+          "role": "number",
+          "label": "2 · number",
+          "preview": "32%"
+        },
+        {
+          "id": "F15-s1-b2",
+          "role": "title",
+          "label": "3 · title",
+          "preview": "32% less waste in 8 weeks"
+        },
+        {
+          "id": "F15-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "25 households · 90-second weekly ritual"
+        },
+        {
+          "id": "F15-s1-b4",
+          "role": "caption",
+          "label": "5 · caption",
+          "preview": "pilot · pantrylog.csv:8"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F15/swiss); no asserted human label. Designed tension: title carries primary but monumental layouts glorify the number (frozen C4 hierarchy/primary-subordinate fires clean; STAGE4-REPORT §6.1)."
+      }
+    },
+    {
+      "caseId": "S17",
+      "fixtureId": "F16",
+      "system": "editorial",
+      "slide": {
+        "id": "F16-s1",
+        "thesis": "One idea per slide",
+        "background": "#FAF7F2",
+        "blocks": [
+          {
+            "id": "F16-s1-b0",
+            "role": "title",
+            "content": "One idea per slide",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 1,
+            "y": 1.5,
+            "w": 8.6,
+            "h": 0.5808888888888889,
+            "fontSize": 46,
+            "fontWeight": 700,
+            "tracking": -0.01,
+            "lineHeight": 1.12,
+            "align": "left",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F16-s1-b1",
+            "role": "caption",
+            "content": "guide · Ch.2",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 1,
+            "y": 2.564888888888889,
+            "w": 8.6,
+            "h": 0.22583333333333333,
+            "fontSize": 10,
+            "fontWeight": 400,
+            "tracking": 0.04,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#6B6259",
+            "fontFace": "Georgia"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F16-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "One idea per slide"
+        },
+        {
+          "id": "F16-s1-b1",
+          "role": "caption",
+          "label": "2 · caption",
+          "preview": "guide · Ch.2"
+        }
+      ],
+      "origin": "original",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Stage-4 clean BEFORE deck (F16/editorial); no asserted human label."
+      }
+    },
+    {
+      "caseId": "S18",
+      "fixtureId": "F02",
+      "system": "swiss",
+      "slide": {
+        "id": "F02-s1",
+        "thesis": "Growth held across regions in Q3",
+        "background": "#F1F4F6",
+        "blocks": [
+          {
+            "id": "F02-s1-b0",
+            "role": "kicker",
+            "content": "Q3 SNAPSHOT",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 0.6,
+            "y": 1.1,
+            "w": 5.915,
+            "h": 0.2063888888888889,
+            "fontSize": 10,
+            "fontWeight": 700,
+            "tracking": 0.18,
+            "lineHeight": 1.3,
+            "align": "left",
+            "color": "#0B4F9C",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b1",
+            "role": "title",
+            "content": "Growth held across regions",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 0.6,
+            "y": 2.35,
+            "w": 5.915,
+            "h": 0.3950000000000001,
+            "fontSize": 10,
+            "fontWeight": 400,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b2",
+            "role": "body",
+            "content": "NRR 118% · +6pt QoQ",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.35,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b3",
+            "role": "body",
+            "content": "Churn 1.2% · −0.4pt QoQ",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.8411666666666666,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b4",
+            "role": "body",
+            "content": "CAC payback 5.1 mo",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 0.6,
+            "y": 3.332333333333333,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b5",
+            "role": "caption",
+            "content": "source · metrics.csv:12",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 6.8149999999999995,
+            "y": 6.300000000000001,
+            "w": 5.915,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#54616E",
+            "fontFace": "Inter"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F02-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "Q3 SNAPSHOT"
+        },
+        {
+          "id": "F02-s1-b1",
+          "role": "title",
+          "label": "2 · title",
+          "preview": "Growth held across regions"
+        },
+        {
+          "id": "F02-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "NRR 118% · +6pt QoQ"
+        },
+        {
+          "id": "F02-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "Churn 1.2% · −0.4pt QoQ"
+        },
+        {
+          "id": "F02-s1-b4",
+          "role": "body",
+          "label": "5 · body",
+          "preview": "CAC payback 5.1 mo"
+        },
+        {
+          "id": "F02-s1-b5",
+          "role": "caption",
+          "label": "6 · caption",
+          "preview": "source · metrics.csv:12"
+        }
+      ],
+      "origin": "known-defect",
+      "defectSeed": {
+        "category": "headline-prominence",
+        "level": "deck",
+        "mutation": "demote-primary: primary type -> 10pt/400 (verified c/primary-subordinate)"
+      },
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": [
+          {
+            "type": "emphasis",
+            "blockIds": [
+              "F02-s1-b2",
+              "F02-s1-b1"
+            ],
+            "comment": "Planted headline-prominence seed: demote-primary: primary type -> 10pt/400 (verified c/primary-subordinate)"
+          }
+        ],
+        "note": "Known-defect (headline-prominence/deck): demote-primary: primary type -> 10pt/400 (verified c/primary-subordinate)."
+      }
+    },
+    {
+      "caseId": "S19",
+      "fixtureId": "F15",
+      "system": "swiss",
+      "slide": {
+        "id": "F15-s1",
+        "thesis": "Pantrylog cut waste 32% in 8 weeks",
+        "background": "#FFFFFF",
+        "blocks": [
+          {
+            "id": "F15-s1-b0",
+            "role": "kicker",
+            "content": "PANTRYLOG PILOT",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 0.5999999999999996,
+            "y": 0.72,
+            "w": 12.13,
+            "h": 0.522361111111111,
+            "fontSize": 35,
+            "fontWeight": 700,
+            "tracking": 0.18,
+            "lineHeight": 1.3,
+            "align": "left",
+            "color": "#B00020",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F15-s1-b1",
+            "role": "number",
+            "content": "32%",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "hero",
+              "relation": "label-value"
+            },
+            "x": 0.6,
+            "y": 1.506361111111111,
+            "w": 6.943175000000001,
+            "h": 2.3258333333333336,
+            "fontSize": 87,
+            "fontWeight": 900,
+            "tracking": -0.02,
+            "lineHeight": 1,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F15-s1-b2",
+            "role": "title",
+            "content": "32% less waste in 8 weeks",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 0.5999999999999996,
+            "y": 4.0961944444444445,
+            "w": 12.13,
+            "h": 0.6785,
+            "fontSize": 57,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F15-s1-b3",
+            "role": "body",
+            "content": "25 households · 90-second weekly ritual",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 0.6,
+            "y": 5.038694444444444,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Helvetica Neue"
+          },
+          {
+            "id": "F15-s1-b4",
+            "role": "caption",
+            "content": "pilot · pantrylog.csv:8",
+            "intent": {
+              "emphasis": "supporting",
+              "groupId": "hero",
+              "relation": "label-value"
+            },
+            "x": 0.5999999999999996,
+            "y": 5.551861111111111,
+            "w": 12.13,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#5A5A5A",
+            "fontFace": "Helvetica Neue"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F15-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "PANTRYLOG PILOT"
+        },
+        {
+          "id": "F15-s1-b1",
+          "role": "number",
+          "label": "2 · number",
+          "preview": "32%"
+        },
+        {
+          "id": "F15-s1-b2",
+          "role": "title",
+          "label": "3 · title",
+          "preview": "32% less waste in 8 weeks"
+        },
+        {
+          "id": "F15-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "25 households · 90-second weekly ritual"
+        },
+        {
+          "id": "F15-s1-b4",
+          "role": "caption",
+          "label": "5 · caption",
+          "preview": "pilot · pantrylog.csv:8"
+        }
+      ],
+      "origin": "known-defect",
+      "defectSeed": {
+        "category": "number-scale",
+        "level": "deck",
+        "mutation": "number-scale: number F15-s1-b1 -> 87pt/900 (verified c/number-scale)"
+      },
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": [
+          {
+            "type": "emphasis",
+            "blockIds": [
+              "F15-s1-b1"
+            ],
+            "comment": "Planted number-scale seed: number-scale: number F15-s1-b1 -> 87pt/900 (verified c/number-scale)"
+          }
+        ],
+        "note": "Known-defect (number-scale/deck): number-scale: number F15-s1-b1 -> 87pt/900 (verified c/number-scale). Caveat: c/number-scale already fires on the clean F15/swiss deck; the seed amplifies a present tension (STAGE4-REPORT §6.1)."
+      }
+    },
+    {
+      "caseId": "S20",
+      "fixtureId": "F04",
+      "system": "swiss",
+      "slide": {
+        "id": "F04-s1",
+        "thesis": "A three-step weekly loop closes the pantry",
+        "background": "#1E3A8A",
+        "blocks": [
+          {
+            "id": "F04-s1-b0",
+            "role": "title",
+            "content": "Three steps to a clean close",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.35,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 30,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b1",
+            "role": "body",
+            "content": "1. Capture — scan items in about 3 seconds each",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 0.6,
+            "y": 2.35,
+            "w": 5.915,
+            "h": 0.3950000000000001,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b2",
+            "role": "body",
+            "content": "2. Plan — five dinners built from stock",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.819166666666667,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b3",
+            "role": "body",
+            "content": "3. Shop — only the missing 6–9 items",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 0.6,
+            "y": 3.2883333333333336,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b4",
+            "role": "caption",
+            "content": "loop · handbook:2",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 6.8149999999999995,
+            "y": 6.300000000000001,
+            "w": 5.915,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#C3D2F5",
+            "fontFace": "Courier New"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F04-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "Three steps to a clean close"
+        },
+        {
+          "id": "F04-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "1. Capture — scan items in about 3 seconds each"
+        },
+        {
+          "id": "F04-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "2. Plan — five dinners built from stock"
+        },
+        {
+          "id": "F04-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "3. Shop — only the missing 6–9 items"
+        },
+        {
+          "id": "F04-s1-b4",
+          "role": "caption",
+          "label": "5 · caption",
+          "preview": "loop · handbook:2"
+        }
+      ],
+      "origin": "known-defect",
+      "defectSeed": {
+        "category": "grouping",
+        "level": "deck",
+        "mutation": "grouping-swap: rect F04-s1-b1 <-> F04-s1-b0 (verified c/grouping-split)"
+      },
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": [
+          {
+            "type": "grouping",
+            "blockIds": [
+              "F04-s1-b1",
+              "F04-s1-b2",
+              "F04-s1-b3",
+              "F04-s1-b0"
+            ],
+            "comment": "Planted grouping seed: grouping-swap: rect F04-s1-b1 <-> F04-s1-b0 (verified c/grouping-split)"
+          }
+        ],
+        "note": "Known-defect (grouping/deck): grouping-swap: rect F04-s1-b1 <-> F04-s1-b0 (verified c/grouping-split)."
+      }
+    },
+    {
+      "caseId": "S21",
+      "fixtureId": "F12",
+      "system": "editorial",
+      "slide": {
+        "id": "F12-s1",
+        "thesis": "렌더링 맞춤에 대한 다섯 가지 발견",
+        "background": "#F5F2EA",
+        "blocks": [
+          {
+            "id": "F12-s1-b0",
+            "role": "title",
+            "content": "감사 결과 요약",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 1,
+            "y": 1.5,
+            "w": 8.6,
+            "h": 0.5808888888888889,
+            "fontSize": 46,
+            "fontWeight": 700,
+            "tracking": -0.01,
+            "lineHeight": 1.12,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b1",
+            "role": "body",
+            "content": "발견 1: 선언만 믿은 추정치 때문에 3건의 조용한 잘림이 검증을 통과",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 2.596888888888889,
+            "w": 6.25,
+            "h": 0.22633333333333333,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b2",
+            "role": "body",
+            "content": "발견 2: 잔여 감점의 53%는 텍스트 렌더링 맞춤에서 발생",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 3.659555555555556,
+            "w": 6.25,
+            "h": 0.31333333333333335,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b3",
+            "role": "body",
+            "content": "발견 3: 검사 횟수가 편집 횟수보다 품질을 훨씬 잘 예측",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 4.388888888888889,
+            "w": 6.25,
+            "h": 0.31333333333333335,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b4",
+            "role": "body",
+            "content": "발견 4: 첫 시도에 모든 게이트를 통과한 재현은 31.7%",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 5.118222222222222,
+            "w": 6.25,
+            "h": 0.31333333333333335,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b5",
+            "role": "body",
+            "content": "발견 5: 최고 77.34점 대비 중앙값은 24.38점",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 1,
+            "y": 5.847555555555555,
+            "w": 6.25,
+            "h": 0.31333333333333335,
+            "fontSize": 15,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "left",
+            "color": "#2B2B28",
+            "fontFace": "Palatino Linotype"
+          },
+          {
+            "id": "F12-s1-b6",
+            "role": "caption",
+            "content": "감사 · gates:7",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 1,
+            "y": 6.274166666666667,
+            "w": 8.6,
+            "h": 0.22583333333333333,
+            "fontSize": 10,
+            "fontWeight": 400,
+            "tracking": 0.04,
+            "lineHeight": 1.5,
+            "align": "left",
+            "color": "#62625A",
+            "fontFace": "Palatino Linotype"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F12-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "감사 결과 요약"
+        },
+        {
+          "id": "F12-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "발견 1: 선언만 믿은 추정치 때문에 3건의 조용한 잘림이 검증을 통과"
+        },
+        {
+          "id": "F12-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "발견 2: 잔여 감점의 53%는 텍스트 렌더링 맞춤에서 발생"
+        },
+        {
+          "id": "F12-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "발견 3: 검사 횟수가 편집 횟수보다 품질을 훨씬 잘 예측"
+        },
+        {
+          "id": "F12-s1-b4",
+          "role": "body",
+          "label": "5 · body",
+          "preview": "발견 4: 첫 시도에 모든 게이트를 통과한 재현은 31.7%"
+        },
+        {
+          "id": "F12-s1-b5",
+          "role": "body",
+          "label": "6 · body",
+          "preview": "발견 5: 최고 77.34점 대비 중앙값은 24.38점"
+        },
+        {
+          "id": "F12-s1-b6",
+          "role": "caption",
+          "label": "7 · caption",
+          "preview": "감사 · gates:7"
+        }
+      ],
+      "origin": "known-defect",
+      "defectSeed": {
+        "category": "clip",
+        "level": "deck",
+        "mutation": "clip-support: box F12-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)"
+      },
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": [
+          {
+            "type": "clip",
+            "blockIds": [
+              "F12-s1-b1"
+            ],
+            "comment": "Planted clip seed: clip-support: box F12-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)"
+          }
+        ],
+        "note": "Known-defect (clip/deck): clip-support: box F12-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY). Dense-KO coverage: 7-block Korean audit slide."
+      }
+    },
+    {
+      "caseId": "S22",
+      "fixtureId": "F08",
+      "system": "swiss",
+      "slide": {
+        "id": "F08-s1",
+        "thesis": "3분기 전 지역 성장 유지",
+        "background": "#FFFFFF",
+        "blocks": [
+          {
+            "id": "F08-s1-b0",
+            "role": "kicker",
+            "content": "3분기 스냅샷",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 0.6,
+            "y": 1.1,
+            "w": 5.915,
+            "h": 0.2063888888888889,
+            "fontSize": 10,
+            "fontWeight": 700,
+            "tracking": 0.18,
+            "lineHeight": 1.3,
+            "align": "left",
+            "color": "#8ea7ec",
+            "fontFace": "Arial Narrow"
+          },
+          {
+            "id": "F08-s1-b1",
+            "role": "title",
+            "content": "전 지역에서 성장 유지",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 0.6,
+            "y": 2.35,
+            "w": 5.915,
+            "h": 0.3950000000000001,
+            "fontSize": 30,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Arial Narrow"
+          },
+          {
+            "id": "F08-s1-b2",
+            "role": "body",
+            "content": "NRR 118% · 전분기 대비 +6pt",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.35,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Arial"
+          },
+          {
+            "id": "F08-s1-b3",
+            "role": "body",
+            "content": "이탈률 1.2% · −0.4pt",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.819166666666667,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Arial"
+          },
+          {
+            "id": "F08-s1-b4",
+            "role": "body",
+            "content": "CAC 회수 5.1개월",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 0.6,
+            "y": 3.2883333333333336,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#111111",
+            "fontFace": "Arial"
+          },
+          {
+            "id": "F08-s1-b5",
+            "role": "caption",
+            "content": "출처 · metrics.csv:12",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 6.8149999999999995,
+            "y": 6.300000000000001,
+            "w": 5.915,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#5A5A5A",
+            "fontFace": "Arial"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F08-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "3분기 스냅샷"
+        },
+        {
+          "id": "F08-s1-b1",
+          "role": "title",
+          "label": "2 · title",
+          "preview": "전 지역에서 성장 유지"
+        },
+        {
+          "id": "F08-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "NRR 118% · 전분기 대비 +6pt"
+        },
+        {
+          "id": "F08-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "이탈률 1.2% · −0.4pt"
+        },
+        {
+          "id": "F08-s1-b4",
+          "role": "body",
+          "label": "5 · body",
+          "preview": "CAC 회수 5.1개월"
+        },
+        {
+          "id": "F08-s1-b5",
+          "role": "caption",
+          "label": "6 · caption",
+          "preview": "출처 · metrics.csv:12"
+        }
+      ],
+      "origin": "known-defect",
+      "defectSeed": {
+        "category": "contrast",
+        "level": "deck",
+        "mutation": "contrast-fail: color F08-s1-b0 mixed 50% toward bg (verified c/contrast)"
+      },
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": [
+          {
+            "type": "contrast",
+            "blockIds": [
+              "F08-s1-b0"
+            ],
+            "comment": "Planted contrast seed: contrast-fail: color F08-s1-b0 mixed 50% toward bg (verified c/contrast)"
+          }
+        ],
+        "note": "Known-defect (contrast/deck): contrast-fail: color F08-s1-b0 mixed 50% toward bg (verified c/contrast)."
+      }
+    },
+    {
+      "caseId": "S23",
+      "fixtureId": "F02",
+      "system": "swiss",
+      "slide": {
+        "id": "F02-s1",
+        "thesis": "Growth held across regions in Q3",
+        "background": "#F1F4F6",
+        "blocks": [
+          {
+            "id": "F02-s1-b0",
+            "role": "kicker",
+            "content": "Q3 SNAPSHOT",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 0.6,
+            "y": 1.1,
+            "w": 5.915,
+            "h": 0.2063888888888889,
+            "fontSize": 10,
+            "fontWeight": 700,
+            "tracking": 0.18,
+            "lineHeight": 1.3,
+            "align": "left",
+            "color": "#0B4F9C",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b1",
+            "role": "title",
+            "content": "Growth held across regions",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 0.6,
+            "y": 2.35,
+            "w": 5.915,
+            "h": 0.3950000000000001,
+            "fontSize": 30,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b2",
+            "role": "body",
+            "content": "NRR 118% · +6pt QoQ",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "stats",
+              "relation": "evidence"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.35,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b3",
+            "role": "body",
+            "content": "Churn 1.2% · −0.4pt QoQ",
+            "intent": {
+              "emphasis": "secondary",
+              "relation": "evidence"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.8411666666666666,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b4",
+            "role": "body",
+            "content": "CAC payback 5.1 mo",
+            "intent": {
+              "emphasis": "secondary",
+              "relation": "evidence"
+            },
+            "x": 0.6,
+            "y": 3.332333333333333,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#16232E",
+            "fontFace": "Inter"
+          },
+          {
+            "id": "F02-s1-b5",
+            "role": "caption",
+            "content": "source · metrics.csv:12",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 6.8149999999999995,
+            "y": 6.300000000000001,
+            "w": 5.915,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#54616E",
+            "fontFace": "Inter"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F02-s1-b0",
+          "role": "kicker",
+          "label": "1 · kicker",
+          "preview": "Q3 SNAPSHOT"
+        },
+        {
+          "id": "F02-s1-b1",
+          "role": "title",
+          "label": "2 · title",
+          "preview": "Growth held across regions"
+        },
+        {
+          "id": "F02-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "NRR 118% · +6pt QoQ"
+        },
+        {
+          "id": "F02-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "Churn 1.2% · −0.4pt QoQ"
+        },
+        {
+          "id": "F02-s1-b4",
+          "role": "body",
+          "label": "5 · body",
+          "preview": "CAC payback 5.1 mo"
+        },
+        {
+          "id": "F02-s1-b5",
+          "role": "caption",
+          "label": "6 · caption",
+          "preview": "source · metrics.csv:12"
+        }
+      ],
+      "origin": "known-defect",
+      "defectSeed": {
+        "category": "grouping",
+        "level": "narrative",
+        "mutation": "dangle-group: group stats reduced 3 -> 1 member"
+      },
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": [
+          {
+            "type": "grouping",
+            "blockIds": [
+              "F02-s1-b2"
+            ],
+            "comment": "Planted grouping seed: dangle-group: group stats reduced 3 -> 1 member"
+          }
+        ],
+        "note": "Known-defect (grouping/narrative): dangle-group: group stats reduced 3 -> 1 member. Intent-only mutation; layout is intent-agnostic so geometry may equal the clean deck."
+      }
+    },
+    {
+      "caseId": "S24",
+      "fixtureId": "F04",
+      "system": "swiss",
+      "slide": {
+        "id": "F04-s1",
+        "thesis": "A three-step weekly loop closes the pantry",
+        "background": "#1E3A8A",
+        "blocks": [
+          {
+            "id": "F04-s1-b0",
+            "role": "title",
+            "content": "Three steps to a clean close",
+            "intent": {
+              "emphasis": "secondary"
+            },
+            "x": 0.6,
+            "y": 2.35,
+            "w": 5.915,
+            "h": 0.3950000000000001,
+            "fontSize": 30,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b1",
+            "role": "body",
+            "content": "1. Capture — scan items in about 3 seconds each",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.35,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b2",
+            "role": "body",
+            "content": "2. Plan — five dinners built from stock",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 6.8149999999999995,
+            "y": 2.819166666666667,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b3",
+            "role": "body",
+            "content": "3. Shop — only the missing 6–9 items",
+            "intent": {
+              "emphasis": "secondary",
+              "groupId": "steps",
+              "relation": "support"
+            },
+            "x": 0.6,
+            "y": 3.2883333333333336,
+            "w": 5,
+            "h": 0.24916666666666665,
+            "fontSize": 12,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.45,
+            "align": "left",
+            "color": "#FFFFFF",
+            "fontFace": "Courier New"
+          },
+          {
+            "id": "F04-s1-b4",
+            "role": "caption",
+            "content": "loop · handbook:2",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 6.8149999999999995,
+            "y": 6.300000000000001,
+            "w": 5.915,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#C3D2F5",
+            "fontFace": "Courier New"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F04-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "Three steps to a clean close"
+        },
+        {
+          "id": "F04-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "1. Capture — scan items in about 3 seconds each"
+        },
+        {
+          "id": "F04-s1-b2",
+          "role": "body",
+          "label": "3 · body",
+          "preview": "2. Plan — five dinners built from stock"
+        },
+        {
+          "id": "F04-s1-b3",
+          "role": "body",
+          "label": "4 · body",
+          "preview": "3. Shop — only the missing 6–9 items"
+        },
+        {
+          "id": "F04-s1-b4",
+          "role": "caption",
+          "label": "5 · caption",
+          "preview": "loop · handbook:2"
+        }
+      ],
+      "origin": "known-defect",
+      "defectSeed": {
+        "category": "headline-prominence",
+        "level": "narrative",
+        "mutation": "primary-on-caption: moved primary from #0 to caption #4"
+      },
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": [
+          {
+            "type": "emphasis",
+            "blockIds": [
+              "F04-s1-b4"
+            ],
+            "comment": "Planted headline-prominence seed: primary-on-caption: moved primary from #0 to caption #4"
+          }
+        ],
+        "note": "Known-defect (headline-prominence/narrative): primary-on-caption: moved primary from #0 to caption #4. Intent-only mutation; layout is intent-agnostic so geometry may equal the clean deck."
+      }
+    },
+    {
+      "caseId": "S25",
+      "fixtureId": "F13",
+      "system": "expressive",
+      "slide": {
+        "id": "F13-s1",
+        "thesis": "The crop is the design",
+        "background": "#FAF7F2",
+        "blocks": [
+          {
+            "id": "F13-s1-b0",
+            "role": "title",
+            "content": "LOUD TYPE WINS",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 1.5150000000000006,
+            "y": 3.033333333333333,
+            "w": 10.299999999999999,
+            "h": 0.7333333333333333,
+            "fontSize": 64,
+            "fontWeight": 900,
+            "tracking": -0.01,
+            "lineHeight": 1.05,
+            "align": "center",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F13-s1-b1",
+            "role": "body",
+            "content": "A deliberate bleed runs past the edge on purpose. The crop is the design: no finding, no repair, no apology.",
+            "intent": {
+              "deliberateCrop": true,
+              "emphasis": "secondary"
+            },
+            "x": 3.7483333333333335,
+            "y": 4.176666666666667,
+            "w": 5.833333333333333,
+            "h": 0.1998888888888889,
+            "fontSize": 13,
+            "fontWeight": 400,
+            "tracking": 0,
+            "lineHeight": 1.6,
+            "align": "center",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F13-s1-b2",
+            "role": "caption",
+            "content": "poster · n°7",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 2.965,
+            "y": 6.35,
+            "w": 7.4,
+            "h": 0.22583333333333333,
+            "fontSize": 10,
+            "fontWeight": 500,
+            "tracking": 0.08,
+            "lineHeight": 1.5,
+            "align": "center",
+            "color": "#6B6259",
+            "fontFace": "Georgia"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F13-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "LOUD TYPE WINS"
+        },
+        {
+          "id": "F13-s1-b1",
+          "role": "body",
+          "label": "2 · body",
+          "preview": "A deliberate bleed runs past the edge on purpose. The crop i"
+        },
+        {
+          "id": "F13-s1-b2",
+          "role": "caption",
+          "label": "3 · caption",
+          "preview": "poster · n°7"
+        }
+      ],
+      "origin": "disputed",
+      "defectSeed": {
+        "category": "clip",
+        "level": "deck",
+        "mutation": "clip-support: box F13-s1-b1 h x0.35 (verified c/support-clip, ESTIMATE-ONLY)"
+      },
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": null,
+        "note": "Disputed: the clip estimate fires on a deliberateCrop:true block. Expressive crop and genuine clip are visually confounded here; no asserted label."
+      }
+    },
+    {
+      "caseId": "S26",
+      "fixtureId": "F16",
+      "system": "swiss",
+      "slide": {
+        "id": "F16-s1",
+        "thesis": "One idea per slide",
+        "background": "#FAF7F2",
+        "blocks": [
+          {
+            "id": "F16-s1-b0",
+            "role": "title",
+            "content": "One idea per slide",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 0.6,
+            "y": 2.35,
+            "w": 5.915,
+            "h": 0.3950000000000001,
+            "fontSize": 30,
+            "fontWeight": 700,
+            "tracking": -0.015,
+            "lineHeight": 1.08,
+            "align": "left",
+            "color": "#1A1A1A",
+            "fontFace": "Georgia"
+          },
+          {
+            "id": "F16-s1-b1",
+            "role": "caption",
+            "content": "guide · Ch.2",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 6.8149999999999995,
+            "y": 6.300000000000001,
+            "w": 5.915,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#6B6259",
+            "fontFace": "Georgia"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F16-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "One idea per slide"
+        },
+        {
+          "id": "F16-s1-b1",
+          "role": "caption",
+          "label": "2 · caption",
+          "preview": "guide · Ch.2"
+        }
+      ],
+      "origin": "known-good",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": [
+          {
+            "type": "none",
+            "blockIds": [],
+            "comment": "Verified: arms A/C silent on clean minimal slide."
+          }
+        ],
+        "note": "Known-good minimal slide (F16/swiss); arms A/C silent."
+      }
+    },
+    {
+      "caseId": "S27",
+      "fixtureId": "F16",
+      "system": "document",
+      "slide": {
+        "id": "F16-s1",
+        "thesis": "One idea per slide",
+        "background": "#EDE6D6",
+        "blocks": [
+          {
+            "id": "F16-s1-b0",
+            "role": "title",
+            "content": "One idea per slide",
+            "intent": {
+              "emphasis": "primary"
+            },
+            "x": 3.2,
+            "y": 1,
+            "w": 9.43,
+            "h": 0.4601388888888889,
+            "fontSize": 34,
+            "fontWeight": 700,
+            "tracking": -0.01,
+            "lineHeight": 1.15,
+            "align": "left",
+            "color": "#292524",
+            "fontFace": "Trebuchet MS"
+          },
+          {
+            "id": "F16-s1-b1",
+            "role": "caption",
+            "content": "guide · Ch.2",
+            "intent": {
+              "emphasis": "supporting"
+            },
+            "x": 3.2,
+            "y": 6.2,
+            "w": 9.43,
+            "h": 0.2025,
+            "fontSize": 9,
+            "fontWeight": 400,
+            "tracking": 0.02,
+            "lineHeight": 1.4,
+            "align": "right",
+            "color": "#656054",
+            "fontFace": "Trebuchet MS"
+          }
+        ]
+      },
+      "elements": [
+        {
+          "id": "F16-s1-b0",
+          "role": "title",
+          "label": "1 · title",
+          "preview": "One idea per slide"
+        },
+        {
+          "id": "F16-s1-b1",
+          "role": "caption",
+          "label": "2 · caption",
+          "preview": "guide · Ch.2"
+        }
+      ],
+      "origin": "known-good",
+      "defectSeed": null,
+      "expected": {
+        "firstFocus": null,
+        "ranking": null,
+        "groups": null,
+        "problems": [
+          {
+            "type": "none",
+            "blockIds": [],
+            "comment": "Verified: arms A/C silent on clean minimal slide."
+          }
+        ],
+        "note": "Known-good minimal slide (F16/document); arms A/C silent."
+      }
+    }
+  ]
+}
