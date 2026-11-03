@@ -72,10 +72,11 @@ Primary shots: `evals/design-diversity/screenshots/D01..D27.png` (all 1920×1080
 
 ## 9. Local gallery URL (verified reachable)
 
-- Serve: `cd /Users/jeonghun/Typodeck/evals/design-diversity/gallery && python3 -m http.server 8321`
-- Open: `http://localhost:8321/index.html` (verified: renders 27/27 cards, filters,
-  comparison select; also works over `file://` — zero `fetch()` calls)
-- Contact page: `http://localhost:8321/contact.html`
+- Serve: `cd /Users/jeonghun/Typodeck/evals/design-diversity && python3 -m http.server 8321`
+  (must serve from here: image paths are `../screenshots/…`, outside the gallery dir)
+- Open: `http://localhost:8321/gallery/index.html` (verified 200: renders 27/27 cards,
+  filters, comparison select; also works over `file://` — zero `fetch()` calls)
+- Contact page: `http://localhost:8321/gallery/contact.html`
 
 ## 10. Remaining similar/disputed pairs
 
@@ -131,8 +132,8 @@ in the typography-only core path — HTML previews remain the visual reference.
 
 ```bash
 cd /Users/jeonghun/Typodeck && git log --oneline -6   # milestone trail
-cd evals/design-diversity/gallery && python3 -m http.server 8321  # gallery
-# open http://localhost:8321/index.html  (27 cards, filters, comparison mode)
+cd evals/design-diversity && python3 -m http.server 8321  # gallery root
+# open http://localhost:8321/gallery/index.html  (27 cards, filters, comparison mode)
 node evals/design-diversity/shortlist-test.mjs        # selection evidence
 npm test                                              # 565/565
 ```

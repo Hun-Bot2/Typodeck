@@ -3,17 +3,17 @@
 ## 1. 서버 실행
 
 ```bash
-cd /Users/jeonghun/Typodeck/evals/design-diversity/gallery && python3 -m http.server 8321
+cd /Users/jeonghun/Typodeck/evals/design-diversity && python3 -m http.server 8321
 ```
 
 ## 2. 갤러리 접속
 
-브라우저에서 `http://localhost:8321/index.html` 을 여세요.
+브라우저에서 `http://localhost:8321/gallery/index.html` 을 여세요.
 (D01–D27 카드 27장이 모두 보여야 합니다.)
 
 ## 3. 전체 한눈에 보기
 
-`http://localhost:8321/contact.html` 또는 `contact-sheet.png`에서 27개 전체를 비교하세요.
+`http://localhost:8321/gallery/contact.html` 또는 `contact-sheet.png`에서 27개 전체를 비교하세요.
 
 ## 4. 필터 사용
 
