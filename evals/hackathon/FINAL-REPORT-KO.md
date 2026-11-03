@@ -7,7 +7,8 @@
 
 - 브랜치: `integrate/hackathon-deck` (베이스 `integrate/design-quality @ 82fb112`)
 - 현재 HEAD: `f0ea9fb` (harness: FIXTURE 각주 중복 제거)
-- 최종 커밋(SHA): FINAL-SHA (아래 "판정" 다음 줄에 기록)
+- E2 증거 커밋: `76e7040542a6af7237ccadec8a39fa4edc067a34`
+  ("hackathon E2: 54/54 full-deck sweep, gallery, PPTX verify, final report (KO)")
 
 ## 2. 워크스트림 결과
 
@@ -133,4 +134,4 @@ Harness 31/31, PPTX 구조 6/6). READY가 아닌 이유: (a) 소유자 심미 �
 (b) PPTX 네이티브 렌더 육안 대조 미실시, (c) VIEWED 5덱 외 심미 미판독.
 시연·제출에는 지장 없음.
 
-최종 커밋 SHA: FINAL-SHA
+최종 커밋 SHA: `76e7040542a6af7237ccadec8a39fa4edc067a34` (E2 증거 커밋; 본 보고서의 수치 확정분 포함)
