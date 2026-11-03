@@ -19,7 +19,9 @@ function contrast(fg: string, bg: string): number {
 
 function forcedDeck(candidateId: string, system: 'swiss' | 'editorial' | 'expressive' | 'document' = 'swiss') {
   const slide = SAMPLE_NARRATIVE.slides[0];
-  return layoutDeck(SAMPLE_NARRATIVE, system, {
+  // English narrative: themed faces resolve to the stack head.
+  // (Korean narratives resolve to the KR entry — see ko-typography.test.ts.)
+  return layoutDeck({ ...SAMPLE_NARRATIVE, lang: 'en' }, system, {
     seed: 7,
     compositionPlan: [{
       slideId: slide.id,

@@ -100,9 +100,52 @@ export interface WrapResult {
   heightIn: number;
 }
 
+/** Chars that must not open a line (KLREQ §7.1.2 line-head restrictions). */
+const KINSOKU_HEAD = new Set(['.', ',', '?', '!', ':', ';', '%', ')', ']', '}', '’', '”', '·', '…', '—']);
+
+/** Chars that must not close a line (KLREQ §7.1.3 line-end restrictions). */
+const KINSOKU_TAIL = new Set(['(', '[', '{', '‘', '“']);
+
+/**
+ * Kinsoku-lite repair over one paragraph's lines (indices [from, ...)).
+ * Moves a single offending char across the boundary: closing punctuation
+ * hangs onto the previous line's end, opening punctuation pushes to the
+ * next line's start. Slight hanging overflow is allowed — real renderers
+ * hang/justify it, so the estimate must not predict a break they won't
+ * make. Never moves across explicit newlines. Deterministic.
+ */
+function fixKinsoku(lines: string[], from: number): void {
+  for (let i = from + 1; i < lines.length; i++) {
+    // Pull leading closing punctuation up to the previous line's end.
+    const chars = Array.from(lines[i]);
+    let lead = 0;
+    while (lead < chars.length && KINSOKU_HEAD.has(chars[lead])) lead++;
+    if (lead > 0) {
+      lines[i - 1] += chars.slice(0, lead).join('');
+      lines[i] = chars.slice(lead).join('');
+    }
+    // Push trailing opening punctuation down to this line's start.
+    // Never empties the previous line; skips lines with trailing spaces.
+    const prev = lines[i - 1];
+    const units = Array.from(prev);
+    let trail = 0;
+    while (trail < units.length - 1 && !prev.endsWith(' ') && KINSOKU_TAIL.has(units[units.length - 1 - trail])) {
+      trail++;
+    }
+    if (trail > 0) {
+      lines[i] = units.slice(units.length - trail).join('') + lines[i];
+      lines[i - 1] = units.slice(0, units.length - trail).join('');
+    }
+  }
+  for (let i = lines.length - 1; i >= from; i--) {
+    if (lines[i] === '' && lines.length > from + 1) lines.splice(i, 1);
+  }
+}
+
 /**
  * Greedy wrap: KO/CJK breaks at character level, EN at word level.
- * Explicit newlines in content force line breaks. Deterministic.
+ * Explicit newlines in content force line breaks. Kinsoku-lite head/end
+ * restrictions hold on every line. Deterministic.
  */
 export function estimateWrap(
   content: string,
@@ -115,9 +158,9 @@ export function estimateWrap(
   const emIn = fontSizePt / 72;
   const perChar = (ch: string): number => (charWidthEm(ch, bold) + trackingEm) * emIn;
   const lines: string[] = [];
-  let widest = 0;
 
   for (const paragraph of content.split('\n')) {
+    const from = lines.length;
     // Tokenize: each CJK char is its own token; latin runs stay word-glued.
     const tokens: string[] = [];
     let buf = '';
@@ -144,7 +187,6 @@ export function estimateWrap(
     let lineW = 0;
     const pushLine = (): void => {
       lines.push(line);
-      if (lineW > widest) widest = lineW;
       line = '';
       lineW = 0;
     };
@@ -191,9 +233,18 @@ export function estimateWrap(
       }
     }
     pushLine();
+    fixKinsoku(lines, from);
   }
 
-  return { lines, maxWidthIn: widest, heightIn: lines.length * emIn * lineHeight };
+  // Kinsoku repair moves chars across boundaries; re-measure the widest line.
+  let maxW = 0;
+  for (const ln of lines) {
+    let w = 0;
+    for (const ch of ln) w += perChar(ch);
+    if (w > maxW) maxW = w;
+  }
+
+  return { lines, maxWidthIn: maxW, heightIn: lines.length * emIn * lineHeight };
 }
 
 export interface FitResult {
@@ -316,6 +367,8 @@ interface Ctx {
   bodyMeasureCap: number | null;
   /** True when a candidate theme overrode fonts/colors (stamp fontFace). */
   themed: boolean;
+  /** Narrative locale (ko|en): themed fontFace resolution follows it. */
+  lang: string;
 }
 
 /** Resolve per-slide composition overrides. Absent plan = baseline. */
@@ -774,6 +827,41 @@ function planExplainerColumns(ctx: Ctx): Plan[] {
 // Materialize: fit text into planned boxes, enforce bounds + no-overlap
 // ---------------------------------------------------------------------------
 
+/**
+ * Measured single-spacing line box. QuickLook probe 2026-11-04: two-line
+ * 84pt text in a 2.06in box spills ~0.6in past the box bottom, identically
+ * for a native face (Helvetica) and a substituted serif — so the
+ * estimator's 1.0em line box, not substitution, is at fault. PowerPoint
+ * single spacing is likewise ~1.15–1.2em, but no PowerPoint render
+ * compare exists: 1.25 is QuickLook-measured with margin. Applied to
+ * number-role fitting only, where 0.2em/line errors reach whole inches
+ * and collide with following blocks (seen on all three systems).
+ */
+export const RENDER_LINEBOX_NUMBER = 1.25;
+
+/**
+ * Shrink a number-role size until its render-model ink fits the box.
+ * Geometry (x/y/w/h) is untouched — only the emitted fontSize shrinks —
+ * so no-overlap and in-bounds guarantees hold by construction.
+ */
+export function fitNumberToRender(
+  content: string,
+  boxW: number,
+  boxH: number,
+  startSize: number,
+  minSize: number,
+  trackingEm: number,
+  bold: boolean,
+): number {
+  let size = startSize;
+  while (size > minSize) {
+    const r = estimateWrap(content, size, boxW, trackingEm, RENDER_LINEBOX_NUMBER, bold);
+    if (inkHeightIn(r, size, RENDER_LINEBOX_NUMBER) <= boxH) break;
+    size = Math.max(minSize, size - Math.max(1, Math.round(size * 0.08)));
+  }
+  return size;
+}
+
 function materialize(ctx: Ctx, plans: Plan[], background: string): TextBlock[] {
   const { system, slide } = ctx;
   return plans.map((p, i) => {
@@ -783,6 +871,10 @@ function materialize(ctx: Ctx, plans: Plan[], background: string): TextBlock[] {
     const fit = fitText(p.content, p.w, maxH, st.fontSize, st.minFontSize, st.tracking, st.lineHeight, st.fontWeight >= 700);
     const h = Math.min(maxH, fit.heightIn + BLOCK_PAD * 2);
     const y = Math.min(p.y, SLIDE_HEIGHT_IN - system.margin - h);
+    const fontSize =
+      p.role === 'number'
+        ? fitNumberToRender(p.content, p.w, h, fit.fontSize, st.minFontSize, st.tracking, st.fontWeight >= 700)
+        : fit.fontSize;
     return {
       id: `${slide.id}-b${i}`,
       role: p.role,
@@ -793,13 +885,13 @@ function materialize(ctx: Ctx, plans: Plan[], background: string): TextBlock[] {
       y: Math.max(0, y),
       w: p.w,
       h,
-      fontSize: fit.fontSize,
+      fontSize,
       fontWeight: st.fontWeight,
       tracking: st.tracking,
       lineHeight: st.lineHeight,
       align: p.role === 'body' && ctx.bodyAlignOverride ? ctx.bodyAlignOverride : p.align,
       color: colorFor(system, p.role, background),
-      ...(ctx.themed ? { fontFace: fontFaceFor(ctx.system, p.role) } : {}),
+      ...(ctx.themed ? { fontFace: fontFaceFor(ctx.system, p.role, ctx.lang) } : {}),
     };
   });
 }
@@ -819,7 +911,7 @@ function layoutSlide(narrative: Narrative, slide: NarrativeSlide, slideIndex: nu
   for (let si = 0; si < scales.length; si++) {
     const sizeScale = scales[si];
     const rng = mulberry32(hashString(`${seed}:${system.id}:${slide.id}`));
-    const ctx: Ctx = { system: eff, slide, slideIndex, rng, sizeScale, ...overrides, themed: candTheme !== undefined };
+    const ctx: Ctx = { system: eff, slide, slideIndex, rng, sizeScale, ...overrides, themed: candTheme !== undefined, lang: narrative.lang };
     let plans: Plan[];
     // Composition-driven planners (G1/G3) win over system placement when the
     // plan selects them; all other candidates keep system placement.

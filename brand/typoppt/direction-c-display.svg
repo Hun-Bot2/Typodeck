@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-labelledby="title desc">
+  <title id="title">TypoPPT brand direction C: Modern Display</title>
+  <desc id="desc">Stacked black display wordmark exploration on black background. TYPO over PPT.</desc>
+  <rect width="1200" height="630" fill="#0E0E0E"/>
+  <!-- direction label -->
+  <text x="80" y="96" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="24" font-weight="600" letter-spacing="6" fill="#9A9A9A">DIRECTION C &#8212; MODERN DISPLAY</text>
+  <text x="1120" y="96" text-anchor="end" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="22" fill="#FFD400">stacked black &#183; NOT SELECTED</text>
+  <!-- wordmark: stacked TYPO / PPT + signal period -->
+  <text x="76" y="330" font-family="'Archivo Black','Space Grotesk',Inter,system-ui,sans-serif" font-size="172" font-weight="900" letter-spacing="-5" fill="#F5F2EA">TYPO</text>
+  <text x="76" y="488" font-family="'Archivo Black','Space Grotesk',Inter,system-ui,sans-serif" font-size="172" font-weight="900" letter-spacing="-5" fill="#F5F2EA">PPT<tspan font-family="Inter,system-ui,sans-serif" fill="#FFD400">.</tspan></text>
+  <!-- descriptor -->
+  <text x="820" y="330" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" letter-spacing="6" fill="#9A9A9A">TYPO-</text>
+  <text x="820" y="366" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" letter-spacing="6" fill="#9A9A9A">GRAPHY</text>
+  <text x="820" y="402" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="26" font-weight="600" letter-spacing="6" fill="#9A9A9A">FIRST</text>
+  <!-- spec block -->
+  <text x="820" y="452" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="20" fill="#F5F2EA">Archivo Black (OFL)</text>
+  <text x="820" y="480" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="20" fill="#F5F2EA">hero:body &#8805; 4:1</text>
+  <!-- verdict -->
+  <text x="80" y="600" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="22" fill="#F5F2EA">Not selected &#8212; strongest silhouette, but the stack fails inline and narrow contexts.</text>
+</svg>

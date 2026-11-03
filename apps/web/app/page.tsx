@@ -17,6 +17,7 @@ import {
   type Phase,
   type Stage,
   type StageState,
+  type TemplateEntry,
   type SystemId,
   type TypedError,
 } from '../components/studio/types';
@@ -29,6 +30,8 @@ export default function StudioPage() {
   const [duration, setDuration] = useState('auto');
   const [customTitle, setCustomTitle] = useState('');
   const [catalog, setCatalog] = useState<Catalog | null>(null);
+  const [templates, setTemplates] = useState<TemplateEntry[] | null>(null);
+  const [template, setTemplate] = useState('');
   const [phase, setPhase] = useState<Phase>('idle');
   const [stages, setStages] = useState<Record<Stage, StageState>>({
     ingest: 'pending',
@@ -80,6 +83,14 @@ export default function StudioPage() {
       })
       .catch(() => {
         /* catalog is progressive enhancement; the Studio works without it */
+      });
+    fetch('/api/templates')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (!cancelled && data?.templates) setTemplates(data.templates as TemplateEntry[]);
+      })
+      .catch(() => {
+        /* templates are progressive enhancement; export hides the picker without them */
       });
     return () => {
       cancelled = true;
@@ -295,6 +306,7 @@ export default function StudioPage() {
         body: JSON.stringify({
           narrative: result.narrative,
           system: selected,
+          ...(template !== '' ? { template } : {}),
           generatedBy: result.provenance.generatedBy,
           ...(result.source?.kind === 'repo'
             ? {
@@ -318,7 +330,7 @@ export default function StudioPage() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `typodeck-${selected}.pptx`;
+      a.download = `typodeck-${template !== '' ? template : selected}.pptx`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -333,6 +345,12 @@ export default function StudioPage() {
   const selectSystem = (id: string): void => {
     setSelected(id);
     setSlideIndex(0);
+    setExportState('idle');
+    setExportError(null);
+  };
+
+  const selectTemplate = (slug: string): void => {
+    setTemplate(slug);
     setExportState('idle');
     setExportError(null);
   };
@@ -460,6 +478,9 @@ export default function StudioPage() {
           selected={selected}
           onSelectSystem={selectSystem}
           systems={systems}
+          templates={templates}
+          template={template}
+          onSelectTemplate={selectTemplate}
           exportState={exportState}
           exportError={exportError}
           onExport={() => void exportDeck()}

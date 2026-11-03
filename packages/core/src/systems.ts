@@ -161,10 +161,21 @@ export function getSystem(id: string): TypographySystem {
   return s;
 }
 
-/** Resolve the exportable font face for a role (first chain entry, unquoted). */
-export function fontFaceFor(system: TypographySystem, role: TextRole): string {
+/**
+ * Resolve the exportable font face for a role (first chain entry, unquoted).
+ * For Korean decks, resolve to the first KR-capable chain entry instead:
+ * pptxgenjs writes one face into the latin/ea/cs slots, so a Latin head
+ * (e.g. Inter) would leave every Hangul glyph to viewer substitution.
+ * Falls back to the chain head when no KR entry exists.
+ */
+export function fontFaceFor(system: TypographySystem, role: TextRole, lang = 'en'): string {
   const chain = role === 'title' || role === 'number' || role === 'kicker' ? system.fonts.heading : system.fonts.body;
-  return chain[0].replace(/"/g, '');
+  const unquote = (f: string): string => f.replace(/"/g, '');
+  if (lang.toLowerCase().startsWith('ko')) {
+    const kr = chain.find((f) => /kr|pretendard/i.test(unquote(f)));
+    if (kr !== undefined) return unquote(kr);
+  }
+  return unquote(chain[0]);
 }
 
 /** Resolve the text color token for a role on a given background. */

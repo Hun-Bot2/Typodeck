@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" width="640" height="160" role="img" aria-labelledby="title desc">
+  <title id="title">TypoPPT</title>
+  <desc id="desc">TypoPPT wordmark on paper background.</desc>
+  <rect width="640" height="160" fill="#FAF7F2"/>
+  <text x="320" y="106" text-anchor="middle" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="72" font-weight="700" letter-spacing="-1.5" fill="#111111">TypoPPT<tspan fill="#9A3B26">.</tspan></text>
+</svg>

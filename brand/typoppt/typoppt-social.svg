@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-labelledby="title desc">
+  <title id="title">TypoPPT — typography-first presentations</title>
+  <desc id="desc">TypoPPT social card. You bring the content. TypoPPT handles the design.</desc>
+  <rect width="1280" height="640" fill="#14120E"/>
+  <text x="120" y="150" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="30" font-weight="600" letter-spacing="7" fill="#F2EEE4" opacity="0.72">TYPOGRAPHY-FIRST PRESENTATION ENGINE</text>
+  <text x="116" y="360" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="180" font-weight="700" letter-spacing="-3" fill="#F2EEE4">TypoPPT.</text>
+  <text x="120" y="450" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="36" fill="#F2EEE4" opacity="0.85">You bring the content. TypoPPT handles the design.</text>
+  <text x="120" y="540" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="24" letter-spacing="2" fill="#F2EEE4" opacity="0.6">AGENT SKILL &#183; WEB STUDIO &#183; NATIVE EDITABLE PPTX</text>
+</svg>

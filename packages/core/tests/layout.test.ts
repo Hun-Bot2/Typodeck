@@ -7,7 +7,16 @@ import {
   type Narrative,
   type TextBlock,
 } from '../src/schema';
-import { charWidthEm, estimateWrap, fitText, layoutDeck, rectsOverlap } from '../src/layout';
+import {
+  RENDER_LINEBOX_NUMBER,
+  charWidthEm,
+  estimateWrap,
+  fitNumberToRender,
+  fitText,
+  inkHeightIn,
+  layoutDeck,
+  rectsOverlap,
+} from '../src/layout';
 import { SAMPLE_NARRATIVE } from '../src/sample';
 import { SYSTEM_IDS, type SystemId } from '../src/systems';
 
@@ -154,5 +163,22 @@ describe('layout', () => {
         }
       }
     }
+  });
+
+  it('shrinks hero numerals until render-model ink fits the box (QuickLook probe case)', () => {
+    // Editorial number geometry that rendered overlapping on all systems:
+    // 84pt "1.9 million dollars" in an 8.6x2.06in box spilled ~0.6in.
+    const size = fitNumberToRender('1.9 million dollars', 8.6, 2.06, 84, 60, -0.02, true);
+    assert.ok(size < 84, `expected shrink below 84, got ${size}`);
+    const r = estimateWrap('1.9 million dollars', size, 8.6, -0.02, RENDER_LINEBOX_NUMBER, true);
+    assert.ok(
+      inkHeightIn(r, size, RENDER_LINEBOX_NUMBER) <= 2.06,
+      `render ink still exceeds 2.06in at ${size}pt`,
+    );
+  });
+
+  it('leaves numerals that already fit untouched', () => {
+    const size = fitNumberToRender('42%', 8.6, 2.06, 84, 60, -0.02, true);
+    assert.equal(size, 84);
   });
 });

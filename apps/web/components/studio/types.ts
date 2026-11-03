@@ -33,6 +33,16 @@ export interface Catalog {
   systems: CatalogSystem[];
 }
 
+/** One template-pack selection card from GET /api/templates. */
+export interface TemplateEntry {
+  slug: string;
+  name: string;
+  scheme: 'light' | 'dark';
+  density: 'low' | 'medium' | 'high';
+  mood: string[];
+  bestFor: string;
+}
+
 export const LEGACY_PURPOSES = [
   { id: 'hackathon', label: 'Hackathon (legacy)' },
   { id: 'competition', label: 'Competition (legacy)' },

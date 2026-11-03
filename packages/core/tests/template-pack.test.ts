@@ -151,7 +151,9 @@ describe('template-pack integration', () => {
     const entries = parseSelectionIndex(JSON.parse(await fs.readFile(INDEX_PATH, 'utf8')));
     const mono = entries.find((e) => e.slug === 'monolith')!;
     const md = await fs.readFile(path.join(REPO_ROOT, mono.designPath), 'utf8');
-    const deck = layoutDeckWithTemplate(SAMPLE_NARRATIVE, mono, md, { seed: 7 });
+    // English narrative: template identity resolves to the stack head.
+    // (Korean narratives resolve to the KR entry — see ko-typography.test.ts.)
+    const deck = layoutDeckWithTemplate({ ...SAMPLE_NARRATIVE, lang: 'en' }, mono, md, { seed: 7 });
     // Base system placement preserved; only fonts/colors come from the template.
     assert.equal(deck.meta.system, 'expressive');
     // Colorimetry picks the darkest swatch (slab-black); design ground is

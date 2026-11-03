@@ -14,7 +14,7 @@ function stripHash(hex: string): string {
   return hex.replace(/^#/, '').toUpperCase();
 }
 
-function textOptions(block: TextBlock, fontFace: string): PptxGenJS.TextPropsOptions {
+function textOptions(block: TextBlock, fontFace: string, lang: string): PptxGenJS.TextPropsOptions {
   return {
     x: block.x,
     y: block.y,
@@ -23,6 +23,9 @@ function textOptions(block: TextBlock, fontFace: string): PptxGenJS.TextPropsOpt
     align: block.align,
     valign: 'top',
     fontFace,
+    // Run locale drives proofing language and CJK breaking in viewers.
+    // Decks are single-locale: the narrative lang decides every run.
+    lang: lang.toLowerCase().startsWith('ko') ? 'ko-KR' : 'en-US',
     fontSize: block.fontSize,
     bold: block.fontWeight >= 700,
     italic: false,
@@ -64,14 +67,15 @@ function buildPresentation(deck: Deck): { pptx: PptxGenJS; slideCount: number; t
   }
 
   let textBoxCount = 0;
+  const lang = deck.meta.lang ?? 'en';
   for (const slide of deck.slides) {
     const pSlide = pptx.addSlide();
     // Background fill only — the single allowed background primitive.
     pSlide.background = { color: stripHash(slide.background) };
     for (const block of slide.blocks) {
-      const face = block.fontFace ?? fontFaceFor(system, block.role);
+      const face = block.fontFace ?? fontFaceFor(system, block.role, lang);
       // The ONLY drawing call in the exporter: native editable text boxes.
-      pSlide.addText(block.content, textOptions(block, face));
+      pSlide.addText(block.content, textOptions(block, face, lang));
       textBoxCount += 1;
     }
     // Speaker notes travel in the native notes part — never on slides.
