@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>What eleven postmortems taught us — 07</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&family=Karla:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  * { border-radius:0 !important; }
+  html, body { margin:0; padding:0; background:#000; }
+  .slide { position:relative; width:1920px; height:1080px; background:#E9DCC8;
+    color:#2E3B2E; font-family:'Karla', system-ui, sans-serif; overflow:hidden; }
+  .content { position:absolute; top:72px; left:96px; right:96px; max-height:820px; }
+  .kicker { display:flex; align-items:center; gap:16px; font-family:'Karla', system-ui, sans-serif;
+    font-weight:700; font-size:20px; letter-spacing:0.14em;
+    text-transform:uppercase; color:#B4552D; margin:0;  }
+  .kicker::before { content:""; width:16px; height:16px; background:#B4552D; flex:0 0 auto; }
+  .accentrule { height:5px; background:#B4552D; margin-top:22px; width:100%; }
+  .accentrule.notop { margin-top:0; }
+  .metaline { font-family:'Caveat', cursive; font-size:18px; font-weight:600;
+    letter-spacing:0.06em; text-transform:none;
+    color:#5A7A4E; margin:14px 0 0 0;  }
+  .footer { position:absolute; left:96px; right:96px; bottom:0; height:104px;
+    border-top:2px solid #2E3B2E; display:flex; align-items:center;
+    justify-content:space-between; }
+  .footer .ctx { font-family:'Caveat', cursive; font-size:19px; font-weight:600;
+    letter-spacing:0.06em; text-transform:none;
+    color:#5A7A4E; margin:0;  }
+  .footer .idx { font-family:'Zilla Slab', Georgia, serif; font-weight:700;
+    font-size:22px; letter-spacing:0.1em; margin:0; color:#2E3B2E; }
+  .footer .idx .numeral { font-size:30px; }
+  h1, .statement { font-family:'Zilla Slab', Georgia, serif; font-weight:600;
+    text-align:left; margin:44px 0 0 0;  }
+  .title-xl { font-family:'Zilla Slab', Georgia, serif; font-weight:600;
+    line-height:1.04; letter-spacing:-0.01em; }
+  .sec-title { line-height:1.05; margin-top:60px; }
+  .statement { line-height:1.1; margin-top:70px; }
+  .ev-msg { line-height:1.12; margin-top:40px; }
+  .cmp-title { line-height:1.08; margin-top:36px; }
+  .d-title { line-height:1.08; margin-top:32px; }
+  .close-line { font-family:'Zilla Slab', Georgia, serif; font-weight:600;
+    line-height:1.04; margin-top:120px; }
+  .lede { font-size:34px; line-height:1.5; margin:36px 0 0 0; max-width:1380px;  }
+  .orient { font-size:34px; line-height:1.5; margin:36px 0 0 0; max-width:1380px;  }
+  .close-recap { font-size:34px; line-height:1.5; margin:40px 0 0 0; max-width:1380px;  }
+  .srcline { font-family:'Caveat', cursive; font-size:20px; font-weight:600;
+    letter-spacing:0.06em; text-transform:none;
+    color:#5A7A4E; margin:40px 0 0 0;  }
+  .statrow { display:flex; gap:40px; margin:44px 0 0 0; border-top:2px solid #2E3B2E; padding-top:32px; }
+  .stat { display:flex; align-items:flex-end; gap:22px; padding-right:40px; border-right:1px solid #DCCDAF; }
+  .stat:last-child { border-right:none; }
+  .statnum { font-family:'Zilla Slab', Georgia, serif; font-weight:700; line-height:0.9;
+    letter-spacing:-0.02em; }
+  .statlab { font-family:'Caveat', cursive; font-size:20px; font-weight:600;
+    letter-spacing:0.06em; text-transform:none;
+    line-height:1.5; padding-bottom:18px; max-width:320px;  }
+  .ev-sup { font-size:24px; line-height:1.55; margin:32px 0 0 0; max-width:1380px;  }
+  .findings { list-style:none; margin:36px 0 0 0; padding:0; border-top:2px solid #2E3B2E; }
+  .findings li { display:flex; gap:24px; padding:22px 0; border-bottom:1px solid #DCCDAF; }
+  .fnum { font-family:'Zilla Slab', Georgia, serif; font-weight:700; font-size:30px; flex:0 0 96px; }
+  .fbody { display:flex; flex-direction:column; gap:8px; }
+  .fhead { font-family:'Zilla Slab', Georgia, serif; font-weight:600; font-size:30px; line-height:1.2;  }
+  .fsub { font-size:24px; line-height:1.55;  }
+  .zones { display:flex; gap:32px; margin-top:36px; }
+  .zone { flex:1 1 0; }
+  .zone-b { border-left:1px solid #DCCDAF; padding-left:32px; }
+  .zone-h { font-family:'Zilla Slab', Georgia, serif; font-weight:600; font-size:30px;
+    line-height:1.2; margin:0;  }
+  .zone ul { list-style:none; margin:0; padding:18px 0 0 0; border-top:2px solid #2E3B2E; margin-top:12px; }
+  .zone li { display:flex; gap:14px; align-items:flex-start; font-size:22px; line-height:1.5;
+    padding:12px 0; border-bottom:1px solid #DCCDAF;  }
+  .zone li::before { content:""; width:13px; height:13px; flex:0 0 auto; margin-top:10px; background:#2E3B2E; }
+  .zone li.bad::before { background:#B4552D; }
+  .caption { font-size:22px; line-height:1.55; color:#5A7A4E; margin:30px 0 0 0;
+    border-top:1px solid #DCCDAF; padding-top:20px;  }
+  table.dtable { border-collapse:collapse; margin:24px 0 0 0; width:100%; }
+  table.dtable th { font-family:'Caveat', cursive; font-weight:600; letter-spacing:0.06em;
+    text-transform:none; color:#5A7A4E; text-align:left; font-size:0.86em;
+    padding:10px 16px 10px 0; border-top:2px solid #2E3B2E; border-bottom:2px solid #2E3B2E; }
+  table.dtable td { line-height:1.35; padding:9px 16px 9px 0; border-bottom:1px solid #DCCDAF; white-space:nowrap; }
+  table.dtable td.case { font-family:'Zilla Slab', Georgia, serif; font-weight:700; font-size:0.95em; }
+  table.dtable tr.flag td.cost::before { content:""; display:inline-block; width:12px; height:12px;
+    background:#B4552D; margin-right:10px; }
+  table.dtable td, table.dtable th {  }
+  .d-foot { font-family:'Caveat', cursive; font-size:18px; font-weight:600;
+    letter-spacing:0.06em; text-transform:none;
+    color:#5A7A4E; margin:14px 0 0 0;  }
+  .fx { color:#5A7A4E; font-size:0.85em; letter-spacing:0.06em; white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="slide" data-contain="stage">
+  <div class="content">
+    <p class="kicker" data-t="kicker" data-headline>Closing · Next</p>
+<div class="accentrule" aria-hidden="true"></div>
+    <p class="metaline" data-t="meta">Next +5 cases · Owner Research</p>
+    
+    <h1 class="close-line" data-t="title" data-headline style="font-size:104px">Write it down while it is happening</h1>
+    <p class="close-recap" data-t="sub">One live timeline, one lead, one paired fix. We will re-run this readout after the next five incidents.</p>
+  </div>
+  <footer class="footer"><p class="ctx" data-t="footer">Typodeck Research · Readout 07</p><p class="idx" data-t="pageidx"><span class="numeral" data-t="numeral">07</span> / 07</p></footer>
+</div>
+</body>
+</html>

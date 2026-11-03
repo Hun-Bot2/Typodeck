@@ -1,0 +1,112 @@
+[
+ {
+  "design": "gridline-swiss",
+  "lang": "en",
+  "slideCount": 7,
+  "textBoxCount": 29,
+  "expectedChars": 1701,
+  "validateOk": true,
+  "validateErrors": [],
+  "editableChars": 1701,
+  "rasterPics": 0,
+  "rasterBlips": 0,
+  "faces": [
+   "Archivo",
+   "Inter",
+   "ea:Archivo",
+   "ea:Inter"
+  ],
+  "bytes": 98432
+ },
+ {
+  "design": "gridline-swiss",
+  "lang": "ko",
+  "slideCount": 7,
+  "textBoxCount": 29,
+  "expectedChars": 973,
+  "validateOk": true,
+  "validateErrors": [],
+  "editableChars": 973,
+  "rasterPics": 0,
+  "rasterBlips": 0,
+  "faces": [
+   "Noto Sans KR",
+   "ea:Noto Sans KR"
+  ],
+  "bytes": 99220
+ },
+ {
+  "design": "peer-review",
+  "lang": "en",
+  "slideCount": 7,
+  "textBoxCount": 29,
+  "expectedChars": 1701,
+  "validateOk": true,
+  "validateErrors": [],
+  "editableChars": 1701,
+  "rasterPics": 0,
+  "rasterBlips": 0,
+  "faces": [
+   "STIX Two Text",
+   "ea:STIX Two Text"
+  ],
+  "bytes": 99038
+ },
+ {
+  "design": "peer-review",
+  "lang": "ko",
+  "slideCount": 7,
+  "textBoxCount": 29,
+  "expectedChars": 973,
+  "validateOk": true,
+  "validateErrors": [],
+  "editableChars": 973,
+  "rasterPics": 0,
+  "rasterBlips": 0,
+  "faces": [
+   "Noto Sans KR",
+   "Noto Serif KR",
+   "ea:Noto Sans KR",
+   "ea:Noto Serif KR"
+  ],
+  "bytes": 99265
+ },
+ {
+  "design": "fika",
+  "lang": "en",
+  "slideCount": 7,
+  "textBoxCount": 29,
+  "expectedChars": 1701,
+  "validateOk": true,
+  "validateErrors": [],
+  "editableChars": 1701,
+  "rasterPics": 0,
+  "rasterBlips": 0,
+  "faces": [
+   "Fraunces",
+   "Nunito Sans",
+   "ea:Fraunces",
+   "ea:Nunito Sans"
+  ],
+  "bytes": 98695
+ },
+ {
+  "design": "fika",
+  "lang": "ko",
+  "slideCount": 7,
+  "textBoxCount": 29,
+  "expectedChars": 973,
+  "validateOk": true,
+  "validateErrors": [],
+  "editableChars": 973,
+  "rasterPics": 0,
+  "rasterBlips": 0,
+  "faces": [
+   "Noto Sans KR",
+   "Noto Serif KR",
+   "ea:Noto Sans KR",
+   "ea:Noto Serif KR"
+  ],
+  "bytes": 99230
+ }
+]

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>열한 건의 포스트모템이 가르쳐준 것 — 07</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@400&family=Inter:wght@400&display=swap&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { border-radius:0 !important; }
+  html, body { margin:0; padding:0; background:#000; }
+  .slide { position:relative; width:1920px; height:1080px; background:#0E0E0E;
+    color:#F5F0E6; font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; overflow:hidden; }
+  .content { position:absolute; top:72px; left:96px; right:96px; max-height:820px; }
+  .kicker { display:flex; align-items:center; gap:16px; font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    font-weight:700; font-size:20px; letter-spacing:0;
+    text-transform:none; color:#FF4D00; margin:0; word-break:keep-all; overflow-wrap:normal; }
+  .kicker::before { content:""; width:16px; height:16px; background:#FF4D00; flex:0 0 auto; }
+  .accentrule { height:5px; background:#FF4D00; margin-top:22px; width:100%; }
+  .accentrule.notop { margin-top:0; }
+  .metaline { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:18px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    color:#8A8578; margin:14px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+  .footer { position:absolute; left:96px; right:96px; bottom:0; height:104px;
+    border-top:2px solid #F5F0E6; display:flex; align-items:center;
+    justify-content:space-between; }
+  .footer .ctx { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:19px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    color:#8A8578; margin:0; word-break:keep-all; overflow-wrap:normal; }
+  .footer .idx { font-family:'Anton', 'Pretendard Variable', sans-serif; font-weight:800;
+    font-size:22px; letter-spacing:0.1em; margin:0; color:#F5F0E6; }
+  .footer .idx .numeral { font-size:30px; }
+  h1, .statement { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:700;
+    text-align:left; margin:44px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+  .title-xl { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:800;
+    line-height:1.23; letter-spacing:0; }
+  .sec-title { line-height:1.24; margin-top:60px; }
+  .statement { line-height:1.30; margin-top:70px; }
+  .ev-msg { line-height:1.32; margin-top:40px; }
+  .cmp-title { line-height:1.27; margin-top:36px; }
+  .d-title { line-height:1.27; margin-top:32px; }
+  .close-line { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:800;
+    line-height:1.23; margin-top:120px; }
+  .lede { font-size:34px; line-height:1.77; margin:36px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
+  .orient { font-size:34px; line-height:1.77; margin:36px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
+  .close-recap { font-size:34px; line-height:1.77; margin:40px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
+  .srcline { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:20px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    color:#8A8578; margin:40px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+  .statrow { display:flex; gap:40px; margin:44px 0 0 0; border-top:2px solid #F5F0E6; padding-top:32px; }
+  .stat { display:flex; align-items:flex-end; gap:22px; padding-right:40px; border-right:1px solid #8A8578; }
+  .stat:last-child { border-right:none; }
+  .statnum { font-family:'Anton', 'Pretendard Variable', sans-serif; font-weight:800; line-height:0.9;
+    letter-spacing:0; }
+  .statlab { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:20px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    line-height:1.5; padding-bottom:18px; max-width:320px; word-break:keep-all; overflow-wrap:normal; }
+  .ev-sup { font-size:24px; line-height:1.83; margin:32px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
+  .findings { list-style:none; margin:36px 0 0 0; padding:0; border-top:2px solid #F5F0E6; }
+  .findings li { display:flex; gap:24px; padding:22px 0; border-bottom:1px solid #8A8578; }
+  .fnum { font-family:'Anton', 'Pretendard Variable', sans-serif; font-weight:800; font-size:30px; flex:0 0 96px; }
+  .fbody { display:flex; flex-direction:column; gap:8px; }
+  .fhead { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:700; font-size:30px; line-height:1.2; word-break:keep-all; overflow-wrap:normal; }
+  .fsub { font-size:24px; line-height:1.83; word-break:keep-all; overflow-wrap:normal; }
+  .zones { display:flex; gap:32px; margin-top:36px; }
+  .zone { flex:1 1 0; }
+  .zone-b { border-left:1px solid #8A8578; padding-left:32px; }
+  .zone-h { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:700; font-size:30px;
+    line-height:1.2; margin:0; word-break:keep-all; overflow-wrap:normal; }
+  .zone ul { list-style:none; margin:0; padding:18px 0 0 0; border-top:2px solid #F5F0E6; margin-top:12px; }
+  .zone li { display:flex; gap:14px; align-items:flex-start; font-size:22px; line-height:1.5;
+    padding:12px 0; border-bottom:1px solid #8A8578; word-break:keep-all; overflow-wrap:normal; }
+  .zone li::before { content:""; width:13px; height:13px; flex:0 0 auto; margin-top:10px; background:#F5F0E6; }
+  .zone li.bad::before { background:#FF4D00; }
+  .caption { font-size:22px; line-height:1.55; color:#8A8578; margin:30px 0 0 0;
+    border-top:1px solid #8A8578; padding-top:20px; word-break:keep-all; overflow-wrap:normal; }
+  table.dtable { border-collapse:collapse; margin:24px 0 0 0; width:100%; }
+  table.dtable th { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:500; letter-spacing:0;
+    text-transform:none; color:#8A8578; text-align:left; font-size:0.86em;
+    padding:10px 16px 10px 0; border-top:2px solid #F5F0E6; border-bottom:2px solid #F5F0E6; }
+  table.dtable td { line-height:1.35; padding:9px 16px 9px 0; border-bottom:1px solid #8A8578; white-space:nowrap; }
+  table.dtable td.case { font-family:'Anton', 'Pretendard Variable', sans-serif; font-weight:800; font-size:0.95em; }
+  table.dtable tr.flag td.cost::before { content:""; display:inline-block; width:12px; height:12px;
+    background:#FF4D00; margin-right:10px; }
+  table.dtable td, table.dtable th { word-break:keep-all; }
+  .d-foot { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:18px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    color:#8A8578; margin:14px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+  .fx { color:#8A8578; font-size:0.85em; letter-spacing:0.06em; white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="slide" data-contain="stage">
+  <div class="content">
+    <p class="kicker" data-t="kicker" data-headline>맺음 · 다음 단계</p>
+<div class="accentrule" aria-hidden="true"></div>
+    <p class="metaline" data-t="meta">결론 C-01</p>
+    
+    <h1 class="close-line" data-t="title" data-headline style="font-size:118px">다음 인시던트를 위한 세 가지 약속</h1>
+    <p class="close-recap" data-t="sub">타임라인을 먼저 열고, 비난 대신 사실을 기록하고, 두 번째 리뷰어를 붙이자.</p>
+  </div>
+  <footer class="footer"><p class="ctx" data-t="footer">Typodeck Research · Readout 07</p><p class="idx" data-t="pageidx"><span class="numeral" data-t="numeral">07</span> / 07</p></footer>
+</div>
+</body>
+</html>

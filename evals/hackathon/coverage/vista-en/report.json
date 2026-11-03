@@ -1,0 +1,275 @@
+{
+  "harness": "0.1.0",
+  "design": "vista",
+  "lang": "en",
+  "builder": "generic",
+  "localeNote": "no locales/ko override file; CJK rules from design.md CJK section",
+  "createdAt": "2026-11-03T19:12:04.467Z",
+  "status": "PASS",
+  "summary": {
+    "pass": 7,
+    "fail": 0,
+    "total": 7
+  },
+  "slides": [
+    {
+      "index": 1,
+      "file": "slides/01.html",
+      "png": "slides/01.png",
+      "role": "cover",
+      "roleReason": "intent+shape match (score 39)",
+      "compositionNote": "cover composition: hero 72px + lede",
+      "repairs": [],
+      "rounds": 1,
+      "checks": {
+        "dims": {
+          "ok": true,
+          "detail": "png is 1920x1080"
+        },
+        "overflow": {
+          "ok": true,
+          "detail": "no overflow"
+        },
+        "clip": {
+          "ok": true,
+          "detail": "stage containment holds"
+        },
+        "verbatim": {
+          "ok": true,
+          "detail": "verbatim: 9 strings present"
+        },
+        "fixture": {
+          "ok": true,
+          "detail": "no stray fixture marker"
+        },
+        "spec": {
+          "ok": true,
+          "detail": "generic chrome + type rules hold"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "index": 2,
+      "file": "slides/02.html",
+      "png": "slides/02.png",
+      "role": "divider",
+      "roleReason": "intent+shape match (score 35)",
+      "compositionNote": "divider composition: section title 72px + orienting line, no data",
+      "repairs": [],
+      "rounds": 1,
+      "checks": {
+        "dims": {
+          "ok": true,
+          "detail": "png is 1920x1080"
+        },
+        "overflow": {
+          "ok": true,
+          "detail": "no overflow"
+        },
+        "clip": {
+          "ok": true,
+          "detail": "stage containment holds"
+        },
+        "verbatim": {
+          "ok": true,
+          "detail": "verbatim: 9 strings present"
+        },
+        "fixture": {
+          "ok": true,
+          "detail": "no stray fixture marker"
+        },
+        "spec": {
+          "ok": true,
+          "detail": "generic chrome + type rules hold"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "index": 3,
+      "file": "slides/03.html",
+      "png": "slides/03.png",
+      "role": "statement",
+      "roleReason": "intent+shape match (score 52)",
+      "compositionNote": "statement composition: single 56px sentence + source line",
+      "repairs": [],
+      "rounds": 1,
+      "checks": {
+        "dims": {
+          "ok": true,
+          "detail": "png is 1920x1080"
+        },
+        "overflow": {
+          "ok": true,
+          "detail": "no overflow"
+        },
+        "clip": {
+          "ok": true,
+          "detail": "stage containment holds"
+        },
+        "verbatim": {
+          "ok": true,
+          "detail": "verbatim: 7 strings present"
+        },
+        "fixture": {
+          "ok": true,
+          "detail": "no stray fixture marker"
+        },
+        "spec": {
+          "ok": true,
+          "detail": "generic chrome + type rules hold"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "index": 4,
+      "file": "slides/04.html",
+      "png": "slides/04.png",
+      "role": "evidence",
+      "roleReason": "intent+shape match (score 59)",
+      "compositionNote": "evidence composition: message 48px + stat/finding row under rule",
+      "repairs": [],
+      "rounds": 1,
+      "checks": {
+        "dims": {
+          "ok": true,
+          "detail": "png is 1920x1080"
+        },
+        "overflow": {
+          "ok": true,
+          "detail": "no overflow"
+        },
+        "clip": {
+          "ok": true,
+          "detail": "stage containment holds"
+        },
+        "verbatim": {
+          "ok": true,
+          "detail": "verbatim: 12 strings present"
+        },
+        "fixture": {
+          "ok": true,
+          "detail": "fixture marker present"
+        },
+        "spec": {
+          "ok": true,
+          "detail": "generic chrome + type rules hold"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "index": 5,
+      "file": "slides/05.html",
+      "png": "slides/05.png",
+      "role": "comparison",
+      "roleReason": "intent+shape match (score 72)",
+      "compositionNote": "comparison composition: two-zone A/B with positional identity",
+      "repairs": [],
+      "rounds": 1,
+      "checks": {
+        "dims": {
+          "ok": true,
+          "detail": "png is 1920x1080"
+        },
+        "overflow": {
+          "ok": true,
+          "detail": "no overflow"
+        },
+        "clip": {
+          "ok": true,
+          "detail": "stage containment holds"
+        },
+        "verbatim": {
+          "ok": true,
+          "detail": "verbatim: 15 strings present"
+        },
+        "fixture": {
+          "ok": true,
+          "detail": "no stray fixture marker"
+        },
+        "spec": {
+          "ok": true,
+          "detail": "generic chrome + type rules hold"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "index": 6,
+      "file": "slides/06.html",
+      "png": "slides/06.png",
+      "role": "dense",
+      "roleReason": "intent+shape match (score 79)",
+      "compositionNote": "dense composition: table 21px + footnote",
+      "repairs": [],
+      "rounds": 1,
+      "checks": {
+        "dims": {
+          "ok": true,
+          "detail": "png is 1920x1080"
+        },
+        "overflow": {
+          "ok": true,
+          "detail": "no overflow"
+        },
+        "clip": {
+          "ok": true,
+          "detail": "stage containment holds"
+        },
+        "verbatim": {
+          "ok": true,
+          "detail": "verbatim: 55 strings present"
+        },
+        "fixture": {
+          "ok": true,
+          "detail": "fixture marker present"
+        },
+        "spec": {
+          "ok": true,
+          "detail": "generic chrome + type rules hold"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "index": 7,
+      "file": "slides/07.html",
+      "png": "slides/07.png",
+      "role": "closing",
+      "roleReason": "intent+shape match (score 36)",
+      "compositionNote": "closing composition: hero 72px + recap",
+      "repairs": [],
+      "rounds": 1,
+      "checks": {
+        "dims": {
+          "ok": true,
+          "detail": "png is 1920x1080"
+        },
+        "overflow": {
+          "ok": true,
+          "detail": "no overflow"
+        },
+        "clip": {
+          "ok": true,
+          "detail": "stage containment holds"
+        },
+        "verbatim": {
+          "ok": true,
+          "detail": "verbatim: 7 strings present"
+        },
+        "fixture": {
+          "ok": true,
+          "detail": "no stray fixture marker"
+        },
+        "spec": {
+          "ok": true,
+          "detail": "generic chrome + type rules hold"
+        }
+      },
+      "status": "PASS"
+    }
+  ]
+}
