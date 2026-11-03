@@ -54,6 +54,7 @@
     font-family: "Zilla Slab", Georgia, serif;
     font-size: 108px; font-weight: 600; line-height: 1.04;
     letter-spacing: -0.005em; color: var(--moss);
+    word-break: keep-all; overflow-wrap: normal; /* CJK: break only at spaces, no orphan syllable */
   }
   .fn-underscore {
     width: 340px; height: 10px; background: var(--clay);
@@ -64,6 +65,7 @@
     margin: 34px 0 0;
     font-size: 42px; font-weight: 500; line-height: 1.4; color: var(--moss);
     max-width: 1050px;
+    word-break: keep-all; overflow-wrap: normal; /* CJK: keep words whole */
   }
   .fn-leaves { margin-top: 36px; display: flex; gap: 40px; }
   .fn-leaf-item {
@@ -216,6 +218,9 @@
     function fit() {
       var t = document.getElementById('fnTitle');
       if (!t) return;
+      /* CJK two-liner (D24): balance only Hangul titles so Korean wraps as
+         "서두른 출시의" / "숨은 비용"; Latin titles keep their authored breaks. */
+      if (/[\uAC00-\uD7A3]/.test(t.textContent || '')) { t.style.textWrap = 'balance'; }
       var box = t.parentElement;
       var budget = (parseFloat(getComputedStyle(box).maxHeight) || 470) - 6;
       var size = 108;

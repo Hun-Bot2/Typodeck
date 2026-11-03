@@ -63,11 +63,13 @@
     font-family: "Bebas Neue", "Arial Black", sans-serif;
     font-size: 196px; line-height: 0.94; letter-spacing: 0.015em;
     color: var(--white); text-transform: uppercase;
+    word-break: keep-all; overflow-wrap: normal; /* CJK: break only at spaces, no orphan syllable */
   }
   .nr-subtitle {
     margin: 30px 0 0;
     font-size: 44px; font-weight: 300; line-height: 1.35;
     color: #C9C9C9; max-width: 1400px;
+    word-break: keep-all; overflow-wrap: normal; /* CJK: keep words whole */
   }
   .nr-bar-bottom {
     flex: 0 0 132px;
@@ -161,6 +163,9 @@
     function fit() {
       var t = document.getElementById('nrTitle');
       if (!t) return;
+      /* CJK two-liner (D23): balance only Hangul titles so Korean wraps as
+         "서두른 출시의" / "숨은 비용"; Latin titles keep their authored breaks. */
+      if (/[\uAC00-\uD7A3]/.test(t.textContent || '')) { t.style.textWrap = 'balance'; }
       var box = t.parentElement;
       var budget = (parseFloat(getComputedStyle(box).maxHeight) || 470) - 6;
       var size = 196;

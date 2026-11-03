@@ -203,6 +203,7 @@ These treatments are **non-optional whenever the corresponding element type is u
 
 - **Every headline carries exactly one intruder word** — Newsreader italic 500 in magenta at headline size. Zero intruders reads as plain Swiss; two reads as indecision.
 - **Every headline may carry one cyan grotesque word** — Archivo 800 in cyan (e.g. the payoff verb). The cyan word and the magenta intruder must be different words.
+- **Accent spans are runtime token styling, never hardcoded words** — the headline is a single text source; JS wraps the 3rd word (magenta intruder) and the last word (cyan payoff) at render time. English `The Hidden Cost of Rushing to Ship` resolves to intruder `Cost` + payoff `Ship`; Korean `서두른 출시의 숨은 비용` resolves to intruder `숨은` + payoff `비용`. The title sets `word-break: keep-all` so CJK wraps only at spaces.
 - **Every subtitle opens with magenta slashes** — `///` in Archivo 900 magenta before the sentence. Bare subtitles are not permitted.
 - **Every kicker pairs a magenta rule (90×10) with tracked caps** — the rule is the fuse, the caps are the label.
 - **Every rotated chip is imperative or indexical** — `READ THE FAILURE LOG ▸`, never a noun phrase; 45°, black fill, cyan text.
@@ -385,6 +386,7 @@ Add to the cover's `<head>`:
 - **No trailing 。 on display headlines**: omit the period on cover-scale CJK titles.
 - **Space between CJK and Latin (盘古之白)**: insert an ASCII space between CJK and adjacent Latin/digits, e.g. `11 个复盘`.
 - **Intruder stays one word**: the Song intruder keeps its one-word monopoly in CJK builds — pick the semantic pivot of the translated headline.
+- **Word-break**: the headline sets `word-break: keep-all` so CJK line breaks fall only at spaces, never mid-word.
 
 ### Aesthetic Notes for This System
 

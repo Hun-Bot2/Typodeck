@@ -318,6 +318,7 @@ Add to the slide `<head>`:
 - **No period on display headlines**: omit trailing 。 on display-scale headlines.
 - **Space between CJK and Latin (盘古之白)**: insert an ASCII space between CJK and adjacent Latin or digits.
 - **Title scale**: CJK titles read larger than Bebas at the same size — start the fit routine at 150px instead of 196px for CJK builds.
+- **Korean word wrap (D23 fix)**: the title and dialogue carry `word-break: keep-all; overflow-wrap: normal` so breaks fall only at spaces (no orphan syllable), and the fit routine applies `text-wrap: balance` only when the title contains Hangul — the Korean two-liner wraps "서두른 출시의" / "숨은 비용" (D27-style) while Latin titles keep their authored breaks. No measure change was needed: the balanced two-liner clears the subtitle inside the 470px title box.
 
 ### Aesthetic Notes for This System
 

@@ -387,6 +387,9 @@ Mass translates; condensedness does not. Noto Sans KR 900 at wall sizes is heavy
 8. If a band needs a third block, stack it raw under the subtitle — never add dividers or side-by-side cards.
 9. New stats are 150px Anton numeral walls with dim tracked labels; sources go in the band as Inter whispers.
 10. New slides are static slabs with no animation. Keep it that way.
+11. Keep every title wall single-sourced: the `h1` holds one contiguous title string — never hand-split it into per-line/per-word spans and never duplicate it into `aria-label`. Line splits come from `data-break-after` token positions and the orange strike from `data-accent-index` at render time (`__monoRenderTitle`), so any locale swap re-renders with no markup edits.
+12. When a translation has fewer words than the English title, the accent index clamps to the final token and out-of-range break positions are ignored. Verify the swapped render keeps exactly one orange strike word and breaks only at spaces (`word-break: keep-all`, `overflow-wrap: normal`) — no mid-word orphans.
+13. Never depend on `text-transform: uppercase` for CJK runs: the renderer adds `is-cjk` (no transform, zero tracking, 1.08 leading) whenever the title contains CJK characters, while Latin keeps the brutalist caps wall.
 
 ## Known Gaps
 

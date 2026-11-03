@@ -73,7 +73,7 @@
       .nw-kicker .rule { width: 90px; height: 10px; background: #FF00A8; }
       .nw-kicker .txt { font-weight: 800; font-size: 28px; letter-spacing: 0.24em; }
       .nw-title { margin: 0; font-weight: 800; font-size: 104px; line-height: 1.02;
-        letter-spacing: -0.02em; }
+        letter-spacing: -0.02em; word-break: keep-all; }
       .nw-title .it { font-family: 'Newsreader', Georgia, serif; font-style: italic;
         font-weight: 500; color: #FF00A8; letter-spacing: 0; }
       .nw-title .cy { color: #00C2FF; }
@@ -106,7 +106,7 @@
       <div class="nw-kicker-rot">READ THE FAILURE LOG ▸</div>
       <div class="nw-body">
         <div class="nw-kicker"><span class="rule"></span><span class="txt">POSTMORTEM SERIES</span></div>
-        <h1 class="nw-title" aria-label="The Hidden Cost of Rushing to Ship">The Hidden <span class="it">Cost</span> of Rushing to <span class="cy">Ship</span></h1>
+        <h1 class="nw-title" id="nwTitle">The Hidden Cost of Rushing to Ship</h1>
         <div class="nw-midrule"><span class="a"></span><span class="b"></span><span class="c"></span></div>
         <p class="nw-sub"><span class="slash">///</span> What 11 postmortems taught us about review discipline</p>
         <div class="nw-context"><span class="dot"></span><span>Typodeck Research · November 2026</span></div>
@@ -133,5 +133,36 @@
   __typodeckFitStage();
 </script>
 <!-- SCAFFOLD-EMBED-END -->
+<script>
+  /* New Wave Static accent-word styling (progressive enhancement).
+     The title is a single text source; accent spans are applied at render time
+     by word-token position (3rd word = magenta intruder, last word = cyan
+     payoff) so mechanical CJK swaps keep their accents. */
+  (function () {
+    function paint() {
+      var t = document.getElementById('nwTitle');
+      if (!t || t.dataset.painted) return;
+      t.dataset.painted = '1';
+      var words = t.textContent.split(' ');
+      if (words.length < 2) return;
+      var itIdx = words.length > 2 ? 2 : 0;
+      var cyIdx = words.length - 1;
+      if (cyIdx === itIdx) return;
+      function esc(s) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+      t.innerHTML = words.map(function (w, i) {
+        var x = esc(w);
+        if (i === itIdx) return '<span class="it">' + x + '</span>';
+        if (i === cyIdx) return '<span class="cy">' + x + '</span>';
+        return x;
+      }).join(' ');
+      t.setAttribute('aria-label', words.join(' '));
+    }
+    document.addEventListener('DOMContentLoaded', paint);
+    window.addEventListener('load', paint);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(paint);
+  })();
+</script>
 </body>
 </html>

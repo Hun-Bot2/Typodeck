@@ -40,9 +40,19 @@
     color: #F5F0E6;
     margin: 0;
     width: 100%;
+    word-break: keep-all;
+    overflow-wrap: normal;
   }
   .mono-slide .mega span { display: block; }
   .mono-slide .mega em { font-style: normal; color: #FF4D00; }
+  /* CJK runs: drop the Latin-only caps/tracking dependence so Hangul/Hanja
+     shape cleanly (uppercase is a no-op on CJK but tracking + 0.94 leading
+     harm it). Applied at render time when the title contains CJK. */
+  .mono-slide .mega.is-cjk {
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.08;
+  }
   .mono-slide .band {
     flex: 0 0 auto;
     background: #000000;
@@ -103,7 +113,7 @@
     <div class="mono-slide">
       <div class="strip"><p class="l">Research — 11 Postmortems</p><p class="r">November 2026</p></div>
       <div class="zone" id="mono-zone">
-        <h1 class="mega" id="mono-mega" data-autofit="240" aria-label="The Hidden Cost of Rushing to Ship"><span>The Hidden Cost</span><span>Of <em>Rushing</em></span><span>To Ship</span></h1>
+        <h1 class="mega" id="mono-mega" data-autofit="240" data-accent-index="4" data-break-after="2,4">The Hidden Cost of Rushing to Ship</h1>
       </div>
       <div class="band">
         <p class="sub">What 11 postmortems taught us about review discipline</p>
@@ -128,8 +138,49 @@
 </script>
 <!-- SCAFFOLD-EMBED-END -->
 <script>
+  /* Single-source title render: the h1 holds one contiguous title string.
+     Line splits come from data-break-after token positions and the orange
+     strike from data-accent-index -- never hardcoded words -- so any locale
+     swap re-renders correctly. Accent clamps to the last token and
+     out-of-range breaks are ignored when a translation has fewer words. */
+  function __monoRenderTitle() {
+    var el = document.getElementById('mono-mega');
+    if (!el || el.getAttribute('data-rendered') === '1') return;
+    var text = el.textContent.replace(/\s+/g, ' ').trim();
+    if (!text) return;
+    var tokens = text.split(' ');
+    var accent = parseInt(el.getAttribute('data-accent-index'), 10);
+    if (!isFinite(accent)) accent = tokens.length - 1;
+    accent = Math.max(0, Math.min(accent, tokens.length - 1));
+    var breakAfter = (el.getAttribute('data-break-after') || '').split(',').map(function (s) {
+      return parseInt(s.trim(), 10);
+    }).filter(function (n) { return isFinite(n) && n >= 0 && n < tokens.length - 1; });
+    if (/[\u3040-\u30FF\u3400-\u4DBF\u4E00-\u9FFF\uAC00-\uD7AF]/.test(text)) {
+      el.classList.add('is-cjk');
+    }
+    el.textContent = '';
+    var line = document.createElement('span');
+    tokens.forEach(function (tok, i) {
+      if (line.childNodes.length > 0) line.appendChild(document.createTextNode(' '));
+      if (i === accent) {
+        var em = document.createElement('em');
+        em.textContent = tok;
+        line.appendChild(em);
+      } else {
+        line.appendChild(document.createTextNode(tok));
+      }
+      if (breakAfter.indexOf(i) !== -1) {
+        el.appendChild(line);
+        line = document.createElement('span');
+      }
+    });
+    el.appendChild(line);
+    el.setAttribute('data-rendered', '1');
+  }
+  __monoRenderTitle();
   /* Wall auto-fit: shrink the caps wall only when it overflows its zone. */
   function __monoAutofit() {
+    __monoRenderTitle();
     var el = document.getElementById('mono-mega');
     var zone = document.getElementById('mono-zone');
     if (!el || !zone) return;
