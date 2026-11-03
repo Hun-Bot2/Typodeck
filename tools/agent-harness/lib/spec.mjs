@@ -97,25 +97,17 @@ export function resolveRefs(data) {
   return walk(data);
 }
 
-const REQUIRED_COLORS = ['white', 'ink', 'signal-red', 'rail-gray', 'muted', 'gridline'];
-const REQUIRED_TYPE = ['display-xl', 'display', 'headline', 'section-head', 'kicker',
+const GRIDLINE_COLORS = ['white', 'ink', 'signal-red', 'rail-gray', 'muted', 'gridline'];
+const GRIDLINE_TYPE = ['display-xl', 'display', 'headline', 'section-head', 'kicker',
   'index-numeral', 'body', 'body-compact', 'caption', 'footer-index', 'rail-meta'];
 
-/** Parse + validate a full design.md file. Returns { tokens, cjk, body }. */
+/** Parse a full design.md file. Lenient: any design with canvas+colors+typography. */
 export function parseDesignFile(text, slug) {
   const { front, body } = splitFrontMatter(text);
   const data = resolveRefs(parseFrontMatter(front));
   const missing = [];
-  for (const c of REQUIRED_COLORS) {
-    if (typeof data.colors?.[c] !== 'string') missing.push(`colors.${c}`);
-  }
-  for (const t of REQUIRED_TYPE) {
-    const tok = data.typography?.[t];
-    if (!tok || typeof tok !== 'object') missing.push(`typography.${t}`);
-    else if (typeof tok.fontSize !== 'string' && typeof tok.fontSize !== 'number') {
-      missing.push(`typography.${t}.fontSize`);
-    }
-  }
+  if (!data.colors || typeof data.colors !== 'object') missing.push('colors');
+  if (!data.typography || typeof data.typography !== 'object') missing.push('typography');
   if (typeof data.canvas?.width !== 'string' && typeof data.canvas?.width !== 'number') {
     missing.push('canvas.width');
   }
@@ -126,6 +118,24 @@ export function parseDesignFile(text, slug) {
     throw new SpecError(`${slug}: missing required tokens: ${missing.join(', ')}`);
   }
   return { tokens: data, cjk: parseCjkSection(body), body };
+}
+
+/** Strict gridline token assertion for the bespoke builder path. */
+export function assertGridlineTokens(tokens, slug) {
+  const missing = [];
+  for (const c of GRIDLINE_COLORS) {
+    if (typeof tokens.colors?.[c] !== 'string') missing.push(`colors.${c}`);
+  }
+  for (const t of GRIDLINE_TYPE) {
+    const tok = tokens.typography?.[t];
+    if (!tok || typeof tok !== 'object') missing.push(`typography.${t}`);
+    else if (typeof tok.fontSize !== 'string' && typeof tok.fontSize !== 'number') {
+      missing.push(`typography.${t}.fontSize`);
+    }
+  }
+  if (missing.length > 0) {
+    throw new SpecError(`${slug}: missing gridline tokens: ${missing.join(', ')}`);
+  }
 }
 
 /**

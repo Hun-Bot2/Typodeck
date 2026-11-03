@@ -9,12 +9,17 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseContent, contentStrings, ContentError } from './lib/content.mjs';
-import { parseDesignFile, SpecError } from './lib/spec.mjs';
+import { parseDesignFile, assertGridlineTokens, SpecError } from './lib/spec.mjs';
 import { planDeckRoles } from './lib/roles.mjs';
 import { buildSlide } from './lib/builder.mjs';
+import { buildSlideGeneric } from './lib/builder-generic.mjs';
+import { toTheme } from './lib/theme.mjs';
 import { launchChrome, renderSlide, pngDims } from './lib/render.mjs';
-import { checkDims, checkOverflow, checkClip, checkVerbatim, checkFixture, checkSpec } from './lib/checks.mjs';
+import { checkDims, checkOverflow, checkClip, checkClipStage, checkVerbatim, checkFixture, checkSpec, checkSpecGeneric } from './lib/checks.mjs';
 import { proposeRepair, REPAIR_ROUNDS } from './lib/repair.mjs';
+
+// Bespoke builders keyed by slug; every other design uses the generic themed builder.
+const BESPOKE = new Set(['gridline-swiss']);
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '..', '..');
@@ -62,12 +67,18 @@ async function loadSpec(slug, lang) {
   let localeNote = 'no locales/ko override file; CJK rules from design.md CJK section';
   if (lang === 'ko') {
     // Optional per-locale token overrides (read when present, never required).
-    for (const cand of ['locales/ko.md', 'locales/ko/design.md']) {
+    // locales/ko/typography.md is prose guidance (no front-matter): presence is
+    // recorded, and the builders apply the central KO stacks + CJK rules.
+    for (const cand of ['locales/ko.md', 'locales/ko/design.md', 'locales/ko/typography.md']) {
       try {
         const t = await fs.readFile(path.join(dir, cand), 'utf8');
-        const extra = parseDesignFile(t, `${slug}:${cand}`);
-        spec.tokens = { ...spec.tokens, ...extra.tokens };
-        localeNote = `applied ${cand} overrides`;
+        try {
+          const extra = parseDesignFile(t, `${slug}:${cand}`);
+          spec.tokens = { ...spec.tokens, ...extra.tokens };
+          localeNote = `applied ${cand} overrides`;
+        } catch {
+          localeNote = `${cand} present (prose guidance); central KO stacks applied`;
+        }
         break;
       } catch { /* optional */ }
     }
@@ -75,14 +86,14 @@ async function loadSpec(slug, lang) {
   return { spec, localeNote };
 }
 
-function runChecks({ png, metrics, slide }) {
+function runChecks({ png, metrics, slide, bespoke }) {
   return {
     dims: checkDims(png, pngDims),
     overflow: checkOverflow(metrics),
-    clip: checkClip(metrics),
+    clip: bespoke ? checkClip(metrics) : checkClipStage(metrics),
     verbatim: checkVerbatim(metrics, contentStrings(slide)),
     fixture: checkFixture(metrics, slide),
-    spec: checkSpec(metrics),
+    spec: bespoke ? checkSpec(metrics) : checkSpecGeneric(metrics),
   };
 }
 
@@ -115,7 +126,24 @@ async function main() {
     process.exit(2);
   }
   const { spec, localeNote } = await loadSpec(a.design, a.lang);
-  console.log(`spec: ${a.design} (${a.lang}) — ${localeNote}`);
+  const bespoke = BESPOKE.has(a.design);
+  let theme = null;
+  if (bespoke) {
+    try {
+      assertGridlineTokens(spec.tokens, a.design);
+    } catch (e) {
+      console.error(e.message);
+      process.exit(2);
+    }
+  } else {
+    try {
+      theme = toTheme(spec.tokens, a.design);
+    } catch (e) {
+      console.error(e.message);
+      process.exit(2);
+    }
+  }
+  console.log(`spec: ${a.design} (${a.lang}) — ${localeNote} — builder: ${bespoke ? 'bespoke' : 'generic'}`);
   const roles = planDeckRoles(content.slides);
   roles.forEach((r, i) => console.log(`slide ${i + 1}: role=${r.role} (${r.reason})`));
 
@@ -137,13 +165,15 @@ async function main() {
       const maxRounds = a.noRepair ? 1 : REPAIR_ROUNDS + 1;
       for (let r = 0; r < maxRounds; r++) {
         rounds = r + 1;
-        const { html, notes } = buildSlide({
-          spec, slide, role, index: i, total: content.slides.length,
-          deck: content.deck, lang: a.lang, adjust,
-        });
+        const built = bespoke
+          ? buildSlide({ spec, slide, role, index: i, total: content.slides.length,
+              deck: content.deck, lang: a.lang, adjust })
+          : buildSlideGeneric({ theme, slide, role, index: i, total: content.slides.length,
+              deck: content.deck, lang: a.lang, adjust });
+        const { html, notes } = built;
         await fs.writeFile(htmlPath, html);
         const { png, metrics } = await renderSlide(port, `file://${htmlPath}`);
-        const checks = runChecks({ png, metrics, slide });
+        const checks = runChecks({ png, metrics, slide, bespoke });
         final = { png, metrics, checks, notes };
         if (allOk(checks)) break;
         if (a.noRepair || r === maxRounds - 1) break;
@@ -185,6 +215,7 @@ async function main() {
     harness: VERSION,
     design: a.design,
     lang: a.lang,
+    builder: bespoke ? 'bespoke' : 'generic',
     localeNote,
     createdAt: new Date().toISOString(),
     status: pass === reportSlides.length ? 'PASS' : 'FAIL',

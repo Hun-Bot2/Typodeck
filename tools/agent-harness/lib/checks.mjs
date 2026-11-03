@@ -126,6 +126,31 @@ export function checkSpec(metrics) {
   return pass('chrome + type rules per spec');
 }
 
+/** clip-generic: stage children inside 1920x1080 (no rail requirement). */
+export function checkClipStage(metrics) {
+  const bad = [];
+  for (const t of metrics.texts ?? []) {
+    if (t.x < -TOL_PX || t.y < -TOL_PX || t.x + t.w > STAGE.w + TOL_PX || t.y + t.h > STAGE.h + TOL_PX) {
+      bad.push(`${t.key}: rect outside 1920x1080 stage`);
+    }
+  }
+  if (bad.length > 0) return { ok: false, detail: `clip: ${bad.join('; ')}`, items: bad };
+  return pass('stage containment holds');
+}
+
+/** spec-generic: footer present, headlines left-aligned, no rounded chrome. */
+export function checkSpecGeneric(metrics) {
+  const bad = [];
+  const s = metrics.spec ?? {};
+  if (s.footers !== 1) bad.push(`footers: ${s.footers ?? 0}, want exactly 1`);
+  for (const h of metrics.heads ?? []) {
+    if (h.align === 'center' || h.align === 'justify') bad.push(`headline ${h.key} is ${h.align}`);
+  }
+  if ((metrics.rounded ?? 0) > 0) bad.push(`${metrics.rounded} rounded element(s)`);
+  if (bad.length > 0) return { ok: false, detail: `spec: ${bad.join('; ')}`, items: bad };
+  return pass('generic chrome + type rules hold');
+}
+
 function pass(detail) {
   return { ok: true, detail };
 }
