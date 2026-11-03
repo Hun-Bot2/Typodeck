@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typodeck Preview — Cover Slide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  .press-slide {
+    position: absolute; inset: 0;
+    background: #F1E9D6;
+    color: #1F1A14;
+    font-family: 'EB Garamond', Georgia, serif;
+    box-sizing: border-box;
+  }
+  .press-frame-outer {
+    position: absolute; inset: 40px;
+    border: 3px solid #1F1A14;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+  .press-frame-inner {
+    position: absolute; inset: 55px;
+    border: 1px solid #7B1E1E;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+  .press-body {
+    position: absolute; inset: 56px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 64px 220px 96px 220px;
+    box-sizing: border-box;
+  }
+  .press-dateline {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 22px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #4A4A4A; margin: 0;
+    display: flex; align-items: center; gap: 28px;
+  }
+  .press-dateline::before, .press-dateline::after {
+    content: ""; display: block; width: 120px; height: 1px; background: #7B1E1E;
+  }
+  .press-orn { font-family: 'IM Fell English', Georgia, serif; color: #7B1E1E; font-size: 34px; margin: 30px 0 0 0; }
+  .press-title {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-weight: 400;
+    font-size: 80px; line-height: 1.16;
+    margin: 30px 0 0 0;
+    color: #1F1A14;
+    text-wrap: balance;
+    max-width: 26ch;
+  }
+  .press-rulepair { margin: 36px 0 0 0; width: 240px; }
+  .press-rulepair .thick { height: 3px; background: #1F1A14; }
+  .press-rulepair .thin { height: 1px; background: #7B1E1E; margin-top: 6px; }
+  .press-sub {
+    font-style: italic; font-size: 34px; line-height: 1.55;
+    margin: 32px 0 0 0; color: #1F1A14;
+    max-width: 34ch;
+  }
+  .press-pagemark {
+    position: absolute; bottom: 88px; left: 0; right: 0;
+    text-align: center;
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 22px; color: #1F1A14;
+    margin: 0;
+  }
+  .press-pagemark .o { color: #7B1E1E; }
+  .press-pagemark .n { letter-spacing: 0.3em; margin: 0 18px; }
+</style>
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <div class="press-slide">
+      <div class="press-body">
+        <p class="press-dateline">Typodeck Research · November 2026</p>
+        <p class="press-orn">❦</p>
+        <h1 class="press-title">The Hidden Cost of Rushing to Ship</h1>
+        <div class="press-rulepair"><div class="thick"></div><div class="thin"></div></div>
+        <p class="press-sub">What 11 postmortems taught us about review discipline</p>
+      </div>
+      <div class="press-frame-outer"></div>
+      <div class="press-frame-inner"></div>
+      <p class="press-pagemark"><span class="o">¶</span><span class="n">1</span><span class="o">¶</span></p>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>

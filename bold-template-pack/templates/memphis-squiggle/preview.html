@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Title Slide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito:wght@400;700&family=Archivo:wght@700&display=swap" rel="stylesheet">
+<style>
+  .sq { position:absolute; inset:0; background:#FFF6E9; color:#111111; overflow:hidden; }
+  .sq-col { position:absolute; top:72px; left:88px; width:1300px; }
+  .sq-title { margin:0; font-family:'Archivo Black', 'Arial Black', sans-serif; font-weight:400;
+    font-size:96px; line-height:1.06; letter-spacing:-0.01em; transform:rotate(-1deg);
+    text-shadow:6px 6px 0 #4ECDC4, 12px 12px 0 #111111; }
+  .sq-zig { display:block; margin:30px 0 0 0; }
+  .sq-sub { margin:26px 0 0 0; font-family:'Nunito', system-ui, sans-serif; font-size:27px;
+    line-height:1.6; max-width:1000px; }
+  .sq-pill { display:inline-block; margin:34px 0 0 0; background:#FFE66D; border:4px solid #111111;
+    border-radius:999px; padding:14px 30px; box-shadow:6px 6px 0 #111111; transform:rotate(-2deg);
+    font-family:'Archivo', system-ui, sans-serif; font-weight:700; font-size:22px;
+    letter-spacing:0.16em; text-transform:uppercase; white-space:nowrap; }
+  .sq-num { position:absolute; top:120px; right:90px; font-family:'Archivo Black', 'Arial Black', sans-serif;
+    font-size:300px; line-height:1; color:transparent; -webkit-text-stroke:4px #111111;
+    transform:rotate(3deg); }
+  .sq-num::after { content:"11"; position:absolute; left:14px; top:14px; color:transparent;
+    -webkit-text-stroke:4px #6C5CE7; z-index:-1; }
+  .sq-chip { position:absolute; border:4px solid #111111; box-shadow:4px 4px 0 #111111;
+    font-family:'Archivo', system-ui, sans-serif; font-weight:700; font-size:22px;
+    letter-spacing:0.16em; text-transform:uppercase; padding:12px 24px; }
+  .sq-chip-a { background:#FF6B9D; border-radius:999px; top:560px; right:120px; transform:rotate(3deg); }
+  .sq-chip-b { background:#4ECDC4; top:660px; right:250px; transform:rotate(-3deg); }
+  .cf { position:absolute; }
+  .cf-dot { border-radius:50%; }
+  .cf-ring { border-radius:50%; background:transparent !important; border-width:6px; border-style:solid; }
+  .cf-bar { height:18px; border:4px solid #111111; }
+  .sq-ticker { position:absolute; left:0; right:0; bottom:0; background:#111111; color:#FFF6E9;
+    display:flex; justify-content:space-between; align-items:center; padding:20px 88px;
+    font-family:'Archivo', system-ui, sans-serif; font-weight:700; font-size:20px;
+    letter-spacing:0.12em; text-transform:uppercase; }
+</style>
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <div class="sq">
+      <div class="cf cf-dot" style="width:44px;height:44px;background:#FF6B9D;top:200px;left:20px;"></div>
+      <div class="cf cf-ring" style="width:72px;height:72px;border-color:#4ECDC4;top:850px;left:40px;"></div>
+      <div class="cf cf-dot" style="width:30px;height:30px;background:#6C5CE7;top:880px;left:700px;"></div>
+      <div class="cf cf-bar" style="width:140px;background:#FFE66D;top:80px;right:420px;transform:rotate(18deg);"></div>
+      <div class="cf cf-dot" style="width:36px;height:36px;background:#4ECDC4;top:470px;right:60px;"></div>
+      <div class="cf cf-ring" style="width:56px;height:56px;border-color:#FF6B9D;top:860px;right:560px;"></div>
+      <div class="cf cf-bar" style="width:110px;background:#FF6B9D;top:888px;left:150px;transform:rotate(-14deg);"></div>
+      <div class="cf cf-dot" style="width:26px;height:26px;background:#FFE66D;top:540px;left:1420px;"></div>
+      <div class="cf cf-ring" style="width:88px;height:88px;border-color:#6C5CE7;top:40px;right:80px;"></div>
+      <div class="cf cf-dot" style="width:40px;height:40px;background:#4ECDC4;top:900px;right:120px;"></div>
+      <div class="sq-num">11</div>
+      <div class="sq-col">
+        <h1 class="sq-title">The Hidden Cost of Rushing to Ship</h1>
+        <svg class="sq-zig" width="1300" height="26" viewBox="0 0 1300 26" fill="none" aria-hidden="true">
+          <polyline points="0,20 40,6 80,20 120,6 160,20 200,6 240,20 280,6 320,20 360,6 400,20 433,6" stroke="#FF6B9D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="433,6 473,20 513,6 553,20 593,6 633,20 673,6 713,20 753,6 793,20 833,6 866,20" stroke="#4ECDC4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <polyline points="866,20 906,6 946,20 986,6 1026,20 1066,6 1106,20 1146,6 1186,20 1226,6 1266,20 1300,6" stroke="#6C5CE7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p class="sq-sub">What 11 postmortems taught us about review discipline</p>
+        <div class="sq-pill">Typodeck Research · November 2026</div>
+      </div>
+      <div class="sq-chip sq-chip-a">11 reports</div>
+      <div class="sq-chip sq-chip-b">one lesson</div>
+      <svg class="sq-zig2" width="1744" height="26" viewBox="0 0 1300 26" preserveAspectRatio="none" fill="none" aria-hidden="true" style="position:absolute;bottom:100px;left:88px;">
+        <polyline points="0,20 40,6 80,20 120,6 160,20 200,6 240,20 280,6 320,20 360,6 400,20 433,6" stroke="#4ECDC4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="433,6 473,20 513,6 553,20 593,6 633,20 673,6 713,20 753,6 793,20 833,6 866,20" stroke="#6C5CE7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="866,20 906,6 946,20 986,6 1026,20 1066,6 1106,20 1146,6 1186,20 1226,6 1266,20 1300,6" stroke="#FF6B9D" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="sq-ticker"><span>Research desk</span><span>01 / 01</span></div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>

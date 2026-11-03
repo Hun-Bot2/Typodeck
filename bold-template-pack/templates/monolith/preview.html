@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typodeck Research Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .mono-slide {
+    position: absolute; inset: 0;
+    background: #0E0E0E;
+    color: #F5F0E6;
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    padding: 24px 24px 0 24px;
+  }
+  .mono-slide .strip {
+    flex: 0 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Anton', "Arial Black", sans-serif;
+    font-size: 24px; letter-spacing: 0.25em; text-transform: uppercase;
+    margin: 0;
+    padding-bottom: 16px;
+  }
+  .mono-slide .strip .l { display: flex; align-items: center; gap: 16px; margin: 0; }
+  .mono-slide .strip .l::before { content: ""; width: 20px; height: 20px; background: #FF4D00; flex: 0 0 auto; }
+  .mono-slide .strip .r { margin: 0; color: #8A8578; }
+  .mono-slide .zone {
+    flex: 1; min-height: 0;
+    overflow: hidden;
+    display: flex; align-items: center;
+  }
+  .mono-slide .mega {
+    font-family: 'Anton', "Arial Black", sans-serif;
+    font-size: 240px; line-height: 0.94; letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #F5F0E6;
+    margin: 0;
+    width: 100%;
+  }
+  .mono-slide .mega span { display: block; }
+  .mono-slide .mega em { font-style: normal; color: #FF4D00; }
+  .mono-slide .band {
+    flex: 0 0 auto;
+    background: #000000;
+    border-top: 8px solid #FF4D00;
+    margin: 16px -24px 0 -24px;
+    padding: 32px 48px;
+    display: flex; justify-content: space-between; align-items: center; gap: 48px;
+  }
+  .mono-slide .band .sub {
+    font-size: 32px; line-height: 1.45; font-weight: 400; color: #F5F0E6;
+    margin: 0; flex: 1 1 auto;
+  }
+  .mono-slide .band .ctx {
+    flex: 0 0 auto; text-align: right;
+    font-family: 'Anton', "Arial Black", sans-serif;
+    font-size: 26px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #F5F0E6; margin: 0; line-height: 1.2;
+  }
+  .mono-slide .band .ctx small {
+    display: block; font-size: 22px; letter-spacing: 0.2em; color: #8A8578; margin-top: 10px;
+  }
+</style>
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <div class="mono-slide">
+      <div class="strip"><p class="l">Research — 11 Postmortems</p><p class="r">November 2026</p></div>
+      <div class="zone" id="mono-zone">
+        <h1 class="mega" id="mono-mega" data-autofit="240" aria-label="The Hidden Cost of Rushing to Ship"><span>The Hidden Cost</span><span>Of <em>Rushing</em></span><span>To Ship</span></h1>
+      </div>
+      <div class="band">
+        <p class="sub">What 11 postmortems taught us about review discipline</p>
+        <p class="ctx">Typodeck Research · November 2026<small>11 Cases · 01 / 24</small></p>
+      </div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+<script>
+  /* Wall auto-fit: shrink the caps wall only when it overflows its zone. */
+  function __monoAutofit() {
+    var el = document.getElementById('mono-mega');
+    var zone = document.getElementById('mono-zone');
+    if (!el || !zone) return;
+    var max = parseFloat(el.getAttribute('data-autofit'));
+    var size = max, min = 72;
+    el.style.fontSize = size + 'px';
+    var guard = 80;
+    while (guard-- > 0 && size > min &&
+           (el.scrollHeight > zone.clientHeight + 2 || el.scrollWidth > zone.clientWidth + 2)) {
+      size -= 4; el.style.fontSize = size + 'px';
+    }
+  }
+  document.addEventListener('DOMContentLoaded', __monoAutofit);
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(__monoAutofit); }
+</script>
+</body>
+</html>

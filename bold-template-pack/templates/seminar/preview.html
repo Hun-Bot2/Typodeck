@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seminar — Title Slide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  .sm-slide {
+    position: absolute; inset: 0;
+    background: #FFFFFF; color: #222222;
+    padding: 64px 120px;
+    box-sizing: border-box;
+    display: flex; flex-direction: column;
+  }
+  .sm-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .sm-marker {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 28px; font-weight: 700; color: #1F3A5F;
+  }
+  .sm-date {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 17px; font-weight: 400; color: #8A8A8A;
+  }
+  .sm-grid {
+    display: flex; gap: 120px; margin-top: 56px; flex: 1; min-height: 0;
+  }
+  .sm-arg { width: 1080px; flex: 0 0 auto; }
+  .sm-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 88px; font-weight: 700; line-height: 1.12;
+    color: #222222; margin: 0; max-width: 22ch;
+  }
+  .sm-lede {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 30px; font-style: italic; font-weight: 400; line-height: 1.55;
+    color: rgba(34, 34, 34, 0.78); margin: 32px 0 0; max-width: 34ch;
+  }
+  .sm-lede sup, .sm-foot sup {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.72em; font-weight: 600; color: #1F3A5F;
+  }
+  .sm-rule { width: 160px; height: 1px; background: #8A8A8A; margin: 40px 0 16px; }
+  .sm-foot {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 17px; line-height: 1.6;
+    color: rgba(34, 34, 34, 0.72); margin: 0;
+  }
+  .sm-margin { width: 400px; flex: 0 0 auto; padding-top: 18px; }
+  .sm-note {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 17px; line-height: 1.6;
+    color: rgba(34, 34, 34, 0.72); margin: 0 0 32px;
+    padding-left: 24px; text-indent: -24px;
+  }
+  .sm-note sup {
+    font-size: 0.72em; font-weight: 600; color: #1F3A5F;
+    margin-right: 6px;
+  }
+  .sm-note strong { font-weight: 600; color: #222222; }
+  .sm-foot-row {
+    display: flex; justify-content: flex-end;
+  }
+  .sm-page {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px; font-weight: 500; color: #8A8A8A;
+  }
+</style>
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <section class="sm-slide">
+      <div class="sm-head">
+        <span class="sm-marker">§ 1</span>
+        <span class="sm-date">November 2026</span>
+      </div>
+      <div class="sm-grid">
+        <div class="sm-arg">
+          <h1 class="sm-title">The Hidden Cost of Rushing to Ship</h1>
+          <p class="sm-lede">What 11 postmortems taught us about review discipline<sup>1</sup></p>
+          <div class="sm-rule" aria-hidden="true"></div>
+          <p class="sm-foot"><sup>1</sup> Typodeck Research · November 2026</p>
+        </div>
+        <aside class="sm-margin">
+          <p class="sm-note"><sup>1</sup><strong>Typodeck Research,</strong> November 2026.</p>
+          <p class="sm-note"><sup>§</sup>11 postmortems · review discipline</p>
+        </aside>
+      </div>
+      <div class="sm-foot-row"><span class="sm-page">1</span></div>
+    </section>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>
