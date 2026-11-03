@@ -1,0 +1,66 @@
+{
+  "slug": "field-manual",
+  "did": "D02",
+  "slides": [
+    {
+      "kind": "cover",
+      "html": "slides/slide-01-cover.html",
+      "png": "slides/slide-01-cover.png",
+      "validator": "PASS",
+      "verdict": "PASS — doc frame + chip + 92px title + subtitle + approval strip; FIG.01 doc-record checks are meta, not claims."
+    },
+    {
+      "kind": "divider",
+      "html": "slides/slide-02-divider.html",
+      "png": "slides/slide-02-divider.png",
+      "validator": "PASS",
+      "verdict": "PASS — section lid with numbered steps to §1.1–§1.3 + section-index FIG.02; orienting line as subtitle + note."
+    },
+    {
+      "kind": "statement",
+      "html": "slides/slide-03-statement.html",
+      "png": "slides/slide-03-statement.png",
+      "validator": "PASS",
+      "verdict": "PASS — full-width caution page: amber chip + giant caps line + dashed source leader; single column, no split."
+    },
+    {
+      "kind": "evidence",
+      "html": "slides/slide-04-evidence.html",
+      "png": "slides/slide-04-evidence.png",
+      "validator": "PASS",
+      "verdict": "PASS — 60/40: chip + caps message + 63% stat head + support; FIG.03 checks + NOTE 03 quote fixture words."
+    },
+    {
+      "kind": "comparison",
+      "html": "slides/slide-05-comparison.html",
+      "png": "slides/slide-05-comparison.png",
+      "validator": "PASS",
+      "verdict": "PASS — twin exhibit boxes (open vs checked glyphs) quote all 6 bullets verbatim; NOTE 04 carries caption."
+    },
+    {
+      "kind": "dense",
+      "html": "slides/slide-06-dense.html",
+      "png": "slides/slide-06-dense.png",
+      "validator": "PASS",
+      "verdict": "PASS — full-width bordered TAB.01, 11 verbatim rows, mono ref column, dashed dividers; footnote present; fits frame."
+    },
+    {
+      "kind": "closing",
+      "html": "slides/slide-07-closing.html",
+      "png": "slides/slide-07-closing.png",
+      "validator": "PASS",
+      "verdict": "PASS — sign-off spread: closing line + recap + reviewer approval strip + FIG.06 completion checks (fixture words)."
+    }
+  ],
+  "render": {
+    "width": 1920,
+    "height": 1080,
+    "verify": "PASS"
+  },
+  "coherence_verdict": "PASS — dotted paper + 2px frame + doc header + double rule + revision footer on all 7; Archivo caps / Plex Sans / Plex Mono split; amber chips only; technical-manual tailoring via FM-11 procedure framing, §-refs, FIG/NOTE numbering; 4 distinct compositions (60/40, section lid, full-width caution, twin exhibits, full table).",
+  "design_md_gaps_found": [
+    "design.md forbids fabricated chart data: all exhibits are check rows / ruled tables quoting fixture words only.",
+    "design.md figure column specifies exactly one exhibit + one note; full-width slides (statement/comparison/dense) intentionally break the 60/40 split for role-distinct composition — chrome (frame/header/footer/chip) preserves identity.",
+    "Warn-chip glyph renders as outline triangle (font fallback for U+26A0) in headless Chrome — matches specimen rendering; accepted."
+  ]
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peer Review — Dense</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --paper: #FFFFFF; --ink: #1A1A1A; --blue: #0B5394; --rule: #EAEAEA; --abstract-tint: #F3F5F8; --muted: #5A6470; }
+  * { box-sizing: border-box; }
+  .pr-slide { position: absolute; inset: 0; background: var(--paper); color: var(--ink);
+    font-family: "STIX Two Text", Georgia, "Times New Roman", serif; padding: 56px 88px 48px;
+    display: flex; flex-direction: column; }
+  .pr-runhead { display: flex; justify-content: space-between; align-items: baseline;
+    font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); }
+  .pr-runhead .pr-page { color: var(--muted); letter-spacing: 0.14em; }
+  .pr-double-rule { margin-top: 18px; border-top: 3px solid var(--ink); }
+  .pr-double-rule::after { content: ""; display: block; border-top: 1px solid var(--ink); margin-top: 3px; }
+  .pr-kicker { font-family: Inter, system-ui, sans-serif; font-size: 22px; font-weight: 700;
+    letter-spacing: 0.24em; text-transform: uppercase; color: var(--blue); }
+  .pr-abstract { background: var(--abstract-tint); border-left: 6px solid var(--blue); padding: 28px 34px 30px; }
+  .pr-abstract-label { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+  .pr-abstract-text { margin: 0; font-style: italic; font-size: 35px; line-height: 1.42; color: var(--ink); }
+  .pr-keywords { margin-top: 20px; padding-top: 16px; border-top: 1px solid #D8DEE5;
+    font-family: Inter, system-ui, sans-serif; font-size: 21px; font-weight: 500; color: var(--muted); }
+  .pr-keywords strong { font-weight: 700; color: var(--ink); }
+  .pr-fig-label { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); }
+  .pr-fig-title { font-family: Inter, system-ui, sans-serif; font-size: 24px; font-weight: 600; color: var(--ink); margin: 12px 0 20px; }
+  .pr-caption { margin: 16px 0 0; font-family: Inter, system-ui, sans-serif; font-size: 21px; line-height: 1.5; color: var(--muted); }
+  .pr-caption strong { color: var(--ink); font-weight: 700; }
+  .pr-footnotes { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--ink);
+    font-family: Inter, system-ui, sans-serif; font-size: 20px; line-height: 1.6; color: var(--muted);
+    display: flex; gap: 48px; }
+  .pr-footnotes .pr-fn sup { font-weight: 700; color: var(--blue); margin-right: 6px; }
+
+
+  .pr-dense-head { display: flex; align-items: baseline; justify-content: space-between; margin-top: 40px; }
+  .pr-dense-title { margin: 18px 0 0 0; font-size: 54px; font-weight: 700; line-height: 1.12; }
+  .pr-table { width: 100%; border-collapse: collapse; margin-top: 26px; }
+  .pr-table th { font-family: Inter, system-ui, sans-serif; font-size: 18px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); text-align: left;
+    padding: 8px 24px 8px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); white-space: nowrap; }
+  .pr-table td { font-family: Inter, system-ui, sans-serif; font-size: 21px; font-weight: 500;
+    padding: 9px 24px 9px 0; border-bottom: 1px solid var(--rule); font-variant-numeric: tabular-nums; }
+  .pr-table tr:last-child td { border-bottom: 2px solid var(--ink); }
+  .pr-table td:first-child { font-weight: 700; white-space: nowrap; }
+  .pr-table td:last-child { white-space: nowrap; }
+</style>
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+  #deck-viewport { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; }
+  #deck-stage { width: 1920px; height: 1080px; flex: 0 0 auto; position: relative; overflow: hidden; transform-origin: center center; background: #fff; }
+</style>
+</head>
+<body>
+<div id="deck-viewport"><div id="deck-stage">
+
+    <div class="pr-slide">
+      <div class="pr-runhead"><span>Typodeck Research · November 2026</span><span class="pr-page">p. 06</span></div>
+      <div class="pr-double-rule"></div>
+      <div class="pr-dense-head">
+        <div class="pr-kicker">Appendix — all eleven cases</div>
+        <div class="pr-fig-label">Table 4</div>
+      </div>
+      <h1 class="pr-dense-title">All eleven cases at a glance</h1>
+      <table class="pr-table">
+        <tr><th>Case</th><th>Ship pressure</th><th>Missed check</th><th>Cost</th></tr>
+        <tr><td>P-01</td><td>Launch-day demo</td><td>Config diff unreviewed</td><td>4 h rollback</td></tr>
+<tr><td>P-02</td><td>Quarter-end close</td><td>Migration runbook skipped</td><td>2 d backfill</td></tr>
+<tr><td>P-03</td><td>Hotfix train</td><td>Second reviewer waived</td><td>Sev-1, 6 h</td></tr>
+<tr><td>P-04</td><td>Partner deadline</td><td>Feature flag untested</td><td>3 d partial outage</td></tr>
+<tr><td>P-05</td><td>Launch-day demo</td><td>Load test deferred</td><td>5 h degraded</td></tr>
+<tr><td>P-06</td><td>Rebrand cutover</td><td>DNS change bundled</td><td>90 min blackout</td></tr>
+<tr><td>P-07</td><td>Quarter-end close</td><td>Rollback plan unwritten</td><td>8 h recovery</td></tr>
+<tr><td>P-08</td><td>Hotfix train</td><td>Staging gate skipped</td><td>Sev-2, 3 h</td></tr>
+<tr><td>P-09</td><td>Partner deadline</td><td>Secrets rotated live</td><td>2 h auth errors</td></tr>
+<tr><td>P-10</td><td>Rebrand cutover</td><td>Cache purge unsequenced</td><td>45 min stale reads</td></tr>
+<tr><td>P-11</td><td>Launch-day demo</td><td>Monitor alerts muted</td><td>Sev-1, 5 h</td></tr>
+      </table>
+      <p class="pr-caption"><strong>Table 4.</strong> All eleven cases: ship pressure, missed check, and cost.</p>
+      <div class="pr-footnotes">
+        <span class="pr-fn"><sup>[1]</sup>Fixture data · invented for density testing.</span>
+      </div>
+    </div>
+</div></div>
+<script>
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+
+</body>
+</html>

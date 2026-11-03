@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modulo — Comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .md { position:absolute; inset:0; background-color:#FFFFFF;
+    background-image:linear-gradient(#E5E5E5 1px, transparent 1px),
+      linear-gradient(90deg, #E5E5E5 1px, transparent 1px);
+    background-size:240px 240px;
+    font-family:'Inter', system-ui, sans-serif; color:#14213D; }
+  .md .top { position:absolute; top:64px; left:120px; right:120px; display:flex; align-items:center; gap:16px; }
+  .md .tile { width:48px; height:48px; flex:0 0 auto; }
+  .md .kicker { display:flex; align-items:center; gap:12px; margin-left:32px; }
+  .md .chip { width:12px; height:12px; background:#FCA311; flex:0 0 auto; }
+  .md .kicker-text { font-family:'Sora', "Arial Black", sans-serif; font-weight:600; font-size:15px;
+    letter-spacing:0.12em; text-transform:uppercase; color:#14213D; white-space:nowrap; }
+  .md .main { position:absolute; top:200px; left:120px; right:120px; bottom:184px; }
+  .md .footer { position:absolute; left:0; right:0; bottom:0; height:120px; background:#14213D; color:#FFFFFF; }
+  .md .rule { position:absolute; top:-6px; left:0; right:0; height:6px; background:#FCA311; }
+  .md .footer-inner { height:120px; padding:0 120px; display:flex; align-items:center;
+    justify-content:space-between; font-family:'Sora', "Arial Black", sans-serif; font-weight:600;
+    font-size:14px; letter-spacing:0.12em; text-transform:uppercase; }
+  .md .counter { color:#FCA311; }
+  .md h1.hero { font-family:'Sora', "Arial Black", sans-serif; font-weight:800; font-size:88px;
+    line-height:1.06; letter-spacing:-0.015em; color:#14213D; margin:0; text-wrap:pretty; }
+  .md .subrow { display:flex; align-items:flex-start; gap:16px; margin-top:40px; max-width:980px; }
+  .md .sq { width:14px; height:14px; background:#FCA311; flex:0 0 auto; margin-top:12px; }
+  .md .subtitle { font-size:27px; line-height:1.55; color:#3D4C6D; margin:0; }
+  /* cover split */
+  .md .cover-main { display:flex; gap:64px; height:100%; }
+  .md .cover-left { flex:1 1 auto; min-width:0; display:flex; flex-direction:column; justify-content:center; }
+  .md .cells { flex:0 0 516px; display:grid; grid-template-columns:1fr 1fr; gap:16px; align-content:center; }
+  .md .cell { padding:28px; display:flex; flex-direction:column; justify-content:center; gap:10px; min-height:200px; }
+  .md .cell.amber { background:#FCA311; color:#14213D; }
+  .md .cell.deep { background:#14213D; color:#FFFFFF; }
+  .md .cell.silver { background:#E5E5E5; color:#14213D; }
+  .md .cell.line { background:#FFFFFF; border:1px solid #C9C9C9; color:#14213D; }
+  .md .stat { font-family:'Sora', "Arial Black", sans-serif; font-weight:800; font-size:84px;
+    line-height:1; letter-spacing:-0.02em; }
+  .md .cell-label { font-family:'Sora', "Arial Black", sans-serif; font-weight:600; font-size:14px;
+    letter-spacing:0.12em; text-transform:uppercase; }
+  .md .point { display:flex; align-items:center; gap:12px; font-family:'Sora', "Arial Black", sans-serif;
+    font-weight:600; font-size:15px; letter-spacing:0.12em; text-transform:uppercase; }
+  .md .dot { width:12px; height:12px; border-radius:50%; background:#FCA311; flex:0 0 auto; }
+  .md .cell.deep .dot.follow { background:#FFFFFF; }
+  .md .cell.silver .dot { background:#14213D; border-radius:0; width:14px; height:14px; }
+  .md .mini { display:flex; gap:8px; }
+  .md .mini span { width:24px; height:24px; display:block; }
+  /* divider: deep hero band */
+  .md .divband { position:absolute; left:0; right:0; top:200px; bottom:184px; background:#14213D;
+    display:flex; align-items:center; }
+  .md .divband-inner { padding:0 120px; width:100%; }
+  .md .div-kicker { display:flex; align-items:center; gap:12px; }
+  .md .div-kicker .kicker-text { color:#FFFFFF; }
+  .md .div-title { font-family:'Sora', "Arial Black", sans-serif; font-weight:800; font-size:96px;
+    line-height:1.06; letter-spacing:-0.015em; color:#FFFFFF; margin:32px 0 0 0; max-width:1400px; }
+  .md .div-title .u { box-shadow:0 6px 0 0 #FCA311; }
+  .md .div-orient { font-size:27px; line-height:1.55; color:rgba(255,255,255,0.82); margin:32px 0 0 0; }
+  .md .div-num { position:absolute; right:120px; top:50%; transform:translateY(-50%);
+    font-family:'Sora', "Arial Black", sans-serif; font-weight:800; font-size:220px; line-height:1;
+    letter-spacing:-0.02em; color:#FCA311; }
+  /* statement */
+  .md .stmt-wrap { height:100%; display:flex; flex-direction:column; justify-content:center; max-width:1500px; }
+  .md .stmt { font-family:'Sora', "Arial Black", sans-serif; font-weight:800; font-size:84px;
+    line-height:1.12; letter-spacing:-0.015em; color:#14213D; margin:0; text-wrap:pretty; }
+  .md .stmt .u { box-shadow:0 6px 0 0 #FCA311; }
+  .md .src { font-size:15px; font-weight:500; color:#3D4C6D; margin:36px 0 0 0;
+    display:flex; align-items:center; gap:12px; }
+  .md .src::before { content:""; width:14px; height:14px; background:#FCA311; }
+  /* evidence: amber stat module + white cards */
+  .md .ev-grid { display:grid; grid-template-columns:420px 1fr; gap:16px; height:100%; }
+  .md .ev-amber { background:#FCA311; color:#14213D; padding:40px; display:flex; flex-direction:column;
+    justify-content:center; gap:14px; }
+  .md .ev-amber .n { font-family:'Sora', "Arial Black", sans-serif; font-weight:800; font-size:120px;
+    line-height:1; letter-spacing:-0.02em; }
+  .md .ev-amber .l { font-family:'Sora', "Arial Black", sans-serif; font-weight:600; font-size:16px;
+    letter-spacing:0.12em; text-transform:uppercase; line-height:1.6; }
+  .md .ev-cards { display:flex; flex-direction:column; gap:16px; }
+  .md .ev-card { background:#FFFFFF; border:1px solid #C9C9C9; padding:36px 40px; }
+  .md .ev-card h2 { font-family:'Sora', "Arial Black", sans-serif; font-weight:800; font-size:40px;
+    line-height:1.15; letter-spacing:-0.01em; margin:0; }
+  .md .ev-card p { font-size:21px; line-height:1.65; color:#3D4C6D; margin:16px 0 0 0; }
+  .md .ev-card .cap { font-size:15px; font-weight:500; color:#3D4C6D; margin:20px 0 0 0;
+    display:flex; align-items:center; gap:12px; }
+  .md .ev-card .cap::before { content:""; width:12px; height:12px; border-radius:50%; background:#14213D; }
+  /* comparison */
+  .md .cmp-title { font-family:'Sora', "Arial Black", sans-serif; font-weight:800; font-size:56px;
+    line-height:1.1; letter-spacing:-0.01em; margin:0 0 24px 0; }
+  .md .cmp-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .md .cmp-card { padding:36px 40px; }
+  .md .cmp-card.white { background:#FFFFFF; border:1px solid #C9C9C9; }
+  .md .cmp-card.deep { background:#14213D; color:#FFFFFF; }
+  .md .cmp-card h3 { font-family:'Sora', "Arial Black", sans-serif; font-weight:700; font-size:24px;
+    margin:0 0 20px 0; }
+  .md .cmp-card ul { list-style:none; margin:0; padding:0; }
+  .md .cmp-card li { display:flex; align-items:flex-start; gap:14px; font-size:20px; line-height:1.55;
+    padding:12px 0; border-top:1px solid #C9C9C9; }
+  .md .cmp-card.deep li { border-top-color:#3D4C6D; }
+  .md .cmp-card li i { width:14px; height:14px; flex:0 0 auto; margin-top:9px; background:#FCA311; }
+  .md .cmp-card.deep li:first-child i { border-radius:50%; }
+  .md .cmp-card.deep li:not(:first-child) i { border-radius:50%; background:#FFFFFF; }
+  .md .cmp-cap { font-size:19px; line-height:1.6; color:#3D4C6D; margin:24px 0 0 0; max-width:1200px;
+    display:flex; gap:14px; align-items:flex-start; }
+  .md .cmp-cap::before { content:""; width:14px; height:14px; background:#FCA311; flex:0 0 auto; margin-top:8px; }
+  /* dense table */
+  .md .d-title { font-family:'Sora', "Arial Black", sans-serif; font-weight:800; font-size:44px;
+    line-height:1.1; letter-spacing:-0.01em; margin:0 0 20px 0; }
+  .md table.mod { border-collapse:collapse; width:100%; }
+  .md table.mod th { background:#14213D; color:#FFFFFF; font-family:'Sora', "Arial Black", sans-serif;
+    font-weight:600; font-size:14px; letter-spacing:0.12em; text-transform:uppercase; text-align:left;
+    padding:12px 20px; }
+  .md table.mod td { font-size:17px; line-height:1.4; padding:9px 20px; border-bottom:1px solid #C9C9C9;
+    background:#FFFFFF; white-space:nowrap; }
+  .md table.mod tr:nth-child(even) td { background:#E5E5E5; }
+  .md table.mod td.c0 { font-family:'Sora', "Arial Black", sans-serif; font-weight:700; font-size:16px; }
+  .md .d-foot { font-size:14px; font-weight:500; color:#3D4C6D; margin:14px 0 0 0; }
+  /* closing: amber band */
+  .md .closeband { position:absolute; left:0; right:0; top:200px; bottom:184px; background:#FCA311;
+    display:flex; align-items:center; }
+  .md .closeband-inner { padding:0 120px; width:100%; }
+  .md .close-line { font-family:'Sora', "Arial Black", sans-serif; font-weight:800; font-size:104px;
+    line-height:1.05; letter-spacing:-0.015em; color:#14213D; margin:0; max-width:1400px; }
+  .md .close-recap { font-size:29px; line-height:1.55; color:rgba(20,33,61,0.85); margin:28px 0 0 0; }
+  .md .close-ctx { display:flex; align-items:center; gap:12px; margin-top:36px;
+    font-family:'Sora', "Arial Black", sans-serif; font-weight:600; font-size:15px;
+    letter-spacing:0.12em; text-transform:uppercase; color:#14213D; }
+  .md .close-ctx::before { content:""; width:12px; height:12px; background:#14213D; }
+</style>
+<style>
+  html, body { margin:0; padding:0; width:100%; height:100%; background:#000; overflow:hidden; }
+  #deck-viewport { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:#000; }
+  #deck-stage { width:1920px; height:1080px; flex:0 0 auto; position:relative; overflow:hidden;
+    transform-origin:center center; background:#fff; }
+</style>
+</head>
+<body>
+<div id="deck-viewport"><div id="deck-stage">
+<div class="md">
+
+<div class="top">
+<span class="tile" style="background:#FCA311"></span>
+<span class="tile" style="background:#14213D"></span>
+<span class="tile" style="background:#E5E5E5"></span>
+<span class="tile" style="background:#14213D"></span>
+<span class="tile" style="background:#FCA311"></span>
+<span class="tile" style="background:#E5E5E5"></span>
+<div class="kicker"><span class="chip"></span><span class="kicker-text">The choice</span></div></div>
+<div class="main">
+<h2 class="cmp-title">Two teams, one deadline</h2>
+<div class="cmp-grid">
+<div class="cmp-card white"><h3>Rushed review</h3><ul>
+<li><i></i>Merged with a single skim approval</li>
+<li><i></i>Config changes bundled into feature PRs</li>
+<li><i></i>Rollback discovered by customers first</li>
+</ul></div>
+<div class="cmp-card deep"><h3>Disciplined review</h3><ul>
+<li><i></i>Required a second reviewer on every merge</li>
+<li><i></i>Config changes shipped in isolated PRs</li>
+<li><i></i>Rollback caught in staging, never in production</li>
+</ul></div>
+</div>
+<p class="cmp-cap">Same deadline, different discipline: one team paid at review time, the other in production.</p>
+</div>
+<div class="footer"><div class="rule"></div><div class="footer-inner"><span class="counter">05 / 07</span><span>Typodeck Research</span></div></div>
+
+</div>
+</div></div>
+<script>
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fika — Evidence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  .fika-slide { position: absolute; inset: 0; background: #FAFAF7; color: #3D4A54;
+    font-family: 'Nunito Sans', system-ui, sans-serif; padding: 96px 120px 88px 120px;
+    display: flex; flex-direction: column; }
+  .fika-kicker { display: flex; align-items: center; gap: 18px; font-size: 22px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; color: #3D4A54; }
+  .fika-dot { width: 14px; height: 14px; border-radius: 999px; background: #7FA6C9; flex: 0 0 auto; }
+  .fika-title { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 72px; line-height: 1.12;
+    text-transform: lowercase; margin: 0; color: #3D4A54; }
+  .fika-rule { height: 2px; border-radius: 2px; background: #DCE8E3; margin: 40px 0 32px 0; max-width: 560px; }
+  .fika-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 40px; }
+  .fika-page { font-size: 20px; font-weight: 700; letter-spacing: 0.2em; }
+  .fika-context { font-size: 20px; font-weight: 400; opacity: 0.72; }
+  .fika-chip { font-size: 22px; font-weight: 700; letter-spacing: 0.04em; color: #3D4A54; border-radius: 999px; padding: 14px 28px; }
+
+
+  .fika-dot.b { background: #E8B4A0; }
+  .fika-cols { flex: 1; display: flex; gap: 96px; align-items: center; margin-top: 56px; min-height: 0; }
+  .fika-text { flex: 0 0 57%; min-width: 0; }
+  .fika-rule.b { background: #F5DCD2; }
+  .fika-sub { font-size: 30px; line-height: 1.6; margin: 0; max-width: 32ch; }
+  .fika-source { font-size: 20px; margin: 32px 0 0; opacity: 0.72; }
+  .fika-panel { flex: 1; background: #F5DCD2; border-radius: 24px; padding: 72px 56px;
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: center; align-self: stretch; }
+  .fika-numeral { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 160px; line-height: 1; margin: 0; }
+  .fika-panel-cap { font-size: 24px; line-height: 1.6; margin: 24px 0 0 0; max-width: 16ch; }
+</style>
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+  #deck-viewport { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; }
+  #deck-stage { width: 1920px; height: 1080px; flex: 0 0 auto; position: relative; overflow: hidden; transform-origin: center center; background: #FAFAF7; }
+</style>
+</head>
+<body>
+<div id="deck-viewport"><div id="deck-stage">
+
+    <div class="fika-slide">
+      <div class="fika-kicker"><span class="fika-dot b"></span><span>Finding 01</span></div>
+      <div class="fika-cols">
+        <div class="fika-text">
+          <h1 class="fika-title">Teams that required a second reviewer before merge contained failures earlier.</h1>
+          <div class="fika-rule b"></div>
+          <p class="fika-sub">Review depth predicted containment better than team size, tenure, or tooling.</p>
+          <p class="fika-source">Fixture data · not a real study</p>
+        </div>
+        <div class="fika-panel">
+          <p class="fika-numeral">63%</p>
+          <p class="fika-panel-cap">fewer sev-1 rollbacks</p>
+        </div>
+      </div>
+      <div class="fika-foot"><span class="fika-page">04</span></div>
+    </div>
+</div></div>
+<script>
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+</body>
+</html>

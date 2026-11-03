@@ -1,0 +1,65 @@
+{
+  "slug": "peer-review",
+  "did": "D22",
+  "slides": [
+    {
+      "kind": "cover",
+      "html": "slides/slide-01-cover.html",
+      "png": "slides/slide-01-cover.png",
+      "validator": "PASS",
+      "verdict": "PASS — masthead + title + abstract + Figure 1 corpus strip (P-01..P-11, fixture-grounded) + bracket footnotes."
+    },
+    {
+      "kind": "divider",
+      "html": "slides/slide-02-divider.html",
+      "png": "slides/slide-02-divider.png",
+      "validator": "PASS",
+      "verdict": "PASS — centered section lid with abstract inset for orienting line; no data; double rule + foot band persist."
+    },
+    {
+      "kind": "statement",
+      "html": "slides/slide-03-statement.html",
+      "png": "slides/slide-03-statement.png",
+      "validator": "PASS",
+      "verdict": "PASS — full-width pull statement between hairlines; source line in foot band only; nothing else."
+    },
+    {
+      "kind": "evidence",
+      "html": "slides/slide-04-evidence.html",
+      "png": "slides/slide-04-evidence.png",
+      "validator": "PASS",
+      "verdict": "PASS — message head + evidence abstract + Figure 2 63% stat rail; keywords from fixture words; source footnote."
+    },
+    {
+      "kind": "comparison",
+      "html": "slides/slide-05-comparison.html",
+      "png": "slides/slide-05-comparison.png",
+      "validator": "PASS",
+      "verdict": "PASS — twin serif groups (a)-(f) + ruled Table 3 with R-/D- refs; italic closing caption; no overflow."
+    },
+    {
+      "kind": "dense",
+      "html": "slides/slide-06-dense.html",
+      "png": "slides/slide-06-dense.png",
+      "validator": "PASS",
+      "verdict": "PASS — full-width ruled Table 4, all 11 verbatim rows at 21px tabular Inter; caption + density footnote; fits frame."
+    },
+    {
+      "kind": "closing",
+      "html": "slides/slide-07-closing.html",
+      "png": "slides/slide-07-closing.png",
+      "validator": "PASS",
+      "verdict": "PASS — centered colophon with In-brief abstract + ink endmark; closing line + recap + context only."
+    }
+  ],
+  "render": {
+    "width": 1920,
+    "height": 1080,
+    "verify": "PASS"
+  },
+  "coherence_verdict": "PASS — white ground, STIX prose vs Inter apparatus split, double-rule masthead + foot band on all 7, blue apparatus-only; 5 distinct compositions (article+rail, centered lid, pull statement, twin groups, full table).",
+  "design_md_gaps_found": [
+    "design.md title-fit JS required per slide for long titles; cover/evidence carry the fit routine, others use safe fixed sizes.",
+    "Figure 1 corpus strip (11 uniform bars) is a fixture-grounded index, not a measured chart — no invented values; design.md offers no index-strip pattern."
+  ]
+}

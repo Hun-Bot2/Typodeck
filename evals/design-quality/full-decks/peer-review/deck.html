@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>peer-review — full deck review</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #111; color: #eee;
+    font-family: system-ui, sans-serif; }
+  header { position: sticky; top: 0; z-index: 10; background: #1a1a1a;
+    padding: 12px 24px; display: flex; align-items: center; gap: 16px;
+    border-bottom: 1px solid #333; }
+  header h1 { font-size: 18px; margin: 0; font-weight: 600; }
+  header .meta { font-size: 14px; color: #aaa; }
+  nav { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  nav button { background: #2a2a2a; color: #eee; border: 1px solid #444;
+    border-radius: 6px; padding: 8px 16px; font-size: 14px; cursor: pointer; }
+  nav button:hover { background: #3a3a3a; }
+  nav .count { font-size: 14px; color: #aaa; min-width: 64px; text-align: center; }
+  main { display: flex; flex-direction: column; align-items: center; gap: 48px;
+    padding: 48px 24px 96px; }
+  section.slide-wrap { width: min(1520px, 96vw); }
+  section.slide-wrap h2 { font-size: 14px; font-weight: 600; color: #aaa;
+    margin: 0 0 12px 0; letter-spacing: 0.08em; text-transform: uppercase; }
+  .frame { width: 100%; aspect-ratio: 16 / 9; border: 1px solid #333;
+    border-radius: 8px; overflow: hidden; background: #000; }
+  .frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+</style>
+</head>
+<body>
+<header>
+  <h1>peer-review</h1><span class="meta">design-quality full deck · 7 slides · 1920×1080</span>
+  <nav><button id="prev">← Prev</button><span class="count" id="count">1 / 7</span><button id="next">Next →</button></nav>
+</header>
+<main>
+  <section class="slide-wrap" id="s01">
+    <h2>01 — cover · slides/slide-01-cover.html</h2>
+    <div class="frame"><iframe src="slides/slide-01-cover.html" title="peer-review cover" loading="lazy"></iframe></div>
+  </section>
+  <section class="slide-wrap" id="s02">
+    <h2>02 — divider · slides/slide-02-divider.html</h2>
+    <div class="frame"><iframe src="slides/slide-02-divider.html" title="peer-review divider" loading="lazy"></iframe></div>
+  </section>
+  <section class="slide-wrap" id="s03">
+    <h2>03 — statement · slides/slide-03-statement.html</h2>
+    <div class="frame"><iframe src="slides/slide-03-statement.html" title="peer-review statement" loading="lazy"></iframe></div>
+  </section>
+  <section class="slide-wrap" id="s04">
+    <h2>04 — evidence · slides/slide-04-evidence.html</h2>
+    <div class="frame"><iframe src="slides/slide-04-evidence.html" title="peer-review evidence" loading="lazy"></iframe></div>
+  </section>
+  <section class="slide-wrap" id="s05">
+    <h2>05 — comparison · slides/slide-05-comparison.html</h2>
+    <div class="frame"><iframe src="slides/slide-05-comparison.html" title="peer-review comparison" loading="lazy"></iframe></div>
+  </section>
+  <section class="slide-wrap" id="s06">
+    <h2>06 — dense · slides/slide-06-dense.html</h2>
+    <div class="frame"><iframe src="slides/slide-06-dense.html" title="peer-review dense" loading="lazy"></iframe></div>
+  </section>
+  <section class="slide-wrap" id="s07">
+    <h2>07 — closing · slides/slide-07-closing.html</h2>
+    <div class="frame"><iframe src="slides/slide-07-closing.html" title="peer-review closing" loading="lazy"></iframe></div>
+  </section>
+</main>
+<script>
+  var idx = 0, total = 7;
+  var wraps = Array.prototype.slice.call(document.querySelectorAll('.slide-wrap'));
+  function show(i) {
+    idx = (i + total) % total;
+    wraps[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('count').textContent = (idx + 1) + ' / ' + total;
+  }
+  document.getElementById('prev').addEventListener('click', function () { show(idx - 1); });
+  document.getElementById('next').addEventListener('click', function () { show(idx + 1); });
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') show(idx + 1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') show(idx - 1);
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(total - 1);
+  });
+</script>
+</body>
+</html>
