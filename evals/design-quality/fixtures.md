@@ -36,6 +36,7 @@ One comparison with two sides plus a shared caption. Used verbatim by the
   - `Config changes shipped in isolated PRs`
   - `Rollback caught in staging, never in production`
 - Shared caption: `Same deadline, different discipline: one team paid at review time, the other in production.`
+- Source line (mandatory on every comparison slide): `Fixture data · not a real study`
 
 ## Benchmark deck — 7 slides
 
@@ -51,7 +52,7 @@ the diversity-harness PRIMARY convention verbatim
 | 2 | divider | Section kicker `Part I — Evidence`; title `What the reviews actually caught`; orienting line `Three patterns, one discipline.`; no data |
 | 3 | statement | Single sentence: `Rushing to ship moves failure downstream, where it costs more.`; optional source line; nothing else |
 | 4 | evidence | Slide-B block verbatim (eyebrow `Finding 01` + message + stat + supporting + source line) |
-| 5 | comparison | Slide-C block verbatim (eyebrow `The choice` + title + both sides + caption) |
+| 5 | comparison | Slide-C block verbatim (eyebrow `The choice` + title + both sides + caption + source line) |
 | 6 | dense | Appendix table: 11 rows x 4 columns (`Case` / `Ship pressure` / `Missed check` / `Cost`), verbatim rows from `fixtures.json`; footnote `Fixture data · invented for density testing`; must fit 1920x1080 without scroll |
 | 7 | closing | Closing line `Slow the review. Ship once.`; recap `Discipline upstream beats heroics downstream.`; context line; no new claims |
 

@@ -1,1 +1,71 @@
-{"coherence":{"notes":"Persistent chrome identical on all 7 slides (slate command bar with live dot + SAMPLE N = 11, hairline footer with volume/page marks). Compositions differ per role: cover (argument column + KPI + case log), divider (full-width section readout + status cells), statement (single readout + context bar), evidence (message + 63% KPI + containment log), comparison (red FAULT vs green COMPLETE panels), dense (full-width dark log table), closing (closing line + context ticker). Inter-argues / Plex-reports boundary held; tabular numerals throughout.","verdict":"PASS"},"design_gaps":["design.md case ids are PM-01..PM-11 but the dense fixture uses P-01..P-11; cover case-log ranges reconciled to P-XX for deck-internal coherence (deviation from design.md letter, keeps its mono-log pattern).","design.md is cover-scoped; divider/statement/comparison/dense/closing layouts extend its components (pills, KPI cards, ticker rows, case log) to full-width compositions — no new hues or typefaces added.","Fixture strings that render uppercase (pills, ticker values, log headers) are stored in fixture case with text-transform:uppercase so verbatim audit passes on source.","No repo design-quality validator exists (no script prints RESULT: PASS); validator field is MANUAL-PASS from verbatim audit + viewed renders, not the official gate.","Task brief named slides/01..07 but contracts.md pins slides/slide-NN-kind.html; followed contracts.md."],"did":"D10","render":{"height":1080,"verify":"PASS","width":1920},"slides":[{"html":"slides/slide-01-cover.html","kind":"cover","png":"slides/slide-01-cover.png","validator":"MANUAL-PASS","verdict":"PASS — title/subtitle/context verbatim; KPI + P-XX case log + ticker rows fixture-derived; viewed 1920x1080 clean."},{"html":"slides/slide-02-divider.html","kind":"divider","png":"slides/slide-02-divider.png","validator":"MANUAL-PASS","verdict":"PASS — kicker/title/orienting line verbatim, no data; status-cell strip is chrome; viewed clean."},{"html":"slides/slide-03-statement.html","kind":"statement","png":"slides/slide-03-statement.png","validator":"MANUAL-PASS","verdict":"PASS — single sentence + source line only; restraint held; viewed clean."},{"html":"slides/slide-04-evidence.html","kind":"evidence","png":"slides/slide-04-evidence.png","validator":"MANUAL-PASS","verdict":"PASS — Slide-B block verbatim (message + 63% KPI + supporting + source line in ticker and seal cap); viewed clean."},{"html":"slides/slide-05-comparison.html","kind":"comparison","png":"slides/slide-05-comparison.png","validator":"MANUAL-PASS","verdict":"PASS — Slide-C block verbatim in mono log rows; red/green signal borders carry side valence; caption present; viewed clean."},{"html":"slides/slide-06-dense.html","kind":"dense","png":"slides/slide-06-dense.png","validator":"MANUAL-PASS","verdict":"PASS — all 11 rows x 4 cols verbatim + footnote in dark log, fits without scroll, readable; sev costs amber-flagged; viewed clean."},{"html":"slides/slide-07-closing.html","kind":"closing","png":"slides/slide-07-closing.png","validator":"MANUAL-PASS","verdict":"PASS — closing line + recap + context ticker, no new claims; viewed clean."}],"slug":"signal-board"}
+{
+  "coherence": {
+    "notes": "Persistent chrome identical on all 7 slides (slate command bar with live dot + SAMPLE N = 11, hairline footer with volume/page marks). Compositions differ per role: cover (argument column + KPI + case log), divider (full-width section readout + status cells), statement (single readout + context bar), evidence (message + 63% KPI + containment log), comparison (red FAULT vs green COMPLETE panels), dense (full-width dark log table), closing (closing line + context ticker). Inter-argues / Plex-reports boundary held; tabular numerals throughout.",
+    "verdict": "PASS"
+  },
+  "design_gaps": [
+    "design.md case ids are PM-01..PM-11 but the dense fixture uses P-01..P-11; cover case-log ranges reconciled to P-XX for deck-internal coherence (deviation from design.md letter, keeps its mono-log pattern).",
+    "design.md is cover-scoped; divider/statement/comparison/dense/closing layouts extend its components (pills, KPI cards, ticker rows, case log) to full-width compositions — no new hues or typefaces added.",
+    "Fixture strings that render uppercase (pills, ticker values, log headers) are stored in fixture case with text-transform:uppercase so verbatim audit passes on source.",
+    "No repo design-quality validator exists (no script prints RESULT: PASS); validator field is MANUAL-PASS from verbatim audit + viewed renders, not the official gate.",
+    "Task brief named slides/01..07 but contracts.md pins slides/slide-NN-kind.html; followed contracts.md."
+  ],
+  "did": "D10",
+  "render": {
+    "height": 1080,
+    "verify": "PASS",
+    "width": 1920
+  },
+  "slides": [
+    {
+      "html": "slides/slide-01-cover.html",
+      "kind": "cover",
+      "png": "slides/slide-01-cover.png",
+      "validator": "MANUAL-PASS",
+      "verdict": "PASS — title/subtitle/context verbatim; KPI + P-XX case log + ticker rows fixture-derived; viewed 1920x1080 clean."
+    },
+    {
+      "html": "slides/slide-02-divider.html",
+      "kind": "divider",
+      "png": "slides/slide-02-divider.png",
+      "validator": "MANUAL-PASS",
+      "verdict": "PASS — kicker/title/orienting line verbatim, no data; status-cell strip pulled up under orienting line and content group vertically centered (D10 void fix 2026-11-04, was margin-top:auto with ~400px mid void); viewed clean."
+    },
+    {
+      "html": "slides/slide-03-statement.html",
+      "kind": "statement",
+      "png": "slides/slide-03-statement.png",
+      "validator": "MANUAL-PASS",
+      "verdict": "PASS — single sentence + source line only; restraint held; viewed clean."
+    },
+    {
+      "html": "slides/slide-04-evidence.html",
+      "kind": "evidence",
+      "png": "slides/slide-04-evidence.png",
+      "validator": "MANUAL-PASS",
+      "verdict": "PASS — Slide-B block verbatim (message + 63% KPI + supporting + source line in ticker and seal cap); viewed clean."
+    },
+    {
+      "html": "slides/slide-05-comparison.html",
+      "kind": "comparison",
+      "png": "slides/slide-05-comparison.png",
+      "validator": "MANUAL-PASS",
+      "verdict": "PASS — Slide-C block verbatim in mono log rows; red/green signal borders carry side valence; caption present; seal cap carries fixture marking (EX-SRC fix 2026-11-04); viewed clean."
+    },
+    {
+      "html": "slides/slide-06-dense.html",
+      "kind": "dense",
+      "png": "slides/slide-06-dense.png",
+      "validator": "MANUAL-PASS",
+      "verdict": "PASS — all 11 rows x 4 cols verbatim + footnote in dark log, fits without scroll, readable; sev costs amber-flagged; viewed clean."
+    },
+    {
+      "html": "slides/slide-07-closing.html",
+      "kind": "closing",
+      "png": "slides/slide-07-closing.png",
+      "validator": "MANUAL-PASS",
+      "verdict": "PASS — closing line + recap + context ticker, no new claims; viewed clean."
+    }
+  ],
+  "slug": "signal-board"
+}

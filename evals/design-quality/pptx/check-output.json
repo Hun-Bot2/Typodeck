@@ -1,0 +1,2863 @@
+{
+  "seed": 7,
+  "expectedChars": 1923,
+  "slides": 7,
+  "designs": [
+    {
+      "slug": "field-manual",
+      "file": "field-manual.pptx",
+      "bytes": 103041,
+      "system": "swiss",
+      "theme": {
+        "id": "template:field-manual",
+        "colors": {
+          "background": "#FFFFFF",
+          "backgroundAlt": "#FFFFFF",
+          "ink": "#1A1A1A",
+          "accent": "#0B5FFF",
+          "muted": "#6E6A5E"
+        },
+        "fonts": {
+          "heading": [
+            "\"Archivo\"",
+            "\"Noto Sans KR\"",
+            "system-ui",
+            "sans-serif"
+          ],
+          "body": [
+            "\"IBM Plex Sans\"",
+            "\"Noto Sans KR\"",
+            "system-ui",
+            "sans-serif"
+          ]
+        }
+      },
+      "engine": {
+        "slides": 7,
+        "textBoxes": 25
+      },
+      "xml": {
+        "slides": 7,
+        "shapes": 25,
+        "runs": 42,
+        "runChars": 1923,
+        "pics": 0,
+        "blips": 0,
+        "faces": [
+          "Archivo",
+          "IBM Plex Sans"
+        ],
+        "bgs": [
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF"
+        ],
+        "sldSz": "<p:sldSz cx=\"12188952\" cy=\"6858000\"/>"
+      },
+      "editableExact": true,
+      "validator": {
+        "ok": true,
+        "errors": [],
+        "stats": {
+          "slides": 7,
+          "textShapes": 25,
+          "editableChars": 1923,
+          "slideSizeIn": {
+            "w": 13.33,
+            "h": 7.5
+          }
+        }
+      },
+      "minFont": 9,
+      "denseBodyPt": 12,
+      "denseWrapLines": 12,
+      "denseParaCount": 12,
+      "geomSpotDeltaIn": 0,
+      "geomSpotXml": {
+        "x": 0.6,
+        "y": 2.35,
+        "w": 5.915,
+        "h": 0.845,
+        "text": "The Hidden Cost of Rushing to Ship"
+      },
+      "slides": [
+        {
+          "id": "cover",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Archivo",
+              "chars": 33,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.845
+              ],
+              "face": "Archivo",
+              "chars": 34,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 53,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "divider",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Archivo",
+              "chars": 17,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.845
+              ],
+              "face": "Archivo",
+              "chars": 32,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 31,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "statement",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                1.295
+              ],
+              "face": "Archivo",
+              "chars": 62,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "evidence",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Archivo",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                1.745
+              ],
+              "face": "Archivo",
+              "chars": 78,
+              "lines": 1
+            },
+            {
+              "role": "number",
+              "fontSize": 72,
+              "weight": 700,
+              "geom": [
+                0.6,
+                4.315,
+                5.915,
+                0.78
+              ],
+              "face": "Archivo",
+              "chars": 3,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.491
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 77,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 55,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "comparison",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Archivo",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Archivo",
+              "chars": 23,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.974
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 130,
+              "lines": 4
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                3.544,
+                5.915,
+                0.974
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 150,
+              "lines": 4
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 91,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "dense",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Archivo",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Archivo",
+              "chars": 28,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                2.908
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 798,
+              "lines": 12
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 43,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Archivo",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 45,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "IBM Plex Sans",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fika",
+      "file": "fika.pptx",
+      "bytes": 102885,
+      "system": "editorial",
+      "theme": {
+        "id": "template:fika",
+        "colors": {
+          "background": "#FFFFFF",
+          "backgroundAlt": "#FFFFFF",
+          "ink": "#3D4A54",
+          "accent": "#3D4A54",
+          "muted": "#3D4A54"
+        },
+        "fonts": {
+          "heading": [
+            "\"Fraunces\"",
+            "\"Georgia\"",
+            "\"Noto Serif KR\"",
+            "serif"
+          ],
+          "body": [
+            "\"Nunito Sans\"",
+            "\"Noto Sans KR\"",
+            "system-ui",
+            "sans-serif"
+          ]
+        }
+      },
+      "engine": {
+        "slides": 7,
+        "textBoxes": 25
+      },
+      "xml": {
+        "slides": 7,
+        "shapes": 25,
+        "runs": 42,
+        "runChars": 1923,
+        "pics": 0,
+        "blips": 0,
+        "faces": [
+          "Fraunces",
+          "Nunito Sans"
+        ],
+        "bgs": [
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF"
+        ],
+        "sldSz": "<p:sldSz cx=\"12188952\" cy=\"6858000\"/>"
+      },
+      "editableExact": true,
+      "validator": {
+        "ok": true,
+        "errors": [],
+        "stats": {
+          "slides": 7,
+          "textShapes": 25,
+          "editableChars": 1923,
+          "slideSizeIn": {
+            "w": 13.33,
+            "h": 7.5
+          }
+        }
+      },
+      "minFont": 7,
+      "denseBodyPt": 10.5,
+      "denseWrapLines": 12,
+      "denseParaCount": 12,
+      "geomSpotDeltaIn": 0,
+      "geomSpotXml": {
+        "x": 1,
+        "y": 2.049722222222222,
+        "w": 8.6,
+        "h": 1.296444663167104,
+        "text": "The Hidden Cost of Rushing to Ship"
+      },
+      "slides": [
+        {
+          "id": "cover",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 11,
+              "weight": 500,
+              "geom": [
+                1,
+                1.5,
+                8.6,
+                0.23
+              ],
+              "face": "Fraunces",
+              "chars": 33,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 46,
+              "weight": 700,
+              "geom": [
+                1,
+                2.05,
+                8.6,
+                1.296
+              ],
+              "face": "Fraunces",
+              "chars": 34,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 15,
+              "weight": 400,
+              "geom": [
+                1,
+                3.766,
+                8.6,
+                0.313
+              ],
+              "face": "Nunito Sans",
+              "chars": 53,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "divider",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 11,
+              "weight": 500,
+              "geom": [
+                2.4,
+                1.5,
+                8.6,
+                0.23
+              ],
+              "face": "Fraunces",
+              "chars": 17,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 42,
+              "weight": 700,
+              "geom": [
+                2.4,
+                2.05,
+                8.6,
+                1.191
+              ],
+              "face": "Fraunces",
+              "chars": 32,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 15,
+              "weight": 400,
+              "geom": [
+                2.4,
+                3.66,
+                8.6,
+                0.313
+              ],
+              "face": "Nunito Sans",
+              "chars": 31,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "statement",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 46,
+              "weight": 700,
+              "geom": [
+                1,
+                1.5,
+                8.6,
+                2.012
+              ],
+              "face": "Fraunces",
+              "chars": 62,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 10,
+              "weight": 400,
+              "geom": [
+                1,
+                3.932,
+                8.6,
+                0.226
+              ],
+              "face": "Nunito Sans",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "evidence",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 9.35,
+              "weight": 500,
+              "geom": [
+                2.4,
+                1.5,
+                8.6,
+                0.207
+              ],
+              "face": "Fraunces",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 39.1,
+              "weight": 700,
+              "geom": [
+                2.4,
+                2.027,
+                8.6,
+                1.722
+              ],
+              "face": "Fraunces",
+              "chars": 78,
+              "lines": 1
+            },
+            {
+              "role": "number",
+              "fontSize": 102,
+              "weight": 700,
+              "geom": [
+                2.4,
+                4.169,
+                8.6,
+                1.072
+              ],
+              "face": "Fraunces",
+              "chars": 3,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12.75,
+              "weight": 400,
+              "geom": [
+                2.4,
+                5.561,
+                8.6,
+                0.278
+              ],
+              "face": "Nunito Sans",
+              "chars": 77,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 8.5,
+              "weight": 400,
+              "geom": [
+                2.4,
+                6.159,
+                8.6,
+                0.204
+              ],
+              "face": "Nunito Sans",
+              "chars": 55,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "comparison",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 11,
+              "weight": 500,
+              "geom": [
+                1,
+                1.5,
+                8.6,
+                0.23
+              ],
+              "face": "Fraunces",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 46,
+              "weight": 700,
+              "geom": [
+                1,
+                2.05,
+                8.6,
+                0.581
+              ],
+              "face": "Fraunces",
+              "chars": 23,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 15,
+              "weight": 400,
+              "geom": [
+                1,
+                3.051,
+                8.6,
+                1.313
+              ],
+              "face": "Nunito Sans",
+              "chars": 130,
+              "lines": 4
+            },
+            {
+              "role": "body",
+              "fontSize": 15,
+              "weight": 400,
+              "geom": [
+                1,
+                4.684,
+                8.6,
+                1.313
+              ],
+              "face": "Nunito Sans",
+              "chars": 150,
+              "lines": 4
+            },
+            {
+              "role": "caption",
+              "fontSize": 10,
+              "weight": 400,
+              "geom": [
+                1,
+                6.274,
+                8.6,
+                0.226
+              ],
+              "face": "Nunito Sans",
+              "chars": 91,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "dense",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 7.699999999999999,
+              "weight": 500,
+              "geom": [
+                2.4,
+                1.5,
+                8.6,
+                0.185
+              ],
+              "face": "Fraunces",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 32.199999999999996,
+              "weight": 700,
+              "geom": [
+                2.4,
+                2.005,
+                8.6,
+                0.431
+              ],
+              "face": "Fraunces",
+              "chars": 28,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 10.5,
+              "weight": 400,
+              "geom": [
+                2.4,
+                2.855,
+                8.6,
+                2.81
+              ],
+              "face": "Nunito Sans",
+              "chars": 798,
+              "lines": 12
+            },
+            {
+              "role": "caption",
+              "fontSize": 7,
+              "weight": 400,
+              "geom": [
+                2.4,
+                5.985,
+                8.6,
+                0.182
+              ],
+              "face": "Nunito Sans",
+              "chars": 43,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 46,
+              "weight": 700,
+              "geom": [
+                1,
+                1.5,
+                8.6,
+                1.296
+              ],
+              "face": "Fraunces",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 15,
+              "weight": 400,
+              "geom": [
+                1,
+                3.216,
+                8.6,
+                0.313
+              ],
+              "face": "Nunito Sans",
+              "chars": 45,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 10,
+              "weight": 400,
+              "geom": [
+                1,
+                3.85,
+                8.6,
+                0.226
+              ],
+              "face": "Nunito Sans",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "gridline-swiss",
+      "file": "gridline-swiss.pptx",
+      "bytes": 102345,
+      "system": "swiss",
+      "theme": {
+        "id": "template:gridline-swiss",
+        "colors": {
+          "background": "#FFFFFF",
+          "backgroundAlt": "#FFFFFF",
+          "ink": "#111111",
+          "accent": "#E30613",
+          "muted": "#6B6B6B"
+        },
+        "fonts": {
+          "heading": [
+            "\"Archivo\"",
+            "\"Noto Sans KR\"",
+            "system-ui",
+            "sans-serif"
+          ],
+          "body": [
+            "\"Inter\"",
+            "\"Noto Sans KR\"",
+            "system-ui",
+            "sans-serif"
+          ]
+        }
+      },
+      "engine": {
+        "slides": 7,
+        "textBoxes": 25
+      },
+      "xml": {
+        "slides": 7,
+        "shapes": 25,
+        "runs": 42,
+        "runChars": 1923,
+        "pics": 0,
+        "blips": 0,
+        "faces": [
+          "Archivo",
+          "Inter"
+        ],
+        "bgs": [
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF"
+        ],
+        "sldSz": "<p:sldSz cx=\"12188952\" cy=\"6858000\"/>"
+      },
+      "editableExact": true,
+      "validator": {
+        "ok": true,
+        "errors": [],
+        "stats": {
+          "slides": 7,
+          "textShapes": 25,
+          "editableChars": 1923,
+          "slideSizeIn": {
+            "w": 13.33,
+            "h": 7.5
+          }
+        }
+      },
+      "minFont": 9,
+      "denseBodyPt": 12,
+      "denseWrapLines": 12,
+      "denseParaCount": 12,
+      "geomSpotDeltaIn": 0,
+      "geomSpotXml": {
+        "x": 0.6,
+        "y": 2.35,
+        "w": 5.915,
+        "h": 0.845,
+        "text": "The Hidden Cost of Rushing to Ship"
+      },
+      "slides": [
+        {
+          "id": "cover",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Archivo",
+              "chars": 33,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.845
+              ],
+              "face": "Archivo",
+              "chars": 34,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "Inter",
+              "chars": 53,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "divider",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Archivo",
+              "chars": 17,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.845
+              ],
+              "face": "Archivo",
+              "chars": 32,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "Inter",
+              "chars": 31,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "statement",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                1.295
+              ],
+              "face": "Archivo",
+              "chars": 62,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "evidence",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Archivo",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                1.745
+              ],
+              "face": "Archivo",
+              "chars": 78,
+              "lines": 1
+            },
+            {
+              "role": "number",
+              "fontSize": 72,
+              "weight": 700,
+              "geom": [
+                0.6,
+                4.315,
+                5.915,
+                0.78
+              ],
+              "face": "Archivo",
+              "chars": 3,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.491
+              ],
+              "face": "Inter",
+              "chars": 77,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 55,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "comparison",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Archivo",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Archivo",
+              "chars": 23,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.974
+              ],
+              "face": "Inter",
+              "chars": 130,
+              "lines": 4
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                3.544,
+                5.915,
+                0.974
+              ],
+              "face": "Inter",
+              "chars": 150,
+              "lines": 4
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 91,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "dense",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Archivo",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Archivo",
+              "chars": 28,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                2.908
+              ],
+              "face": "Inter",
+              "chars": 798,
+              "lines": 12
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 43,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Archivo",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "Inter",
+              "chars": 45,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "modulo-grid",
+      "file": "modulo-grid.pptx",
+      "bytes": 102228,
+      "system": "swiss",
+      "theme": {
+        "id": "template:modulo-grid",
+        "colors": {
+          "background": "#FFFFFF",
+          "backgroundAlt": "#FFFFFF",
+          "ink": "#14213D",
+          "accent": "#3D4C6D",
+          "muted": "#3D4C6D"
+        },
+        "fonts": {
+          "heading": [
+            "\"Sora\"",
+            "\"Noto Sans KR\"",
+            "system-ui",
+            "sans-serif"
+          ],
+          "body": [
+            "\"Inter\"",
+            "\"Noto Sans KR\"",
+            "system-ui",
+            "sans-serif"
+          ]
+        }
+      },
+      "engine": {
+        "slides": 7,
+        "textBoxes": 25
+      },
+      "xml": {
+        "slides": 7,
+        "shapes": 25,
+        "runs": 42,
+        "runChars": 1923,
+        "pics": 0,
+        "blips": 0,
+        "faces": [
+          "Inter",
+          "Sora"
+        ],
+        "bgs": [
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF"
+        ],
+        "sldSz": "<p:sldSz cx=\"12188952\" cy=\"6858000\"/>"
+      },
+      "editableExact": true,
+      "validator": {
+        "ok": true,
+        "errors": [],
+        "stats": {
+          "slides": 7,
+          "textShapes": 25,
+          "editableChars": 1923,
+          "slideSizeIn": {
+            "w": 13.33,
+            "h": 7.5
+          }
+        }
+      },
+      "minFont": 9,
+      "denseBodyPt": 12,
+      "denseWrapLines": 12,
+      "denseParaCount": 12,
+      "geomSpotDeltaIn": 0,
+      "geomSpotXml": {
+        "x": 0.6,
+        "y": 2.35,
+        "w": 5.915,
+        "h": 0.845,
+        "text": "The Hidden Cost of Rushing to Ship"
+      },
+      "slides": [
+        {
+          "id": "cover",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Sora",
+              "chars": 33,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.845
+              ],
+              "face": "Sora",
+              "chars": 34,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "Inter",
+              "chars": 53,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "divider",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Sora",
+              "chars": 17,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.845
+              ],
+              "face": "Sora",
+              "chars": 32,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "Inter",
+              "chars": 31,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "statement",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                1.295
+              ],
+              "face": "Sora",
+              "chars": 62,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "evidence",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Sora",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                1.745
+              ],
+              "face": "Sora",
+              "chars": 78,
+              "lines": 1
+            },
+            {
+              "role": "number",
+              "fontSize": 72,
+              "weight": 700,
+              "geom": [
+                0.6,
+                4.315,
+                5.915,
+                0.78
+              ],
+              "face": "Sora",
+              "chars": 3,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.491
+              ],
+              "face": "Inter",
+              "chars": 77,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 55,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "comparison",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Sora",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Sora",
+              "chars": 23,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.974
+              ],
+              "face": "Inter",
+              "chars": 130,
+              "lines": 4
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                3.544,
+                5.915,
+                0.974
+              ],
+              "face": "Inter",
+              "chars": 150,
+              "lines": 4
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 91,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "dense",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Sora",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Sora",
+              "chars": 28,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                2.908
+              ],
+              "face": "Inter",
+              "chars": 798,
+              "lines": 12
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 43,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Sora",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "Inter",
+              "chars": 45,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "peer-review",
+      "file": "peer-review.pptx",
+      "bytes": 103275,
+      "system": "swiss",
+      "theme": {
+        "id": "template:peer-review",
+        "colors": {
+          "background": "#FFFFFF",
+          "backgroundAlt": "#FFFFFF",
+          "ink": "#1A1A1A",
+          "accent": "#0B5394",
+          "muted": "#5A6470"
+        },
+        "fonts": {
+          "heading": [
+            "\"STIX Two Text\"",
+            "\"Georgia\"",
+            "\"Noto Serif KR\"",
+            "serif"
+          ],
+          "body": [
+            "\"STIX Two Text\"",
+            "\"Georgia\"",
+            "\"Noto Sans KR\"",
+            "system-ui",
+            "sans-serif",
+            "serif"
+          ]
+        }
+      },
+      "engine": {
+        "slides": 7,
+        "textBoxes": 25
+      },
+      "xml": {
+        "slides": 7,
+        "shapes": 25,
+        "runs": 42,
+        "runChars": 1923,
+        "pics": 0,
+        "blips": 0,
+        "faces": [
+          "STIX Two Text"
+        ],
+        "bgs": [
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF"
+        ],
+        "sldSz": "<p:sldSz cx=\"12188952\" cy=\"6858000\"/>"
+      },
+      "editableExact": true,
+      "validator": {
+        "ok": true,
+        "errors": [],
+        "stats": {
+          "slides": 7,
+          "textShapes": 25,
+          "editableChars": 1923,
+          "slideSizeIn": {
+            "w": 13.33,
+            "h": 7.5
+          }
+        }
+      },
+      "minFont": 9,
+      "denseBodyPt": 12,
+      "denseWrapLines": 12,
+      "denseParaCount": 12,
+      "geomSpotDeltaIn": 0,
+      "geomSpotXml": {
+        "x": 0.6,
+        "y": 2.35,
+        "w": 5.915,
+        "h": 0.845,
+        "text": "The Hidden Cost of Rushing to Ship"
+      },
+      "slides": [
+        {
+          "id": "cover",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "STIX Two Text",
+              "chars": 33,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.845
+              ],
+              "face": "STIX Two Text",
+              "chars": 34,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "STIX Two Text",
+              "chars": 53,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "divider",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "STIX Two Text",
+              "chars": 17,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.845
+              ],
+              "face": "STIX Two Text",
+              "chars": 32,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "STIX Two Text",
+              "chars": 31,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "statement",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                1.295
+              ],
+              "face": "STIX Two Text",
+              "chars": 62,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "STIX Two Text",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "evidence",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "STIX Two Text",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                1.745
+              ],
+              "face": "STIX Two Text",
+              "chars": 78,
+              "lines": 1
+            },
+            {
+              "role": "number",
+              "fontSize": 72,
+              "weight": 700,
+              "geom": [
+                0.6,
+                4.315,
+                5.915,
+                0.78
+              ],
+              "face": "STIX Two Text",
+              "chars": 3,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.491
+              ],
+              "face": "STIX Two Text",
+              "chars": 77,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "STIX Two Text",
+              "chars": 55,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "comparison",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "STIX Two Text",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "STIX Two Text",
+              "chars": 23,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.974
+              ],
+              "face": "STIX Two Text",
+              "chars": 130,
+              "lines": 4
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                3.544,
+                5.915,
+                0.974
+              ],
+              "face": "STIX Two Text",
+              "chars": 150,
+              "lines": 4
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "STIX Two Text",
+              "chars": 91,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "dense",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "STIX Two Text",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "STIX Two Text",
+              "chars": 28,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                2.908
+              ],
+              "face": "STIX Two Text",
+              "chars": 798,
+              "lines": 12
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "STIX Two Text",
+              "chars": 43,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "STIX Two Text",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "STIX Two Text",
+              "chars": 45,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "STIX Two Text",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "signal-board",
+      "file": "signal-board.pptx",
+      "bytes": 102267,
+      "system": "swiss",
+      "theme": {
+        "id": "template:signal-board",
+        "colors": {
+          "background": "#FFFFFF",
+          "backgroundAlt": "#FFFFFF",
+          "ink": "#0F172A",
+          "accent": "#B45309",
+          "muted": "#64748B"
+        },
+        "fonts": {
+          "heading": [
+            "\"Inter\"",
+            "\"Noto Sans KR\"",
+            "system-ui",
+            "sans-serif"
+          ],
+          "body": [
+            "\"Inter\"",
+            "\"Noto Sans KR\"",
+            "system-ui",
+            "sans-serif"
+          ]
+        }
+      },
+      "engine": {
+        "slides": 7,
+        "textBoxes": 25
+      },
+      "xml": {
+        "slides": 7,
+        "shapes": 25,
+        "runs": 42,
+        "runChars": 1923,
+        "pics": 0,
+        "blips": 0,
+        "faces": [
+          "Inter"
+        ],
+        "bgs": [
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF",
+          "#FFFFFF"
+        ],
+        "sldSz": "<p:sldSz cx=\"12188952\" cy=\"6858000\"/>"
+      },
+      "editableExact": true,
+      "validator": {
+        "ok": true,
+        "errors": [],
+        "stats": {
+          "slides": 7,
+          "textShapes": 25,
+          "editableChars": 1923,
+          "slideSizeIn": {
+            "w": 13.33,
+            "h": 7.5
+          }
+        }
+      },
+      "minFont": 9,
+      "denseBodyPt": 12,
+      "denseWrapLines": 12,
+      "denseParaCount": 12,
+      "geomSpotDeltaIn": 0,
+      "geomSpotXml": {
+        "x": 0.6,
+        "y": 2.35,
+        "w": 5.915,
+        "h": 0.845,
+        "text": "The Hidden Cost of Rushing to Ship"
+      },
+      "slides": [
+        {
+          "id": "cover",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Inter",
+              "chars": 33,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.845
+              ],
+              "face": "Inter",
+              "chars": 34,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "Inter",
+              "chars": 53,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "divider",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Inter",
+              "chars": 17,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.845
+              ],
+              "face": "Inter",
+              "chars": 32,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "Inter",
+              "chars": 31,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "statement",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                1.295
+              ],
+              "face": "Inter",
+              "chars": 62,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "evidence",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Inter",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                1.745
+              ],
+              "face": "Inter",
+              "chars": 78,
+              "lines": 1
+            },
+            {
+              "role": "number",
+              "fontSize": 72,
+              "weight": 700,
+              "geom": [
+                0.6,
+                4.315,
+                5.915,
+                0.78
+              ],
+              "face": "Inter",
+              "chars": 3,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.491
+              ],
+              "face": "Inter",
+              "chars": 77,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 55,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "comparison",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Inter",
+              "chars": 10,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Inter",
+              "chars": 23,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.974
+              ],
+              "face": "Inter",
+              "chars": 130,
+              "lines": 4
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                3.544,
+                5.915,
+                0.974
+              ],
+              "face": "Inter",
+              "chars": 150,
+              "lines": 4
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 91,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "dense",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "kicker",
+              "fontSize": 10,
+              "weight": 700,
+              "geom": [
+                0.6,
+                1.1,
+                5.915,
+                0.206
+              ],
+              "face": "Inter",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Inter",
+              "chars": 28,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                2.908
+              ],
+              "face": "Inter",
+              "chars": 798,
+              "lines": 12
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 43,
+              "lines": 1
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "background": "#FFFFFF",
+          "blocks": [
+            {
+              "role": "title",
+              "fontSize": 30,
+              "weight": 700,
+              "geom": [
+                0.6,
+                2.35,
+                5.915,
+                0.395
+              ],
+              "face": "Inter",
+              "chars": 27,
+              "lines": 1
+            },
+            {
+              "role": "body",
+              "fontSize": 12,
+              "weight": 400,
+              "geom": [
+                6.815,
+                2.35,
+                5.915,
+                0.249
+              ],
+              "face": "Inter",
+              "chars": 45,
+              "lines": 1
+            },
+            {
+              "role": "caption",
+              "fontSize": 9,
+              "weight": 400,
+              "geom": [
+                6.815,
+                6.3,
+                5.915,
+                0.203
+              ],
+              "face": "Inter",
+              "chars": 33,
+              "lines": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

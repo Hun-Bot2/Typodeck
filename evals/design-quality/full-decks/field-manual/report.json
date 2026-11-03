@@ -21,7 +21,7 @@
       "html": "slides/slide-03-statement.html",
       "png": "slides/slide-03-statement.png",
       "validator": "PASS",
-      "verdict": "PASS — full-width caution page: amber chip + giant caps line + dashed source leader; single column, no split."
+      "verdict": "PASS — full-width caution page: amber chip + giant caps line + dashed source leader; single column, no split. Owner intent (2026-11-04 QA): deliberate pause slide — outline statement beats demand restraint ('one idea, full stage; nothing else'), so no procedure/FIG box added; lower air is the pause, not a void defect."
     },
     {
       "kind": "evidence",
@@ -35,7 +35,7 @@
       "html": "slides/slide-05-comparison.html",
       "png": "slides/slide-05-comparison.png",
       "validator": "PASS",
-      "verdict": "PASS — twin exhibit boxes (open vs checked glyphs) quote all 6 bullets verbatim; NOTE 04 carries caption."
+      "verdict": "PASS — twin exhibit boxes (open vs checked glyphs) quote all 6 bullets verbatim; NOTE 04 carries caption; SOURCE line carries fixture marking (EX-SRC fix 2026-11-04)."
     },
     {
       "kind": "dense",

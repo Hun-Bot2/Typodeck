@@ -22,6 +22,14 @@ evals/design-quality/specimens/<slug>/explanation.png
 - `cover` renders the benchmark-deck slide 1 beats; `evidence` the
   Slide-B block; `explanation` the Slide-C block. Copy verbatim from
   fixtures; see `fixtures.md` usage rules.
+- Fixture marking (ambiguity resolved 2026-11-04): the `explanation`
+  specimen and deck slide 5 (`comparison`) MUST carry the Slide-C
+  source line `Fixture data · not a real study`
+  (`fixtures.json` `slide_c_explanation.source_line` + `comparison`
+  outline beat), exactly like the `evidence`/slide-4 and
+  `dense`/slide-6 source lines. Styling follows each design's voice;
+  the string stays verbatim. Designs missing it fail the validator
+  gate on that slide.
 - Each `.html` is a standalone 1920x1080 slide document; each `.png`
   is its verified capture. Never commit a `.png` without its `.html`.
 

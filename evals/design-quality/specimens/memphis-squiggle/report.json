@@ -1,0 +1,32 @@
+{
+  "slug": "memphis-squiggle",
+  "did": "D18",
+  "slides": [
+    {
+      "kind": "cover",
+      "html": "cover.html",
+      "png": "cover.png",
+      "validator": "PASS",
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080."
+    },
+    {
+      "kind": "evidence",
+      "html": "evidence.html",
+      "png": "evidence.png",
+      "validator": "PASS",
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+    },
+    {
+      "kind": "explanation",
+      "html": "explanation.html",
+      "png": "explanation.png",
+      "validator": "PASS",
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080."
+    }
+  ],
+  "render": {
+    "width": 1920,
+    "height": 1080,
+    "verify": "PASS"
+  }
+}
