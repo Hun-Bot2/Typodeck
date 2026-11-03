@@ -78,7 +78,28 @@ export interface StudyCase {
   system: string;
   slide: Slide;
   elements: StudyElement[];
+  /** 'excluded' cases are kept for model-side use but hidden from humans. */
+  status?: string;
+  exclusionReason?: string;
   [key: string]: unknown;
+}
+
+export function isExcludedCase(c: StudyCase): boolean {
+  return c.status === 'excluded';
+}
+
+/** Order with excluded cases removed. All human-facing routes use this. */
+export function activeOrder(doc: CasesDoc): string[] {
+  const byId = new Map(doc.cases.map((c) => [c.caseId, c]));
+  return doc.order.filter((id) => {
+    const c = byId.get(id);
+    return c !== undefined && !isExcludedCase(c);
+  });
+}
+
+export function activeCases(doc: CasesDoc): StudyCase[] {
+  const byId = new Map(doc.cases.map((c) => [c.caseId, c]));
+  return activeOrder(doc).map((id) => byId.get(id) as StudyCase);
 }
 
 export interface CasesDoc {

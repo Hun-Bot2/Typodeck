@@ -3624,6 +3624,8 @@
         }
       ],
       "origin": "known-defect",
+      "status": "excluded",
+      "exclusionReason": "Renders identical to the clean source deck; invalid as a blind human case.",
       "defectSeed": {
         "category": "grouping",
         "level": "narrative",
@@ -3642,7 +3644,7 @@
             "comment": "Planted grouping seed: dangle-group: group stats reduced 3 -> 1 member"
           }
         ],
-        "note": "Known-defect (grouping/narrative): dangle-group: group stats reduced 3 -> 1 member. Intent-only mutation; layout is intent-agnostic so geometry may equal the clean deck."
+        "note": "Known-defect (grouping/narrative): dangle-group: group stats reduced 3 -> 1 member. Intent-only mutation; layout is intent-agnostic so geometry equals the clean deck."
       }
     },
     {
@@ -3790,6 +3792,8 @@
         }
       ],
       "origin": "known-defect",
+      "status": "excluded",
+      "exclusionReason": "Renders identical to the clean source deck; invalid as a blind human case.",
       "defectSeed": {
         "category": "headline-prominence",
         "level": "narrative",
@@ -3808,7 +3812,7 @@
             "comment": "Planted headline-prominence seed: primary-on-caption: moved primary from #0 to caption #4"
           }
         ],
-        "note": "Known-defect (headline-prominence/narrative): primary-on-caption: moved primary from #0 to caption #4. Intent-only mutation; layout is intent-agnostic so geometry may equal the clean deck."
+        "note": "Known-defect (headline-prominence/narrative): primary-on-caption: moved primary from #0 to caption #4. Intent-only mutation; layout is intent-agnostic so geometry equals the clean deck."
       }
     },
     {

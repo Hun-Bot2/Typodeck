@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import {
   applyPatch,
   blankAnnotation,
+  isExcludedCase,
   jsonError,
   parseReviewerId,
   readCases,
@@ -41,6 +42,9 @@ export async function POST(req: NextRequest): Promise<Response> {
   const studyCase = doc.cases.find((c) => c.caseId === body.caseId);
   if (!studyCase) {
     return jsonError(404, 'unknown-case', `no case "${body.caseId}" in this dataset`);
+  }
+  if (isExcludedCase(studyCase)) {
+    return jsonError(410, 'case-excluded', `case "${body.caseId}" was excluded from annotation`);
   }
   const checked = validatePatch(body.patch, validBlockIds(studyCase));
   if ('error' in checked) {

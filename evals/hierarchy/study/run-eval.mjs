@@ -322,10 +322,13 @@ async function main() {
   if (dataset.datasetVersion !== 'study-v1') fail(`cases datasetVersion is ${JSON.stringify(dataset.datasetVersion)}, need "study-v1"`);
   if (!Array.isArray(dataset.order) || !Array.isArray(dataset.cases)) fail('cases file missing order/cases arrays');
   const byId = new Map(dataset.cases.map((c) => [c.caseId, c]));
+  // Excluded cases (e.g. intent-only variants identical to clean decks) are
+  // kept in the file for model-side use but skipped in human evaluation.
+  const order = dataset.order.filter((id) => byId.get(id)?.status !== 'excluded');
 
   // Finalization gate: every ordered case present, done, and block-valid.
   const unfinalized = [];
-  for (const caseId of dataset.order) {
+  for (const caseId of order) {
     const c = byId.get(caseId);
     if (!c) {
       unfinalized.push(`${caseId}: missing from cases`);
@@ -349,7 +352,7 @@ async function main() {
   const problemHist = {};
   const repairTally = { cases: 0, improved: 0, regressed: 0, unchanged: 0, textParityOk: 0, pptxOk: 0 };
 
-  for (const caseId of dataset.order) {
+  for (const caseId of order) {
     const c = byId.get(caseId);
     const ann = annMap[caseId];
     const slide = c.slide;
@@ -450,7 +453,7 @@ async function main() {
   const aggArm = (arm) => {
     const g = gp[arm];
     return {
-      cases: dataset.order.length,
+      cases: order.length,
       rankCorrelation: metrics.summarize(rhos[arm]),
       firstFocus: {
         hits: ff[arm].hits,

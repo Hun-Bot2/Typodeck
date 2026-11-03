@@ -1,6 +1,8 @@
 import { NextRequest } from 'next/server';
 import {
   DEFAULT_REVIEWER,
+  activeCases,
+  activeOrder,
   jsonError,
   parseReviewerId,
   readCases,
@@ -26,8 +28,8 @@ export async function GET(req: NextRequest): Promise<Response> {
     reviewerId,
     datasetVersion: doc.datasetVersion,
     seed: doc.seed,
-    order: doc.order,
-    total: doc.order.length,
-    cases: doc.cases.map(toPublicCase),
+    order: activeOrder(doc),
+    total: activeOrder(doc).length,
+    cases: activeCases(doc).map(toPublicCase),
   });
 }

@@ -50,3 +50,13 @@
 ## Bugs found
 
 None. Every check above has a pass verdict; no implementation change is requested.
+
+## Amendment 2026-11-03 — S23/S24 exclusion (owner-reported duplicate renders)
+
+Owner found S23/S24 render byte-identical to S02/S04 (intent-only
+variants). Fix: `status: excluded` in generator + cases.json; server
+manifest/finalize/annotate/run-eval skip excluded (25 active);
+welcome screen notes variants; guide/README updated; qa-check updated
+(27→25 assertions + 2 exclusion checks). Re-run: 31/31 pass
+(`--base http://localhost:3100`), npm test 555/555. Owner annotations
+untouched (10 done preserved).

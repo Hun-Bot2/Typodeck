@@ -195,6 +195,7 @@ export function StudyApp() {
         <p style={{ fontSize: 15, lineHeight: 1.7 }}>
           슬라이드를 하나씩 보고, 눈에 들어오는 순서와 강조, 그룹, 어색한 점을 기록해 주세요.
           정답을 맞히는 시험이 아니라, 보이는 그대로의 인상을 수집하는 평가입니다.
+          같은 슬라이드의 변형이 포함될 수 있습니다. 매번 처음 보는 것처럼 평가해 주세요.
           응답은 서버에 자동 저장되며, 언제든 이전 케이스로 돌아가 수정할 수 있습니다.
         </p>
         <label style={{ display: 'grid', gap: 4, fontSize: 14, maxWidth: 320 }}>

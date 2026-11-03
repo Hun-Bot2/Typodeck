@@ -200,6 +200,11 @@ function main() {
     return {
       ...baseCase(caseId, fid, system, slide),
       origin: 'known-defect',
+      // Excluded from human annotation: intent-only mutations render
+      // byte-identical to their clean source decks (S02/S04), so a blind
+      // reviewer cannot distinguish them. Kept for model-side Arm A use.
+      status: 'excluded',
+      exclusionReason: 'Renders identical to the clean source deck; invalid as a blind human case.',
       defectSeed: {
         category: seeded.spec.category,
         level: seeded.spec.level,
@@ -215,7 +220,7 @@ function main() {
           comment: `Planted ${seeded.spec.category} seed: ${seeded.spec.mutation}`,
         }],
         note: `Known-defect (${seeded.spec.category}/${seeded.spec.level}): ${seeded.spec.mutation}.` +
-          ' Intent-only mutation; layout is intent-agnostic so geometry may equal the clean deck.',
+          ' Intent-only mutation; layout is intent-agnostic so geometry equals the clean deck.',
       },
     };
   };

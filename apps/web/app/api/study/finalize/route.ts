@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
 import {
+  activeOrder,
   isDone,
   jsonError,
   parseReviewerId,
@@ -28,11 +29,11 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
   const live = await readLive(reviewerId);
   const annotations = live?.annotations ?? {};
-  const missing = doc.order.filter((caseId) => !isDone(annotations[caseId]));
+  const missing = activeOrder(doc).filter((caseId) => !isDone(annotations[caseId]));
   if (missing.length > 0) {
     return jsonError(422, 'incomplete', `${missing.length} case(s) still need responses`, { missing });
   }
-  for (const caseId of doc.order) {
+  for (const caseId of activeOrder(doc)) {
     const ann = annotations[caseId];
     if (ann.problems.length === 0) {
       ann.problems = [{ type: 'none', blockIds: [], comment: '' }];

@@ -85,9 +85,15 @@ const manifestRes = await get(`/api/study/manifest?reviewer=${encodeURIComponent
 check('api:manifest-200', manifestRes.status === 200, `GET manifest -> ${manifestRes.status}`);
 const manifest = parse(manifestRes.text);
 const orderOk = !!manifest && manifest.datasetVersion === 'study-v1' && manifest.seed === 20261103
-  && Array.isArray(manifest.order) && manifest.order.length === 27 && manifest.total === 27
-  && Array.isArray(manifest.cases) && manifest.cases.length === 27;
-check('data:manifest-shape', orderOk, orderOk ? `27 cases, seed ${manifest.seed}` : 'manifest shape mismatch');
+  && Array.isArray(manifest.order) && manifest.order.length === 25 && manifest.total === 25
+  && Array.isArray(manifest.cases) && manifest.cases.length === 25;
+check('data:manifest-shape', orderOk, orderOk ? `25 cases, seed ${manifest.seed}` : 'manifest shape mismatch');
+check('data:excluded-hidden', !!manifest && !manifest.order.includes('S23') && !manifest.order.includes('S24'),
+  'S23/S24 absent from human order');
+{
+  const r = await post('/api/study/annotate', { reviewerId: REVIEWER, caseId: 'S23', patch: { confidence: 3 } });
+  check('api:annotate-excluded-410', r.status === 410, `annotate S23 -> ${r.status} (excluded)`);
+}
 let projOk = !!manifest;
 if (manifest) {
   for (const c of manifest.cases) {
@@ -154,11 +160,11 @@ for (let i = 1; i < manifest.cases.length; i++) {
       `mid-way progress done=${p && p.done} expect=${expectDone}`);
   }
 }
-check('api:annotate-all27', annFail === 0, annFail === 0 ? 'all 27 annotate -> 200' : `${annFail} annotate failures`);
+check('api:annotate-all25', annFail === 0, annFail === 0 ? 'all 25 annotate -> 200' : `${annFail} annotate failures`);
 {
   const full = await get(`/api/study/progress?reviewer=${encodeURIComponent(REVIEWER)}`);
   const p = parse(full.text);
-  check('api:progress-full', full.status === 200 && p && p.done === 27, `full progress done=${p && p.done}`);
+  check('api:progress-full', full.status === 200 && p && p.done === 25, `full progress done=${p && p.done}`);
 }
 
 // (b-iii) finalize twice: new timestamp, never overwrite
@@ -183,7 +189,7 @@ check('api:finalize-2-new', fin2.status === 200 && twoNames,
 const expJson = await get(`/api/study/export?reviewerId=${encodeURIComponent(REVIEWER)}&format=json`);
 {
   const d = parse(expJson.text);
-  const ok = expJson.status === 200 && d && d.reviewerId === REVIEWER && d.annotations && Object.keys(d.annotations).length === 27;
+  const ok = expJson.status === 200 && d && d.reviewerId === REVIEWER && d.annotations && Object.keys(d.annotations).length === 25;
   check('api:export-json', !!ok, `export json -> ${expJson.status} cases=${d && d.annotations && Object.keys(d.annotations).length}`);
 }
 const expCsv = await get(`/api/study/export?reviewerId=${encodeURIComponent(REVIEWER)}&format=csv`);
@@ -208,7 +214,7 @@ function parseCsv(text) {
   const headerOk = rows.length > 0 && rows[0].join('|') === want.join('|');
   const dataRows = rows.slice(1);
   const colsOk = dataRows.every((r) => r.length === want.length);
-  check('api:export-csv', expCsv.status === 200 && headerOk && dataRows.length === 27 && colsOk,
+  check('api:export-csv', expCsv.status === 200 && headerOk && dataRows.length === 25 && colsOk,
     `export csv -> ${expCsv.status} header=${headerOk} rows=${dataRows.length} cols=${colsOk}`);
 }
 

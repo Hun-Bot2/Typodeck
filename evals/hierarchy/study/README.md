@@ -5,7 +5,7 @@ Frozen contracts: [`CONTRACTS.md`](./CONTRACTS.md) (§S0/S1/S2 shapes, §S5 owne
 
 | File | Purpose |
 |---|---|
-| `cases.json` | 27 cases: 17 Stage-4 decks + 10 controlled variants (committed artifact) |
+| `cases.json` | 27 records, 25 active for humans (S23/S24 excluded: intent-only, render-identical) |
 | `generate-cases.mjs` | Builds `cases.json` from fixtures + Stage-4 seeds (run once; deterministic) |
 | `run-eval.mjs` | A/C vs human labels + repair eval + honest B/D NOT RUN (no build step) |
 | `validate-study.mjs` | Self-check: every case shape + balance rules + annotation shapes |
@@ -21,8 +21,10 @@ Frozen contracts: [`CONTRACTS.md`](./CONTRACTS.md) (§S0/S1/S2 shapes, §S5 owne
   contrast (F08). Every seed self-verified its predicate; inapplicable seeds
   fail loudly instead of being forced.
 - S23–S24: narrative-seed known-defects — grouping (F02 dangle-group),
-  headline (F04 primary-on-caption). Intent-only mutations; geometry may equal
-  the clean deck (layout is intent-agnostic).
+  headline (F04 primary-on-caption). EXCLUDED from human annotation
+  (`status: excluded`): intent-only mutations render byte-identical to the
+  clean decks, so blind reviewers cannot distinguish them. Kept for
+  model-side Arm A use; server, finalize gate, and run-eval skip them.
 - S25: intentional-crop disputed (F13 clip seed on a `deliberateCrop` block).
 - S26–S27: known-good minimal slides (F16 under swiss/document, arms silent).
 - `expected` / `defectSeed` / `origin` are server-side only — never served to
