@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typodeck Design-Diversity Scaffold (1920x1080)</title>
+<!--
+  Typodeck design-diversity shared scaffold.
+  Every design preview.html MUST embed the delimited block below (verbatim,
+  between SCAFFOLD-EMBED-START and SCAFFOLD-EMBED-END) and place its slide
+  markup inside #deck-stage. The stage is ALWAYS 1920x1080; the scaler only
+  applies a uniform transform (letterbox / pillarbox, no reflow).
+-->
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#2a2d33;color:#e8e8e8;font:28px/1.4 monospace;text-align:center;">
+      <p>1920&times;1080 STAGE PLACEHOLDER<br><span style="font-size:16px;opacity:.7;">Replace with design slide markup. Stage must stay 1920x1080.</span></p>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>
