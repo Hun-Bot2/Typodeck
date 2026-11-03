@@ -23,6 +23,16 @@ cd /Users/jeonghun/Typodeck/evals/design-diversity && python3 -m http.server 832
 
 카드의 `select for comparison` 체크박스로 2–4개를 골라 나란히 비교하세요.
 
+## 6. 카드 클릭 상세 보기
+
+카드를 클릭하면 상세 창이 열립니다: 큰 프리뷰 이미지 + 탭 3종
+
+- `Preview card` — 해당 디자인의 preview.md 전문
+- `Full spec` — 해당 디자인의 design.md 전문 (토큰 + 23섹션 매뉴얼)
+- `Full-deck smoke` — D01/D04/D23에 한해 6종 슬라이드(표지/구분/본문/숫자/비교/맺음) 렌더 결과
+
+닫기는 `Close ✕`, 배경 클릭, 또는 `Esc` 키.
+
 ## 6. 디자인 문서 확인
 
 각 카드의 `design:` / `preview:` 경로가 해당 디자인의 전체 스펙(`design.md`)과
