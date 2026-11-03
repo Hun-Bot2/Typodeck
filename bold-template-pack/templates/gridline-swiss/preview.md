@@ -30,7 +30,7 @@ Gridline's foundational premise is the exposed grid: the 12-column hairline scaf
 - Palette: white #FFFFFF; ink #111111; signal-red #E30613; rail-gray #F2F2F2; muted #6B6B6B
 - Typography: See full design doc after selection.
 - Signature move: Exposed 12-column hairline grid printed faintly on the white ground — alignment as visible content.
-- Signature move: Giant index numeral (Archivo 800, ~400px) parked in the gray rail, fully contained with ~40px insets.
+- Signature move: Giant index numeral (Archivo 800, ~380px) parked in the gray rail, fully contained with ~40px insets.
 - Signature move: One 6px signal-red rule per slide — never more, never thinner — under the kicker or title block.
 - Signature move: Flush-left ragged-right headlines in Archivo 800 with tight -0.01em tracking; centering is forbidden.
 - Signature move: Red kicker line (Archivo 600 caps, +0.18em tracking) paired with an 18px solid red square bullet.

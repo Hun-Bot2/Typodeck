@@ -43,13 +43,13 @@ typography:
     textTransform: uppercase
   index-numeral:
     fontFamily: "'Archivo', sans-serif"
-    fontSize: "400px"
+    fontSize: "380px"
     fontWeight: 800
     lineHeight: 0.85
     letterSpacing: "-0.02em"
   body:
     fontFamily: "'Inter', sans-serif"
-    fontSize: "34px"
+    fontSize: "36px"
     fontWeight: 400
     lineHeight: 1.45
   body-compact:
@@ -121,7 +121,7 @@ components:
     description: "Light-gray rail occupying grid columns 9-12. Holds the giant index numeral, a red baseline rule, and stacked meta rows."
   index-numeral:
     fontFamily: "'Archivo', sans-serif"
-    fontSize: 400px
+    fontSize: 380px
     fontWeight: 800
     color: "{colors.ink}"
     description: "Giant issue numeral (e.g., 01) parked inside the rail with ~40px insets. Ink black on rail gray."
@@ -153,7 +153,7 @@ Use `deck-stage.js` or an equivalent inline stage scaler for final output: rende
 
 Gridline is an **asymmetric Swiss presentation system**. Its foundational premise is the **exposed 12-column grid**: the faint hairline scaffold is printed on the white ground at 7% ink on every surface, so alignment reads as content rather than decoration. Content occupies columns 1–8; columns 9–12 carry a light-gray index rail with a giant issue numeral. Nothing is centered, nothing is decorated, nothing casts a shadow.
 
-The type stack is two faces with strict roles. **Archivo ExtraBold** is the display voice — flush-left, ragged-right, tight-tracked headlines at 48–118px plus the giant 400px index numeral. **Archivo SemiBold caps** at +0.18em tracking is the kicker voice, always in signal red. **Inter** is the workhorse — body at 24–34px, small-caps captions, rail meta, and footer context. The contrast is engineered: grotesque authority up top, neutral clarity below.
+The type stack is two faces with strict roles. **Archivo ExtraBold** is the display voice — flush-left, ragged-right, tight-tracked headlines at 48–118px plus the giant 380px index numeral. **Archivo SemiBold caps** at +0.18em tracking is the kicker voice, always in signal red. **Inter** is the workhorse — body at 24–36px, small-caps captions, rail meta, and footer context. The contrast is engineered: grotesque authority up top, neutral clarity below.
 
 The palette is three colors plus gray: **matte white** ground, **near-black ink** for type and rules, **signal red** reserved for the kicker, the one red rule, and small square bullets, and **rail gray** for the index panel. Red never appears as body text and never fills large areas — it is a structural accent, one rule per slide.
 
@@ -163,7 +163,7 @@ Structure comes from rules, not containers. A **6px red rule** under the kicker,
 
 **Key Characteristics:**
 - Exposed 12-column hairline grid printed faintly on the white ground — alignment as visible content.
-- Giant index numeral (Archivo 800, ~400px) parked in the gray rail, fully contained with ~40px insets.
+- Giant index numeral (Archivo 800, ~380px) parked in the gray rail, fully contained with ~40px insets.
 - One 6px signal-red rule per slide — never more, never thinner — under the kicker or title block.
 - Flush-left ragged-right headlines in Archivo 800 with tight -0.01em tracking; centering is forbidden.
 - Red kicker line (Archivo 600 caps, +0.18em tracking) paired with an 18px solid red square bullet.
@@ -200,7 +200,7 @@ The system runs two faces, each locked to its role.
 
 **Archivo** is the display and label face — a grotesque with engineered confidence. ExtraBold (800) carries every headline and the giant index numeral; SemiBold (600) in caps with +0.18em tracking carries kickers; SemiBold with +0.12em tracking carries the footer index. Archivo's tight, upright caps are what make the system read Swiss rather than generic sans.
 
-**Inter** is the body and meta face — neutral, highly legible, invisible by design. Regular (400) carries body and ledes; Medium (500) in small caps carries captions, rail meta, and footer context. Inter never appears above 34px and never carries a headline.
+**Inter** is the body and meta face — neutral, highly legible, invisible by design. Regular (400) carries body and ledes; Medium (500) in small caps carries captions, rail meta, and footer context. Inter never appears above 36px and never carries a headline.
 
 Never use Inter for headlines, never use Archivo for body runs. The grotesque-up-top / neutral-below split is the typographic structure.
 
@@ -213,8 +213,8 @@ Never use Inter for headlines, never use Archivo for body runs. The grotesque-up
 | `{typography.headline}` | 48px | Archivo | 800 | Standard slide headline |
 | `{typography.section-head}` | 30px | Archivo | 800 | Sub-section head inside a content slide |
 | `{typography.kicker}` | 20px | Archivo | 600 | Red caps kicker above the red rule |
-| `{typography.index-numeral}` | 400px | Archivo | 800 | Giant numeral in the index rail |
-| `{typography.body}` | 34px | Inter | 400 | Cover subtitle / lede paragraph |
+| `{typography.index-numeral}` | 380px | Archivo | 800 | Giant numeral in the index rail |
+| `{typography.body}` | 36px | Inter | 400 | Cover subtitle / lede paragraph |
 | `{typography.body-compact}` | 24px | Inter | 400 | Standard body on content slides |
 | `{typography.caption}` | 20px | Inter | 500 | Small-caps captions and table headers |
 | `{typography.footer-index}` | 22px | Archivo | 600 | Paginated index in the footer (`01 / 24`) |
@@ -241,7 +241,7 @@ Headlines should always feel **planted against the left margin** — the flush-l
 
 - **Default size for a cover title**: `{typography.display-xl}` (118px) — steps down to 72px when the title exceeds ~45 characters.
 - **Default size for a slide headline**: `{typography.headline}` (48px).
-- **Default size for body**: `{typography.body-compact}` (24px); covers use `{typography.body}` (34px) for the lede.
+- **Default size for body**: `{typography.body-compact}` (24px); covers use `{typography.body}` (36px) for the lede.
 - **Default kicker size**: `{typography.kicker}` (20px) — never larger, never smaller.
 - **Default footer sizes**: context in `{typography.caption}`, index in `{typography.footer-index}`.
 
@@ -305,7 +305,7 @@ Borders are always solid and always horizontal or vertical — no diagonals, no 
 
 **Kicker square** — An 18×18px solid red square anchoring the kicker line's left edge.
 
-**Index numeral** — The 400px Archivo 800 numeral in the rail, fully contained with ~40px insets, with a 6px red baseline beneath it.
+**Index numeral** — The 380px Archivo 800 numeral in the rail, fully contained with ~40px insets, with a 6px red baseline beneath it.
 
 **Column grid** — The exposed 12-column hairline scaffold at 7% ink. Structural content, not background decoration.
 
@@ -360,7 +360,7 @@ Gridline is a **fixed-stage system** built for 1920×1080 output. All sizes are 
 
 - The 12-column grid, 126px columns, and 24px gutters are fixed at 1920×1080 and scale uniformly with the stage transform.
 - Headline sizes step down by content length (118 → 72 → 48px), not by viewport.
-- The index numeral stays 400px at stage scale; its crop position is fixed relative to the rail.
+- The index numeral stays 380px at stage scale; its crop position is fixed relative to the rail.
 
 ### Component Breakpoints
 
@@ -430,7 +430,7 @@ The grid carries the CJK build. Noto Sans KR 900 at display sizes is sturdy but 
 1. Any new slide keeps the exposed 12-column grid at 7% ink, the index rail on columns 9–12, and the hairline footer. Don't skip the chrome.
 2. Any new headline uses Archivo 800, flush-left, ragged-right, -0.01em tracking. Any new body uses Inter 400. Any new label uses Archivo 600 caps or Inter 500 small caps.
 3. Any new kicker is red with its 18px square bullet, followed 20px later by the single 6px red rule spanning the content columns.
-4. Any new numeral moment (stat, index, section number) uses Archivo 800 — 400px in the rail, 72px in stat rows.
+4. Any new numeral moment (stat, index, section number) uses Archivo 800 — 380px in the rail, 72px in stat rows.
 5. Any new table uses the Swiss table pattern: 2px black top rule, caps header, 1px gray dividers, red square flags.
 6. Any new measurement snaps to the 8px baseline and the 126/24 column system. Off-grid placement breaks the exposed-grid contract.
 7. Any new accent is red and structural (rule, bullet, baseline). Never red text in body, never red fills.

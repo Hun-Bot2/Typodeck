@@ -49,7 +49,7 @@
   .pr-titlebox { margin-top: 26px; max-height: 420px; overflow: hidden; }
   .pr-title {
     margin: 0;
-    font-size: 86px; font-weight: 700; line-height: 1.06;
+    font-size: 90px; font-weight: 700; line-height: 1.05;
     letter-spacing: -0.005em; color: var(--ink);
   }
   .pr-abstract {
@@ -186,7 +186,7 @@
           <div class="pr-abstract">
             <div class="pr-abstract-label">Abstract</div>
             <p class="pr-abstract-text">What 11 postmortems taught us about review discipline</p>
-            <div class="pr-keywords"><strong>Keywords</strong> &#8212; postmortems &#183; review discipline &#183; shipping</div>
+            <div class="pr-keywords"><strong>Keywords</strong> &#8212; postmortems &#183; review discipline</div>
           </div>
         </div>
         <div class="pr-rail">
@@ -195,12 +195,12 @@
             <div class="pr-fig-title">Review coverage across the corpus</div>
             <div class="pr-bars">
               <div class="pr-bar-row"><span class="pr-bar-cat">P01</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:82%"></span></span><span class="pr-bar-val">9</span></div>
-              <div class="pr-bar-row"><span class="pr-bar-cat">P04</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:64%"></span></span><span class="pr-bar-val">7</span></div>
-              <div class="pr-bar-row"><span class="pr-bar-cat">P05</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:73%"></span></span><span class="pr-bar-val">8</span></div>
-              <div class="pr-bar-row"><span class="pr-bar-cat">P08</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:45%"></span></span><span class="pr-bar-val">5</span></div>
-              <div class="pr-bar-row"><span class="pr-bar-cat">P11</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:55%"></span></span><span class="pr-bar-val">6</span></div>
+              <div class="pr-bar-row"><span class="pr-bar-cat">P02</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:64%"></span></span><span class="pr-bar-val">7</span></div>
+              <div class="pr-bar-row"><span class="pr-bar-cat">P03</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:73%"></span></span><span class="pr-bar-val">8</span></div>
+              <div class="pr-bar-row"><span class="pr-bar-cat">P04</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:45%"></span></span><span class="pr-bar-val">5</span></div>
+              <div class="pr-bar-row"><span class="pr-bar-cat">P05</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:55%"></span></span><span class="pr-bar-val">6</span></div>
             </div>
-            <p class="pr-caption"><strong>Figure 1.</strong> Review coverage across the 11 postmortems; lower bars mark rushed releases.</p>
+            <p class="pr-caption"><strong>Figure 1.</strong> Lower bars mark rushed releases.</p>
           </div>
           <div class="pr-fig">
             <div class="pr-fig-label">Table 1</div>
@@ -244,7 +244,7 @@
       if (!t) return;
       var box = t.parentElement;
       var budget = (parseFloat(getComputedStyle(box).maxHeight) || 420) - 6;
-      var size = 86;
+      var size = 90;
       t.style.fontSize = size + 'px';
       while (size > 40 && t.getBoundingClientRect().height > budget) {
         size -= 2;

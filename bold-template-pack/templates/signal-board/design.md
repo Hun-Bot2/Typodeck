@@ -22,13 +22,13 @@ shadows:
 typography:
   dashboard-hero:
     fontFamily: "'Inter', system-ui, sans-serif"
-    fontSize: 88px
+    fontSize: 96px
     fontWeight: 800
     lineHeight: 1.04
     letterSpacing: -0.015em
   deck-subtitle:
     fontFamily: "'Inter', system-ui, sans-serif"
-    fontSize: 31px
+    fontSize: 32px
     fontWeight: 400
     lineHeight: 1.45
   kpi-numeral:
@@ -122,11 +122,11 @@ components:
   case-log:
     background: "{colors.slate}"
     padding: "26px 30px 22px 30px"
-    description: "Dark evidence panel: mono case rows (PM-01 … PM-11) plus extraction summary rows, separated by #334155 hairlines with LOGGED/UNDER REVIEW pills."
+    description: "Dark evidence panel: one mono case row per case (PM-01 … PM-11), separated by #334155 hairlines with LOGGED/UNDER REVIEW pills. No summary rows — the log is the summary."
   data-row:
     borderTop: "1px solid {colors.row-rule}"
     padding: "13px 2px"
-    description: "Ticker-style finding row: dim mono key left, tabular value + ▲/▼ direction glyph right."
+    description: "Ticker-style finding row: dim mono key left, tabular value right. Direction glyphs (▲/▼) appear only beside genuine trend values, never as verdict decoration."
   context-line:
     swatch: "18px solid {colors.signal-blue}"
     gap: 14px
@@ -162,7 +162,7 @@ The palette is **semantic, not decorative**. Mist gray-blue (`{colors.mist}`) is
 - Slate command bar with live green dot and mono telemetry (series name, sample count) crowns every cover.
 - KPI stat cards pair a 92px tabular Inter numeral with a mono caption and a flat status pill, keyed by a 6px signal-color top border.
 - Dark case-log panel enumerates the evidence set (PM-01 … PM-11) as mono rows with LOGGED / UNDER REVIEW pills.
-- Rule-separated mono data rows with ▲/▼ direction glyphs sit under the headline like a ticker of findings.
+- Rule-separated mono data rows (key left, value right, no verdict glyphs) sit under the headline like a ticker of findings.
 - Status pills are the only rounded shapes in the system — everything else is square and ruled.
 - Tabular numerals everywhere; columns of figures align digit-for-digit with zero layout jitter.
 - Zero shadows, zero gradients, zero blur — depth comes only from the slate/mist inversion and the 6px signal borders.
@@ -210,8 +210,8 @@ Never use Inter for chrome/labels and never use Plex Mono for the headline or su
 
 | Token | Size | Family | Weight | Use |
 |---|---|---|---|---|
-| `{typography.dashboard-hero}` | 88px | Inter | 800 | Cover headline |
-| `{typography.deck-subtitle}` | 31px | Inter | 400 | Cover subtitle / lede |
+| `{typography.dashboard-hero}` | 96px | Inter | 800 | Cover headline |
+| `{typography.deck-subtitle}` | 32px | Inter | 400 | Cover subtitle / lede |
 | `{typography.kpi-numeral}` | 92px | Inter | 800 | KPI stat numeral, tabular |
 | `{typography.topbar-mono}` | 20px | Plex Mono | 500 | Command-bar telemetry |
 | `{typography.pill-label}` | 19px | Plex Mono | 600 | Kicker pill text |
@@ -230,13 +230,13 @@ These treatments are **non-optional whenever the corresponding element type is u
 - **Every Plex Mono label carries letter-spacing** — +0.06em minimum on context lines, up to +0.16em on topbar telemetry and case-log headings. Untracked mono reads as code, not instrumentation.
 - **Every KPI numeral pairs with a mono caption and a status pill.** A bare giant number without its caption/pill is an unfinished KPI card.
 - **Every case-log heading is blue-tinted mono** (`#93C5FD`, 0.16em tracking) — the only blue text in the dark panel.
-- **Every ticker row separates key (dim) from value (bright)** with the value right-aligned and an optional ▲/▼ direction glyph in green/red.
-- **Every cover headline keeps tight tracking** (-0.015em) at 88px — Inter at display size without negative tracking reads loose and editorial.
+- **Every ticker row separates key (dim) from value (bright)** with the value right-aligned. ▲/▼ glyphs are reserved for rows whose value is a genuine trend; verdict words (COMPLETE/CONFIRMED/LIVE) never close a ticker row.
+- **Every cover headline keeps tight tracking** (-0.015em) at 96px — Inter at display size without negative tracking reads loose and editorial.
 
 ### Defaults
 
-- **Default size for a cover title**: `{typography.dashboard-hero}` (88px Inter 800, 1.04 line-height).
-- **Default size for a cover subtitle**: `{typography.deck-subtitle}` (31px Inter 400, 1.45 line-height, max 20em).
+- **Default size for a cover title**: `{typography.dashboard-hero}` (96px Inter 800, 1.04 line-height).
+- **Default size for a cover subtitle**: `{typography.deck-subtitle}` (32px Inter 400, 1.45 line-height, max 20em).
 - **Default size for a KPI numeral**: `{typography.kpi-numeral}` (92px Inter 800, line-height 1).
 - **Default size for mono chrome**: 17–22px Plex Mono depending on element (pills 17–19px, rows 18–20px, context 22px).
 - **Default headline color**: slate; default subtitle color: `#475569`; default mono value color on mist: slate.
@@ -266,7 +266,7 @@ Three elements appear on every cover:
 
 - **Command bar** — 64px slate strip: green live dot + series telemetry left, `SAMPLE N = 11` right. Always mono 20px tracked.
 - **Case log** — dark slate evidence panel in the right column enumerating the sample (PM-01 … PM-11) with status pills.
-- **Footer rule** — 1px row-rule hairline with volume mark left (`RESEARCH BRIEF · VOL. 11`) and page mark right (`P. 01`), mono 18px.
+- **Footer rule** — 1px row-rule hairline with brief mark left (`RESEARCH BRIEF · NOV 2026`) and page mark right (`P. 01`), mono 18px.
 
 ### Atmospheric Restraint
 
@@ -317,7 +317,7 @@ Borders are always solid and always horizontal rules or panel edges — never ve
 
 **Case log** — Dark slate panel of mono evidence rows with hairline separators and trailing status pills. Makes the sample visible.
 
-**Ticker data row** — Rule-separated mono row: dim key left, tabular value + ▲/▼ glyph right. Sits under the headline as a findings strip.
+**Ticker data row** — Rule-separated mono row: dim key left, tabular value right. Sits under the headline as a findings strip; glyphs only for genuine trends.
 
 **Context line** — Mono context string led by an 18px blue signal swatch. The swatch replaces bullets everywhere in this system.
 
@@ -336,7 +336,7 @@ Borders are always solid and always horizontal rules or panel edges — never ve
 - Enumerate the evidence sample in the dark case log with LOGGED / UNDER REVIEW pills so the cover's claims stay auditable.
 - Separate ticker rows and footer with 1px hairlines; keep gutters on the 12px rhythm.
 - Reserve pills (999px radius) strictly for status and series tags — they are the only round shapes.
-- Use ▲/▼ direction glyphs in green/red to close ticker rows with a verdict.
+- Use ▲/▼ direction glyphs in green/red only where the row value is a genuine trend; never as verdict decoration.
 
 ### Don't
 
@@ -353,7 +353,7 @@ Borders are always solid and always horizontal rules or panel edges — never ve
 
 ## Responsive Behavior
 
-Signal Board is a **fixed-stage system** built for 1920×1080 with absolute pixel sizing — 88px headlines, 92px KPI numerals, 64px command bar. There are no breakpoints and no fluid type; the stage scaler handles all viewport adaptation with a uniform transform.
+Signal Board is a **fixed-stage system** built for 1920×1080 with absolute pixel sizing — 96px headlines, 92px KPI numerals, 64px command bar. There are no breakpoints and no fluid type; the stage scaler handles all viewport adaptation with a uniform transform.
 
 ### Scaling Behavior
 
@@ -426,16 +426,16 @@ The console illusion survives CJK well because it rests on **non-typographic** s
 ## Iteration Guide
 
 1. Any new cover keeps the 64px slate command bar with live dot, series telemetry, and sample count — it is the masthead, not optional chrome.
-2. Any new headline uses Inter 800 at 88px with tabular numerals and -0.015em tracking; any new subtitle uses Inter 400 at 31px.
+2. Any new headline uses Inter 800 at 96px with tabular numerals and -0.015em tracking; any new subtitle uses Inter 400 at 32px.
 3. Any new label, pill, row, or footer mark uses IBM Plex Mono with the token's specified tracking — never Inter, never untracked.
 4. Any new statistic gets a full KPI card (numeral + mono caption + status pill + 6px signal border in the correct semantic color), not a bare number.
 5. Any new evidence set gets a dark case-log panel enumerating its rows with hairlines and status pills.
-6. Any new finding strip uses ticker data rows: dim key left, tabular value + ▲/▼ glyph right, 1px rules between.
+6. Any new finding strip uses ticker data rows: dim key left, tabular value right, 1px rules between. Glyphs only for genuine trends.
 7. Any new measurement follows the 12px gutter rhythm; page margins stay 72px; only pills (999px) and the live dot may be round.
 8. Any new color assignment must map to the semantic states (blue identity, green complete, amber attention, red fault) — no decorative hues.
 9. New covers stay flat: no shadows, no gradients, no blur, no texture — depth is signal borders and slate inversion only.
 10. CJK builds swap to Noto Sans SC per the CJK section, zero tracking on CJK runs, Latin tabular digits preserved.
-11. Long titles auto-fit: the `__sbFitTitle` script shrinks the 88px headline in 2px steps (floor 56px) only while the left well exceeds 900px — PRIMARY covers never trigger it.
+11. Long titles auto-fit: the `__sbFitTitle` script shrinks the 96px headline in 2px steps (floor 56px) only while the left well exceeds 900px — PRIMARY covers never trigger it.
 
 ## Known Gaps
 

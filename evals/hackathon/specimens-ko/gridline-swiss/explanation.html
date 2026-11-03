@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gridline KO — Explanation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  .gridline-slide { position: absolute; inset: 0; background: #FFFFFF; color: #111111;
+    font-family: 'Pretendard Variable', Pretendard, 'Inter', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif; overflow: hidden; }
+  .gridline-slide .colgrid { position: absolute; top: 0; bottom: 0; left: 72px; right: 72px;
+    display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; pointer-events: none; }
+  .gridline-slide .colgrid i { border-left: 1px solid rgba(17,17,17,0.07); display: block; }
+  .gridline-slide .colgrid i:last-child { border-right: 1px solid rgba(17,17,17,0.07); }
+  .gridline-slide .frame { position: absolute; inset: 0; padding: 64px 72px 0 72px;
+    display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; align-content: start; }
+  .gridline-slide .kicker { grid-column: 1 / 9; display: flex; align-items: center; gap: 16px;
+    font-family: 'Pretendard Variable', Pretendard, 'Archivo', 'Noto Sans KR', sans-serif;
+    font-weight: 700; font-size: 21px; letter-spacing: 0; color: #E30613; margin: 0; word-break: keep-all; }
+  .gridline-slide .kicker::before { content: ""; width: 18px; height: 18px; background: #E30613; flex: 0 0 auto; }
+  .gridline-slide .redrule { grid-column: 1 / 9; height: 6px; background: #E30613; margin-top: 20px; }
+  .gridline-slide .title { grid-column: 1 / 9;
+    font-family: 'Pretendard Variable', Pretendard, 'Archivo', 'Noto Sans KR', sans-serif;
+    font-weight: 800; font-size: 72px; line-height: 1.12; letter-spacing: 0;
+    margin: 40px 0 0 0; text-wrap: balance; word-break: keep-all; }
+  .gridline-slide .steps { grid-column: 1 / 9; margin: 44px 0 0 0; padding: 0; list-style: none; }
+  .gridline-slide .steps li { display: grid; grid-template-columns: 96px 1fr; gap: 28px;
+    padding: 26px 0; border-top: 2px solid #111111; }
+  .gridline-slide .steps .sn { font-weight: 800; font-size: 48px; line-height: 1.1; color: #E30613;
+    font-variant-numeric: tabular-nums; }
+  .gridline-slide .steps .st { font-weight: 800; font-size: 34px; line-height: 1.25; margin: 0; word-break: keep-all; }
+  .gridline-slide .steps .sd { font-size: 26px; line-height: 1.65; color: #333; margin: 10px 0 0 0; word-break: keep-all; }
+  .gridline-slide .rail { grid-column: 9 / 13; grid-row: 1 / 6; background: #F2F2F2;
+    padding: 40px 36px; overflow: hidden; display: flex; flex-direction: column;
+    align-self: stretch; min-height: 700px; }
+  .gridline-slide .numeral { font-family: 'Archivo', "Arial Black", sans-serif;
+    font-weight: 800; font-size: 380px; line-height: 0.85; letter-spacing: -0.02em;
+    color: #111111; margin: 8px 0 0 0; }
+  .gridline-slide .railrule { height: 6px; background: #E30613; margin: 28px 0 28px 0; }
+  .gridline-slide .meta { margin: 0; padding: 0; list-style: none; }
+  .gridline-slide .meta li { font-size: 19px; font-weight: 500; letter-spacing: 0;
+    line-height: 1.5; color: #111111; padding: 14px 0; border-top: 1px solid #D9D9D9; word-break: keep-all; }
+  .gridline-slide .meta li span { display: block; color: #6B6B6B; font-size: 16px; }
+  .gridline-slide .footer { position: absolute; left: 72px; right: 72px; bottom: 0; height: 110px;
+    border-top: 2px solid #111111; display: flex; align-items: center;
+    justify-content: space-between; background: #FFFFFF; }
+  .gridline-slide .footer .ctx { font-size: 20px; font-weight: 500; letter-spacing: 0; margin: 0; word-break: keep-all; }
+  .gridline-slide .footer .idx { font-family: 'Archivo', "Arial Black", sans-serif;
+    font-weight: 600; font-size: 22px; letter-spacing: 0.12em; margin: 0; }
+  .nw { white-space: nowrap; }
+</style>
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+  #deck-viewport { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; }
+  #deck-stage { width: 1920px; height: 1080px; flex: 0 0 auto; position: relative; overflow: hidden;
+    transform-origin: center center; background: #fff; }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <div class="gridline-slide">
+      <div class="colgrid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="frame">
+        <p class="kicker">설명 · 머지 큐의 동작 원리</p>
+        <div class="redrule"></div>
+        <h1 class="title">머지 큐는 이렇게<br><span class="nw">main</span>을 지킨다</h1>
+        <ol class="steps">
+          <li><span class="sn">01</span><div><p class="st">변경분을 큐에 직렬화한다</p><p class="sd">동시에 올라온 PR을 순서대로 세워 <span class="nw">main 브랜치</span>에 하나씩만 합친다.</p></div></li>
+          <li><span class="sn">02</span><div><p class="st">합치기 전에 전체 검사를 돌린다</p><p class="sd">Shipgate는 매 후보마다 테스트를 실행하고 실패하면 큐에서 제외한다.</p></div></li>
+          <li><span class="sn">03</span><div><p class="st">푸른 상태로 <span class="nw">v2.3.1</span>을 찍는다</p><p class="sd">모든 검사가 통과된 지점에서만 릴리스 태그가 붙는다.</p></div></li>
+        </ol>
+        <aside class="rail">
+          <div class="numeral">03</div>
+          <div class="railrule"></div>
+          <ul class="meta">
+            <li><span>핵심</span>직렬화 · 검사 · 태그</li>
+            <li><span>대상</span>모노레포 머지 큐</li>
+            <li><span>출처</span><span class="nw">idea.txt:4</span></li>
+          </ul>
+        </aside>
+      </div>
+      <div class="footer">
+        <p class="ctx">Typodeck 리서치 · 설명 슬라이드</p>
+        <p class="idx">03 / 24</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+</body>
+</html>

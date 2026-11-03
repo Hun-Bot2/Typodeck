@@ -21,9 +21,9 @@ shadows:
 typography:
   article-title:
     fontFamily: "'STIX Two Text', Georgia, serif"
-    fontSize: 86px
+    fontSize: 90px
     fontWeight: 700
-    lineHeight: 1.06
+    lineHeight: 1.05
     letterSpacing: -0.005em
   section-head:
     fontFamily: "'STIX Two Text', Georgia, serif"
@@ -222,7 +222,7 @@ Serif never labels and sans never argues: a caption set in STIX or a paragraph s
 
 | Token | Size | Family | Weight | Use |
 |---|---|---|---|---|
-| `{typography.article-title}` | 86px | STIX Two Text | 700 | Cover and section article title |
+| `{typography.article-title}` | 90px | STIX Two Text | 700 | Cover and section article title |
 | `{typography.section-head}` | 54px | STIX Two Text | 700 | Inner-section head |
 | `{typography.body-serif}` | 30px | STIX Two Text | 400 | Paragraph body |
 | `{typography.abstract-text}` | 35px | STIX Two Text | 400 italic | Abstract summary inside the inset box |
@@ -240,7 +240,7 @@ Serif never labels and sans never argues: a caption set in STIX or a paragraph s
 
 These treatments are **non-optional whenever the corresponding element type is used**:
 
-- **Every article title is STIX Two Text 700 at 86px with 1.06 line-height.** Long titles wrap; a fit routine shrinks the size in 2px steps to a 40px floor so the title box never overflows.
+- **Every article title is STIX Two Text 700 at 90px with 1.05 line-height.** Long titles wrap; a fit routine shrinks the size in 2px steps to a 40px floor so the title box never overflows.
 - **Every abstract summary is STIX italic at 35px inside the tinted inset.** The Abstract eyebrow and Keywords line are Inter; the summary itself is always italic serif.
 - **Every apparatus label is Inter uppercase with wide tracking** — 0.24em kickers, 0.22em runheads, 0.2em figure labels, 0.12em table heads. Sentence-case Inter labels do not exist.
 - **Every figure and table numeral uses tabular figures** (`font-variant-numeric: tabular-nums`) so values align in columns.
@@ -328,7 +328,7 @@ Rules are always solid and horizontal or vertical; dashed, dotted, or diagonal r
 
 Peer Review is a **fixed-stage system**: all sizes above are 1920×1080 stage coordinates scaled uniformly by one transform. There are no breakpoints and no viewport-fluid rules in generated output.
 
-Long titles are handled by the title fit routine (shrink 86px toward a 40px floor in 2px steps until the title box stops overflowing), not by reflowing the columns — the article/rail split never changes. The abstract box grows downward within the article column; if abstract plus title exceed the column, the title shrinks first.
+Long titles are handled by the title fit routine (shrink 90px toward a 40px floor in 2px steps until the title box stops overflowing), not by reflowing the columns — the article/rail split never changes. The abstract box grows downward within the article column; if abstract plus title exceed the column, the title shrinks first.
 
 For source-history reference only: the proportions derive from a two-column journal page and would stack to a single column below 900px in a fluid web context, but generated decks never reflow — they letterbox.
 
@@ -388,6 +388,7 @@ The journal voice survives translation well because it lives in structure, not l
 8. Any new claim that needs grounding gets a bracketed footnote in the foot band with a blue superscript marker.
 9. If the rail needs more than two panels, paginate — start a second evidence slide rather than shrinking panels.
 10. Long titles shrink via the fit routine toward the 40px floor; never narrow the columns or reflow to one column.
+11. A statement slide may carry a single centered sentence as an intentional pause slide — document it as a pause, not a thin error.
 
 ## Known Gaps
 

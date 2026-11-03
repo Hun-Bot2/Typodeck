@@ -5,23 +5,83 @@
 //   node dist/scripts/make-deck.js --idea-file path.txt --system expressive --out out.pptx
 //   node dist/scripts/make-deck.js --idea-file path.txt --system swiss --out out.pptx --critique
 //   node dist/scripts/make-deck.js --idea-file path.txt --system swiss --out out.pptx --revise[=N]
+//   node dist/scripts/make-deck.js --idea-file path.txt --template fika --out out.pptx
+//   node dist/scripts/make-deck.js --list-templates
 // Prints the provider used + warnings; exits non-zero on validation failure.
 // --critique appends an advisory critique receipt (exit code unchanged).
 // --revise[=N] (default N=3) exports the bounded-revision deck instead.
-import { promises as fs } from 'node:fs';
+// --template slug selects a template-pack design (experimental): the template's
+// base system lays out the deck and the template's fonts/colors theme it.
+// Geometry comes from the base system, not the template's HTML specimen.
+import { existsSync, promises as fs } from 'node:fs';
+import { dirname, join, resolve, sep } from 'node:path';
 import { critiqueDeck, reviseDeck, type CriticReport } from '../src/critic';
 import { exportToPptx } from '../src/export';
 import { planDeck, type PlanDeckInput } from '../src/narrative';
 import { SYSTEM_IDS, type SystemId } from '../src/systems';
+import {
+  layoutDeckWithTemplate,
+  parseSelectionIndex,
+  resolveTemplateDesign,
+  type TemplatePackEntry,
+} from '../src/template-pack';
 import { validatePptx } from '../src/validate';
 
 function usage(): string {
   return [
     'Usage: make-deck --repo owner/repo | --idea "..." | --idea-file path',
-    '               --system editorial|swiss|expressive --out file.pptx',
+    '               (--system editorial|swiss|expressive|document | --template slug)',
+    '               --out file.pptx',
     '               [--purpose text] [--preset P01..P10] [--lang ko|en]',
     '               [--critique] [--revise[=N]]',
+    '       make-deck --list-templates',
   ].join('\n');
+}
+
+const PACK_INDEX_REL = join('bold-template-pack', 'selection-index.json');
+
+/** Walk up from the cwd to the checkout root carrying the template pack. */
+function findPackRoot(): string | null {
+  let dir = process.cwd();
+  for (;;) {
+    if (existsSync(join(dir, PACK_INDEX_REL))) return dir;
+    const parent = dirname(dir);
+    if (parent === dir) return null;
+    dir = parent;
+  }
+}
+
+async function loadPackEntries(): Promise<{ root: string; entries: TemplatePackEntry[] }> {
+  const root = findPackRoot();
+  if (root === null) {
+    throw new Error('template pack not found: run from a Typodeck checkout (bold-template-pack/selection-index.json)');
+  }
+  let entries: TemplatePackEntry[];
+  try {
+    entries = parseSelectionIndex(JSON.parse(await fs.readFile(join(root, PACK_INDEX_REL), 'utf8')));
+  } catch (err) {
+    throw new Error(`template pack index unreadable: ${err instanceof Error ? err.message : String(err)}`);
+  }
+  return { root, entries };
+}
+
+/** Resolve a template slug to its entry + design.md text (same guards as POST /api/export). */
+async function loadTemplate(slug: string): Promise<{ entry: TemplatePackEntry; designMarkdown: string }> {
+  const { root, entries } = await loadPackEntries();
+  const entry = entries.find((e) => e.slug === slug);
+  if (!entry) {
+    throw new Error(`unknown template "${slug.slice(0, 64)}" (see --list-templates)`);
+  }
+  // designPath comes from the on-disk index, not the CLI caller; still contain it.
+  const designAbs = resolve(root, entry.designPath);
+  if (designAbs !== root && !designAbs.startsWith(root + sep)) {
+    throw new Error(`template "${entry.slug}" design path escapes the pack root`);
+  }
+  try {
+    return { entry, designMarkdown: await fs.readFile(designAbs, 'utf8') };
+  } catch (err) {
+    throw new Error(`template "${entry.slug}" design file unreadable: ${err instanceof Error ? err.message : String(err)}`);
+  }
 }
 
 function argValue(args: string[], flag: string): string | undefined {
@@ -64,10 +124,26 @@ function reviseAttempts(args: string[]): number | undefined | 'invalid' {
 
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
+
+  if (args.includes('--list-templates')) {
+    try {
+      const { entries } = await loadPackEntries();
+      for (const e of entries) {
+        const blurb = e.bestFor ? ` — ${e.bestFor}` : '';
+        console.log(`${e.slug} [${e.scheme}/${e.density}]${blurb}`);
+      }
+    } catch (err) {
+      console.error(`failed: ${err instanceof Error ? err.message : String(err)}`);
+      process.exit(1);
+    }
+    return;
+  }
+
   const repoArg = argValue(args, '--repo');
   const ideaArg = argValue(args, '--idea');
   const ideaFileArg = argValue(args, '--idea-file');
   const systemArg = argValue(args, '--system');
+  const templateArg = argValue(args, '--template');
   const outArg = argValue(args, '--out');
   const purpose = argValue(args, '--purpose');
   const preset = argValue(args, '--preset');
@@ -77,7 +153,12 @@ async function main(): Promise<void> {
   const reviseOpt = reviseAttempts(args);
 
   const modes = [repoArg, ideaArg, ideaFileArg].filter((v) => v !== undefined);
-  if (modes.length !== 1 || !systemArg || !outArg) {
+  if (modes.length !== 1 || (!systemArg && !templateArg) || !outArg) {
+    console.error(usage());
+    process.exit(2);
+  }
+  if (systemArg && templateArg) {
+    console.error('--system and --template are mutually exclusive: a template already selects its base system');
     console.error(usage());
     process.exit(2);
   }
@@ -86,7 +167,12 @@ async function main(): Promise<void> {
     console.error(usage());
     process.exit(2);
   }
-  if (!(SYSTEM_IDS as readonly string[]).includes(systemArg)) {
+  if (templateArg && reviseOpt !== undefined) {
+    console.error('--revise cannot be combined with --template yet: revision replays the base system and would drop the theme');
+    console.error(usage());
+    process.exit(2);
+  }
+  if (systemArg && !(SYSTEM_IDS as readonly string[]).includes(systemArg)) {
     console.error(`unknown --system "${systemArg}" (want ${SYSTEM_IDS.join('|')})`);
     process.exit(2);
   }
@@ -107,11 +193,21 @@ async function main(): Promise<void> {
   }
 
   try {
-    const result = await planDeck(input, { system: systemArg as SystemId, purpose, preset, lang });
+    let template: { entry: TemplatePackEntry; designMarkdown: string } | undefined;
+    let effectiveSystem = systemArg as SystemId;
+    if (templateArg) {
+      template = await loadTemplate(templateArg);
+      effectiveSystem = resolveTemplateDesign(template.entry, template.designMarkdown).systemId;
+    }
+    const result = await planDeck(input, { system: effectiveSystem, purpose, preset, lang });
     let deck = result.deck;
     let critique: CritiqueReceipt | undefined;
     let reviseProvenance: string[] = [];
-    if (reviseOpt !== undefined) {
+    if (template) {
+      // Re-lay the planned narrative through the template's visual identity.
+      // Geometry comes from the template's base system; fonts/colors from the template.
+      deck = layoutDeckWithTemplate(result.narrative, template.entry, template.designMarkdown);
+    } else if (reviseOpt !== undefined) {
       const revised = reviseDeck(result.narrative, systemArg as SystemId, { maxAttempts: reviseOpt });
       deck = revised.deck;
       reviseProvenance = revised.provenance;
@@ -134,6 +230,8 @@ async function main(): Promise<void> {
       `quality: ${q.pass ? 'pass' : 'review'} overall=${q.overall} errors=${q.errors} warnings=${q.warnings}`,
     );
     console.log(`deck: ${res.slideCount} slides, ${res.textBoxCount} text boxes -> ${res.path}`);
+    if (template) console.log(`template: ${template.entry.slug} (base system ${effectiveSystem}, experimental)`);
+    if (template) console.log('warning: template geometry comes from the base system, not the HTML specimen (see evals/design-quality/results-pptx.md)');
     for (const line of reviseProvenance) console.log(`revise: ${line}`);
     for (const w of result.provenance.warnings) console.log(`warning: ${w}`);
     if (wantCritique && critique === undefined) {

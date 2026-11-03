@@ -1,10 +1,10 @@
 ---
 version: alpha
 name: Fika
-description: A Scandinavian soft-functional presentation system built on warmth and restraint. Display type runs in Fraunces (weight 500, lowercase headlines) paired with Nunito Sans for body and tracked caps labels. The palette stays on warm off-white (`#FAFAF7`) with slate text (`#3D4A54`) and three muted pastels — sage, blush, dusty blue — as flat panel fills and chips. Depth is nearly absent: matte surfaces, 16–24px corner radii, and at most one whisper-soft lift shadow. Layouts breathe through an airy two-column rhythm with huge gutters. The effect is a quiet kitchen table, not a stage.
+description: A Scandinavian soft-functional presentation system built on warmth and restraint. Display type runs in Fraunces (weight 500, lowercase headlines) paired with Nunito Sans for body and tracked caps labels. The palette stays on warm off-white (`#FAFAF7`) with slate text (`#31404B`) and three muted pastels — sage, blush, dusty blue — as flat panel fills and chips. Depth is nearly absent: matte surfaces, 16–24px corner radii, and at most one whisper-soft lift shadow. Layouts breathe through an airy two-column rhythm with huge gutters. The effect is a quiet kitchen table, not a stage.
 colors:
   off-white: "#FAFAF7"
-  slate: "#3D4A54"
+  slate: "#31404B"
   sage: "#A8C3B9"
   blush: "#E8B4A0"
   dusty-blue: "#7FA6C9"
@@ -13,13 +13,13 @@ colors:
   blush-wash: "#F5DCD2"
   blue-wash: "#D5E4F1"
 shadows:
-  lift: "0 8px 24px rgba(61, 74, 84, 0.08)"
-  lift-lg: "0 16px 40px rgba(61, 74, 84, 0.10)"
+  lift: "0 8px 24px rgba(49, 64, 75, 0.08)"
+  lift-lg: "0 16px 40px rgba(49, 64, 75, 0.10)"
   none: "none"
 typography:
   hero:
     fontFamily: "'Fraunces', Georgia, serif"
-    fontSize: "80px"
+    fontSize: "88px"
     fontWeight: 500
     lineHeight: 1.12
     textTransform: lowercase
@@ -37,12 +37,12 @@ typography:
     textTransform: lowercase
   data-numeral:
     fontFamily: "'Fraunces', Georgia, serif"
-    fontSize: "160px"
+    fontSize: "240px"
     fontWeight: 500
     lineHeight: 1
   body:
     fontFamily: "'Nunito Sans', system-ui, sans-serif"
-    fontSize: "30px"
+    fontSize: "32px"
     fontWeight: 400
     lineHeight: 1.6
   body-sm:
@@ -160,7 +160,7 @@ Depth is the system's deliberate absence: **matte surfaces, no gradients, no glo
 ### Palette
 
 - **Off-White** (`{colors.off-white}` — `#FAFAF7`): The universal ground. Every slide starts here; panels and text sit on it.
-- **Slate** (`{colors.slate}` — `#3D4A54`): The only text color. Headlines, body, labels, chips, captions — all slate. Never pure black.
+- **Slate** (`{colors.slate}` — `#31404B`): The only text color. Headlines, body, labels, chips, captions — all slate. Never pure black.
 - **Sage** (`{colors.sage}` — `#A8C3B9`): First pastel. Chip fills, dots, small accents, and the wash source for large panels.
 - **Blush** (`{colors.blush}` — `#E8B4A0`): Second pastel. Rotates with sage for chips and companion panels.
 - **Dusty Blue** (`{colors.dusty-blue}` — `#7FA6C9`): Third pastel. Same rotation role; also the default kicker-dot color.
@@ -197,11 +197,11 @@ Never use Fraunces for body or labels, never use Nunito Sans for headlines or da
 
 | Token | Size | Family | Weight | Use |
 |---|---|---|---|---|
-| `{typography.hero}` | 80px | Fraunces | 500 | Cover display title, lowercase |
+| `{typography.hero}` | 88px | Fraunces | 500 | Cover display title, lowercase |
 | `{typography.headline}` | 72px | Fraunces | 500 | Primary section headline, lowercase |
 | `{typography.subhead}` | 40px | Fraunces | 500 | Region-level subheading, lowercase |
-| `{typography.data-numeral}` | 160px | Fraunces | 500 | Data numeral inside companion panel |
-| `{typography.body}` | 30px | Nunito Sans | 400 | Paragraph body |
+| `{typography.data-numeral}` | 240px | Fraunces | 500 | Data numeral inside companion panel |
+| `{typography.body}` | 32px | Nunito Sans | 400 | Paragraph body |
 | `{typography.body-sm}` | 24px | Nunito Sans | 400 | Secondary body, list items |
 | `{typography.label}` | 22px | Nunito Sans | 700 | Tracked caps kicker label |
 | `{typography.chip}` | 22px | Nunito Sans | 700 | Chip text (not tracked) |
@@ -213,9 +213,9 @@ Never use Fraunces for body or labels, never use Nunito Sans for headlines or da
 These treatments are **non-optional whenever the corresponding element type is used**:
 
 - **Every headline is lowercase.** Apply `text-transform: lowercase` to every hero, headline, and subhead. Capitalized display type breaks the friendly voice instantly.
-- **Every display run uses Fraunces 500.** No other weight, no italic in headlines. Data numerals use the same face and weight at 160px.
+- **Every display run uses Fraunces 500.** No other weight, no italic in headlines. Data numerals use the same face and weight at 240px.
 - **Every kicker label is tracked caps.** Nunito Sans 700, 22px, 0.15em tracking, uppercase, preceded by a `{components.kicker-dot}`.
-- **Every chip uses Nunito Sans 700 untracked.** Chips are sentence-case short phrases, never uppercase, never letterspaced.
+- **Every chip uses Nunito Sans 700 untracked.** Chips are sentence-case short phrases, never uppercase, never letterspaced. Chips must carry new labels (section tags, dates, format notes) — never headline or subtitle words restated.
 - **Every body block uses line-height 1.6.** Nunito Sans needs the air; tighter leading feels cramped against the huge gutters.
 - **Every caption/context line is 20–24px Nunito Sans 400.** Context never uses the display serif.
 
@@ -250,7 +250,7 @@ Gutters are structural. Column gap is never under 96px; stack gaps are 48px (hea
 
 The system practices **matte flatness**. Surfaces are opaque flat fills; separation comes from color difference (wash panel vs off-white ground) and whitespace, not from shadow.
 
-One soft shadow exists: `{shadows.lift}` (`0 8px 24px rgba(61,74,84,0.08)`), used at most once per slide — typically under the companion panel or a floating white card. A larger variant (`{shadows.lift-lg}`) is reserved for cover slides. Hard offset shadows, glows, blurs, and gradients do not exist anywhere in the system.
+One soft shadow exists: `{shadows.lift}` (`0 8px 24px rgba(49,64,75,0.08)`), used at most once per slide — typically under the companion panel or a floating white card. A larger variant (`{shadows.lift-lg}`) is reserved for cover slides. Hard offset shadows, glows, blurs, and gradients do not exist anywhere in the system.
 
 Corner radius carries the elevation signal instead: larger panels get 24px radii, inner cards 16px, chips 999px. The eye reads roundness + tint as "raised" without any shadow help.
 
@@ -276,7 +276,7 @@ Borders effectively do not exist. Panels, chips, and cards have no strokes; divi
 
 **Page mark** — Tracked 20px numerals bottom-left. No rule, no box, no ornament.
 
-**Data numeral** — Fraunces 500 at 160px inside a companion panel with a small caption beneath. The system's one allowed "big number" moment.
+**Data numeral** — Fraunces 500 at 240px inside a companion panel with a small caption beneath. The system's one allowed "big number" moment.
 
 ## Do's and Don'ts
 
@@ -310,7 +310,7 @@ Fika is a **fixed-stage system** (1920×1080) under the Frontend Slides policy. 
 
 ### Scaling Behavior
 
-- Hero 80px, headline 72px, subhead 40px, body 30px at stage scale.
+- Hero 88px, headline 72px, subhead 40px, body 32px at stage scale.
 - Panel radii (24px), card radii (16px), and chip padding are fixed pixel values.
 - The 96px column gutter and 120px page padding scale with the uniform stage transform only.
 
@@ -384,7 +384,7 @@ Kicker labels lose their tracked-caps treatment in CJK; keep the kicker dot + ke
 2. Any new headline uses Fraunces 500 lowercase at the matching scale token. Any new body uses Nunito Sans 400. Any new label uses Nunito Sans 700 tracked caps.
 3. Any new companion panel uses a pastel wash fill (rotate sage → blush → blue) at 24px radius with no border.
 4. Any new key-phrase row uses 2–4 chips with rotating full-strength pastel fills and slate text.
-5. Any new data moment uses a Fraunces 160px numeral inside a wash panel with a 20px caption beneath.
+5. Any new data moment uses a Fraunces 240px numeral inside a wash panel with a 20px caption beneath.
 6. Any new divider uses the 2px sage-wash soft rule — never a dark line.
 7. Any new shadow must be the single allowed lift shadow per slide; when in doubt, use none.
 8. Any new color must come from the three pastels + washes; no fourth hue, no saturation boosts.
@@ -410,6 +410,6 @@ Kicker labels lose their tracked-caps treatment in CJK; keep the kicker dot + ke
 | 4 | Pixel / hard offset shadows | Not used | full | N/A |
 | 5 | Gradients | Not used | full | N/A — all fills are flat |
 | 6 | Grain / scanline / noise overlays | Not used | full | N/A |
-| 7 | Transparency layers | Lift shadow `rgba(61,74,84,0.08)`; 72% caption opacity | partial | Opaque approximations (drop shadow or flatten to solid) |
+| 7 | Transparency layers | Lift shadow `rgba(49,64,75,0.08)`; 72% caption opacity | partial | Opaque approximations (drop shadow or flatten to solid) |
 | 8 | Custom fonts | Fraunces + Nunito Sans via Google Fonts CDN | partial | Embedded or substituted serif/sans pair |
 | 9 | Absolute-positioned decor | Kicker dot, chips, companion panel | full | Grouped native shapes |

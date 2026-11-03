@@ -21,16 +21,15 @@
   .modulo-top { position: absolute; top: 64px; left: 120px; right: 120px; display: flex; align-items: center; gap: 16px; }
   .modulo-tile { width: 48px; height: 48px; flex: 0 0 auto; }
   .modulo-kicker { display: flex; align-items: center; gap: 12px; margin-left: 32px; }
-  .modulo-chip { width: 12px; height: 12px; background: #FCA311; flex: 0 0 auto; }
   .modulo-kicker-text {
     font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 15px;
     letter-spacing: 0.12em; text-transform: uppercase; color: #14213D; white-space: nowrap;
   }
-  .modulo-main { position: absolute; top: 232px; left: 120px; right: 120px; bottom: 200px; display: flex; gap: 64px; }
+  .modulo-main { position: absolute; top: 252px; left: 120px; right: 120px; bottom: 192px; display: flex; gap: 64px; }
   .modulo-left { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
   .modulo-title {
     font-family: 'Sora', "Arial Black", sans-serif; font-weight: 800;
-    font-size: 88px; line-height: 1.06; letter-spacing: -0.015em;
+    font-size: 98px; line-height: 1.05; letter-spacing: -0.015em;
     color: #14213D; margin: 0; text-wrap: pretty;
     max-width: 1010px;
   }
@@ -38,26 +37,22 @@
   .modulo-subrow { display: flex; align-items: flex-start; gap: 16px; margin-top: 40px; max-width: 980px; }
   .modulo-sq { width: 14px; height: 14px; background: #FCA311; flex: 0 0 auto; margin-top: 10px; }
   .modulo-subtitle { font-size: 27px; line-height: 1.55; color: #3D4C6D; margin: 0; }
-  .modulo-right { flex: 0 0 516px; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 16px; align-content: center; }
-  .modulo-cell { padding: 28px; display: flex; flex-direction: column; justify-content: center; gap: 10px; min-height: 200px; }
+  .modulo-right { flex: 0 0 480px; display: grid; grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; gap: 16px; align-content: stretch; }
+  .modulo-cell { padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
   .modulo-cell.amber { background: #FCA311; color: #14213D; }
   .modulo-cell.deep { background: #14213D; color: #FFFFFF; }
-  .modulo-cell.silver { background: #E5E5E5; color: #14213D; }
-  .modulo-cell.line { background: #FFFFFF; border: 1px solid #C9C9C9; color: #14213D; }
   .modulo-stat {
     font-family: 'Sora', "Arial Black", sans-serif; font-weight: 800;
-    font-size: 84px; line-height: 1; letter-spacing: -0.02em;
+    font-size: 120px; line-height: 1; letter-spacing: -0.02em;
   }
   .modulo-cell-label {
-    font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 14px;
+    font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 15px;
     letter-spacing: 0.12em; text-transform: uppercase;
   }
-  .modulo-point { display: flex; align-items: center; gap: 12px; font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; }
-  .modulo-dot { width: 12px; height: 12px; border-radius: 50%; background: #FCA311; flex: 0 0 auto; }
-  .modulo-cell.deep .modulo-dot.follow { background: #FFFFFF; }
-  .modulo-cell.silver .modulo-dot { background: #14213D; border-radius: 0; width: 14px; height: 14px; }
-  .modulo-mini { display: flex; gap: 8px; }
-  .modulo-mini span { width: 24px; height: 24px; display: block; }
+  .modulo-theme {
+    font-family: 'Sora', "Arial Black", sans-serif; font-weight: 800;
+    font-size: 60px; line-height: 1.08; letter-spacing: -0.01em;
+  }
   .modulo-footer { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: #14213D; color: #FFFFFF; }
   .modulo-rule { position: absolute; top: -6px; left: 0; right: 0; height: 6px; background: #FCA311; }
   .modulo-footer-inner {
@@ -105,13 +100,7 @@
     <div class="modulo-slide">
       <div class="modulo-top">
         <span class="modulo-tile" style="background:#FCA311"></span>
-        <span class="modulo-tile" style="background:#14213D"></span>
-        <span class="modulo-tile" style="background:#E5E5E5"></span>
-        <span class="modulo-tile" style="background:#14213D"></span>
-        <span class="modulo-tile" style="background:#FCA311"></span>
-        <span class="modulo-tile" style="background:#E5E5E5"></span>
         <div class="modulo-kicker">
-          <span class="modulo-chip"></span>
           <span class="modulo-kicker-text">Typodeck Research · November 2026</span>
         </div>
       </div>
@@ -126,26 +115,18 @@
         <div class="modulo-right">
           <div class="modulo-cell amber">
             <div class="modulo-stat">11</div>
-            <div class="modulo-cell-label">Postmortems</div>
+            <div class="modulo-cell-label">Postmortems in sample</div>
           </div>
           <div class="modulo-cell deep">
-            <div class="modulo-point"><span class="modulo-dot"></span>Case</div>
-            <div class="modulo-point"><span class="modulo-dot follow"></span>Files</div>
-          </div>
-          <div class="modulo-cell silver">
-            <div class="modulo-point"><span class="modulo-dot"></span>Issue</div>
-            <div class="modulo-point"><span class="modulo-dot"></span>Nº 01</div>
-          </div>
-          <div class="modulo-cell line">
-            <div class="modulo-mini"><span style="background:#FCA311"></span><span style="background:#14213D"></span><span style="background:#E5E5E5"></span></div>
-            <div class="modulo-cell-label">November 2026</div>
+            <div class="modulo-cell-label">Shared finding</div>
+            <div class="modulo-theme">Review discipline</div>
           </div>
         </div>
       </div>
       <div class="modulo-footer">
         <div class="modulo-rule"></div>
         <div class="modulo-footer-inner">
-          <span class="modulo-counter">01 / 01</span>
+          <span class="modulo-counter">01</span>
           <span>Typodeck Research</span>
         </div>
       </div>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peer Review KO — Dense</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=STIX+Two+Text:ital,wght@0,400;0,600;0,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --paper: #FFFFFF; --ink: #1A1A1A; --blue: #0B5394; --rule: #EAEAEA;
+    --abstract-tint: #F3F5F8; --muted: #5A6470; }
+  * { box-sizing: border-box; }
+  .pr-slide { position: absolute; inset: 0; background: var(--paper); color: var(--ink);
+    font-family: "Noto Serif KR", "STIX Two Text", Georgia, serif;
+    padding: 56px 88px 48px; display: flex; flex-direction: column; }
+  .pr-runhead { display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'Pretendard Variable', Pretendard, Inter, sans-serif;
+    font-size: 21px; font-weight: 600; letter-spacing: 0; color: var(--ink); word-break: keep-all; }
+  .pr-runhead .pr-page { color: var(--muted); }
+  .pr-double-rule { margin-top: 18px; border-top: 3px solid var(--ink); position: relative; }
+  .pr-double-rule::after { content: ""; display: block; border-top: 1px solid var(--ink); margin-top: 3px; }
+  .pr-main { flex: 1; display: flex; gap: 72px; margin-top: 44px; min-height: 0; }
+  .pr-article { flex: 1.85; min-width: 0; display: flex; flex-direction: column; }
+  .pr-kicker { font-family: 'Pretendard Variable', Pretendard, Inter, sans-serif;
+    font-size: 23px; font-weight: 700; letter-spacing: 0; color: var(--blue); word-break: keep-all; }
+  .pr-title { margin: 22px 0 0 0; font-size: 54px; font-weight: 700; line-height: 1.22;
+    letter-spacing: 0; color: var(--ink); text-wrap: balance; word-break: keep-all; }
+  .pr-table { width: 100%; border-collapse: collapse; margin-top: 28px; }
+  .pr-table th { font-family: 'Pretendard Variable', Pretendard, Inter, sans-serif;
+    font-size: 19px; font-weight: 700; letter-spacing: 0; color: var(--muted); text-align: left;
+    padding: 10px 8px 10px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink);
+    word-break: keep-all; }
+  .pr-table th:last-child, .pr-table td:last-child { text-align: right; padding-right: 0; }
+  .pr-table td { font-family: 'Pretendard Variable', Pretendard, Inter, sans-serif;
+    font-size: 22px; font-weight: 500; color: var(--ink); padding: 11px 8px 11px 0;
+    border-bottom: 1px solid var(--rule); font-variant-numeric: tabular-nums; word-break: keep-all; }
+  .pr-table tr:last-child td { border-bottom: 2px solid var(--ink); }
+  .pr-rail { flex: 1; min-width: 0; border-left: 1px solid var(--rule);
+    padding-left: 60px; display: flex; flex-direction: column; gap: 32px; }
+  .pr-fig-label { font-family: 'Pretendard Variable', Pretendard, Inter, sans-serif;
+    font-size: 21px; font-weight: 700; letter-spacing: 0; color: var(--ink); }
+  .pr-caption { margin: 12px 0 0; font-family: 'Pretendard Variable', Pretendard, Inter, sans-serif;
+    font-size: 21px; line-height: 1.6; color: var(--muted); word-break: keep-all; }
+  .pr-caption strong { color: var(--ink); font-weight: 700; }
+  .pr-kw { margin-top: 16px; padding-top: 14px; border-top: 1px solid #D8DEE5;
+    font-family: 'Pretendard Variable', Pretendard, Inter, sans-serif;
+    font-size: 21px; font-weight: 500; color: var(--muted); word-break: keep-all; }
+  .pr-kw strong { font-weight: 700; color: var(--ink); }
+  .pr-footnotes { margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--ink);
+    font-family: 'Pretendard Variable', Pretendard, Inter, sans-serif;
+    font-size: 20px; line-height: 1.6; color: var(--muted); display: flex; gap: 48px; word-break: keep-all; }
+  .pr-footnotes .pr-fn sup { font-weight: 700; color: var(--blue); margin-right: 6px; }
+  .nw { white-space: nowrap; }
+</style>
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+  #deck-viewport { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; }
+  #deck-stage { width: 1920px; height: 1080px; flex: 0 0 auto; position: relative; overflow: hidden;
+    transform-origin: center center; background: #fff; }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <div class="pr-slide">
+      <div class="pr-runhead"><span>Typodeck 리서치 · 2026년 11월</span><span class="pr-page">p. 04</span></div>
+      <div class="pr-double-rule"></div>
+      <div class="pr-main">
+        <div class="pr-article">
+          <div class="pr-kicker">밀도 · 부록 표</div>
+          <h1 class="pr-title">표 2 · 포스트모템 전수표</h1>
+          <table class="pr-table">
+            <tr><th>식별자</th><th>실패 유형</th><th>출처</th><th>판정</th></tr>
+            <tr><td><span class="nw">PM-01</span></td><td>리뷰 생략 후 금요일 배포</td><td><span class="nw">idea.txt:4</span></td><td>위반</td></tr>
+            <tr><td><span class="nw">PM-02</span></td><td>늦은 리뷰, main 충돌</td><td><span class="nw">idea.txt:4</span></td><td>위반</td></tr>
+            <tr><td><span class="nw">PM-03</span></td><td>검사 없이 머지 큐 우회</td><td><span class="nw">v2.3.1</span></td><td>위반</td></tr>
+            <tr><td><span class="nw">PM-04</span></td><td>승인 1인으로 축소 운영</td><td><span class="nw">idea.txt:4</span></td><td>위반</td></tr>
+            <tr><td><span class="nw">PM-05</span></td><td>성능 검사 생략</td><td><span class="nw">idea.txt:4</span></td><td>주의</td></tr>
+            <tr><td><span class="nw">PM-06</span></td><td>전체 리뷰 통과, 무사고</td><td><span class="nw">v2.3.1</span></td><td>통과</td></tr>
+          </table>
+        </div>
+        <div class="pr-rail">
+          <div class="pr-fig">
+            <div class="pr-fig-label">표 읽기</div>
+            <p class="pr-caption"><strong>판정 기준.</strong> 리뷰 생략·우회는 위반, 검사 일부 생략은 주의, 전체 통과는 통과로 판정한다.</p>
+            <div class="pr-kw"><strong>범위</strong> — <span class="nw">PM-01 … PM-11</span> · 미검증 · 예시</div>
+          </div>
+        </div>
+      </div>
+      <div class="pr-footnotes">
+        <span class="pr-fn"><sup>[1]</sup>표본 전체는 부록 A 참조.</span>
+        <span class="pr-fn"><sup>[2]</sup>출처: <span class="nw">idea.txt:4</span></span>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+</body>
+</html>

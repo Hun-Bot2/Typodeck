@@ -13,6 +13,10 @@ Announce first: "Following the Typodeck Skill: <idea|local|repo> mode, <systems>
 
 ## Workflow (each step names its reference; read on demand, never all at once)
 
+0. **Intent discovery** — inventory what you know, judge material
+   ambiguity, ask at most one batched round (≤3 questions) only when
+   needed, otherwise state assumptions and proceed. Never re-ask
+   settled facts. Works in English and Korean. (`references/intent.md`)
 1. **Local repo analysis** — agent-native bounded walk (≤20 files, ≤200 KB,
    ≤5 code files, secrets skipped) distilled to 100–20,000 chars of idea
    text. No local-ingestion API exists; the agent reads, Core renders
@@ -64,9 +68,10 @@ Announce first: "Following the Typodeck Skill: <idea|local|repo> mode, <systems>
     warnings verbatim, validation + critic outcome, honest-skip
     block. (`references/export.md`)
 
-Driving conversationally? Batch ALL missing inputs in ONE message
-(≤3 questions: purpose, length/content, density); otherwise proceed
-on stated assumptions — never interrogate step by step.
+Driving conversationally? Follow `references/intent.md`: inventory
+known facts, ask one batched round (≤3 questions) only for material
+gaps, otherwise proceed on stated assumptions — never interrogate
+step by step, never re-ask settled facts.
 Benchmark/A-B work: `references/evaluation.md`. Research citations:
 `references/research-index.md` (cite IDs, never paste the corpus).
 

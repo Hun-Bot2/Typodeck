@@ -27,11 +27,11 @@ Fika is a Scandinavian soft-functional presentation system. Its foundational pre
 
 ## Preview Ingredients
 
-- Palette: off-white #FAFAF7; slate #3D4A54; sage #A8C3B9; blush #E8B4A0; dusty-blue #7FA6C9; white #FFFFFF
+- Palette: off-white #FAFAF7; slate #31404B; sage #A8C3B9; blush #E8B4A0; dusty-blue #7FA6C9; white #FFFFFF
 - Typography: See full design doc after selection.
 - Signature move: Lowercase Fraunces headlines ({typography.headline}) — sentence meaning set entirely in lowercase, weight 500, tight but never cramped.
 - Signature move: Soft rounded panels ({components.soft-panel}) — 16–24px radii, flat pastel fills (sage/blush/dusty-blue at full tint or 35% wash), zero borders.
-- Signature move: Muted pastel chips ({components.chip}) — 999px pills in alternating pastels with slate text, used for key phrases and meta.
+- Signature move: Muted pastel chips ({components.chip}) — 999px pills in alternating pastels with slate text, carrying new labels (section tags, dates) and never headline echoes.
 - Signature move: Airy two-column rhythm — text column left at ~58% width, one tinted companion panel right, gutters ≥ 96px, nothing touching the viewport edge.
 - Signature move: Matte surface discipline — no gradients, no gloss, no hard shadows; at most one 0 8px 24px rgba(61,74,84,0.08) lift shadow per slide.
 - Signature move: Fraunces old-style numerals for data moments — figures set large in the display serif inside a pastel panel, never in a geometric sans.

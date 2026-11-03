@@ -1,0 +1,14 @@
+{
+  "name": "@typodeck/agent-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local spec-driven slide harness: design.md -> roles -> HTML -> 1920x1080 render -> deterministic checks -> bounded repair.",
+  "bin": {
+    "typodeck-harness": "./generate.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/"
+  },
+  "dependencies": {}
+}
