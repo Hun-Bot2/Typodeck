@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evidence Slide — D26</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  #deck-stage .d-slide {
+    position: absolute; inset: 0; overflow: hidden;
+    background-color: #0F3D7A;
+    background-image:
+      radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0) 55%, rgba(4,18,38,.35) 100%),
+      linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px),
+      linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+    background-size: auto, 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    color: #FFFFFF;
+  }
+  #deck-stage .d-frame {
+    position: absolute; left: 40px; top: 40px; right: 40px; bottom: 40px;
+    border: 3px solid #FFFFFF;
+  }
+  #deck-stage .d-cross {
+    position: absolute; font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 30px; color: #FFFFFF; line-height: 1;
+  }
+  #deck-stage .d-head {
+    position: absolute; left: 120px; right: 120px; top: 92px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 22px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #7FB3E8;
+  }
+  #deck-stage .d-head .d-sq {
+    display: inline-block; width: 16px; height: 16px; background: #FFD166;
+    margin-right: 14px; vertical-align: -1px;
+  }
+  #deck-stage .d-head .d-rev { color: #FFD166; }
+  #deck-stage .d-dimh { position: absolute; left: 120px; right: 200px; top: 208px; height: 30px; }
+  #deck-stage .d-dimh .d-line {
+    position: absolute; left: 0; right: 0; top: 14px; height: 2px; background: #FFFFFF;
+  }
+  #deck-stage .d-dimh .d-line::before, #deck-stage .d-dimh .d-line::after {
+    content: ""; position: absolute; top: -8px; width: 2px; height: 18px; background: #FFFFFF;
+  }
+  #deck-stage .d-dimh .d-line::before { left: 0; }
+  #deck-stage .d-dimh .d-line::after { right: 0; }
+  #deck-stage .d-dimh .d-tag {
+    position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+    background: #0F3D7A; padding: 2px 18px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 20px; letter-spacing: .12em; color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+  }
+  #deck-stage .d-title {
+    position: absolute; left: 120px; right: 200px; top: 248px;
+    font-family: "Barlow Condensed", "Arial Black", sans-serif;
+    font-weight: 600; font-size: 88px; line-height: 1.04;
+    text-transform: uppercase; letter-spacing: .01em;
+    color: #FFFFFF; margin: 0;
+  }
+  #deck-stage .d-rule { position: absolute; left: 124px; top: 470px; width: 150px; height: 6px; background: #FFD166; }
+  #deck-stage .d-stat {
+    position: absolute; left: 120px; top: 500px;
+    font-family: "Barlow Condensed", "Arial Black", sans-serif;
+    font-weight: 600; font-size: 120px; line-height: 1;
+    color: #FFFFFF; margin: 0;
+  }
+  #deck-stage .d-statlabel {
+    position: absolute; left: 124px; top: 636px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 22px; font-weight: 500; letter-spacing: .18em;
+    text-transform: uppercase; color: #7FB3E8; margin: 0;
+  }
+  #deck-stage .d-sub {
+    position: absolute; left: 124px; right: 420px; top: 700px;
+    font-size: 34px; font-weight: 400; line-height: 1.4; color: #D6E6FA; margin: 0;
+  }
+  #deck-stage .d-stamp {
+    position: absolute; right: 208px; top: 620px;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 21px; font-weight: 500; letter-spacing: .22em; color: #FFD166;
+    border: 3px solid #FFD166; padding: 12px 22px 12px 26px;
+    transform: rotate(-6deg);
+    white-space: nowrap;
+  }
+  #deck-stage .d-dimv { position: absolute; right: 96px; top: 248px; bottom: 300px; width: 30px; }
+  #deck-stage .d-dimv .d-vline {
+    position: absolute; top: 0; bottom: 0; left: 14px; width: 2px; background: #FFFFFF;
+  }
+  #deck-stage .d-dimv .d-vline::before, #deck-stage .d-dimv .d-vline::after {
+    content: ""; position: absolute; left: -8px; width: 18px; height: 2px; background: #FFFFFF;
+  }
+  #deck-stage .d-dimv .d-vline::before { top: 0; }
+  #deck-stage .d-dimv .d-vline::after { bottom: 0; }
+  #deck-stage .d-dimv .d-vtag {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%,-50%) rotate(-90deg);
+    background: #0F3D7A; padding: 2px 18px; white-space: nowrap;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 20px; letter-spacing: .12em; color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+  }
+  #deck-stage .d-foot {
+    position: absolute; left: 120px; right: 120px; bottom: 84px;
+    border-top: 2px solid #FFFFFF; padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;
+  }
+  #deck-stage .d-context { font-size: 30px; font-weight: 400; color: #FFFFFF; }
+  #deck-stage .d-sheet {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 20px; letter-spacing: .16em; color: #7FB3E8; margin-top: 10px;
+  }
+  #deck-stage .d-revtable { border-collapse: collapse; }
+  #deck-stage .d-revtable th, #deck-stage .d-revtable td {
+    border: 2px solid #FFFFFF; padding: 8px 26px; text-align: center;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  #deck-stage .d-revtable th {
+    font-size: 17px; font-weight: 500; letter-spacing: .2em; color: #7FB3E8;
+  }
+  #deck-stage .d-revtable td { font-size: 24px; font-weight: 500; color: #FFFFFF; }
+  #deck-stage .d-revtable td.d-amber { color: #FFD166; }
+</style>
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <div class="d-slide">
+      <div class="d-frame"></div>
+      <span class="d-cross" style="left:22px;top:28px;">+</span>
+      <span class="d-cross" style="right:22px;top:28px;">+</span>
+      <span class="d-cross" style="left:22px;bottom:28px;">+</span>
+      <span class="d-cross" style="right:22px;bottom:28px;">+</span>
+      <div class="d-head">
+        <span><span class="d-sq"></span>Sheet B-04 · Finding 01</span>
+        <span>SCALE 1:50 · <span class="d-rev">REV C</span></span>
+      </div>
+      <div class="d-dimh"><div class="d-line"></div><span class="d-tag">1600 ±0.5</span></div>
+      <h1 class="d-title">Teams that required a second reviewer before merge contained failures earlier.</h1>
+      <div class="d-rule"></div>
+      <p class="d-stat">63%</p>
+      <p class="d-statlabel">fewer sev-1 rollbacks</p>
+      <p class="d-sub">Review depth predicted containment better than team size, tenure, or tooling.</p>
+      <div class="d-stamp">CONTAINED EARLIER</div>
+      <div class="d-dimv"><div class="d-vline"></div><span class="d-vtag">732</span></div>
+      <div class="d-foot">
+        <div>
+          <div class="d-context">Fixture data · not a real study</div>
+          <div class="d-sheet">DWG NO. TD-2026-111 · UNITS MM</div>
+        </div>
+        <table class="d-revtable">
+          <tr><th>REV</th><th>DATE</th><th>SHEET</th></tr>
+          <tr><td class="d-amber">C</td><td>2026-11</td><td>02 / 03</td></tr>
+        </table>
+      </div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>

@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Monolith
-description: A brutalist monumental presentation system on raw black. Anton caps fill the viewport at ~240px with tight leading and hard edge-crops, bone on black, with one signal-orange strike per slide. Small Inter carries body, tracked Anton caps label the top strip and footer. A black footer band split by an 8px orange rule stacks subtitle and context as raw blocks — no rules, grids, shadows, or decoration.
+description: A brutalist monumental presentation system on raw black. Anton caps fill the viewport at ~290px with tight leading and hard edge-crops, bone on black, with one signal-orange strike per slide. Small Inter carries body, tracked Anton caps label the top strip and footer. A black footer band split by an 8px orange rule stacks subtitle and context as raw blocks — no rules, grids, shadows, or decoration.
 colors:
   black: "#0E0E0E"
   slab-black: "#000000"
@@ -13,7 +13,7 @@ shadows:
 typography:
   mega:
     fontFamily: "'Anton', sans-serif"
-    fontSize: "240px"
+    fontSize: "290px"
     fontWeight: 400
     lineHeight: 0.94
     letterSpacing: "-0.01em"
@@ -80,7 +80,7 @@ components:
     description: "Edge-to-edge label row: orange square + research label left, date right. No rules."
   mega-title:
     fontFamily: "'Anton', sans-serif"
-    fontSize: 240px
+    fontSize: 290px
     lineHeight: 0.94
     color: "{colors.bone}"
     description: "Viewport-filling caps wall with one orange strike word. Hard-cropped by the zone edge."
@@ -119,18 +119,18 @@ Use `deck-stage.js` or an equivalent inline stage scaler for final output: rende
 
 ## Overview
 
-Monolith is a **brutalist monumental presentation system**. Its foundational premise is **mass**: the title is not placed on the slide, it is the slide. Anton caps at ~240px with 0.94 leading fill the viewport wall-to-wall, hard-cropped by the stage edge, bone on raw black. There is no grid to expose, no card to lift, no rule to follow — only a top strip, a wall of caps, and a banded footer.
+Monolith is a **brutalist monumental presentation system**. Its foundational premise is **mass**: the title is not placed on the slide, it is the slide. Anton caps at ~290px with 0.94 leading fill the viewport wall-to-wall, hard-cropped by the stage edge, bone on raw black. There is no grid to expose, no card to lift, no rule to follow — only a top strip, a wall of caps, and a banded footer.
 
-The type stack is two faces at violent contrast. **Anton** is the voice of the wall — display at 96–240px, tracked caps labels at 22–26px. Anton's condensed, heavy, all-caps character is the entire personality; it never sets body, never goes sentence case, never drops below presence. **Inter** is the whisper — 24–32px body in the footer band and on content slides, the only element allowed to be quiet. The contrast is the design: a shout with a footnote.
+The type stack is two faces at violent contrast. **Anton** is the voice of the wall — display at 96–290px, tracked caps labels at 22–26px. Anton's condensed, heavy, all-caps character is the entire personality; it never sets body, never goes sentence case, never drops below presence. **Inter** is the whisper — 24–32px body in the footer band and on content slides, the only element allowed to be quiet. The contrast is the design: a shout with a footnote.
 
 The palette is three flats: **raw black** ground, **bone** type, **signal orange** for the single strike. Orange appears exactly once per slide — one word in the title wall, the band rule, or one block. A second orange moment anywhere (a bullet plus a rule, a word plus a chip) collapses the discipline. Dim taupe grays only the smallest meta text.
 
 Layout is a **single column with 24px margins**: top strip, title zone, footer band. Content runs edge to edge; the title zone hard-crops anything past the edge via overflow hidden. The footer band is slab black (`#000000`) against the `#0E0E0E` ground — near-invisible except for the 8px orange rule that splits them and the stacked text blocks inside.
 
-**Density philosophy: one wall, one band.** A typical slide carries a caps wall + a band with two stacked blocks. Content slides keep the same skeleton at smaller scale (96–150px walls) with one Inter paragraph or one stat row in the band. When titles lengthen, the wall steps down (240 → 150 → 96px) and wraps; the band never moves and the strip never wraps.
+**Density philosophy: one wall, one band.** A typical slide carries a caps wall + a band with two stacked blocks. Content slides keep the same skeleton at smaller scale (96–150px walls) with one Inter paragraph or one stat row in the band. When titles lengthen, the wall steps down (290 → 150 → 96px) and wraps; the band never moves and the strip never wraps.
 
 **Key Characteristics:**
-- Viewport-filling Anton caps at ~240px with 0.94 leading, hard-cropped by the stage edge.
+- Viewport-filling Anton caps at ~290px with 0.94 leading, hard-cropped by the stage edge.
 - One orange strike per slide — a single word, rule, or block in signal orange, never more.
 - Black footer band on slab black, split from the ground by an 8px orange rule.
 - Tight 24px stage margins — content runs edge to edge with almost no frame.
@@ -164,7 +164,7 @@ Layout is a **single column with 24px margins**: top strip, title zone, footer b
 
 The system runs two faces at maximum contrast.
 
-**Anton** is the wall and the label — Regular (400) only, always caps. At 96–240px it is the title mass; at 22–26px with +0.18–0.25em tracking it is the strip and band voice. Anton's condensed heaviness is non-negotiable — substituting Archivo Black or Oswald softens the brutality.
+**Anton** is the wall and the label — Regular (400) only, always caps. At 96–290px it is the title mass; at 22–26px with +0.18–0.25em tracking it is the strip and band voice. Anton's condensed heaviness is non-negotiable — substituting Archivo Black or Oswald softens the brutality.
 
 **Inter** is the whisper — Regular (400) at 24–32px for subtitles, band paragraphs, and content body. Inter never exceeds 32px and never carries a headline; its smallness against Anton is the point.
 
@@ -174,7 +174,7 @@ Never use Inter for display, never use Anton for sentences. The shout/whisper sp
 
 | Token | Size | Family | Weight | Use |
 |---|---|---|---|---|
-| `{typography.mega}` | 240px | Anton | 400 | Cover title wall — caps, cropped, one orange word |
+| `{typography.mega}` | 290px | Anton | 400 | Cover title wall — caps, cropped, one orange word |
 | `{typography.display}` | 150px | Anton | 400 | Section opener wall |
 | `{typography.headline}` | 96px | Anton | 400 | Standard slide headline wall |
 | `{typography.strip-label}` | 24px | Anton | 400 | Top strip labels, +0.25em tracked |
@@ -190,6 +190,7 @@ These treatments are **non-optional whenever the corresponding element type is u
 - **Every title wall is uppercase Anton with leading ≤ 1.0.** Loose leading or sentence case turns mass into text.
 - **Every slide carries exactly one orange strike.** On covers it is the strike word in the wall; the band rule is band chrome, not the strike — but if the wall has no orange word, the band rule becomes the strike and nothing else may be orange.
 - **Every title wall is hard-cropped by its zone** (`overflow: hidden`, no fade, no ellipsis). Soft truncation does not exist.
+- **Break walls after connector words, never before them.** Line breaks fall after small joiners (`of`, `to`, `and`) so the orange strike word opens its own line clean (e.g. `COST OF / RUSHING TO / SHIP`) — no stranded one-glyph openers, no strike word sharing its line head with a joiner.
 - **Every band splits from the ground with the 8px orange rule.** A band without the rule disappears into the ground.
 - **Every strip label is tracked +0.25em with an orange square bullet** anchoring the left edge.
 - **Every whisper (Inter run) stays at or under 32px.** Large Inter next to Anton reads as indecision.
@@ -203,7 +204,7 @@ Walls should always feel **too big** — cropped, edge-running, slightly uncomfo
 
 ### Defaults
 
-- **Default size for a cover wall**: `{typography.mega}` (240px) — steps to 150px past ~45 characters, 96px past ~80.
+- **Default size for a cover wall**: `{typography.mega}` (290px) — steps to 150px past ~45 characters, 96px past ~80.
 - **Default size for a slide headline**: `{typography.headline}` (96px).
 - **Default size for the band subtitle**: `{typography.body}` (32px).
 - **Default strip label**: `{typography.strip-label}` (24px, +0.25em).
@@ -234,7 +235,7 @@ The cover reads as three slabs: strip / wall / band. The wall dominates (~75% of
 
 ### Flat Mass by Doctrine
 
-Monolith has **no depth system**. No shadows, no gradients, no translucency, no layers. Hierarchy is scale alone: 240px against 32px against 24px. The band separates from the ground by color step (`#000` on `#0E0E0E`) plus the orange rule — a cut, not a lift.
+Monolith has **no depth system**. No shadows, no gradients, no translucency, no layers. Hierarchy is scale alone: 290px against 32px against 24px. The band separates from the ground by color step (`#000` on `#0E0E0E`) plus the orange rule — a cut, not a lift.
 
 ### The Cut as Structure
 
@@ -262,7 +263,7 @@ There are no 1px or 2px lines anywhere. The system's thinnest mark is the 20px b
 
 ### Decorative Element Types
 
-**Title wall** — The 240px Anton caps mass with one orange strike word, hard-cropped by the zone. The system's entire identity.
+**Title wall** — The 290px Anton caps mass with one orange strike word, hard-cropped by the zone. The system's entire identity.
 
 **Orange strike** — The single orange word, rule, or block per slide. Count orange elements on every slide: the answer must be exactly the disciplined set (wall word + band rule, or band rule alone).
 
@@ -278,13 +279,13 @@ There are no 1px or 2px lines anywhere. The system's thinnest mark is the 20px b
 
 ### Do
 
-- Fill the viewport with the wall — 240px on covers, cropped hard by the zone edge.
+- Fill the viewport with the wall — 290px on covers, cropped hard by the zone edge.
 - Keep exactly one orange strike in the wall plus the band rule. Count orange on every slide.
 - Run content edge to edge inside 24px margins. Tight is the aesthetic.
 - Split the band from the ground with the 8px orange rule — never omit it.
 - Stack band blocks raw: subtitle left, context right, no dividers.
 - Track strip and band labels (+0.18–0.25em) in Anton caps.
-- Step the wall down (240 → 150 → 96px) as titles lengthen; never squeeze below 96px on covers.
+- Step the wall down (290 → 150 → 96px) as titles lengthen; never squeeze below 96px on covers.
 - Let long lines crop. The hard crop is a feature, not a failure — within one word of depth.
 - Keep Inter at or under 32px, plain, left-aligned.
 - Anchor the strip with the 20px orange square bullet.
@@ -308,8 +309,8 @@ Monolith is a **fixed-stage system** built for 1920×1080 output. All sizes are 
 
 ### Scaling Behavior
 
-- The 240px wall, 24px margins, and 8px band rule are fixed at 1920×1080 and scale with the stage transform.
-- Wall sizes step by content length (240 → 150 → 96px), not by viewport.
+- The 290px wall, 24px margins, and 8px band rule are fixed at 1920×1080 and scale with the stage transform.
+- Wall sizes step by content length (290 → 150 → 96px), not by viewport.
 - The band keeps its height and padding at all scales; the zone absorbs all variance.
 
 ### Component Breakpoints
@@ -364,7 +365,7 @@ Add to the slide `<head>`:
 - **Punctuation**: use full-width CJK punctuation where the locale demands it; keep `·` separators with spaces in mixed lines.
 - **No trailing period on display walls**: omit terminal punctuation on cover titles per CJK convention.
 - **Space between CJK and Latin**: keep an ASCII space between Hangul/Hanja and adjacent Latin or digits.
-- **Wall sizing**: CJK walls at 900 weight run wider per character — expect one more wrap line than Latin at the same size, and step down earlier (240 → 150 past ~30 CJK characters).
+- **Wall sizing**: CJK walls at 900 weight run wider per character — expect one more wrap line than Latin at the same size, and step down earlier (290 → 150 past ~30 CJK characters).
 
 ### Aesthetic Notes for This System
 
@@ -378,7 +379,7 @@ Mass translates; condensedness does not. Noto Sans KR 900 at wall sizes is heavy
 ## Iteration Guide
 
 1. Any new slide keeps the strip / wall / band stack with 24px margins and the 8px orange band rule. Don't skip the slabs.
-2. Any new wall uses Anton caps at 240/150/96px with leading ≤ 1.0 and exactly one orange strike word (or none, letting the band rule be the strike).
+2. Any new wall uses Anton caps at 290/150/96px with leading ≤ 1.0 and exactly one orange strike word (or none, letting the band rule be the strike).
 3. Any new whisper uses Inter 400 at ≤ 32px, plain, left-aligned, in the band.
 4. Any new label uses tracked Anton caps (22–26px, +0.18–0.25em), strip-left or band-right.
 5. Any new zone hard-crops with `overflow: hidden` — no fades, no ellipses, no soft truncation.

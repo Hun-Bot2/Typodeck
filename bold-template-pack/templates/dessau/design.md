@@ -252,6 +252,8 @@ Strokes otherwise do not exist. Frames, outlines, and keylines are forbidden —
 - Edge the yellow square in 6px black whenever it sits on white.
 - Align every element to the column grid and bar rhythm — everything has a grid address.
 - Limit display accents to one red word or phrase per slide.
+- Spend the red accent on the title's operative word (e.g. the verb of the finding) — never on a connector.
+- Close the title zone with a grid-keyed bar row: a black key bar with a red lead segment plus a figure caption (`fig. NN — n = NN`) — the field below the subtitle never sits empty.
 - Set bar text in white — context caps top-left, numeral bottom-right.
 
 ### Don't

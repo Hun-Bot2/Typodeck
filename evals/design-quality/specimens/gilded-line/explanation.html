@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gilded Line — Explanation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Jost:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #0F0E0C; /* Gilded Line surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <style>
+      .gd { position: absolute; inset: 0; background: #0F0E0C; color: #F5EFE0;
+        font-family: 'Jost', system-ui, sans-serif; display: flex;
+        align-items: center; justify-content: center; }
+      .gd-frame-outer { position: absolute; inset: 26px; border: 2px solid #D4AF37; pointer-events: none; }
+      .gd-frame-inner { position: absolute; inset: 38px; border: 1px solid rgba(212,175,55,0.65); pointer-events: none; }
+      .gd-corner { position: absolute; width: 26px; height: 26px; background: #0F0E0C;
+        border: 2px solid #D4AF37; transform: rotate(45deg); }
+      .gd-corner.tl { top: 20px; left: 20px; }
+      .gd-corner.tr { top: 20px; right: 20px; }
+      .gd-corner.bl { bottom: 20px; left: 20px; }
+      .gd-corner.br { bottom: 20px; right: 20px; }
+      .gd-panel { width: 1330px; max-height: 940px; background: #F5EFE0; color: #0F0E0C;
+        border: 3px solid #D4AF37; outline: 1px solid #D4AF37; outline-offset: 9px;
+        padding: 48px 90px 42px 90px; text-align: center;
+        display: flex; flex-direction: column; align-items: center; }
+      .gd-kicker { font-family: 'Cinzel', 'Arial Black', sans-serif; font-weight: 400;
+        font-size: 24px; letter-spacing: 0.25em; text-indent: 0.25em; color: #1F4E5F; }
+      .gd-rule { display: flex; align-items: center; gap: 18px; margin: 18px 0;
+        color: #8C6D2B; font-size: 20px; letter-spacing: 0.4em; text-indent: 0.4em; }
+      .gd-rule::before, .gd-rule::after { content: ""; display: block; width: 220px; height: 2px;
+        background: #D4AF37; }
+      .gd-rule.thin::before, .gd-rule.thin::after { width: 150px; height: 1px; }
+      .gd-title { margin: 0; font-family: 'Cinzel', 'Arial Black', sans-serif; font-weight: 700;
+        font-size: 54px; line-height: 1.2; letter-spacing: 0.04em; color: #0F0E0C; }
+      .gd-cols { display: flex; align-items: stretch; gap: 0; margin-top: 28px; width: 100%; }
+      .gd-col { flex: 1 1 0; min-width: 0; padding: 0 40px; }
+      .gd-col h2 { margin: 0 0 16px 0; font-family: 'Cinzel', 'Arial Black', sans-serif;
+        font-weight: 400; font-size: 23px; letter-spacing: 0.22em; text-indent: 0.22em; color: #1F4E5F; }
+      .gd-col ul { list-style: none; margin: 0; padding: 0; }
+      .gd-col li { font-size: 22px; line-height: 1.5; color: #3D3830; margin: 0; padding: 10px 0;
+        border-top: 1px solid #D4AF37; }
+      .gd-col li:last-child { border-bottom: 1px solid #D4AF37; }
+      .gd-cdiv { flex: 0 0 auto; width: 2px; background: #D4AF37; position: relative; }
+      .gd-cdiv::after { content: "◆"; position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%); background: #F5EFE0; color: #8C6D2B;
+        font-size: 22px; padding: 10px 0; }
+      .gd-sub { margin: 26px 0 0 0; font-size: 26px; font-style: italic; line-height: 1.45;
+        color: #3D3830; max-width: 30em; }
+      .gd-context { margin-top: 20px; font-family: 'Cinzel', 'Arial Black', sans-serif;
+        font-size: 19px; letter-spacing: 0.25em; text-indent: 0.25em; color: #1F4E5F; }
+      .gd-foot { margin-top: 20px; display: flex; align-items: center; gap: 26px;
+        font-family: 'Cinzel', 'Arial Black', sans-serif; font-size: 20px;
+        letter-spacing: 0.3em; text-indent: 0.3em; color: #8C6D2B; }
+      .gd-foot .dia { color: #1F4E5F; }
+      .gd-side { position: absolute; top: 50%; transform: translateY(-50%);
+        display: flex; flex-direction: column; align-items: center; gap: 22px;
+        color: #D4AF37; font-size: 22px; }
+      .gd-side.left { left: 110px; }
+      .gd-side.right { right: 110px; }
+      .gd-side .vline { width: 2px; height: 300px;
+        background: linear-gradient(to bottom, transparent, #D4AF37 8%, #D4AF37 92%, transparent); }
+    </style>
+    <div class="gd">
+      <div class="gd-frame-outer"></div>
+      <div class="gd-frame-inner"></div>
+      <span class="gd-corner tl"></span><span class="gd-corner tr"></span>
+      <span class="gd-corner bl"></span><span class="gd-corner br"></span>
+      <div class="gd-side left"><span>◆</span><span class="vline"></span><span>◇</span><span class="vline"></span><span>◆</span></div>
+      <div class="gd-panel">
+        <div class="gd-kicker">◆&nbsp;&nbsp;The choice&nbsp;&nbsp;◆</div>
+        <div class="gd-rule">◇</div>
+        <h1 class="gd-title">Two teams, one deadline</h1>
+        <div class="gd-cols">
+          <div class="gd-col">
+            <h2>Rushed review</h2>
+            <ul>
+              <li>Merged with a single skim approval</li>
+              <li>Config changes bundled into feature PRs</li>
+              <li>Rollback discovered by customers first</li>
+            </ul>
+          </div>
+          <div class="gd-cdiv"></div>
+          <div class="gd-col">
+            <h2>Disciplined review</h2>
+            <ul>
+              <li>Required a second reviewer on every merge</li>
+              <li>Config changes shipped in isolated PRs</li>
+              <li>Rollback caught in staging, never in production</li>
+            </ul>
+          </div>
+        </div>
+        <p class="gd-sub">Same deadline, different discipline: one team paid at review time, the other in production.</p>
+        <div class="gd-rule thin">◆</div>
+        <div class="gd-context">Fixture data · not a real study</div>
+        <div class="gd-foot"><span>№ 11</span><span class="dia">◆</span><span>ANNO MMXXVI</span></div>
+      </div>
+      <div class="gd-side right"><span>◆</span><span class="vline"></span><span>◇</span><span class="vline"></span><span>◆</span></div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>

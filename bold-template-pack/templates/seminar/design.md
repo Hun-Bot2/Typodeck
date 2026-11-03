@@ -314,6 +314,7 @@ Known CJK gap: the italic-lede distinction collapses (no CJK italic), so lede-vs
 8. Any new color comes from the five declared tokens; tints via ink opacity only.
 9. Any new slide keeps the plain white ground — no fills, shadows, or textures.
 10. Verify every new slide at 1920×1080 for title wrap (≤6 lines), sidenote/footnote clearance, and numeral position before capture.
+11. Any new footnote key must differ from every margin-note key on the slide, and no margin note may restate the footnote — a duplicated key or an echoing note is a defect; each margin note must add information drawn from real content phrases.
 
 ## Known Gaps
 

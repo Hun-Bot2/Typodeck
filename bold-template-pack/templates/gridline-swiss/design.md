@@ -124,7 +124,7 @@ components:
     fontSize: 400px
     fontWeight: 800
     color: "{colors.ink}"
-    description: "Giant issue numeral (e.g., 01) cropped by the rail's inner edge. Ink black on rail gray."
+    description: "Giant issue numeral (e.g., 01) parked inside the rail with ~40px insets. Ink black on rail gray."
   meta-row:
     fontFamily: "'Inter', sans-serif"
     fontSize: 19px
@@ -163,7 +163,7 @@ Structure comes from rules, not containers. A **6px red rule** under the kicker,
 
 **Key Characteristics:**
 - Exposed 12-column hairline grid printed faintly on the white ground — alignment as visible content.
-- Giant index numeral (Archivo 800, ~400px) parked in the gray rail, cropped by the rail edge.
+- Giant index numeral (Archivo 800, ~400px) parked in the gray rail, fully contained with ~40px insets.
 - One 6px signal-red rule per slide — never more, never thinner — under the kicker or title block.
 - Flush-left ragged-right headlines in Archivo 800 with tight -0.01em tracking; centering is forbidden.
 - Red kicker line (Archivo 600 caps, +0.18em tracking) paired with an 18px solid red square bullet.
@@ -227,7 +227,7 @@ These treatments are **non-optional whenever the corresponding element type is u
 - **Every headline is flush-left with a ragged right edge.** Centered or justified display type does not exist in this system.
 - **Every cover title carries tight -0.01em tracking.** Archivo at display sizes needs the slight squeeze to feel engineered.
 - **Every kicker is red, caps, +0.18em, with an 18px solid red square bullet** at its left. A kicker without the square reads as an unfinished label.
-- **Every index numeral is cropped by the rail edge.** The numeral's right side bleeds past the rail boundary — full containment reads as timid.
+- **Every index numeral sits fully contained in the rail.** The numeral holds ~40px insets on all sides — edge-cropping would fight the rail's calm.
 - **Every footer pairs small-caps context (left) with a paginated index (right)** in the `NN / NN` format. One without the other breaks the band.
 - **Every caption and meta line is uppercase with +0.08–0.10em tracking.** Sentence-case small text reads as leftover body copy.
 
@@ -305,7 +305,7 @@ Borders are always solid and always horizontal or vertical — no diagonals, no 
 
 **Kicker square** — An 18×18px solid red square anchoring the kicker line's left edge.
 
-**Index numeral** — The 400px Archivo 800 numeral in the rail, cropped by the rail edge, with a 6px red baseline beneath it.
+**Index numeral** — The 400px Archivo 800 numeral in the rail, fully contained with ~40px insets, with a 6px red baseline beneath it.
 
 **Column grid** — The exposed 12-column hairline scaffold at 7% ink. Structural content, not background decoration.
 
@@ -329,7 +329,7 @@ Borders are always solid and always horizontal or vertical — no diagonals, no 
 - Set every headline flush-left with a ragged right edge in Archivo 800.
 - Use exactly one 6px red rule per slide, 20px below the kicker, spanning the content columns.
 - Pair every kicker with its 18px solid red square bullet.
-- Crop the giant index numeral against the rail edge — never fully contain it.
+- Contain the giant index numeral inside the rail with ~40px insets — never crop it against the rail edge.
 - Close every slide with the hairline footer: context left, paginated index right.
 - Populate the rail on every slide: numeral, red baseline, at least two meta rows.
 - Step the headline down (118 → 72 → 48px) as titles lengthen; never squeeze tracking past -0.01em.
@@ -418,7 +418,7 @@ Add to the slide `<head>`:
 
 ### Aesthetic Notes for This System
 
-The grid carries the CJK build. Noto Sans KR 900 at display sizes is sturdy but lacks Archivo's tight grotesque character, so lean harder on the **non-typographic** signatures: the exposed column grid, the 6px red rule, the cropped index numeral (Latin digits `01` stay in Archivo 800 even in CJK builds — numerals are locale-neutral), and the rail/meta/footer chrome, which translate unchanged.
+The grid carries the CJK build. Noto Sans KR 900 at display sizes is sturdy but lacks Archivo's tight grotesque character, so lean harder on the **non-typographic** signatures: the exposed column grid, the 6px red rule, the contained index numeral (Latin digits `01` stay in Archivo 800 even in CJK builds — numerals are locale-neutral), and the rail/meta/footer chrome, which translate unchanged.
 
 ### Known CJK Gap
 

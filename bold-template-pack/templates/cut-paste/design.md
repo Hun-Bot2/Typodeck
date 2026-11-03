@@ -46,7 +46,7 @@ typography:
     lineHeight: 1
   ghost-word:
     fontFamily: "'Archivo Black', 'Arial Black', sans-serif"
-    fontSize: "400px"
+    fontSize: "340px"
     fontWeight: 400
     lineHeight: 1
 spacing:
@@ -172,7 +172,7 @@ No gradients anywhere; all color is flat paste. Opacity appears only in tape (60
 | `{typography.body}` | 24px | Libre Franklin | 400 | Body paragraphs |
 | `{typography.hand-note}` | 32px | Caveat | 600 | Sticky-note source line |
 | `{typography.badge-numeral}` | 76px | Archivo Black | 400 | White numeral in red disc |
-| `{typography.ghost-word}` | 400px | Archivo Black | 400 | Outlined background word |
+| `{typography.ghost-word}` | 340px | Archivo Black | 400 | Outlined background word |
 
 ### Signature Treatments
 
@@ -184,6 +184,7 @@ These treatments are **non-optional whenever the corresponding element type is u
 - **Every sticky note is yellow, Caveat 600, tilted −2.5 degrees, with one top tape strip.** The hand voice appears nowhere else.
 - **Every badge numeral is white Archivo Black in the ink-ringed red disc at 8 degrees.** The disc carries a content numeral or single content glyph only.
 - **Every ghost word is a genuine title word**, transparent-filled with a 3px 14%-ink stroke at −6 degrees. Invented background words are forbidden.
+- **Every ghost word keeps at least one full letterform clear** of slabs, scraps, and stickies — park it in open paper (right side, below the scrap line) so no letter reads as a smudge fragment.
 - **Every tape strip is 120×34px translucent yellow at ±35 degrees**, overlapping the scrap edge it pins.
 
 ### Typography Principles
@@ -208,7 +209,7 @@ Page position, where needed, is carried by the badge numeral itself (a content n
 
 ### Composition Rules
 
-Text-bearing layers tilt at most ±3°: shout −1.2°, scrap +1.6°, sticky −2.5°. Offset blocks counter-rotate against their layer (teal +1.5° behind the shout, red −1° behind the scrap) so color peeks unevenly like torn edges. Tape strips overlap scrap edges by half their width. Confetti plus-marks keep 60px clearance from reading text. No layer may cover another layer's text — overlaps are edge-to-edge only.
+Text-bearing layers tilt at most ±3°: shout −1.2°, scrap +1.6°, sticky −2.5°. Offset blocks counter-rotate against their layer (teal +1.5° behind the shout, red −1° behind the scrap) so color peeks unevenly like torn edges. Tape strips overlap scrap edges by half their width. Tape keeps a visible gap above scrap text — never kissing a glyph. Confetti plus-marks keep 60px clearance from reading text. No layer may cover another layer's text — overlaps are edge-to-edge only.
 
 ## Depth and Elevation
 
@@ -242,7 +243,7 @@ Paper is square: scraps, notes, offset blocks, and tape have zero radius. The si
 
 **Disc badge** — Red 180px disc, ink ring, white numeral, 8° tilt, 8px ink offset.
 
-**Ghost word** — 400px outlined title word at −6°, right side, behind all reading layers.
+**Ghost word** — 340px outlined title word at −6°, right side below the scrap line, behind all reading layers with ≥1 full letterform clear.
 
 **Plus confetti** — 40px teal/red plus marks at mixed rotations, clear of reading text.
 
@@ -256,6 +257,7 @@ Paper is square: scraps, notes, offset blocks, and tape have zero radius. The si
 - Border, tape, and offset every subtitle scrap; all three treatments travel together.
 - Tilt text-bearing layers within ±3° and counter-rotate their offset blocks.
 - Pull the ghost word from the real title and keep it behind everything at 14% stroke.
+- Paste a folio scrap low-left on open paper (bordered, red offset, −2°) so the bottom-left quadrant never sits empty.
 - Carry the source line verbatim on the yellow Caveat sticky with its top tape.
 - Keep confetti 60px clear of reading text and overlaps edge-to-edge only.
 - Use flat paste color only — the three offsets are the entire depth system.

@@ -337,6 +337,7 @@ Borders are always solid ink or blue (boxes), except leaders which are always da
 - Use Archivo caps for every header; Plex Sans for every sentence; Plex Mono for every tag.
 - Stitch steps to tags and figures to notes with 2px dashed muted leaders.
 - Fill warning chips amber — and fill nothing else except white boxes.
+- Pin every warning chip flush to the note or figure it warns about — a chip pointing at empty paper ships confusion.
 - Keep exhibits qualitative (check rows, gap lists) unless the data is genuinely sourced.
 - Punch figure/note boxes white over the dotted paper; keep boxes opaque.
 - Step the title down (92 → 64 → 44px) as titles lengthen past ~45 characters.

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal Board — The Choice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #F6F8FA; /* Signal Board surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <style>
+      .sb { position: absolute; inset: 0; background: #F6F8FA; color: #0F172A;
+        font-family: 'Inter', system-ui, sans-serif; display: flex; flex-direction: column; }
+      .sb-topbar { height: 64px; flex: 0 0 64px; background: #0F172A; color: #E2E8F0;
+        display: flex; align-items: center; padding: 0 72px; gap: 20px;
+        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; letter-spacing: 0.14em; }
+      .sb-live { width: 14px; height: 14px; border-radius: 50%; background: #16A34A; flex: 0 0 14px; }
+      .sb-topbar .spacer { flex: 1; }
+      .sb-topbar .dim { color: #94A3B8; }
+      .sb-topbar .amber { color: #FBBF24; }
+      .sb-main { flex: 1; display: flex; flex-direction: column;
+        padding: 48px 72px 0 72px; min-height: 0; }
+      .sb-kicker { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+      .sb-pill { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px;
+        font-weight: 600; letter-spacing: 0.12em; padding: 10px 22px; border-radius: 999px;
+        text-transform: uppercase; }
+      .sb-pill.blue { background: #2563EB; color: #fff; }
+      .sb-pill.ghost { border: 2px solid #0F172A; color: #0F172A; }
+      .sb-title { margin: 0; font-weight: 800; font-size: 84px; line-height: 1.04;
+        letter-spacing: -0.015em; color: #0F172A; font-variant-numeric: tabular-nums; }
+      .sb-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 44px; }
+      .sb-panel { padding: 28px 32px; display: flex; flex-direction: column; }
+      .sb-panel.light { background: #fff; border: 1px solid #E2E8F0; border-top: 6px solid #DC2626; }
+      .sb-panel.dark { background: #0F172A; color: #E2E8F0; border-top: 6px solid #16A34A; }
+      .sb-panel h3 { margin: 0 0 10px 0; font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 20px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+      .sb-panel.light h3 { color: #0F172A; }
+      .sb-panel.dark h3 { color: #93C5FD; }
+      .sb-verdict { display: flex; align-items: center; gap: 16px; padding: 22px 0;
+        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 24px; font-weight: 500; }
+      .sb-panel.light .sb-verdict { border-top: 1px solid #E2E8F0; color: #0F172A; }
+      .sb-panel.dark .sb-verdict { border-top: 1px solid #334155; color: #E2E8F0; }
+      .sb-verdict .mk { font-weight: 600; flex: 0 0 auto; }
+      .sb-verdict .mk.down { color: #DC2626; }
+      .sb-panel.dark .sb-verdict .mk.up { color: #4ADE80; }
+      .sb-caption { margin: auto 0 0 0; padding-top: 30px; font-size: 29px; line-height: 1.5; color: #475569; max-width: 60ch; }
+      .sb-src { margin: 16px 0 34px 0; font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 17px; letter-spacing: 0.12em; color: #64748B; text-transform: uppercase; }
+      .sb-foot { flex: 0 0 60px; display: flex; align-items: center;
+        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 18px;
+        letter-spacing: 0.12em; color: #64748B; border-top: 1px solid #CBD5E1;
+        margin: auto 72px 0 72px; padding-left: 0; padding-right: 0; }
+      .sb-foot .r { margin-left: auto; color: #0F172A; font-weight: 600; }
+    </style>
+    <div class="sb">
+      <div class="sb-topbar">
+        <span class="sb-live"></span>
+        <span>TYPODECK RESEARCH</span>
+        <span class="dim">/</span>
+        <span class="amber">POSTMORTEM SERIES</span>
+        <span class="spacer"></span>
+        <span class="dim">SAMPLE</span>
+        <span>N = 11</span>
+      </div>
+      <div class="sb-main">
+        <div class="sb-kicker">
+          <span class="sb-pill blue">The choice</span>
+          <span class="sb-pill ghost">NOV 2026</span>
+        </div>
+        <h1 class="sb-title">Two teams, one deadline</h1>
+        <div class="sb-duo">
+          <div class="sb-panel light">
+            <h3>Rushed review</h3>
+            <div class="sb-verdict"><span class="mk down">▼</span><span>Merged with a single skim approval</span></div>
+            <div class="sb-verdict"><span class="mk down">▼</span><span>Config changes bundled into feature PRs</span></div>
+            <div class="sb-verdict"><span class="mk down">▼</span><span>Rollback discovered by customers first</span></div>
+          </div>
+          <div class="sb-panel dark">
+            <h3>Disciplined review</h3>
+            <div class="sb-verdict"><span class="mk up">▲</span><span>Required a second reviewer on every merge</span></div>
+            <div class="sb-verdict"><span class="mk up">▲</span><span>Config changes shipped in isolated PRs</span></div>
+            <div class="sb-verdict"><span class="mk up">▲</span><span>Rollback caught in staging, never in production</span></div>
+          </div>
+        </div>
+        <p class="sb-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
+        <p class="sb-src">Source · Fixture data · not a real study</p>
+      </div>
+      <div class="sb-foot"><span>THE CHOICE · VOL. 11</span><span class="r">P. 03</span></div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dessau — Title Slide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <div class="de-slide">
+      <div class="de-topbar"><p class="de-context">Typodeck Research · November 2026</p></div>
+      <div class="de-field">
+        <div class="de-bar de-bar-red" aria-hidden="true"></div>
+        <div class="de-bar de-bar-blue" aria-hidden="true"></div>
+        <div class="de-bar de-bar-yellow" aria-hidden="true"></div>
+        <div class="de-main">
+          <h1 class="de-title" id="deTitle">The Hidden Cost of Rushing to Ship</h1>
+          <p class="de-subtitle">What 11 postmortems taught us about review discipline</p>
+          <div class="de-keyrow" aria-hidden="false">
+            <div class="de-keybar"><i></i></div>
+            <p class="de-keycap">fig. 01 — n = 11</p>
+          </div>
+        </div>
+        <div class="de-glyphs" aria-hidden="true">
+          <div class="de-triangle"></div>
+          <div class="de-circle"></div>
+          <div class="de-square"></div>
+        </div>
+      </div>
+      <div class="de-strip" aria-hidden="true"><span class="de-seg-red"></span><span class="de-seg-blue"></span><span class="de-seg-yellow"></span></div>
+      <div class="de-bottombar"><div class="de-numeral" aria-hidden="true">01</div></div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+<script>
+  /* Red accent paint (progressive enhancement): single title source; the
+     operative word (5th token) takes the one permitted red display accent. */
+  (function () {
+    var t = document.getElementById('deTitle');
+    if (!t || t.dataset.painted) return;
+    t.dataset.painted = '1';
+    var words = t.textContent.split(' ');
+    function esc(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    t.innerHTML = words.map(function (w, i) {
+      return i === 4 ? '<span class="de-red">' + esc(w) + '</span>' : esc(w);
+    }).join(' ');
+    t.setAttribute('aria-label', words.join(' '));
+  })();
+</script>
+<style>
+  .de-slide {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    background: #FFFFFF;
+    overflow: hidden;
+  }
+  .de-topbar {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1920px;
+    height: 96px;
+    background: #000000;
+  }
+  .de-context {
+    position: absolute;
+    left: 96px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.5;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    white-space: nowrap;
+  }
+  .de-field {
+    position: absolute;
+    top: 96px; left: 0;
+    width: 1920px;
+    height: 900px;
+  }
+  .de-bar { position: absolute; top: 56px; bottom: 56px; width: 28px; }
+  .de-bar-red { left: 96px; background: #E30613; }
+  .de-bar-blue { left: 1236px; background: #0066B3; }
+  .de-bar-yellow { left: 1292px; background: #FFCC00; }
+  .de-main {
+    position: absolute;
+    left: 152px;
+    top: 140px;
+    width: 1052px;
+  }
+  .de-title {
+    margin: 0;
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 600;
+    font-size: 96px;
+    line-height: 1.08;
+    text-transform: lowercase;
+    color: #000000;
+    text-wrap: pretty;
+  }
+  .de-subtitle {
+    margin: 32px 0 0 0;
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 1.45;
+    color: #000000;
+  }
+  .de-title .de-red { color: #E30613; }
+  .de-keyrow {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-top: 56px;
+  }
+  .de-keybar {
+    flex: 1 1 auto;
+    height: 28px;
+    background: #000000;
+  }
+  .de-keybar i {
+    display: block;
+    width: 180px;
+    height: 28px;
+    background: #E30613;
+  }
+  .de-keycap {
+    flex: 0 0 auto;
+    margin: 0;
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #000000;
+    white-space: nowrap;
+  }
+  .de-glyphs {
+    position: absolute;
+    left: 1352px;
+    top: 120px;
+    width: 360px;
+  }
+  .de-triangle {
+    width: 190px; height: 190px;
+    background: #E30613;
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    margin-left: 90px;
+  }
+  .de-circle {
+    width: 190px; height: 190px;
+    background: #0066B3;
+    border-radius: 50%;
+    margin: 44px 0 0 0;
+  }
+  .de-square {
+    width: 178px; height: 178px;
+    background: #FFCC00;
+    border: 6px solid #000000;
+    margin: 44px 0 0 90px;
+  }
+  .de-strip {
+    position: absolute;
+    top: 996px; left: 0;
+    width: 1920px;
+    height: 12px;
+    display: flex;
+  }
+  .de-strip span { flex: 1 1 0; }
+  .de-seg-red { background: #E30613; }
+  .de-seg-blue { background: #0066B3; }
+  .de-seg-yellow { background: #FFCC00; }
+  .de-bottombar {
+    position: absolute;
+    top: 1008px; left: 0;
+    width: 1920px;
+    height: 72px;
+    background: #000000;
+  }
+  .de-numeral {
+    position: absolute;
+    right: 96px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 600;
+    font-size: 54px;
+    line-height: 1;
+    color: #FFFFFF;
+  }
+</style>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Explanation Slide — D25</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  #deck-stage .b-slide {
+    position: absolute; inset: 0; overflow: hidden;
+    background: linear-gradient(180deg, #D9EBFF 0%, #E8F4FF 26%, #E8F4FF 72%, #D5E8FF 100%);
+    font-family: "Quicksand", system-ui, sans-serif;
+  }
+  #deck-stage .b-band { position: absolute; left: 0; right: 0; overflow: hidden; }
+  #deck-stage .b-band-top {
+    top: 0; height: 118px;
+    background: linear-gradient(100deg, #7AF0FF 0%, #B388FF 48%, #FF7AD9 100%);
+    border-radius: 0 0 44px 44px;
+    box-shadow: 0 4px 0 rgba(27,31,107,.18);
+  }
+  #deck-stage .b-band-bottom {
+    bottom: 0; height: 92px;
+    background: linear-gradient(100deg, #FF7AD9 0%, #B388FF 52%, #7AF0FF 100%);
+    border-radius: 44px 44px 0 0;
+    box-shadow: 0 -4px 0 rgba(27,31,107,.18);
+  }
+  #deck-stage .b-band::after {
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 46%;
+    background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0));
+  }
+  #deck-stage .b-star { position: absolute; line-height: 1; user-select: none; }
+  #deck-stage .b-card {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+    width: 1580px; max-height: 850px;
+    background: #FFFFFF;
+    border: 4px solid #1B1F6B;
+    border-radius: 48px;
+    box-shadow: 14px 14px 0 rgba(27,31,107,.14), 0 30px 70px rgba(27,31,107,.20);
+    padding: 48px 84px 44px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  #deck-stage .b-card::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 120px;
+    background: linear-gradient(180deg, rgba(122,240,255,.30), rgba(255,255,255,0));
+    pointer-events: none;
+  }
+  #deck-stage .b-badges { display: flex; gap: 20px; margin-bottom: 24px; position: relative; }
+  #deck-stage .b-pill {
+    font-family: "Baloo 2", "Arial Black", sans-serif;
+    font-weight: 700; font-size: 22px; letter-spacing: .12em; text-transform: uppercase;
+    padding: 10px 30px 12px; border-radius: 999px; line-height: 1.2;
+    box-shadow: inset 0 3px 0 rgba(255,255,255,.55), 0 3px 0 rgba(27,31,107,.25);
+  }
+  #deck-stage .b-pill-indigo { background: #1B1F6B; color: #FFFFFF; }
+  #deck-stage .b-pill-pink { background: #FF7AD9; color: #1B1F6B; }
+  #deck-stage .b-pill-aqua { background: #7AF0FF; color: #1B1F6B; }
+  #deck-stage .b-title {
+    font-family: "Baloo 2", "Arial Black", sans-serif;
+    font-weight: 700; font-size: 64px; line-height: 1.12;
+    color: #1B1F6B; margin: 0 0 22px; position: relative;
+  }
+  #deck-stage .b-title .w-pink { color: #D12E7F; }
+  #deck-stage .b-title .w-hi {
+    background: linear-gradient(180deg, #A5F5FF, #7AF0FF);
+    border-radius: 26px; padding: 0 26px;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+    box-shadow: inset 0 3px 0 rgba(255,255,255,.7);
+  }
+  #deck-stage .b-side { position: relative; }
+  #deck-stage .b-sidelabel {
+    font-family: "Baloo 2", "Arial Black", sans-serif;
+    font-weight: 700; font-size: 30px; line-height: 1.2;
+    color: #1B1F6B; margin: 0 0 10px;
+  }
+  #deck-stage .b-sidelabel .b-star-rushed { color: #D12E7F; margin-right: 10px; }
+  #deck-stage .b-sidelabel .b-star-calm { color: #3A3F8F; margin-right: 10px; }
+  #deck-stage .b-line {
+    font-size: 26px; font-weight: 400; line-height: 1.55;
+    color: #3A3F8F; margin: 0 0 0 44px;
+  }
+  #deck-stage .b-split {
+    border: 0; border-top: 3px dashed rgba(27,31,107,.25);
+    margin: 20px 0; position: relative;
+  }
+  #deck-stage .b-caption {
+    font-size: 24px; font-weight: 500; line-height: 1.5;
+    color: #1B1F6B; margin: 20px 0 24px; position: relative;
+  }
+  #deck-stage .b-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 3px dashed rgba(27,31,107,.25); padding-top: 24px; position: relative;
+  }
+  #deck-stage .b-context { font-size: 27px; font-weight: 600; color: #1B1F6B; }
+  #deck-stage .b-context .b-mini { color: #FF7AD9; font-size: 24px; margin-right: 12px; }
+  #deck-stage .b-page {
+    font-family: "Baloo 2", "Arial Black", sans-serif; font-weight: 800; font-size: 24px;
+    background: #B388FF; color: #1B1F6B; border-radius: 999px; padding: 8px 26px;
+    box-shadow: inset 0 3px 0 rgba(255,255,255,.55), 0 3px 0 rgba(27,31,107,.25);
+  }
+</style>
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <div class="b-slide">
+      <div class="b-band b-band-top"></div>
+      <div class="b-band b-band-bottom"></div>
+      <span class="b-star" style="left:90px;top:170px;font-size:56px;color:#FF7AD9;transform:rotate(-12deg);">★</span>
+      <span class="b-star" style="left:1770px;top:200px;font-size:72px;color:#1B1F6B;opacity:.35;transform:rotate(10deg);">★</span>
+      <span class="b-star" style="left:60px;top:640px;font-size:40px;color:#B388FF;transform:rotate(8deg);">★</span>
+      <span class="b-star" style="left:1810px;top:660px;font-size:48px;color:#FF7AD9;opacity:.7;transform:rotate(-8deg);">★</span>
+      <span class="b-star" style="left:240px;top:880px;font-size:34px;color:#1B1F6B;opacity:.3;">★</span>
+      <span class="b-star" style="left:1620px;top:880px;font-size:40px;color:#B388FF;">★</span>
+      <span class="b-star" style="left:420px;top:150px;font-size:28px;color:#1B1F6B;opacity:.25;">★</span>
+      <span class="b-star" style="left:1450px;top:160px;font-size:30px;color:#FF7AD9;opacity:.6;">★</span>
+      <main class="b-card">
+        <div class="b-badges">
+          <span class="b-pill b-pill-indigo">The choice</span>
+          <span class="b-pill b-pill-pink">two teams</span>
+          <span class="b-pill b-pill-aqua">one deadline</span>
+        </div>
+        <h1 class="b-title" id="bTitle">Two teams, one deadline</h1>
+        <div class="b-side">
+          <p class="b-sidelabel"><span class="b-star-rushed">★</span>Rushed review</p>
+          <p class="b-line">Merged with a single skim approval</p>
+          <p class="b-line">Config changes bundled into feature PRs</p>
+          <p class="b-line">Rollback discovered by customers first</p>
+        </div>
+        <hr class="b-split">
+        <div class="b-side">
+          <p class="b-sidelabel"><span class="b-star-calm">★</span>Disciplined review</p>
+          <p class="b-line">Required a second reviewer on every merge</p>
+          <p class="b-line">Config changes shipped in isolated PRs</p>
+          <p class="b-line">Rollback caught in staging, never in production</p>
+        </div>
+        <p class="b-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
+        <div class="b-meta">
+          <span class="b-context"><span class="b-mini">★</span>Typodeck Research · November 2026</span>
+          <span class="b-page">03</span>
+        </div>
+      </main>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<script>
+  /* Bubble OS word-coloring + overflow guard (progressive enhancement). */
+  (function () {
+    function paint() {
+      var t = document.getElementById('bTitle');
+      if (!t || t.dataset.painted) return;
+      t.dataset.painted = '1';
+      var html = t.textContent;
+      html = html.split('teams').join('<span class="w-pink">teams</span>');
+      html = html.split('deadline').join('<span class="w-hi">deadline</span>');
+      t.innerHTML = html;
+    }
+    function fit() {
+      var card = document.querySelector('#deck-stage .b-card');
+      var t = document.getElementById('bTitle');
+      if (!card || !t) return;
+      var size = parseFloat(window.getComputedStyle(t).fontSize);
+      var guard = 0;
+      while (card.scrollHeight > 850 && size > 44 && guard < 30) {
+        size -= 4; guard++;
+        t.style.fontSize = size + 'px';
+      }
+    }
+    function run() { paint(); fit(); }
+    document.addEventListener('DOMContentLoaded', run);
+    window.addEventListener('load', run);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
+  })();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>

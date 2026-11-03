@@ -134,7 +134,7 @@ components:
     background: "{colors.deep}"
     color: "{colors.white}"
     padding: "32px"
-    description: "Inverted deep-navy module for contrast cells inside a card grid; pairs with an amber bullet or numeral."
+    description: "Inverted deep-navy module for contrast cells inside a card grid; pairs with exactly one amber-circle lead bullet (white follow bullets) or a single amber numeral."
   module-card-amber:
     background: "{colors.amber}"
     color: "{colors.deep}"
@@ -340,7 +340,7 @@ Borders are always solid and always square-cornered. Dashed, dotted, or double r
 
 **Module card** — Flat white card on whole grid modules with a 1px silver keyline and 32px padding; card titles in Sora 700.
 
-**Module card (deep)** — Inverted deep-navy cell for contrast inside a card grid; white text with an amber bullet or numeral.
+**Module card (deep)** — Inverted deep-navy cell for contrast inside a card grid; white text with one amber-circle lead bullet plus white follow bullets, or a single amber numeral. The amber-circle-on-deep pairing is the only round amber in the system.
 
 **Module card (amber)** — Signal-amber cell used at most once per slide for the hero stat; deep-navy Sora 800 numerals.
 
@@ -357,6 +357,8 @@ Borders are always solid and always square-cornered. Dashed, dotted, or double r
 - Open every major region with the 48px geometric tile strip in amber/deep/silver sequence.
 - Keep every card on whole grid modules with uniform 16px gutters — nothing floats, nothing overlaps, nothing bleeds except bands.
 - Ration amber to exactly one emphasis per region: one numeral, one rule, one bullet, one module.
+- Fill grid modules with stats or labels not already on the slide — a module restating headline or subtitle words reads as echo, not structure.
+- Lead deep modules with exactly one amber-circle bullet; follow rows take white circles.
 - Use Sora 800 for display, Inter 400 for body, Sora 600 tracked caps for labels — exclusively.
 - Pin the 12px amber chip before every kicker and use square/circle geometric bullets for every list.
 - Invert emphasis cells to deep or amber fills instead of adding shadows, borders, or lifts.

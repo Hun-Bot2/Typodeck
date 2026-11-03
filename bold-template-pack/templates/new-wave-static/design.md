@@ -207,6 +207,7 @@ These treatments are **non-optional whenever the corresponding element type is u
 - **Every subtitle opens with magenta slashes** — `///` in Archivo 900 magenta before the sentence. Bare subtitles are not permitted.
 - **Every kicker pairs a magenta rule (90×10) with tracked caps** — the rule is the fuse, the caps are the label.
 - **Every rotated chip is imperative or indexical** — `READ THE FAILURE LOG ▸`, never a noun phrase; 45°, black fill, cyan text.
+- **Every rotated chip keeps ≥190px clearance** from the headline column (headline max 1210px, chip origin x=1540) — headline/chip collision is never shipped.
 - **Every ghost numeral is the sample count** — cropped outline 560px magenta stroke at 65% opacity, bleeding off-canvas right/bottom.
 
 ### Defaults
@@ -416,7 +417,7 @@ The punk register transfers well because it rests on **non-typographic** voltage
 - **Ghost numeral uses `-webkit-text-stroke`** (6px magenta) with transparent fill — supported in Chrome/Edge/Safari/Firefox, but stroke rendering varies subtly by engine; verify in screenshots.
 - **Ghost digits stay Latin** (`11`) even in CJK builds by design — CJK numerals at 560px outline were judged less legible in testing.
 - **Slash bars are fixed-position rotated divs** (1500px tall, 24°) — at unusual aspect ratios inside the scaler they still cover the stage, but coordinates assume 1920×1080.
-- **Rotated chip is absolutely positioned** and can collide with long headlines in the static zone — verify LONG-variant screenshots and shift the chip down if overlapped.
+- **Rotated chip clearance rule (absolute, 45°):** the headline column caps at 1210px and the chip origin sits at x=1540 — ≥190px of air between them at cover scale. The chip's right-edge bleed is intentional; on LONG-title variants verify the render and shift the chip origin down (never left into the text column) if the headline reaches it.
 - **PPTX fidelity disclosure:**
 
 | # | Effect | Preview implementation | Fidelity | Fallback on export |

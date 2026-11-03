@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iron Press — Evidence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  .press-slide {
+    position: absolute; inset: 0;
+    background: #F1E9D6;
+    color: #1F1A14;
+    font-family: 'EB Garamond', Georgia, serif;
+    box-sizing: border-box;
+  }
+  .press-frame-outer {
+    position: absolute; inset: 40px;
+    border: 3px solid #1F1A14;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+  .press-frame-inner {
+    position: absolute; inset: 55px;
+    border: 1px solid #7B1E1E;
+    box-sizing: border-box;
+    pointer-events: none;
+  }
+  .press-body {
+    position: absolute; inset: 56px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 64px 220px 96px 220px;
+    box-sizing: border-box;
+  }
+  .press-kicker {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 24px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #1F1A14; margin: 0;
+    display: flex; align-items: center; gap: 28px;
+  }
+  .press-kicker::before, .press-kicker::after {
+    content: ""; display: block; width: 120px; height: 1px; background: #7B1E1E;
+  }
+  .press-title {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-weight: 400;
+    font-size: 68px; line-height: 1.15;
+    margin: 28px 0 0 0;
+    color: #1F1A14;
+    text-wrap: balance;
+    max-width: 24ch;
+  }
+  .press-rulepair { margin: 32px 0 0 0; width: 240px; }
+  .press-rulepair .thick { height: 3px; background: #1F1A14; }
+  .press-rulepair .thin { height: 1px; background: #7B1E1E; margin-top: 6px; }
+  .press-plate {
+    background: #E4D9BE;
+    border: 1px solid #1F1A14;
+    padding: 28px 72px 24px 72px;
+    margin: 32px 0 0 0;
+  }
+  .press-stat {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 80px; line-height: 1;
+    margin: 0; color: #1F1A14;
+  }
+  .press-stat-cap {
+    font-size: 22px; line-height: 1.5;
+    margin: 12px 0 0 0; color: #1F1A14;
+  }
+  .press-sub {
+    font-style: italic; font-size: 32px; line-height: 1.55;
+    margin: 28px 0 0 0; color: #1F1A14;
+    max-width: 36ch;
+  }
+  .press-source {
+    font-size: 22px; line-height: 1.5;
+    margin: 20px 0 0 0; color: #4A4A4A;
+  }
+  .press-pagemark {
+    position: absolute; bottom: 88px; left: 0; right: 0;
+    text-align: center;
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 22px; color: #1F1A14;
+    margin: 0;
+  }
+  .press-pagemark .o { color: #7B1E1E; }
+  .press-pagemark .n { letter-spacing: 0.3em; margin: 0 18px; }
+</style>
+<style>
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    background: #000; overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #000;
+  }
+  #deck-stage {
+    width: 1920px; height: 1080px; flex: 0 0 auto;
+    position: relative; overflow: hidden;
+    transform-origin: center center; background: #fff;
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <div class="press-slide">
+      <div class="press-body">
+        <p class="press-kicker">Finding 01</p>
+        <h1 class="press-title">Teams that required a second reviewer before merge contained failures earlier.</h1>
+        <div class="press-rulepair"><div class="thick"></div><div class="thin"></div></div>
+        <div class="press-plate">
+          <p class="press-stat">63%</p>
+          <p class="press-stat-cap">fewer sev-1 rollbacks</p>
+        </div>
+        <p class="press-sub">Review depth predicted containment better than team size, tenure, or tooling.</p>
+        <p class="press-source">Fixture data · not a real study</p>
+      </div>
+      <div class="press-frame-outer"></div>
+      <div class="press-frame-inner"></div>
+      <p class="press-pagemark"><span class="o">¶</span><span class="n">2</span><span class="o">¶</span></p>
+    </div>
+  </div>
+</div>
+<script>
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+</body>
+</html>

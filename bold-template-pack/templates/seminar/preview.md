@@ -51,7 +51,7 @@ Nothing decorates and everything aligns: the § 1 section marker opens the page,
 - Never place the template name or slug on the slide itself; mention it only in the chat message.
 - Never place user requirement notes such as desired vibe, audience, or internal-use labels on the slide unless the user explicitly wants those exact words in the deck.
 - Use only real deck content for visible chrome: deck title, real section title, date, author, company, page number, or genuine content phrases from the user material.
-- Keep margin notes drawn strictly from real content phrases and keep the single footnote rule intact.
+- Keep margin notes drawn strictly from real content phrases, keyed distinctly from the footnote (never the same key or restated text), and keep the single footnote rule intact.
 - Do not read `template.html` for preview generation.
 - Do not read other templates' `design.md` files.
 - After the user picks this template for the full deck, read the full design doc before generating final slides.

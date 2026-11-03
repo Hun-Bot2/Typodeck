@@ -100,9 +100,10 @@
   .fm-slide .checks .done { color: #0B5FFF; }
   .fm-slide .checks .open { color: #8A6100; }
   .fm-slide .checks .t {
-    flex: 0 0 auto;
+    flex: 0 0 300px;
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 20px; font-weight: 500;
+    white-space: nowrap;
   }
   .fm-slide .vleader { width: 0; border-left: 2px dashed #6E6A5E; height: 26px; margin: 0 0 0 60px; }
   .fm-slide .notebox {
@@ -115,6 +116,7 @@
   }
   .fm-slide .notefind { font-size: 23px; line-height: 1.55; margin: 0; }
   .fm-slide .figchip { margin-top: 26px; }
+  .fm-slide .figchip.attached { display: block; margin-top: 12px; text-align: center; }
   .fm-slide .footer {
     border-top: 1px solid #1A1A1A; margin-top: 24px; padding-top: 14px;
     display: flex; justify-content: space-between;
@@ -171,6 +173,7 @@
               <li><span class="n">01</span><span class="lbl">Freeze unreviewed configuration</span><span class="leader"></span><span class="tag">§2.1</span></li>
               <li><span class="n">02</span><span class="lbl">Second reviewer signs</span><span class="leader"></span><span class="tag">§2.2</span></li>
               <li><span class="n">03</span><span class="lbl">Ship with review discipline</span><span class="leader"></span><span class="tag">§2.3</span></li>
+              <li><span class="n">04</span><span class="lbl">File the signed review record</span><span class="leader"></span><span class="tag">§2.4</span></li>
             </ul>
             <p class="source">SOURCE ▸ Typodeck Research · November 2026</p>
             <div class="approval">
@@ -192,7 +195,11 @@
               <p class="notetag">NOTE 01</p>
               <p class="notefind">What 11 postmortems taught us: haste hides in unreviewed configuration.</p>
             </div>
-            <p class="chip figchip">⚠ Unreviewed changes</p>
+            <div class="notebox">
+              <p class="notetag">NOTE 02</p>
+              <p class="notefind">Hold the ship while A-2 stays open — see FIG. 01.</p>
+            </div>
+            <p class="chip figchip attached">⚠ Unreviewed changes</p>
           </div>
         </div>
         <div class="footer">

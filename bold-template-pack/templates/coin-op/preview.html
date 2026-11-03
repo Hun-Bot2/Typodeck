@@ -18,13 +18,12 @@
   .coinop-screw { position: absolute; width: 12px; height: 12px; background: #FFB000;
     box-shadow: 0 0 8px rgba(255,176,0,.8), 0 0 28px rgba(255,176,0,.35); }
   .coinop-ticker { height: 64px; flex: 0 0 auto; background: #FFB000; overflow: hidden;
-    display: flex; align-items: center; }
-  .coinop-ticker-track { display: flex; flex: 0 0 auto; min-width: 100%;
-    animation: coinop-scroll 28s linear infinite; }
+    display: flex; align-items: center; justify-content: center; }
+  /* Static marquee: the frozen first frame ships exactly as set — no mid-scroll
+     clip. Motion is never load-bearing; see Known Gaps. */
+  .coinop-ticker-track { display: flex; flex: 0 0 auto; align-items: center; justify-content: center; }
   .coinop-ticker span { font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 20px;
-    letter-spacing: 0.08em; text-transform: uppercase; color: #060A06; white-space: nowrap;
-    padding-right: 64px; }
-  @keyframes coinop-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    letter-spacing: 0.08em; text-transform: uppercase; color: #060A06; white-space: nowrap; }
   .coinop-well { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center;
     justify-content: center; text-align: center; padding: 24px 72px; min-height: 0; }
   .coinop-slotlabel { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
@@ -101,14 +100,13 @@
         <div class="coinop-inner">
           <div class="coinop-ticker">
             <div class="coinop-ticker-track">
-              <span>Typodeck Research · November 2026 +++ Typodeck Research · November 2026 +++&nbsp;</span>
-              <span>Typodeck Research · November 2026 +++ Typodeck Research · November 2026 +++&nbsp;</span>
+              <span>Typodeck Research · November 2026</span>
             </div>
           </div>
           <div class="coinop-well">
             <div class="coinop-slotlabel">
               <span class="coinop-slot"></span>
-              <span class="coinop-slotlabel-text">11 Postmortems</span>
+              <span class="coinop-slotlabel-text">Case Files</span>
               <span class="coinop-slot"></span>
             </div>
             <h1 class="coinop-title">The Hidden Cost of Rushing to Ship</h1>

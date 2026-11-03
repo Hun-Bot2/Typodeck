@@ -114,7 +114,7 @@ components:
     height: 64px
     fontFamily: "'Silkscreen', monospace"
     fontSize: 20px
-    description: "Amber band across the cabinet top scrolling the deck context endlessly; void Silkscreen caps on amber."
+    description: "Amber band across the cabinet top holding the deck context in one clean centered frame; void Silkscreen caps on amber."
   coin-slot:
     width: 10px
     height: 44px
@@ -161,7 +161,7 @@ Use `deck-stage.js` or an equivalent inline stage scaler for final output: rende
 
 ## Overview
 
-Coin-Op is a **green-phosphor arcade presentation system**. Its foundational premise is the **cabinet**: one centered double-rail frame on a near-black void, holding a glowing screen with a 66ch text well. Layouts feel like attract-mode screens — a scrolling amber marquee up top, a huge glowing VT323 headline in the well, coin-slot rules down the rails, and a blinking block cursor waiting for input below. Everything sits inside the cabinet; nothing escapes the rails.
+Coin-Op is a **green-phosphor arcade presentation system**. Its foundational premise is the **cabinet**: one centered double-rail frame on a near-black void, holding a glowing screen with a 66ch text well. Layouts feel like attract-mode screens — a static amber marquee up top, a huge glowing VT323 headline in the well, coin-slot rules down the rails, and a blinking block cursor waiting for input below. Everything sits inside the cabinet; nothing escapes the rails.
 
 The type stack is three mono-flavored faces with strict roles. **VT323** is the display face — a tall, narrow terminal face with authentic CRT rhythm that carries heroes, headlines, and stat numerals in glowing phosphor. **IBM Plex Mono** is the body face — a highly legible mono for subtitles, paragraphs, and captions in bone. **Silkscreen** is the label face — a true pixel face for the marquee ticker, slot labels, and micro chrome in amber. The voice contrast is **glowing terminal display ↔ calm mono body ↔ pixel caps chrome**.
 
@@ -174,7 +174,7 @@ Depth is the system's signature trick: **soft blurred glow only**. Display headl
 **Key Characteristics:**
 - Phosphor glow display — VT323 headlines in #33FF66 with triple-layer blurred halos (8px / 32px / 90px), never hard shadows.
 - Arcade-cabinet frame — 4px amber outer rail plus 2px phosphor inner rail with corner screws, centering a 66ch text well.
-- Marquee context ticker — amber band scrolling the deck context endlessly across the top of the cabinet.
+- Marquee context ticker — amber band holding the deck context in one clean centered frame across the top of the cabinet.
 - Coin-slot rules — vertical amber slot glyphs running down both cabinet rails as the system's divider language.
 - Scanline + vignette CRT stack — a repeating horizontal scanline overlay and radial vignette on every surface, plus a blinking block cursor.
 - Three mono voices — VT323 (display), IBM Plex Mono (body), Silkscreen (pixel labels); never substituted, never crossed.
@@ -199,7 +199,7 @@ Depth is the system's signature trick: **soft blurred glow only**. Display headl
 - **Default headline color**: `{colors.phosphor}` in VT323 with the `{shadows.glow-display}` halo.
 - **Default body text color**: `{colors.bone}` in IBM Plex Mono 400; tertiary lines in `{colors.bone-dim}`.
 - **Default label color**: `{colors.amber}` in Silkscreen caps with the `{shadows.glow-amber}` halo.
-- **Default marquee treatment**: `{components.marquee-ticker}` — void Silkscreen caps on the amber band, scrolling.
+- **Default marquee treatment**: `{components.marquee-ticker}` — void Silkscreen caps on the amber band, static and centered.
 - **Default stat numeral color**: `{colors.phosphor}` with `{shadows.glow-display-soft}` inside `{components.stat-well}`.
 - **Default rail treatment**: amber outer + phosphor inner (`{components.cabinet-frame}`) with halo shadows.
 
@@ -229,7 +229,7 @@ Never use VT323 for body, never use IBM Plex Mono for headlines, never use Silks
 | `{typography.stat-number}` | 64–110px | VT323 | 400 | Stat numeral in wells |
 | `{typography.body}` | 17–24px | IBM Plex Mono | 400 | Subtitles, paragraphs |
 | `{typography.body-small}` | 14–18px | IBM Plex Mono | 400 | Captions, footnotes |
-| `{typography.marquee}` | 20px | Silkscreen | 400 | Scrolling ticker text, caps +0.08em |
+| `{typography.marquee}` | 20px | Silkscreen | 400 | Static marquee text, caps +0.08em |
 | `{typography.label-slot}` | 17px | Silkscreen | 400 | Slot-flanked eyebrow, caps +0.14em |
 | `{typography.label-micro}` | 13px | Silkscreen | 400 | Footer chrome, counters, caps +0.18em |
 | `{typography.cursor-block}` | 30px | VT323 | 400 | Blinking block cursor glyph |
@@ -242,8 +242,9 @@ These treatments are **non-optional whenever the corresponding element type is u
 - **Every VT323 display element keeps line-height ≤ 1.05.** VT323 is tall and narrow — loose leading unravels its texture into disconnected scan bars.
 - **Every Silkscreen element is uppercase with wide tracking** — 0.08em for the marquee, 0.14em for slot labels, 0.18em for micro chrome. Sentence-case Silkscreen does not exist.
 - **Every slot label is flanked by coin-slot glyphs** on both sides with 16px gaps. A bare amber label without slots is an untreated eyebrow.
+- **Every slot label is a non-count eyebrow** (e.g. `CASE FILES`) — it never repeats the slide's count or subtitle numerals.
 - **Every IBM Plex Mono body block uses line-height ≥ 1.7.** Mono needs air; tighter leading on the void crowds into phosphor noise.
-- **Every marquee ticker scrolls endlessly** at one fixed speed (28s loop), pausing under `prefers-reduced-motion` with the context readable in its first frame.
+- **Every marquee ticker is static** — the frozen first frame ships exactly as set, centered, never mid-scroll clipped. Motion is never load-bearing.
 - **Every closing line ends with the blinking block cursor** at 1.06s steps. The cursor is the cabinet waiting for input — a slide that ends cold reads as powered off.
 
 ### Typography Principles
@@ -263,7 +264,7 @@ The cabinet frame insets 56px from every stage edge. The inner rail sits 16px in
 ### Persistent Chrome
 
 Three elements appear on every slide:
-- **Marquee ticker** — the scrolling amber context band (`{components.marquee-ticker}`) docked to the cabinet top.
+- **Marquee ticker** — the static amber context band (`{components.marquee-ticker}`) docked to the cabinet top.
 - **Coin-slot rails** — three slot glyphs per side (`{components.coin-slot}`) running down the cabinet's left and right rails.
 - **Footer micro line** — Silkscreen 13px in phosphor-dim at the cabinet bottom: page marker at left, deck owner at right, block cursor center.
 
@@ -297,7 +298,7 @@ The double-rail frame creates depth through halo contrast: the amber outer rail 
 
 ### Atmospheric Depth
 
-The scanline overlay and radial vignette provide ambient tube depth without requiring glow on individual elements. The marquee ticker's steady scroll adds temporal depth behind the static well. None of these are decorative add-ons — they are core to the depth perception of the system.
+The scanline overlay and radial vignette provide ambient tube depth without requiring glow on individual elements. The marquee stays static so every export ships exactly what was set. None of these are decorative add-ons — they are core to the depth perception of the system.
 
 ## Shapes and Treatment
 
@@ -459,10 +460,10 @@ The Silkscreen slot label (amber caps, tracked, slot-flanked) translates poorly:
 ## Known Gaps
 
 - **Fonts**: VT323 / IBM Plex Mono / Silkscreen via Google Fonts CDN (`display=swap`); fallbacks `ui-monospace, monospace` for VT323 and body, `"Arial Black", sans-serif` for Silkscreen caps. Korean builds add Noto Sans KR with fallbacks `"Apple SD Gothic Neo", "Malgun Gothic", sans-serif`. No font files committed. Offline rendering falls back to system stacks and loses the terminal glow voice.
-- **The marquee ticker is CSS-animated** with a fixed 28s linear loop and duplicated content for seamless wrap. Ticker text longer than twice the well width needs its duplication count adjusted in markup.
+- **The marquee ticker is static by doctrine**: the frozen first frame ships exactly as set (centered, never mid-scroll). Do not re-introduce a scroll loop; the attract-mode feel comes from glow, scanlines, and the blinking cursor.
 - **Glow halos are layered text-shadows** that flatten to solid color in print and in export pipelines without shadow support; the phosphor color remains but the bloom is lost.
 - **Scanlines and vignette are CSS-rendered overlays** at z-index 49–50. Export pipelines that strip positioned overlays lose the tube atmosphere and must flatten them into the background image.
-- **Stat numerals render at final value** with no count-up. The only JS-free motion is the marquee and cursor loops.
+- **Stat numerals render at final value** with no count-up. The only motion is the cursor blink.
 - **The cabinet frame inset is fixed at 56px** and does not adapt to ultra-wide stages; content wider than the 1400px well must wrap or shrink.
 - **Silkscreen has no lowercase design intent in this system.** Authors who set sentence-case Silkscreen will render its blocky caps rhythm at the wrong voice — caps with tracking is the only Silkscreen treatment.
 
@@ -472,7 +473,7 @@ The Silkscreen slot label (amber caps, tracked, slot-flanked) translates poorly:
 |---|---|---|---|---|
 | 1 | Blur (backdrop / filter) | Layered blurred text-shadow halos (8/32/90px) | partial | Single soft outer-glow effect on display text |
 | 2 | Blend modes | Not used | full | N/A (nothing to reproduce) |
-| 3 | Animation / keyframes | Marquee 28s scroll loop; cursor 1.06s blink | none | Static marquee first frame; static visible cursor |
+| 3 | Animation / keyframes | Static marquee; cursor 1.06s blink | partial | Static marquee as set; static visible cursor |
 | 4 | Pixel / hard offset shadows | Not used — glow only, zero offset | full | N/A by doctrine (halo shadows map to row 1) |
 | 5 | Gradients | Radial vignette over void | partial | Flattened vignette baked into background image |
 | 6 | Grain / scanline / noise overlays | Repeating-gradient scanlines at z-49 | partial | Flattened scanlines baked into background image |

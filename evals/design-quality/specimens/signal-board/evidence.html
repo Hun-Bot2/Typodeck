@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal Board — Finding 01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #F6F8FA; /* Signal Board surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <style>
+      .sb { position: absolute; inset: 0; background: #F6F8FA; color: #0F172A;
+        font-family: 'Inter', system-ui, sans-serif; display: flex; flex-direction: column; }
+      .sb-topbar { height: 64px; flex: 0 0 64px; background: #0F172A; color: #E2E8F0;
+        display: flex; align-items: center; padding: 0 72px; gap: 20px;
+        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; letter-spacing: 0.14em; }
+      .sb-live { width: 14px; height: 14px; border-radius: 50%; background: #16A34A; flex: 0 0 14px; }
+      .sb-topbar .spacer { flex: 1; }
+      .sb-topbar .dim { color: #94A3B8; }
+      .sb-topbar .amber { color: #FBBF24; }
+      .sb-main { flex: 1; display: grid; grid-template-columns: repeat(12, 1fr);
+        gap: 12px; padding: 56px 72px 0 72px; min-height: 0; }
+      .sb-left { grid-column: 1 / 8; display: flex; flex-direction: column; min-width: 0; }
+      .sb-kicker { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+      .sb-pill { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px;
+        font-weight: 600; letter-spacing: 0.12em; padding: 10px 22px; border-radius: 999px;
+        text-transform: uppercase; }
+      .sb-pill.blue { background: #2563EB; color: #fff; }
+      .sb-pill.ghost { border: 2px solid #0F172A; color: #0F172A; }
+      .sb-title { margin: 0; font-weight: 800; font-size: 68px; line-height: 1.1;
+        letter-spacing: -0.015em; color: #0F172A; font-variant-numeric: tabular-nums; }
+      .sb-datarows { margin-top: 36px; padding: 0 0 34px 0; }
+      .sb-row { display: flex; align-items: baseline; gap: 18px; padding: 19px 2px;
+        border-top: 1px solid #CBD5E1;
+        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; }
+      .sb-row:last-child { border-bottom: 1px solid #CBD5E1; }
+      .sb-row .k { color: #64748B; letter-spacing: 0.1em; font-size: 18px; white-space: nowrap; }
+      .sb-row .v { margin-left: auto; font-weight: 600; color: #0F172A; text-align: right;
+        font-variant-numeric: tabular-nums; text-transform: uppercase; }
+      .sb-row .up { color: #16A34A; font-weight: 600; white-space: nowrap; }
+      .sb-right { grid-column: 8 / 13; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+      .sb-kpi { background: #fff; border: 1px solid #E2E8F0; border-top: 6px solid #2563EB;
+        padding: 30px 34px 28px 34px; display: flex; align-items: center; gap: 26px; }
+      .sb-kpi.green { border-top-color: #16A34A; }
+      .sb-num { font-size: 92px; font-weight: 800; line-height: 1;
+        font-variant-numeric: tabular-nums; color: #0F172A; }
+      .sb-kpi-meta { display: flex; flex-direction: column; gap: 12px; }
+      .sb-kpi-label { font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 19px; letter-spacing: 0.1em; color: #475569; line-height: 1.5;
+        text-transform: uppercase; }
+      .sb-status { align-self: flex-start; font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 17px; font-weight: 600; letter-spacing: 0.12em;
+        padding: 8px 18px; border-radius: 999px; color: #fff; }
+      .sb-status.ok { background: #16A34A; }
+      .sb-readout { background: #0F172A; color: #E2E8F0; padding: 30px 34px 28px 34px; flex: 1;
+        display: flex; flex-direction: column; }
+      .sb-readout h3 { margin: 0 0 16px 0; font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 18px; font-weight: 600; letter-spacing: 0.16em; color: #93C5FD; }
+      .sb-readout p { margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 26px; line-height: 1.6; color: #E2E8F0; }
+      .sb-seal { margin-top: 28px; }
+      .sb-seal .track { height: 10px; background: #334155; }
+      .sb-seal .fill { height: 10px; width: 100%; background: #16A34A; }
+      .sb-seal .cap { margin-top: 10px; font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 16px; letter-spacing: 0.14em; color: #94A3B8; }
+      .sb-readout .src { margin-top: auto; padding-top: 24px;
+        font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 17px; letter-spacing: 0.12em; color: #94A3B8;
+        text-transform: uppercase; }
+      .sb-foot { flex: 0 0 60px; display: flex; align-items: center;
+        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 18px;
+        letter-spacing: 0.12em; color: #64748B; border-top: 1px solid #CBD5E1;
+        margin: 0 72px; padding-left: 0; padding-right: 0; }
+      .sb-foot .r { margin-left: auto; color: #0F172A; font-weight: 600; }
+    </style>
+    <div class="sb">
+      <div class="sb-topbar">
+        <span class="sb-live"></span>
+        <span>TYPODECK RESEARCH</span>
+        <span class="dim">/</span>
+        <span class="amber">POSTMORTEM SERIES</span>
+        <span class="spacer"></span>
+        <span class="dim">SAMPLE</span>
+        <span>N = 11</span>
+      </div>
+      <div class="sb-main">
+        <div class="sb-left">
+          <div class="sb-kicker">
+            <span class="sb-pill blue">Finding 01</span>
+            <span class="sb-pill ghost">NOV 2026</span>
+          </div>
+          <h1 class="sb-title">Teams that required a second reviewer before merge contained failures earlier.</h1>
+          <div class="sb-datarows">
+            <div class="sb-row"><span class="k">FINDING</span><span class="v">01</span><span class="up">▲ LOGGED</span></div>
+            <div class="sb-row"><span class="k">EFFECT SIZE</span><span class="v">63% fewer sev-1 rollbacks</span><span class="up">▲ CONFIRMED</span></div>
+            <div class="sb-row"><span class="k">CONTEXT</span><span class="v">Typodeck Research · November 2026</span><span class="up">▲ LIVE</span></div>
+            <div class="sb-row"><span class="k">READOUT</span><span class="v">Finding 01 / Brief</span><span class="up">▲ LIVE</span></div>
+          </div>
+        </div>
+        <div class="sb-right">
+          <div class="sb-kpi green">
+            <div class="sb-num">63%</div>
+            <div class="sb-kpi-meta">
+              <div class="sb-kpi-label">fewer sev-1 rollbacks</div>
+              <span class="sb-status ok">● LOGGED</span>
+            </div>
+          </div>
+          <div class="sb-readout">
+            <h3>READOUT — PREDICTOR</h3>
+            <p>Review depth predicted containment better than team size, tenure, or tooling.</p>
+            <div class="sb-seal"><div class="track"><div class="fill"></div></div><div class="cap">READOUT SEALED · FINDING 01</div></div>
+            <div class="src">Source · Fixture data · not a real study</div>
+          </div>
+        </div>
+      </div>
+      <div class="sb-foot"><span>FINDING 01 · VOL. 11</span><span class="r">P. 02</span></div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>

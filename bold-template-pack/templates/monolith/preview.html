@@ -35,7 +35,7 @@
   }
   .mono-slide .mega {
     font-family: 'Anton', "Arial Black", sans-serif;
-    font-size: 240px; line-height: 0.94; letter-spacing: -0.01em;
+    font-size: 290px; line-height: 0.94; letter-spacing: -0.01em;
     text-transform: uppercase;
     color: #F5F0E6;
     margin: 0;
@@ -113,7 +113,7 @@
     <div class="mono-slide">
       <div class="strip"><p class="l">Research — 11 Postmortems</p><p class="r">November 2026</p></div>
       <div class="zone" id="mono-zone">
-        <h1 class="mega" id="mono-mega" data-autofit="240" data-accent-index="4" data-break-after="2,4">The Hidden Cost of Rushing to Ship</h1>
+        <h1 class="mega" id="mono-mega" data-autofit="290" data-accent-index="4" data-break-after="3,5">The Hidden Cost of Rushing to Ship</h1>
       </div>
       <div class="band">
         <p class="sub">What 11 postmortems taught us about review discipline</p>
@@ -178,7 +178,8 @@
     el.setAttribute('data-rendered', '1');
   }
   __monoRenderTitle();
-  /* Wall auto-fit: shrink the caps wall only when it overflows its zone. */
+  /* Wall auto-fit: shrink the caps wall only on VERTICAL overflow.
+     Horizontal overflow is the doctrine hard edge-crop: the zone clips it. */
   function __monoAutofit() {
     __monoRenderTitle();
     var el = document.getElementById('mono-mega');
@@ -188,8 +189,7 @@
     var size = max, min = 72;
     el.style.fontSize = size + 'px';
     var guard = 80;
-    while (guard-- > 0 && size > min &&
-           (el.scrollHeight > zone.clientHeight + 2 || el.scrollWidth > zone.clientWidth + 2)) {
+    while (guard-- > 0 && size > min && el.scrollHeight > zone.clientHeight + 2) {
       size -= 4; el.style.fontSize = size + 'px';
     }
   }

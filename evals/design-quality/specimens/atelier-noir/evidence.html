@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evidence Slide — D27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  #deck-stage .a-slide {
+    position: absolute; inset: 0; overflow: hidden;
+    background: #111111;
+    font-family: "Montserrat", system-ui, sans-serif;
+    color: #FAF8F5;
+  }
+  #deck-stage .a-numeral {
+    position: absolute; right: -70px; top: 50%;
+    transform: translateY(-52%);
+    font-family: "Italiana", serif; font-size: 780px; line-height: 1;
+    color: #FAF8F5; opacity: .13;
+    user-select: none; pointer-events: none;
+  }
+  #deck-stage .a-vline { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(153,153,153,.35); }
+  #deck-stage .a-top {
+    position: absolute; left: 170px; right: 170px; top: 96px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 20px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase;
+    color: #999999;
+  }
+  #deck-stage .a-kicker { display: flex; align-items: center; gap: 22px; }
+  #deck-stage .a-winebar { width: 8px; height: 44px; background: #4A0E18; }
+  #deck-stage .a-kicktext { color: #FAF8F5; }
+  #deck-stage .a-side {
+    position: absolute; left: 64px; top: 50%; transform: translateY(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    font-size: 18px; font-weight: 500; letter-spacing: .4em; text-transform: uppercase;
+    color: rgba(153,153,153,.7);
+  }
+  #deck-stage .a-main { position: absolute; left: 250px; right: 640px; top: 236px; }
+  #deck-stage .a-issue {
+    font-size: 22px; font-weight: 500; letter-spacing: .34em; text-transform: uppercase;
+    color: #999999; margin: 0 0 30px;
+  }
+  #deck-stage .a-issue .a-n { color: #FAF8F5; }
+  #deck-stage .a-title {
+    font-family: "Italiana", serif; font-weight: 400;
+    font-size: 60px; line-height: 1.18; color: #FAF8F5;
+    margin: 0 0 34px;
+  }
+  #deck-stage .a-title .w-it { font-style: italic; color: #E8E2D8; }
+  #deck-stage .a-stat {
+    font-family: "Italiana", serif; font-weight: 400;
+    font-size: 88px; line-height: 1.1; color: #FAF8F5;
+    margin: 0;
+  }
+  #deck-stage .a-statlabel {
+    font-size: 20px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase;
+    color: #999999; margin: 12px 0 30px;
+  }
+  #deck-stage .a-sub {
+    font-size: 30px; font-weight: 300; line-height: 1.65; color: #C9C9C9;
+    margin: 0; max-width: 900px;
+  }
+  #deck-stage .a-foot {
+    position: absolute; left: 170px; right: 170px; bottom: 92px;
+    border-top: 1px solid rgba(153,153,153,.4); padding-top: 28px;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  #deck-stage .a-context { font-size: 27px; font-weight: 300; color: #FAF8F5; letter-spacing: .04em; }
+  #deck-stage .a-page { font-size: 20px; font-weight: 500; letter-spacing: .3em; color: #999999; }
+</style>
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <div class="a-slide">
+      <div class="a-numeral">63</div>
+      <div class="a-vline" style="left:150px;"></div>
+      <div class="a-vline" style="left:1210px;"></div>
+      <div class="a-top">
+        <span class="a-kicker"><span class="a-winebar"></span><span class="a-kicktext">Finding 01</span></span>
+        <span>2026</span>
+      </div>
+      <div class="a-side">N° 11 — 2026</div>
+      <main class="a-main">
+        <p class="a-issue">Issue <span class="a-n">N° 11</span></p>
+        <h1 class="a-title" id="aTitle">Teams that required a second reviewer before merge contained failures earlier.</h1>
+        <p class="a-stat">63%</p>
+        <p class="a-statlabel">fewer sev-1 rollbacks</p>
+        <p class="a-sub">Review depth predicted containment better than team size, tenure, or tooling.</p>
+      </main>
+      <div class="a-foot">
+        <span class="a-context">Fixture data · not a real study</span>
+        <span class="a-page">02</span>
+      </div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<script>
+  /* Atelier Noir accent-word + overflow guard (progressive enhancement). */
+  (function () {
+    function paint() {
+      var t = document.getElementById('aTitle');
+      if (!t || t.dataset.painted) return;
+      t.dataset.painted = '1';
+      var html = t.textContent;
+      if (html.indexOf('contained') !== -1) {
+        t.innerHTML = html.split('contained').join('<span class="w-it">contained</span>');
+      }
+    }
+    function fit() {
+      var t = document.getElementById('aTitle');
+      var main = document.querySelector('#deck-stage .a-main');
+      if (!t || !main) return;
+      var size = 60;
+      t.style.fontSize = size + 'px';
+      var guard = 0;
+      while (main.offsetTop + main.offsetHeight > 898 && size > 40 && guard < 40) {
+        size -= 2; guard++;
+        t.style.fontSize = size + 'px';
+      }
+    }
+    function run() { paint(); fit(); }
+    document.addEventListener('DOMContentLoaded', run);
+    window.addEventListener('load', run);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(run);
+  })();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>

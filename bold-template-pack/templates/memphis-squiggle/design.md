@@ -172,6 +172,7 @@ Depth is flat sticker-book. The signature is the **two-layer title slap**: a 6px
 - Bold outline numerals: giant hollow count numerals from real deck numbers anchoring corners.
 - Clashing pastel-neon chips: tilted outlined chips in all four accents carrying labels and context.
 - Confetti scatter field: dots, rings, bars, triangles in four accents, around but never over type.
+- Center-field confetti stays sparse by restraint: at most two small pieces in the open middle, each fully clear of every type box — type sovereignty first.
 - ±3deg playful tilts: chips and badges rotate; body text never tilts; display tilts at most 2deg.
 - Thick-outline sticker depth: 4–6px ink outlines plus hard offset shadows, zero blur everywhere.
 - Left-weighted party column: text anchors left, numeral anchors right, ticker pins the foot.

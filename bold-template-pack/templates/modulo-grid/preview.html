@@ -31,7 +31,8 @@
   .modulo-title {
     font-family: 'Sora', "Arial Black", sans-serif; font-weight: 800;
     font-size: 88px; line-height: 1.06; letter-spacing: -0.015em;
-    color: #14213D; margin: 0; text-wrap: balance;
+    color: #14213D; margin: 0; text-wrap: pretty;
+    max-width: 1010px;
   }
   .modulo-title .u-amber { box-shadow: 0 6px 0 0 #FCA311; }
   .modulo-subrow { display: flex; align-items: flex-start; gap: 16px; margin-top: 40px; max-width: 980px; }
@@ -53,6 +54,7 @@
   }
   .modulo-point { display: flex; align-items: center; gap: 12px; font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.12em; text-transform: uppercase; }
   .modulo-dot { width: 12px; height: 12px; border-radius: 50%; background: #FCA311; flex: 0 0 auto; }
+  .modulo-cell.deep .modulo-dot.follow { background: #FFFFFF; }
   .modulo-cell.silver .modulo-dot { background: #14213D; border-radius: 0; width: 14px; height: 14px; }
   .modulo-mini { display: flex; gap: 8px; }
   .modulo-mini span { width: 24px; height: 24px; display: block; }
@@ -127,12 +129,12 @@
             <div class="modulo-cell-label">Postmortems</div>
           </div>
           <div class="modulo-cell deep">
-            <div class="modulo-point"><span class="modulo-dot"></span>Review</div>
-            <div class="modulo-point"><span class="modulo-dot"></span>Discipline</div>
+            <div class="modulo-point"><span class="modulo-dot"></span>Case</div>
+            <div class="modulo-point"><span class="modulo-dot follow"></span>Files</div>
           </div>
           <div class="modulo-cell silver">
-            <div class="modulo-point"><span class="modulo-dot"></span>Rushing</div>
-            <div class="modulo-point"><span class="modulo-dot"></span>To Ship</div>
+            <div class="modulo-point"><span class="modulo-dot"></span>Issue</div>
+            <div class="modulo-point"><span class="modulo-dot"></span>Nº 01</div>
           </div>
           <div class="modulo-cell line">
             <div class="modulo-mini"><span style="background:#FCA311"></span><span style="background:#14213D"></span><span style="background:#E5E5E5"></span></div>

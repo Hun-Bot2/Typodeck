@@ -21,7 +21,7 @@ shadows:
 typography:
   maison-hero:
     fontFamily: "'Cormorant Garamond', serif"
-    fontSize: "clamp(54px, 5vw, 84px)"
+    fontSize: "clamp(54px, 5vw, 96px)"
     fontWeight: 500
     lineHeight: 1.3
     letterSpacing: 0.005em
@@ -218,7 +218,7 @@ Never use Inter for headlines, never use Cormorant for body paragraphs or labels
 
 | Token | Size (clamp) | Family | Weight | Use |
 |---|---|---|---|---|
-| `{typography.maison-hero}` | 54–84px | Cormorant Garamond | 500 | Cover or section hero title at 1.3 leading |
+| `{typography.maison-hero}` | 54–96px | Cormorant Garamond | 500 | Cover or section hero title at 1.3 leading |
 | `{typography.display}` | 42–60px | Cormorant Garamond | 500 | Large section opener |
 | `{typography.headline}` | 32–44px | Cormorant Garamond | 500 | Primary section headline |
 | `{typography.accent-word}` | inherits | Cormorant Garamond | 500 italic | The single gold word per headline |
@@ -359,7 +359,7 @@ Maison is a **measure-locked system** built around the fixed 60ch column and 20v
 
 ### Scaling Behavior
 
-- Hero text scales 54px → 84px on viewport width.
+- Hero text scales 54px → 96px on viewport width.
 - Stat figures scale 72px → 120px.
 - Body scales 19px → 26px.
 - The 60ch measure, 120px display rule, 1px weights, and +0.3em tracking are fixed — they never scale, so the frame reads finer on larger canvases by design.

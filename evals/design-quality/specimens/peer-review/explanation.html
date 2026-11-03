@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typodeck — The Choice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FFFFFF;
+    --ink: #1A1A1A;
+    --blue: #0B5394;
+    --rule: #EAEAEA;
+    --muted: #5A6470;
+  }
+  * { box-sizing: border-box; }
+  .pr-slide {
+    position: absolute; inset: 0;
+    background: var(--paper); color: var(--ink);
+    font-family: "STIX Two Text", Georgia, "Times New Roman", serif;
+    padding: 56px 88px 48px;
+    display: flex; flex-direction: column;
+  }
+  .pr-runhead {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 20px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .pr-runhead .pr-page { color: var(--muted); letter-spacing: 0.14em; }
+  .pr-double-rule { margin-top: 18px; border-top: 3px solid var(--ink); position: relative; }
+  .pr-double-rule::after {
+    content: ""; display: block; border-top: 1px solid var(--ink); margin-top: 3px;
+  }
+  .pr-main {
+    flex: 1; display: flex; gap: 72px; margin-top: 48px; min-height: 0;
+  }
+  .pr-article { flex: 1.5; min-width: 0; display: flex; flex-direction: column; }
+  .pr-kicker {
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 22px; font-weight: 700;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--blue);
+  }
+  .pr-title {
+    margin: 24px 0 0 0;
+    font-size: 68px; font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.005em; color: var(--ink);
+  }
+  .pr-groups { display: flex; gap: 56px; margin-top: 36px; }
+  .pr-group { flex: 1; min-width: 0; }
+  .pr-group-head {
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 21px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink);
+    border-top: 2px solid var(--ink);
+    padding-top: 16px; margin-bottom: 6px;
+  }
+  .pr-group ul { list-style: none; margin: 0; padding: 0; }
+  .pr-group li {
+    font-size: 27px; line-height: 1.42; color: var(--ink);
+    padding: 13px 0; border-bottom: 1px solid var(--rule);
+  }
+  .pr-group li .n {
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 19px; font-weight: 700; color: var(--muted);
+    margin-right: 14px;
+    font-variant-numeric: tabular-nums;
+  }
+  .pr-closing {
+    margin: 34px 0 0 0;
+    font-style: italic; font-size: 30px; line-height: 1.5; color: var(--ink);
+    border-top: 1px solid var(--ink); padding-top: 24px;
+  }
+  .pr-rail {
+    flex: 1; min-width: 0;
+    border-left: 1px solid var(--rule);
+    padding-left: 60px;
+    display: flex; flex-direction: column;
+  }
+  .pr-fig-label {
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 20px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .pr-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  .pr-table th {
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--muted); text-align: left;
+    padding: 10px 8px 10px 0;
+    border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink);
+  }
+  .pr-table th:last-child, .pr-table td:last-child { text-align: right; padding-right: 0; }
+  .pr-table td {
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 20px; font-weight: 500; color: var(--ink);
+    padding: 12px 8px 12px 0; border-bottom: 1px solid var(--rule);
+    font-variant-numeric: tabular-nums;
+    vertical-align: top;
+  }
+  .pr-table tr:last-child td { border-bottom: 2px solid var(--ink); }
+  .pr-table td.ref { color: var(--muted); font-weight: 600; white-space: nowrap; }
+  .pr-caption {
+    margin: 16px 0 0;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 21px; line-height: 1.5; color: var(--muted);
+  }
+  .pr-caption strong { color: var(--ink); font-weight: 700; }
+  .pr-footnotes {
+    margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--ink);
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 20px; line-height: 1.6; color: var(--muted);
+    display: flex; gap: 48px;
+  }
+  .pr-footnotes .pr-fn sup { font-weight: 700; color: var(--blue); margin-right: 6px; }
+</style>
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <div class="pr-slide">
+      <div class="pr-runhead">
+        <span>Typodeck Research · November 2026</span>
+        <span class="pr-page">p. 03</span>
+      </div>
+      <div class="pr-double-rule"></div>
+      <div class="pr-main">
+        <div class="pr-article">
+          <div class="pr-kicker">The choice &#183; Review Practice</div>
+          <h1 class="pr-title">Two teams, one deadline</h1>
+          <div class="pr-groups">
+            <div class="pr-group">
+              <div class="pr-group-head">Rushed review</div>
+              <ul>
+                <li><span class="n">(a)</span>Merged with a single skim approval</li>
+                <li><span class="n">(b)</span>Config changes bundled into feature PRs</li>
+                <li><span class="n">(c)</span>Rollback discovered by customers first</li>
+              </ul>
+            </div>
+            <div class="pr-group">
+              <div class="pr-group-head">Disciplined review</div>
+              <ul>
+                <li><span class="n">(d)</span>Required a second reviewer on every merge</li>
+                <li><span class="n">(e)</span>Config changes shipped in isolated PRs</li>
+                <li><span class="n">(f)</span>Rollback caught in staging, never in production</li>
+              </ul>
+            </div>
+          </div>
+          <p class="pr-closing">Same deadline, different discipline: one team paid at review time, the other in production.</p>
+        </div>
+        <div class="pr-rail">
+          <div class="pr-fig">
+            <div class="pr-fig-label">Table 3</div>
+            <table class="pr-table">
+              <tr><th>Observed practice</th><th>Ref</th></tr>
+              <tr><td>Merged with a single skim approval</td><td class="ref">R-1</td></tr>
+              <tr><td>Config changes bundled into feature PRs</td><td class="ref">R-2</td></tr>
+              <tr><td>Rollback discovered by customers first</td><td class="ref">R-3</td></tr>
+              <tr><td>Required a second reviewer on every merge</td><td class="ref">D-1</td></tr>
+              <tr><td>Config changes shipped in isolated PRs</td><td class="ref">D-2</td></tr>
+              <tr><td>Rollback caught in staging, never in production</td><td class="ref">D-3</td></tr>
+            </table>
+            <p class="pr-caption"><strong>Table 3.</strong> The six practices behind the choice.</p>
+          </div>
+        </div>
+      </div>
+      <div class="pr-footnotes">
+        <span class="pr-fn"><sup>[1]</sup>Fixture data · not a real study.</span>
+        <span class="pr-fn"><sup>[2]</sup>Scope: review discipline only.</span>
+      </div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>

@@ -49,8 +49,12 @@
         <div class="de-bar de-bar-blue" aria-hidden="true"></div>
         <div class="de-bar de-bar-yellow" aria-hidden="true"></div>
         <div class="de-main">
-          <h1 class="de-title">The Hidden Cost of Rushing to Ship</h1>
+          <h1 class="de-title" id="deTitle">The Hidden Cost of Rushing to Ship</h1>
           <p class="de-subtitle">What 11 postmortems taught us about review discipline</p>
+          <div class="de-keyrow" aria-hidden="false">
+            <div class="de-keybar"><i></i></div>
+            <p class="de-keycap">fig. 01 — n = 11</p>
+          </div>
         </div>
         <div class="de-glyphs" aria-hidden="true">
           <div class="de-triangle"></div>
@@ -78,6 +82,23 @@
   __typodeckFitStage();
 </script>
 <!-- SCAFFOLD-EMBED-END -->
+<script>
+  /* Red accent paint (progressive enhancement): single title source; the
+     operative word (5th token) takes the one permitted red display accent. */
+  (function () {
+    var t = document.getElementById('deTitle');
+    if (!t || t.dataset.painted) return;
+    t.dataset.painted = '1';
+    var words = t.textContent.split(' ');
+    function esc(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    t.innerHTML = words.map(function (w, i) {
+      return i === 4 ? '<span class="de-red">' + esc(w) + '</span>' : esc(w);
+    }).join(' ');
+    t.setAttribute('aria-label', words.join(' '));
+  })();
+</script>
 <style>
   .de-slide {
     position: absolute;
@@ -142,6 +163,36 @@
     font-size: 34px;
     line-height: 1.45;
     color: #000000;
+  }
+  .de-title .de-red { color: #E30613; }
+  .de-keyrow {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    margin-top: 56px;
+  }
+  .de-keybar {
+    flex: 1 1 auto;
+    height: 28px;
+    background: #000000;
+  }
+  .de-keybar i {
+    display: block;
+    width: 180px;
+    height: 28px;
+    background: #E30613;
+  }
+  .de-keycap {
+    flex: 0 0 auto;
+    margin: 0;
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #000000;
+    white-space: nowrap;
   }
   .de-glyphs {
     position: absolute;

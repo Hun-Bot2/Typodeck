@@ -29,7 +29,7 @@ Its rhythm is borrowed from book typography rather than web layouts: a running h
 
 - Palette: cream #FBF7EF; ink #1C1A17; oxblood #7A2E2E; tan #B9A88F; smoke #6B6257 (derived muted ink for running heads)
 - Typography: See full design doc after selection.
-- Signature move: Newsreader drop cap in oxblood opens the lede paragraph — 3.1em, floated, never on headlines.
+- Signature move: Newsreader drop cap in oxblood opens ledes running to 3+ lines — 3.1em, floated, never on headlines; 1–2-line ledes set plain.
 - Signature move: Letterspaced oxblood chapter kicker (`CHAPTER ONE` style) flanked by 120px hairline rules.
 - Signature move: Folio footer — 1px tan rule, source line left, fleuron center, page numeral right.
 - Signature move: Running head across the top — work left, date right, 14px tracked caps over a hairline.
@@ -51,7 +51,7 @@ Its rhythm is borrowed from book typography rather than web layouts: a running h
 - Never place the template name or slug on the slide itself; mention it only in the chat message.
 - Never place user requirement notes such as desired vibe, audience, or internal-use labels on the slide unless the user explicitly wants those exact words in the deck.
 - Use only real deck content for visible chrome: deck title, real section title, date, author, company, page number, or genuine content phrases from the user material.
-- Set the lede with its oxblood drop cap and keep the chapter kicker, ornament divider, and folio intact.
+- Set the lede with its oxblood drop cap only when it runs to 3+ lines (short ledes set plain) and keep the chapter kicker, ornament divider, and folio intact; break the title at phrase boundaries, never opening a line with a lowercase "of".
 - Do not read `template.html` for preview generation.
 - Do not read other templates' `design.md` files.
 - After the user picks this template for the full deck, read the full design doc before generating final slides.

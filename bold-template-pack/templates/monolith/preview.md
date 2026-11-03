@@ -21,7 +21,7 @@ Use this small file for title-slide previews only. For final deck generation, re
 
 ## Visual Snapshot
 
-Monolith is a brutalist monumental presentation system: viewport-filling Anton caps cropped hard by the stage edge, bone-white on raw black, with one signal-orange strike per slide. Display type runs in Anton at 200–250px with tight 0.94 leading; body is small Inter; labels are tracked Anton caps. The palette is three flats — black ground, bone type, orange accent — with zero decoration: no rules, no grids, no shadows, no gradients, no rounded corners. A black footer band split from the ground by an 8px orange rule stacks the subtitle and context as raw blocks. The effect sits between a protest poster and a quarry wall — loud, cropped, physical, and engineered to be read from across the room.
+Monolith is a brutalist monumental presentation system: viewport-filling Anton caps cropped hard by the stage edge, bone-white on raw black, with one signal-orange strike per slide. Display type runs in Anton at ~290px with tight 0.94 leading; body is small Inter; labels are tracked Anton caps. The palette is three flats — black ground, bone type, orange accent — with zero decoration: no rules, no grids, no shadows, no gradients, no rounded corners. A black footer band split from the ground by an 8px orange rule stacks the subtitle and context as raw blocks. The effect sits between a protest poster and a quarry wall — loud, cropped, physical, and engineered to be read from across the room.
 
 Monolith's foundational premise is mass: the title is not placed on the slide, it is the slide. Layouts feel carved, not composed — a top strip, a wall of caps, and a banded footer are the entire vocabulary, repeated at maximum volume.
 
@@ -29,7 +29,7 @@ Monolith's foundational premise is mass: the title is not placed on the slide, i
 
 - Palette: black #0E0E0E; slab-black #000000; bone #F5F0E6; signal-orange #FF4D00; dim #8A8578
 - Typography: See full design doc after selection.
-- Signature move: Viewport-filling Anton caps at ~240px with 0.94 leading, hard-cropped by the stage edge.
+- Signature move: Viewport-filling Anton caps at ~290px with 0.94 leading, hard-cropped by the stage edge.
 - Signature move: One orange strike per slide — a single word, rule, or block in signal orange, never more.
 - Signature move: Black footer band on slab black, split from the ground by an 8px orange rule.
 - Signature move: Tight 24px stage margins — content runs edge to edge with almost no frame.

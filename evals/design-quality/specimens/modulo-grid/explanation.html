@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modulo Explanation — Typodeck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  .modulo-slide {
+    position: absolute; inset: 0;
+    background-color: #FFFFFF;
+    background-image:
+      linear-gradient(#E5E5E5 1px, transparent 1px),
+      linear-gradient(90deg, #E5E5E5 1px, transparent 1px);
+    background-size: 240px 240px;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #14213D;
+  }
+  .modulo-top { position: absolute; top: 56px; left: 120px; right: 120px; display: flex; align-items: center; gap: 16px; }
+  .modulo-tile { width: 48px; height: 48px; flex: 0 0 auto; }
+  .modulo-kicker { display: flex; align-items: center; gap: 12px; margin-left: 32px; }
+  .modulo-chip { width: 12px; height: 12px; background: #FCA311; flex: 0 0 auto; }
+  .modulo-kicker-text {
+    font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 15px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #14213D; white-space: nowrap;
+  }
+  .modulo-hero { position: absolute; top: 150px; left: 120px; right: 120px; }
+  .modulo-title {
+    font-family: 'Sora', "Arial Black", sans-serif; font-weight: 800;
+    font-size: 68px; line-height: 1.06; letter-spacing: -0.015em;
+    color: #14213D; margin: 0;
+  }
+  .modulo-duo { position: absolute; top: 300px; left: 120px; right: 120px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .modulo-cell { padding: 36px 40px; display: flex; flex-direction: column; gap: 22px; min-height: 350px; }
+  .modulo-cell.deep { background: #14213D; color: #FFFFFF; }
+  .modulo-cell.silver { background: #E5E5E5; color: #14213D; }
+  .modulo-cell-label {
+    font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 17px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding-bottom: 18px; border-bottom: 1px solid currentColor;
+  }
+  .modulo-bpoint { display: flex; align-items: flex-start; gap: 16px; font-size: 25px; line-height: 1.45; font-weight: 500; }
+  .modulo-bdot { width: 14px; height: 14px; flex: 0 0 auto; margin-top: 11px; }
+  .modulo-cell.silver .modulo-bdot { background: #14213D; }
+  .modulo-cell.deep .modulo-bdot { background: #FCA311; border-radius: 50%; width: 13px; height: 13px; margin-top: 12px; }
+  .modulo-cell.deep .modulo-bdot.follow { background: #FFFFFF; }
+  .modulo-low { position: absolute; top: 740px; left: 120px; right: 120px; }
+  .modulo-caption { font-size: 27px; line-height: 1.55; color: #3D4C6D; margin: 0; max-width: 1250px; }
+  .modulo-source {
+    margin-top: 22px;
+    font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 15px;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #3D4C6D;
+  }
+  .modulo-footer { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: #14213D; color: #FFFFFF; }
+  .modulo-rule { position: absolute; top: -6px; left: 0; right: 0; height: 6px; background: #FCA311; }
+  .modulo-footer-inner {
+    height: 120px; padding: 0 120px; display: flex; align-items: center; justify-content: space-between;
+    font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 14px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .modulo-counter { color: #FCA311; }
+</style>
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <div class="modulo-slide">
+      <div class="modulo-top">
+        <span class="modulo-tile" style="background:#FCA311"></span>
+        <span class="modulo-tile" style="background:#14213D"></span>
+        <span class="modulo-tile" style="background:#E5E5E5"></span>
+        <span class="modulo-tile" style="background:#14213D"></span>
+        <span class="modulo-tile" style="background:#FCA311"></span>
+        <span class="modulo-tile" style="background:#E5E5E5"></span>
+        <div class="modulo-kicker">
+          <span class="modulo-chip"></span>
+          <span class="modulo-kicker-text">The choice · Typodeck Research</span>
+        </div>
+      </div>
+      <div class="modulo-hero">
+        <h1 class="modulo-title">Two teams, one deadline</h1>
+      </div>
+      <div class="modulo-duo">
+        <div class="modulo-cell silver">
+          <div class="modulo-cell-label">Rushed review</div>
+          <div class="modulo-bpoint"><span class="modulo-bdot"></span>Merged with a single skim approval</div>
+          <div class="modulo-bpoint"><span class="modulo-bdot"></span>Config changes bundled into feature PRs</div>
+          <div class="modulo-bpoint"><span class="modulo-bdot"></span>Rollback discovered by customers first</div>
+        </div>
+        <div class="modulo-cell deep">
+          <div class="modulo-cell-label">Disciplined review</div>
+          <div class="modulo-bpoint"><span class="modulo-bdot"></span>Required a second reviewer on every merge</div>
+          <div class="modulo-bpoint"><span class="modulo-bdot follow"></span>Config changes shipped in isolated PRs</div>
+          <div class="modulo-bpoint"><span class="modulo-bdot follow"></span>Rollback caught in staging, never in production</div>
+        </div>
+      </div>
+      <div class="modulo-low">
+        <p class="modulo-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
+        <p class="modulo-source">Fixture data · not a real study</p>
+      </div>
+      <div class="modulo-footer">
+        <div class="modulo-rule"></div>
+        <div class="modulo-footer-inner">
+          <span class="modulo-counter">03 / 03</span>
+          <span>Typodeck Research</span>
+        </div>
+      </div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>

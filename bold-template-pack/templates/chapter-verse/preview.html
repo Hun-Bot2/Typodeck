@@ -59,7 +59,9 @@
     color: rgba(28, 26, 23, 0.82);
     max-width: 780px; text-align: left; margin: 8px 0 0;
   }
-  .cv-lede::first-letter {
+  /* Drop cap is gated: only ledes running to 3+ lines take .cv-lede--drop.
+     Short ledes (like this cover's 2-line subtitle) set plain. */
+  .cv-lede--drop::first-letter {
     font-family: 'Newsreader', Georgia, serif;
     font-weight: 600; font-size: 3.1em; line-height: 0.8;
     float: left; padding: 8px 14px 0 0; color: #7A2E2E;
@@ -125,7 +127,7 @@
       </header>
       <div class="cv-main">
         <div class="cv-kicker">Chapter One</div>
-        <h1 class="cv-title">The Hidden Cost of Rushing to Ship</h1>
+        <h1 class="cv-title">The Hidden Cost of<br>Rushing to Ship</h1>
         <div class="cv-ornament" aria-hidden="true">◆</div>
         <p class="cv-lede">What 11 postmortems taught us about review discipline</p>
       </div>

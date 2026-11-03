@@ -383,7 +383,8 @@ Whiplash's identity transfers well because the offset-arch composition does most
 - **No table system.** Tabular data has no ruled-grid pattern (ruled grids are forbidden); short definition lists with fleuron bullets are the maximum structure permitted.
 - **No image treatment.** Photography and illustration have no arch-mask specification beyond the headline alcove itself; arched image masks (arch-shaped picture windows) are a plausible but undocumented extension.
 - **Marcellus ships one weight (400).** Display hierarchy cannot use weight contrast; oversized sizes and the arch must do all the work. Do not faux-bold Marcellus.
-- **Fleuron glyph coverage.** ❦ (U+2766) renders from EB Garamond's ornament cut; if it fails, fallback serif fleurons vary in drawing. Verify the divider glyph and the bloom in screenshots on the target machine.
+- **Fleuron glyph coverage.** ❦ (U+2766) renders from EB Garamond's ornament cut through a pinned fallback stack (`"EB Garamond", "Cormorant Garamond", "Noto Serif", "Noto Serif KR", "DejaVu Serif", Garamond, serif`); fallback serif fleurons vary in drawing (some render heart-like). Verify the divider glyph and the bloom in screenshots on the target machine — the bloom is decorative-only and must never carry meaning.
+- **Swash accent: plain choice recorded.** The cover ships zero swash accents (one is the maximum, none the default); the divider dot and halo carry the rose ration. Add a swash phrase only when a slide has no other rose moment.
 - **PPTX fidelity disclosure:**
 
 | # | Effect | Preview implementation | Fidelity | Fallback on export |

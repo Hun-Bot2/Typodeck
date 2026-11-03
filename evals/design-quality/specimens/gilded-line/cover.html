@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gilded Line — Cover</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Jost:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #0F0E0C; /* Gilded Line surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <style>
+      .gd { position: absolute; inset: 0; background: #0F0E0C; color: #F5EFE0;
+        font-family: 'Jost', system-ui, sans-serif; display: flex;
+        align-items: center; justify-content: center; }
+      .gd-frame-outer { position: absolute; inset: 26px; border: 2px solid #D4AF37; pointer-events: none; }
+      .gd-frame-inner { position: absolute; inset: 38px; border: 1px solid rgba(212,175,55,0.65); pointer-events: none; }
+      .gd-corner { position: absolute; width: 26px; height: 26px; background: #0F0E0C;
+        border: 2px solid #D4AF37; transform: rotate(45deg); }
+      .gd-corner.tl { top: 20px; left: 20px; }
+      .gd-corner.tr { top: 20px; right: 20px; }
+      .gd-corner.bl { bottom: 20px; left: 20px; }
+      .gd-corner.br { bottom: 20px; right: 20px; }
+      .gd-panel { width: 1230px; max-height: 940px; background: #F5EFE0; color: #0F0E0C;
+        border: 3px solid #D4AF37; outline: 1px solid #D4AF37; outline-offset: 9px;
+        padding: 66px 110px 54px 110px; text-align: center;
+        display: flex; flex-direction: column; align-items: center; }
+      .gd-fan { display: flex; align-items: flex-end; justify-content: center; gap: 10px;
+        height: 64px; margin-bottom: 26px; }
+      .gd-fan span { width: 3px; background: #1F4E5F; display: block; }
+      .gd-fan span:nth-child(1) { height: 30px; transform: rotate(-38deg); transform-origin: bottom center; }
+      .gd-fan span:nth-child(2) { height: 44px; transform: rotate(-25deg); transform-origin: bottom center; }
+      .gd-fan span:nth-child(3) { height: 54px; transform: rotate(-12deg); transform-origin: bottom center; }
+      .gd-fan span:nth-child(4) { height: 60px; }
+      .gd-fan span:nth-child(5) { height: 54px; transform: rotate(12deg); transform-origin: bottom center; }
+      .gd-fan span:nth-child(6) { height: 44px; transform: rotate(25deg); transform-origin: bottom center; }
+      .gd-fan span:nth-child(7) { height: 30px; transform: rotate(38deg); transform-origin: bottom center; }
+      .gd-fan span:nth-child(4) { background: #D4AF37; width: 4px; }
+      .gd-kicker { font-family: 'Cinzel', 'Arial Black', sans-serif; font-weight: 400;
+        font-size: 24px; letter-spacing: 0.25em; text-indent: 0.25em; color: #1F4E5F; }
+      .gd-rule { display: flex; align-items: center; gap: 18px; margin: 24px 0;
+        color: #8C6D2B; font-size: 20px; letter-spacing: 0.4em; text-indent: 0.4em; }
+      .gd-rule::before, .gd-rule::after { content: ""; display: block; width: 220px; height: 2px;
+        background: #D4AF37; }
+      .gd-rule.thin::before, .gd-rule.thin::after { width: 150px; height: 1px; }
+      .gd-title { margin: 0; font-family: 'Cinzel', 'Arial Black', sans-serif; font-weight: 700;
+        font-size: 68px; line-height: 1.22; letter-spacing: 0.04em; color: #0F0E0C; }
+      .gd-sub { margin: 28px 0 0 0; font-size: 31px; font-style: italic; line-height: 1.5;
+        color: #3D3830; max-width: 24em; }
+      .gd-context { margin-top: 30px; font-family: 'Cinzel', 'Arial Black', sans-serif;
+        font-size: 23px; letter-spacing: 0.25em; text-indent: 0.25em; color: #1F4E5F; }
+      .gd-foot { margin-top: 30px; display: flex; align-items: center; gap: 26px;
+        font-family: 'Cinzel', 'Arial Black', sans-serif; font-size: 20px;
+        letter-spacing: 0.3em; text-indent: 0.3em; color: #8C6D2B; }
+      .gd-foot .dia { color: #1F4E5F; }
+      .gd-side { position: absolute; top: 50%; transform: translateY(-50%);
+        display: flex; flex-direction: column; align-items: center; gap: 22px;
+        color: #D4AF37; font-size: 22px; }
+      .gd-side.left { left: 130px; }
+      .gd-side.right { right: 130px; }
+      .gd-side .vline { width: 2px; height: 300px;
+        background: linear-gradient(to bottom, transparent, #D4AF37 8%, #D4AF37 92%, transparent); }
+    </style>
+    <div class="gd">
+      <div class="gd-frame-outer"></div>
+      <div class="gd-frame-inner"></div>
+      <span class="gd-corner tl"></span><span class="gd-corner tr"></span>
+      <span class="gd-corner bl"></span><span class="gd-corner br"></span>
+      <div class="gd-side left"><span>◆</span><span class="vline"></span><span>◇</span><span class="vline"></span><span>◆</span></div>
+      <div class="gd-panel">
+        <div class="gd-fan"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="gd-kicker">◆&nbsp;&nbsp;POSTMORTEM DOSSIER&nbsp;&nbsp;◆</div>
+        <div class="gd-rule">◇</div>
+        <h1 class="gd-title">The Hidden Cost of Rushing to Ship</h1>
+        <p class="gd-sub">What 11 postmortems taught us about review discipline</p>
+        <div class="gd-rule thin">◆</div>
+        <div class="gd-context">Typodeck Research · November 2026</div>
+        <div class="gd-foot"><span>№ 11</span><span class="dia">◆</span><span>ANNO MMXXVI</span></div>
+      </div>
+      <div class="gd-side right"><span>◆</span><span class="vline"></span><span>◇</span><span class="vline"></span><span>◆</span></div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<script>
+  /* Title auto-fit: shrink the display title only when the panel overflows. */
+  function __gdFitTitle() {
+    var t = document.querySelector('.gd-title'), w = document.querySelector('.gd-panel');
+    if (!t || !w) return;
+    t.style.fontSize = '';
+    var size = parseFloat(getComputedStyle(t).fontSize), guard = 0;
+    while (guard++ < 40 && size > 36 && w.scrollHeight > 940) {
+      size -= 2; t.style.fontSize = size + 'px';
+    }
+  }
+  document.addEventListener('DOMContentLoaded', __gdFitTitle);
+  window.addEventListener('load', __gdFitTitle);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(__gdFitTitle);
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+</body>
+</html>

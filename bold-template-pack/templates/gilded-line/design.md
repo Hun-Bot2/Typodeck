@@ -183,7 +183,8 @@ Never use Jost for display capitals and never use Cinzel for sentence-case prose
 These treatments are **non-optional whenever the corresponding element type is used**:
 
 - **Every Cinzel string is tracked capitals** — +0.04em minimum on headlines, +0.25em on kicker/context, +0.30em on the colophon. Untracked Cinzel reads as a wedding invitation, not a title card.
-- **Every kicker is diamond-guarded** — `◆ TYPODECK RESEARCH ◆` with the diamonds in matching teal, never bare.
+- **Every kicker is diamond-guarded** — `◆ POSTMORTEM DOSSIER ◆` with the diamonds in matching teal, never bare.
+- **Kicker and context never repeat the same string.** The kicker names the dossier or finding; the context line alone carries the source attribution — no doubled source lines on one panel.
 - **Every subtitle is Jost italic** — the single italic sentence on the cover; roman subtitles are not permitted.
 - **Every headline sits between two rules** — the full diamond-rule above (220px arms) and the thin diamond-rule below (150px arms) framing the inscription.
 - **Every colophon carries the issue mark** — `№ 11 ◆ ANNO MMXXVI` in 20px tracked Cinzel with a teal diamond separator.

@@ -183,7 +183,7 @@ The palette is paper and ink: cream ground `{colors.cream}`, warm near-black ink
 
 These treatments are **non-optional whenever the corresponding element type is used**:
 
-- **Every lede opens with an oxblood drop cap.** Newsreader 600 at 3.1em, floated left, 0.8 line-height, `8px 14px 0 0` padding. A lede without it reads as a generic subtitle.
+- **Every lede running to 3+ lines opens with an oxblood drop cap.** Newsreader 600 at 3.1em, floated left, 0.8 line-height, `8px 14px 0 0` padding. Ledes of 1–2 lines set plain — a 3.1em cap beside a 2-line block unbalances the measure. A long lede without the cap reads as a generic subtitle.
 - **Every chapter kicker is tracked 0.34em uppercase Inter in oxblood**, flanked by 120px oxblood hairlines with 24px gaps. No other kicker style exists.
 - **Every Inter furniture label is uppercase with wide tracking** — 0.24em (running head) or 0.34em (kicker). Sentence-case Inter caps styling does not exist except the folio source line, which renders verbatim content at 0.06em.
 - **Every Newsreader title keeps normal case and balanced wrapping.** All-caps Newsreader never appears.
@@ -211,7 +211,7 @@ No slide counter beyond the page mark, no navigation chrome, no progress devices
 
 ### Composition Rules
 
-The title block is always centered; the lede paragraph is left-aligned inside its centered 780px measure so the drop cap seats correctly. Kicker sits 0px above title with 36px title margin; the ornament divider sits 40px below the title and 8px above the lede. The folio pins to the bottom via flex layout, never absolutely over content.
+The title block is always centered; the lede paragraph is left-aligned inside its centered 780px measure so the drop cap seats correctly. Kicker sits 0px above title with 36px title margin; the ornament divider sits 40px below the title and 8px above the lede. The folio pins to the bottom via flex layout, never absolutely over content. Break title lines at phrase boundaries — never open a line with a lowercase function word such as "of" ("The Hidden Cost of / Rushing to Ship", not "The Hidden Cost / of Rushing to Ship").
 
 Multi-paragraph blocks follow stanza rules: the drop cap opens the first paragraph only; paragraphs separate by 1em of whitespace with no first-line indent; a centered 200px tan hairline may separate distinct stanzas or arguments (at most one per slide beyond the ornament divider); a second ◆ divider is never used as an in-text separator.
 
@@ -255,7 +255,7 @@ No badges, no pills, no chips, no arrows, no bullets beyond standard text lists.
 ### Do
 
 - Set every reading word in Newsreader and every furniture word in tracked Inter 500 — the two-voice separation is the system.
-- Open every lede with the oxblood drop cap at 3.1em floated.
+- Open every 3+-line lede with the oxblood drop cap at 3.1em floated; set 1–2-line ledes plain.
 - Flank the chapter kicker with 120px oxblood hairlines at 24px gaps.
 - Close every slide with the full folio: hairline, source left, fleuron center, numeral right.
 - Keep the centered 34em measure and 1.7 lede leading on every reading block.
@@ -306,7 +306,7 @@ Known CJK gap: Noto Serif KR has no true Newsreader-like book italic and its cap
 
 1. Any new slide gets the running head (work left, date right, hairline below) and the folio (hairline, source left, fleuron center, numeral right). Furniture is never optional.
 2. Any new title uses Newsreader 600 at 100px (chapter) or 64px (section), centered, balanced, normal case.
-3. Any new lede uses Newsreader 400 at 31px / 1.7 with the oxblood drop cap, left-aligned in a 780px measure.
+3. Any new lede uses Newsreader 400 at 31px / 1.7, left-aligned in a 780px measure, with the oxblood drop cap only when it runs to 3+ lines.
 4. Any new kicker uses the chapter-kicker component — oxblood tracked caps with 120px flanks. Never a plain label.
 5. Any new separator uses the ornament divider or a 1px tan hairline. No other divider exists.
 6. Any new accent must be oxblood and must be one of the four marks (kicker, drop cap, diamond, page mark). A fifth accent is a defect.

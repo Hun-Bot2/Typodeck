@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dessau — Explanation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
+<style>
+  /* Letterbox shell: viewport centers the fixed stage, never reflows it. */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000; /* letterbox bars */
+    overflow: hidden;
+  }
+  #deck-viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+  /* THE stage: exactly 1920x1080. Do not change these dimensions. */
+  #deck-stage {
+    width: 1920px;
+    height: 1080px;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center center;
+    background: #fff; /* each design overrides with its own surface */
+  }
+</style>
+</head>
+<body>
+<div id="deck-viewport">
+  <div id="deck-stage">
+    <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
+    <div class="de-slide">
+      <div class="de-topbar"><p class="de-context">Fixture data · not a real study</p></div>
+      <div class="de-field">
+        <div class="de-bar de-bar-red" aria-hidden="true"></div>
+        <div class="de-coldiv de-coldiv-blue" aria-hidden="true"></div>
+        <div class="de-coldiv de-coldiv-yellow" aria-hidden="true"></div>
+        <div class="de-main">
+          <p class="de-eyebrow">The choice</p>
+          <h1 class="de-title" id="deTitle">Two teams, one deadline</h1>
+          <div class="de-cols">
+            <div class="de-col">
+              <h2>Rushed review</h2>
+              <ul class="mk-tri">
+                <li>Merged with a single skim approval</li>
+                <li>Config changes bundled into feature PRs</li>
+                <li>Rollback discovered by customers first</li>
+              </ul>
+            </div>
+            <div class="de-col">
+              <h2>Disciplined review</h2>
+              <ul class="mk-dot">
+                <li>Required a second reviewer on every merge</li>
+                <li>Config changes shipped in isolated PRs</li>
+                <li>Rollback caught in staging, never in production</li>
+              </ul>
+            </div>
+          </div>
+          <div class="de-caprow">
+            <div class="de-capbar" aria-hidden="true"></div>
+            <p class="de-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
+          </div>
+        </div>
+      </div>
+      <div class="de-strip" aria-hidden="true"><span class="de-seg-red"></span><span class="de-seg-blue"></span><span class="de-seg-yellow"></span></div>
+      <div class="de-bottombar"><div class="de-numeral" aria-hidden="true">03</div></div>
+    </div>
+    <!-- /DESIGN SLIDE MARKUP -->
+  </div>
+</div>
+<script>
+  /* Uniform stage scaler: one transform, aspect preserved, no reflow. */
+  function __typodeckFitStage() {
+    var stage = document.getElementById('deck-stage');
+    if (!stage) return;
+    var scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  window.addEventListener('resize', __typodeckFitStage);
+  window.addEventListener('orientationchange', __typodeckFitStage);
+  document.addEventListener('DOMContentLoaded', __typodeckFitStage);
+  __typodeckFitStage();
+</script>
+<!-- SCAFFOLD-EMBED-END -->
+<script>
+  /* Red accent paint: single title source; the last word takes the one
+     permitted red display accent. */
+  (function () {
+    var t = document.getElementById('deTitle');
+    if (!t || t.dataset.painted) return;
+    t.dataset.painted = '1';
+    var words = t.textContent.split(' ');
+    function esc(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    t.innerHTML = words.map(function (w, i) {
+      return i === words.length - 1 ? '<span class="de-red">' + esc(w) + '</span>' : esc(w);
+    }).join(' ');
+    t.setAttribute('aria-label', words.join(' '));
+  })();
+</script>
+<style>
+  .de-slide {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    background: #FFFFFF;
+    overflow: hidden;
+  }
+  .de-topbar {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1920px;
+    height: 96px;
+    background: #000000;
+  }
+  .de-context {
+    position: absolute;
+    left: 96px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.5;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    white-space: nowrap;
+  }
+  .de-field {
+    position: absolute;
+    top: 96px; left: 0;
+    width: 1920px;
+    height: 900px;
+  }
+  .de-bar { position: absolute; top: 56px; bottom: 56px; width: 28px; }
+  .de-bar-red { left: 96px; background: #E30613; }
+  .de-coldiv { position: absolute; top: 240px; bottom: 390px; width: 28px; }
+  .de-coldiv-blue { left: 950px; background: #0066B3; }
+  .de-coldiv-yellow { left: 990px; background: #FFCC00; }
+  .de-main {
+    position: absolute;
+    left: 152px;
+    top: 80px;
+    width: 1672px;
+  }
+  .de-eyebrow {
+    margin: 0;
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.5;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  .de-title {
+    margin: 8px 0 0 0;
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 600;
+    font-size: 84px;
+    line-height: 1.08;
+    text-transform: lowercase;
+    color: #000000;
+  }
+  .de-red { color: #E30613; }
+  .de-cols { display: flex; gap: 140px; margin-top: 36px; }
+  .de-col { flex: 1 1 0; min-width: 0; }
+  .de-col h2 {
+    margin: 0 0 14px 0;
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.4;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  .de-col ul { list-style: none; margin: 0; padding: 0; }
+  .de-col li {
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.4;
+    color: #000000;
+    margin: 0;
+    padding: 10px 0 10px 44px;
+    position: relative;
+  }
+  .mk-tri li::before {
+    content: ""; position: absolute; left: 0; top: 16px;
+    width: 0; height: 0;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+    border-bottom: 22px solid #E30613;
+  }
+  .mk-dot li::before {
+    content: ""; position: absolute; left: 0; top: 16px;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #0066B3;
+  }
+  .de-caprow { display: flex; align-items: center; gap: 28px; margin-top: 44px; }
+  .de-capbar { flex: 0 0 180px; height: 28px; background: #000000; }
+  .de-caption {
+    flex: 1 1 auto;
+    margin: 0;
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.4;
+    color: #000000;
+  }
+  .de-strip {
+    position: absolute;
+    top: 996px; left: 0;
+    width: 1920px;
+    height: 12px;
+    display: flex;
+  }
+  .de-strip span { flex: 1 1 0; }
+  .de-seg-red { background: #E30613; }
+  .de-seg-blue { background: #0066B3; }
+  .de-seg-yellow { background: #FFCC00; }
+  .de-bottombar {
+    position: absolute;
+    top: 1008px; left: 0;
+    width: 1920px;
+    height: 72px;
+    background: #000000;
+  }
+  .de-numeral {
+    position: absolute;
+    right: 96px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
+    font-weight: 600;
+    font-size: 54px;
+    line-height: 1;
+    color: #FFFFFF;
+  }
+</style>
+</body>
+</html>
