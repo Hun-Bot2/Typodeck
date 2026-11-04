@@ -4,7 +4,7 @@
   "lang": "en",
   "builder": "generic",
   "localeNote": "no locales/ko override file; CJK rules from design.md CJK section",
-  "createdAt": "2026-11-04T07:21:54.006Z",
+  "createdAt": "2026-11-04T08:04:46.947Z",
   "status": "PASS",
   "summary": {
     "pass": 7,
