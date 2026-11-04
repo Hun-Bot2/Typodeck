@@ -1,4 +1,4 @@
-// Typodeck Typography Core — bold-template-pack integration.
+// Typodeck Typography Core — typo-pack integration.
 //
 // Maps selection-index.json entries + per-slug design.md front-matter tokens
 // onto the EXISTING engine primitives: a base SystemId (placement/scale
@@ -23,7 +23,7 @@ export class TemplatePackError extends Error {
   }
 }
 
-/** One row of bold-template-pack/selection-index.json. */
+/** One row of typo-pack/selection-index.json. */
 export interface TemplatePackEntry {
   slug: string;
   id?: string;
@@ -307,4 +307,171 @@ export function layoutDeckWithTemplate(
 ): Deck {
   const { systemId, theme } = resolveTemplateDesign(entry, designMarkdown);
   return layoutDeck(narrativeInput, systemId, { ...opts, theme });
+}
+
+// ---------------------------------------------------------------------------
+// Typo Pack selection: deterministic purpose/content -> candidate shortlist.
+// ---------------------------------------------------------------------------
+//
+// The index fields (density/formality/contentTypes/mood) were eyeball-only:
+// no consumer scored them, so agents either read ~866KB of design prose or
+// guessed from blurbs. This selector makes that metadata machine-effectful:
+// explicit query filters win, purpose presets contribute documented hints,
+// every pick carries its reasons. Deterministic: ties break by slug.
+//
+// Evidence status: deterministic-registry retrieval is H1 (hypothesis) in
+// the research reuse analysis — paper mechanisms (SlideCoder H-RAG, ColPali
+// late interaction) need embeddings TypoPPT does not ship. This selector is
+// the smallest testable registry form; the selection battery in
+// template-pack.test.ts pins its behavior, not its quality.
+
+export type DensityLevel = 'low' | 'medium' | 'high';
+export type FormalityLevel = 'low' | 'medium' | 'high';
+
+export interface TypoPackQuery {
+  /** Purpose preset P01..P10 (see purposes.ts); unknown ids throw. */
+  purpose?: string;
+  /** Explicit filters win over purpose hints. */
+  density?: DensityLevel;
+  formality?: FormalityLevel;
+  /** Informational: every entry carries a KO overlay, so lang never filters. */
+  lang?: string;
+  contentTypes?: string[];
+  mood?: string[];
+  /** Shortlist length, clamped to 1..entries. Default 5. */
+  top?: number;
+}
+
+export interface TypoPackPick {
+  slug: string;
+  name: string;
+  baseSystem: SystemId;
+  scheme: 'light' | 'dark';
+  score: number;
+  reasons: string[];
+}
+
+interface PurposeHint {
+  density: DensityLevel;
+  formality: FormalityLevel;
+  /** Preferred base system for the preset's rhetoric, if any. */
+  systemLean?: SystemId;
+}
+
+/**
+ * Purpose -> design-hint mapping. Deliberately explicit (not derived by
+ * keyword matching) so every shortlist is explainable. Keys must equal
+ * PRESET_IDS — pinned by test, update both together.
+ */
+const PURPOSE_HINTS: Record<string, PurposeHint> = {
+  P01: { density: 'low', formality: 'medium', systemLean: 'expressive' }, // hackathon: stage-readable drama
+  P02: { density: 'medium', formality: 'medium' }, // portfolio: balanced proof
+  P03: { density: 'low', formality: 'high', systemLean: 'editorial' }, // resume: restrained credibility
+  P04: { density: 'low', formality: 'medium', systemLean: 'expressive' }, // pitch: opportunity with air
+  P05: { density: 'high', formality: 'high', systemLean: 'swiss' }, // research: dense qualified reporting
+  P06: { density: 'high', formality: 'medium', systemLean: 'swiss' }, // architecture: reasoning over promotion
+  P07: { density: 'medium', formality: 'high', systemLean: 'editorial' }, // business review: metric discipline
+  P08: { density: 'medium', formality: 'low', systemLean: 'swiss' }, // lecture: clarity for learners
+  P09: { density: 'medium', formality: 'high', systemLean: 'editorial' }, // proposal: sober future work
+  P10: { density: 'medium', formality: 'medium', systemLean: 'editorial' }, // case study: reported narrative
+};
+
+/** Preset ids this selector understands (mirror of purposes.ts PRESET_IDS). */
+export const SELECTOR_PURPOSE_IDS = Object.keys(PURPOSE_HINTS).sort();
+
+const SCALE: DensityLevel[] = ['low', 'medium', 'high'];
+
+function scaleDistance(a: string, b: string): number {
+  return Math.abs(SCALE.indexOf(a as DensityLevel) - SCALE.indexOf(b as DensityLevel));
+}
+
+function isDensity(v: unknown): v is DensityLevel {
+  return v === 'low' || v === 'medium' || v === 'high';
+}
+
+function isFormality(v: unknown): v is FormalityLevel {
+  return v === 'low' || v === 'medium' || v === 'high';
+}
+
+/**
+ * Rank pack entries against a purpose/content query. Pure + deterministic.
+ * Throws TemplatePackError on unknown purpose/density/formality values.
+ */
+export function selectTypoPack(entries: TemplatePackEntry[], query: TypoPackQuery): TypoPackPick[] {
+  let hint: PurposeHint | undefined;
+  if (query.purpose !== undefined) {
+    hint = PURPOSE_HINTS[query.purpose];
+    if (hint === undefined) {
+      throw new TemplatePackError(
+        `unknown purpose "${query.purpose.slice(0, 16)}" (want ${SELECTOR_PURPOSE_IDS.join('|')})`,
+      );
+    }
+  }
+  if (query.density !== undefined && !isDensity(query.density)) {
+    throw new TemplatePackError(`unknown density "${String(query.density).slice(0, 16)}" (want low|medium|high)`);
+  }
+  if (query.formality !== undefined && !isFormality(query.formality)) {
+    throw new TemplatePackError(`unknown formality "${String(query.formality).slice(0, 16)}" (want low|medium|high)`);
+  }
+  const wantDensity = query.density ?? hint?.density;
+  const wantFormality = query.formality ?? hint?.formality;
+  const wantTypes = (query.contentTypes ?? []).map((t) => t.toLowerCase());
+  const wantMood = (query.mood ?? []).map((m) => m.toLowerCase());
+
+  const picks = entries.map((entry): TypoPackPick => {
+    let score = 0;
+    const reasons: string[] = [];
+    if (wantDensity !== undefined) {
+      const d = scaleDistance(entry.density, wantDensity);
+      if (d === 0) {
+        score += 3;
+        reasons.push(`density ${entry.density} matches`);
+      } else if (d === 1) {
+        score += 1;
+        reasons.push(`density ${entry.density} adjacent`);
+      }
+    }
+    if (wantFormality !== undefined) {
+      const d = scaleDistance(entry.formality, wantFormality);
+      if (d === 0) {
+        score += 3;
+        reasons.push(`formality ${entry.formality} matches`);
+      } else if (d === 1) {
+        score += 1;
+        reasons.push(`formality ${entry.formality} adjacent`);
+      }
+    }
+    if (wantTypes.length > 0) {
+      const have = new Set((entry.contentTypes ?? []).map((t) => t.toLowerCase()));
+      const hits = wantTypes.filter((t) => have.has(t));
+      if (hits.length > 0) {
+        score += Math.min(3, hits.length);
+        reasons.push(`covers ${hits.slice(0, 3).join(', ')}`);
+      }
+    }
+    if (wantMood.length > 0) {
+      const have = new Set((entry.mood ?? []).map((m) => m.toLowerCase()));
+      const hits = wantMood.filter((m) => have.has(m));
+      if (hits.length > 0) {
+        score += Math.min(2, hits.length);
+        reasons.push(`mood ${hits.slice(0, 2).join(', ')}`);
+      }
+    }
+    const baseSystem = systemIdForEntry(entry);
+    if (hint?.systemLean !== undefined && baseSystem === hint.systemLean) {
+      score += 2;
+      reasons.push(`base ${baseSystem} suits ${query.purpose}`);
+    }
+    return {
+      slug: entry.slug,
+      name: entry.name ?? entry.slug,
+      baseSystem,
+      scheme: entry.scheme,
+      score,
+      reasons,
+    };
+  });
+  picks.sort((a, b) => b.score - a.score || (a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0));
+  const top = query.top === undefined ? 5 : Math.max(1, Math.min(entries.length, Math.floor(query.top)));
+  return picks.slice(0, top);
 }

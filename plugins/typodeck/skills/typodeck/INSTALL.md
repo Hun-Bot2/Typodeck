@@ -10,7 +10,7 @@ same files serve all three agents below.
 Layout (progressive disclosure): `SKILL.md` (orchestrator, always
 loaded) → `references/` (one file per workflow step, on demand) →
 `examples/` + `scripts/` (runnable). Verify after any install with
-`plugins/typodeck/skills/typodeck/EXAMPLES.sh [OUT]` (exit 0, 6 examples).
+`plugins/typodeck/skills/typodeck/EXAMPLES.sh [OUT]` (exit 0, 8 examples).
 
 ## Muse Code (verified live on this machine)
 

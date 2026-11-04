@@ -70,12 +70,12 @@ export function ExportStep({
         <>
           <h3 className="ws-export-sub">2 · Theme the download (optional, experimental)</h3>
           <div className="field">
-            <label htmlFor="ws-template">Template theme</label>
+            <label htmlFor="ws-template">Typo Pack theme</label>
             <select id="ws-template" value={template} onChange={(e) => onSelectTemplate(e.target.value)}>
               <option value="">None — export the {selected} system as previewed</option>
               {templates.map((t) => (
                 <option key={t.slug} value={t.slug}>
-                  {t.name} · {t.scheme}
+                  {t.name} · {t.scheme} · {t.baseSystem} geometry
                   {t.bestFor !== '' ? ` — ${t.bestFor}` : ''}
                 </option>
               ))}

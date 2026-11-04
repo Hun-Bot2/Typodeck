@@ -15,7 +15,7 @@ const REPO = path.resolve(HERE, '..', '..', '..');
 
 async function fixture() {
   const text = await fs.readFile(
-    path.join(REPO, 'bold-template-pack', 'templates', 'fika', 'design.md'), 'utf8');
+    path.join(REPO, 'typo-pack', 'templates', 'fika', 'design.md'), 'utf8');
   const { tokens } = parseDesignFile(text, 'fika');
   const theme = toTheme(tokens, 'fika');
   const content = parseContent(JSON.parse(await fs.readFile(

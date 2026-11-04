@@ -155,7 +155,7 @@ async function main() {
   const narrative = buildNarrative(fx);
   const expectedChars = contentChars(narrative);
   const index = core.parseSelectionIndex(
-    JSON.parse(fs.readFileSync(path.join(ROOT, 'bold-template-pack/selection-index.json'), 'utf8')),
+    JSON.parse(fs.readFileSync(path.join(ROOT, 'typo-pack/selection-index.json'), 'utf8')),
   );
   const bySlug = Object.fromEntries(index.map((e) => [e.slug, e]));
 

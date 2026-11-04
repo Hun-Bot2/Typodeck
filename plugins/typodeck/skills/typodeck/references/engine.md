@@ -18,11 +18,17 @@ npm run --silent deck -- --idea "..." --system expressive --preset P04 --lang ko
 - Exactly one of `--repo owner/repo` | `--idea "…"` | `--idea-file p`.
 - `--system editorial|swiss|expressive|document`
   (`document` is experimental — see `references/visual-systems.md`),
-  or `--template slug` (experimental: 27 template-pack designs;
-  discover with `make-deck --list-templates`). `--system` and
-  `--template` are mutually exclusive; `--template` cannot combine
-  with `--revise`. A template re-themes its base system's geometry —
-  never describe themed output as the HTML specimen.
+  or `--template slug` (experimental: 27 Typo Pack candidates;
+  discover with `npm run --silent deck -- --list-templates`). `--system`
+  and `--template` are mutually exclusive; `--template` cannot combine
+  with `--revise`. A Typo Pack entry re-themes its base system's
+  geometry — never describe themed output as the HTML specimen.
+- `--suggest` shortlists Typo Pack candidates without generating:
+  `--preset P01..P10` (retrieval hints only), `--density`, `--formality`,
+  `--content-types a,b`, `--mood a,b`, `--lang`, `--top N` (default 5).
+  Explicit filters override preset hints. Every pick prints its base
+  system, score, and reasons; scores rank metadata fit, not visual
+  quality.
 - `--preset P01..P10` (purpose-aware arc) or legacy `--purpose
   hackathon|competition|showcase` (`references/purposes.md`).
 - `--lang en|ko`. Exit 2 = usage error, exit 1 = typed failure

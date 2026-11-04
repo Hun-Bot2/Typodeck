@@ -42,10 +42,13 @@ Announce first: "Following the Typodeck Skill: <idea|local|repo> mode, <systems>
    programmatic (`planDeck`/`planDecksAll`, `layoutDeck`, export,
    validate) for the improved pipeline and previews; Studio API is
    the same pipeline over HTTP. (`references/engine.md`)
-7. **Design selection** — registry systems (`editorial|swiss|expressive`
-   production 1.0.0; `document` 0.1.0 experimental, never the
-   default). Generate once over all systems from the SAME narrative,
-   compare, export the chosen one; skip when already selected.
+7. **Design selection** — production registry systems
+   (`editorial|swiss|expressive` 1.0.0; `document` 0.1.0 experimental,
+   never the default). Generate once over all production systems from
+   the SAME narrative, compare, export the chosen one; skip when
+   already selected. Typo Pack's 27 entries are experimental themes,
+   not systems: shortlist with `--suggest`, then apply one with
+   `--template`, which re-themes its base system's geometry.
    (`references/visual-systems.md`, `references/composition.md`)
 8. **Render inspection incl. overflow detection** — structural gates
    first (`validation: OK`), overflow via layout estimates + critic
@@ -110,6 +113,7 @@ If asked for a forbidden element: refuse that element, offer the typographic equ
 - `examples/05-improved-pipeline.mjs` — offline improved pipeline → critic → validated PPTX bytes.
 - `examples/06-eval-rerun.sh` — eval matrix + report when Phase 4 scripts exist.
 - `examples/07-revise-loop.sh` — `--critique` receipt + `--revise[=N]` end-to-end.
+- `examples/08-typo-pack.sh` — Typo Pack `--suggest` shortlist → experimental `--template` → validated export.
 - `scripts/check-quota.sh` — GitHub quota probe (remaining + reset).
 
 Each example asserts its own artifacts and prints PASS/SKIP/FAIL; the Skill

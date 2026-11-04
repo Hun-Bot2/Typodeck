@@ -1,6 +1,6 @@
 // design.md spec parser: YAML front-matter (tokens) + CJK section extraction.
 // Dependency-free minimal YAML-subset parser for the flat token maps used
-// by bold-template-pack design files. Resolves {colors.x} / {typography.y}
+// by typo-pack design files. Resolves {colors.x} / {typography.y}
 // / {components.z} references.
 
 export class SpecError extends Error {

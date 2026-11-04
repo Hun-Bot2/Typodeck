@@ -8,7 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
-const INDEX = path.join(ROOT, 'bold-template-pack', 'selection-index.json');
+const INDEX = path.join(ROOT, 'typo-pack', 'selection-index.json');
 const RESULTS = path.join(ROOT, 'evals', 'design-diversity', 'results', 'shortlist-tests.json');
 
 // Track every file open to prove design.md files are never loaded.

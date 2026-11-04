@@ -104,7 +104,7 @@ URL은 `github.com/typodeck/typodeck`을 가리킵니다. `typodeck` org명은
 - 저장소 URL (4번에서 확정)
 - 핵심 문장: “You bring the content. TypoPPT handles the design.”
 - 근거 자료: `docs/showcase/`의 PPTX 4종 (실제 편집 가능),
-  `evals/summary.json` (24/24), 테스트 575/575
+  `evals/summary.json` (24/24), 테스트 582/582
 
 **완료 기준:** 제출 접수 확인.
 
@@ -113,13 +113,13 @@ URL은 `github.com/typodeck/typodeck`을 가리킵니다. `typodeck` org명은
 ## 참고: 엔지니어가 이미 끝낸 것 (조치 불필요)
 
 - Agent Skill 설치·실행 검증, 의도 파악(EN/KO) UX
-- 27개 템플릿의 CLI·Studio·API 연결 (experimental)
+- 27개 Typo Pack 후보의 CLI·Studio·API 연결 (experimental)
 - 한국어 export 수정 (ko-KR 로케일, KR 글꼴, 금칙 처리)
 - 숫자 히어로 겹침 버그 수정 (3개 시스템 렌더 확인)
 - 타이틀 렌더 가드 확장 (타이틀/본문·캡션 충돌 해소, 18개 덱 585블록 무위험 확인)
 - README·브랜드(전체 너비 히어로)·쇼케이스·영상 가이드
 - 배포 위생 수정 (하드코딩 경로 제거 등) + MCP 보류 결정서 (ADR-0024)
-- 전체 테스트 576/576, Studio smoke 확인
+- 전체 테스트 582/582, Studio smoke 확인
 
 ## 의도적으로 손대지 않은 것
 

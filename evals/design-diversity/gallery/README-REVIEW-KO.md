@@ -3,7 +3,7 @@
 ## 1. 서버 실행
 
 ```bash
-cd /Users/jeonghun/Typodeck/evals/design-diversity && python3 -m http.server 8321
+cd evals/design-diversity && python3 -m http.server 8321
 ```
 
 ## 2. 갤러리 접속
@@ -38,12 +38,12 @@ cd /Users/jeonghun/Typodeck/evals/design-diversity && python3 -m http.server 832
 ## 6. 디자인 문서 확인
 
 각 카드의 `design:` / `preview:` 경로가 해당 디자인의 전체 스펙(`design.md`)과
-프리뷰 카드(`preview.md`) 위치입니다. 예: `bold-template-pack/templates/maison/design.md`
+프리뷰 카드(`preview.md`) 위치입니다. 예: `typo-pack/templates/maison/design.md`
 
 ## 7. 선택 테스트 재현 (선택)
 
 ```bash
-cd /Users/jeonghun/Typodeck && node evals/design-diversity/shortlist-test.mjs
+node evals/design-diversity/shortlist-test.mjs
 ```
 
 `pass=true`, `designReads=0`이면 shortlist가 preview 카드만 읽고 동작한 것입니다.

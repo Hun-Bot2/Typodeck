@@ -11,7 +11,7 @@ import { EXPRESSIVE, EDITORIAL, SWISS, fontFaceFor } from '../src/systems';
 import { layoutDeckWithTemplate, parseSelectionIndex } from '../src/template-pack';
 
 const REPO_ROOT = path.join(__dirname, '..', '..', '..', '..');
-const INDEX_PATH = path.join(REPO_ROOT, 'bold-template-pack', 'selection-index.json');
+const INDEX_PATH = path.join(REPO_ROOT, 'typo-pack', 'selection-index.json');
 
 describe('lang-aware export faces (R1)', () => {
   it('resolves Korean decks to KR-capable faces', () => {

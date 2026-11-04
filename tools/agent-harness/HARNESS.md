@@ -6,7 +6,7 @@ spec (a spec-driven builder — not one generic layout), renders at 1920x1080
 in headless Chrome, runs deterministic checks, repairs boundedly, and writes
 validated output.
 
-Engine (`packages/`, `bold-template-pack/`, `gallery/`) is **read-only** to
+Engine (`packages/`, `typo-pack/`, `gallery/`) is **read-only** to
 this harness. Everything the harness owns lives in `tools/agent-harness/`.
 
 ## CLI (frozen)
@@ -19,7 +19,7 @@ node tools/agent-harness/generate.mjs \
 
 | Flag | Required | Meaning |
 |---|---|---|
-| `--design` | yes | Slug under `bold-template-pack/templates/<slug>/design.md` |
+| `--design` | yes | Slug under `typo-pack/templates/<slug>/design.md` |
 | `--lang` | yes | `en` or `ko`. `ko` applies the design's CJK section; when `locales/ko.md` (or `locales/ko/design.md`) exists under the template dir its tokens override |
 | `--content` | yes | Path to content JSON (schema below) |
 | `--out` | yes | Output dir (created). Receives `slides/NN.{html,png}` + `report.json` |

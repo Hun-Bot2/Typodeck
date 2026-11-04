@@ -24,7 +24,7 @@ python3 build.py
 ```
 
 `build.py` merges `../audit/classification.json` (DID/slug/leaning/rationale)
-with `bold-template-pack/selection-index.json` (name/mood/density/best-for),
+with `typo-pack/selection-index.json` (name/mood/density/best-for),
 verifies every referenced PNG exists on disk (missing renders become visible
 placeholders, never silent broken images), and writes `index.html`.
 

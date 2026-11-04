@@ -18,8 +18,8 @@ authored designs comes later; this directory defines the contract now.
 
 - Design slots are **D01–D27** (screenshots are `<DID>.png`). Never reuse
   study `S`-case ids; the human-study branch data is out of scope.
-- Template slug: lowercase-hyphen (`bold-template-pack/templates/<slug>/`).
-- Reference: `bold-template-pack/templates/8-bit-orbit/` (`preview.md` +
+- Template slug: lowercase-hyphen (`typo-pack/templates/<slug>/`).
+- Reference: `typo-pack/templates/8-bit-orbit/` (`preview.md` +
   `design.md`; ships no `preview.html`). Its section skeleton is the
   structural contract; its visual identity must NOT be copied into new designs.
 

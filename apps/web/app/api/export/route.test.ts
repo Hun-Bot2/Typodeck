@@ -1,6 +1,6 @@
 // Colocated tests for POST /api/export's optional `template` slug.
 //
-// slug present  -> export is themed via the engine template-pack API
+// slug present  -> export is themed via the engine TemplatePack API
 //                 (content-identical to the direct layoutDeckWithTemplate
 //                 pipeline, and distinct from baseline).
 // slug absent   -> baseline layoutDeck behavior, byte-compatible with the
@@ -42,7 +42,7 @@ function postJson(body: unknown): PostRequest {
 function findPackRoot(): string {
   let dir = process.cwd();
   for (;;) {
-    if (existsSync(join(dir, 'bold-template-pack', 'selection-index.json'))) return dir;
+    if (existsSync(join(dir, 'typo-pack', 'selection-index.json'))) return dir;
     const parent = dirname(dir);
     if (parent === dir) throw new Error('template pack not found from cwd ' + process.cwd());
     dir = parent;
@@ -52,7 +52,7 @@ function findPackRoot(): string {
 function loadExpectedTemplate(): { designMarkdown: string } {
   const root = findPackRoot();
   const entries = parseSelectionIndex(
-    JSON.parse(readFileSync(join(root, 'bold-template-pack', 'selection-index.json'), 'utf8')),
+    JSON.parse(readFileSync(join(root, 'typo-pack', 'selection-index.json'), 'utf8')),
   );
   const entry = entries.find((e) => e.slug === SLUG);
   assert.ok(entry, `expected template "${SLUG}" in selection-index.json`);
@@ -134,7 +134,7 @@ describe('POST /api/export template slug', () => {
 
     const entries = parseSelectionIndex(
       JSON.parse(
-        readFileSync(join(findPackRoot(), 'bold-template-pack', 'selection-index.json'), 'utf8'),
+        readFileSync(join(findPackRoot(), 'typo-pack', 'selection-index.json'), 'utf8'),
       ),
     );
     const entry = entries.find((e) => e.slug === SLUG);

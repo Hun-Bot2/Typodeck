@@ -33,12 +33,13 @@ export interface Catalog {
   systems: CatalogSystem[];
 }
 
-/** One template-pack selection card from GET /api/templates. */
+/** One Typo Pack selection card from GET /api/templates. */
 export interface TemplateEntry {
   slug: string;
   name: string;
   scheme: 'light' | 'dark';
   density: 'low' | 'medium' | 'high';
+  baseSystem: string;
   mood: string[];
   bestFor: string;
 }

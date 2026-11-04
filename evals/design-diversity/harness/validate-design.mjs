@@ -5,7 +5,7 @@
  * Usage:
  *   node validate-design.mjs <slug> [--root=<repo-root>] [--json]
  *
- * Checks, for bold-template-pack/templates/<slug>/:
+ * Checks, for typo-pack/templates/<slug>/:
  *   1. preview.md      — 6 required sections present, in order; >=11 rule bullets.
  *   2. design.md       — YAML frontmatter carries the 9 required top-level keys;
  *                        body carries all 23 manual sections
@@ -102,7 +102,7 @@ const FORBIDDEN_LITERAL = [
   'option a',
   'option b',
   'option c',
-  'bold-template-pack',
+  'typo-pack',
   'templates/',
 ];
 
@@ -294,7 +294,7 @@ function main() {
     process.exitCode = 1;
     return;
   }
-  const dir = path.join(root, 'bold-template-pack', 'templates', slug);
+  const dir = path.join(root, 'typo-pack', 'templates', slug);
   const mdPreview = readFile(path.join(dir, 'preview.md'));
   const mdDesign = readFile(path.join(dir, 'design.md'));
   const html = readFile(path.join(dir, 'preview.html'));

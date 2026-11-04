@@ -1,4 +1,4 @@
-// Colocated tests for GET /api/templates (template-pack selection cards).
+// Colocated tests for GET /api/templates (Typo Pack selection cards).
 //
 // Run: compile this folder with tsc, then `node --test` the emitted file
 // (same convention as ../export/route.test.ts). Not a Next route: only
@@ -17,6 +17,7 @@ describe('GET /api/templates', () => {
         name: string;
         scheme: string;
         density: string;
+        baseSystem: string;
         mood: string[];
         bestFor: string;
       }>;
@@ -32,6 +33,7 @@ describe('GET /api/templates', () => {
       assert.ok(t.name.length > 0);
       assert.ok(t.scheme === 'light' || t.scheme === 'dark');
       assert.ok(['low', 'medium', 'high'].includes(t.density));
+      assert.ok(['editorial', 'swiss', 'expressive', 'document'].includes(t.baseSystem));
       assert.ok(Array.isArray(t.mood));
     }
   });

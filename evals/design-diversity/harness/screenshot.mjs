@@ -6,7 +6,7 @@
  *   node screenshot.mjs <slug> <DID> [--root=<repo-root>] [--chrome=<path>]
  *       [--budget=<ms>] [--src=<html-path>] [--timeout=<ms>]
  *
- * Renders bold-template-pack/templates/<slug>/preview.html with headless
+ * Renders typo-pack/templates/<slug>/preview.html with headless
  * Chrome (--window-size=1920,1080 plus a virtual-time budget so webfonts
  * settle) to evals/design-diversity/screenshots/<DID>.png, then verifies the
  * PNG's IHDR dimensions are exactly 1920x1080.
@@ -62,7 +62,7 @@ function main() {
 
   const src = srcOverride
     ? path.resolve(srcOverride)
-    : path.join(root, 'bold-template-pack', 'templates', slug, 'preview.html');
+    : path.join(root, 'typo-pack', 'templates', slug, 'preview.html');
   if (!fs.existsSync(src)) { console.error(`preview.html not found: ${src}`); process.exitCode = 1; return; }
   if (!fs.existsSync(chrome)) { console.error(`chrome not found: ${chrome}`); process.exitCode = 1; return; }
 

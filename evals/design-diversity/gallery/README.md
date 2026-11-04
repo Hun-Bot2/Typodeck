@@ -9,7 +9,7 @@ Static gallery over `evals/design-diversity/screenshots/D01..D27.png`.
 | `index.html` | Single-file gallery. All metadata inlined at build time — no `fetch`, works over `file://`. |
 | `contact.html` | Contact-sheet source: 3-col × 9-row grid of 640×360 thumbs. |
 | `contact-sheet.png` | Rendered contact sheet, 1920×3600. |
-| `build.py` | Generator: reads `bold-template-pack/selection-index.json`, inlines data into `index.html`, emits `contact.html`. |
+| `build.py` | Generator: reads `typo-pack/selection-index.json`, inlines data into `index.html`, emits `contact.html`. |
 | `README.md` | This file. |
 
 ## Gallery features

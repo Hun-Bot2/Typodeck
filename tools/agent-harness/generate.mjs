@@ -2,7 +2,7 @@
 // typodeck-harness generate: design.md + content JSON -> validated 1920x1080 deck.
 // Usage:
 //   node generate.mjs --design <slug> --lang en|ko --content <json> --out <dir>
-// Reads (repo, read-only): bold-template-pack/templates/<slug>/{design.md,locales/ko.md?}
+// Reads (repo, read-only): typo-pack/templates/<slug>/{design.md,locales/ko.md?}
 // Writes (only): <out>/{slides/NN.html, slides/NN.png, report.json}
 
 import { promises as fs } from 'node:fs';
@@ -28,7 +28,7 @@ const VERSION = '0.1.0';
 function usage() {
   return [
     'Usage: generate.mjs --design <slug> --lang en|ko --content <json> --out <dir>',
-    '  --design   template slug under bold-template-pack/templates/',
+    '  --design   template slug under typo-pack/templates/',
     '  --lang     en | ko (ko applies the design CJK section + locales/ko.md when present)',
     '  --content  path to content JSON (deck + slides with intent)',
     '  --out      output dir (created; receives slides/NN.{html,png} + report.json)',
@@ -56,12 +56,12 @@ function args(argv) {
 }
 
 async function loadSpec(slug, lang) {
-  const dir = path.join(REPO, 'bold-template-pack', 'templates', slug);
+  const dir = path.join(REPO, 'typo-pack', 'templates', slug);
   let designText;
   try {
     designText = await fs.readFile(path.join(dir, 'design.md'), 'utf8');
   } catch {
-    throw new SpecError(`design "${slug}" not found at bold-template-pack/templates/${slug}/design.md`);
+    throw new SpecError(`design "${slug}" not found at typo-pack/templates/${slug}/design.md`);
   }
   const spec = parseDesignFile(designText, slug);
   let localeNote = 'no locales/ko override file; CJK rules from design.md CJK section';

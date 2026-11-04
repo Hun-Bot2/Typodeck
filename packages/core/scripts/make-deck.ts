@@ -10,7 +10,7 @@
 // Prints the provider used + warnings; exits non-zero on validation failure.
 // --critique appends an advisory critique receipt (exit code unchanged).
 // --revise[=N] (default N=3) exports the bounded-revision deck instead.
-// --template slug selects a template-pack design (experimental): the template's
+// --template slug selects a Typo Pack candidate (experimental): the template's
 // base system lays out the deck and the template's fonts/colors theme it.
 // Geometry comes from the base system, not the template's HTML specimen.
 import { existsSync, promises as fs } from 'node:fs';
@@ -23,6 +23,8 @@ import {
   layoutDeckWithTemplate,
   parseSelectionIndex,
   resolveTemplateDesign,
+  selectTypoPack,
+  systemIdForEntry,
   type TemplatePackEntry,
 } from '../src/template-pack';
 import { validatePptx } from '../src/validate';
@@ -35,16 +37,25 @@ function usage(): string {
     '               [--purpose text] [--preset P01..P10] [--lang ko|en]',
     '               [--critique] [--revise[=N]]',
     '       make-deck --list-templates',
+    '       make-deck --suggest [--preset P01..P10] [--density low|medium|high]',
+    '                       [--formality low|medium|high] [--content-types a,b]',
+    '                       [--mood a,b] [--lang ko|en] [--top N]',
   ].join('\n');
 }
 
-const PACK_INDEX_REL = join('bold-template-pack', 'selection-index.json');
+/** Typo Pack index, canonical name first, legacy name as fallback. */
+const PACK_INDEX_CANDIDATES = [
+  join('typo-pack', 'selection-index.json'),
+  join('bold-template-pack', 'selection-index.json'),
+];
 
-/** Walk up from the cwd to the checkout root carrying the template pack. */
-function findPackRoot(): string | null {
+/** Walk up from the cwd to the checkout root carrying the Typo Pack. */
+function findPackRoot(): { root: string; indexRel: string } | null {
   let dir = process.cwd();
   for (;;) {
-    if (existsSync(join(dir, PACK_INDEX_REL))) return dir;
+    for (const indexRel of PACK_INDEX_CANDIDATES) {
+      if (existsSync(join(dir, indexRel))) return { root: dir, indexRel };
+    }
     const parent = dirname(dir);
     if (parent === dir) return null;
     dir = parent;
@@ -52,17 +63,17 @@ function findPackRoot(): string | null {
 }
 
 async function loadPackEntries(): Promise<{ root: string; entries: TemplatePackEntry[] }> {
-  const root = findPackRoot();
-  if (root === null) {
-    throw new Error('template pack not found: run from a Typodeck checkout (bold-template-pack/selection-index.json)');
+  const found = findPackRoot();
+  if (found === null) {
+    throw new Error('Typo Pack not found: run from a TypoPPT checkout (typo-pack/selection-index.json)');
   }
   let entries: TemplatePackEntry[];
   try {
-    entries = parseSelectionIndex(JSON.parse(await fs.readFile(join(root, PACK_INDEX_REL), 'utf8')));
+    entries = parseSelectionIndex(JSON.parse(await fs.readFile(join(found.root, found.indexRel), 'utf8')));
   } catch (err) {
-    throw new Error(`template pack index unreadable: ${err instanceof Error ? err.message : String(err)}`);
+    throw new Error(`Typo Pack index unreadable: ${err instanceof Error ? err.message : String(err)}`);
   }
-  return { root, entries };
+  return { root: found.root, entries };
 }
 
 /** Resolve a template slug to its entry + design.md text (same guards as POST /api/export). */
@@ -130,7 +141,37 @@ async function main(): Promise<void> {
       const { entries } = await loadPackEntries();
       for (const e of entries) {
         const blurb = e.bestFor ? ` — ${e.bestFor}` : '';
-        console.log(`${e.slug} [${e.scheme}/${e.density}]${blurb}`);
+        console.log(`${e.slug} [${e.scheme}/${e.density}, base ${systemIdForEntry(e)}]${blurb}`);
+      }
+    } catch (err) {
+      console.error(`failed: ${err instanceof Error ? err.message : String(err)}`);
+      process.exit(1);
+    }
+    return;
+  }
+
+  if (args.includes('--suggest')) {
+    try {
+      const { entries } = await loadPackEntries();
+      const csv = (v: string | undefined): string[] | undefined =>
+        v === undefined ? undefined : v.split(',').map((s) => s.trim()).filter((s) => s !== '');
+      const topRaw = argValue(args, '--top');
+      if (topRaw !== undefined && (!/^\d+$/.test(topRaw) || Number(topRaw) < 1)) {
+        console.error('--top N requires a positive integer');
+        console.error(usage());
+        process.exit(2);
+      }
+      const picks = selectTypoPack(entries, {
+        purpose: argValue(args, '--preset'),
+        density: argValue(args, '--density') as 'low' | 'medium' | 'high' | undefined,
+        formality: argValue(args, '--formality') as 'low' | 'medium' | 'high' | undefined,
+        lang: argValue(args, '--lang'),
+        contentTypes: csv(argValue(args, '--content-types')),
+        mood: csv(argValue(args, '--mood')),
+        top: topRaw === undefined ? undefined : Number(topRaw),
+      });
+      for (const p of picks) {
+        console.log(`${p.slug} [${p.scheme}, base ${p.baseSystem}] score=${p.score} — ${p.reasons.join('; ') || 'no filters matched'}`);
       }
     } catch (err) {
       console.error(`failed: ${err instanceof Error ? err.message : String(err)}`);

@@ -3,20 +3,20 @@
   "indexCount": 27,
   "readyCount": 27,
   "filesOpened": [
-    "bold-template-pack/selection-index.json",
-    "bold-template-pack/templates/seminar/preview.md",
-    "bold-template-pack/templates/peer-review/preview.md",
-    "bold-template-pack/templates/cut-paste/preview.md",
-    "bold-template-pack/templates/coin-op/preview.md",
-    "bold-template-pack/templates/new-wave-static/preview.md",
-    "bold-template-pack/templates/memphis-squiggle/preview.md",
-    "bold-template-pack/templates/bubble-os/preview.md",
-    "bold-template-pack/templates/field-manual/preview.md",
-    "bold-template-pack/templates/seminar/preview.md",
-    "bold-template-pack/templates/signal-board/preview.md",
-    "bold-template-pack/templates/front-page/preview.md",
-    "bold-template-pack/templates/peer-review/preview.md",
-    "bold-template-pack/templates/drafting-table/preview.md"
+    "typo-pack/selection-index.json",
+    "typo-pack/templates/seminar/preview.md",
+    "typo-pack/templates/peer-review/preview.md",
+    "typo-pack/templates/cut-paste/preview.md",
+    "typo-pack/templates/coin-op/preview.md",
+    "typo-pack/templates/new-wave-static/preview.md",
+    "typo-pack/templates/memphis-squiggle/preview.md",
+    "typo-pack/templates/bubble-os/preview.md",
+    "typo-pack/templates/field-manual/preview.md",
+    "typo-pack/templates/seminar/preview.md",
+    "typo-pack/templates/signal-board/preview.md",
+    "typo-pack/templates/front-page/preview.md",
+    "typo-pack/templates/peer-review/preview.md",
+    "typo-pack/templates/drafting-table/preview.md"
   ],
   "designReads": [],
   "intents": {
@@ -26,8 +26,8 @@
         "D22:peer-review"
       ],
       "previewReads": [
-        "bold-template-pack/templates/seminar/preview.md",
-        "bold-template-pack/templates/peer-review/preview.md"
+        "typo-pack/templates/seminar/preview.md",
+        "typo-pack/templates/peer-review/preview.md"
       ],
       "bestForMatched": 2,
       "pass": true
@@ -41,11 +41,11 @@
         "D25:bubble-os"
       ],
       "previewReads": [
-        "bold-template-pack/templates/cut-paste/preview.md",
-        "bold-template-pack/templates/coin-op/preview.md",
-        "bold-template-pack/templates/new-wave-static/preview.md",
-        "bold-template-pack/templates/memphis-squiggle/preview.md",
-        "bold-template-pack/templates/bubble-os/preview.md"
+        "typo-pack/templates/cut-paste/preview.md",
+        "typo-pack/templates/coin-op/preview.md",
+        "typo-pack/templates/new-wave-static/preview.md",
+        "typo-pack/templates/memphis-squiggle/preview.md",
+        "typo-pack/templates/bubble-os/preview.md"
       ],
       "bestForMatched": 5,
       "pass": true
@@ -60,12 +60,12 @@
         "D26:drafting-table"
       ],
       "previewReads": [
-        "bold-template-pack/templates/field-manual/preview.md",
-        "bold-template-pack/templates/seminar/preview.md",
-        "bold-template-pack/templates/signal-board/preview.md",
-        "bold-template-pack/templates/front-page/preview.md",
-        "bold-template-pack/templates/peer-review/preview.md",
-        "bold-template-pack/templates/drafting-table/preview.md"
+        "typo-pack/templates/field-manual/preview.md",
+        "typo-pack/templates/seminar/preview.md",
+        "typo-pack/templates/signal-board/preview.md",
+        "typo-pack/templates/front-page/preview.md",
+        "typo-pack/templates/peer-review/preview.md",
+        "typo-pack/templates/drafting-table/preview.md"
       ],
       "bestForMatched": 6,
       "pass": true

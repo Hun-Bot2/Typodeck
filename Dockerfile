@@ -33,7 +33,7 @@ ENV PORT=3000
 # next.config.ts is required: `next start` loads it on boot.
 COPY --from=deps /app/node_modules ./node_modules
 COPY package.json package-lock.json ./
-COPY bold-template-pack ./bold-template-pack
+COPY typo-pack ./typo-pack
 COPY packages/core/package.json ./packages/core/
 COPY packages/core/dist ./packages/core/dist
 COPY apps/web/package.json ./apps/web/

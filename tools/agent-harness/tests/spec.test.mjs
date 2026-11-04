@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { splitFrontMatter, parseFrontMatter, resolveRefs, parseDesignFile, parseCjkSection, px } from '../lib/spec.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const DESIGN = path.resolve(HERE, '..', '..', '..', 'bold-template-pack', 'templates', 'gridline-swiss', 'design.md');
+const DESIGN = path.resolve(HERE, '..', '..', '..', 'typo-pack', 'templates', 'gridline-swiss', 'design.md');
 
 test('splitFrontMatter rejects files without front-matter', () => {
   assert.throws(() => splitFrontMatter('# no front matter\n'), /front-matter/);

@@ -1,0 +1,43 @@
+{
+  "ideaFile": "packages/core/fixtures/idea-ko.txt",
+  "preset": "P05",
+  "template": "peer-review",
+  "baseSystem": "swiss",
+  "lang": "ko",
+  "seed": 1017679681,
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "claims": {
+    "total": 6,
+    "verified": 0,
+    "suggestion": 0,
+    "ungrounded": 6
+  },
+  "warnings": [
+    "template geometry comes from the base system, not the HTML specimen (see evals/design-quality/results-pptx.md)",
+    "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+    "quality warning [missing-dimension-coverage]: only 0 narrative dimension(s) covered: none",
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "slides": 4,
+  "textBoxes": 14,
+  "candidates": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "stats": {
+      "slides": 4,
+      "textShapes": 14,
+      "editableChars": 427,
+      "slideSizeIn": {
+        "w": 13.33,
+        "h": 7.5
+      }
+    }
+  }
+}

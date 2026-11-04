@@ -1,0 +1,45 @@
+{
+  "ideaFile": "packages/core/fixtures/idea-f4.txt",
+  "preset": "P06",
+  "template": "signal-board",
+  "baseSystem": "swiss",
+  "lang": "en",
+  "seed": 2337494129,
+  "provider": "fallback",
+  "generatedBy": "fallback",
+  "claims": {
+    "total": 21,
+    "verified": 0,
+    "suggestion": 0,
+    "ungrounded": 21
+  },
+  "warnings": [
+    "template geometry comes from the base system, not the HTML specimen (see evals/design-quality/results-pptx.md)",
+    "idea mode: all claims ungrounded; number slides labeled unverified/illustrative",
+    "quality warning [missing-dimension-coverage]: only 2 narrative dimension(s) covered: results, future",
+    "built with the deterministic fallback (not model inference)"
+  ],
+  "slides": 6,
+  "textBoxes": 23,
+  "candidates": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "stats": {
+      "slides": 6,
+      "textShapes": 23,
+      "editableChars": 1348,
+      "slideSizeIn": {
+        "w": 13.33,
+        "h": 7.5
+      }
+    }
+  }
+}

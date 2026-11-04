@@ -3,7 +3,7 @@
 import json, html, pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parents[3]  # repo root
-SEL = ROOT / "bold-template-pack" / "selection-index.json"
+SEL = ROOT / "typo-pack" / "selection-index.json"
 OUT = pathlib.Path(__file__).resolve().parent
 VALIDATION = "PASS"  # all 27 verified via harness validate-design.mjs at build time
 
@@ -75,7 +75,7 @@ assert len(templates) == 27, len(templates)
 for t in templates:
     t["validation"] = VALIDATION
     t["shot"] = f"../screenshots/{t['id']}.png"
-    tdir = ROOT / "bold-template-pack" / "templates" / t["slug"]
+    tdir = ROOT / "typo-pack" / "templates" / t["slug"]
     t["previewHtml"] = md_to_html((tdir / "preview.md").read_text())
     t["designHtml"] = md_to_html((tdir / "design.md").read_text())
     stem = DECK_SMOKE_PREFIX.get(t["id"])
@@ -159,7 +159,7 @@ footer{padding:0 28px 80px;color:var(--dim);font-size:13px}
 <body>
 <header>
 <h1>Typodeck Design-Diversity Gallery — D01&ndash;D27</h1>
-<p>Rendered 1920&times;1080 previews from <code>evals/design-diversity/screenshots/</code>. Metadata inlined at build time from <code>bold-template-pack/selection-index.json</code> (works over <code>file://</code>). Repo paths below are plain text, not links.</p>
+<p>Rendered 1920&times;1080 previews from <code>evals/design-diversity/screenshots/</code>. Metadata inlined at build time from <code>typo-pack/selection-index.json</code> (works over <code>file://</code>). Repo paths below are plain text, not links.</p>
 </header>
 <div id="controls">
 <input type="search" id="q" placeholder="Search name, slug, mood, best-for&hellip;" aria-label="Search">

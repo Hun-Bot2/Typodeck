@@ -2,7 +2,7 @@
 
 All designs load fonts from the Google Fonts CDN at render time.
 **No font binaries are committed to the repo** — no `.woff`, `.woff2`,
-`.ttf`, or `.otf` files anywhere under `bold-template-pack/` or `evals/`.
+`.ttf`, or `.otf` files anywhere under `typo-pack/` or `evals/`.
 
 ## Required loading pattern
 

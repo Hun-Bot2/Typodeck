@@ -28,6 +28,42 @@ Per deck: `readme-<name>.pptx` (editable PowerPoint), `readme-<name>.json`
 model key), idea mode so all claims are `ungrounded` and number slides carry
 `unverified · illustrative` captions — visible in the dense PNG.
 
+## Typo Pack migration evidence
+
+Two experimental themed decks prove the renamed pack still selects, themes,
+exports, validates, and renders. Both use committed fixtures and the same
+`planDeck → layoutDeckWithTemplate → exportToPptx → validatePptx` path as the
+CLI `--template` runs.
+
+| Deck | Preset / template / base | Lang | Seed | Slides / boxes | Contact |
+|---|---|---|---|---|---|
+| F4 pantry idea, technical architecture | P06 / `signal-board` / swiss | en | 2337494129 | 6 / 23 | `typo-en-signal-board.contact.png` |
+| Korean lunch-log idea, research | P05 / `peer-review` / swiss | ko | 1017679681 | 4 / 14 | `typo-ko-peer-review.contact.png` |
+
+- `signal-board` is P06 rank 4 at score 8 and was chosen because its requested
+  `Inter` face is installed on the render machine: the shipped PPTX names
+  `Inter` on all 23 runs and `en-US` on all 23 runs.
+- `peer-review` is P05 rank 1 at score 8: `Noto Serif KR` on 10 runs,
+  `Noto Sans KR` on 4 runs, and `ko-KR` on all 14 runs.
+- The P04 top pick, `night-reel`, is intentionally not shipped here: it requests
+  `Bebas Neue`, which is absent locally, so a PNG would show substitution rather
+  than the requested theme. It remains reproducible through Skill example 08,
+  whose PPTX names `Bebas Neue`/`Inter` and validates OK.
+- Independent a:t/forbidden-element check (same patterns as
+  `showcase/spot-check.py`): `typo-en-signal-board` 6 slides, 23 nodes,
+  0 mismatches, 0 forbidden → OK; `typo-ko-peer-review` 4 slides, 14 nodes,
+  0 mismatches, 0 forbidden → OK.
+- Contacts are Keynote PDF exports of the committed PPTX bytes (`PDF image
+  quality: Best`), rasterized with `pdftoppm -png -r 144`, then tiled with
+  `ffmpeg`. They are real-app renders, not Studio HTML previews; no
+  PowerPoint pixel-parity claim is made.
+- Native editability was checked in Microsoft PowerPoint 16.114.1 on a `/tmp`
+  copy of `typo-en-signal-board.pptx`: slide 1 exposes 3 text frames, shape 2
+  was rewritten through the PowerPoint scripting API, the file saved, and the
+  marker `[Typo Pack edit proof]` is present in `ppt/slides/slide1.xml`. The
+  edited copy still validates OK (6 slides, 23 text shapes, 1371 editable
+  chars). The committed showcase file is unedited.
+
 ## Reproduce
 
 From the repo root (Node >= 20.9, after `npm ci`):
@@ -42,6 +78,10 @@ npm run deck -- --idea-file docs/showcase/ideas/expressive.txt --system expressi
   --purpose "Festival launch: Fieldnotes Live" --out /tmp/repro-expressive.pptx
 npm run deck -- --idea-file docs/showcase/ideas/dense-technical.txt --system swiss \
   --purpose "Architecture review: Meridian Edge 2.0" --out /tmp/repro-dense.pptx
+npm run deck -- --idea-file packages/core/fixtures/idea-f4.txt --preset P06 \
+  --template signal-board --out /tmp/repro-typo-en.pptx
+npm run deck -- --idea-file packages/core/fixtures/idea-ko.txt --lang ko --preset P05 \
+  --template peer-review --out /tmp/repro-typo-ko.pptx
 ```
 
 Each run prints a receipt (`provider`, `claims`, `deck`, `validation: OK`).
@@ -62,6 +102,8 @@ nodes, and zero forbidden elements (`p:pic`, `p:cxnSp`, `p:graphicFrame`,
 - readme-swiss: slides=8 a:t_nodes=31 mismatches=0 forbidden=0 → OK
 - readme-expressive: slides=9 a:t_nodes=34 mismatches=0 forbidden=0 → OK
 - readme-dense-technical: slides=10 a:t_nodes=39 mismatches=0 forbidden=0 → OK
+- typo-en-signal-board: slides=6 a:t_nodes=23 mismatches=0 forbidden=0 → OK
+- typo-ko-peer-review: slides=4 a:t_nodes=14 mismatches=0 forbidden=0 → OK
 
 The engine validator (`validatePptx`: 16:9, in-bounds rect-only shapes,
 editable char count) also returned OK for all four at generation time.

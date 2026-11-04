@@ -55,6 +55,11 @@ CLI: `node packages/core/dist/scripts/make-deck.js --idea-file idea.txt
 API: `POST /api/generate` accepts `preset` (P01–P10), `audience`,
 `durationMin`, `emphasis`; response includes `slideMarkdown`.
 
+Design retrieval is separate: the same preset id can guide Typo Pack
+ranking (`--suggest --preset P05`), but it only supplies density,
+formality, and base-system hints. It never selects a production system
+and never changes the narrative arc.
+
 ## Integrity rules (all presets)
 
 - Missing evidence → omit or reframe the slide; never invent content.

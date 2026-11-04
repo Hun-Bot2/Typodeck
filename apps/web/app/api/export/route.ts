@@ -26,8 +26,12 @@ function jsonError(status: number, code: string, message: string, extra?: Record
   return Response.json({ error: { code, message, ...extra } }, { status });
 }
 
-/** Optional `template` slug -> themed export via the engine template-pack API. */
-const PACK_INDEX_REL = join('bold-template-pack', 'selection-index.json');
+/** Optional `template` slug -> themed export via the engine TemplatePack API. */
+/** Typo Pack index, canonical name first, legacy name as fallback. */
+const PACK_INDEX_CANDIDATES = [
+  join('typo-pack', 'selection-index.json'),
+  join('bold-template-pack', 'selection-index.json'),
+];
 const MAX_SLUG_ECHO = 100;
 
 class TemplateRouteError extends Error {
@@ -41,11 +45,13 @@ class TemplateRouteError extends Error {
   }
 }
 
-/** Walk up from the server cwd to the workspace root carrying the template pack. */
-function findPackRoot(): string | null {
+/** Walk up from the server cwd to the workspace root carrying the Typo Pack. */
+function findPackRoot(): { root: string; indexRel: string } | null {
   let dir = process.cwd();
   for (;;) {
-    if (existsSync(join(dir, PACK_INDEX_REL))) return dir;
+    for (const indexRel of PACK_INDEX_CANDIDATES) {
+      if (existsSync(join(dir, indexRel))) return { root: dir, indexRel };
+    }
     const parent = dirname(dir);
     if (parent === dir) return null;
     dir = parent;
@@ -58,16 +64,17 @@ function findPackRoot(): string | null {
  * missing or corrupt (server error).
  */
 function loadTemplate(slug: string): { entry: TemplatePackEntry; designMarkdown: string } {
-  const root = findPackRoot();
-  if (root === null) {
-    throw new TemplateRouteError(500, 'template-pack-unavailable', 'template pack is not available on this server');
+  const found = findPackRoot();
+  if (found === null) {
+    throw new TemplateRouteError(500, 'template-pack-unavailable', 'Typo Pack is not available on this server');
   }
+  const root = found.root;
   let entries: TemplatePackEntry[];
   try {
-    entries = parseSelectionIndex(JSON.parse(readFileSync(join(root, PACK_INDEX_REL), 'utf8')));
+    entries = parseSelectionIndex(JSON.parse(readFileSync(join(root, found.indexRel), 'utf8')));
   } catch (err) {
     const detail = err instanceof Error ? err.message : String(err);
-    throw new TemplateRouteError(500, 'template-pack-unavailable', `template pack index is unreadable: ${detail}`);
+    throw new TemplateRouteError(500, 'template-pack-unavailable', `Typo Pack index is unreadable: ${detail}`);
   }
   const entry = entries.find((e) => e.slug === slug);
   if (!entry) {
@@ -148,7 +155,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     wantCritique = parsed.critique;
   }
 
-  // Optional template slug: resolved via the engine template-pack API.
+  // Optional template slug: resolved via the engine TemplatePack API.
   // Absent -> baseline layoutDeck path below, byte for byte unchanged.
   let templateSlug: string | undefined;
   if (parsed.template !== undefined) {

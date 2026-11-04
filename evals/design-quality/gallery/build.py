@@ -13,7 +13,7 @@ HERE = pathlib.Path(__file__).resolve().parent
 DQ = HERE.parent  # evals/design-quality (serve root)
 ROOT = DQ.parents[1]  # repo root
 CLASSIFICATION = DQ / "audit" / "classification.json"
-SEL = ROOT / "bold-template-pack" / "selection-index.json"
+SEL = ROOT / "typo-pack" / "selection-index.json"
 
 SLIDE_LABELS = [
     ("slide-01-cover", "01 cover"),

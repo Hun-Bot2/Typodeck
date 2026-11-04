@@ -18,7 +18,7 @@ evals/design-quality/specimens/<slug>/explanation.png
 ```
 
 - `<slug>` is the lowercase-hyphen template slug
-  (`bold-template-pack/templates/<slug>/`).
+  (`typo-pack/templates/<slug>/`).
 - `cover` renders the benchmark-deck slide 1 beats; `evidence` the
   Slide-B block; `explanation` the Slide-C block. Copy verbatim from
   fixtures; see `fixtures.md` usage rules.

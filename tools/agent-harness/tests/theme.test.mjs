@@ -13,14 +13,14 @@ const HEX = /^#[0-9a-fA-F]{3,8}$/;
 
 async function slugs() {
   const idx = JSON.parse(await fs.readFile(
-    path.join(REPO, 'bold-template-pack', 'selection-index.json'), 'utf8'));
+    path.join(REPO, 'typo-pack', 'selection-index.json'), 'utf8'));
   return idx.templates.map((t) => t.slug);
 }
 
 test('all 27 designs normalize to a complete theme', async () => {
   for (const slug of await slugs()) {
     const text = await fs.readFile(
-      path.join(REPO, 'bold-template-pack', 'templates', slug, 'design.md'), 'utf8');
+      path.join(REPO, 'typo-pack', 'templates', slug, 'design.md'), 'utf8');
     const { tokens } = parseDesignFile(text, slug);
     const theme = toTheme(tokens, slug);
     for (const [slot, v] of Object.entries(theme.colors)) {
@@ -40,7 +40,7 @@ test('unknown slug raises a mappable error', () => {
 
 test('latinFontsHref builds a css2 URL or null', async () => {
   const text = await fs.readFile(
-    path.join(REPO, 'bold-template-pack', 'templates', 'fika', 'design.md'), 'utf8');
+    path.join(REPO, 'typo-pack', 'templates', 'fika', 'design.md'), 'utf8');
   const { tokens } = parseDesignFile(text, 'fika');
   const href = latinFontsHref(toTheme(tokens, 'fika'));
   assert.ok(href === null || href.startsWith('https://fonts.googleapis.com/css2?'), href);
@@ -48,7 +48,7 @@ test('latinFontsHref builds a css2 URL or null', async () => {
 
 test('koStacks are Pretendard-led with Latin numeral face', async () => {
   const text = await fs.readFile(
-    path.join(REPO, 'bold-template-pack', 'templates', 'peer-review', 'design.md'), 'utf8');
+    path.join(REPO, 'typo-pack', 'templates', 'peer-review', 'design.md'), 'utf8');
   const { tokens } = parseDesignFile(text, 'peer-review');
   const stacks = koStacks(toTheme(tokens, 'peer-review'));
   assert.ok(stacks.display.family.includes('Pretendard'));

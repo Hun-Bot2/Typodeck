@@ -44,6 +44,31 @@ New systems arrive ONLY via the research-import pipeline as
 - The 500-reference research workstream is separate: do not touch
   `research/*` agent files or `.muse/worktrees/*`.
 
+## Typo Pack: experimental themes, not systems
+
+Typo Pack holds 27 design candidates that re-theme a base system's
+geometry with template fonts/colors. Source of truth:
+`typo-pack/selection-index.json`, ranked by `selectTypoPack`
+(`packages/core/src/template-pack.ts`). A candidate never adds geometry,
+never changes the export pipeline, and never promises specimen fidelity.
+
+Use the smallest context that answers the design question:
+
+1. Shortlist from metadata only: `npm run --silent deck -- --suggest
+   --preset P05 --top 3`, plus explicit `--density`, `--formality`,
+   `--content-types`, or `--mood` when the user states them.
+2. Read only the shortlisted `preview.md` files — never all 27 design
+   documents.
+3. Apply one candidate: `--template slug`, then validate the export.
+   The receipt labels the base system and warns that themed output is
+   base-system geometry.
+
+Selector contract: explicit filters override purpose hints; every pick
+shows score + reasons; ties break by slug; unknown presets/filters fail
+loudly. Scores rank metadata fit, not visual quality. `--preset` inside
+`--suggest` is retrieval guidance; `--preset` on a generation command
+chooses the narrative arc (`references/purposes.md`).
+
 ## Preview before export (optional but recommended)
 
 When the visual system is NOT already selected:

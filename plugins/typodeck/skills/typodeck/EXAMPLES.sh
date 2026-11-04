@@ -40,6 +40,7 @@ run_example "Ex4: $SKILL/examples/04-evidence-report.mjs" node "$SKILL/examples/
 run_example "Ex5: $SKILL/examples/05-improved-pipeline.mjs" node "$SKILL/examples/05-improved-pipeline.mjs" "$OUT"
 run_example "Ex6: $SKILL/examples/06-eval-rerun.sh" bash "$SKILL/examples/06-eval-rerun.sh" "$OUT"
 run_example "Ex7: $SKILL/examples/07-revise-loop.sh" bash "$SKILL/examples/07-revise-loop.sh" "$OUT"
+run_example "Ex8: $SKILL/examples/08-typo-pack.sh" bash "$SKILL/examples/08-typo-pack.sh" "$OUT"
 
 echo "--- artifacts ---"
 ls -la "$OUT" | grep -v 'evals-backup' || true

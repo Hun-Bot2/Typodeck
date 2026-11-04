@@ -17,7 +17,7 @@ const flag = (name, fb) => {
 
 const langs = flag('--langs', 'en,ko').split(',').map((s) => s.trim()).filter(Boolean);
 const outRoot = path.resolve(REPO, flag('--out', 'evals/hackathon/coverage'));
-const idx = JSON.parse(fs.readFileSync(path.join(REPO, 'bold-template-pack', 'selection-index.json'), 'utf8'));
+const idx = JSON.parse(fs.readFileSync(path.join(REPO, 'typo-pack', 'selection-index.json'), 'utf8'));
 const slugs = idx.templates.map((t) => t.slug);
 const contentFor = (lang) => path.join(REPO, 'evals', 'hackathon', 'harness-proof', `proof-content.${lang}.json`);
 

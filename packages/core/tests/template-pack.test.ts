@@ -11,13 +11,16 @@ import {
   parseDesignTokens,
   parseSelectionIndex,
   resolveTemplateDesign,
+  SELECTOR_PURPOSE_IDS,
+  selectTypoPack,
   systemIdForEntry,
   TemplatePackError,
   themeFromTokens,
 } from '../src/template-pack';
+import { PRESET_IDS } from '../src/purposes';
 
 const REPO_ROOT = path.join(__dirname, '..', '..', '..', '..');
-const INDEX_PATH = path.join(REPO_ROOT, 'bold-template-pack', 'selection-index.json');
+const INDEX_PATH = path.join(REPO_ROOT, 'typo-pack', 'selection-index.json');
 
 const MINI_DESIGN = `---
 name: Mini
@@ -184,5 +187,53 @@ describe('template-pack integration', () => {
     assert.deepEqual(check.errors, check.errors);
     assert.equal(check.ok, true);
     assert.ok(check.stats.editableChars >= expectedChars);
+  });
+});
+
+describe('Typo Pack selection battery', () => {
+  async function entries() {
+    return parseSelectionIndex(JSON.parse(await fs.readFile(INDEX_PATH, 'utf8')));
+  }
+
+  it('purpose ids mirror the preset registry (update both together)', () => {
+    assert.deepEqual(SELECTOR_PURPOSE_IDS, [...PRESET_IDS].sort());
+  });
+
+  it('P04 pitch shortlist pins the battery behavior', async () => {
+    const picks = selectTypoPack(await entries(), { purpose: 'P04', top: 3 });
+    assert.deepEqual(picks.map((p) => p.slug), ['night-reel', 'atelier-noir', 'gilded-line']);
+    assert.deepEqual(picks.map((p) => p.score), [8, 6, 6]);
+    for (const p of picks) {
+      assert.ok(p.reasons.length > 0, `${p.slug} carries reasons`);
+      assert.ok(['editorial', 'swiss', 'expressive', 'document'].includes(p.baseSystem));
+    }
+  });
+
+  it('P05 research prefers dense formal systems, ties break by slug', async () => {
+    const picks = selectTypoPack(await entries(), { purpose: 'P05', top: 2 });
+    assert.deepEqual(picks.map((p) => p.slug), ['peer-review', 'seminar']);
+    assert.equal(picks[0].baseSystem, 'swiss');
+  });
+
+  it('explicit filters win over purpose hints', async () => {
+    const picks = selectTypoPack(await entries(), { purpose: 'P04', density: 'high', top: 3 });
+    const bySlug = new Map((await entries()).map((e) => [e.slug, e]));
+    for (const p of picks) assert.equal(bySlug.get(p.slug)!.density, 'high');
+  });
+
+  it('is deterministic and clamps top', async () => {
+    const all = await entries();
+    const a = selectTypoPack(all, { purpose: 'P06', top: 5 });
+    const b = selectTypoPack(all, { purpose: 'P06', top: 5 });
+    assert.deepEqual(a, b);
+    assert.equal(selectTypoPack(all, { top: 200 }).length, all.length);
+    assert.equal(selectTypoPack(all, { top: 2 }).length, 2);
+  });
+
+  it('rejects unknown purpose, density, formality', async () => {
+    const all = await entries();
+    assert.throws(() => selectTypoPack(all, { purpose: 'P99' }), TemplatePackError);
+    assert.throws(() => selectTypoPack(all, { density: 'extreme' as never }), TemplatePackError);
+    assert.throws(() => selectTypoPack(all, { formality: 'royal' as never }), TemplatePackError);
   });
 });

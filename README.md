@@ -79,7 +79,7 @@ Verified workflow: repository inspection → evidence → narrative → composit
 npm run dev   # Studio at http://localhost:3000
 ```
 
-Provide content → inspect evidence → generate → select design → refine → export. The Studio adds an evidence inspector (review files + claims, exclude or reframe before generating), all-systems preview from one narrative, Slide Markdown editing with server-side re-render, an export theme picker (27 experimental template themes), and `.pptx` download. If `/api/generate` returns HTTP 500 with `Can't resolve '@typodeck/core'`, run the `build -w @typodeck/core` line once.
+Provide content → inspect evidence → generate → select design → refine → export. The Studio adds an evidence inspector (review files + claims, exclude or reframe before generating), all-systems preview from one narrative, Slide Markdown editing with server-side re-render, an export theme picker (27 experimental Typo Pack candidates), and `.pptx` download. If `/api/generate` returns HTTP 500 with `Can't resolve '@typodeck/core'`, run the `build -w @typodeck/core` line once.
 
 ## Installation
 
@@ -94,7 +94,7 @@ Prerequisites: Node.js ≥20.9.0 and npm. `.env` is optional (model provider / G
 
 No verified Cursor/Windsurf/Copilot path exists — the generic fallback above is untested there. Full matrix with evidence levels: [INSTALL.md](plugins/typodeck/skills/typodeck/INSTALL.md).
 
-Verify any install with the worked transcript (7 examples, exit 0; skips honestly without network/quota):
+Verify any install with the worked transcript (8 examples, exit 0; skips honestly without network/quota):
 
 ```sh
 bash plugins/typodeck/skills/typodeck/EXAMPLES.sh /tmp/typodeck-skill
@@ -131,7 +131,7 @@ No database, no auth, no cloud services. Studio API: `POST /api/evidence` (inspe
 | Expressive | production | Centered hero, dramatic scale contrast, alternating ink/paper |
 | Document | experimental | Dense reference hierarchy — excluded from production guarantees |
 
-- **Experimental themes.** 27 template-pack designs (`make-deck --list-templates`, Studio export picker, `GET /api/templates`) re-theme a base system's geometry with template fonts/colors. The HTML specimens are design references — themed output is base-system geometry, honestly labeled experimental.
+- **Experimental themes.** 27 Typo Pack candidates (`make-deck --list-templates`, deterministic [`--suggest` shortlists](typo-pack/README.md), Studio export picker, `GET /api/templates`) re-theme a base system's geometry with template fonts/colors. The HTML specimens are design references — themed output is base-system geometry, honestly labeled experimental. Migration evidence: [two themed EN/KO decks](docs/showcase/README.md#typo-pack-migration-evidence).
 - **Visual validation.** Structural gates on every export (0 forbidden objects, in-bounds, 16:9); a numeral render guard sizes hero figures against measured single-spacing so rendered ink fits its box; Korean decks get `ko-KR` run locale, KR-capable faces, and line head/end restrictions.
 - **Native editability.** Every character lives in a native text box. Spec: [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md).
 
@@ -152,7 +152,7 @@ More: [docs/FAQ.md](docs/FAQ.md), [docs/PRD.md](docs/PRD.md) §7 (out of scope).
 See [CONTRIBUTING.md](CONTRIBUTING.md). Short version: strict TypeScript, `node --test` suites beside the code, injectable `fetch` so tests never touch the network, typed errors with stable codes, and every `.pptx` must pass the structural validator.
 
 ```sh
-npm test                          # build core, then node --test — must be all green (575 tests)
+npm test                          # build core, then node --test — must be all green (582 tests)
 npm run eval -- --fixture F4      # offline eval subset; full matrix needs GitHub quota
 npm run journey                   # live repo→deck→export end-to-end (needs quota; exits 2 without)
 ```
@@ -161,6 +161,7 @@ Repository layout:
 
 ```
 packages/core/   Pipeline: ingestion, evidence, narrative, layout, export, validation, CLI, eval
+typo-pack/       Typo Pack: selection index, design specs/previews, deterministic candidate selector
 apps/web/        Web Studio (Next.js): evidence inspector, SSE progress, preview, .pptx download
 plugins/typodeck/ Claude plugin + Agent skill: CLI-first workflow, grounding rules, worked examples (EXAMPLES.sh)
 evals/           Pinned fixtures, per-run reports, summary.json
