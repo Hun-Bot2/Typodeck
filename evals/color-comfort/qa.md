@@ -148,3 +148,121 @@ Saturation (QA recomputed): phosphor 1.00→0.77, amber 1.00→0.89, signal-oran
 ## Verdict
 
 - 9 APPROVE (atelier-noir, coin-op, gilded-line, maison, modulo-grid, monolith, night-reel, drafting-table, vista), 0 REWORK, 0 REJECT — scoped to the color decisions and harness renders. Cross-cutting gaps G1–G6 recorded above; G1/G2 need another stage + re-QA.
+
+---
+
+# Re-QA: specimen + modulo full-deck re-captures (2026-11-04)
+
+- Repo: `/Users/jeonghun/Typodeck` (`pwd` verified)
+- Branch: `audit/color-comfort` (`git branch --show-current` verified, stayed on it, zero commits/pushes/amends/rebases/merges/resets)
+- Base: `f0aed77` (BEFORE mates extracted via `git show f0aed77:...` ONLY into `/tmp/reqa-before/`)
+- Context read fully first: `audit.md`, `research.md`, `qa.md` (§§0–6 + Verdict above), `FINAL-REPORT-KO.md`
+- Palettes read: all 9 committed `design.md` diffs (`git diff f0aed77 -- bold-template-pack/templates/*/design.md`) — read-only, never edited
+- Prior result used: 1 (SPECIMENS FINISH — its file/byte claims re-verified below, not assumed)
+- Ownership: this section only (append to `evals/color-comfort/qa.md`). All other paths read-only. Analysis scripts live in `/tmp` (`reqa-pixels.py`, `reqa-sample.py`); BEFORE mates in `/tmp/reqa-before/`.
+- This re-QA built NOTHING under review. All aesthetic judgments below are labeled **AGENT assessment**, never human evaluation. No comfort/eye-strain claim is made (research P4); verdicts rest on readability, re-measured WCAG ratios, color harmony, hierarchy support, identity preservation, transitions, typo-only intactness, and full-res viewing.
+
+## R0. Scope verified (not assumed)
+
+- `git diff --name-only f0aed77 -- evals/design-quality` = 71 files: 24 specimen PNG (8 designs × cover/evidence/explanation) + 7 modulo full-deck slide PNG + 31 matching HTML + 9 report.json. **31 PNGs re-captured, 31 BEFORE mates extracted — all 62 viewed at full-res 1920×1080 by this re-QA.**
+- IHDR check (`reqa-pixels.py`): **31/31 AFTER + 31/31 BEFORE assert exactly 1920×1080, 0 dim-failures.**
+- Changed fractions (AFTER vs BEFORE, threshold 8): atelier 0.977–0.983, night-reel 0.894–0.968, modulo specimen evidence 0.955, full-deck slide-02 0.958 (full-ground/deep swaps, bbox full-frame); full-deck whites 0.009–0.035; coin-op 0.017–0.033 (glow/type regions); drafting-table 0.0025–0.0038 (secondary marks); maison ≤0.0019 (tertiary roles); gilded/monolith ~0.0000 with bboxes confined to ink/strike type roles. Every fraction matches its design's documented change class.
+- Ground-pixel samples (`reqa-sample.py`): atelier `#1D1C1B`, night-reel bars `#101012`, modulo deep `#1C2C4E` (specimen evidence + full-deck slide-02), coin-op void `#060A06`, monolith `#0E0E0E`, gilded lacquer `#0F0E0C`, maison black `#0B0B0C`, drafting blueprint `#0F3D7A` — **all AFTER samples match new tokens exactly; BEFORE mates carry old values.**
+- Old-token grep over all 31 AFTER specimen/full-deck HTML files (`#111111|#33FF66|#FFB000|#7FB3E8|#F5EFE0|#14213D|#000000|#C1121F|#FF4D00|#6E6E6E|#9A7F45`): **zero matches.** Remaining `#000` is the universal outer scaffold (`html,body` + `#deck-viewport` background, verified present in all 27 specimen cover.html incl. untouched designs) — in-slide stage surfaces override it (night-reel rendered bars sample `#101012`).
+- Vista: only diffs vs `f0aed77` are `design.md` prose-only (+2 rationale lines) + 2 coverage report.json `createdAt` timestamp-only changes. **Zero specimen/full-deck PNG/HTML diffs — retain-no-change confirmed.**
+
+## R1. Recomputed contrast ratios (re-QA-owned numbers)
+
+Independent WCAG implementation (`reqa-pixels.py`); every value reproduces the sibling/design.md claim exactly:
+
+| Pair | Re-QA ratio | Claim | AA |
+|---|---|---|---|
+| porcelain/new-noir `#FAF8F5`/`#1D1C1B` | 16.05:1 | 16.05:1 | pass |
+| soft-line/new-noir | 10.28:1 | 10.28:1 | pass |
+| gallery-gray/new-noir | 5.97:1 | 5.97:1 | pass |
+| phosphor-new/void `#3FE673` | 12.13:1 | 12.13:1 | pass |
+| amber-new/void `#F2A91E` | 9.93:1 | 9.93:1 | pass |
+| bone/void | 15.68:1 | 15.68:1 | pass |
+| champagne-new/lacquer `#F0E6D2` | 15.58:1 | 15.58:1 | pass |
+| champagne-dim/lacquer | 12.44:1 | 12.44:1 | pass |
+| gold/lacquer | 9.18:1 | 9.18:1 | pass |
+| gray-new/black `#9C9C9C` | 7.17:1 | 7.17:1 | pass |
+| gold-deep-new/ivory `#77632F` | 5.26:1 | 5.26:1 | pass |
+| ivory/black | 17.79:1 | 17.79:1 | pass |
+| gold/black | 8.47:1 | 8.47:1 | pass |
+| white/deep-new `#1C2C4E` | 13.82:1 | 13.82:1 | pass |
+| amber/deep-new | 6.83:1 | 6.83:1 | pass |
+| deep-new/white (headline) | 13.82:1 | 13.82:1 | pass |
+| deep-new/amber (slide-07 closing) | 6.83:1 | — (new pair, first measured here) | pass |
+| orange-new/black `#F04E12` | 5.33:1 | 5.33:1 | pass |
+| bone/black | 17.00:1 | 17.00:1 | pass |
+| white/black-new `#101012` | 17.43:1 | 17.43:1 | pass |
+| red-new/black-new `#E5484D` | 4.86:1 | 4.86:1 | pass |
+| smoke/black-new | 5.51:1 | 5.51:1 | pass |
+| dialogue/black-new | 11.48:1 | 11.48:1 | pass |
+| light-line-new/blueprint `#93C2EE` | 5.68:1 | 5.68:1 | pass |
+| white/blueprint | 10.67:1 | 10.67:1 | pass |
+| pale-blue/blueprint | 8.41:1 | 8.41:1 | pass |
+
+Saturation re-verified: phosphor 1.00→0.77, amber 1.00→0.89, signal-orange 1.00→0.88, blood-red 0.83→0.75 — all match.
+
+## R2. Per-design verdicts (AGENT assessments, pixel evidence)
+
+### atelier-noir specimens — APPROVE
+- Pixel evidence: changed_frac 0.977–0.983 full-frame; ground samples `#1D1C1B` (was `#111111`). AFTER cover/evidence/explanation viewed: ground still reads near-black (AGENT); porcelain Didone headlines, tagline, gallery-gray caps (`N°11 · THE RUSH ISSUE`, folios `01/03`) all crisp; giant numeral watermark intact; monochrome couture identity preserved. BEFORE mates viewed: identical layouts, fractionally darker ground.
+- Readability: 16.05/10.28/5.97:1 all pass. No boxes in any of the 3 AFTER renders. Typo-only intact.
+
+### coin-op specimens — APPROVE
+- Pixel evidence: changed_frac 0.017–0.033, bboxes confined to glow/type regions. AFTER viewed: **true pixel fonts confirmed (VT323 display, Silkscreen caps) — the checkpoint webfont-fallback capture defect is fixed in the re-captured `cover.png` (209673B)**, verified by glyph inspection, not just byte size. Glow halos visibly tighter on AFTER (evidence `63%`, cover headline) while staying arcade-luminous; 13px micro labels (`INSERT COIN`, `1UP`) remain bone/amber-deep per the micro rule. BEFORE mates viewed: same layouts, marginally hotter bloom. D08 glyph-glow-only intact (0 box-shadow; no boxes in renders).
+- Readability: 12.13/9.93/15.68:1 pass. Hierarchy (phosphor display vs bone body vs amber marquee) unchanged. The §3-coin-op glow-trim gap is now **render-verified at specimen scale**.
+
+### drafting-table specimens — APPROVE
+- Pixel evidence: changed_frac 0.0025–0.0038 in header-tag/sheet-line roles. AFTER viewed: the **first rendered demonstration of new light-line `#93C2EE`** — tags (`SHEET A-01 · COVER`, `SCALE 1:50`, `TYPODECK RESEARCH`) read brighter than BEFORE mates with blueprint/white/amber system otherwise identical; no boxes.
+- Readability: 5.68:1 (was thin 4.83:1) with P4 headroom. The §3-drafting-table "no rendered PNG anywhere" gap is now **closed**.
+
+### gilded-line specimens — APPROVE
+- Pixel evidence: changed_frac ~0.0000, bboxes confined to champagne ink roles. AFTER viewed: warmer champagne headlines (`The Hidden Cost of Rushing to Ship`, `63%`, `Two teams, one deadline`) crisp on lacquer; gold rules/diamonds/kicker intact; deco identity preserved. BEFORE mates viewed: same layouts, fractionally cooler champagne. No boxes.
+- Readability: 15.58/12.44/9.18:1 pass. Owner-uncertain U2 (muted-vs-ink value gap) is unchanged in kind at specimen scale and remains an accepted trade-off, not a defect.
+
+### maison specimens — APPROVE
+- Pixel evidence: changed_frac ≤0.0019 in tertiary roles. AFTER viewed: **evidence.png IS the ivory-ground alternate — gold-deep labels (`FINDING 01`, `FEWER SEV-1 ROLLBACKS`, `contained` italic) render readable at 5.26:1**, closing the arithmetic-only gap; gray micro text (cover folio `01/03`, evidence caption `Fixture data · not a real study`) readable yet subordinate; four-tone discipline preserved. BEFORE mates viewed: same layouts with dimmer gray (3.86:1) and washed gold-deep (3.45:1). No boxes.
+- Readability: both former AA failures fixed and **both now render-verified**. Black↔ivory alternation appears once across the 3 specimens (cover black / evidence ivory / explanation black) — the never-twice-in-a-row bound holds.
+
+### modulo-grid specimens — APPROVE
+- Pixel evidence: cover 0.0266 + explanation 0.0195 (deep ink roles), evidence 0.955 full-deep. AFTER viewed: deep-navy headlines crisp on white (13.82:1); evidence full-deep slide with white type + amber `63%` stat strong (6.83:1); amber correctly absent from white grounds; architectural identity preserved. BEFORE mates viewed: same layouts, deeper navy. No boxes.
+- The white↔deep jump narrowing (15.97→13.82:1) is **render-verified**; D07 amber-off-white holds.
+
+### monolith specimens — APPROVE
+- Pixel evidence: changed_frac ~0.0000, bboxes confined to strike roles. AFTER viewed: still loud, hot, structural — orange strike (`RUSHING`, `63%`, `DISCIPLINED REVIEW`) at poster scale, one strike per slide (rationing unchanged); bone mega type + dim meta intact. BEFORE mates nearly identical to the eye. No boxes.
+- Readability: 5.33:1 strike / 17.00:1 bone pass. Rushed-vs-Reviewed side hierarchy (explanation) intact.
+
+### night-reel specimens — APPROVE
+- Pixel evidence: changed_frac 0.894–0.968 full-frame; bars sample `#101012` (was `#000000`). AFTER viewed: ground **still reads black in the letterbox frame (AGENT assessment)**; red kicker (`A STUDY IN REVIEW DISCIPLINE`, `FINDING 01`, `THE CHOICE`) bright and readable at 4.86:1; single red beat per slide intact; smoke/dialogue metadata readable. BEFORE mates viewed: pure-black ground with dimmer blood-red (3.37:1). No boxes.
+- Readability: widest range narrowed 19.26→17.43:1; red now passes at small sizes too.
+
+### modulo-grid full-deck (slides 01–07) — APPROVE
+- Pixel evidence: slide-02 0.958 full-deep; whites 0.009–0.035; deep-mid sample `#1C2C4E`. All 7 AFTER + 7 BEFORE viewed in sequence: 01 white cover (deep headline) → 02 full-deep divider (white title + amber `01`) → 03/04/05/06 white (statement, deep-stat evidence, comparison, dense ledger) → 07 amber closing (deep-navy `Slow the review. Ship once.` at 6.83:1, first measured here). Never two consecutive full-deep slides; never mixed grounds within a slide — the restated alternation discipline holds in render. The §3-modulo gap (deep-ground stat moments + narrowed jump unverified) is now **closed**.
+- Observation (not a defect): slide-05 Rushed-side bullets are small amber ■ markers on white (2.02:1 as a pair). They are **non-text glyphs, pre-existing in BEFORE identically**, always adjacent to deep-navy text (redundant encoding per P5); D07 governs amber *text* on white, and no amber text appears on any white slide. No action.
+
+### vista — APPROVE (retain without change, re-confirmed)
+- Zero specimen/full-deck diffs; design.md prose-only; harness report.json timestamp-only. No re-capture exists or is needed. Exact-floor burnt-orange pair (3.00:1) correctly untouched.
+
+## R3. Cross-cutting re-QA checks
+
+- Readability: every specimen/full-deck text pair passes AA with margin (min 4.86:1 night-reel red; min small-text 5.26:1 maison gold-deep). All three former AA failures + two invisible harness roles remain fixed; maison-ivory is now render-verified, not arithmetic-only.
+- Color harmony (AGENT): no new hues; all moves remain luminance/saturation steps within documented palettes. No clashes in any of the 62 viewed renders.
+- Hierarchy support (AGENT): kicker/display/body/marker voices unchanged in every design; flag/marker roles intact at specimen scale.
+- Identity preservation (AGENT): all 8 changed identities read intact — couture monochrome, arcade phosphor, blueprint sheet, deco lacquer/gold, maison four-tone, modular navy, brutalist strike, noir letterbox.
+- Cross-slide transitions: modulo full-deck (the only multi-ground deck in scope) shows the narrowed white↔deep jump with discipline intact; maison specimens show one bounded black↔ivory alternation; all other sets hold a single ground.
+- Typo-only intact: 0 boxes in all 62 viewed renders; 0 old-token matches in all 31 AFTER HTML files; `#000` scaffold-only (verified universal); F1/F2/D07/D08/wine-retired/band-ban all hold.
+- Prior-result verification: prior result 1's re-verifiable claims all reproduce — 31 PNGs 1920×1080, changed-fraction classes, new-token pixel samples, coin-op re-capture size 209673B with pixel fonts confirmed by viewing, report.json/timestamp records (read, not edited).
+
+## R4. Gap closure + remaining
+
+- CLOSED by this re-QA: G1 (8 specimen sets regenerated + re-QA'd), G2 (modulo full-deck regenerated + re-QA'd), maison-ivory arithmetic-only, drafting-table no-render, coin-op glow-trim render proof, coin-op fallback-font capture defect (fixed + re-viewed).
+- REMAIN: G4 PPTX-native appearance NOT RUN (inherited); G5 full 54-deck sweep not re-run; G6 no validated comfort metric (no comfort verdict claimed here either); U1/U2/U3 owner-uncertain trade-offs (unchanged, still accepted); D12/D15 owner decisions (untouched).
+- Honest record: this re-QA viewed specimens + full-deck only (its scope); harness-slide verdicts (§3) are referenced, not re-viewed. No EN/KO parity dimension exists at specimen scale (single-language fixtures).
+
+## Re-QA verdict
+
+- **9 APPROVE, 0 REWORK, 0 REJECT** — atelier-noir, coin-op, gilded-line, maison, modulo-grid (specimens + full-deck), monolith, night-reel, drafting-table specimens, vista retain. The §6 conditions for initiative READY within specimen/full-deck scope (G1+G2 regen with re-QA) are satisfied; remaining gaps are owner-decision or inherited items listed in R4.
