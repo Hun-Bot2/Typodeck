@@ -5,7 +5,7 @@ description: A symmetrical art-deco cover in black lacquer, champagne, and gold.
 
 colors:
   lacquer-black: "#0F0E0C"
-  champagne: "#F5EFE0"
+  champagne: "#F0E6D2"
   champagne-dim: "#D8CFB8"
   gold: "#D4AF37"
   deep-gold: "#8C6D2B"
@@ -124,7 +124,7 @@ The palette is **lacquer, champagne, and gold**. Black lacquer (`{colors.lacquer
 ### Palette
 
 - **Lacquer Black** (`{colors.lacquer-black}` — `#0F0E0C`): The ground. Warm-biased near-black that reads as polished lacquer behind gold type, not as void.
-- **Champagne** (`{colors.champagne}` — `#F5EFE0`): The headline ink. Warm ivory that carries display type on lacquer.
+- **Champagne** (`{colors.champagne}` — `#F0E6D2`): The headline ink. Warm ivory that carries display type on lacquer.
 - **Champagne Dim** (`{colors.champagne-dim}` — `#D8CFB8`): Secondary ink — subtitle and supporting lines on lacquer.
 - **Gold** (`{colors.gold}` — `#D4AF37`): The drawing color — rules, diamonds, kicker, context, colophon. Every line and accent on the slide is gold.
 - **Deep Gold** (`{colors.deep-gold}` — `#8C6D2B`): Reserved shade for small gold text needing extra depth; unused in current covers.
@@ -140,7 +140,9 @@ The palette is **lacquer, champagne, and gold**. Black lacquer (`{colors.lacquer
 - **Default rule/diamond color**: `{colors.gold}` throughout.
 - **Default colophon color**: gold with a champagne diamond separator.
 
-When a cover needs to feel warmer, deepen the champagne toward `#F0E6D2` — never warm the lacquer, which must stay near-black for the gold to sing.
+Champagne sits at `#F0E6D2` per the warmer-cover rule — never warm the lacquer, which must stay near-black for the gold to sing.
+
+**Color-comfort decision (2026-11-04): retain bg with corrected fg.** Champagne `#F5EFE0`→`#F0E6D2` (16.82:1→15.58:1) follows this design's own documented warmer-cover direction; the calmest dark design (no neon, no glow, no thin type, no jumps) needs only that. Lacquer, gold, and champagne-dim are untouched. Harness `muted` remapped warm-gray→champagne-dim in `theme.mjs` (warm-gray muted text was 1.66:1 on lacquer, unreadable; champagne-dim is the design's secondary ink at 12.44:1). Deco teal stays reserved. Typo-only shapes unchanged — color values only.
 
 ## Typography
 

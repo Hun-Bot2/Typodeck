@@ -171,6 +171,8 @@ Depth is **flat poster space**: solid grounds, no shadows, no gradients, no blur
 
 When a slide needs a cooler moment, swap one sand band for leaf — but keep the teal/cream text rules and the orange figure signal unchanged.
 
+**Color-comfort decision (2026-11-04): retain without change.** Dark-teal bands are partial and in-slide, never full-field — out of the near-black scope. All band pairs pass with margin (cream on teal-deep 14.35:1, sand on deep-teal 9.92:1), and the burnt-orange-on-sand numeral sits exactly on the 3:1 large-text floor, so any value shift risks regressing a fragile pair for no measured gain; the harness theme is light (cream-white ground) with no dark-ground exposure. No token values changed. Typo-only shapes unchanged.
+
 ## Typography
 
 ### Font Family

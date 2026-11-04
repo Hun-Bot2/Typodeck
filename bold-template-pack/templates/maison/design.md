@@ -9,8 +9,8 @@ colors:
   ivory: "#F7F3EC"
   ivory-dim: "#CFC8B8"
   gold: "#C6A664"
-  gold-deep: "#9A7F45"
-  gray: "#6E6E6E"
+  gold-deep: "#77632F"
+  gray: "#9C9C9C"
   gray-line: "#3A3A3C"
 
 shadows:
@@ -183,8 +183,8 @@ Depth is nearly absent by doctrine: **matte alternating grounds, whitespace, and
 - **Ivory** (`{colors.ivory}` — `#F7F3EC`): Display and body text on black; the alternate slide ground when inverted.
 - **Ivory Dim** (`{colors.ivory-dim}` — `#CFC8B8`): Folio lines and secondary labels on black; softer than full ivory.
 - **Gold** (`{colors.gold}` — `#C6A664`): The single accent — context labels, the accent word, quote marks.
-- **Gold Deep** (`{colors.gold-deep}` — `#9A7F45`): Gold's companion on ivory grounds, where full gold would wash out.
-- **Gray** (`{colors.gray}` — `#6E6E6E`): Tertiary marks — counters, hints, de-emphasized micro text on either ground.
+- **Gold Deep** (`{colors.gold-deep}` — `#77632F`): Gold's companion on ivory grounds, where full gold would wash out.
+- **Gray** (`{colors.gray}` — `#9C9C9C`): Tertiary marks — counters, hints, de-emphasized micro text on either ground.
 - **Gray Line** (`{colors.gray-line}` — `#3A3A3C`): Retained token; hairline usage retired. Never text.
 
 ### Defaults
@@ -198,6 +198,8 @@ Depth is nearly absent by doctrine: **matte alternating grounds, whitespace, and
 - **Default separation**: whitespace gaps above the headline and above the folio — no rules.
 
 Gold text appears only as the accent word (display scale) and tracked caps labels. Gold body copy does not exist. Gray text appears only below 15px or at 60%+ transparency.
+
+**Color-comfort decision (2026-11-04): retain bg with corrected fg (two measured AA defects fixed).** Gray `#6E6E6E`→`#9C9C9C` (3.86:1→7.17:1 on black) repairs small tertiary text with headroom per P4; it stays clearly tertiary against ivory-dim. Gold-deep `#9A7F45`→`#77632F` (3.45:1→5.26:1 on ivory) repairs context labels on ivory alternates. The four-tone discipline (black/ivory/gold/gray) is preserved — same roles, corrected values. Black↔ivory full-field alternation is retained as the design's elevation device, bounded by the existing rule (rare inversions, never twice in a row); new work must not add consecutive inverted slides. Typo-only shapes unchanged — color values only.
 
 ## Typography
 

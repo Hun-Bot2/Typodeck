@@ -1,11 +1,11 @@
 ---
 version: alpha
 name: Modulo
-description: A neutral modular-geometric presentation system built on a 4x4 module grid with uniform 16px gutters. Display type runs in Sora ExtraBold paired with Inter body copy and Sora SemiBold caps labels. The palette is architectural — paper white ground, deep structural navy (#14213D), a single signal amber (#FCA311) living only on deep grounds, and cool silver (#E5E5E5). Hierarchy comes from grid position, scale, and glyph markers (■/●) only: no tiles, bands, cells, keylines, gradients, shadows, or rounded corners.
+description: A neutral modular-geometric presentation system built on a 4x4 module grid with uniform 16px gutters. Display type runs in Sora ExtraBold paired with Inter body copy and Sora SemiBold caps labels. The palette is architectural — paper white ground, deep structural navy (#1C2C4E), a single signal amber (#FCA311) living only on deep grounds, and cool silver (#E5E5E5). Hierarchy comes from grid position, scale, and glyph markers (■/●) only: no tiles, bands, cells, keylines, gradients, shadows, or rounded corners.
 
 colors:
   white: "#FFFFFF"
-  deep: "#14213D"
+  deep: "#1C2C4E"
   deep-soft: "#3D4C6D"
   amber: "#FCA311"
   amber-deep: "#D98A0B"
@@ -200,7 +200,7 @@ The palette is architectural and deliberately narrow: **white ground**, **deep s
 ### Palette
 
 - **White** (`{colors.white}` — `#FFFFFF`): The default ground. Flat, unprinted.
-- **Deep** (`{colors.deep}` — `#14213D`): The structural color — headlines on light, stat grounds, glyph markers, body-strong text.
+- **Deep** (`{colors.deep}` — `#1C2C4E`): The structural color — headlines on light, stat grounds, glyph markers, body-strong text.
 - **Deep Soft** (`{colors.deep-soft}` — `#3D4C6D`): Body-adjacent tone for subtitles and secondary prose on white (8.56:1); softer than Deep while staying in the navy family.
 - **Amber** (`{colors.amber}` — `#FCA311`): The single signal color — stat numerals and counters on deep grounds only (amber-on-deep 7.89:1). Exactly one amber emphasis per region.
 - **Amber Deep** (`{colors.amber-deep}` — `#D98A0B`): Retained token. Correction: at 2.77:1 on white it is NOT text-safe — never set amber-deep (or amber) type on white at any size.
@@ -219,6 +219,8 @@ The palette is architectural and deliberately narrow: **white ground**, **deep s
 - **Default module rhythm across a row**: stat → points → issue → date type groups with 16px gutters.
 
 Amber is never a text color on white at any size — amber (2.02:1) and amber-deep (2.77:1) both fail contrast on white. Amber text appears only as Sora display type on deep grounds.
+
+**Color-comfort decision (2026-11-04): adjust luminance (lighten the deep ground, narrow the jumps).** Deep `#14213D`→`#1C2C4E` narrows the render-confirmed white↔deep full-field swing (white-on-deep 15.97:1→13.82:1) while keeping every deep-ground pair strong: amber-on-deep 7.90:1→6.83:1, deep-headline-on-white 15.97:1→13.82:1. Amber stays off white (D07 fix intact); amber-deep stays non-text. Alternation discipline restated as binding: one deep-ground moment per slide, never mixed grounds within a slide, and never two consecutive full-deep slides in a deck. Harness `accent` remapped amber→deep in `theme.mjs`: the harness renders on white, where amber text is 2.02:1 (fails even the 3:1 large floor) and this design forbids amber text on white at any size — deep (13.82:1) is the design's own light-ground stat color. Typo-only shapes unchanged — color values only.
 
 ## Typography
 

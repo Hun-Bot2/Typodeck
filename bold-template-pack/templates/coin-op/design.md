@@ -1,22 +1,22 @@
 ---
 version: alpha
 name: Coin-Op
-description: A green-phosphor arcade presentation system glowing on a near-black void (#060A06). Display type runs in VT323 phosphor green (#33FF66) through layered blurred halos, paired with IBM Plex Mono body copy and Silkscreen pixel-caps labels. A single amber (#FFB000) carries the marquee line and eyebrow labels against bone (#E8E4D8) secondary text. Type and light only — phosphor glow on glyphs, zero box-shadow, zero frames, rails, panels, scanlines, or fills.
+description: A green-phosphor arcade presentation system glowing on a near-black void (#060A06). Display type runs in VT323 phosphor green (#3FE673) through layered blurred halos, paired with IBM Plex Mono body copy and Silkscreen pixel-caps labels. A single amber (#F2A91E) carries the marquee line and eyebrow labels against bone (#E8E4D8) secondary text. Type and light only — phosphor glow on glyphs, zero box-shadow, zero frames, rails, panels, scanlines, or fills.
 
 colors:
   void: "#060A06"
   void-panel: "#0B120B"
-  phosphor: "#33FF66"
+  phosphor: "#3FE673"
   phosphor-dim: "#1FA84A"
-  amber: "#FFB000"
+  amber: "#F2A91E"
   amber-deep: "#C78A00"
   bone: "#E8E4D8"
   bone-dim: "#9AA39A"
 
 shadows:
-  glow-display: "0 0 8px rgba(51, 255, 102, 0.9), 0 0 32px rgba(51, 255, 102, 0.45), 0 0 90px rgba(51, 255, 102, 0.25)"
-  glow-display-soft: "0 0 6px rgba(51, 255, 102, 0.7), 0 0 24px rgba(51, 255, 102, 0.35)"
-  glow-amber: "0 0 8px rgba(255, 176, 0, 0.8), 0 0 28px rgba(255, 176, 0, 0.35)"
+  glow-display: "0 0 8px rgba(63, 230, 115, 0.75), 0 0 32px rgba(63, 230, 115, 0.38), 0 0 90px rgba(63, 230, 115, 0.22)"
+  glow-display-soft: "0 0 6px rgba(63, 230, 115, 0.6), 0 0 24px rgba(63, 230, 115, 0.3)"
+  glow-amber: "0 0 8px rgba(242, 169, 30, 0.7), 0 0 28px rgba(242, 169, 30, 0.3)"
   glow-bone: "0 0 6px rgba(232, 228, 216, 0.35)"
   rail-outer: "0 0 18px rgba(255, 176, 0, 0.35)"
   rail-inner: "0 0 14px rgba(51, 255, 102, 0.30)"
@@ -173,7 +173,7 @@ Depth is the system's signature trick: **soft blurred glow on glyphs only**. Dis
 **Density philosophy: medium, centered, patient.** The stage holds one display moment + a small constellation (marquee line, eyebrow, divider ticks, cursor), all centered in the well with generous leading. A typical slide carries the marquee + headline + subtitle + eyebrow + cursor — never sidebars, never panels.
 
 **Key Characteristics:**
-- Phosphor glow display — VT323 headlines in #33FF66 with triple-layer blurred halos (8px / 32px / 90px) via text-shadow, never box-shadow, never hard shadows.
+- Phosphor glow display — VT323 headlines in #3FE673 with triple-layer blurred halos (8px / 32px / 90px) via text-shadow, never box-shadow, never hard shadows.
 - Centered type stage — 72px inset on the void centering a 66ch text well.
 - Marquee context line — static amber Silkscreen caps holding the deck context, centered, glowing.
 - Plus-tick divider language — `+ + +` rows and `+` eyebrow flanks in phosphor-dim.
@@ -187,9 +187,9 @@ Depth is the system's signature trick: **soft blurred glow on glyphs only**. Dis
 
 - **Void** (`{colors.void}` — `#060A06`): The near-black ground with a green bias; solid, unprinted.
 - **Void Panel** (`{colors.void-panel}` — `#0B120B`): Retained token; panel fills retired — type sits on the void.
-- **Phosphor** (`{colors.phosphor}` — `#33FF66`): The display glow — headlines, stat numerals, cursor glyph, tick accents.
+- **Phosphor** (`{colors.phosphor}` — `#3FE673`): The display glow — headlines, stat numerals, cursor glyph, tick accents.
 - **Phosphor Dim** (`{colors.phosphor-dim}` — `#1FA84A`): Secondary chrome — divider ticks, eyebrow flanks, footer micro text.
-- **Amber** (`{colors.amber}` — `#FFB000`): The marquee energy — marquee line, eyebrow labels.
+- **Amber** (`{colors.amber}` — `#F2A91E`): The marquee energy — marquee line, eyebrow labels.
 - **Amber Deep** (`{colors.amber-deep}` — `#C78A00`): Amber's dim companion for small caps on dark where full amber would bloom.
 - **Bone** (`{colors.bone}` — `#E8E4D8`): Readable secondary text — subtitles, body copy, captions on the void.
 - **Bone Dim** (`{colors.bone-dim}` — `#9AA39A`): Tertiary text — hints, counters, de-emphasized lines.
@@ -205,6 +205,8 @@ Depth is the system's signature trick: **soft blurred glow on glyphs only**. Dis
 - **Default stage treatment**: 72px inset with centered type (`{components.stage-inset}`).
 
 Phosphor text below 24px blooms unreadably — small text is always bone or amber-deep, never phosphor. No fills exist anywhere.
+
+**Color-comfort decision (2026-11-04): adjust saturation (restrain both neons, retain void).** Phosphor `#33FF66`→`#3FE673` (S 1.00→0.77, 14.84:1→12.13:1) and amber `#FFB000`→`#F2A91E` (S 1.00→0.89, 10.88:1→9.93:1): the only design pairing two fully-saturated accents with multi-layer bloom, so per P3 (accents on dark grounds need less saturation) both accents step down while staying unmistakably phosphor-green and marquee-amber. Glow color stops re-matched to the new RGB with trimmed alphas (display 0.9/0.45/0.25→0.75/0.38/0.22, amber 0.8/0.35→0.7/0.3); blur radii, offsets, and the D08 glyph-limited text-shadow-only discipline are unchanged. Void, bone, and the 13px-micro rule are untouched. Typo-only shapes unchanged — color values only.
 
 ## Typography
 

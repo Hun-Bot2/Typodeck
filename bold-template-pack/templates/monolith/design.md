@@ -6,7 +6,7 @@ colors:
   black: "#0E0E0E"
   slab-black: "#000000"
   bone: "#F5F0E6"
-  signal-orange: "#FF4D00"
+  signal-orange: "#F04E12"
   dim: "#8A8578"
 shadows:
   none: "none"
@@ -148,7 +148,7 @@ Layout is a **single column with 24px margins**: top strip, title zone, footer p
 - **Black** (`{colors.black}` — `#0E0E0E`): The raw ground. Warm near-black, flat, untextured.
 - **Slab Black** (`{colors.slab-black}` — `#000000`): Retained palette token; the footer-slab role is retired — the footer sets type on the ground.
 - **Bone** (`{colors.bone}` — `#F5F0E6`): All type. Warm off-white with paper memory — never pure #FFF.
-- **Signal Orange** (`{colors.signal-orange}` — `#FF4D00`): The single strike per slide. Loud, hot, structural.
+- **Signal Orange** (`{colors.signal-orange}` — `#F04E12`): The single strike per slide. Loud, hot, structural.
 - **Dim** (`{colors.dim}` — `#8A8578`): Smallest meta text only (case counts, strip alternates). Never headlines, never body.
 
 ### Defaults
@@ -159,6 +159,8 @@ Layout is a **single column with 24px margins**: top strip, title zone, footer p
 - **Default footer treatment**: bone type pairs on `{colors.black}` with whitespace separation (`{components.footer-line}`).
 - **Default strip treatment**: bone tracked caps in plain type, label left, date right.
 - **Default stat treatment**: bone Anton numerals at 96–150px with dim tracked labels beneath.
+
+**Color-comfort decision (2026-11-04): adjust saturation (restrain the strike, retain ground).** Signal-orange `#FF4D00`→`#F04E12` (S 1.00→0.88, 5.80:1→5.33:1): full-saturation orange at poster scale on near-black is this design's one restraint target per P3, so it steps down one notch while staying loud, hot, and structural with its AA pass intact. Black, bone, and dim are untouched; the one-strike-per-slide rationing is unchanged. Typo-only shapes unchanged — color values only.
 
 ## Typography
 
