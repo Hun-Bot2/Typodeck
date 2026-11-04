@@ -12,32 +12,30 @@
   .maison-col { position: absolute; inset: 0; display: flex; flex-direction: column;
     align-items: center; text-align: center; padding: 150px 12vw 72px; }
   .maison-context { font-family: 'Inter', system-ui, sans-serif; font-weight: 500;
-    font-size: 17px; letter-spacing: 0.3em; text-transform: uppercase; color: #9A7F45;
+    font-size: 17px; letter-spacing: 0.3em; text-transform: uppercase; color: #77632F;
     margin: 0 0 0 -0.3em; }
-  .maison-rule-display { width: 120px; height: 1px; background: #9A7F45; margin: 32px 0; flex: 0 0 auto; }
+  /* Typography-only: hairline rules retired; whitespace frames the column. */
   .maison-stat { font-family: 'Cormorant Garamond', Georgia, serif;
     font-weight: 500; font-size: 120px; line-height: 1.3;
-    color: #0B0B0C; margin: 0; }
+    color: #0B0B0C; margin: 64px 0 0 0; }
   .maison-stat-label { font-family: 'Inter', system-ui, sans-serif; font-weight: 500;
-    font-size: 17px; letter-spacing: 0.3em; text-transform: uppercase; color: #9A7F45;
+    font-size: 17px; letter-spacing: 0.3em; text-transform: uppercase; color: #77632F;
     margin: 10px 0 0 -0.3em; }
   .maison-message { font-family: 'Cormorant Garamond', Georgia, serif;
     font-weight: 500; font-size: 44px; line-height: 1.32;
     color: #0B0B0C; margin: 32px 0 0; max-width: 60ch; text-wrap: balance; }
-  .maison-message em { font-style: italic; color: #9A7F45; }
+  .maison-message em { font-style: italic; color: #77632F; }
   .maison-support { font-family: 'Inter', system-ui, sans-serif; font-weight: 300;
     font-size: 22px; line-height: 1.8; color: rgba(11,11,12,.8); margin: 28px 0 0; max-width: 60ch; }
   .maison-source { font-family: 'Inter', system-ui, sans-serif; font-weight: 300;
-    font-size: 16px; line-height: 1.8; color: #6E6E6E; margin: 20px 0 0; }
+    font-size: 16px; line-height: 1.8; color: #9C9C9C; margin: 20px 0 0; }
   .maison-spacer { flex: 1 1 auto; min-height: 24px; }
-  .maison-rule-closing { width: 100%; max-width: 1200px; height: 1px; background: #9A7F45;
-    opacity: 0.55; flex: 0 0 auto; }
   .maison-folio { display: flex; align-items: baseline; justify-content: space-between;
-    width: 100%; max-width: 1200px; margin-top: 24px; flex: 0 0 auto;
+    width: 100%; max-width: 1200px; margin-top: 72px; flex: 0 0 auto;
     font-family: 'Inter', system-ui, sans-serif; font-weight: 500; font-size: 14px;
     letter-spacing: 0.3em; text-transform: uppercase; }
   .maison-folio-main { color: #0B0B0C; opacity: 0.72; }
-  .maison-folio-count { color: #6E6E6E; font-size: 13px; }
+  .maison-folio-count { color: #9C9C9C; font-size: 13px; }
 </style>
 <!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
 <style>
@@ -77,14 +75,12 @@
     <div class="maison-slide">
       <div class="maison-col">
         <p class="maison-context">Finding 01</p>
-        <div class="maison-rule-display"></div>
         <p class="maison-stat">63%</p>
         <p class="maison-stat-label">fewer sev-1 rollbacks</p>
         <h1 class="maison-message" id="maison-message">Teams that required a second reviewer before merge contained failures earlier.</h1>
         <p class="maison-support">Review depth predicted containment better than team size, tenure, or tooling.</p>
         <p class="maison-source">Fixture data · not a real study</p>
         <div class="maison-spacer"></div>
-        <div class="maison-rule-closing"></div>
         <div class="maison-folio">
           <span class="maison-folio-main">N° 11 · Rushing to Ship</span>
           <span class="maison-folio-count">02 / 03</span>

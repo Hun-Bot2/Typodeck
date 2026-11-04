@@ -7,26 +7,31 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080. P0 chip fix 2026-11-04: nw-kicker-rot left 1540→1490px; glyph renders clear of canvas edge at 1:1 (verified cover + preview + explanation, byte-identical chip regions); template validator RESULT: PASS; re-captured + viewed."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080. P0 chip fix 2026-11-04: nw-kicker-rot left 1540→1490px; glyph renders clear of canvas edge at 1:1 (verified cover + preview + explanation, byte-identical chip regions); template validator RESULT: PASS; re-captured + viewed. TYPO-ONLY rebuild 2026-11-04 (supersedes P0 chip fix; the chip fill is removed): ruled masthead/footer type lines, /// glyph kickers/dividers, 45deg open kicker, ghost numeral kept; no bands/bars/chips. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080. TYPO-ONLY rebuild 2026-11-04 (supersedes P0 chip fix; the chip fill is removed): ruled masthead/footer type lines, /// glyph kickers/dividers, 45deg open kicker, ghost numeral kept; no bands/bars/chips. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080. EX-SRC fix 2026-11-04: second nw-context bar with dot; chip shifted left 50px (same fix as cover); re-captured + viewed."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080. EX-SRC fix 2026-11-04: second nw-context bar with dot; chip shifted left 50px (same fix as cover); re-captured + viewed. TYPO-ONLY rebuild 2026-11-04 (supersedes P0 chip fix; the chip fill is removed): ruled masthead/footer type lines, /// glyph kickers/dividers, 45deg open kicker, ghost numeral kept; no bands/bars/chips. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res."
     }
   ],
   "render": {
     "width": 1920,
     "height": 1080,
     "verify": "PASS"
+  },
+  "typo_only": {
+    "rebuild": "2026-11-04",
+    "boxes": "none",
+    "note": "TYPO-ONLY rebuild 2026-11-04 (supersedes P0 chip fix; the chip fill is removed): ruled masthead/footer type lines, /// glyph kickers/dividers, 45deg open kicker, ghost numeral kept; no bands/bars/chips. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res."
   }
 }

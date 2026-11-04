@@ -8,165 +8,104 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  .sb { position:absolute; inset:0; background:#F6F8FA; color:#0F172A;
-    font-family:'Inter', system-ui, sans-serif; display:flex; flex-direction:column; }
-  .sb-topbar { height:64px; flex:0 0 64px; background:#0F172A; color:#E2E8F0;
-    display:flex; align-items:center; padding:0 72px; gap:20px;
-    font-family:'IBM Plex Mono', ui-monospace, monospace; font-size:20px; letter-spacing:0.14em; }
-  .sb-live { width:14px; height:14px; border-radius:50%; background:#16A34A; flex:0 0 14px; }
-  .sb-topbar .spacer { flex:1; }
-  .sb-topbar .dim { color:#94A3B8; }
-  .sb-topbar .amber { color:#FBBF24; }
-  .sb-main { flex:1; display:grid; grid-template-columns:repeat(12, 1fr);
-    gap:12px; padding:56px 72px 0 72px; min-height:0; }
-  .sb-left { grid-column:1 / 8; display:flex; flex-direction:column; min-width:0; }
-  .sb-right { grid-column:8 / 13; display:flex; flex-direction:column; gap:12px; min-width:0; }
-  .sb-wide { grid-column:1 / 13; display:flex; flex-direction:column; min-width:0; }
-  .sb-kicker { display:flex; align-items:center; gap:16px; margin-bottom:28px; }
-  .sb-pill { font-family:'IBM Plex Mono', ui-monospace, monospace; font-size:19px; font-weight:600;
-    letter-spacing:0.12em; padding:10px 22px; border-radius:999px; white-space:nowrap; }
-  .sb-pill.blue { background:#2563EB; color:#fff; }
-  .sb-pill.ghost { border:2px solid #0F172A; color:#0F172A; }
-  .sb-title { margin:0; font-weight:800; font-size:88px; line-height:1.04; letter-spacing:-0.015em;
-    color:#0F172A; font-variant-numeric:tabular-nums; }
-  .sb-sub { margin:26px 0 0 0; font-size:31px; line-height:1.45; color:#475569; font-weight:400; max-width:20em; }
-  .sb-context { display:flex; align-items:center; gap:14px; margin-top:34px;
-    font-family:'IBM Plex Mono', ui-monospace, monospace; font-size:22px; letter-spacing:0.06em; color:#0F172A; }
-  .sb-swatch { width:18px; height:18px; background:#2563EB; flex:0 0 18px; }
-  .sb-datarows { margin-top:auto; padding:30px 0 34px 0; }
-  .sb-row { display:flex; align-items:baseline; gap:18px; padding:13px 2px; border-top:1px solid #CBD5E1;
-    font-family:'IBM Plex Mono', ui-monospace, monospace; font-size:20px; }
-  .sb-row:last-child { border-bottom:1px solid #CBD5E1; }
-  .sb-row .k { color:#64748B; letter-spacing:0.1em; font-size:18px; }
-  .sb-row .v { margin-left:auto; font-weight:600; color:#0F172A; font-variant-numeric:tabular-nums; }
-  .sb-row .up { color:#16A34A; font-weight:600; }
-  .sb-row .down { color:#DC2626; font-weight:600; }
-  .sb-kpi { background:#fff; border:1px solid #E2E8F0; border-top:6px solid #2563EB;
-    padding:30px 34px 28px 34px; display:flex; align-items:center; gap:26px; }
-  .sb-kpi.green { border-top-color:#16A34A; }
-  .sb-kpi.red { border-top-color:#DC2626; }
-  .sb-num { font-size:92px; font-weight:800; line-height:1; font-variant-numeric:tabular-nums; color:#0F172A; }
-  .sb-kpi-meta { display:flex; flex-direction:column; gap:12px; }
-  .sb-kpi-label { font-family:'IBM Plex Mono', ui-monospace, monospace; font-size:19px;
-    letter-spacing:0.1em; color:#475569; line-height:1.5; }
-  .sb-status { align-self:flex-start; font-family:'IBM Plex Mono', ui-monospace, monospace; font-size:17px;
-    font-weight:600; letter-spacing:0.12em; padding:8px 18px; border-radius:999px; color:#fff; white-space:nowrap; }
-  .sb-status.ok { background:#16A34A; }
-  .sb-status.warn { background:#B45309; }
-  .sb-status.bad { background:#DC2626; }
-  .sb-status.info { background:#2563EB; }
-  .sb-cases { background:#0F172A; color:#E2E8F0; padding:26px 30px 22px 30px; flex:1;
-    display:flex; flex-direction:column; }
-  .sb-cases h3 { margin:0 0 14px 0; font-family:'IBM Plex Mono', ui-monospace, monospace;
-    font-size:18px; font-weight:600; letter-spacing:0.16em; color:#93C5FD; }
-  .sb-case { display:flex; align-items:center; gap:14px; padding:9px 0; border-top:1px solid #334155;
-    font-family:'IBM Plex Mono', ui-monospace, monospace; font-size:19px; }
-  .sb-case .id { color:#E2E8F0; font-weight:500; }
-  .sb-case .st { margin-left:auto; font-size:16px; font-weight:600; letter-spacing:0.1em;
-    padding:5px 14px; border-radius:999px; white-space:nowrap; }
-  .sb-case .st.ok { background:rgba(22,163,74,0.22); color:#4ADE80; }
-  .sb-case .st.warn { background:rgba(251,191,36,0.20); color:#FBBF24; }
-  .sb-foot { flex:0 0 60px; display:flex; align-items:center; padding:0 72px;
-    font-family:'IBM Plex Mono', ui-monospace, monospace; font-size:18px; letter-spacing:0.12em;
-    color:#64748B; border-top:1px solid #CBD5E1; margin:0 72px; padding-left:0; padding-right:0; }
-  .sb-foot .r { margin-left:auto; color:#0F172A; font-weight:600; }
-  .sb-seal { margin-top:auto; padding-top:20px; }
-  .sb-seal .track { height:10px; background:#334155; }
-  .sb-seal .fill { height:10px; width:100%; background:#16A34A; }
-  .sb-seal .cap { margin-top:10px; font-family:'IBM Plex Mono', ui-monospace, monospace;
-    font-size:16px; letter-spacing:0.14em; color:#94A3B8; }
-  /* divider: full-width section readout */
-  .sb-sec-kicker { display:flex; align-items:center; gap:16px; margin-bottom:30px; }
-  .sb-sec-title { margin:0; font-weight:800; font-size:110px; line-height:1.04; letter-spacing:-0.015em;
-    color:#0F172A; max-width:16em; }
-  .sb-sec-orient { margin:30px 0 0 0; font-size:34px; line-height:1.45; color:#475569; max-width:24em; }
-  .sb-sec-strip { margin-top:auto; padding:30px 0 34px 0; display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
-  .sb-sec-cell { background:#fff; border:1px solid #E2E8F0; border-top:6px solid #2563EB;
-    padding:22px 26px; font-family:'IBM Plex Mono', ui-monospace, monospace; }
-  .sb-sec-cell .k { display:block; font-size:16px; letter-spacing:0.12em; color:#64748B; margin-bottom:10px; }
-  .sb-sec-cell .v { display:block; font-size:22px; font-weight:600; letter-spacing:0.06em; color:#0F172A; }
-  /* statement: full-width single readout */
-  .sb-stmt { margin:auto 0; font-weight:800; font-size:96px; line-height:1.08; letter-spacing:-0.015em;
-    color:#0F172A; max-width:15em; max-height:640px; overflow:hidden; }
-  .sb-stmt-bar { display:flex; align-items:center; gap:16px; margin-top:40px;
-    font-family:'IBM Plex Mono', ui-monospace, monospace; font-size:20px; letter-spacing:0.08em; color:#475569; }
-  /* evidence */
-  .sb-ev-title { margin:0; font-weight:800; font-size:56px; line-height:1.1; letter-spacing:-0.015em; color:#0F172A; }
-  .sb-ev-sub { margin:24px 0 0 0; font-size:26px; line-height:1.5; color:#475569; max-width:26em; }
-  /* comparison: two panels */
-  .sb-vs { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:28px; }
-  .sb-side { background:#fff; border:1px solid #E2E8F0; border-top:6px solid #DC2626; padding:26px 30px; }
-  .sb-side.good { border-top-color:#16A34A; }
-  .sb-side h3 { margin:0 0 6px 0; font-weight:800; font-size:28px; letter-spacing:-0.01em; color:#0F172A; }
-  .sb-side .tag { display:inline-block; margin-bottom:14px; }
-  .sb-side ul { list-style:none; margin:0; padding:0; }
-  .sb-side li { font-family:'IBM Plex Mono', ui-monospace, monospace; font-size:19px; line-height:1.45;
-    color:#0F172A; padding:11px 2px; border-top:1px solid #CBD5E1; display:flex; gap:12px; align-items:baseline; }
-  .sb-side li .g { font-weight:600; }
-  .sb-side.bad-side li .g { color:#DC2626; }
-  .sb-side.good li .g { color:#16A34A; }
-  .sb-cap { margin:26px 0 0 0; font-size:24px; line-height:1.5; color:#475569; max-width:44em; }
-  /* dense: full-width dark log table */
-  .sb-log { background:#0F172A; color:#E2E8F0; padding:24px 30px 20px 30px; margin-top:24px; }
-  .sb-log h3 { margin:0 0 10px 0; font-family:'IBM Plex Mono', ui-monospace, monospace;
-    font-size:18px; font-weight:600; letter-spacing:0.16em; color:#93C5FD; }
-  .sb-log table { border-collapse:collapse; width:100%; font-family:'IBM Plex Mono', ui-monospace, monospace; }
-  .sb-log th { font-size:15px; font-weight:600; letter-spacing:0.14em; color:#94A3B8; text-align:left;
-    padding:8px 18px 8px 0; border-bottom:1px solid #334155; }
-  .sb-log td { font-size:19px; font-weight:500; color:#E2E8F0; padding:7px 18px 7px 0;
-    border-bottom:1px solid #334155; white-space:nowrap; }
-  .sb-log tr:last-child td { border-bottom:none; }
-  .sb-log td.flag { color:#FBBF24; }
-  .sb-log .cap { margin:12px 0 0 0; font-family:'IBM Plex Mono', ui-monospace, monospace;
-    font-size:16px; letter-spacing:0.12em; color:#94A3B8; }
-  /* closing */
-  .sb-close-line { margin:auto 0 0 0; font-weight:800; font-size:110px; line-height:1.04;
-    letter-spacing:-0.015em; color:#0F172A; }
-  .sb-close-recap { margin:26px 0 0 0; font-size:32px; line-height:1.45; color:#475569; }
-  .sb-pill, .sb-row .v, .sb-kpi-label, .sb-sec-cell .v, .sb-log th, .sb-log .cap, .sb-seal .cap, .sb-case .id, .sb-case .st, .sb-context span:last-child, .sb-stmt-bar span:last-child { text-transform: uppercase; }
+  * { box-sizing: border-box; }
+  .s { position: absolute; inset: 0; background: #F6F8FA; color: #0F172A;
+    font-family: 'Inter', system-ui, sans-serif; padding: 40px 72px 0 72px;
+    display: flex; flex-direction: column; }
+  .top { display: flex; align-items: center; gap: 20px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 20px; letter-spacing: 0.14em; }
+  .live { color: #16A34A; font-size: 16px; }
+  .top .sp { flex: 1; }
+  .top .dim { color: #475569; }
+  .top .amb { color: #B45309; font-weight: 600; }
+  .main { flex: 1; display: grid; grid-template-columns: repeat(12, 1fr); gap: 48px;
+    min-height: 0; margin-top: 40px; }
+  .left { grid-column: 1 / 8; display: flex; flex-direction: column; min-width: 0; }
+  .right { grid-column: 8 / 13; display: flex; flex-direction: column; min-width: 0; }
+  .kick { display: flex; align-items: center; gap: 24px; margin: 0;
+    font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 600;
+    letter-spacing: 0.12em; }
+  .kick .bl { color: #2563EB; }
+  .title { margin: 24px 0 0 0; font-weight: 800; font-size: 80px; line-height: 1.04;
+    letter-spacing: -0.015em; max-height: 340px; overflow: hidden; font-variant-numeric: tabular-nums; }
+  .sub { margin: 24px 0 0 0; font-size: 30px; line-height: 1.45; color: #475569; max-width: 20em; }
+  .ctx { display: flex; align-items: center; gap: 14px; margin-top: 28px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 22px; letter-spacing: 0.06em; }
+  .ctx .sw { color: #2563EB; font-size: 18px; }
+  .rows { margin-top: auto; padding: 28px 0 32px 0; }
+  .row { display: flex; align-items: baseline; gap: 18px; padding: 12px 0;
+    font-family: 'IBM Plex Mono', monospace; font-size: 20px; }
+  .row .k { color: #475569; letter-spacing: 0.1em; font-size: 18px; }
+  .row .v { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .row .st { font-weight: 600; white-space: nowrap; }
+  .row .up { color: #16A34A; }
+  .kpi { display: flex; align-items: center; gap: 26px; }
+  .num { font-size: 92px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+  .kpi-meta { display: flex; flex-direction: column; gap: 12px; }
+  .kpi-lab { font-family: 'IBM Plex Mono', monospace; font-size: 19px; letter-spacing: 0.1em;
+    color: #475569; line-height: 1.5; text-transform: uppercase; }
+  .status { font-family: 'IBM Plex Mono', monospace; font-size: 17px; font-weight: 600;
+    letter-spacing: 0.12em; white-space: nowrap; }
+  .status .ok { color: #16A34A; }
+  .status .wn { color: #B45309; }
+  .log { margin-top: 28px; }
+  .log h3 { margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 18px;
+    font-weight: 600; letter-spacing: 0.16em; color: #2563EB; }
+  .log h3.gap { margin-top: 24px; }
+  .case { display: flex; align-items: baseline; gap: 14px; padding: 9px 0;
+    font-family: 'IBM Plex Mono', monospace; font-size: 19px; }
+  .case .id { font-weight: 500; }
+  .case .st2 { margin-left: auto; font-size: 16px; font-weight: 600; letter-spacing: 0.1em;
+    white-space: nowrap; }
+  .case .st2.ok { color: #0F172A; }
+  .case .st2.ok .gd { color: #16A34A; }
+  .case .st2.wn { color: #B45309; }
+  .seal { margin-top: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 16px;
+    letter-spacing: 0.14em; color: #475569; text-transform: uppercase; }
+  .foot { flex: 0 0 60px; display: flex; align-items: center;
+    font-family: 'IBM Plex Mono', monospace; font-size: 18px; letter-spacing: 0.12em;
+    color: #475569; text-transform: uppercase; }
+  .foot .r { margin-left: auto; color: #0F172A; font-weight: 600; }
 </style>
 <style>
-  html, body { margin:0; padding:0; width:100%; height:100%; background:#000; overflow:hidden; }
-  #deck-viewport { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:#000; }
-  #deck-stage { width:1920px; height:1080px; flex:0 0 auto; position:relative; overflow:hidden;
-    transform-origin:center center; background:#F6F8FA; }
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+  #deck-viewport { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #000; }
+  #deck-stage { width: 1920px; height: 1080px; flex: 0 0 auto; position: relative; overflow: hidden; transform-origin: center center; background: #F6F8FA; }
 </style>
 </head>
 <body>
 <div id="deck-viewport"><div id="deck-stage">
-<div class="sb">
-
-<div class="sb-topbar"><span class="sb-live"></span><span>TYPODECK RESEARCH</span><span class="dim">/</span><span class="amber">POSTMORTEM SERIES</span><span class="spacer"></span><span class="dim">SAMPLE</span><span>N = 11</span></div>
-<div class="sb-main">
-<div class="sb-left">
-<div class="sb-kicker"><span class="sb-pill blue">RESEARCH BRIEF</span><span class="sb-pill ghost">NOV 2026</span></div>
-<h1 class="sb-title">The Hidden Cost of Rushing to Ship</h1>
-<p class="sb-sub">What 11 postmortems taught us about review discipline</p>
-<div class="sb-context"><span class="sb-swatch"></span><span>Typodeck Research · November 2026</span></div>
-<div class="sb-datarows">
-<div class="sb-row"><span class="k">CASES AUDITED</span><span class="v">11 / 11</span><span class="up">▲ COMPLETE</span></div>
-<div class="sb-row"><span class="k">SHARED FINDING</span><span class="v">Review discipline</span><span class="up">▲ CONFIRMED</span></div>
-<div class="sb-row"><span class="k">READOUT</span><span class="v">COVER 01 / BRIEF</span><span class="up">▲ LIVE</span></div>
+<div class="s">
+<div class="top"><span class="live">●</span><span>TYPODECK RESEARCH</span><span class="dim">/</span><span class="amb">POSTMORTEM SERIES</span><span class="sp"></span><span class="dim">SAMPLE</span><span>N = 11</span></div>
+<div class="main">
+<div class="left">
+<p class="kick"><span class="bl">RESEARCH BRIEF</span><span>NOV 2026</span></p>
+<h1 class="title" data-sbfit="80">The Hidden Cost of Rushing to Ship</h1>
+<p class="sub">What 11 postmortems taught us about review discipline</p>
+<p class="ctx"><span class="sw">■</span><span>Typodeck Research · November 2026</span></p>
+<div class="rows">
+<div class="row"><span class="k">CASES AUDITED</span><span class="v">11 / 11</span><span class="st"><span class="up">▲</span> COMPLETE</span></div>
+<div class="row"><span class="k">SHARED FINDING</span><span class="v">Review discipline</span><span class="st"><span class="up">▲</span> CONFIRMED</span></div>
+<div class="row"><span class="k">READOUT</span><span class="v">COVER 01 / BRIEF</span><span class="st"><span class="up">▲</span> LIVE</span></div>
 </div>
 </div>
-<div class="sb-right">
-<div class="sb-kpi green"><div class="sb-num">11</div><div class="sb-kpi-meta">
-<div class="sb-kpi-label">Postmortems<br>in sample</div><span class="sb-status ok">● COMPLETE</span>
+<div class="right">
+<div class="kpi"><span class="num">11</span><div class="kpi-meta">
+<div class="kpi-lab">Postmortems<br>in sample</div><span class="status"><span class="ok">●</span> COMPLETE</span>
 </div></div>
-<div class="sb-cases">
+<div class="log">
 <h3>CASE LOG — REVIEW STATUS</h3>
-<div class="sb-case"><span class="id">P-01 … P-04</span><span class="st ok">LOGGED</span></div>
-<div class="sb-case"><span class="id">P-05 … P-08</span><span class="st ok">LOGGED</span></div>
-<div class="sb-case"><span class="id">P-09 … P-11</span><span class="st warn">UNDER REVIEW</span></div>
-<h3 style="margin-top:22px;">EXTRACTION — SHARED THEME</h3>
-<div class="sb-case"><span class="id">Rows logged</span><span class="st ok">11 / 11</span></div>
-<div class="sb-case"><span class="id">Review discipline</span><span class="st warn">Flagship</span></div>
-<div class="sb-seal"><div class="track"><div class="fill"></div></div><div class="cap">SAMPLE SEALED · 11 / 11</div></div>
+<div class="case"><span class="id">P-01 … P-04</span><span class="st2 ok"><span class="gd">●</span> LOGGED</span></div>
+<div class="case"><span class="id">P-05 … P-08</span><span class="st2 ok"><span class="gd">●</span> LOGGED</span></div>
+<div class="case"><span class="id">P-09 … P-11</span><span class="st2 wn">UNDER REVIEW</span></div>
+<h3 class="gap">EXTRACTION — SHARED THEME</h3>
+<div class="case"><span class="id">Rows logged</span><span class="st2 ok"><span class="gd">●</span> 11 / 11</span></div>
+<div class="case"><span class="id">Review discipline</span><span class="st2 wn">FLAGSHIP</span></div>
+<p class="seal">Sample sealed · 11 / 11</p>
 </div>
 </div>
 </div>
-<div class="sb-foot"><span>RESEARCH BRIEF · VOL. 11</span><span class="r">P. 01</span></div>
-
+<div class="foot"><span>Research brief · Vol. 11</span><span class="r">P. 01</span></div>
 </div>
 </div></div>
 <script>

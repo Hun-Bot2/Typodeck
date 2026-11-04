@@ -30,13 +30,12 @@
     font-family:'Lora', Georgia, serif; font-size:30px; line-height:1.5; }
   .fp-deck::first-letter { font-family:'Playfair Display', 'Didot', Georgia, serif; font-weight:900;
     color:#8B0000; font-size:3.2em; line-height:0.85; float:left; padding:6px 12px 0 0; }
-  .fp-accent { width:120px; height:4px; background:#8B0000; margin:auto auto 0 auto; }
-  .fp-strip { display:flex; margin:30px 0 0 0; border-top:1px solid #141414; border-bottom:1px solid #141414; }
-  .fp-cell { flex:1; padding:26px 32px 28px 32px; }
-  .fp-cell + .fp-cell { border-left:1px solid #D9D2C2; }
-  .fp-cell-head { font-family:'Libre Franklin', system-ui, sans-serif; font-weight:600; font-size:20px;
-    letter-spacing:0.22em; text-transform:uppercase; color:#6B6B6B; margin-bottom:10px; }
-  .fp-cell-body { font-family:'Lora', Georgia, serif; font-size:26px; line-height:1.4; }
+  .fp-accent { text-align:center; color:#8B0000; font-size:30px; line-height:1; margin:auto auto 0 auto; }
+  .fp-strip { margin:30px auto 0 auto; max-width:1400px; text-align:center;
+    font-family:'Lora', Georgia, serif; font-size:26px; line-height:1.7; }
+  .fp-strip .h { font-family:'Libre Franklin', system-ui, sans-serif; font-weight:600; font-size:20px;
+    letter-spacing:0.22em; text-transform:uppercase; color:#6B6B6B; }
+  .fp-strip .sep { color:#8B0000; padding:0 18px; }
   .fp-folio { margin-top:36px; padding-top:12px; display:flex; justify-content:space-between;
     border-top:3px solid #141414; position:relative; }
   .fp-folio::before { content:""; position:absolute; top:6px; left:0; right:0; border-top:1px solid #141414; }
@@ -87,11 +86,9 @@
         <p class="fp-kicker">11 postmortems · one lesson</p>
         <h1 class="fp-head">The Hidden Cost of Rushing to Ship</h1>
         <p class="fp-deck">What 11 postmortems taught us about review discipline</p>
-        <div class="fp-accent"></div>
+        <div class="fp-accent">⁂</div>
         <div class="fp-strip">
-          <div class="fp-cell"><div class="fp-cell-head">The reports</div><div class="fp-cell-body">What 11 postmortems taught us</div></div>
-          <div class="fp-cell"><div class="fp-cell-head">The lesson</div><div class="fp-cell-body">Review discipline</div></div>
-          <div class="fp-cell"><div class="fp-cell-head">The cost</div><div class="fp-cell-body">The hidden cost of rushing to ship</div></div>
+          <span class="h">The reports</span> · What 11 postmortems taught us<span class="sep">◆</span><span class="h">The lesson</span> · Review discipline<span class="sep">◆</span><span class="h">The cost</span> · The hidden cost of rushing to ship
         </div>
         <div class="fp-folio"><span>Page 01</span><span>Section R</span><span>01 / 03</span></div>
       </div>

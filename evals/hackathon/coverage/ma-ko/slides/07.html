@@ -8,22 +8,18 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  * { border-radius:0 !important; }
-  html, body { margin:0; padding:0; background:#000; }
+  html, body { margin:0; padding:0; background:#F8F6F0; }
   .slide { position:relative; width:1920px; height:1080px; background:#F8F6F0;
     color:#2B2B2B; font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; overflow:hidden; }
   .content { position:absolute; top:72px; left:96px; right:96px; max-height:820px; }
-  .kicker { display:flex; align-items:center; gap:16px; font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  .kicker { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
     font-weight:700; font-size:20px; letter-spacing:0;
     text-transform:none; color:#A63D2F; margin:0; word-break:keep-all; overflow-wrap:normal; }
-  .kicker::before { content:""; width:16px; height:16px; background:#A63D2F; flex:0 0 auto; }
-  .accentrule { height:5px; background:#A63D2F; margin-top:22px; width:100%; }
-  .accentrule.notop { margin-top:0; }
   .metaline { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:18px; font-weight:500;
     letter-spacing:0; text-transform:none;
     color:#2B2B2B; margin:14px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
   .footer { position:absolute; left:96px; right:96px; bottom:0; height:104px;
-    border-top:2px solid #2B2B2B; display:flex; align-items:center;
+    display:flex; align-items:center;
     justify-content:space-between; }
   .footer .ctx { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:19px; font-weight:500;
     letter-spacing:0; text-transform:none;
@@ -48,45 +44,42 @@
   .srcline { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:20px; font-weight:500;
     letter-spacing:0; text-transform:none;
     color:#2B2B2B; margin:40px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
-  .statrow { display:flex; gap:40px; margin:44px 0 0 0; border-top:2px solid #2B2B2B; padding-top:32px; }
-  .stat { display:flex; align-items:flex-end; gap:22px; padding-right:40px; border-right:1px solid #D8D2C4; }
-  .stat:last-child { border-right:none; }
+  .statrow { display:flex; gap:72px; margin:52px 0 0 0; }
+  .stat { display:flex; align-items:flex-end; gap:22px; }
   .statnum { font-family:'Shippori Mincho', 'Pretendard Variable', sans-serif; font-weight:800; line-height:0.9;
-    letter-spacing:0; }
+    letter-spacing:0; white-space:nowrap; }
   .statlab { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:20px; font-weight:500;
     letter-spacing:0; text-transform:none;
     line-height:1.5; padding-bottom:18px; max-width:320px; word-break:keep-all; overflow-wrap:normal; }
-  .ev-sup { font-size:24px; line-height:1.83; margin:32px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
-  .findings { list-style:none; margin:36px 0 0 0; padding:0; border-top:2px solid #2B2B2B; }
-  .findings li { display:flex; gap:24px; padding:22px 0; border-bottom:1px solid #D8D2C4; }
-  .fnum { font-family:'Shippori Mincho', 'Pretendard Variable', sans-serif; font-weight:800; font-size:30px; flex:0 0 96px; }
+  .ev-sup { font-size:24px; line-height:1.83; margin:36px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
+  .findings { list-style:none; margin:44px 0 0 0; padding:0; }
+  .findings li { display:flex; gap:24px; padding:0; margin:0 0 30px 0; }
+  .findings li:last-child { margin-bottom:0; }
+  .fnum { font-family:'Shippori Mincho', 'Pretendard Variable', sans-serif; font-weight:800; font-size:30px; flex:0 0 96px; color:#A63D2F; }
   .fbody { display:flex; flex-direction:column; gap:8px; }
   .fhead { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:700; font-size:30px; line-height:1.2; word-break:keep-all; overflow-wrap:normal; }
   .fsub { font-size:24px; line-height:1.83; word-break:keep-all; overflow-wrap:normal; }
-  .zones { display:flex; gap:32px; margin-top:36px; }
+  .zones { display:flex; gap:96px; margin-top:44px; }
   .zone { flex:1 1 0; }
-  .zone-b { border-left:1px solid #D8D2C4; padding-left:32px; }
   .zone-h { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:700; font-size:30px;
     line-height:1.2; margin:0; word-break:keep-all; overflow-wrap:normal; }
-  .zone ul { list-style:none; margin:0; padding:18px 0 0 0; border-top:2px solid #2B2B2B; margin-top:12px; }
-  .zone li { display:flex; gap:14px; align-items:flex-start; font-size:22px; line-height:1.5;
-    padding:12px 0; border-bottom:1px solid #D8D2C4; word-break:keep-all; overflow-wrap:normal; }
-  .zone li::before { content:""; width:13px; height:13px; flex:0 0 auto; margin-top:10px; background:#2B2B2B; }
-  .zone li.bad::before { background:#A63D2F; }
-  .caption { font-size:22px; line-height:1.55; color:#2B2B2B; margin:30px 0 0 0;
-    border-top:1px solid #D8D2C4; padding-top:20px; word-break:keep-all; overflow-wrap:normal; }
-  table.dtable { border-collapse:collapse; margin:24px 0 0 0; width:100%; }
-  table.dtable th { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:500; letter-spacing:0;
-    text-transform:none; color:#2B2B2B; text-align:left; font-size:0.86em;
-    padding:10px 16px 10px 0; border-top:2px solid #2B2B2B; border-bottom:2px solid #2B2B2B; }
-  table.dtable td { line-height:1.35; padding:9px 16px 9px 0; border-bottom:1px solid #D8D2C4; white-space:nowrap; }
-  table.dtable td.case { font-family:'Shippori Mincho', 'Pretendard Variable', sans-serif; font-weight:800; font-size:0.95em; }
-  table.dtable tr.flag td.cost::before { content:""; display:inline-block; width:12px; height:12px;
-    background:#A63D2F; margin-right:10px; }
-  table.dtable td, table.dtable th { word-break:keep-all; }
+  .zone ul { list-style:none; margin:20px 0 0 0; padding:0; }
+  .zone li { font-size:22px; line-height:1.5;
+    padding:0; margin:0 0 20px 0; word-break:keep-all; overflow-wrap:normal; }
+  .zone li:last-child { margin-bottom:0; }
+  .zone li.bad { color:#A63D2F; font-weight:600; }
+  .caption { font-size:22px; line-height:1.55; color:#2B2B2B; margin:36px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+  .ledger { display:grid; grid-template-columns:7em 10em 8em 1fr; column-gap:2.5em;
+    margin:32px 0 0 0; line-height:1.35; font-variant-numeric:tabular-nums; }
+  .lhead { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:500; letter-spacing:0;
+    text-transform:none; color:#2B2B2B; font-size:0.86em; padding:0 0 0.9em 0; word-break:keep-all; }
+  .lrow { display:contents; }
+  .lrow > .cell { padding:0.42em 0; white-space:nowrap; word-break:keep-all; }
+  .lrow > .cell.case { font-family:'Shippori Mincho', 'Pretendard Variable', sans-serif; font-weight:800; font-size:0.95em; }
+  .lrow.flag > .cell.cost { color:#A63D2F; font-weight:700; }
   .d-foot { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:18px; font-weight:500;
     letter-spacing:0; text-transform:none;
-    color:#2B2B2B; margin:14px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+    color:#2B2B2B; margin:22px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
   .fx { color:#2B2B2B; font-size:0.85em; letter-spacing:0.06em; white-space:nowrap; }
 </style>
 </head>
@@ -94,7 +87,6 @@
 <div class="slide" data-contain="stage">
   <div class="content">
     <p class="kicker" data-t="kicker" data-headline>맺음 · 다음 단계</p>
-<div class="accentrule" aria-hidden="true"></div>
     <p class="metaline" data-t="meta">결론 C-01</p>
     
     <h1 class="close-line" data-t="title" data-headline style="font-size:72px">다음 인시던트를 위한 세 가지 약속</h1>

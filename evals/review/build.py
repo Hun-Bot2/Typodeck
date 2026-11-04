@@ -3,7 +3,10 @@
 Reads: bold-template-pack/selection-index.json,
   evals/design-quality/{specimens,full-decks,pptx,audit/classification.json},
   evals/design-diversity/screenshots (legacy pre-refinement covers, reference only),
-  evals/hackathon/{coverage,art-direction ranks,pptx}.
+  evals/hackathon/{coverage,art-direction ranks,pptx},
+  evals/typo-only/before (pre-regen harness renders @257cdce, for before/after toggle),
+  evals/color-comfort/before (pre-color-change harness renders @f0aed77, color toggle;
+  plus before/specimens mates for 8 specimen sets + modulo full-deck @f0aed77).
 Writes: evals/review/index.html (build-time inline DATA, zero fetch).
 Serve root: repo root. Image paths are ../design-quality/... etc.
 """
@@ -64,6 +67,7 @@ coverage = json.loads((HQ / "coverage" / "coverage.json").read_text())["designs"
 QKINDS = ['cover', 'divider', 'statement', 'evidence', 'comparison', 'dense', 'closing']
 SPEC = ['cover', 'evidence', 'explanation']
 missing = []
+n_cbefore_refs = []
 DATA = []
 for t in templates:
     did, slug = t['id'], t['slug']
@@ -74,7 +78,14 @@ for t in templates:
         p = Q / "specimens" / slug / f"{k}.png"
         if not p.exists():
             missing.append(str(p))
-        spec.append({'label': k, 'img': f"../design-quality/specimens/{slug}/{k}.png"})
+        entry = {'label': k, 'img': f"../design-quality/specimens/{slug}/{k}.png"}
+        cb = ROOT / "evals" / "color-comfort" / "before" / "specimens" / slug / f"{k}.png"
+        if cb.exists():
+            entry['cbefore'] = f"../color-comfort/before/specimens/{slug}/{k}.png"
+            n_cbefore_refs.append(str(cb.relative_to(ROOT)))
+        elif (ROOT / "evals" / "color-comfort" / "before" / "specimens" / slug).exists():
+            missing.append(str(cb))  # partial specimen color-before set is a build error
+        spec.append(entry)
     src['spec'] = spec
     # quality full deck (6 designs)
     qdeck = []
@@ -84,8 +95,15 @@ for t in templates:
             p = qdir / f"slide-{n:02d}-{k}.png"
             if not p.exists():
                 missing.append(str(p))
-            qdeck.append({'label': f"{n:02d} {k}",
-                          'img': f"../design-quality/full-decks/{slug}/slides/slide-{n:02d}-{k}.png"})
+            entry = {'label': f"{n:02d} {k}",
+                     'img': f"../design-quality/full-decks/{slug}/slides/slide-{n:02d}-{k}.png"}
+            cb = ROOT / "evals" / "color-comfort" / "before" / "specimens" / slug / "slides" / f"slide-{n:02d}-{k}.png"
+            if cb.exists():
+                entry['cbefore'] = f"../color-comfort/before/specimens/{slug}/slides/slide-{n:02d}-{k}.png"
+                n_cbefore_refs.append(str(cb.relative_to(ROOT)))
+            elif (ROOT / "evals" / "color-comfort" / "before" / "specimens" / slug / "slides").exists():
+                missing.append(str(cb))  # partial qdeck color-before set is a build error
+            qdeck.append(entry)
     src['qdeck'] = qdeck
     # harness decks EN/KO
     decks = {}
@@ -98,8 +116,19 @@ for t in templates:
             p = HQ / "coverage" / f"{slug}-{lang}" / "slides" / f"{n:02d}.png"
             if not p.exists():
                 missing.append(str(p))
-            slides.append({'label': f"{n:02d} {QKINDS[n-1]}",
-                           'img': f"../hackathon/coverage/{slug}-{lang}/slides/{n:02d}.png"})
+            b = ROOT / "evals" / "typo-only" / "before" / f"{slug}-{lang}" / "slides" / f"{n:02d}.png"
+            if not b.exists():
+                missing.append(str(b))
+            entry = {'label': f"{n:02d} {QKINDS[n-1]}",
+                       'img': f"../hackathon/coverage/{slug}-{lang}/slides/{n:02d}.png",
+                       'before': f"../typo-only/before/{slug}-{lang}/slides/{n:02d}.png"}
+            cb = ROOT / "evals" / "color-comfort" / "before" / f"{slug}-{lang}" / "slides" / f"{n:02d}.png"
+            if cb.exists():
+                entry['cbefore'] = f"../color-comfort/before/{slug}-{lang}/slides/{n:02d}.png"
+                n_cbefore_refs.append(str(cb.relative_to(ROOT)))
+            elif (ROOT / "evals" / "color-comfort" / "before" / f"{slug}-{lang}").exists():
+                missing.append(str(cb))  # partial color-before set is a build error
+            slides.append(entry)
         key = f"{slug}-{lang}"
         decks[lang] = {'status': cov.get('status', 'MISSING'), 'pass': cov.get('pass', '0/7'),
                        'builder': (rep.get('builder') or cov.get('builder') or '?'),
@@ -122,8 +151,12 @@ for t in templates:
             pptx.append({'label': f"Harness {lang.upper()} PPTX (engine path)",
                          'href': f"../hackathon/pptx/{slug}-{lang}.pptx"})
     cls = classification.get(did) or {}
+    color_changed = any('cbefore' in s for s in src['spec']) or \
+        any('cbefore' in s for s in src['qdeck']) or \
+        any('cbefore' in s for lang in ('en', 'ko') for s in src['harness'][lang]['slides'])
     DATA.append({
         'id': did, 'slug': slug, 'name': t['name'], 'rank': RANK[did],
+        'colorChanged': color_changed,
         'rankLabel': RANK_LABEL[RANK[did]], 'why': WHY[did],
         'category': cls.get('leaning', '?'),
         'clsNote': cls.get('notes', '') or cls.get('rationale', ''),
@@ -135,6 +168,10 @@ for t in templates:
 
 assert len(DATA) == 27, len(DATA)
 assert not missing, f"{len(missing)} missing: {missing[:5]}"
+_CB = ROOT / "evals" / "color-comfort" / "before"
+cb_disk = sorted(str(p.relative_to(ROOT)) for p in _CB.rglob("*.png")) if _CB.exists() else []
+assert sorted(n_cbefore_refs) == cb_disk, \
+    f"color-before wiring drift: refs={len(n_cbefore_refs)} disk={len(cb_disk)}"
 
 PAGE = """<!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8">
@@ -171,6 +208,11 @@ header p{color:var(--dim);font-size:13.5px;margin:0 0 6px;max-width:1000px}
 .tabs button{background:#232936;color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-size:13.5px;cursor:pointer}
 .tabs button.active{background:var(--acc);color:#181206;font-weight:700;border-color:var(--acc)}
 .tabs button:disabled{opacity:.35;cursor:default}
+.ver{display:flex;gap:8px;padding:10px 22px 0;align-items:center;font-size:13px;color:var(--dim)}
+.ver button{background:#232936;color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:5px 12px;font-size:13px;cursor:pointer}
+.ver button.active{background:var(--acc);color:#181206;font-weight:700;border-color:var(--acc)}
+.ver button:disabled{opacity:.35;cursor:default}
+.ver .src{font-size:12px}
 #main{margin:14px 22px 0;background:#000;border:1px solid var(--line);border-radius:8px;overflow:hidden}
 #main img{width:100%;display:block}
 .cap{padding:8px 22px 0;color:var(--dim);font-size:13px}
@@ -194,7 +236,7 @@ footer{padding:0 28px 90px;color:var(--dim);font-size:13px;max-width:1100px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style></head><body>
 <header><h1>Typodeck 통합 리뷰 — 27개 디자인, 출처 전부 한곳에</h1>
-<p>정제 표본 3종(cover · evidence · explanation) + Quality 풀덱 7장(6종) + Harness 풀덱 EN/KO 7장(27종 전부) + 정제 전 표지(참고용). 뱃지의 PASS는 구조 검증이며 심미 승인이 아닙니다. VIEWED = 리드가 전수 판독한 Harness 덱. 리뷰는 이 페이지에서 새로 시작됩니다(이전 해커톤 갤러리 리뷰와 별개).</p></header>
+<p>정제 표본 3종(cover · evidence · explanation) + Quality 풀덱 7장(6종) + Harness 풀덱 EN/KO 7장(27종 전부) + 정제 전 표지(참고용). 뱃지의 PASS는 구조 검증이며 심미 승인이 아닙니다. VIEWED = 리드가 전수 판독한 Harness 덱. 리뷰는 이 페이지에서 새로 시작됩니다(이전 해커톤 갤러리 리뷰와 별개). Harness EN/KO 탭에서는 재생성 전 렌더(Typo-Before @257cdce)와 현재본(After)을 전환할 수 있습니다. 색상 변경종(하네스 7종 14덱 + 표본 8종 + modulo Quality 풀덱)은 색상-Before(@f0aed77) 버튼으로 변경 전/후를 대조할 수 있습니다.</p></header>
 <div id="bar">
 <input id="q" type="search" placeholder="검색: 이름, slug" style="width:170px">
 <select id="fRank"><option value="all">등급: 전부</option><option value="S">Showcase</option><option value="K">Keep</option><option value="R">Refine?</option><option value="X">Experimental</option></select>
@@ -207,7 +249,7 @@ footer{padding:0 28px 90px;color:var(--dim);font-size:13px;max-width:1100px}
 <div id="comparebar"><span id="cmpcount"></span> <button id="cmpopen">나란히 비교</button> <button id="cmpclear">해제</button></div>
 <div id="detail" role="dialog" aria-label="Detail"><div class="sheet"><button id="closedetail">닫기 ✕</button><div id="dbody"></div></div></div>
 <div id="overlay" role="dialog" aria-label="Compare"><div style="max-width:1700px;margin:0 auto"><button id="closeov">닫기 ✕</button><div class="cols" id="ovcols"></div></div></div>
-<footer>출처: evals/design-quality (정제 표본·풀덱·PPTX 6) · evals/hackathon (Harness EN/KO 54덱·PPTX 6) · evals/design-diversity (정제 전 표지 27, 참고용). 리뷰 데이터는 브라우저 localStorage + JSON 내보내기로 보관됩니다.</footer>
+<footer>출처: evals/design-quality (정제 표본·풀덱·PPTX 6) · evals/hackathon (Harness EN/KO 54덱·PPTX 6) · evals/design-diversity (정제 전 표지 27, 참고용) · evals/typo-only/before (Harness 재생성 전 378장 @257cdce) · evals/color-comfort/before (색상 변경 전 129장 @f0aed77: 하네스 98 + 표본 24 + modulo 풀덱 7). 리뷰 데이터는 브라우저 localStorage + JSON 내보내기로 보관됩니다.</footer>
 <script>
 const DATA=__DATA__;
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -216,7 +258,7 @@ let REV=store.load();
 const RVL={approve:'승인',specialized:'Specialized',refine:'재작업',reject:'반려'};
 function card(t){const el=document.createElement('div');el.className='card';el.dataset.id=t.id;
 const en=t.src.harness.en,ko=t.src.harness.ko;
-el.innerHTML=`<img src="${esc(t.src.spec[0].img)}" alt="${esc(t.id)} cover" loading="lazy"><div class="pad"><h2><span class="did">${esc(t.id)}</span>${esc(t.name)}<span class="rank rank${esc(t.rank)}">${esc(t.rankLabel)}</span></h2><div class="slug">${esc(t.slug)} · ${esc(t.category)}</div><div class="meta">density <b>${esc(t.density)}</b> · formality <b>${esc(t.formality)}</b> · scheme <b>${esc(t.scheme)}</b></div><div class="statusline"><span class="badge ok">표본 3/3</span><span class="badge ${t.src.qdeck.length?'ok':''}">Q풀덱 ${t.src.qdeck.length?'7장':'없음'}</span><span class="badge ${en.status==='PASS'?'ok':'bad'}">EN ${esc(en.status)}${en.viewed?' ·VIEWED':''}</span><span class="badge ${ko.status==='PASS'?'ok':'bad'}">KO ${esc(ko.status)}${ko.viewed?' ·VIEWED':''}</span><span class="badge">PPTX ${t.pptx.length}</span></div><div class="meta">내 리뷰: <b>${esc(RVL[REV[t.id]?.verdict]||'미리뷰')}</b></div><label class="pick"><input type="checkbox" data-pick="${esc(t.id)}"> 비교 선택</label></div>`;
+el.innerHTML=`<img src="${esc(t.src.spec[0].img)}" alt="${esc(t.id)} cover" loading="lazy"><div class="pad"><h2><span class="did">${esc(t.id)}</span>${esc(t.name)}<span class="rank rank${esc(t.rank)}">${esc(t.rankLabel)}</span></h2><div class="slug">${esc(t.slug)} · ${esc(t.category)}</div><div class="meta">density <b>${esc(t.density)}</b> · formality <b>${esc(t.formality)}</b> · scheme <b>${esc(t.scheme)}</b></div><div class="statusline"><span class="badge ok">표본 3/3</span><span class="badge ${t.src.qdeck.length?'ok':''}">Q풀덱 ${t.src.qdeck.length?'7장':'없음'}</span><span class="badge ${en.status==='PASS'?'ok':'bad'}">EN ${esc(en.status)}${en.viewed?' ·VIEWED':''}</span><span class="badge ${ko.status==='PASS'?'ok':'bad'}">KO ${esc(ko.status)}${ko.viewed?' ·VIEWED':''}</span><span class="badge">PPTX ${t.pptx.length}</span>${t.colorChanged?'<span class="badge ok">색변경전 있음</span>':''}</div><div class="meta">내 리뷰: <b>${esc(RVL[REV[t.id]?.verdict]||'미리뷰')}</b></div><label class="pick"><input type="checkbox" data-pick="${esc(t.id)}"> 비교 선택</label></div>`;
 return el}
 const grid=document.getElementById('grid'),count=document.getElementById('count');
 function render(){grid.innerHTML='';const q=document.getElementById('q').value.toLowerCase(),fr=document.getElementById('fRank').value,fc=document.getElementById('fCat').value,fq=document.getElementById('fQ').value,frv=document.getElementById('fReview').value;let n=0;
@@ -230,20 +272,25 @@ document.getElementById('cmpopen').onclick=()=>{const ov=document.getElementById
 document.getElementById('closeov').onclick=()=>document.getElementById('overlay').classList.remove('on');
 const detail=document.getElementById('detail'),dbody=document.getElementById('dbody');
 const TABS=[['spec','정제 표본 3'],['qdeck','Quality 풀덱 7'],['en','Harness EN 7'],['ko','Harness KO 7'],['legacy','정제 전 표지']];
-let D={id:null,tab:'spec',slide:0,seq:[]};
+let D={id:null,tab:'spec',slide:0,seq:[],ver:'after'};
 function tabSlides(t,tab){if(tab==='spec')return t.src.spec;if(tab==='qdeck')return t.src.qdeck;if(tab==='en')return t.src.harness.en.slides;if(tab==='ko')return t.src.harness.ko.slides;return[{label:'legacy cover (정제 전, 참고용)',img:t.src.legacy}];}
 function seqIds(){const ids=[...document.querySelectorAll('#grid .card')].map(el=>el.dataset.id);return ids.length?ids:DATA.map(t=>t.id)}
 function openDetail(id,tab){const t=DATA.find(x=>x.id===id);if(!t)return;D.seq=seqIds();if(!D.seq.includes(id))D.seq=DATA.map(x=>x.id);D.id=id;D.tab=tab||'spec';if(D.tab==='qdeck'&&!t.src.qdeck.length)D.tab='spec';D.slide=0;paintDetail(t);}
 function paintDetail(t){const pos=D.seq.indexOf(D.id);const slides=tabSlides(t,D.tab);if(D.slide>=slides.length)D.slide=0;const s=slides[D.slide];
+const hasBefore=slides.some(x=>x.before);
+const hasCbefore=slides.some(x=>x.cbefore);
+const pic=x=>D.ver==='cbefore'?(x.cbefore||x.img):(D.ver==='before'&&x.before)?x.before:x.img;
 const hd=D.tab==='en'?t.src.harness.en:D.tab==='ko'?t.src.harness.ko:null;
 dbody.innerHTML=`<div class="dhead"><h2><span class="did">${esc(t.id)}</span>${esc(t.name)}<span class="rank rank${esc(t.rank)}">${esc(t.rankLabel)}</span></h2><div class="slug">${esc(t.slug)} · ${esc(t.category)} · density ${esc(t.density)} · formality ${esc(t.formality)} · scheme ${esc(t.scheme)}</div><div class="why"><b>아트디렉션:</b> ${esc(t.why)}</div>${t.clsNote?`<div class="why"><b>Quality 분류:</b> ${esc(t.clsNote)}</div>`:''}${hd?`<div class="why">builder ${esc(hd.builder)} · ${esc(hd.status)} ${esc(hd.pass)}${hd.viewed?' · <b>VIEWED</b>':''}${hd.failing&&hd.failing.length?` · failing: ${esc(hd.failing.join(','))}`:''}</div>`:''}</div>
 <div class="tabs">${TABS.map(([k,l])=>{const dis=(k==='qdeck'&&!t.src.qdeck.length)?'disabled':'';return `<button data-tab="${k}" class="${D.tab===k?'active':''}" ${dis}>${l}</button>`}).join('')}</div>
-<div id="main"><img src="${esc(s.img)}" alt=""></div><div class="cap">${esc(s.label)}${D.tab==='legacy'?' — 정제 전 원본 표지입니다. 현재 품질 기준이 아닙니다.':''}</div>
+<div class="ver">보기: <button data-ver="after" class="${D.ver==='after'?'active':''}">After (현재)</button><button data-ver="cbefore" class="${D.ver==='cbefore'?'active':''}" ${hasCbefore?'':'disabled'}>색상-Before (@f0aed77)</button><button data-ver="before" class="${D.ver==='before'?'active':''}" ${hasBefore?'':'disabled'}>Typo-Before (@257cdce)</button><span class="src">${hasCbefore&&hasBefore?'색상 전/후 + 타이포 전 3단 비교 · 단축키 B':hasCbefore?'색상 전/후 2단 비교 (@f0aed77) · 단축키 B':hasBefore?'Harness EN/KO 탭만 Typo-Before 제공 · 단축키 B':(D.tab==='legacy'?'정제 전 표지는 그 자체가 이전본입니다':'이 탭은 Before 없음')}</span></div>
+<div id="main"><img src="${esc(pic(s))}" alt=""></div><div class="cap">${esc(s.label)}${D.ver==='cbefore'&&s.cbefore?' · 색상-BEFORE @f0aed77 (색상 변경 전 렌더)':(D.ver==='before'&&s.before)?' · TYPO-BEFORE @257cdce (재생성 전 렌더)':(hasCbefore||hasBefore)?' · AFTER (현재 재생성본)':''}${D.tab==='legacy'?' — 정제 전 원본 표지입니다. 현재 품질 기준이 아닙니다.':''}</div>
 <div class="dnav"><button data-nav="-1">◀ 이전</button><button data-nav="1">다음 ▶</button><span class="pos">${D.slide+1} / ${slides.length} · 디자인 ${pos+1} / ${D.seq.length} (←/→ 슬라이드, Shift+←/→ 디자인)</span></div>
-<div id="film">${slides.map((x,i)=>`<img src="${esc(x.img)}" data-i="${i}" class="${i===D.slide?'active':''}" alt="" loading="lazy">`).join('')}</div>
+<div id="film">${slides.map((x,i)=>`<img src="${esc(pic(x))}" data-i="${i}" class="${i===D.slide?'active':''}" alt="" loading="lazy">`).join('')}</div>
 ${t.pptx.length?`<div class="pptx"><b>PPTX:</b> ${t.pptx.map(p=>`<a href="${esc(p.href)}" download>${esc(p.label)} ⬇</a>`).join('')}</div>`:'<div class="pptx">PPTX 없음</div>'}
 <div class="review"><b>내 리뷰</b><br>${['approve|승인','specialized|Specialized','refine|재작업','reject|반려'].map(o=>{const[v,l]=o.split('|');const cur=REV[t.id]?.verdict;return `<label><input type="radio" name="rv" value="${v}" ${cur===v?'checked':''}>${l}</label>`}).join('')}<textarea id="rvnote" placeholder="메모…">${esc(REV[t.id]?.note||'')}</textarea></div>`;
 dbody.querySelector('.tabs').onclick=e=>{const b=e.target.closest('[data-tab]');if(b&&!b.disabled){D.tab=b.dataset.tab;D.slide=0;paintDetail(t);}};
+dbody.querySelector('.ver').onclick=e=>{const b=e.target.closest('[data-ver]');if(b&&!b.disabled){D.ver=b.dataset.ver;paintDetail(t);}};
 dbody.querySelector('.dnav').onclick=e=>{const b=e.target.closest('[data-nav]');if(b)stepSlide(parseInt(b.dataset.nav,10));};
 dbody.querySelector('#film').onclick=e=>{const im=e.target.closest('[data-i]');if(im){D.slide=+im.dataset.i;paintDetail(t);}};
 dbody.querySelectorAll('[name=rv]').forEach(r=>r.onchange=()=>{REV[t.id]=REV[t.id]||{};REV[t.id].verdict=r.value;REV[t.id].updatedAt=new Date().toISOString();store.save(REV);});
@@ -254,7 +301,7 @@ function stepDesign(n){const i=D.seq.indexOf(D.id);openDetail(D.seq[(i+n+D.seq.l
 function closeDetail(){detail.classList.remove('on');history.replaceState(null,'',location.pathname);render();}
 document.getElementById('closedetail').onclick=closeDetail;
 detail.addEventListener('click',e=>{if(e.target===detail)closeDetail();});
-document.addEventListener('keydown',e=>{if(!detail.classList.contains('on'))return;if(e.key==='Escape')closeDetail();else if(e.key==='ArrowRight')e.shiftKey?stepDesign(1):stepSlide(1);else if(e.key==='ArrowLeft')e.shiftKey?stepDesign(-1):stepSlide(-1);});
+document.addEventListener('keydown',e=>{if(!detail.classList.contains('on'))return;if(e.key==='Escape')closeDetail();else if(e.key==='ArrowRight')e.shiftKey?stepDesign(1):stepSlide(1);else if(e.key==='ArrowLeft')e.shiftKey?stepDesign(-1):stepSlide(-1);else if((e.key==='b'||e.key==='B')&&!e.target.closest('textarea,input')){const t=DATA.find(x=>x.id===D.id);if(t){const sl=tabSlides(t,D.tab);const avail=['after'];if(sl.some(x=>x.cbefore))avail.push('cbefore');if(sl.some(x=>x.before))avail.push('before');if(avail.length>1){D.ver=avail[(avail.indexOf(D.ver)+1)%avail.length];paintDetail(t);}}}});
 grid.addEventListener('click',e=>{if(e.target.closest('[data-pick]')||e.target.closest('label.pick'))return;const c=e.target.closest('.card');if(c)openDetail(c.dataset.id);});
 document.getElementById('exp').onclick=()=>{const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),reviews:REV},null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='typodeck-unified-reviews.json';a.click();};
 document.getElementById('imp').onclick=()=>document.getElementById('impfile').click();
@@ -267,4 +314,5 @@ const qp=new URLSearchParams(location.search);if(qp.get('d')&&DATA.some(x=>x.id=
 (OUT / "index.html").write_text(PAGE.replace("__DATA__", json.dumps(DATA)))
 n_q = sum(1 for d in DATA if d['src']['qdeck'])
 n_p = sum(len(d['pptx']) for d in DATA)
-print(f"wrote index.html (27 cards, Q-decks {n_q}, pptx links {n_p})")
+n_cc = sum(1 for d in DATA if d['colorChanged'])
+print(f"wrote index.html (27 cards, Q-decks {n_q}, pptx links {n_p}, color-changed {n_cc}, color-before {len(n_cbefore_refs)})")

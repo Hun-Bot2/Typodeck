@@ -11,7 +11,7 @@
   .fika-slide {
     position: absolute; inset: 0;
     background: #FAFAF7;
-    color: #3D4A54;
+    color: #31404B;
     font-family: 'Nunito Sans', system-ui, sans-serif;
     padding: 96px 120px 88px 120px;
     box-sizing: border-box;
@@ -19,12 +19,11 @@
     flex-direction: column;
   }
   .fika-kicker {
-    display: flex; align-items: center; gap: 18px;
     font-size: 22px; font-weight: 700;
     letter-spacing: 0.15em; text-transform: uppercase;
-    color: #3D4A54;
+    color: #31404B;
+    margin: 0;
   }
-  .fika-dot { width: 14px; height: 14px; border-radius: 999px; background: #E8B4A0; flex: 0 0 auto; }
   .fika-cols {
     flex: 1;
     display: flex; gap: 96px; align-items: center;
@@ -38,33 +37,30 @@
     line-height: 1.12;
     text-transform: lowercase;
     margin: 0;
-    color: #3D4A54;
+    color: #31404B;
   }
-  .fika-rule { height: 2px; border-radius: 2px; background: #F5DCD2; margin: 40px 0 32px 0; max-width: 560px; }
   .fika-sub {
     font-size: 30px; line-height: 1.6; font-weight: 400;
-    margin: 0; max-width: 32ch;
+    margin: 40px 0 0 0; max-width: 32ch;
   }
   .fika-source {
     font-size: 20px; line-height: 1.5; font-weight: 400;
     margin: 32px 0 0; opacity: 0.72;
   }
-  .fika-panel {
+  .fika-figure {
     flex: 1;
-    background: #F5DCD2;
-    border-radius: 24px;
-    padding: 72px 56px;
     box-sizing: border-box;
     display: flex; flex-direction: column;
     align-items: flex-start; justify-content: center;
     align-self: stretch;
+    padding-left: 96px;
   }
   .fika-numeral {
     font-family: 'Fraunces', Georgia, serif;
     font-weight: 500; font-size: 160px; line-height: 1;
-    color: #3D4A54; margin: 0;
+    color: #31404B; margin: 0;
   }
-  .fika-panel-cap { font-size: 24px; line-height: 1.6; margin: 24px 0 0 0; max-width: 16ch; }
+  .fika-figure-cap { font-size: 24px; line-height: 1.6; margin: 24px 0 0 0; max-width: 16ch; }
   .fika-foot {
     display: flex; align-items: center; justify-content: space-between;
     margin-top: 48px;
@@ -92,17 +88,16 @@
 <div id="deck-viewport">
   <div id="deck-stage">
     <div class="fika-slide">
-      <div class="fika-kicker"><span class="fika-dot"></span><span>Finding 01</span></div>
+      <p class="fika-kicker">Finding 01</p>
       <div class="fika-cols">
         <div class="fika-text">
           <h1 class="fika-title">Teams that required a second reviewer before merge contained failures earlier.</h1>
-          <div class="fika-rule"></div>
           <p class="fika-sub">Review depth predicted containment better than team size, tenure, or tooling.</p>
           <p class="fika-source">Fixture data · not a real study</p>
         </div>
-        <div class="fika-panel">
+        <div class="fika-figure">
           <p class="fika-numeral">63%</p>
-          <p class="fika-panel-cap">fewer sev-1 rollbacks</p>
+          <p class="fika-figure-cap">fewer sev-1 rollbacks</p>
         </div>
       </div>
       <div class="fika-foot">

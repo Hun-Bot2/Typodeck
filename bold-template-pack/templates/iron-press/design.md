@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Iron Press
-description: A Victorian letterpress presentation system built on pressed-ink formality. Display type runs in IM Fell English for headlines and tracked small-caps labels, paired with EB Garamond for body and italic accents. The palette sits on aged paper (`#F1E9D6`) with near-black ink (`#1F1A14`) and oxblood (`#7B1E1E`) for rules, ornaments, and emphasis. Every slide is enclosed in a rigid double-rule border frame; composition is centered, symmetrical, and single-measure. Depth is flat impression only — zero shadows, zero rounding, zero gradients.
+description: A Victorian letterpress presentation system built on pressed-ink formality. Display type runs in IM Fell English for headlines and tracked small-caps labels, paired with EB Garamond for body and italic accents. The palette sits on aged paper (`#F1E9D6`) with near-black ink (`#1F1A14`) and oxblood (`#7B1E1E`) for ornaments and emphasis. Typography-only register: no frames, rules, or plates exist — composition is centered, symmetrical, and single-measure, structured by ornaments and whitespace alone. Depth is flat impression only — zero shadows, zero rounding, zero gradients.
 colors:
   aged-paper: "#F1E9D6"
   paper-deep: "#E4D9BE"
@@ -86,18 +86,11 @@ canvas:
   width: 1920px
   height: 1080px
 components:
-  frame:
-    borderOuter: "3px solid {colors.ink}"
-    borderInner: "1px solid {colors.oxblood}"
-    gap: "{spacing.frame-gap}"
-    inset: "{spacing.frame-inset}"
-    description: "Double-rule border enclosing every slide: 3px ink outer rule + 1px oxblood inner rule with 12px gap, inset 40px from stage edge."
-  rule-pair:
-    heightThick: 3px
-    heightThin: 1px
-    gap: 6px
-    color: "{colors.ink}"
-    description: "Thick-over-thin horizontal rule pair (3px + 1px) used above and below headlines. Centered, 240px wide on covers."
+  ornament-break:
+    fontFamily: "'IM Fell English', Georgia, serif"
+    fontSize: 34px
+    color: "{colors.oxblood}"
+    description: "Centered fleuron (❦) row separating kicker, headline, and body. The only separator in the system — rules do not exist."
   ornament:
     fontFamily: "'IM Fell English', Georgia, serif"
     fontSize: 34px
@@ -116,7 +109,7 @@ components:
     fontSize: 22px
     letterSpacing: 0.3em
     color: "{colors.ink}"
-    description: "Centered page numeral flanked by pilcrow ornaments (¶ 1 ¶), bottom center inside the frame."
+    description: "Centered page numeral flanked by pilcrow ornaments (¶ 1 ¶), bottom center of the slide."
 ---
 
 ## Frontend Slides Fixed-Stage Policy
@@ -127,49 +120,48 @@ This policy has higher priority than any source-template responsive behavior des
 
 This policy applies even if the source template was originally implemented with viewport-fluid CSS such as `100vw`, `100vh`, `vw`, `vh`, or `clamp()`. Treat those values as design proportions to translate into 1920×1080 stage coordinates, not as live responsive rules in the generated deck.
 
-Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and panel overlap.
+Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and margin collisions.
 
 ## Overview
 
-Iron Press is a **Victorian letterpress presentation system**. Its foundational premise is the printed page as a fixed artifact: centered formal composition, symmetrical ornaments, double-rule frames, and small-caps hierarchy. Every slide is enclosed in a rigid double-rule border (3px ink outer + 1px oxblood inner); layouts hold a single centered measure with generous top and bottom margins. Curved, scattered, or asymmetric arrangements do not exist.
+Iron Press is a **Victorian letterpress presentation system**. Its foundational premise is the printed page as a fixed artifact: centered formal composition, symmetrical ornaments, fleuron breaks, and small-caps hierarchy. Layouts hold a single centered measure with generous top and bottom margins; symmetry plus whitespace enforces the calm. Curved, scattered, or asymmetric arrangements do not exist.
 
-The type stack is two old-style serifs. **IM Fell English** (weight 400, the face's only weight) is the display face — a weathered antique serif carrying headlines, kickers, small-caps labels, ornaments, and the drop cap. **EB Garamond** is the body face — used for paragraphs at 400 and for the italic subtitle voice. Hierarchy is expressed through size, caps, rules, and oxblood accents; weight contrast is minimal because the Fell faces ship a single weight.
+The type stack is two old-style serifs. **IM Fell English** (weight 400, the face's only weight) is the display face — a weathered antique serif carrying headlines, kickers, small-caps labels, ornaments, and the drop cap. **EB Garamond** is the body face — used for paragraphs at 400 and for the italic subtitle voice. Hierarchy is expressed through size, caps, ornament breaks, and oxblood accents; weight contrast is minimal because the Fell faces ship a single weight.
 
-The palette sits on **aged paper** (`{colors.aged-paper}`) with near-black **ink** (`{colors.ink}`) and **oxblood** (`{colors.oxblood}`) reserved for rules, ornaments, the drop cap, and rare emphasis. Gray (`{colors.gray}`) handles captions and secondary lines. The result reads as a title page from a 19th-century volume — printed, bound, permanent.
+The palette sits on **aged paper** (`{colors.aged-paper}`) with near-black **ink** (`{colors.ink}`) and **oxblood** (`{colors.oxblood}`) reserved for ornaments, the drop cap, and rare emphasis. Gray (`{colors.gray}`) handles captions and secondary lines. The result reads as a title page from a 19th-century volume — printed, bound, permanent.
 
-Depth is **flat impression only**: zero shadows, zero rounded corners, zero gradients, zero blur. Emphasis comes from oxblood ink and rule weight alone, as if from a second pass through the press.
+Depth is **flat impression only**: zero shadows, zero rounded corners, zero gradients, zero blur, zero rules. Emphasis comes from oxblood ink and scale alone, as if from a second pass through the press.
 
-**Density philosophy: stately and sparse.** A typical slide carries one kicker, one headline, one rule pair, one short body measure, and one ornament row. The frame plus whitespace enforces the calm; nothing crowds the edges because the frame forbids it.
+**Density philosophy: stately and sparse.** A typical slide carries one kicker, one headline, one ornament break, one short body measure, and one ornament row. Symmetry plus whitespace enforces the calm; nothing crowds the edges.
 
 **Key Characteristics:**
-- Double-rule border frame (`{components.frame}`) — 3px ink outer + 1px oxblood inner, 12px gap, 40px inset, on every slide.
+- Fleuron ornament breaks (`{components.ornament-break}`) — centered oxblood ❦ rows separating kicker, headline, and body.
 - Centered small-caps hierarchy (`{typography.smallcaps}`) — IM Fell English uppercase at 0.22em tracking for kickers and context.
 - Pilcrow and fleuron ornaments (`{components.ornament}`) — ¶ and ❦ in oxblood marking breaks and flanking the page mark.
 - Ornamental drop cap (`{typography.dropcap}`) — 4-line oxblood Fell initial opening text measures.
-- Pressed-ink flatness — zero shadows, zero rounding, zero gradients.
-- Single-measure centered column — ~56ch centered block with symmetrical rules above and below the headline.
+- Pressed-ink flatness — zero shadows, zero rounding, zero gradients, zero rules.
+- Single-measure centered column — ~56ch centered block with ornament breaks around the headline.
 
 ## Colors
 
 ### Palette
 
 - **Aged Paper** (`{colors.aged-paper}` — `#F1E9D6`): The universal ground. Warm, slightly darkened, suggesting old stock.
-- **Paper Deep** (`{colors.paper-deep}` — `#E4D9BE`): A deeper tone for inset panels on schedules or figure plates. Used sparingly; most slides never need it.
-- **Ink** (`{colors.ink}` — `#1F1A14`): Near-black warm ink. Headlines, body, outer frame rule, rule pairs.
-- **Oxblood** (`{colors.oxblood}` — `#7B1E1E`): The accent ink. Inner frame rule, ornaments, drop cap, emphasis words, thin rules. Never body text.
+- **Paper Deep** (`{colors.paper-deep}` — `#E4D9BE`): A deeper tone retained as a token; never rendered in the typography-only register (no plates, no insets).
+- **Ink** (`{colors.ink}` — `#1F1A14`): Near-black warm ink. Headlines, body, kickers.
+- **Oxblood** (`{colors.oxblood}` — `#7B1E1E`): The accent ink. Ornaments, drop cap, emphasis words. Never body text.
 - **Gray** (`{colors.gray}` — `#4A4A4A`): Captions, datelines, secondary context lines.
 - **White** (`{colors.white}` — `#FFFFFF`): Effectively unused except as a knockout inside oxblood seals (rare). Never a slide ground.
 
 ### Defaults
 
-- **Default surface background**: `{colors.aged-paper}` flat. Pressed-ink tone contrast only — no texture images, no noise overlays.
+- **Default surface background**: `{colors.aged-paper}` flat. Pressed ink on paper only — no texture images, no noise overlays.
 - **Default headline color**: `{colors.ink}`; the drop cap and ornaments are `{colors.oxblood}`.
 - **Default body text color**: `{colors.ink}` at full opacity; captions in `{colors.gray}`.
-- **Default frame**: `{components.frame}` — ink outer, oxblood inner.
-- **Default rule color**: `{colors.ink}` for the thick rule, `{colors.oxblood}` for thin companion rules.
+- **Default separator**: `{components.ornament-break}` — centered oxblood ❦ row; rules do not exist.
 - **Default emphasis**: a single oxblood word or italic Garamond phrase per slide — never bold (the faces have no bold).
 
-When a slide needs a plate or inset (a figure, a schedule), set it on `{colors.paper-deep}` with a 1px ink border — but keep all text ink and the frame unchanged.
+When a slide needs a figure or schedule moment, set it as centered type in the single measure with an ornament break — never a plate, border, or inset.
 
 ## Typography
 
@@ -202,12 +194,12 @@ Never use EB Garamond for headlines or kickers, never use IM Fell English for bo
 
 These treatments are **non-optional whenever the corresponding element type is used**:
 
-- **Every kicker is tracked small caps.** IM Fell English, uppercase, 0.22em tracking, 24px — centered, often flanked by thin rules.
+- **Every kicker is tracked small caps.** IM Fell English, uppercase, 0.22em tracking, 24px — centered, with no flanking marks.
 - **Every cover headline is centered Fell at 80px.** Centered alignment is mandatory for display type on every slide.
-- **Every text measure opens with either a rule pair or a drop cap.** Covers use the rule pair; body slides use the oxblood drop cap.
+- **Every text measure opens with either an ornament break or a drop cap.** Covers use the ❦ break; body slides use the oxblood drop cap.
 - **Every subtitle uses the italic Garamond voice.** 32px italic, centered, in ink — never Fell, never upright, never oxblood.
 - **Every ornament is oxblood.** Pilcrows, fleurons, and the drop cap are always `{colors.oxblood}`; ink ornaments do not exist.
-- **Every page mark is centered with ornaments.** Format `¶ 1 ¶` in Fell 22px with 0.3em numeral tracking, bottom center inside the frame.
+- **Every page mark is centered with ornaments.** Format `¶ 1 ¶` in Fell 22px with 0.3em numeral tracking, bottom center of the slide.
 - **Every context/dateline uses smallcaps-sm.** 20px Fell caps at 0.22em tracking in gray or ink.
 
 ### Typography Principles
@@ -220,65 +212,59 @@ Display type is always **centered**. Body is centered on covers and may justify-
 
 ### Canvas System
 
-The system targets a fixed **1920×1080 stage** per slide. The `{components.frame}` insets 40px from every edge; all content lives inside the inner rule with a further 120px vertical / 160px horizontal padding. The inner content region caps at `max-width: 1400px` and centers.
+The system targets a fixed **1920×1080 stage** per slide. All content lives on the open paper with 120px vertical / 160px horizontal padding. The inner content region caps at `max-width: 1400px` and centers.
 
-The only layout is **centered single-measure**: one centered column at ~56ch. Two-column, scattered, or asymmetric layouts do not exist. Vertical rhythm runs kicker → rule → headline → rule → subtitle → ornament → body → page mark.
+The only layout is **centered single-measure**: one centered column at ~56ch. Two-column, scattered, or asymmetric layouts do not exist. Vertical rhythm runs kicker → ornament → headline → ornament → subtitle → ornament → body → page mark.
 
 ### Persistent Chrome
 
 Two formal elements appear on every slide:
 
-- **Frame** — `{components.frame}` enclosing the whole slide. Non-negotiable; a slide without the frame is not an Iron Press slide.
-- **Page mark** — `{components.page-mark}` centered at the bottom inside the frame: `¶ 1 ¶` in Fell with oxblood ornaments.
+- **Ornament break** — `{components.ornament-break}` separating the major blocks. Non-negotiable; the ❦ row is the system's structural mark.
+- **Page mark** — `{components.page-mark}` centered at the bottom of the slide: `¶ 1 ¶` in Fell with oxblood ornaments.
 
-No navigation rails, no progress bars, no side chrome. The frame is the chrome.
+No navigation rails, no progress bars, no side chrome. Symmetry is the chrome.
 
 ### Centering Discipline
 
-Symmetry is structural. Every element centers on the slide's vertical axis: kickers, headlines, rules (240px wide, centered), subtitles, ornaments, body measures, page marks. Off-center placement of any element breaks the letterpress formality. If content overflows, shorten the copy or reduce the measure — never break centering.
+Symmetry is structural. Every element centers on the slide's vertical axis: kickers, headlines, ornament breaks, subtitles, ornaments, body measures, page marks. Off-center placement of any element breaks the letterpress formality. If content overflows, shorten the copy or reduce the measure — never break centering.
 
 ## Depth and Elevation
 
-The system practices **pressed-ink flatness**. All surfaces are opaque flat fills; the only depth cue is tone contrast (paper-deep inset vs aged-paper ground). Shadows, glows, blurs, gradients, and rounded corners do not exist anywhere in the system.
+The system practices **pressed-ink flatness**. The ground is one opaque flat fill; there are no insets, panels, or plates. Shadows, glows, blurs, gradients, rules, and rounded corners do not exist anywhere in the system.
 
-Emphasis hierarchy is achieved through ink color (ink vs oxblood), rule weight (3px vs 1px), size, caps, and whitespace — exactly as a two-ink letterpress job would. A second "pass through the press" (oxblood) is the system's only elevation metaphor.
+Emphasis hierarchy is achieved through ink color (ink vs oxblood), size, caps, and whitespace — exactly as a two-ink letterpress job would. A second "pass through the press" (oxblood) is the system's only elevation metaphor.
 
 ## Shapes and Treatment
 
 ### Border Radius
 
-Zero everywhere. The frame, rules, insets, and any plate have square corners. A rounded corner would read as a gross anachronism against the letterpress voice.
+There is nothing to round: no frames, rules, insets, or plates exist in the typography-only register. A rounded corner — or any container at all — would read as a gross anachronism against the letterpress voice.
 
 ### Border Weights
 
-- **3px solid ink** — outer frame rule, thick rule of the rule pair.
-- **1px solid oxblood** — inner frame rule, thin companion rules, inset plate borders.
-- Rules are always solid and horizontal (or the frame rectangle); dashed, dotted, or diagonal lines do not exist.
+Borders do not exist. There are no frame rules, companion rules, or plate borders; dashed, dotted, diagonal, and solid lines alike do not exist. Separation is an ornament glyph or whitespace, never a line.
 
 ### Decorative Element Types
 
-**Frame** — Double-rule border (3px ink outer + 1px oxblood inner, 12px gap, 40px inset) enclosing every slide. The system's dominant visual mark.
-
-**Rule pair** — Thick-over-thin (3px + 1px) centered horizontal rules, 240px wide on covers, full-measure on section slides. Used above and below headlines.
+**Ornament break** — Centered oxblood ❦ row in Fell at 34px separating kicker, headline, and body. The system's dominant structural mark.
 
 **Ornament** — Pilcrow (¶) or fleuron (❦) glyph in Fell at 34px, always oxblood. Marks section breaks and flanks the page mark.
 
 **Drop cap** — 4-line (120px) oxblood Fell initial floated left at the head of a body measure, 8px top / 16px right offset.
 
-**Page mark** — Centered `¶ 1 ¶` in Fell 22px, bottom center inside the frame. Oxblood ornaments, ink numeral.
-
-**Inset plate** — Paper-deep rectangle with 1px ink border for figures or schedules. The only nested container in the system.
+**Page mark** — Centered `¶ 1 ¶` in Fell 22px, bottom center of the slide. Oxblood ornaments, ink numeral.
 
 ## Do's and Don'ts
 
 ### Do
 
-- Enclose every slide in the double-rule frame with the exact 3px/1px/12px/40px construction.
-- Center every element on the vertical axis — kickers, headlines, rules, body, page marks.
+- Separate kicker, headline, and body with the centered oxblood ❦ ornament break.
+- Center every element on the vertical axis — kickers, headlines, ornaments, body, page marks.
 - Set kickers and context lines in tracked Fell small caps (0.22em).
 - Use the italic Garamond voice for every subtitle and lede.
 - Render ornaments and the drop cap in oxblood, always.
-- Express hierarchy through size, caps, rules, and the second ink — never through weight.
+- Express hierarchy through size, caps, ornaments, and the second ink — never through weight.
 - Keep the single centered measure at ~56ch with generous top/bottom margins.
 - Flank the page numeral with pilcrow ornaments on every slide.
 
@@ -289,10 +275,10 @@ Zero everywhere. The frame, rules, insets, and any plate have square corners. A 
 - Don't use bold or heavy weights; the faces have no bold and faux-bold is forbidden.
 - Don't set body text in oxblood — the accent ink is for ornaments and rare emphasis only.
 - Don't use IM Fell English for body or EB Garamond for headlines/kickers.
-- Don't add borders beyond the frame, rule pairs, and plate insets.
-- Don't use dashed, dotted, diagonal, or curved rules — straight solid rules only.
+- Don't add frames, rules, borders, plates, or insets of any kind.
+- Don't use dashed, dotted, diagonal, curved, or straight rules — lines do not exist.
 - Don't introduce a third ink color; the palette is ink + oxblood + gray on aged paper.
-- Don't omit the frame, the rule pair, or the page mark on any slide.
+- Don't omit the ornament break or the page mark on any slide.
 - Don't letterspace body text or headline Fell — tracking belongs to caps runs only.
 
 ## Responsive Behavior
@@ -302,7 +288,7 @@ Iron Press is a **fixed-stage system** (1920×1080) under the Frontend Slides po
 ### Scaling Behavior
 
 - Hero 80px, headline 76px, subhead 42px, body 30px at stage scale.
-- Frame construction (3px/1px/12px/40px) and rule widths are fixed pixel values.
+- Ornament-break size (34px) and page-mark tracking are fixed values.
 - The 56ch measure and 1400px content cap scale with the uniform stage transform only.
 
 ### Component Breakpoints
@@ -353,40 +339,40 @@ Add to the template's `<head>`:
 
 - **Line-height**: increase by ~15–20% from the Latin spec. Body 1.85–1.95 (up from 1.65), display 1.3–1.4 (up from 1.15–1.25).
 - **Letter-spacing**: set to 0 on every CJK run. The 0.22em small-caps tracking and 0.3em page-mark tracking must not apply to CJK characters.
-- **Text transform**: don't apply `uppercase` to CJK text — CJK has no case. Kickers keep their centered position and flanking rules so they still read as kickers.
+- **Text transform**: don't apply `uppercase` to CJK text — CJK has no case. Kickers keep their centered position so they still read as kickers.
 - **Punctuation**: use full-width CJK punctuation (。，：；！？「」) in Korean sentences.
 - **No period on display headlines**: omit trailing 。 on display-scale headlines per CJK convention.
 - **Space between CJK and Latin**: insert an ASCII space between CJK characters and adjacent Latin/digits in mixed sentences.
 
 ### Aesthetic Notes for This System
 
-The system's antique voice depends on Fell's weathered irregularity, which no CJK face reproduces. Compensate with the **non-typographic** signature elements: the double-rule frame, rule pairs, and oxblood Fell ornaments (kept in the Latin face) carry the letterpress identity. Noto Serif KR at 600 gives headlines enough gravitas to sit in Fell's place.
+The system's antique voice depends on Fell's weathered irregularity, which no CJK face reproduces. Compensate with the signature ornaments: the oxblood Fell ¶/❦ glyphs (kept in the Latin face) and the centered symmetry carry the letterpress identity. Noto Serif KR at 600 gives headlines enough gravitas to sit in Fell's place.
 
 The italic Garamond subtitle voice has no CJK equivalent (CJK italics are faked obliques); set CJK subtitles upright in Noto Serif KR 400 at the same 32px size and let the centered position plus flanking ornament carry the subtitle signal.
 
 ### Known CJK Gap
 
-- **No weathered-CJK display face on CDN.** Fell's antique roughness cannot transfer; the CJK build reads "formal serif" rather than "Victorian press". The frame and ornaments must carry the period signal alone.
+- **No weathered-CJK display face on CDN.** Fell's antique roughness cannot transfer; the CJK build reads "formal serif" rather than "Victorian press". The ornaments and symmetry must carry the period signal alone.
 - **No CJK italic.** The subtitle voice collapses to upright; do not apply synthetic oblique to CJK runs.
 
 ## Iteration Guide
 
-1. Any new slide starts on the aged-paper ground inside the exact double-rule frame with a centered page mark.
-2. Any new kicker uses Fell small caps (24px, 0.22em, centered), often flanked by thin rules.
-3. Any new headline uses centered Fell at the matching scale token with a rule pair above and below.
+1. Any new slide starts on the open aged-paper ground with a centered page mark.
+2. Any new kicker uses Fell small caps (24px, 0.22em, centered), with no flanking marks.
+3. Any new headline uses centered Fell at the matching scale token with an ornament break above and below.
 4. Any new subtitle uses the 32px italic Garamond voice, centered, in ink.
 5. Any new body measure opens with an oxblood drop cap and holds ~56ch centered.
 6. Any new ornament (¶/❦) renders in Fell at 34px in oxblood.
 7. Any new emphasis uses oxblood ink or Garamond italic — never bold, never underline.
-8. Any new inset (figure, schedule) uses a paper-deep plate with a 1px ink border.
-9. Any new color must be ink, oxblood, or gray; no third ink, no tints beyond paper-deep.
+8. Any new figure moment uses centered type in the single measure with an ornament break — never a plate or border.
+9. Any new color must be ink, oxblood, or gray; no third ink, no rendered tints.
 10. Motion is limited to an optional 600ms fade honoring `prefers-reduced-motion`; stillness is the default.
 
 ## Known Gaps
 
 - **Fonts**: IM Fell English / EB Garamond via Google Fonts CDN (`display=swap`); fallbacks `Georgia, serif` for both faces. No font files committed. Offline rendering falls back to Georgia and loses the weathered Fell character.
 - **Single weight**: neither display role has a bold; faux-bold is forbidden, so emphasis vocabulary is limited to ink color, italic, size, and caps.
-- **Frame is fixed construction**: the 3px/1px/12px/40px frame does not adapt to unusual aspect ratios; the fixed 1920×1080 stage is assumed.
+- **No frames or rules**: the typography-only register has no frame construction; symmetry and ornament breaks structure the slide.
 - **Page marks are manual**: the `¶ 1 ¶` numeral is authored per slide; there is no auto-numbering layer.
 - **No dark/color surfaces**: the system is aged-paper only; dark or saturated slides would need a new palette.
 - **Fleuron availability**: the ❦ glyph depends on Fell/Georgia coverage; if missing, fall back to ¶ (always available) rather than an image.
@@ -403,4 +389,4 @@ The italic Garamond subtitle voice has no CJK equivalent (CJK italics are faked 
 | 6 | Grain / scanline / noise overlays | Not used | full | N/A — tone contrast only |
 | 7 | Transparency layers | Not used | full | N/A — all inks opaque |
 | 8 | Custom fonts | IM Fell English + EB Garamond via Google Fonts CDN | partial | Embedded or substituted serif pair (Georgia) |
-| 9 | Absolute-positioned decor | Frame rules, ornaments, drop cap | full | Grouped native shapes |
+| 9 | Absolute-positioned decor | Ornaments, drop cap (type only) | full | Native text boxes 1:1 |

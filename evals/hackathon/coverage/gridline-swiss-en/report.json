@@ -1,10 +1,10 @@
 {
-  "harness": "0.1.0",
+  "harness": "0.2.0",
   "design": "gridline-swiss",
   "lang": "en",
   "builder": "bespoke",
   "localeNote": "no locales/ko override file; CJK rules from design.md CJK section",
-  "createdAt": "2026-11-03T19:04:59.945Z",
+  "createdAt": "2026-11-04T08:03:31.624Z",
   "status": "PASS",
   "summary": {
     "pass": 7,
@@ -18,7 +18,7 @@
       "png": "slides/01.png",
       "role": "cover",
       "roleReason": "intent+shape match (score 39)",
-      "compositionNote": "cover composition: display 118px + lede",
+      "compositionNote": "cover composition: display 118px + lede, type only",
       "repairs": [],
       "rounds": 1,
       "checks": {
@@ -32,7 +32,7 @@
         },
         "clip": {
           "ok": true,
-          "detail": "rail + stage containment holds"
+          "detail": "numeral + stage containment holds"
         },
         "verbatim": {
           "ok": true,
@@ -44,7 +44,7 @@
         },
         "spec": {
           "ok": true,
-          "detail": "chrome + type rules per spec"
+          "detail": "typography-only chrome + type rules hold"
         }
       },
       "status": "PASS"
@@ -69,7 +69,7 @@
         },
         "clip": {
           "ok": true,
-          "detail": "rail + stage containment holds"
+          "detail": "numeral + stage containment holds"
         },
         "verbatim": {
           "ok": true,
@@ -81,7 +81,7 @@
         },
         "spec": {
           "ok": true,
-          "detail": "chrome + type rules per spec"
+          "detail": "typography-only chrome + type rules hold"
         }
       },
       "status": "PASS"
@@ -106,7 +106,7 @@
         },
         "clip": {
           "ok": true,
-          "detail": "rail + stage containment holds"
+          "detail": "numeral + stage containment holds"
         },
         "verbatim": {
           "ok": true,
@@ -118,7 +118,7 @@
         },
         "spec": {
           "ok": true,
-          "detail": "chrome + type rules per spec"
+          "detail": "typography-only chrome + type rules hold"
         }
       },
       "status": "PASS"
@@ -129,7 +129,7 @@
       "png": "slides/04.png",
       "role": "evidence",
       "roleReason": "intent+shape match (score 59)",
-      "compositionNote": "evidence composition: message 48px + stat/finding row under 2px rule",
+      "compositionNote": "evidence composition: message 48px + stat/finding group, whitespace-separated",
       "repairs": [],
       "rounds": 1,
       "checks": {
@@ -143,7 +143,7 @@
         },
         "clip": {
           "ok": true,
-          "detail": "rail + stage containment holds"
+          "detail": "numeral + stage containment holds"
         },
         "verbatim": {
           "ok": true,
@@ -155,7 +155,7 @@
         },
         "spec": {
           "ok": true,
-          "detail": "chrome + type rules per spec"
+          "detail": "typography-only chrome + type rules hold"
         }
       },
       "status": "PASS"
@@ -166,7 +166,7 @@
       "png": "slides/05.png",
       "role": "comparison",
       "roleReason": "intent+shape match (score 72)",
-      "compositionNote": "comparison composition: two-zone A/B, positional identity, valence squares",
+      "compositionNote": "comparison composition: two-zone A/B, positional identity, accent marks flags",
       "repairs": [],
       "rounds": 1,
       "checks": {
@@ -180,7 +180,7 @@
         },
         "clip": {
           "ok": true,
-          "detail": "rail + stage containment holds"
+          "detail": "numeral + stage containment holds"
         },
         "verbatim": {
           "ok": true,
@@ -192,7 +192,7 @@
         },
         "spec": {
           "ok": true,
-          "detail": "chrome + type rules per spec"
+          "detail": "typography-only chrome + type rules hold"
         }
       },
       "status": "PASS"
@@ -203,46 +203,7 @@
       "png": "slides/06.png",
       "role": "dense",
       "roleReason": "intent+shape match (score 79)",
-      "compositionNote": "dense composition: swiss table 21px, rail narrowed to cols 10-12; adjustments: {\"numeralPx\":260}",
-      "repairs": [
-        "round 1: numeralPx 300->260"
-      ],
-      "rounds": 2,
-      "checks": {
-        "dims": {
-          "ok": true,
-          "detail": "png is 1920x1080"
-        },
-        "overflow": {
-          "ok": true,
-          "detail": "no overflow"
-        },
-        "clip": {
-          "ok": true,
-          "detail": "rail + stage containment holds"
-        },
-        "verbatim": {
-          "ok": true,
-          "detail": "verbatim: 55 strings present"
-        },
-        "fixture": {
-          "ok": true,
-          "detail": "fixture marker present"
-        },
-        "spec": {
-          "ok": true,
-          "detail": "chrome + type rules per spec"
-        }
-      },
-      "status": "PASS"
-    },
-    {
-      "index": 7,
-      "file": "slides/07.html",
-      "png": "slides/07.png",
-      "role": "closing",
-      "roleReason": "intent+shape match (score 36)",
-      "compositionNote": "closing composition: display 118px + recap",
+      "compositionNote": "dense composition: typographic ledger 21px, aligned columns, no grid",
       "repairs": [],
       "rounds": 1,
       "checks": {
@@ -256,7 +217,44 @@
         },
         "clip": {
           "ok": true,
-          "detail": "rail + stage containment holds"
+          "detail": "numeral + stage containment holds"
+        },
+        "verbatim": {
+          "ok": true,
+          "detail": "verbatim: 55 strings present"
+        },
+        "fixture": {
+          "ok": true,
+          "detail": "fixture marker present"
+        },
+        "spec": {
+          "ok": true,
+          "detail": "typography-only chrome + type rules hold"
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "index": 7,
+      "file": "slides/07.html",
+      "png": "slides/07.png",
+      "role": "closing",
+      "roleReason": "intent+shape match (score 36)",
+      "compositionNote": "closing composition: display 118px + recap, type only",
+      "repairs": [],
+      "rounds": 1,
+      "checks": {
+        "dims": {
+          "ok": true,
+          "detail": "png is 1920x1080"
+        },
+        "overflow": {
+          "ok": true,
+          "detail": "no overflow"
+        },
+        "clip": {
+          "ok": true,
+          "detail": "numeral + stage containment holds"
         },
         "verbatim": {
           "ok": true,
@@ -268,7 +266,7 @@
         },
         "spec": {
           "ok": true,
-          "detail": "chrome + type rules per spec"
+          "detail": "typography-only chrome + type rules hold"
         }
       },
       "status": "PASS"

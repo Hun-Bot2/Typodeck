@@ -8,52 +8,40 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;500&family=Silkscreen:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only: glowing phosphor/amber/bone type on the void. No
+     cabinet frame, rails, screws, slots, ticker band, scanlines, vignette,
+     or block cursor. Glow is light on glyphs (text-shadow only) — zero
+     box-shadow, zero borders, zero fills. */
   .coinop-slide { position: absolute; inset: 0; background: #060A06; overflow: hidden;
     font-family: 'IBM Plex Mono', ui-monospace, monospace; }
-  .coinop-frame { position: absolute; inset: 56px; border: 4px solid #FFB000;
-    box-shadow: 0 0 18px rgba(255,176,0,.35), inset 0 0 18px rgba(255,176,0,.12); }
-  .coinop-inner { position: absolute; inset: 16px; border: 2px solid #33FF66;
-    box-shadow: 0 0 14px rgba(51,255,102,.30), inset 0 0 24px rgba(51,255,102,.06);
-    display: flex; flex-direction: column; }
-  .coinop-screw { position: absolute; width: 12px; height: 12px; background: #FFB000;
-    box-shadow: 0 0 8px rgba(255,176,0,.8), 0 0 28px rgba(255,176,0,.35); }
-  .coinop-ticker { height: 64px; flex: 0 0 auto; background: #FFB000; overflow: hidden;
-    display: flex; align-items: center; justify-content: center; }
-  /* Static marquee: the frozen first frame ships exactly as set — no mid-scroll
-     clip. Motion is never load-bearing; see Known Gaps. */
-  .coinop-ticker-track { display: flex; flex: 0 0 auto; align-items: center; justify-content: center; }
-  .coinop-ticker span { font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 20px;
-    letter-spacing: 0.08em; text-transform: uppercase; color: #060A06; white-space: nowrap; }
+  .coinop-stage { position: absolute; inset: 72px; display: flex; flex-direction: column; }
+  .coinop-marquee { flex: 0 0 auto; text-align: center;
+    font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 20px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: #F2A91E; margin: 0;
+    text-shadow: 0 0 8px rgba(242,169,30,.7), 0 0 28px rgba(242,169,30,.3); }
   .coinop-well { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center;
     justify-content: center; text-align: center; padding: 24px 72px; min-height: 0; }
-  .coinop-slotlabel { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-  .coinop-slot { width: 10px; height: 44px; border: 2px solid #FFB000; border-radius: 6px;
-    box-shadow: 0 0 8px rgba(255,176,0,.5); flex: 0 0 auto; }
-  .coinop-slotlabel-text { font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 17px;
-    letter-spacing: 0.14em; text-transform: uppercase; color: #FFB000;
-    text-shadow: 0 0 8px rgba(255,176,0,.8), 0 0 28px rgba(255,176,0,.35); white-space: nowrap; }
+  .coinop-eyebrow { margin: 0 0 28px 0;
+    font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 17px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: #F2A91E; white-space: nowrap;
+    text-shadow: 0 0 8px rgba(242,169,30,.7), 0 0 28px rgba(242,169,30,.3); }
+  .coinop-eyebrow .pm { color: #1FA84A; text-shadow: none; padding: 0 16px; }
   .coinop-title { font-family: 'VT323', ui-monospace, monospace; font-weight: 400;
-    font-size: 108px; line-height: 1.0; letter-spacing: 0.01em; color: #33FF66; margin: 0;
+    font-size: 108px; line-height: 1.0; letter-spacing: 0.01em; color: #3FE673; margin: 0;
     max-width: 1400px; text-wrap: balance;
-    text-shadow: 0 0 8px rgba(51,255,102,.9), 0 0 32px rgba(51,255,102,.45), 0 0 90px rgba(51,255,102,.25); }
+    text-shadow: 0 0 8px rgba(63,230,115,.75), 0 0 32px rgba(63,230,115,.38), 0 0 90px rgba(63,230,115,.22); }
   .coinop-ticks { color: #1FA84A; font-size: 22px; letter-spacing: 24px; margin: 20px 0 20px 24px; }
   .coinop-subtitle { font-size: 22px; line-height: 1.7; color: #E8E4D8; margin: 0; max-width: 66ch;
     text-shadow: 0 0 6px rgba(232,228,216,.35); }
   .coinop-footer { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 72px 28px; font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 13px;
+    font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 13px;
     letter-spacing: 0.18em; text-transform: uppercase; color: #1FA84A; }
-  .coinop-cursor { display: inline-block; width: 18px; height: 26px; background: #33FF66;
-    box-shadow: 0 0 6px rgba(51,255,102,.7), 0 0 24px rgba(51,255,102,.35);
-    vertical-align: -5px; animation: coinop-blink 1.06s steps(1) infinite; }
+  .coinop-cursor { color: #3FE673; font-family: 'VT323', ui-monospace, monospace; font-size: 30px;
+    text-shadow: 0 0 6px rgba(63,230,115,.6), 0 0 24px rgba(63,230,115,.3);
+    animation: coinop-blink 1.06s steps(1) infinite; }
   @keyframes coinop-blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
-  .coinop-rails { position: absolute; top: 0; bottom: 0; width: 10px; display: flex;
-    flex-direction: column; justify-content: center; gap: 32px; }
-  .coinop-scan { position: absolute; inset: 0; z-index: 49; pointer-events: none;
-    background: repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(0,0,0,.28) 3px, rgba(0,0,0,.28) 4px); }
-  .coinop-vig { position: absolute; inset: 0; z-index: 50; pointer-events: none;
-    background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,.55) 100%); }
   @media (prefers-reduced-motion: reduce) {
-    .coinop-ticker-track, .coinop-cursor { animation: none; }
+    .coinop-cursor { animation: none; }
   }
 </style>
 <!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
@@ -92,42 +80,20 @@
   <div id="deck-stage">
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <div class="coinop-slide">
-      <div class="coinop-frame">
-        <span class="coinop-screw" style="top:-8px;left:-8px"></span>
-        <span class="coinop-screw" style="top:-8px;right:-8px"></span>
-        <span class="coinop-screw" style="bottom:-8px;left:-8px"></span>
-        <span class="coinop-screw" style="bottom:-8px;right:-8px"></span>
-        <div class="coinop-inner">
-          <div class="coinop-ticker">
-            <div class="coinop-ticker-track">
-              <span>Typodeck Research · November 2026</span>
-            </div>
-          </div>
-          <div class="coinop-well">
-            <div class="coinop-slotlabel">
-              <span class="coinop-slot"></span>
-              <span class="coinop-slotlabel-text">Case Files</span>
-              <span class="coinop-slot"></span>
-            </div>
-            <h1 class="coinop-title">The Hidden Cost of Rushing to Ship</h1>
-            <div class="coinop-ticks">+ + +</div>
-            <p class="coinop-subtitle">What 11 postmortems taught us about review discipline</p>
-          </div>
-          <div class="coinop-footer">
-            <span>Page 01</span>
-            <span><span class="coinop-cursor"></span></span>
-            <span>Typodeck Research</span>
-          </div>
+      <div class="coinop-stage">
+        <p class="coinop-marquee">Typodeck Research · November 2026</p>
+        <div class="coinop-well">
+          <p class="coinop-eyebrow"><span class="pm">+</span>Case Files<span class="pm">+</span></p>
+          <h1 class="coinop-title">The Hidden Cost of Rushing to Ship</h1>
+          <div class="coinop-ticks">+ + +</div>
+          <p class="coinop-subtitle">What 11 postmortems taught us about review discipline</p>
         </div>
-        <div class="coinop-rails" style="left:-24px">
-          <span class="coinop-slot"></span><span class="coinop-slot"></span><span class="coinop-slot"></span>
-        </div>
-        <div class="coinop-rails" style="right:-24px">
-          <span class="coinop-slot"></span><span class="coinop-slot"></span><span class="coinop-slot"></span>
+        <div class="coinop-footer">
+          <span>Page 01</span>
+          <span class="coinop-cursor">▊</span>
+          <span>Typodeck Research</span>
         </div>
       </div>
-      <div class="coinop-scan"></div>
-      <div class="coinop-vig"></div>
     </div>
     <!-- /DESIGN SLIDE MARKUP -->
   </div>

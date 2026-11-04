@@ -85,6 +85,61 @@ class Cdp {
   }
 }
 
+export const CHROME_LAUNCH_ATTEMPTS = 3;
+
+/**
+ * Launch Chrome with bounded retries on ascending ports.
+ * Sequential sweep runs reuse one base port while the previous Chrome may
+ * still be releasing it (stop() only waits 300ms after SIGTERM), so a
+ * first-attempt bind/start failure is retried on base+1, base+2, ... with a
+ * short backoff. `launch` is injectable for unit tests.
+ * Returns { chrome, port } for the winning port; throws the last error when
+ * every attempt fails.
+ */
+export async function launchChromeWithRetry(basePort, { attempts = CHROME_LAUNCH_ATTEMPTS, launch = launchChrome, backoffMs = 1500 } = {}) {
+  let last;
+  for (let i = 0; i < attempts; i++) {
+    const port = basePort + i;
+    try {
+      const chrome = await launch(port);
+      return { chrome, port };
+    } catch (e) {
+      last = e;
+      if (i + 1 < attempts) await sleep(backoffMs);
+    }
+  }
+  throw last;
+}
+
+/**
+ * Wait for a debug endpoint on `port`, then verify it belongs to OUR spawned
+ * child. A bare "endpoint answers" check can attach to a foreign browser
+ * when another sweep holds the port (concurrent runs share the default
+ * 9333): our Chrome exits when it cannot bind, so after a grace window we
+ * claim the port only if our child is still alive. Throws on timeout,
+ * early child exit, or foreign ownership (caller retries on port+1).
+ */
+export async function waitForDebugPort(port, child, { timeoutMs = 25000, graceMs = 2000 } = {}) {
+  const t0 = Date.now();
+  for (;;) {
+    try {
+      const res = await fetch(`http://127.0.0.1:${port}/json/version`);
+      if (res.ok) break;
+    } catch { /* not up yet */ }
+    if (child.exitCode !== null || child.signalCode !== null) {
+      throw new Error(`chrome exited during startup on port ${port}`);
+    }
+    if (Date.now() - t0 > timeoutMs) {
+      throw new Error('chrome did not start a debug endpoint in 25s');
+    }
+    await sleep(150);
+  }
+  await sleep(graceMs);
+  if (child.exitCode !== null || child.signalCode !== null) {
+    throw new Error(`debug port ${port} is held by another process (our Chrome exited)`);
+  }
+}
+
 export async function launchChrome(port) {
   const exe = await findChrome();
   const profile = await fs.mkdtemp(path.join(os.tmpdir(), 'td-harness-'));
@@ -101,17 +156,12 @@ export async function launchChrome(port) {
     '--allow-file-access-from-files',
     'about:blank',
   ], { stdio: ['ignore', 'ignore', 'ignore'] });
-  const t0 = Date.now();
-  for (;;) {
-    try {
-      const res = await fetch(`http://127.0.0.1:${port}/json/version`);
-      if (res.ok) break;
-    } catch { /* not up yet */ }
-    if (Date.now() - t0 > 25000) {
-      child.kill();
-      throw new Error('chrome did not start a debug endpoint in 25s');
-    }
-    await sleep(150);
+  try {
+    await waitForDebugPort(port, child);
+  } catch (e) {
+    try { child.kill(); } catch { /* already exited */ }
+    try { await fs.rm(profile, { recursive: true, force: true }); } catch { /* tmp */ }
+    throw e;
   }
   return {
     child,

@@ -11,7 +11,7 @@
   .fika-slide {
     position: absolute; inset: 0;
     background: #FAFAF7;
-    color: #3D4A54;
+    color: #31404B;
     font-family: 'Nunito Sans', system-ui, sans-serif;
     padding: 96px 120px 88px 120px;
     box-sizing: border-box;
@@ -19,12 +19,11 @@
     flex-direction: column;
   }
   .fika-kicker {
-    display: flex; align-items: center; gap: 18px;
     font-size: 22px; font-weight: 700;
     letter-spacing: 0.15em; text-transform: uppercase;
-    color: #3D4A54;
+    color: #31404B;
+    margin: 0;
   }
-  .fika-dot { width: 14px; height: 14px; border-radius: 999px; background: #7FA6C9; flex: 0 0 auto; }
   .fika-cols {
     flex: 1;
     display: flex; gap: 96px; align-items: center;
@@ -38,44 +37,38 @@
     line-height: 1.12;
     text-transform: lowercase;
     margin: 0;
-    color: #3D4A54;
+    color: #31404B;
   }
-  .fika-rule { height: 2px; border-radius: 2px; background: #DCE8E3; margin: 40px 0 32px 0; max-width: 560px; }
   .fika-sub {
     font-size: 30px; line-height: 1.6; font-weight: 400;
-    margin: 0; max-width: 30ch;
+    margin: 40px 0 0 0; max-width: 30ch;
   }
-  .fika-chips { display: flex; gap: 20px; margin-top: 40px; flex-wrap: wrap; }
-  .fika-chip {
+  .fika-words {
+    display: flex; gap: 20px; align-items: baseline;
+    margin-top: 40px; flex-wrap: wrap;
     font-size: 22px; font-weight: 700; letter-spacing: 0.04em;
-    color: #3D4A54; border-radius: 999px; padding: 14px 28px;
+    color: #182B49;
   }
-  .fika-chip.c1 { background: #A8C3B9; }
-  .fika-chip.c2 { background: #E8B4A0; }
-  .fika-chip.c3 { background: #7FA6C9; }
-  .fika-panel {
+  .fika-words .sep { color: #31404B; opacity: 0.45; font-weight: 400; }
+  .fika-figure {
     flex: 1;
-    background: #DCE8E3;
-    border-radius: 24px;
-    padding: 72px 56px;
     box-sizing: border-box;
     display: flex; flex-direction: column;
     align-items: flex-start; justify-content: center;
     align-self: stretch;
-    box-shadow: 0 8px 24px rgba(61, 74, 84, 0.08);
+    padding-left: 96px;
   }
   .fika-numeral {
     font-family: 'Fraunces', Georgia, serif;
     font-weight: 500; font-size: 200px; line-height: 1;
-    color: #3D4A54; margin: 0;
+    color: #31404B; margin: 0;
   }
-  .fika-panel-cap { font-size: 24px; line-height: 1.6; margin: 24px 0 0 0; max-width: 16ch; }
+  .fika-figure-cap { font-size: 24px; line-height: 1.6; margin: 24px 0 0 0; max-width: 16ch; }
   .fika-foot {
     display: flex; align-items: center; justify-content: space-between;
     margin-top: 48px;
   }
   .fika-page { font-size: 20px; font-weight: 700; letter-spacing: 0.2em; }
-  .fika-context { font-size: 20px; font-weight: 400; opacity: 0.72; }
 </style>
 <!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
 <style>
@@ -113,21 +106,20 @@
   <div id="deck-stage">
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <div class="fika-slide">
-      <div class="fika-kicker"><span class="fika-dot"></span><span>Typodeck Research · November 2026</span></div>
+      <p class="fika-kicker">Typodeck Research · November 2026</p>
       <div class="fika-cols">
         <div class="fika-text">
           <h1 class="fika-title">The Hidden Cost of Rushing to Ship</h1>
-          <div class="fika-rule"></div>
           <p class="fika-sub">What 11 postmortems taught us about review discipline</p>
-          <div class="fika-chips">
-            <span class="fika-chip c1">rushing to ship</span>
-            <span class="fika-chip c2">11 postmortems</span>
-            <span class="fika-chip c3">review discipline</span>
+          <div class="fika-words">
+            <span>rushing to ship</span><span class="sep">·</span>
+            <span>11 postmortems</span><span class="sep">·</span>
+            <span>review discipline</span>
           </div>
         </div>
-        <div class="fika-panel">
+        <div class="fika-figure">
           <p class="fika-numeral">11</p>
-          <p class="fika-panel-cap">postmortems</p>
+          <p class="fika-figure-cap">postmortems</p>
         </div>
       </div>
       <div class="fika-foot">

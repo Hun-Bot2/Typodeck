@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Inter:wght@500&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only: figures stack with whitespace between. No hairlines. */
   .cv-slide {
     position: absolute; inset: 0;
     background: #FBF7EF;
@@ -23,21 +24,16 @@
     letter-spacing: 0.24em; text-transform: uppercase;
     color: #6B6257;
   }
-  .cv-running-rule { height: 1px; background: #B9A88F; margin-top: 18px; }
   .cv-main {
     flex: 1; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     text-align: center; min-height: 0;
   }
   .cv-kicker {
-    display: flex; align-items: center; gap: 24px;
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 16px; font-weight: 500;
     letter-spacing: 0.34em; text-transform: uppercase;
     color: #7A2E2E; white-space: nowrap;
-  }
-  .cv-kicker::before, .cv-kicker::after {
-    content: ""; display: block; width: 120px; height: 1px; background: #7A2E2E;
   }
   .cv-section-title {
     font-family: 'Newsreader', Georgia, serif;
@@ -46,24 +42,22 @@
     max-width: 1240px; text-wrap: balance;
   }
   .cv-figure { margin: 36px 0 0; }
-  .cv-figure-rule { width: 200px; height: 1px; background: #B9A88F; margin: 0 auto; }
   .cv-figure-num {
     font-family: 'Newsreader', Georgia, serif;
     font-size: 68px; font-weight: 600; line-height: 1;
-    color: #1C1A17; margin: 28px 0 0;
+    color: #1C1A17; margin: 0;
   }
   .cv-figure-label {
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 14px; font-weight: 500;
     letter-spacing: 0.24em; text-transform: uppercase;
-    color: #6B6257; margin: 12px 0 28px;
+    color: #6B6257; margin: 12px 0 0;
   }
   .cv-body {
     font-family: 'Newsreader', Georgia, serif;
     font-size: 24px; font-weight: 400; line-height: 1.7;
     color: #1C1A17; max-width: 780px; margin: 32px 0 0;
   }
-  .cv-folio-rule { height: 1px; background: #B9A88F; }
   .cv-folio {
     display: flex; align-items: baseline; justify-content: space-between;
     padding-top: 20px;
@@ -105,21 +99,17 @@
     <section class="cv-slide">
       <header>
         <div class="cv-running"><span>The Hidden Cost of Rushing to Ship</span><span>November 2026</span></div>
-        <div class="cv-running-rule"></div>
       </header>
       <div class="cv-main">
         <div class="cv-kicker">Finding 01</div>
         <h1 class="cv-section-title">Teams that required a second reviewer before merge contained failures earlier.</h1>
         <div class="cv-figure">
-          <div class="cv-figure-rule"></div>
           <div class="cv-figure-num">63%</div>
           <div class="cv-figure-label">fewer sev-1 rollbacks</div>
-          <div class="cv-figure-rule"></div>
         </div>
         <p class="cv-body">Review depth predicted containment better than team size, tenure, or tooling.</p>
       </div>
       <footer>
-        <div class="cv-folio-rule"></div>
         <div class="cv-folio">
           <span class="cv-folio-source">Fixture data · not a real study</span>
           <span class="cv-folio-mark" aria-hidden="true">❦</span>

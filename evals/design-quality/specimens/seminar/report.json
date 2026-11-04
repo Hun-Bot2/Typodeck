@@ -7,21 +7,21 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (footnote rule retired, whitespace close; all else already type-only); PNG 1920x1080 (74710 bytes), viewed full-res."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); footnote rule retired; PNG 1920x1080 (83017 bytes), viewed full-res."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080. EX-SRC fix 2026-11-04: footnote 4 source line under attribution footnote; re-captured + viewed."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source lines, incl. prior EX-SRC footnote 4); footnote rule retired; PNG 1920x1080 (120346 bytes), viewed full-res."
     }
   ],
   "render": {

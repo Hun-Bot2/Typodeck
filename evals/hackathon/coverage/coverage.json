@@ -1,5 +1,5 @@
 {
- "startedAt": "2026-11-03T19:04:47.335Z",
+ "startedAt": "2026-11-04T08:03:18.429Z",
  "langs": [
   "en",
   "ko"
@@ -386,7 +386,8 @@
     "pass": "7/7",
     "builder": "generic",
     "failing": [],
-    "exit": 0
+    "exit": 0,
+    "note": "retry after transient CDP timeout; standalone exit 0"
    }
   },
   "bubble-os": {
@@ -438,5 +439,5 @@
    }
   }
  },
- "finishedAt": "2026-11-03T19:14:21.500Z"
+ "finishedAt": "2026-11-04T08:16:08.862Z"
 }

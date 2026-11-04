@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Ma
-description: A Japanese zen-minimal presentation system built around ma — negative space as active material. Seventy percent of every slide stays empty warm white (#F8F6F0); a single text cluster sits left, breathing downward, in Shippori Mincho (display serif) with Zen Kaku Gothic New (body + tracked labels). Sumi black (#2B2B2B) ink, one hairline vertical rule, tiny stone margin marks, a single oversized numeral, and one small shu-red (#A63D2F) hanko seal block. No cards, no shadows, no gradients — a gallery wall with one object on it.
+description: A Japanese zen-minimal presentation system built around ma — negative space as active material. Seventy percent of every slide stays empty warm white (#F8F6F0); a single text cluster sits left, breathing downward, in Shippori Mincho (display serif) with Zen Kaku Gothic New (body + tracked labels). Sumi black (#2B2B2B) ink, one hairline vertical rule, tiny stone margin marks, a single oversized numeral, and one shu-red (#A63D2F) hanko seal glyph. No cards, no boxes, no shadows, no gradients — a gallery wall with one object on it.
 
 colors:
   warm-white: "#F8F6F0"
@@ -38,9 +38,9 @@ typography:
     lineHeight: 1
   zen-seal:
     fontFamily: "'Shippori Mincho', serif"
-    fontSize: 22px
+    fontSize: 44px
     fontWeight: 600
-    lineHeight: 1
+    lineHeight: 1.4
   zen-body:
     fontFamily: "'Zen Kaku Gothic New', 'Noto Sans KR', sans-serif"
     fontSize: "21px"
@@ -54,7 +54,7 @@ spacing:
   rule-x: "300px"
   rule-width: "2px"
   margin-mark: "14px"
-  seal-size: "56px"
+  seal-glyph-size: "44px"
   gap-title-sub: "32px"
   gap-sub-context: "56px"
   content-max-width: "1100px"
@@ -79,11 +79,11 @@ components:
     fontSize: 200px
     color: "{colors.stone}"
     description: "One display-scale numeral (01) in stone gray, absolutely positioned to pass behind the title's opening lines (stone behind sumi, zero flow cost). Counts without shouting; never in sumi or red."
-  seal-block:
-    size: 56px
-    background: "{colors.shu-red}"
-    color: "{colors.warm-white}"
-    description: "Small square hanko-style stamp carrying a single kanji glyph in warm white. The only saturated moment on the slide; exactly one per slide."
+  seal-mark:
+    size: 44px
+    color: "{colors.shu-red}"
+    fontFamily: "'Shippori Mincho', serif"
+    description: "Single kanji glyph set directly in shu-red Mincho, no square behind it. The only saturated moment on the slide; exactly one per slide."
   context-line:
     fontFamily: "'Zen Kaku Gothic New', sans-serif"
     letterSpacing: 0.32em
@@ -100,15 +100,15 @@ This policy has higher priority than any source-template responsive behavior des
 
 This policy applies even if the source template was originally implemented with viewport-fluid CSS. Treat those values as design proportions to translate into 1920×1080 stage coordinates, not as live responsive rules in the generated deck.
 
-Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and panel overlap.
+Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and cluster drift.
 
 ## Overview
 
-Ma is a **Japanese zen-minimal presentation system** whose entire identity is restraint. The governing concept is *ma* (間) — the charged emptiness between things. Roughly seventy percent of every 1920×1080 canvas stays untouched warm white; a single text cluster anchors left and breathes downward; four whisper-quiet ornaments (one vertical rule, corner margin marks, one oversized numeral, one red seal) complete the slide. Nothing else exists. There are no cards, no icon sets, no chart chrome beyond hairlines, no shadows, no gradients, no textures. If an element does not earn its place in the silence, it is removed.
+Ma is a **Japanese zen-minimal presentation system** whose entire identity is restraint. The governing concept is *ma* (間) — the charged emptiness between things. Roughly seventy percent of every 1920×1080 canvas stays untouched warm white; a single text cluster anchors left and breathes downward; four whisper-quiet ornaments (one vertical rule, corner margin marks, one oversized numeral, one red seal glyph) complete the slide. Nothing else exists. There are no cards, no icon sets, no chart chrome beyond hairlines, no shadows, no gradients, no textures. If an element does not earn its place in the silence, it is removed.
 
 The type pairing is the classic Japanese editorial combination: **Shippori Mincho** (a contemporary Mincho serif with crisp horizontal strokes and sharp triangular stops) for display, against **Zen Kaku Gothic New** (a clean, even Gothic sans) for body prose and widely tracked micro-labels. The roles never reverse — Gothic never sets the headline, Mincho never sets small labels. Weight range stays narrow (400–600); emphasis comes from size, tracking, and position, never from bold shouting.
 
-The palette is four colors: warm white ground, sumi ink, stone gray for ghost elements, and one shu-red accent used exactly once per slide as the hanko seal. Red anywhere else — a rule, a word, a second stamp — breaks the system's economy of attention.
+The palette is four colors: warm white ground, sumi ink, stone gray for ghost elements, and one shu-red accent used exactly once per slide as the hanko seal glyph. Red anywhere else — a rule, a word, a second mark — breaks the system's economy of attention.
 
 **Density philosophy: minimum, defended.** Every addition to a Ma slide must justify displacing emptiness. A typical slide carries one display title, one short supporting line, one micro-label, and the four ornaments. Supporting content (a second paragraph, a small list) is permitted only when it joins the single cluster — never as a second cluster, never as a side panel. Two clusters on one slide is not a Ma slide.
 
@@ -116,7 +116,7 @@ The palette is four colors: warm white ground, sumi ink, stone gray for ghost el
 - Seventy-percent emptiness — one text cluster anchored lower-left, nothing competing anywhere else.
 - Single 2px vertical sumi rule running full slide height, the only structural line.
 - One oversized stone-gray numeral at display scale, passing behind the title's opening lines.
-- One small shu-red hanko seal block — the single saturated moment per slide.
+- One shu-red hanko seal glyph — the single saturated moment per slide.
 - Tiny stone-gray margin registration marks at the corners, like printer crop marks.
 - Mincho display against Gothic tracked micro-labels — the classic Japanese editorial pairing, never reversed.
 - Absolutely no shadows, gradients, cards, or textures — flat ink on warm paper.
@@ -128,7 +128,7 @@ The palette is four colors: warm white ground, sumi ink, stone gray for ghost el
 
 - **Warm White** (`{colors.warm-white}` — `#F8F6F0`): The ground. A paper white with a faint warm cast, like uncoated washi stock. Every slide surface, no exceptions.
 - **Sumi** (`{colors.sumi}` — `#2B2B2B`): The ink. A soft near-black with warmth — never pure `#000`. All text, the vertical rule, hairlines.
-- **Shu Red** (`{colors.shu-red}` — `#A63D2F`): A deep vermilion red reserved exclusively for the single hanko seal block. One use per slide, 56×56px, never as text color, never as a rule, never repeated.
+- **Shu Red** (`{colors.shu-red}` — `#A63D2F`): A deep vermilion red reserved exclusively for the single hanko seal glyph. One use per slide, 44px Mincho, never as a rule, never repeated, never behind a square.
 - **Stone** (`{colors.stone}` — `#D8D2C4`): A warm pale gray for ghost elements only — the oversized numeral and the margin marks. Never for body text (contrast too low), never for rules that must read.
 
 ### Defaults
@@ -138,7 +138,7 @@ The palette is four colors: warm white ground, sumi ink, stone gray for ghost el
 - **Default body text color**: `{colors.sumi}` at full opacity — small Gothic text needs full ink on this ground.
 - **Default micro-label color**: `{colors.sumi}` at full opacity, tracked 0.32em, uppercase (Latin only).
 - **Default ghost numeral color**: `{colors.stone}`.
-- **Default accent**: exactly one `{colors.shu-red}` seal block per slide.
+- **Default accent**: exactly one `{colors.shu-red}` seal glyph per slide.
 
 When a slide needs a second point of visual interest, the answer is never a second red element — it is repositioning the numeral or the seal, or widening the void around the cluster.
 
@@ -163,7 +163,7 @@ Never use Mincho for labels or body, never use Gothic for the display title. The
 | `{typography.zen-subtitle}` | 30px | Zen Kaku Gothic New | 400 | Subtitle / lede below the title |
 | `{typography.zen-body}` | 21px | Zen Kaku Gothic New | 400 | Paragraph body |
 | `{typography.zen-context}` | 15px | Zen Kaku Gothic New | 500 | Tracked micro-label line |
-| `{typography.zen-seal}` | 22px | Shippori Mincho | 600 | Single glyph inside the seal block |
+| `{typography.zen-seal}` | 44px | Shippori Mincho | 600 | Single seal glyph in shu-red |
 
 ### Signature Treatments
 
@@ -172,7 +172,7 @@ These treatments are **non-optional whenever the corresponding element type is u
 - **Every display title sets in Mincho 600 at 92px with line-height 1.25 and `text-wrap: pretty`.** No italic, no letterspacing beyond +0.01em, no color but sumi. Pretty-wrapping fills the measure on long titles instead of balancing into overflow.
 - **Every micro-label line is uppercase with 0.32em tracking at 15px.** Sentence-case or tight-tracked labels do not exist in this system (Latin runs only; CJK runs drop both).
 - **Every oversized numeral sets in Mincho 600 at 200px in stone gray.** A numeral in sumi or red, or in the Gothic face, breaks the ghost treatment.
-- **Every seal block is exactly 56×56px of flat shu-red carrying one warm-white Mincho glyph.** No border, no shadow, no second seal.
+- **Every seal is exactly one 44px shu-red Mincho glyph on the bare ground.** No square, no border, no shadow, no second seal.
 - **Every subtitle sets in Gothic 400 at 30px with line-height 1.7.** Never serif, never tracked, never uppercase.
 - **Every body block uses line-height 1.9.** The face runs compact; generous leading keeps the airy register.
 - **No underline, no bold emphasis, no italic emphasis anywhere.** Emphasis is positional: what matters is larger, or stands more alone.
@@ -209,7 +209,7 @@ Spatial hierarchy is achieved exclusively through **scale, tone, and emptiness**
 
 ### Border Radius
 
-Zero everywhere. The seal is a hard square, rules are straight lines, margin marks are straight ticks. A rounded corner anywhere reads as foreign matter in this system.
+Not applicable. There are no boxes: rules are straight lines, margin marks are straight ticks, the seal is a bare glyph. A rounded corner anywhere reads as foreign matter in this system.
 
 ### Border Weights
 
@@ -217,7 +217,7 @@ Zero everywhere. The seal is a hard square, rules are straight lines, margin mar
 - **1px solid stone** — margin marks (two 14px ticks forming a plus).
 - **1px solid sumi at 40% opacity** — the optional hairline between subtitle and context, used only when the cluster carries all three lines.
 
-No other strokes exist. Boxes, outlines, and frames are forbidden — the seal's edge is a filled square's edge, not a border.
+No other strokes exist. Boxes, outlines, frames, and filled squares are forbidden — the seal has no edge but its own letterform.
 
 ### Decorative Element Types
 
@@ -227,7 +227,7 @@ No other strokes exist. Boxes, outlines, and frames are forbidden — the seal's
 
 **Oversized numeral** — One two-digit numeral in 200px Mincho 600, stone gray, floating at the cluster's shoulder. Increments per slide. Never interactive, never in ink or red.
 
-**Seal block** — 56×56px flat shu-red square with a single warm-white Mincho glyph (e.g. 研 for research, 序 for opening, 結 for closing). Stamped once per slide near the cluster. The system's only saturated color and only filled shape.
+**Seal mark** — Single 44px shu-red Mincho glyph (e.g. 研 for research, 序 for opening, 結 for closing) on the bare ground. Stamped once per slide near the cluster. The system's only saturated color; there are no filled shapes.
 
 **Context hairline** — An optional 64px 1px sumi hairline (40% opacity) sitting between subtitle and context line. The only horizontal stroke permitted. Omitted when the cluster is short.
 
@@ -238,7 +238,7 @@ No other strokes exist. Boxes, outlines, and frames are forbidden — the seal's
 - Keep seventy percent of the canvas empty on every slide; defend the void against every addition.
 - Set every display title in Mincho 600 sumi at 96px, left-aligned to the cluster edge.
 - Track every Latin micro-label at 0.32em uppercase, 15px, Gothic 500.
-- Stamp exactly one shu-red seal block per slide near the cluster.
+- Stamp exactly one shu-red seal glyph per slide near the cluster.
 - Pass one stone-gray oversized numeral behind the title's opening lines, incrementing per slide.
 - Hold the vertical rule at x=300px, full height, 2px, sumi — on every slide.
 - Place margin marks near all four corners on every slide.
@@ -251,7 +251,7 @@ No other strokes exist. Boxes, outlines, and frames are forbidden — the seal's
 - Don't add a second text cluster, side panel, card, or callout box anywhere.
 - Don't use any shadow, blur, gradient, texture, or transparency effect.
 - Don't set display type in the Gothic face or labels in the Mincho face.
-- Don't use shu-red for anything but the single seal block — never for text, rules, or numerals.
+- Don't use shu-red for anything but the single seal glyph — never for other text, rules, or numerals, and never behind a square.
 - Don't center text, rules, or the cluster — the asymmetry is the composition.
 - Don't round any corner or draw any box, frame, or outline.
 - Don't add persistent chrome: no nav dots, counters, progress bars, or footers.
@@ -344,7 +344,7 @@ Ma's identity survives CJK transfer better than most systems because its voice i
 3. Any new cluster anchors to the same left edge (x=400) and top anchor (y=190); the void stays right and below.
 4. Any new micro-label uses 15px Gothic 500, 0.32em tracking, uppercase (Latin) — the whisper line.
 5. Any new numeral continues the 01/02/03 sequence in 200px Mincho stone, passing behind the title's opening lines at zero flow cost.
-6. Any new seal is one 56px shu-red square with one warm-white glyph, placed near the cluster's end — exactly one per slide.
+6. Any new seal is one 44px shu-red Mincho glyph on the bare ground, placed near the cluster's end — exactly one per slide.
 7. Any new divider is the 64px 1px sumi hairline at 40% — the only horizontal stroke. When in doubt, omit it.
 8. Any new color must be one of the four palette colors. A fifth color is a system violation.
 9. Any new emphasis is positional (larger, lonelier) — never bold, italic, underline, or color.
@@ -370,4 +370,4 @@ Ma's identity survives CJK transfer better than most systems because its voice i
 | 6 | Grain / scanline / noise overlays | Not used | full | N/A — clean ground |
 | 7 | Transparency layers | Hairline at 40% opacity; context CJK at 85% | partial | Nearest opaque tint of sumi |
 | 8 | Custom fonts | Shippori Mincho / Zen Kaku Gothic New / Noto KR via CDN | partial | Embedded subset or Hiragino/system fallback |
-| 9 | Absolute-positioned decor | Rule, marks, numeral, seal (absolute divs) | full | Grouped native shapes |
+| 9 | Absolute-positioned decor | Rule, marks, numeral, seal glyph (type + one rule) | full | Native text boxes + one line |

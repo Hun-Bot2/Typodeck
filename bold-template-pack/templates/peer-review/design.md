@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Peer Review
-description: A scientific-journal presentation system that sets STIX Two Text serif titles over a clean white ground ruled by ink hairlines. A tinted abstract inset box, a numbered figure/table rail with tabular numerals, reference-style bracket footnotes, and a double-rule journal masthead prove rigor structurally, while a single scholarly link-blue accents only the apparatus — never the prose.
+description: A scientific-journal presentation system that sets STIX Two Text serif titles over a clean white ground. An abstract block, a numbered figure/table rail with tabular numerals, reference-style bracket footnotes, and a small-caps journal runhead prove rigor structurally, while a single scholarly link-blue accents only the apparatus — never the prose. Typography-only register: no rules, boxes, bars, tracks, or tints exist — hierarchy is carried by the two type roles, scale, and whitespace alone.
 
 colors:
   white: "#FFFFFF"
@@ -117,12 +117,7 @@ components:
     fontWeight: 600
     letterSpacing: 0.22em
     textTransform: uppercase
-    description: "Small-caps journal running head: context left, page mark right, closed below by the double rule."
-  double-rule:
-    borderTop: "3px solid {colors.ink}"
-    subRule: "1px solid {colors.ink}"
-    gap: 3px
-    description: "Journal masthead closer: a 3px ink rule with a 1px rule 3px beneath it."
+    description: "Small-caps journal running head: context left, page mark right, standing bare with whitespace below."
   kicker:
     color: "{colors.link-blue}"
     fontSize: 22px
@@ -131,31 +126,25 @@ components:
     textTransform: uppercase
     fontFamily: "'Inter', system-ui, sans-serif"
     description: "Blue apparatus kicker above the title: article type plus subject, never a sentence."
-  abstract-box:
-    background: "{colors.abstract-tint}"
-    borderLeft: "6px solid {colors.link-blue}"
+  abstract-block:
     padding: "28px 34px 30px"
-    description: "Tinted inset carrying the Abstract eyebrow, an italic serif summary, and a ruled Keywords line."
-  figure-chart:
-    trackBackground: "{colors.bar-track}"
-    fillBackground: "{colors.link-blue}"
-    barHeight: 22px
-    description: "Horizontal bar figure with Inter tabular category codes and values under a Figure label and title."
-  ruled-table:
-    headBorderTop: "2px solid {colors.ink}"
-    headBorderBottom: "1px solid {colors.ink}"
-    rowBorder: "1px solid {colors.rule-gray}"
-    footBorder: "2px solid {colors.ink}"
-    description: "Three-line scholarly table: heavy top and bottom rules, single head rule, hairline row dividers."
+    description: "Typographic abstract carrying the Abstract eyebrow, an italic serif summary, and a Keywords line. No tint, no bar, no rules."
+  figure-list:
+    fontFamily: "'Inter', system-ui, sans-serif"
+    fontSize: 21px
+    description: "Typographic figure: Inter tabular category codes and values as aligned type rows under a Figure label and title. No bars, no tracks."
+  data-list:
+    fontFamily: "'Inter', system-ui, sans-serif"
+    fontSize: 21px
+    description: "Unruled scholarly data list: name/value rows with right-aligned tabular numerals. No head rules, no row dividers, no outer borders."
   caption:
     fontSize: 21px
     color: "{colors.muted}"
     description: "Figure/Table caption with a bold ink lead ('Figure 1.', 'Table 1.')."
-  footnote-band:
-    borderTop: "1px solid {colors.ink}"
+  footnote-row:
     fontSize: 20px
     color: "{colors.muted}"
-    description: "Foot band behind a hairline carrying bracketed reference notes with blue superscript markers."
+    description: "Foot row carrying bracketed reference notes with blue superscript markers, separated by whitespace only."
 ---
 
 ## Frontend Slides Fixed-Stage Policy
@@ -166,7 +155,7 @@ This policy has higher priority than any source-template responsive behavior des
 
 This policy applies even if the source template was originally implemented with viewport-fluid CSS such as `100vw`, `100vh`, `vw`, `vh`, or `clamp()`. Treat those values as design proportions to translate into 1920×1080 stage coordinates, not as live responsive rules in the generated deck.
 
-Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and panel overlap.
+Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and column collisions.
 
 ## Overview
 
@@ -174,37 +163,37 @@ Peer Review is a **scientific-journal presentation system**. Its foundational pr
 
 The type stack is two faces with a strict division of labor. **STIX Two Text** is the prose face — a crisp transitional serif with genuine italics that carries titles, abstract summaries, and body copy. **Inter** is the apparatus face — used for every label the journal machinery needs: runheads, kickers, figure labels, table cells, captions, keywords, and footnotes. Serif never labels; sans never argues.
 
-The palette is paper-white restraint: **white ground, ink prose, hairline gray rules**, and exactly one accent — a scholarly **link blue** reserved for apparatus elements (kicker, abstract bar, chart fills, footnote markers). Blue never touches body prose. The surface rhythm is ruled and inset: double rules close the masthead, a tinted box insets the abstract, a hairline rail separates figures from the article column, and a foot hairline grounds the references.
+The palette is paper-white restraint: **white ground, ink prose**, and exactly one accent — a scholarly **link blue** reserved for apparatus elements (kicker, footnote markers). Blue never touches body prose. The surface rhythm is two-column and cited: a bare runhead opens the page, an abstract block carries the summary, a wide gutter separates the apparatus rail from the article column, and a footnote row grounds the references.
 
-**Density philosophy: medium, columnar, cited.** A typical slide carries one article column (kicker + title + abstract or body) beside one apparatus rail (a figure, a table, or both), with footnotes closing the page. Nothing floats free: every module is either ruled, inset, or captioned. Whitespace is the margin of a journal page — generous at the edges, disciplined between modules.
+**Density philosophy: medium, columnar, cited.** A typical slide carries one article column (kicker + title + abstract or body) beside one apparatus rail (a figure, a data list, or both), with footnotes closing the page. Nothing floats free: every module is numbered, captioned, or footnoted. Whitespace is the margin of a journal page — generous at the edges, disciplined between modules.
 
 **Key Characteristics:**
-- Tinted abstract inset box with a 6px link-blue left bar, Abstract eyebrow, italic serif summary, and ruled Keywords line.
-- Numbered figure rail: Figure bar charts plus ruled three-line tables, each with a bold-lead caption.
-- Reference-style bracket footnotes with blue superscript markers behind a foot hairline.
-- Journal double-rule masthead: 3px ink rule over a 1px rule, carrying a small-caps running head and page mark.
+- Typographic abstract block with an Abstract eyebrow, italic serif summary, and Keywords line — no tint, no bar, no rules.
+- Numbered apparatus rail: typographic figures plus unruled data lists, each with a bold-lead caption.
+- Reference-style bracket footnotes with blue superscript markers in a whitespace-separated foot row.
+- Bare journal runhead: small-caps running head and page mark with whitespace below; no rules.
 - Link blue reserved strictly for apparatus accents — prose stays ink-on-white.
-- Tabular-numeral discipline in every figure and table; tracked uppercase Inter labels against sentence-case serif prose.
+- Tabular-numeral discipline in every figure and data list; tracked uppercase Inter labels against sentence-case serif prose.
 
 ## Colors
 
 ### Palette
 
-- **White** (`{colors.white}` — `#FFFFFF`): The only slide ground. Every surface is white; tint appears solely inside the abstract inset.
-- **Ink** (`{colors.ink}` — `#1A1A1A`): Prose, titles, rules-that-matter (double rule, table outer rules, foot hairline), and caption leads.
-- **Link Blue** (`{colors.link-blue}` — `#0B5394`): The apparatus accent — kicker, abstract bar, chart fills, footnote superscript markers. Never body text.
-- **Rule Gray** (`{colors.rule-gray}` — `#EAEAEA`): Quiet dividers — rail separator, table row hairlines.
-- **Abstract Tint** (`{colors.abstract-tint}` — `#F3F5F8`): Cool paper tint used only inside the abstract inset box.
+- **White** (`{colors.white}` — `#FFFFFF`): The only slide ground. Every surface is white; no tints, no fills.
+- **Ink** (`{colors.ink}` — `#1A1A1A`): Prose, titles, and caption leads.
+- **Link Blue** (`{colors.link-blue}` — `#0B5394`): The apparatus accent — kicker and footnote superscript markers. Never body text.
+- **Rule Gray** (`{colors.rule-gray}` — `#EAEAEA`): Retained token; no visible role in the typography-only register.
+- **Abstract Tint** (`{colors.abstract-tint}` — `#F3F5F8`): Retained token; no visible role in the typography-only register.
 - **Muted** (`{colors.muted}` — `#5A6470`): Captions, keywords, footnotes, category codes, page mark — the quiet metadata voice.
-- **Bar Track** (`{colors.bar-track}` — `#EDF0F4`): Figure bar-chart track behind blue fills.
+- **Bar Track** (`{colors.bar-track}` — `#EDF0F4`): Retained token; no visible role in the typography-only register.
 
 ### Defaults
 
 - **Default surface background**: `{colors.white}`. No wallpaper, no texture, no vignette.
 - **Default headline color**: `{colors.ink}` at weight 700.
 - **Default body color**: `{colors.ink}`; metadata (captions, footnotes, keywords) in `{colors.muted}`.
-- **Default accent**: `{colors.link-blue}`, restricted to apparatus elements.
-- **Default rule colors**: structural rules in ink, quiet dividers in `{colors.rule-gray}`, abstract-adjacent rules in `{colors.keyword-rule}`.
+- **Default accent**: `{colors.link-blue}`, restricted to the kicker and footnote markers.
+- **Default separator**: none — whitespace rhythm separates modules; rules do not exist.
 
 ## Typography
 
@@ -214,7 +203,7 @@ The system runs two faces, each locked to its role.
 
 **STIX Two Text** is the prose face — a transitional serif designed for scientific publishing, with true italics and sturdy numerals. Used for article titles, section heads, abstract summaries (italic), and body copy. Its even color at large sizes keeps long titles readable without shouting.
 
-**Inter** is the apparatus face — a neutral grotesque used for every piece of journal machinery: runheads, kickers, figure labels and titles, table heads and cells, captions, keywords, and footnotes. Inter appears in two registers: tracked uppercase for labels, sentence case for captions and table prose.
+**Inter** is the apparatus face — a neutral grotesque used for every piece of journal machinery: runheads, kickers, figure labels and titles, data-list rows, captions, keywords, and footnotes. Inter appears in two registers: tracked uppercase for labels, sentence case for captions and data prose.
 
 Serif never labels and sans never argues: a caption set in STIX or a paragraph set in Inter both break the journal contract.
 
@@ -225,14 +214,14 @@ Serif never labels and sans never argues: a caption set in STIX or a paragraph s
 | `{typography.article-title}` | 90px | STIX Two Text | 700 | Cover and section article title |
 | `{typography.section-head}` | 54px | STIX Two Text | 700 | Inner-section head |
 | `{typography.body-serif}` | 30px | STIX Two Text | 400 | Paragraph body |
-| `{typography.abstract-text}` | 35px | STIX Two Text | 400 italic | Abstract summary inside the inset box |
+| `{typography.abstract-text}` | 35px | STIX Two Text | 400 italic | Abstract summary in the abstract block |
 | `{typography.kicker}` | 22px | Inter | 700 | Blue apparatus kicker above titles |
 | `{typography.runhead}` | 20px | Inter | 600 | Masthead running head + page mark |
 | `{typography.figure-label}` | 20px | Inter | 700 | "Figure N" / "Table N" eyebrow |
-| `{typography.figure-title}` | 24px | Inter | 600 | Figure panel title |
+| `{typography.figure-title}` | 24px | Inter | 600 | Figure title |
 | `{typography.caption}` | 21px | Inter | 400 | Figure/Table captions with bold lead |
-| `{typography.table-head}` | 18px | Inter | 700 | Ruled-table column heads |
-| `{typography.table-cell}` | 21px | Inter | 500 | Ruled-table cells |
+| `{typography.table-head}` | 18px | Inter | 700 | Data-list head labels |
+| `{typography.table-cell}` | 21px | Inter | 500 | Data-list row text |
 | `{typography.footnote}` | 20px | Inter | 400 | Foot reference notes |
 | `{typography.keywords}` | 21px | Inter | 500 | Abstract keywords line |
 
@@ -241,9 +230,9 @@ Serif never labels and sans never argues: a caption set in STIX or a paragraph s
 These treatments are **non-optional whenever the corresponding element type is used**:
 
 - **Every article title is STIX Two Text 700 at 90px with 1.05 line-height.** Long titles wrap; a fit routine shrinks the size in 2px steps to a 40px floor so the title box never overflows.
-- **Every abstract summary is STIX italic at 35px inside the tinted inset.** The Abstract eyebrow and Keywords line are Inter; the summary itself is always italic serif.
-- **Every apparatus label is Inter uppercase with wide tracking** — 0.24em kickers, 0.22em runheads, 0.2em figure labels, 0.12em table heads. Sentence-case Inter labels do not exist.
-- **Every figure and table numeral uses tabular figures** (`font-variant-numeric: tabular-nums`) so values align in columns.
+- **Every abstract summary is STIX italic at 35px in the abstract block.** The Abstract eyebrow and Keywords line are Inter; the summary itself is always italic serif.
+- **Every apparatus label is Inter uppercase with wide tracking** — 0.24em kickers, 0.22em runheads, 0.2em figure labels, 0.12em data-list heads. Sentence-case Inter labels do not exist.
+- **Every figure and data-list numeral uses tabular figures** (`font-variant-numeric: tabular-nums`) so values align in columns.
 - **Every caption opens with a bold ink lead** — "Figure 1." or "Table 1." — followed by muted sentence-case description.
 - **Every footnote marker is a blue superscript bracket** (`[1]`, `[2]`) ahead of muted note text.
 - **Every keyword line leads with a bold ink "Keywords"** followed by an em dash and middle-dot-separated terms.
@@ -252,53 +241,46 @@ These treatments are **non-optional whenever the corresponding element type is u
 
 ### Canvas System
 
-The system targets a fixed **1920×1080 stage**. The title slide is a journal title page: masthead band (runhead + double rule), a two-column paper region (article column ≈ 62%, apparatus rail ≈ 38% behind a hairline), and a footnote band closing the page.
+The system targets a fixed **1920×1080 stage**. The title slide is a journal title page: runhead line, a two-column paper region (article column ≈ 62%, apparatus rail ≈ 38% across a wide gutter), and a footnote row closing the page.
 
-Default slide padding is `56px 88px 48px`. The article column and rail are separated by a 1px `{colors.rule-gray}` vertical rule with 60px rail inset. The rail stacks figure panel over table panel with 44px gaps. The footnote band sits at the foot behind a 1px ink hairline with 40px separation from the columns.
+Default slide padding is `56px 88px 48px`. The article column and rail are separated by a wide whitespace gutter with 60px rail inset. The rail stacks figure over data list with 44px gaps. The footnote row sits at the foot with 40px whitespace separation from the columns.
 
 ### Persistent Chrome
 
 Two quiet elements persist across the deck:
 
-- **Runhead masthead** — context-derived running head left, page mark (`p. 01` style) right, closed by the double rule. Present on every slide; the running head never changes mid-deck.
-- **Footnote band** — one hairline with one to three bracketed reference notes. Present wherever claims need grounding; on the cover it cites the corpus and scope.
+- **Runhead** — context-derived running head left, page mark (`p. 01` style) right, with whitespace below. Present on every slide; the running head never changes mid-deck.
+- **Footnote row** — one to three bracketed reference notes. Present wherever claims need grounding; on the cover it cites the corpus and scope.
 
 There is no navigation chrome, no progress indicator, no logo lockup — the journal page is the chrome.
 
 ## Depth and Elevation
 
-Peer Review is a **flat print system**: elevation is expressed through rules and tints, never through shadow. The abstract inset reads as a pasted slip via its tinted ground and blue edge bar, not via any drop. Figures sit directly on white; their structure comes from tracks, rules, and tabular alignment.
+Peer Review is a **flat print system**: hierarchy is expressed through the two type roles, scale, and whitespace — never through shadow, rules, boxes, or tints. The abstract block reads as a summary via its eyebrow, italic, and Keywords line. Figures sit directly on white; their structure comes from tabular alignment alone.
 
-The only permitted shadow tokens are effectively null (`none`, a hairline inset edge, a 1px grounding keyline) reserved for export fallbacks where a tint edge might wash out. Any blurred or offset shadow on cards, text, or chrome breaks the print contract — if a module needs emphasis, inset it, rule it, or caption it.
+The shadow tokens are retained but unrendered. Any blurred or offset shadow on text or chrome breaks the print contract — if a module needs emphasis, number it, caption it, or footnote it.
 
 ## Shapes and Treatment
 
 ### Border Radius
 
-Effectively zero everywhere. The journal page is a rectangle; the abstract box, chart tracks, and table cells are all square-cut. Rounded corners read as product UI and are forbidden — the one permitted curve is the slight ink spread of serif letterforms themselves.
+There is nothing to round: no boxes, bars, tracks, tables, or rules exist in the typography-only register. Rounded corners read as product UI and are forbidden — the only permitted curve is the slight ink spread of serif letterforms themselves.
 
 ### Border Weights
 
-- **3px solid ink** — masthead top rule (with a 1px sub-rule 3px beneath forming the double rule).
-- **2px solid ink** — ruled-table outer borders (head top, foot bottom).
-- **1px solid ink** — table head rule, footnote band rule, double-rule sub-rule.
-- **1px solid rule-gray** — rail separator, table row dividers.
-- **6px solid link-blue** — abstract inset left bar.
-- **1px keyword-rule** — separator above the Keywords line inside the abstract box.
-
-Rules are always solid and horizontal or vertical; dashed, dotted, or diagonal rules do not exist in this system.
+Borders do not exist. There are no masthead rules, table borders, row dividers, foot hairlines, edge bars, or keyword separators; dashed, dotted, diagonal, and solid lines alike do not exist in this system. Separation is whitespace or tabular alignment, never a line.
 
 ### Decorative Element Types
 
-**Double-rule masthead** — The 3px-over-1px ink closer beneath the runhead. The system's most recognizable mark; appears on every slide.
+**Runhead** — Bare small-caps running head with page mark. The system's most recognizable mark; appears on every slide.
 
-**Abstract inset box** — Tinted slip with a blue edge bar carrying the Abstract eyebrow, italic summary, and ruled Keywords line. Used once per title/section slide for the summary statement.
+**Abstract block** — Abstract eyebrow, italic serif summary, and Keywords line set directly on white. Used once per title/section slide for the summary statement.
 
-**Figure chart panel** — Figure label, panel title, horizontal blue bars on pale tracks with tabular category codes and values, and a bold-lead caption. The standard visual-evidence module.
+**Figure list** — Figure label, title, aligned tabular category/value type rows, and a bold-lead caption. The standard visual-evidence module.
 
-**Ruled three-line table** — Heavy outer rules, single head rule, gray row hairlines, right-aligned tabular count column, and a bold-lead caption. The standard tabular-evidence module.
+**Data list** — Unruled name/value rows with a right-aligned tabular numeral column and a bold-lead caption. The standard tabular-evidence module.
 
-**Footnote band** — Foot hairline with bracketed blue-superscript reference notes in muted Inter. Grounds corpus, scope, and method claims.
+**Footnote row** — Bracketed blue-superscript reference notes in muted Inter, whitespace-separated at the foot. Grounds corpus, scope, and method claims.
 
 **Kicker** — Blue tracked-uppercase article-type line above titles. Never a sentence, never more than a few words.
 
@@ -306,29 +288,29 @@ Rules are always solid and horizontal or vertical; dashed, dotted, or diagonal r
 
 ### Do
 
-- Keep every slide on flat white; reserve the abstract tint strictly for the abstract inset box.
+- Keep every slide on flat white with no tints, fills, or boxes of any kind.
 - Set all prose in STIX Two Text and all apparatus labels in Inter — never cross the two roles.
-- Number every figure and table and give each a bold-lead caption; unnumbered visuals do not exist here.
-- Use tabular numerals in every figure value, table cell, and category code.
-- Restrict link blue to apparatus accents: kicker, abstract bar, chart fills, footnote markers.
-- Close the masthead with the full double rule and the page with the footnote hairline on title slides.
-- Lead the abstract box with the Abstract eyebrow and close it with the ruled Keywords line.
+- Number every figure and data list and give each a bold-lead caption; unnumbered visuals do not exist here.
+- Use tabular numerals in every figure value, data row, and category code.
+- Restrict link blue to the kicker and footnote markers.
+- Open every slide with the bare runhead and close the page with the footnote row.
+- Lead the abstract block with the Abstract eyebrow and close it with the Keywords line.
 
 ### Don't
 
-- Don't introduce a second accent color — no red, green, or amber alerts; emphasis comes from rules and insets.
+- Don't introduce a second accent color — no red, green, or amber alerts; emphasis comes from numbering and captions.
 - Don't round any corner or blur any shadow; the system is square-cut and flat.
 - Don't set body prose in Inter or labels in STIX — each face has exactly one role.
 - Don't place blue on prose or captions; blue is apparatus-only.
-- Don't omit captions on figures or tables, and don't caption without the bold "Figure N." / "Table N." lead.
-- Don't add background textures, vignettes, or watermarks — the white page is the surface.
-- Don't stack more than two evidence panels in the rail; a third panel belongs on the next slide.
+- Don't omit captions on figures or data lists, and don't caption without the bold "Figure N." / "Table N." lead.
+- Don't add rules, boxes, bars, tints, textures, vignettes, or watermarks — the white page is the surface.
+- Don't stack more than two evidence modules in the rail; a third module belongs on the next slide.
 
 ## Responsive Behavior
 
 Peer Review is a **fixed-stage system**: all sizes above are 1920×1080 stage coordinates scaled uniformly by one transform. There are no breakpoints and no viewport-fluid rules in generated output.
 
-Long titles are handled by the title fit routine (shrink 90px toward a 40px floor in 2px steps until the title box stops overflowing), not by reflowing the columns — the article/rail split never changes. The abstract box grows downward within the article column; if abstract plus title exceed the column, the title shrinks first.
+Long titles are handled by the title fit routine (shrink 90px toward a 40px floor in 2px steps until the title box stops overflowing), not by reflowing the columns — the article/rail split never changes. The abstract block grows downward within the article column; if abstract plus title exceed the column, the title shrinks first.
 
 For source-history reference only: the proportions derive from a two-column journal page and would stack to a single column below 900px in a fluid web context, but generated decks never reflow — they letterbox.
 
@@ -365,28 +347,28 @@ Add to the slide `<head>`:
 - **Punctuation**: use full-width Chinese punctuation （，。：；！？「」（））.
 - **No period on display headlines**: omit trailing 。 on display-scale headlines.
 - **Space between CJK and Latin (盘古之白)**: insert an ASCII space between CJK and adjacent Latin or digits.
-- **Italic**: CJK has no italic — render the abstract summary in Noto Serif SC 600 upright, keeping the inset box and tint as the abstract signal.
+- **Italic**: CJK has no italic — render the abstract summary in Noto Serif SC 600 upright, keeping the eyebrow and Keywords line as the abstract signal.
 
 ### Aesthetic Notes for This System
 
-The journal voice survives translation well because it lives in structure, not letterforms: the double rule, abstract inset, numbered captions, and footnotes carry full recognition even when both faces change. Compensate for the lost STIX italic by weighting the CJK abstract summary one step heavier (600) and keeping the Keywords rule. Keep figure/table numbering in Latin ("Figure 1", "Table 1", "[1]") — the Latin apparatus markers read as citation codes and preserve the tabular rhythm.
+The journal voice survives translation well because it lives in structure, not letterforms: the runhead, abstract block, numbered captions, and footnotes carry full recognition even when both faces change. Compensate for the lost STIX italic by weighting the CJK abstract summary one step heavier (600) and keeping the Keywords line. Keep figure/table numbering in Latin ("Figure 1", "Table 1", "[1]") — the Latin apparatus markers read as citation codes and preserve the tabular rhythm.
 
 ### Known CJK Gap
 
-- **No CJK italic.** The abstract summary's italic signal has no Chinese equivalent; weight 600 upright plus the inset tint is the documented substitute.
+- **No CJK italic.** The abstract summary's italic signal has no Chinese equivalent; weight 600 upright plus the eyebrow is the documented substitute.
 - **Apparatus tracking collapses.** The 0.2em+ label tracking that voices the Latin apparatus must be zeroed on CJK runs; the uppercase silhouette survives only on Latin fragments.
 
 ## Iteration Guide
 
-1. Any new slide keeps the flat white ground and the runhead-plus-double-rule masthead. Don't restyle the masthead per slide.
-2. Any new prose element uses STIX Two Text; any new label, caption, cell, or note uses Inter. Never cross the roles.
-3. Any new summary statement goes in the abstract inset box with the Abstract eyebrow and Keywords line — don't invent a second summary treatment.
-4. Any new visual evidence becomes a numbered Figure or Table panel with a bold-lead caption in the rail. Don't float unnumbered charts.
-5. Any new numeral in figures or tables uses tabular figures; any new apparatus label uses tracked uppercase Inter.
-6. Any new accent is link blue on apparatus elements only. Don't accent prose, and don't introduce a second accent.
-7. Any new rule follows the weight table: 3px masthead, 2px table outers, 1px head/foot/rail rules, 6px abstract bar.
-8. Any new claim that needs grounding gets a bracketed footnote in the foot band with a blue superscript marker.
-9. If the rail needs more than two panels, paginate — start a second evidence slide rather than shrinking panels.
+1. Any new slide keeps the flat white ground and the bare runhead. Don't restyle the runhead per slide.
+2. Any new prose element uses STIX Two Text; any new label, caption, row, or note uses Inter. Never cross the roles.
+3. Any new summary statement goes in the abstract block with the Abstract eyebrow and Keywords line — don't invent a second summary treatment.
+4. Any new visual evidence becomes a numbered Figure or data list with a bold-lead caption in the rail. Don't float unnumbered charts.
+5. Any new numeral in figures or data lists uses tabular figures; any new apparatus label uses tracked uppercase Inter.
+6. Any new accent is link blue on the kicker and footnote markers only. Don't accent prose, and don't introduce a second accent.
+7. Any new separation uses whitespace rhythm — rules of any weight are forbidden.
+8. Any new claim that needs grounding gets a bracketed footnote in the foot row with a blue superscript marker.
+9. If the rail needs more than two modules, paginate — start a second evidence slide rather than shrinking modules.
 10. Long titles shrink via the fit routine toward the 40px floor; never narrow the columns or reflow to one column.
 11. A statement slide may carry a single centered sentence as an intentional pause slide — document it as a pause, not a thin error.
 
@@ -394,8 +376,8 @@ The journal voice survives translation well because it lives in structure, not l
 
 - **Fonts**: STIX Two Text / Inter via Google Fonts CDN (`display=swap`); fallbacks Georgia, serif / system-ui, sans-serif. No font files committed. Offline rendering falls back to system stacks and loses the serif/apparatus contrast.
 - **Title fit needs JS.** The shrink-to-fit routine runs on DOMContentLoaded, font-ready, and load plus delayed passes at 800/2000ms for late `display=swap` swaps; without JS, very long titles can overflow the title box. Static export must bake the fitted size.
-- **Tabular numerals depend on Inter.** Fallback sans fonts may substitute proportional figures, loosening figure/table column alignment.
-- **Abstract tint is subtle.** On uncalibrated projectors `#F3F5F8` can wash to white; the blue edge bar remains the abstract signal in that case.
+- **Tabular numerals depend on Inter.** Fallback sans fonts may substitute proportional figures, loosening figure/data-list column alignment.
+- **No rules, boxes, bars, or tints.** The typography-only register renders none of the retained rule/tint/track tokens; decks must not reintroduce them as structure.
 
 ### PPTX Fidelity Disclosure
 

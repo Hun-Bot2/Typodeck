@@ -15,34 +15,18 @@
     font-family: 'EB Garamond', Georgia, serif;
     box-sizing: border-box;
   }
-  .press-frame-outer {
-    position: absolute; inset: 40px;
-    border: 3px solid #1F1A14;
-    box-sizing: border-box;
-    pointer-events: none;
-  }
-  .press-frame-inner {
-    position: absolute; inset: 55px;
-    border: 1px solid #7B1E1E;
-    box-sizing: border-box;
-    pointer-events: none;
-  }
   .press-body {
-    position: absolute; inset: 56px;
+    position: absolute; inset: 0;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     text-align: center;
-    padding: 64px 220px 96px 220px;
+    padding: 96px 220px 120px 220px;
     box-sizing: border-box;
   }
   .press-kicker {
     font-family: 'IM Fell English', Georgia, serif;
     font-size: 24px; letter-spacing: 0.22em; text-transform: uppercase;
     color: #1F1A14; margin: 0;
-    display: flex; align-items: center; gap: 28px;
-  }
-  .press-kicker::before, .press-kicker::after {
-    content: ""; display: block; width: 120px; height: 1px; background: #7B1E1E;
   }
   .press-title {
     font-family: 'IM Fell English', Georgia, serif;
@@ -127,8 +111,6 @@
         <p class="press-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
         <p class="press-source">Fixture data · not a real study</p>
       </div>
-      <div class="press-frame-outer"></div>
-      <div class="press-frame-inner"></div>
       <p class="press-pagemark"><span class="o">¶</span><span class="n">3</span><span class="o">¶</span></p>
     </div>
   </div>

@@ -22,7 +22,8 @@ Korean-run tracking/leading only.
 - outline-numeral on Korean: paint-order stroke + transparent fill works on
   Hangul blocks — verify counter legibility at render (dense blocks + outline
   can clog; prefer solid 900 with outline reserved for Latin numerals).
-- chips: keep-all, widen for Korean, 0 tracking.
+- chips: keep-all, widen for Korean, 0 tracking; white labels on purple
+  chips per parent (ink fails AA on purple at 3.88:1).
 - body: floor 1.6, keep-all.
 
 ## Breaking, spacing, density

@@ -7,26 +7,33 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (tiles, chip, cells, keyline grid removed; module positions carry deep/deep-soft type + ■/● glyph markers; no amber on white — amber 2.02 and amber-deep 2.77 both fail contrast); PNG 1920x1080 (66189 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: deep #14213D→#1C2C4E (deep-on-white 13.82:1); amber still off white; HTML color-values-only; PNG re-captured via repo CDP pipeline, viewed full-res — PASS."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); stat moment takes the full deep slide ground so the amber signal survives as contrast-passing type (amber-on-deep now 6.83:1, was 7.89:1 at the old deep); PNG 1920x1080 (83877 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: deep #14213D→#1C2C4E narrows the white↔deep full-field swing (white-on-deep 13.82:1); HTML color-values-only; PNG re-captured via repo CDP pipeline and viewed full-res — deep-ground moment render-verified at the new value — PASS."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); cells/rules replaced by ■ vs ● type zones on the module grid; PNG 1920x1080 (95724 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: deep #14213D→#1C2C4E (deep-on-white 13.82:1); amber still off white; HTML color-values-only; PNG re-captured via repo CDP pipeline, viewed full-res — PASS."
     }
   ],
   "render": {
     "width": 1920,
     "height": 1080,
     "verify": "PASS"
+  },
+  "color_comfort": {
+    "date": "2026-11-04",
+    "tokens": "deep #14213D→#1C2C4E; amber #FCA311 kept (deep grounds only), amber-deep stays non-text",
+    "html_diff": "color-values-only vs f0aed77 (0 ODD lines after hex/rgba normalization)",
+    "png": "3/3 IHDR 1920x1080, all differ from f0aed77 blobs; re-captured via repo CDP pipeline",
+    "viewing": "all 3 viewed full-res by agent; architectural identity intact, no boxes; no comfort claim (WCAG arithmetic + AGENT viewing only)"
   }
 }

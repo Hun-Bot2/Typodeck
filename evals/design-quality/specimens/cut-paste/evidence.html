@@ -8,11 +8,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@600&family=Libre+Franklin:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only collage: tilted type layers, red stat numeral, Caveat
+     hand, ghost outline, plus confetti. No slabs, scraps, tape, stickies,
+     badges, or dot grid. */
   .cp-slide {
     position: absolute; inset: 0;
-    background-color: #F4F1EA;
-    background-image: radial-gradient(rgba(20, 20, 20, 0.07) 1.5px, transparent 1.5px);
-    background-size: 28px 28px;
+    background: #F4F1EA;
     overflow: hidden;
     color: #141414;
   }
@@ -34,48 +35,24 @@
     font-weight: 700; font-size: 26px; letter-spacing: 0.22em; text-transform: uppercase;
     color: #D7263D; margin: 0;
   }
-  .cp-shout-wrap { position: absolute; left: 620px; top: 178px; width: 1140px; transform: rotate(-1.2deg); }
-  .cp-shout-wrap::before {
-    content: ""; position: absolute; inset: -14px -28px -22px -28px;
-    background: #1B9AAA; transform: rotate(1.2deg);
-  }
   .cp-shout {
-    position: relative;
+    position: absolute; left: 620px; top: 178px; width: 1140px; transform: rotate(-1.2deg);
     font-family: 'Archivo Black', 'Arial Black', sans-serif;
     font-size: 56px; line-height: 1.12; font-weight: 400;
     color: #141414; margin: 0;
   }
-  .cp-shout::first-line { color: #D7263D; background: #F4F1EA; }
-  .cp-scrap-wrap { position: absolute; left: 620px; top: 470px; transform: rotate(1.4deg); width: 900px; }
-  .cp-scrap-wrap::before {
-    content: ""; position: absolute; inset: 0;
-    background: #D7263D; transform: rotate(-1deg) translate(14px, 14px);
-  }
-  .cp-scrap {
-    position: relative; background: #FFFFFF;
-    border: 2px solid #141414; padding: 24px 32px;
+  .cp-shout::first-line { color: #D7263D; }
+  .cp-sub {
+    position: absolute; left: 620px; top: 470px; transform: rotate(1.4deg); width: 900px;
     font-family: 'Libre Franklin', system-ui, sans-serif;
     font-size: 28px; font-weight: 500; line-height: 1.45;
-    color: #141414; margin: 0; box-sizing: border-box;
+    color: #141414; margin: 0;
   }
-  .cp-tape {
-    position: absolute; width: 120px; height: 34px;
-    background: rgba(244, 211, 94, 0.6);
-    box-shadow: 2px 3px 6px rgba(20, 20, 20, 0.18);
-    z-index: 2;
-  }
-  .cp-tape.tl { top: -17px; left: 40px; transform: rotate(-35deg); }
-  .cp-tape.tr { top: -17px; right: 40px; transform: rotate(35deg); }
-  .cp-tape.tc { top: -17px; left: 50%; margin-left: -60px; transform: rotate(-4deg); }
-  .cp-badge {
+  .cp-numeral {
     position: absolute; left: 150px; top: 300px;
-    width: 300px; height: 300px; border-radius: 50%;
-    background: #D7263D; border: 3px solid #141414;
-    box-shadow: 8px 8px 0 #141414;
     transform: rotate(8deg);
-    display: flex; align-items: center; justify-content: center;
     font-family: 'Archivo Black', 'Arial Black', sans-serif;
-    font-size: 100px; color: #FFFFFF;
+    font-size: 170px; line-height: 1; color: #D7263D;
   }
   .cp-statlabel {
     position: absolute; left: 150px; top: 640px; width: 380px;
@@ -83,21 +60,15 @@
     font-size: 32px; line-height: 1.3; color: #141414; margin: 0;
     transform: rotate(-2deg);
   }
-  .cp-sticky {
+  .cp-hand {
     position: absolute; right: 140px; bottom: 210px; width: 620px;
-    background: #F4D35E; padding: 28px 34px 32px;
-    transform: rotate(-2.5deg); box-sizing: border-box;
-    box-shadow: 8px 8px 0 #141414;
-  }
-  .cp-sticky p {
-    font-family: 'Caveat', cursive; font-size: 34px; font-weight: 600;
+    transform: rotate(-2.5deg);
+    font-family: 'Caveat', cursive; font-size: 40px; font-weight: 600;
     line-height: 1.25; color: #141414; margin: 0; text-align: center;
   }
   .cp-folio {
     position: absolute; right: 140px; bottom: 60px;
-    background: #FFFFFF; border: 2px solid #141414;
-    padding: 14px 26px; transform: rotate(2deg);
-    box-shadow: 8px 8px 0 #1B9AAA;
+    transform: rotate(2deg);
     font-family: 'Archivo Black', 'Arial Black', sans-serif;
     font-size: 26px; color: #141414; white-space: nowrap;
   }
@@ -145,25 +116,16 @@
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <section class="cp-slide">
       <div class="cp-ghost" aria-hidden="true">63%</div>
-      <span class="cp-plus" style="left:560px;top:180px;color:#1B9AAA;transform:rotate(12deg);" aria-hidden="true">+</span>
+      <span class="cp-plus" style="left:508px;top:140px;color:#1B9AAA;transform:rotate(12deg);" aria-hidden="true">+</span>
       <span class="cp-plus" style="left:520px;top:880px;color:#D7263D;transform:rotate(-10deg);" aria-hidden="true">+</span>
       <span class="cp-plus" style="left:1620px;top:120px;color:#1B9AAA;transform:rotate(20deg);" aria-hidden="true">+</span>
       <span class="cp-plus" style="left:1830px;top:700px;color:#D7263D;transform:rotate(8deg);" aria-hidden="true">+</span>
-      <div class="cp-badge" aria-label="63 percent">63%</div>
+      <div class="cp-numeral" aria-label="63 percent">63%</div>
       <p class="cp-statlabel">fewer sev-1 rollbacks</p>
       <p class="cp-eyebrow">Finding 01</p>
-      <div class="cp-shout-wrap">
-        <h1 class="cp-shout">Teams that required a second reviewer before merge contained failures earlier.</h1>
-      </div>
-      <div class="cp-scrap-wrap">
-        <span class="cp-tape tl" aria-hidden="true"></span>
-        <span class="cp-tape tr" aria-hidden="true"></span>
-        <p class="cp-scrap">Review depth predicted containment better than team size, tenure, or tooling.</p>
-      </div>
-      <div class="cp-sticky">
-        <span class="cp-tape tc" aria-hidden="true"></span>
-        <p>Fixture data · not a real study</p>
-      </div>
+      <h1 class="cp-shout">Teams that required a second reviewer before merge contained failures earlier.</h1>
+      <p class="cp-sub">Review depth predicted containment better than team size, tenure, or tooling.</p>
+      <p class="cp-hand">Fixture data · not a real study</p>
       <div class="cp-folio">02 / 03</div>
     </section>
     <!-- /DESIGN SLIDE MARKUP -->
