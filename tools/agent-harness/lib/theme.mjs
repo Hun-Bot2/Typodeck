@@ -6,7 +6,7 @@ import { SpecError } from './spec.mjs';
 
 // Canonical slots: bg, ink, accent, muted, line, panel.
 const COLOR_MAP = {
-  'atelier-noir': { bg: 'noir', ink: 'porcelain', accent: 'wine', muted: 'gallery-gray', line: 'soft-line', panel: 'noir' },
+  'atelier-noir': { bg: 'noir', ink: 'porcelain', accent: 'porcelain', muted: 'gallery-gray', line: 'soft-line', panel: 'noir' },
   'bubble-os': { bg: 'card-white', ink: 'deep-indigo', accent: 'bubblegum', muted: 'indigo-soft', line: 'ice-deep', panel: 'ice-blue' },
   'chapter-verse': { bg: 'cream', ink: 'ink', accent: 'oxblood', muted: 'smoke', line: 'tan', panel: 'cream' },
   'coin-op': { bg: 'void', ink: 'bone', accent: 'phosphor', muted: 'bone-dim', line: 'phosphor-dim', panel: 'void-panel' },
@@ -17,13 +17,13 @@ const COLOR_MAP = {
   'fieldnote': { bg: 'kraft', ink: 'moss-ink', accent: 'clay', muted: 'leaf', line: 'kraft-deep', panel: 'wash-white' },
   'fika': { bg: 'off-white', ink: 'slate', accent: 'fjord', muted: 'slate', line: 'sage', panel: 'white' },
   'front-page': { bg: 'newsprint', ink: 'ink', accent: 'dark-red', muted: 'gray', line: 'keyline', panel: 'white' },
-  'gilded-line': { bg: 'lacquer-black', ink: 'champagne', accent: 'gold', muted: 'warm-gray', line: 'deep-gold', panel: 'lacquer-black' },
+  'gilded-line': { bg: 'lacquer-black', ink: 'champagne', accent: 'gold', muted: 'champagne-dim', line: 'deep-gold', panel: 'lacquer-black' },
   'gridline-swiss': { bg: 'white', ink: 'ink', accent: 'signal-red', muted: 'muted', line: 'ink', panel: 'rail-gray' },
   'iron-press': { bg: 'aged-paper', ink: 'ink', accent: 'oxblood', muted: 'gray', line: 'gray', panel: 'paper-deep' },
   'ma': { bg: 'warm-white', ink: 'sumi', accent: 'shu-red', muted: 'sumi', line: 'stone', panel: 'warm-white' },
   'maison': { bg: 'black', ink: 'ivory', accent: 'gold', muted: 'gray', line: 'gray-line', panel: 'black-soft' },
   'memphis-squiggle': { bg: 'cream', ink: 'ink', accent: 'pink', muted: 'purple', line: 'purple', panel: 'white' },
-  'modulo-grid': { bg: 'white', ink: 'deep', accent: 'amber', muted: 'deep-soft', line: 'silver', panel: 'silver' },
+  'modulo-grid': { bg: 'white', ink: 'deep', accent: 'deep', muted: 'deep-soft', line: 'silver', panel: 'silver' },
   'monolith': { bg: 'black', ink: 'bone', accent: 'signal-orange', muted: 'dim', line: 'dim', panel: 'slab-black' },
   'new-wave-static': { bg: 'paper-white', ink: 'signal-black', accent: 'static-magenta', muted: 'signal-black', line: 'signal-black', panel: 'paper-white' },
   'night-reel': { bg: 'black', ink: 'white', accent: 'blood-red', muted: 'smoke', line: 'bar-line', panel: 'spotlight' },
