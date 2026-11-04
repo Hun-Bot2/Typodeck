@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>열한 건의 포스트모템이 가르쳐준 것 — 05</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400&display=swap&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; background:#FAF8F3; }
+  .slide { position:relative; width:1920px; height:1080px; background:#FAF8F3;
+    color:#1A1A1A; font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; overflow:hidden; }
+  .content { position:absolute; top:72px; left:96px; right:96px; max-height:820px; }
+  .kicker { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    font-weight:700; font-size:20px; letter-spacing:0;
+    text-transform:none; color:#182B49; margin:0; word-break:keep-all; overflow-wrap:normal; }
+  .metaline { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:18px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    color:#6E6A5E; margin:14px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+  .footer { position:absolute; left:96px; right:96px; bottom:0; height:104px;
+    display:flex; align-items:center;
+    justify-content:space-between; }
+  .footer .ctx { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:19px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    color:#6E6A5E; margin:0; word-break:keep-all; overflow-wrap:normal; }
+  .footer .idx { font-family:'Archivo', 'Pretendard Variable', sans-serif; font-weight:800;
+    font-size:22px; letter-spacing:0.1em; margin:0; color:#1A1A1A; }
+  .footer .idx .numeral { font-size:30px; }
+  h1, .statement { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:700;
+    text-align:left; margin:44px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+  .title-xl { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:800;
+    line-height:1.23; letter-spacing:0; }
+  .sec-title { line-height:1.24; margin-top:60px; }
+  .statement { line-height:1.30; margin-top:70px; }
+  .ev-msg { line-height:1.32; margin-top:40px; }
+  .cmp-title { line-height:1.27; margin-top:36px; }
+  .d-title { line-height:1.27; margin-top:32px; }
+  .close-line { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:800;
+    line-height:1.23; margin-top:120px; }
+  .lede { font-size:34px; line-height:1.77; margin:36px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
+  .orient { font-size:34px; line-height:1.77; margin:36px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
+  .close-recap { font-size:34px; line-height:1.77; margin:40px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
+  .srcline { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:20px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    color:#6E6A5E; margin:40px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+  .statrow { display:flex; gap:72px; margin:52px 0 0 0; }
+  .stat { display:flex; align-items:flex-end; gap:22px; }
+  .statnum { font-family:'Archivo', 'Pretendard Variable', sans-serif; font-weight:800; line-height:0.9;
+    letter-spacing:0; white-space:nowrap; }
+  .statlab { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:20px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    line-height:1.5; padding-bottom:18px; max-width:320px; word-break:keep-all; overflow-wrap:normal; }
+  .ev-sup { font-size:24px; line-height:1.83; margin:36px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
+  .findings { list-style:none; margin:44px 0 0 0; padding:0; }
+  .findings li { display:flex; gap:24px; padding:0; margin:0 0 30px 0; }
+  .findings li:last-child { margin-bottom:0; }
+  .fnum { font-family:'Archivo', 'Pretendard Variable', sans-serif; font-weight:800; font-size:30px; flex:0 0 96px; color:#182B49; }
+  .fbody { display:flex; flex-direction:column; gap:8px; }
+  .fhead { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:700; font-size:30px; line-height:1.2; word-break:keep-all; overflow-wrap:normal; }
+  .fsub { font-size:24px; line-height:1.83; word-break:keep-all; overflow-wrap:normal; }
+  .zones { display:flex; gap:96px; margin-top:44px; }
+  .zone { flex:1 1 0; }
+  .zone-h { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:700; font-size:30px;
+    line-height:1.2; margin:0; word-break:keep-all; overflow-wrap:normal; }
+  .zone ul { list-style:none; margin:20px 0 0 0; padding:0; }
+  .zone li { font-size:22px; line-height:1.5;
+    padding:0; margin:0 0 20px 0; word-break:keep-all; overflow-wrap:normal; }
+  .zone li:last-child { margin-bottom:0; }
+  .zone li.bad { color:#182B49; font-weight:600; }
+  .caption { font-size:22px; line-height:1.55; color:#6E6A5E; margin:36px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+  .ledger { display:grid; grid-template-columns:7em 10em 8em 1fr; column-gap:2.5em;
+    margin:32px 0 0 0; line-height:1.35; font-variant-numeric:tabular-nums; }
+  .lhead { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:500; letter-spacing:0;
+    text-transform:none; color:#6E6A5E; font-size:0.86em; padding:0 0 0.9em 0; word-break:keep-all; }
+  .lrow { display:contents; }
+  .lrow > .cell { padding:0.42em 0; white-space:nowrap; word-break:keep-all; }
+  .lrow > .cell.case { font-family:'Archivo', 'Pretendard Variable', sans-serif; font-weight:800; font-size:0.95em; }
+  .lrow.flag > .cell.cost { color:#182B49; font-weight:700; }
+  .d-foot { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:18px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    color:#6E6A5E; margin:22px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+  .fx { color:#6E6A5E; font-size:0.85em; letter-spacing:0.06em; white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="slide" data-contain="stage">
+  <div class="content">
+    <p class="kicker" data-t="kicker" data-headline>비교 · 리뷰 방식</p>
+    <p class="metaline" data-t="meta">비교 F-02 · 표본 6 대 5</p>
+    
+    <h1 class="cmp-title" data-t="title" data-headline style="font-size:56px">두 팀, 하나의 마감</h1>
+    <div class="zones"><div class="zone zone-a" data-t="zone-zone-a">
+      <h2 class="zone-h" data-headline>서두른 리뷰</h2>
+      <ul><li class="good">대충 훑고 바로 머지했다</li><li class="good">설정 변경을 기능 PR에 끼워 넣었다</li><li class="good">롤백을 고객이 먼저 발견했다</li></ul></div><div class="zone zone-b" data-t="zone-zone-b">
+      <h2 class="zone-h" data-headline>원칙을 지킨 리뷰</h2>
+      <ul><li class="good">머지마다 두 번째 리뷰어를 붙였다</li><li class="good">설정 변경은 별도 PR로 분리했다</li><li class="good">롤백을 스테이징에서 잡았다, 운영이 아니다</li></ul></div></div>
+    <p class="caption" data-t="cap">마감은 같았다. 대가는 달랐다: 한 팀은 리뷰할 때 치렀고, 다른 팀은 운영 중에서 치렀다.</p>
+  </div>
+  <footer class="footer"><p class="ctx" data-t="footer">Typodeck Research · Readout 07</p><p class="idx" data-t="pageidx"><span class="numeral" data-t="numeral">05</span> / 07</p></footer>
+</div>
+</body>
+</html>

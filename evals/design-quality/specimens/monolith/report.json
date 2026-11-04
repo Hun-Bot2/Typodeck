@@ -7,26 +7,33 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (strip bullet, band slab + 8px rule removed; footer is plain type; single orange strike word kept); PNG 1920x1080 (79400 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: signal-orange #FF4D00→#F04E12 (S 1.00→0.88, 5.33:1), one-strike rationing kept; HTML color-values-only; PNG re-captured via repo CDP pipeline, viewed full-res — PASS."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); typography-only rebuild (orange 63% numeral is the single strike); PNG 1920x1080 (105739 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: signal-orange #FF4D00→#F04E12 (S 1.00→0.88, 5.33:1), one-strike rationing kept; HTML color-values-only; PNG re-captured via repo CDP pipeline, viewed full-res — PASS."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); typography-only rebuild (column divider, row rules, band removed; affirmed head orange, rushed side dimmed as type); PNG 1920x1080 (120244 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: signal-orange #FF4D00→#F04E12 (S 1.00→0.88, 5.33:1), one-strike rationing kept; HTML color-values-only; PNG re-captured via repo CDP pipeline, viewed full-res — PASS."
     }
   ],
   "render": {
     "width": 1920,
     "height": 1080,
     "verify": "PASS"
+  },
+  "color_comfort": {
+    "date": "2026-11-04",
+    "tokens": "signal-orange #FF4D00→#F04E12; black, bone, dim kept",
+    "html_diff": "color-values-only vs f0aed77 (0 ODD lines after hex/rgba normalization)",
+    "png": "3/3 IHDR 1920x1080, all differ from f0aed77 blobs; re-captured via repo CDP pipeline",
+    "viewing": "all 3 viewed full-res by agent; brutalist strike identity intact, no boxes; no comfort claim (WCAG arithmetic + AGENT viewing only)"
   }
 }

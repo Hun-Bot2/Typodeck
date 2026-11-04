@@ -26,7 +26,7 @@
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 17px; font-weight: 400; color: #8A8A8A;
   }
-  .sm-grid {
+  .sm-cols {
     display: flex; gap: 120px; margin-top: 56px; flex: 1; min-height: 0;
   }
   .sm-arg { width: 1080px; flex: 0 0 auto; }
@@ -44,11 +44,11 @@
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 0.72em; font-weight: 600; color: #1F3A5F;
   }
-  .sm-rule { width: 160px; height: 1px; background: #8A8A8A; margin: 40px 0 16px; }
+  /* Typography-only: the footnote rule is retired; whitespace closes the argument. */
   .sm-foot {
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 17px; line-height: 1.6;
-    color: rgba(34, 34, 34, 0.72); margin: 0;
+    color: rgba(34, 34, 34, 0.72); margin: 56px 0 0 0;
   }
   .sm-margin { width: 400px; flex: 0 0 auto; padding-top: 18px; }
   .sm-note {
@@ -110,11 +110,10 @@
         <span class="sm-marker">§ 1</span>
         <span class="sm-date">November 2026</span>
       </div>
-      <div class="sm-grid">
+      <div class="sm-cols">
         <div class="sm-arg">
           <h1 class="sm-title">The Hidden Cost of Rushing to Ship</h1>
           <p class="sm-lede">What 11 postmortems taught us about review discipline<sup>1, 2</sup></p>
-          <div class="sm-rule" aria-hidden="true"></div>
           <p class="sm-foot"><sup>1</sup> Typodeck Research · November 2026</p>
         </div>
         <aside class="sm-margin">

@@ -8,62 +8,45 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --paper: #FFFFFF; --ink: #1A1A1A; --blue: #0B5394; --rule: #EAEAEA; --abstract-tint: #F3F5F8; --muted: #5A6470; }
   * { box-sizing: border-box; }
-  .pr-slide { position: absolute; inset: 0; background: var(--paper); color: var(--ink);
-    font-family: "STIX Two Text", Georgia, "Times New Roman", serif; padding: 56px 88px 48px;
+  .s { position: absolute; inset: 0; background: #FFFFFF; color: #1A1A1A;
+    font-family: "STIX Two Text", Georgia, serif; padding: 48px 88px 40px;
     display: flex; flex-direction: column; }
-  .pr-runhead { display: flex; justify-content: space-between; align-items: baseline;
+  .run { display: flex; justify-content: space-between; align-items: baseline;
     font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 600;
-    letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); }
-  .pr-runhead .pr-page { color: var(--muted); letter-spacing: 0.14em; }
-  .pr-double-rule { margin-top: 18px; border-top: 3px solid var(--ink); }
-  .pr-double-rule::after { content: ""; display: block; border-top: 1px solid var(--ink); margin-top: 3px; }
-  .pr-kicker { font-family: Inter, system-ui, sans-serif; font-size: 22px; font-weight: 700;
-    letter-spacing: 0.24em; text-transform: uppercase; color: var(--blue); }
-  .pr-abstract { background: var(--abstract-tint); border-left: 6px solid var(--blue); padding: 28px 34px 30px; }
-  .pr-abstract-label { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
-    letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
-  .pr-abstract-text { margin: 0; font-style: italic; font-size: 35px; line-height: 1.42; color: var(--ink); }
-  .pr-keywords { margin-top: 20px; padding-top: 16px; border-top: 1px solid #D8DEE5;
-    font-family: Inter, system-ui, sans-serif; font-size: 21px; font-weight: 500; color: var(--muted); }
-  .pr-keywords strong { font-weight: 700; color: var(--ink); }
-  .pr-fig-label { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); }
-  .pr-fig-title { font-family: Inter, system-ui, sans-serif; font-size: 24px; font-weight: 600; color: var(--ink); margin: 12px 0 20px; }
-  .pr-caption { margin: 16px 0 0; font-family: Inter, system-ui, sans-serif; font-size: 21px; line-height: 1.5; color: var(--muted); }
-  .pr-caption strong { color: var(--ink); font-weight: 700; }
-  .pr-footnotes { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--ink);
-    font-family: Inter, system-ui, sans-serif; font-size: 20px; line-height: 1.6; color: var(--muted);
-    display: flex; gap: 48px; }
-  .pr-footnotes .pr-fn sup { font-weight: 700; color: var(--blue); margin-right: 6px; }
-
-
-  .pr-main { flex: 1; display: flex; gap: 72px; margin-top: 44px; min-height: 0; }
-  .pr-article { flex: 1.85; min-width: 0; display: flex; flex-direction: column; }
-  .pr-title { margin: 22px 0 0 0; font-size: 64px; font-weight: 700; line-height: 1.1; letter-spacing: -0.005em; }
-  .pr-groups { display: flex; gap: 56px; margin-top: 30px; }
-  .pr-group { flex: 1; min-width: 0; }
-  .pr-group-head { font-family: Inter, system-ui, sans-serif; font-size: 22px; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase; border-top: 2px solid var(--ink);
-    padding-top: 14px; margin-bottom: 4px; }
-  .pr-group ul { list-style: none; margin: 0; padding: 0; }
-  .pr-group li { font-size: 26px; line-height: 1.42; padding: 12px 0; border-bottom: 1px solid var(--rule); }
-  .pr-group li .n { font-family: Inter, system-ui, sans-serif; font-size: 19px; font-weight: 700;
-    color: var(--muted); margin-right: 14px; font-variant-numeric: tabular-nums; }
-  .pr-closing { margin: 30px 0 0 0; font-style: italic; font-size: 29px; line-height: 1.5;
-    border-top: 1px solid var(--ink); padding-top: 22px; }
-  .pr-rail { flex: 1; min-width: 0; border-left: 1px solid var(--rule); padding-left: 60px;
-    display: flex; flex-direction: column; }
-  .pr-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
-  .pr-table th { font-family: Inter, system-ui, sans-serif; font-size: 18px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); text-align: left;
-    padding: 10px 8px 10px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); }
-  .pr-table th:last-child, .pr-table td:last-child { text-align: right; padding-right: 0; }
-  .pr-table td { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 500;
-    padding: 12px 8px 12px 0; border-bottom: 1px solid var(--rule); font-variant-numeric: tabular-nums; vertical-align: top; }
-  .pr-table tr:last-child td { border-bottom: 2px solid var(--ink); }
-  .pr-table td.ref { color: var(--muted); font-weight: 600; white-space: nowrap; }
+    letter-spacing: 0.22em; text-transform: uppercase; }
+  .run .pg { color: #5A6470; letter-spacing: 0.14em; }
+  .kick { font-family: Inter, system-ui, sans-serif; font-size: 22px; font-weight: 700;
+    letter-spacing: 0.24em; text-transform: uppercase; color: #0B5394; margin: 32px 0 0 0; }
+  .title { margin: 16px 0 0 0; font-size: 56px; font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.005em; }
+  .main { flex: 1; display: flex; gap: 88px; margin-top: 32px; min-height: 0; }
+  .sides { flex: 1.35; min-width: 0; display: flex; gap: 64px; }
+  .side { flex: 1; min-width: 0; }
+  .side h3 { margin: 0; font-size: 34px; font-weight: 700; line-height: 1.15; }
+  .side ul { list-style: none; margin: 16px 0 0 0; padding: 0; }
+  .side li { font-family: Inter, system-ui, sans-serif; font-size: 20px; line-height: 1.45;
+    padding: 9px 0; display: flex; gap: 12px; align-items: baseline; }
+  .side li .ref { color: #0B5394; font-weight: 700; flex: 0 0 auto; }
+  .rail { flex: 1; min-width: 0; }
+  .tab-lab { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; margin: 0; }
+  .tab-ttl { font-family: Inter, system-ui, sans-serif; font-size: 24px; font-weight: 600;
+    margin: 12px 0 0 0; }
+  .rows { display: grid; grid-template-columns: 1fr 64px; column-gap: 24px; margin-top: 16px; }
+  .rows .h { font-family: Inter, system-ui, sans-serif; font-size: 18px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #5A6470; padding-bottom: 10px; }
+  .rows .p { font-family: Inter, system-ui, sans-serif; font-size: 19px; font-weight: 500;
+    line-height: 1.4; padding: 6px 0; }
+  .rows .r { font-family: Inter, system-ui, sans-serif; font-size: 19px; font-weight: 700;
+    color: #0B5394; padding: 6px 0; text-align: right; }
+  .cap { margin: 16px 0 0 0; font-family: Inter, system-ui, sans-serif; font-size: 20px;
+    line-height: 1.5; color: #5A6470; }
+  .cap strong { color: #1A1A1A; font-weight: 700; }
+  .capline { margin: 24px 0 0 0; font-style: italic; font-size: 26px; line-height: 1.45; max-width: 56ch; }
+  .fns { margin-top: auto; padding-top: 20px; font-family: Inter, system-ui, sans-serif;
+    font-size: 20px; line-height: 1.6; color: #5A6470; display: flex; gap: 48px; }
+  .fns sup { font-weight: 700; color: #0B5394; margin-right: 6px; }
 </style>
 <style>
   html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
@@ -73,53 +56,48 @@
 </head>
 <body>
 <div id="deck-viewport"><div id="deck-stage">
-
-    <div class="pr-slide">
-      <div class="pr-runhead"><span>Typodeck Research · November 2026</span><span class="pr-page">p. 05</span></div>
-      <div class="pr-double-rule"></div>
-      <div class="pr-main">
-        <div class="pr-article">
-          <div class="pr-kicker">The choice &#183; Review Practice</div>
-          <h1 class="pr-title">Two teams, one deadline</h1>
-          <div class="pr-groups">
-            <div class="pr-group">
-              <div class="pr-group-head">Rushed review</div>
-              <ul>
-                <li><span class="n">(a)</span>Merged with a single skim approval</li>
-                <li><span class="n">(b)</span>Config changes bundled into feature PRs</li>
-                <li><span class="n">(c)</span>Rollback discovered by customers first</li>
-              </ul>
-            </div>
-            <div class="pr-group">
-              <div class="pr-group-head">Disciplined review</div>
-              <ul>
-                <li><span class="n">(d)</span>Required a second reviewer on every merge</li>
-                <li><span class="n">(e)</span>Config changes shipped in isolated PRs</li>
-                <li><span class="n">(f)</span>Rollback caught in staging, never in production</li>
-              </ul>
-            </div>
+    <div class="s">
+      <div class="run"><span>Typodeck Research · November 2026</span><span class="pg">p. 05</span></div>
+      <p class="kick">The choice · Review Practice</p>
+      <h2 class="title">Two teams, one deadline</h2>
+      <div class="main">
+        <div class="sides">
+          <div class="side">
+            <h3>Rushed review</h3>
+            <ul>
+              <li><span class="ref">(a)</span><span>Merged with a single skim approval</span></li>
+              <li><span class="ref">(b)</span><span>Config changes bundled into feature PRs</span></li>
+              <li><span class="ref">(c)</span><span>Rollback discovered by customers first</span></li>
+            </ul>
           </div>
-          <p class="pr-closing">Same deadline, different discipline: one team paid at review time, the other in production.</p>
+          <div class="side">
+            <h3>Disciplined review</h3>
+            <ul>
+              <li><span class="ref">(d)</span><span>Required a second reviewer on every merge</span></li>
+              <li><span class="ref">(e)</span><span>Config changes shipped in isolated PRs</span></li>
+              <li><span class="ref">(f)</span><span>Rollback caught in staging, never in production</span></li>
+            </ul>
+          </div>
         </div>
-        <div class="pr-rail">
-          <div class="pr-fig">
-            <div class="pr-fig-label">Table 3</div>
-            <table class="pr-table">
-              <tr><th>Observed practice</th><th>Ref</th></tr>
-              <tr><td>Merged with a single skim approval</td><td class="ref">R-1</td></tr>
-              <tr><td>Config changes bundled into feature PRs</td><td class="ref">R-2</td></tr>
-              <tr><td>Rollback discovered by customers first</td><td class="ref">R-3</td></tr>
-              <tr><td>Required a second reviewer on every merge</td><td class="ref">D-1</td></tr>
-              <tr><td>Config changes shipped in isolated PRs</td><td class="ref">D-2</td></tr>
-              <tr><td>Rollback caught in staging, never in production</td><td class="ref">D-3</td></tr>
-            </table>
-            <p class="pr-caption"><strong>Table 3.</strong> The six practices behind the choice.</p>
+        <div class="rail">
+          <p class="tab-lab">Table 3</p>
+          <p class="tab-ttl">Observed practice</p>
+          <div class="rows">
+            <div class="h">Practice</div><div class="h" style="text-align:right">Ref</div>
+            <div class="p">Merged with a single skim approval</div><div class="r">R-1</div>
+            <div class="p">Config changes bundled into feature PRs</div><div class="r">R-2</div>
+            <div class="p">Rollback discovered by customers first</div><div class="r">R-3</div>
+            <div class="p">Required a second reviewer on every merge</div><div class="r">D-1</div>
+            <div class="p">Config changes shipped in isolated PRs</div><div class="r">D-2</div>
+            <div class="p">Rollback caught in staging, never in production</div><div class="r">D-3</div>
           </div>
+          <p class="cap"><strong>Table 3.</strong> The six practices behind the choice.</p>
         </div>
       </div>
-      <div class="pr-footnotes">
-        <span class="pr-fn"><sup>[1]</sup>Fixture data · not a real study.</span>
-        <span class="pr-fn"><sup>[2]</sup>Scope: review discipline only.</span>
+      <p class="capline">Same deadline, different discipline: one team paid at review time, the other in production.</p>
+      <div class="fns">
+        <span><sup>[1]</sup>Fixture data · not a real study.</span>
+        <span><sup>[2]</sup>Scope: review discipline only.</span>
       </div>
     </div>
 </div></div>
@@ -135,6 +113,5 @@
   document.addEventListener('DOMContentLoaded', __typodeckFitStage);
   __typodeckFitStage();
 </script>
-
 </body>
 </html>

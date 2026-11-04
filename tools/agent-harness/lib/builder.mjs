@@ -1,7 +1,10 @@
-// Spec-driven slide builder: composes per-role HTML/CSS from design.md tokens.
-// Every color, type size, and spacing constant comes from the parsed spec —
-// no hardcoded palette. Layouts follow the design.md component vocabulary
-// (kicker+square, one 6px red rule, index rail, hairline footer, exposed grid).
+// Spec-driven slide builder (typography-only): composes per-role HTML/CSS
+// from design.md tokens. Every color, type size, and spacing constant comes
+// from the parsed spec — no hardcoded palette. Hierarchy is carried by
+// position, alignment, proximity, scale, weight, color, and whitespace only:
+// no visible rectangles, cards, panels, rails, rules, table grids, borders
+// used as containers, or colored boxes behind text. The only background is
+// the full-slide solid ground.
 
 import { px } from './spec.mjs';
 
@@ -70,19 +73,20 @@ export function buildSlide({ spec, slide, role, index, total, deck, lang, adjust
     ? { family: "'Noto Sans KR', sans-serif", weight: 500 }
     : { family: fam('caption', "'Inter', sans-serif"), weight: 500 };
 
-  const narrow = role === 'dense';
-  const contentW = narrow ? 1326 : 1176;
-  const railLeft = narrow ? 1422 : 1272;
-  const railW = narrow ? 426 : 576;
-  const numeralPx = adjust.numeralPx ?? (narrow ? 300 : px(typo('index-numeral').fontSize));
+  // Typographic two-column rhythm: text column left, folio numeral + meta
+  // right, separated by whitespace only (no rail panel, no grid lines).
+  const contentW = 1152;
+  const folioLeft = 1288;
+  const folioW = 560;
+  const numeralPx = adjust.numeralPx ?? px(typo('index-numeral').fontSize);
 
   const fontsHref = lang === 'ko'
     ? (cjk?.fontHref ?? 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Archivo:wght@800&display=swap')
     : 'https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Inter:wght@400;500&display=swap';
 
   const kicker = slide.kicker
-    ? `<p class="kicker" data-t="kicker" data-headline>${esc(slide.kicker)}</p>\n<div class="redrule" aria-hidden="true"></div>`
-    : `<div class="redrule notop" aria-hidden="true"></div>`;
+    ? `<p class="kicker" data-t="kicker" data-headline>${esc(slide.kicker)}</p>`
+    : '';
 
   const meta = (slide.meta?.length ? slide.meta : [
     { label: 'Issue', value: `${nn} / ${tt}` },
@@ -96,7 +100,12 @@ export function buildSlide({ spec, slide, role, index, total, deck, lang, adjust
   const fx = slide.fixture
     ? `<span class="fx" data-fixture title="${esc(slide.fixtureNote ?? 'illustrative content')}">· FIXTURE</span>` : '';
 
-  const withFx = (html) => (slide.fixture && !html.includes('data-fixture') ? `${html} ${fx}` : html);
+  const withFx = (html) => {
+    if (!slide.fixture || html.includes('data-fixture')) return html;
+    // Fixture copy often names FIXTURE literally: fold it into the marker.
+    if (/FIXTURE/i.test(html)) return html.replace(/\s*·?\s*FIXTURE/i, `&nbsp;${fx}`);
+    return `${html}&nbsp;${fx}`;
+  };
 
   const notes = [];
   let bodyHtml = '';
@@ -104,7 +113,7 @@ export function buildSlide({ spec, slide, role, index, total, deck, lang, adjust
 
   if (role === 'cover' || role === 'closing') {
     const size = adjust.titlePx ?? titleLadder(role, titleLen);
-    notes.push(`${role} composition: display ${size}px + ${role === 'cover' ? 'lede' : 'recap'}`);
+    notes.push(`${role} composition: display ${size}px + ${role === 'cover' ? 'lede' : 'recap'}, type only`);
     const cls = role === 'cover' ? 'title-xl' : 'close-line';
     const sub = role === 'cover' ? slide.lede : slide.recap;
     const subCls = role === 'cover' ? 'lede' : 'close-recap';
@@ -125,7 +134,7 @@ export function buildSlide({ spec, slide, role, index, total, deck, lang, adjust
     ${slide.source ? `<p class="srcline" data-t="src">${withFx(esc(slide.source))}</p>` : ''}`;
   } else if (role === 'evidence') {
     const size = adjust.titlePx ?? 48;
-    notes.push(`evidence composition: message ${size}px + stat/finding row under 2px rule`);
+    notes.push(`evidence composition: message ${size}px + stat/finding group, whitespace-separated`);
     let mid = '';
     if (slide.stats?.length) {
       const spx = adjust.statsPx ?? 150;
@@ -149,7 +158,7 @@ export function buildSlide({ spec, slide, role, index, total, deck, lang, adjust
     ${slide.source ? `<p class="srcline" data-t="src">${withFx(esc(slide.source))}</p>` : ''}`;
   } else if (role === 'comparison') {
     const size = adjust.titlePx ?? 56;
-    notes.push('comparison composition: two-zone A/B, positional identity, valence squares');
+    notes.push('comparison composition: two-zone A/B, positional identity, accent marks flags');
     const zone = (z, cls) => `<div class="zone ${cls}" data-t="zone-${cls}">
       <h2 class="zone-h" data-headline>${esc(z.label)}</h2>
       <ul>${(z.rows ?? []).map((r) => {
@@ -164,12 +173,13 @@ export function buildSlide({ spec, slide, role, index, total, deck, lang, adjust
   } else if (role === 'dense') {
     const size = adjust.titlePx ?? 48;
     const tpx = adjust.tablePx ?? 21;
-    notes.push(`dense composition: swiss table ${tpx}px, rail narrowed to cols 10-12`);
+    notes.push(`dense composition: typographic ledger ${tpx}px, aligned columns, no grid`);
     const t = slide.table;
     bodyHtml = `
     <h1 class="d-title" data-t="title" data-headline style="font-size:${size}px">${esc(slide.title ?? slide.message ?? '')}</h1>
-    <table class="swiss" data-t="table" style="font-size:${tpx}px"><thead><tr>${t.columns.map((c) => `<th>${esc(c)}</th>`).join('')}</tr></thead>
-    <tbody>${t.rows.map((row, i) => `<tr class="${t.flags?.[i] ? 'flag' : ''}">${row.map((cell, j) => `<td class="${j === 0 ? 'case' : j === 2 ? 'cost' : ''}">${esc(String(cell))}</td>`).join('')}</tr>`).join('')}</tbody></table>
+    <div class="ledger" data-t="table" style="font-size:${tpx}px">${t.columns.map((c) => `<span class="lhead">${esc(c)}</span>`).join('')}
+    ${t.rows.map((row, i) => `<div class="lrow${t.flags?.[i] ? ' flag' : ''}">${row.map((cell, j) => `<span class="cell${j === 0 ? ' case' : j === 2 ? ' cost' : ''}">${esc(String(cell))}</span>`).join('')}</div>`).join('')}
+    </div>
     ${t.footnote ? `<p class="d-foot" data-t="tfoot">${withFx(esc(t.footnote))}</p>` : ''}`;
   }
 
@@ -183,34 +193,25 @@ export function buildSlide({ spec, slide, role, index, total, deck, lang, adjust
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="${fontsHref}" rel="stylesheet">
 <style>
-  * { border-radius:0 !important; }
-  html, body { margin:0; padding:0; background:#000; }
+  html, body { margin:0; padding:0; background:${C.white}; }
   .slide { position:relative; width:1920px; height:1080px; background:${C.white};
     color:${C.ink}; font-family:${bodyF.family}; overflow:hidden; }
-  .colgrid { position:absolute; top:0; bottom:0; left:72px; right:72px;
-    display:grid; grid-template-columns:repeat(12, 1fr); gap:24px; pointer-events:none; }
-  .colgrid i { border-left:1px solid ${C.gridline}; display:block; }
-  .colgrid i:last-child { border-right:1px solid ${C.gridline}; }
   .content { position:absolute; top:64px; left:72px; width:${contentW}px; max-height:796px; }
-  .kicker { display:flex; align-items:center; gap:16px; font-family:${kickF.family};
+  .kicker { font-family:${kickF.family};
     font-weight:${kickF.weight}; font-size:20px; letter-spacing:${track(lang, cjk?.rules, '0.18em')};
     text-transform:${caps(lang, cjk?.rules)}; color:${C['signal-red']}; margin:0; }
-  .kicker::before { content:""; width:18px; height:18px; background:${C['signal-red']}; flex:0 0 auto; }
-  .redrule { height:6px; background:${C['signal-red']}; margin-top:20px; width:100%; }
-  .redrule.notop { margin-top:0; }
-  .rail { position:absolute; top:64px; bottom:110px; left:${railLeft}px; width:${railW}px;
-    background:${C['rail-gray']}; padding:40px 36px; box-sizing:border-box; overflow:hidden; }
+  .folio { position:absolute; top:64px; left:${folioLeft}px; width:${folioW}px;
+    text-align:right; }
   .numeral { font-family:'Archivo', "Arial Black", sans-serif; font-weight:800;
     font-size:${numeralPx}px; line-height:0.85; letter-spacing:-0.02em; color:${C.ink}; margin:0; }
-  .railrule { height:6px; background:${C['signal-red']}; margin:28px 0 12px 0; }
-  .meta { margin:0; padding:0; list-style:none; }
+  .meta { margin:36px 0 0 0; padding:0; list-style:none; }
   .meta li { font-family:${bodyMed.family}; font-size:19px; font-weight:500;
     letter-spacing:${track(lang, cjk?.rules, '0.1em')}; text-transform:${caps(lang, cjk?.rules)};
-    line-height:1.5; padding:14px 0; border-top:1px solid #D9D9D9; }
+    line-height:1.5; padding:0; margin:0 0 20px 0; }
   .meta li span { display:block; color:${C.muted}; font-size:16px; }
   .footer { position:absolute; left:72px; right:72px; bottom:0; height:110px;
-    border-top:2px solid ${C.ink}; display:flex; align-items:center;
-    justify-content:space-between; background:${C.white}; }
+    display:flex; align-items:center;
+    justify-content:space-between; }
   .footer .ctx { font-family:${bodyMed.family}; font-size:20px; font-weight:500;
     letter-spacing:${track(lang, cjk?.rules, '0.08em')}; text-transform:${caps(lang, cjk?.rules)}; margin:0; }
   .footer .idx { font-family:'Archivo', "Arial Black", sans-serif; font-weight:600;
@@ -230,59 +231,54 @@ export function buildSlide({ spec, slide, role, index, total, deck, lang, adjust
   .srcline { font-family:${bodyMed.family}; font-size:20px; font-weight:500;
     letter-spacing:${track(lang, cjk?.rules, '0.08em')}; text-transform:${caps(lang, cjk?.rules)};
     color:${C.muted}; margin:40px 0 0 0; }
-  .statrow { display:flex; gap:36px; margin:44px 0 0 0; border-top:2px solid ${C.ink}; padding-top:32px; }
-  .stat { display:flex; align-items:flex-end; gap:20px; padding-right:36px; border-right:1px solid #D9D9D9; }
-  .stat:last-child { border-right:none; }
+  .statrow { display:flex; gap:80px; margin:52px 0 0 0; }
+  .stat { display:flex; align-items:flex-end; gap:20px; }
   .statnum { font-family:${displayF.family}; font-weight:${displayF.weight}; line-height:0.9;
-    letter-spacing:${track(lang, cjk?.rules, '-0.02em')}; }
+    letter-spacing:${track(lang, cjk?.rules, '-0.02em')}; white-space:nowrap; }
   .statlab { font-family:${bodyMed.family}; font-size:20px; font-weight:500;
     letter-spacing:${track(lang, cjk?.rules, '0.08em')}; text-transform:${caps(lang, cjk?.rules)};
     line-height:1.5; padding-bottom:18px; max-width:300px; }
-  .ev-sup { font-size:24px; line-height:${lh(1.5, lang, cjk?.rules)}; color:#333; margin:32px 0 0 0; max-width:1026px; }
-  .findings { list-style:none; margin:36px 0 0 0; padding:0; border-top:2px solid ${C.ink}; }
-  .findings li { display:flex; gap:24px; padding:24px 0; border-bottom:1px solid #E4E4E4; }
-  .fnum { font-family:${displayF.family}; font-weight:${displayF.weight}; font-size:30px; flex:0 0 96px; }
+  .ev-sup { font-size:24px; line-height:${lh(1.5, lang, cjk?.rules)}; color:#333; margin:36px 0 0 0; max-width:1026px; }
+  .findings { list-style:none; margin:44px 0 0 0; padding:0; }
+  .findings li { display:flex; gap:24px; padding:0; margin:0 0 32px 0; }
+  .findings li:last-child { margin-bottom:0; }
+  .fnum { font-family:${displayF.family}; font-weight:${displayF.weight}; font-size:30px; flex:0 0 96px; color:${C['signal-red']}; }
   .fbody { display:flex; flex-direction:column; gap:8px; }
   .fhead { font-family:${displayF.family}; font-weight:${displayF.weight}; font-size:30px; line-height:1.15; }
   .fsub { font-size:24px; line-height:${lh(1.5, lang, cjk?.rules)}; color:#333; }
-  .zones { display:flex; gap:24px; margin-top:36px; }
+  .zones { display:flex; gap:96px; margin-top:44px; }
   .zone { flex:1 1 0; }
-  .zone-b { border-left:1px solid #D9D9D9; padding-left:24px; }
   .zone-h { font-family:${displayF.family}; font-weight:${displayF.weight}; font-size:30px;
     line-height:1.15; margin:0; }
-  .zone ul { list-style:none; margin:0; padding:18px 0 0 0; border-top:2px solid ${C.ink}; margin-top:12px; }
-  .zone li { display:flex; gap:14px; align-items:flex-start; font-size:22px; line-height:1.45;
-    padding:12px 0; border-bottom:1px solid #E4E4E4; }
-  .zone li::before { content:""; width:14px; height:14px; flex:0 0 auto; margin-top:9px; background:${C.ink}; }
-  .zone li.bad::before { background:${C['signal-red']}; }
-  .caption { font-size:22px; line-height:1.5; color:${C.muted}; margin:30px 0 0 0;
-    border-top:1px solid #D9D9D9; padding-top:20px; }
-  table.swiss { border-collapse:collapse; margin:24px 0 0 0; width:100%; }
-  table.swiss th { font-family:${bodyMed.family}; font-weight:500; letter-spacing:${track(lang, cjk?.rules, '0.08em')};
-    text-transform:${caps(lang, cjk?.rules)}; color:${C.muted}; text-align:left; font-size:0.86em;
-    padding:10px 16px 10px 0; border-top:2px solid ${C.ink}; border-bottom:2px solid ${C.ink}; }
-  table.swiss td { line-height:1.3; padding:8px 16px 8px 0; border-bottom:1px solid #E4E4E4; white-space:nowrap; }
-  table.swiss td.case { font-family:${displayF.family}; font-weight:${displayF.weight}; font-size:0.95em; }
-  table.swiss tr.flag td.cost::before { content:""; display:inline-block; width:12px; height:12px;
-    background:${C['signal-red']}; margin-right:10px; }
+  .zone ul { list-style:none; margin:20px 0 0 0; padding:0; }
+  .zone li { font-size:22px; line-height:1.45; padding:0; margin:0 0 20px 0; }
+  .zone li:last-child { margin-bottom:0; }
+  .zone li.bad { color:${C['signal-red']}; font-weight:600; }
+  .caption { font-size:22px; line-height:1.5; color:${C.muted}; margin:36px 0 0 0; }
+  .ledger { display:grid; grid-template-columns:7em 10em 8em 1fr; column-gap:2.5em;
+    margin:32px 0 0 0; line-height:1.35; font-variant-numeric:tabular-nums; }
+  .lhead { font-family:${bodyMed.family}; font-weight:500; letter-spacing:${track(lang, cjk?.rules, '0.08em')};
+    text-transform:${caps(lang, cjk?.rules)}; color:${C.muted}; font-size:0.86em; padding:0 0 0.9em 0; }
+  .lrow { display:contents; }
+  .lrow > .cell { padding:0.42em 0; white-space:nowrap; }
+  .lrow > .cell.case { font-family:${displayF.family}; font-weight:${displayF.weight}; font-size:0.95em; }
+  .lrow.flag > .cell.cost { color:${C['signal-red']}; font-weight:700; }
   .d-foot { font-family:${bodyMed.family}; font-size:18px; font-weight:500;
     letter-spacing:${track(lang, cjk?.rules, '0.08em')}; text-transform:${caps(lang, cjk?.rules)};
-    color:${C.muted}; margin:14px 0 0 0; }
+    color:${C.muted}; margin:22px 0 0 0; }
   .fx { color:${C.muted}; font-size:0.85em; letter-spacing:0.08em; white-space:nowrap; }
 </style>
 </head>
 <body>
 <div class="slide" data-contain="stage">
-  <div class="colgrid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="content">
     ${kicker}
     ${bodyHtml}
   </div>
-  <aside class="rail" data-t="rail">
-    <p class="numeral" data-t="numeral" data-contain="rail">${nn}</p>
-    <div class="railrule" aria-hidden="true"></div>
+  <div class="folio">
+    <p class="numeral" data-t="numeral">${nn}</p>
     <ul class="meta">${meta}</ul>
-  </aside>
+  </div>
   <footer class="footer"><p class="ctx" data-t="footer">${esc(footerCtx)}</p><p class="idx" data-t="pageidx">${nn} / ${tt}</p></footer>
 </div>
 </body>

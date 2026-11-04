@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only: position, scale, weight, color, whitespace. No rules,
+     no grid lines, no bullets, no borders. */
   .gridline-slide {
     position: absolute; inset: 0;
     background: #FFFFFF;
@@ -15,14 +17,7 @@
     font-family: 'Inter', system-ui, sans-serif;
     overflow: hidden;
   }
-  .gridline-slide .colgrid {
-    position: absolute; top: 0; bottom: 0; left: 72px; right: 72px;
-    display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
-    pointer-events: none;
-  }
-  .gridline-slide .colgrid i { border-left: 1px solid rgba(17,17,17,0.07); display: block; }
-  .gridline-slide .colgrid i:last-child { border-right: 1px solid rgba(17,17,17,0.07); }
-  .gridline-slide .frame {
+  .gridline-slide .columns {
     position: absolute; inset: 0;
     padding: 64px 72px 0 72px;
     display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
@@ -30,16 +25,11 @@
   }
   .gridline-slide .kicker {
     grid-column: 1 / 13;
-    display: flex; align-items: center; gap: 16px;
     font-family: 'Archivo', "Arial Black", sans-serif;
     font-weight: 600; font-size: 20px; letter-spacing: 0.18em; text-transform: uppercase;
     color: #E30613;
     margin: 0;
   }
-  .gridline-slide .kicker::before {
-    content: ""; width: 18px; height: 18px; background: #E30613; flex: 0 0 auto;
-  }
-  .gridline-slide .redrule { grid-column: 1 / 13; height: 6px; background: #E30613; margin-top: 20px; }
   .gridline-slide .message {
     grid-column: 1 / 13;
     font-family: 'Archivo', "Arial Black", sans-serif;
@@ -50,8 +40,7 @@
   .gridline-slide .statzone {
     grid-column: 1 / 13;
     display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
-    border-top: 2px solid #111111;
-    margin-top: 56px; padding-top: 48px;
+    margin-top: 56px;
   }
   .gridline-slide .stat { grid-column: 1 / 5; margin: 0; }
   .gridline-slide .stat .n {
@@ -64,16 +53,13 @@
     font-size: 21px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
   }
   .gridline-slide .support {
-    grid-column: 5 / 13;
-    border-left: 1px solid #D9D9D9;
-    padding-left: 48px;
-    align-self: center;
+    grid-column: 6 / 13;
     margin: 0;
+    align-self: center;
     font-size: 36px; line-height: 1.5; font-weight: 400; color: #333333;
   }
   .gridline-slide .footer {
     position: absolute; left: 72px; right: 72px; bottom: 0; height: 110px;
-    border-top: 2px solid #111111;
     display: flex; align-items: center; justify-content: space-between;
     background: #FFFFFF;
   }
@@ -123,10 +109,8 @@
   <div id="deck-stage">
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <div class="gridline-slide">
-      <div class="colgrid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="frame">
+      <div class="columns">
         <p class="kicker">Finding 01 · Postmortem Study</p>
-        <div class="redrule"></div>
         <h1 class="message">Teams that required a second reviewer before merge contained failures earlier.</h1>
         <div class="statzone">
           <p class="stat"><span class="n">63%</span><span class="l">fewer sev-1 rollbacks</span></p>

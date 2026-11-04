@@ -9,72 +9,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
-  .fm-slide { position: absolute; inset: 0; background-color: #FAF8F3;
-    background-image: radial-gradient(rgba(26,26,26,0.14) 1px, transparent 1.5px);
-    background-size: 24px 24px; color: #1A1A1A;
-    font-family: 'IBM Plex Sans', system-ui, sans-serif; overflow: hidden; }
-  .frame { position: absolute; top: 32px; left: 32px; right: 32px; bottom: 32px;
-    border: 2px solid #1A1A1A; padding: 36px 56px 28px 56px;
+  .s { position: absolute; inset: 0; background: #FAF8F3; color: #1A1A1A;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif; padding: 40px 88px 32px;
     display: flex; flex-direction: column; }
-  .dochead { display: flex; justify-content: space-between; align-items: baseline;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 500;
+  .doc { display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500;
     letter-spacing: 0.12em; text-transform: uppercase; margin: 0; }
-  .doublerule { border-top: 3px solid #1A1A1A; margin-top: 16px; padding-top: 8px; }
-  .doublerule i { display: block; border-top: 1px solid #1A1A1A; }
-  .main { flex: 1; min-height: 0; display: flex; gap: 48px; margin-top: 28px; }
-  .left { flex: 0 0 60%; min-width: 0; }
-  .right { flex: 1; min-width: 0; }
-  .chip { display: inline-block; background: #FFB000; color: #1A1A1A;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 20px; margin: 0; }
-  .title { font-family: 'Archivo', "Arial Black", sans-serif; font-weight: 700; font-size: 92px;
-    line-height: 1.05; letter-spacing: 0.01em; text-transform: uppercase; margin: 24px 0 0 0;
-    max-height: 300px; overflow: hidden; }
-  .secthead { font-family: 'Archivo', "Arial Black", sans-serif; font-weight: 700; font-size: 44px;
-    line-height: 1.15; text-transform: uppercase; margin: 24px 0 0 0; }
-  .subtitle { font-size: 30px; line-height: 1.5; margin: 16px 0 0 0; }
-  .bodyc { font-size: 23px; line-height: 1.55; margin: 16px 0 0 0; }
-  .source { margin: 18px 0 0 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 500; }
-  .leader { flex: 1; border-bottom: 2px dashed #6E6A5E; min-width: 24px; }
-  .figbox { background: #FFFFFF; border: 1px solid #1A1A1A; padding: 28px 32px; }
-  .figtag { display: flex; align-items: center; gap: 12px;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
-    letter-spacing: 0.14em; text-transform: uppercase; color: #0B5FFF; margin: 0 0 8px 0; }
-  .figtag::before { content: ""; width: 14px; height: 14px; background: #0B5FFF; flex: 0 0 auto; }
-  .checks { margin: 0; padding: 0; list-style: none; }
-  .checks li { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-top: 1px dashed #6E6A5E; }
-  .checks li:first-child { border-top: 0; }
-  .checks .g { font-size: 24px; line-height: 1; flex: 0 0 auto; }
-  .checks .done { color: #0B5FFF; }
-  .checks .open { color: #8A6100; }
-  .checks .t { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 500; white-space: nowrap; }
-  .checks .tag { flex: 0 0 auto; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 400; }
-  .vleader { width: 0; border-left: 2px dashed #6E6A5E; height: 26px; margin: 0 0 0 60px; }
-  .notebox { background: #FFFFFF; border: 1px solid #0B5FFF; padding: 24px 28px; margin-top: 26px; }
-  .notetag { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
-    letter-spacing: 0.14em; color: #0B5FFF; margin: 0 0 10px 0; }
-  .notefind { font-size: 23px; line-height: 1.55; margin: 0; }
-  .footer { border-top: 1px solid #1A1A1A; margin-top: 24px; padding-top: 14px;
-    display: flex; justify-content: space-between;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
+  .warn { font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; margin: 24px 0 0 0; }
+  .title { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 48px;
+    line-height: 1.1; text-transform: uppercase; margin: 12px 0 0 0; }
+  .mark { font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500;
+    letter-spacing: 0.14em; color: #182B49; margin: 12px 0 0 0; }
+  .grid { display: grid; grid-template-columns: 130px 1fr 1.3fr 1fr; column-gap: 48px;
+    margin-top: 20px; }
+  .h { font-family: 'IBM Plex Mono', monospace; font-size: 18px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #6E6A5E; padding-bottom: 10px; }
+  .c { font-size: 20px; line-height: 1.4; padding: 5px 0; white-space: nowrap; }
+  .c.case { font-family: 'IBM Plex Mono', monospace; font-weight: 500; }
+  .fn { margin: 16px 0 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500; }
+  .foot { display: flex; justify-content: space-between; margin-top: auto; padding-top: 16px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500;
     letter-spacing: 0.1em; text-transform: uppercase; }
-  .footer p { margin: 0; }
-
-
-  .full > .chip { align-self: flex-start; }
-  .full { flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 20px; }
-  .band { display: flex; align-items: center; gap: 28px; margin-top: 16px; }
-  .band .secthead { margin: 0; font-size: 40px; flex: 0 0 auto; }
-  .ruled { width: 100%; border-collapse: collapse; margin-top: 18px; background: #FFFFFF; }
-  .ruled th { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 18px; font-weight: 500;
-    letter-spacing: 0.14em; text-transform: uppercase; text-align: left;
-    padding: 8px 24px 8px 0; border-top: 1px solid #1A1A1A; border-bottom: 1px solid #1A1A1A; white-space: nowrap; }
-  .ruled th:first-child, .ruled td:first-child { padding-left: 20px; }
-  .ruled td { font-size: 21px; line-height: 1.35; padding: 7px 24px 7px 0; border-bottom: 1px dashed #6E6A5E; }
-  .ruled tr:last-child td { border-bottom: 1px solid #1A1A1A; }
-  .ruled td.ref { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 500; white-space: nowrap; }
-  .ruled td:last-child { white-space: nowrap; }
-  .tablewrap { border: 1px solid #1A1A1A; background: #FFFFFF; padding: 4px 20px 4px 0; }
+  .foot p { margin: 0; }
 </style>
 <style>
   html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
@@ -84,31 +41,28 @@
 </head>
 <body>
 <div id="deck-viewport"><div id="deck-stage">
-
-    <div class="fm-slide"><div class="frame">
-        <p class="dochead"><span>DOC FM-11 · REV C</span><span>Pre-Ship Review Procedure</span><span>NOV 2026</span></p>
-        <div class="doublerule"><i></i></div>
-        <div class="full">
-          <p class="chip">⚠ Appendix — all eleven cases</p>
-          <div class="band"><h1 class="secthead">All eleven cases at a glance</h1><span class="leader"></span><p class="source" style="margin:0">TAB. 01</p></div>
-          <div class="tablewrap"><table class="ruled">
-            <tr><th>Case</th><th>Ship pressure</th><th>Missed check</th><th>Cost</th></tr>
-            <tr><td class="ref">P-01</td><td>Launch-day demo</td><td>Config diff unreviewed</td><td>4 h rollback</td></tr>
-<tr><td class="ref">P-02</td><td>Quarter-end close</td><td>Migration runbook skipped</td><td>2 d backfill</td></tr>
-<tr><td class="ref">P-03</td><td>Hotfix train</td><td>Second reviewer waived</td><td>Sev-1, 6 h</td></tr>
-<tr><td class="ref">P-04</td><td>Partner deadline</td><td>Feature flag untested</td><td>3 d partial outage</td></tr>
-<tr><td class="ref">P-05</td><td>Launch-day demo</td><td>Load test deferred</td><td>5 h degraded</td></tr>
-<tr><td class="ref">P-06</td><td>Rebrand cutover</td><td>DNS change bundled</td><td>90 min blackout</td></tr>
-<tr><td class="ref">P-07</td><td>Quarter-end close</td><td>Rollback plan unwritten</td><td>8 h recovery</td></tr>
-<tr><td class="ref">P-08</td><td>Hotfix train</td><td>Staging gate skipped</td><td>Sev-2, 3 h</td></tr>
-<tr><td class="ref">P-09</td><td>Partner deadline</td><td>Secrets rotated live</td><td>2 h auth errors</td></tr>
-<tr><td class="ref">P-10</td><td>Rebrand cutover</td><td>Cache purge unsequenced</td><td>45 min stale reads</td></tr>
-<tr><td class="ref">P-11</td><td>Launch-day demo</td><td>Monitor alerts muted</td><td>Sev-1, 5 h</td></tr>
-          </table></div>
-          <p class="source">FOOTNOTE ▸ Fixture data · invented for density testing</p>
-        </div>
-        <div class="footer"><p>FM-11 · Appendix</p><p>Page 06 / 07</p></div>
-      </div></div>
+    <div class="s">
+      <p class="doc"><span>DOC FM-11 · REV C</span><span>Pre-Ship Review Procedure</span><span>NOV 2026</span></p>
+      <p class="warn">⚠ Appendix — all eleven cases</p>
+      <h2 class="title">All eleven cases at a glance</h2>
+      <p class="mark">TAB. 01</p>
+      <div class="grid">
+        <div class="h">Case</div><div class="h">Ship pressure</div><div class="h">Missed check</div><div class="h">Cost</div>
+        <div class="c case">P-01</div><div class="c">Launch-day demo</div><div class="c">Config diff unreviewed</div><div class="c">4 h rollback</div>
+        <div class="c case">P-02</div><div class="c">Quarter-end close</div><div class="c">Migration runbook skipped</div><div class="c">2 d backfill</div>
+        <div class="c case">P-03</div><div class="c">Hotfix train</div><div class="c">Second reviewer waived</div><div class="c">Sev-1, 6 h</div>
+        <div class="c case">P-04</div><div class="c">Partner deadline</div><div class="c">Feature flag untested</div><div class="c">3 d partial outage</div>
+        <div class="c case">P-05</div><div class="c">Launch-day demo</div><div class="c">Load test deferred</div><div class="c">5 h degraded</div>
+        <div class="c case">P-06</div><div class="c">Rebrand cutover</div><div class="c">DNS change bundled</div><div class="c">90 min blackout</div>
+        <div class="c case">P-07</div><div class="c">Quarter-end close</div><div class="c">Rollback plan unwritten</div><div class="c">8 h recovery</div>
+        <div class="c case">P-08</div><div class="c">Hotfix train</div><div class="c">Staging gate skipped</div><div class="c">Sev-2, 3 h</div>
+        <div class="c case">P-09</div><div class="c">Partner deadline</div><div class="c">Secrets rotated live</div><div class="c">2 h auth errors</div>
+        <div class="c case">P-10</div><div class="c">Rebrand cutover</div><div class="c">Cache purge unsequenced</div><div class="c">45 min stale reads</div>
+        <div class="c case">P-11</div><div class="c">Launch-day demo</div><div class="c">Monitor alerts muted</div><div class="c">Sev-1, 5 h</div>
+      </div>
+      <p class="fn">FOOTNOTE ▸ Fixture data · invented for density testing</p>
+      <div class="foot"><p>FM-11 · Appendix</p><p>Page 06 / 07</p></div>
+    </div>
 </div></div>
 <script>
   function __typodeckFitStage() {
@@ -121,19 +75,6 @@
   window.addEventListener('orientationchange', __typodeckFitStage);
   document.addEventListener('DOMContentLoaded', __typodeckFitStage);
   __typodeckFitStage();
-</script>
-<script>
-  function __fmAutofit() {
-    document.querySelectorAll('[data-autofit]').forEach(function (el) {
-      var max = parseFloat(el.getAttribute('data-autofit'));
-      var size = max, min = Math.max(40, max * 0.35);
-      el.style.fontSize = size + 'px';
-      var guard = 60;
-      while (guard-- > 0 && size > min && el.scrollHeight > el.clientHeight + 2) { size -= 4; el.style.fontSize = size + 'px'; }
-    });
-  }
-  document.addEventListener('DOMContentLoaded', __fmAutofit);
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(__fmAutofit); }
 </script>
 </body>
 </html>

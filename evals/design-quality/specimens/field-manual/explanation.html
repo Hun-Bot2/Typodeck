@@ -8,18 +8,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only: no frame border, rules, boxes, or leaders. Check glyphs
+     are text. Procedural navy #182B49 (do not regress to royal). */
   .fm-slide {
     position: absolute; inset: 0;
-    background-color: #FAF8F3;
-    background-image: radial-gradient(rgba(26,26,26,0.14) 1px, transparent 1.5px);
-    background-size: 24px 24px;
+    background: #FAF8F3;
     color: #1A1A1A;
     font-family: 'IBM Plex Sans', system-ui, sans-serif;
     overflow: hidden;
   }
-  .fm-slide .frame {
+  .fm-slide .page {
     position: absolute; top: 32px; left: 32px; right: 32px; bottom: 32px;
-    border: 2px solid #1A1A1A;
     padding: 36px 56px 28px 56px;
     display: flex; flex-direction: column;
   }
@@ -29,31 +28,24 @@
     font-size: 20px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
     margin: 0;
   }
-  .fm-slide .doublerule { border-top: 3px solid #1A1A1A; margin-top: 16px; padding-top: 8px; }
-  .fm-slide .doublerule i { display: block; border-top: 1px solid #1A1A1A; }
   .fm-slide .title {
     font-family: 'Archivo', "Arial Black", sans-serif;
     font-weight: 700; font-size: 80px; line-height: 1.06; letter-spacing: 0.01em;
     text-transform: uppercase;
-    margin: 24px 0 0 0;
+    margin: 32px 0 0 0;
   }
-  .fm-slide .cols { display: flex; gap: 48px; margin-top: 28px; }
-  .fm-slide .figbox {
-    flex: 1; min-width: 0;
-    background: #FFFFFF; border: 1px solid #1A1A1A; padding: 28px 32px;
-  }
+  .fm-slide .cols { display: flex; gap: 64px; margin-top: 36px; }
+  .fm-slide .fig { flex: 1; min-width: 0; }
   .fm-slide .figtag {
-    display: flex; align-items: center; gap: 12px;
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 19px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-    color: #0B5FFF; margin: 0 0 8px 0;
+    color: #182B49; margin: 0 0 12px 0;
   }
-  .fm-slide .figtag::before { content: ""; width: 14px; height: 14px; background: #0B5FFF; flex: 0 0 auto; }
   .fm-slide .checks { margin: 0; padding: 0; list-style: none; }
-  .fm-slide .checks li { display: flex; align-items: center; gap: 14px; padding: 21px 0; border-top: 1px dashed #6E6A5E; }
-  .fm-slide .checks li:first-child { border-top: 0; }
+  .fm-slide .checks li { display: flex; align-items: baseline; gap: 14px; padding: 0; margin: 0 0 22px 0; }
+  .fm-slide .checks li:last-child { margin-bottom: 0; }
   .fm-slide .checks .g { font-size: 24px; line-height: 1; flex: 0 0 auto; }
-  .fm-slide .checks .done { color: #0B5FFF; }
+  .fm-slide .checks .done { color: #182B49; }
   .fm-slide .checks .open { color: #8A6100; }
   .fm-slide .checks .t {
     flex: 1; min-width: 0;
@@ -63,15 +55,13 @@
   .fm-slide .checks .tag {
     flex: 0 0 auto;
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
-    font-size: 19px; font-weight: 400;
+    font-size: 19px; font-weight: 400; color: #6E6A5E;
   }
-  .fm-slide .notebox {
-    background: #FFFFFF; border: 1px solid #0B5FFF; padding: 24px 28px; margin-top: 28px;
-  }
+  .fm-slide .note { margin-top: 36px; }
   .fm-slide .notetag {
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 19px; font-weight: 500; letter-spacing: 0.14em;
-    color: #0B5FFF; margin: 0 0 10px 0;
+    color: #182B49; margin: 0 0 10px 0;
   }
   .fm-slide .notefind { font-size: 28px; line-height: 1.55; margin: 0; }
   .fm-slide .source {
@@ -80,7 +70,7 @@
     font-size: 20px; font-weight: 500;
   }
   .fm-slide .footer {
-    border-top: 1px solid #1A1A1A; margin-top: auto; padding-top: 14px;
+    margin-top: auto;
     display: flex; justify-content: space-between;
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 19px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
@@ -123,12 +113,11 @@
   <div id="deck-stage">
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <div class="fm-slide">
-      <div class="frame">
+      <div class="page">
         <p class="dochead"><span>DOC FM-11 · REV C</span><span>The choice — Review Procedure</span><span>NOV 2026</span></p>
-        <div class="doublerule"><i></i></div>
         <h1 class="title">Two teams, one deadline</h1>
         <div class="cols">
-          <div class="figbox">
+          <div class="fig">
             <p class="figtag">Fig. 03 — Rushed review</p>
             <ul class="checks">
               <li><span class="g open">☐</span><span class="t">Merged with a single skim approval</span><span class="tag">R-1</span></li>
@@ -136,7 +125,7 @@
               <li><span class="g open">☐</span><span class="t">Rollback discovered by customers first</span><span class="tag">R-3</span></li>
             </ul>
           </div>
-          <div class="figbox">
+          <div class="fig">
             <p class="figtag">Fig. 04 — Disciplined review</p>
             <ul class="checks">
               <li><span class="g done">☑</span><span class="t">Required a second reviewer on every merge</span><span class="tag">D-1</span></li>
@@ -145,7 +134,7 @@
             </ul>
           </div>
         </div>
-        <div class="notebox">
+        <div class="note">
           <p class="notetag">NOTE 04</p>
           <p class="notefind">Same deadline, different discipline: one team paid at review time, the other in production.</p>
         </div>

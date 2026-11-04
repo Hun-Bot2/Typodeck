@@ -9,34 +9,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
-  .fika-slide { position: absolute; inset: 0; background: #FAFAF7; color: #3D4A54;
-    font-family: 'Nunito Sans', system-ui, sans-serif; padding: 96px 120px 88px 120px;
+  .s { position: absolute; inset: 0; background: #FAFAF7; color: #31404B;
+    font-family: 'Nunito Sans', system-ui, sans-serif; padding: 72px 120px 64px;
     display: flex; flex-direction: column; }
-  .fika-kicker { display: flex; align-items: center; gap: 18px; font-size: 22px; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase; color: #3D4A54; }
-  .fika-dot { width: 14px; height: 14px; border-radius: 999px; background: #7FA6C9; flex: 0 0 auto; }
-  .fika-title { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 72px; line-height: 1.12;
-    text-transform: lowercase; margin: 0; color: #3D4A54; }
-  .fika-rule { height: 2px; border-radius: 2px; background: #DCE8E3; margin: 40px 0 32px 0; max-width: 560px; }
-  .fika-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 40px; }
-  .fika-page { font-size: 20px; font-weight: 700; letter-spacing: 0.2em; }
-  .fika-context { font-size: 20px; font-weight: 400; opacity: 0.72; }
-  .fika-chip { font-size: 22px; font-weight: 700; letter-spacing: 0.04em; color: #3D4A54; border-radius: 999px; padding: 14px 28px; }
-
-
-  .fika-slide { padding-top: 72px; }
-  .fika-head { margin-top: 24px; }
-  .fika-head .fika-title { font-size: 48px; }
-  .fika-table-panel { flex: 1; margin-top: 28px; background: #D5E4F1; border-radius: 24px; padding: 20px 48px; min-height: 0; }
-  table { width: 100%; border-collapse: collapse; }
-  th { font-size: 20px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-align: left;
-    padding: 10px 24px 10px 0; border-bottom: 2px solid rgba(61,74,84,0.25); white-space: nowrap; }
-  td { font-size: 23px; line-height: 1.4; padding: 8px 24px 8px 0; border-bottom: 2px solid rgba(250,250,247,0.7); }
-  tr:last-child td { border-bottom: 0; }
-  td.case { font-weight: 700; white-space: nowrap; }
-  td.cost { white-space: nowrap; }
-  .fika-footnote { font-size: 20px; opacity: 0.72; margin: 20px 0 0 0; }
-  .fika-foot { padding-top: 20px; }
+  .kick { display: flex; align-items: center; gap: 18px; font-size: 22px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; margin: 0; }
+  .kick .d { color: #182B49; font-size: 20px; }
+  .title { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 52px;
+    line-height: 1.12; text-transform: lowercase; margin: 20px 0 0 0; }
+  .grid { display: grid; grid-template-columns: 130px 1fr 1.3fr 1fr; column-gap: 56px;
+    margin-top: 32px; }
+  .h { font-size: 20px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    color: #182B49; padding-bottom: 16px; }
+  .c { font-size: 23px; line-height: 1.5; padding: 7px 0; white-space: nowrap; }
+  .c.case { font-weight: 700; }
+  .foot { display: flex; align-items: baseline; justify-content: space-between; margin-top: auto; padding-top: 24px; }
+  .page { font-size: 20px; font-weight: 700; letter-spacing: 0.2em; margin: 0; }
+  .src { font-size: 20px; font-weight: 400; margin: 0; }
 </style>
 <style>
   html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
@@ -46,28 +35,24 @@
 </head>
 <body>
 <div id="deck-viewport"><div id="deck-stage">
-
-    <div class="fika-slide">
-      <div class="fika-kicker"><span class="fika-dot"></span><span>Appendix — all eleven cases</span></div>
-      <div class="fika-head"><h1 class="fika-title">All eleven cases at a glance</h1></div>
-      <div class="fika-table-panel">
-        <table>
-          <tr><th>Case</th><th>Ship pressure</th><th>Missed check</th><th>Cost</th></tr>
-          <tr><td class="case">P-01</td><td>Launch-day demo</td><td>Config diff unreviewed</td><td class="cost">4 h rollback</td></tr>
-          <tr><td class="case">P-02</td><td>Quarter-end close</td><td>Migration runbook skipped</td><td class="cost">2 d backfill</td></tr>
-          <tr><td class="case">P-03</td><td>Hotfix train</td><td>Second reviewer waived</td><td class="cost">Sev-1, 6 h</td></tr>
-          <tr><td class="case">P-04</td><td>Partner deadline</td><td>Feature flag untested</td><td class="cost">3 d partial outage</td></tr>
-          <tr><td class="case">P-05</td><td>Launch-day demo</td><td>Load test deferred</td><td class="cost">5 h degraded</td></tr>
-          <tr><td class="case">P-06</td><td>Rebrand cutover</td><td>DNS change bundled</td><td class="cost">90 min blackout</td></tr>
-          <tr><td class="case">P-07</td><td>Quarter-end close</td><td>Rollback plan unwritten</td><td class="cost">8 h recovery</td></tr>
-          <tr><td class="case">P-08</td><td>Hotfix train</td><td>Staging gate skipped</td><td class="cost">Sev-2, 3 h</td></tr>
-          <tr><td class="case">P-09</td><td>Partner deadline</td><td>Secrets rotated live</td><td class="cost">2 h auth errors</td></tr>
-          <tr><td class="case">P-10</td><td>Rebrand cutover</td><td>Cache purge unsequenced</td><td class="cost">45 min stale reads</td></tr>
-          <tr><td class="case">P-11</td><td>Launch-day demo</td><td>Monitor alerts muted</td><td class="cost">Sev-1, 5 h</td></tr>
-        </table>
+    <div class="s">
+      <p class="kick"><span class="d">●</span><span>Appendix — all eleven cases</span></p>
+      <h2 class="title">All eleven cases at a glance</h2>
+      <div class="grid">
+        <div class="h">Case</div><div class="h">Ship pressure</div><div class="h">Missed check</div><div class="h">Cost</div>
+        <div class="c case">P-01</div><div class="c">Launch-day demo</div><div class="c">Config diff unreviewed</div><div class="c">4 h rollback</div>
+        <div class="c case">P-02</div><div class="c">Quarter-end close</div><div class="c">Migration runbook skipped</div><div class="c">2 d backfill</div>
+        <div class="c case">P-03</div><div class="c">Hotfix train</div><div class="c">Second reviewer waived</div><div class="c">Sev-1, 6 h</div>
+        <div class="c case">P-04</div><div class="c">Partner deadline</div><div class="c">Feature flag untested</div><div class="c">3 d partial outage</div>
+        <div class="c case">P-05</div><div class="c">Launch-day demo</div><div class="c">Load test deferred</div><div class="c">5 h degraded</div>
+        <div class="c case">P-06</div><div class="c">Rebrand cutover</div><div class="c">DNS change bundled</div><div class="c">90 min blackout</div>
+        <div class="c case">P-07</div><div class="c">Quarter-end close</div><div class="c">Rollback plan unwritten</div><div class="c">8 h recovery</div>
+        <div class="c case">P-08</div><div class="c">Hotfix train</div><div class="c">Staging gate skipped</div><div class="c">Sev-2, 3 h</div>
+        <div class="c case">P-09</div><div class="c">Partner deadline</div><div class="c">Secrets rotated live</div><div class="c">2 h auth errors</div>
+        <div class="c case">P-10</div><div class="c">Rebrand cutover</div><div class="c">Cache purge unsequenced</div><div class="c">45 min stale reads</div>
+        <div class="c case">P-11</div><div class="c">Launch-day demo</div><div class="c">Monitor alerts muted</div><div class="c">Sev-1, 5 h</div>
       </div>
-      <p class="fika-footnote">Fixture data · invented for density testing</p>
-      <div class="fika-foot"><span class="fika-page">06</span></div>
+      <div class="foot"><p class="page">06</p><p class="src">Fixture data · invented for density testing</p></div>
     </div>
 </div></div>
 <script>

@@ -9,66 +9,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
-  .fm-slide { position: absolute; inset: 0; background-color: #FAF8F3;
-    background-image: radial-gradient(rgba(26,26,26,0.14) 1px, transparent 1.5px);
-    background-size: 24px 24px; color: #1A1A1A;
-    font-family: 'IBM Plex Sans', system-ui, sans-serif; overflow: hidden; }
-  .frame { position: absolute; top: 32px; left: 32px; right: 32px; bottom: 32px;
-    border: 2px solid #1A1A1A; padding: 36px 56px 28px 56px;
+  .s { position: absolute; inset: 0; background: #FAF8F3; color: #1A1A1A;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif; padding: 44px 88px 36px;
     display: flex; flex-direction: column; }
-  .dochead { display: flex; justify-content: space-between; align-items: baseline;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 500;
+  .doc { display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500;
     letter-spacing: 0.12em; text-transform: uppercase; margin: 0; }
-  .doublerule { border-top: 3px solid #1A1A1A; margin-top: 16px; padding-top: 8px; }
-  .doublerule i { display: block; border-top: 1px solid #1A1A1A; }
-  .main { flex: 1; min-height: 0; display: flex; gap: 48px; margin-top: 28px; }
-  .left { flex: 0 0 60%; min-width: 0; }
-  .right { flex: 1; min-width: 0; }
-  .chip { display: inline-block; background: #FFB000; color: #1A1A1A;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 20px; margin: 0; }
-  .title { font-family: 'Archivo', "Arial Black", sans-serif; font-weight: 700; font-size: 92px;
-    line-height: 1.05; letter-spacing: 0.01em; text-transform: uppercase; margin: 24px 0 0 0;
-    max-height: 300px; overflow: hidden; }
-  .secthead { font-family: 'Archivo', "Arial Black", sans-serif; font-weight: 700; font-size: 44px;
-    line-height: 1.15; text-transform: uppercase; margin: 24px 0 0 0; }
-  .subtitle { font-size: 30px; line-height: 1.5; margin: 16px 0 0 0; }
-  .bodyc { font-size: 23px; line-height: 1.55; margin: 16px 0 0 0; }
-  .source { margin: 18px 0 0 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 500; }
-  .leader { flex: 1; border-bottom: 2px dashed #6E6A5E; min-width: 24px; }
-  .figbox { background: #FFFFFF; border: 1px solid #1A1A1A; padding: 28px 32px; }
+  .warn { font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; margin: 28px 0 0 0; }
+  .title { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 56px;
+    line-height: 1.1; text-transform: uppercase; margin: 16px 0 0 0; }
+  .mark { font-family: 'IBM Plex Mono', monospace; font-size: 19px; margin: 12px 0 0 0; }
+  .cols { display: flex; gap: 72px; margin-top: 28px; }
+  .ex { flex: 1; min-width: 0; }
   .figtag { display: flex; align-items: center; gap: 12px;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
-    letter-spacing: 0.14em; text-transform: uppercase; color: #0B5FFF; margin: 0 0 8px 0; }
-  .figtag::before { content: ""; width: 14px; height: 14px; background: #0B5FFF; flex: 0 0 auto; }
-  .checks { margin: 0; padding: 0; list-style: none; }
-  .checks li { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-top: 1px dashed #6E6A5E; }
-  .checks li:first-child { border-top: 0; }
-  .checks .g { font-size: 24px; line-height: 1; flex: 0 0 auto; }
-  .checks .done { color: #0B5FFF; }
+    font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: #182B49; margin: 0; }
+  .figtag .b { font-size: 16px; }
+  .checks { margin: 8px 0 0 0; padding: 0; list-style: none; }
+  .checks li { display: flex; align-items: baseline; gap: 14px; padding: 10px 0; }
+  .checks .g { font-size: 22px; line-height: 1.3; flex: 0 0 auto; }
+  .checks .done { color: #182B49; }
   .checks .open { color: #8A6100; }
-  .checks .t { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 500; white-space: nowrap; }
-  .checks .tag { flex: 0 0 auto; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 400; }
-  .vleader { width: 0; border-left: 2px dashed #6E6A5E; height: 26px; margin: 0 0 0 60px; }
-  .notebox { background: #FFFFFF; border: 1px solid #0B5FFF; padding: 24px 28px; margin-top: 26px; }
-  .notetag { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
-    letter-spacing: 0.14em; color: #0B5FFF; margin: 0 0 10px 0; }
-  .notefind { font-size: 23px; line-height: 1.55; margin: 0; }
-  .footer { border-top: 1px solid #1A1A1A; margin-top: 24px; padding-top: 14px;
-    display: flex; justify-content: space-between;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
+  .checks .t { font-size: 21px; line-height: 1.45; }
+  .checks .tag { margin-left: auto; padding-left: 16px; font-family: 'IBM Plex Mono', monospace;
+    font-size: 19px; color: #6E6A5E; flex: 0 0 auto; }
+  .note { margin-top: 28px; max-width: 90ch; }
+  .notetag { font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500;
+    letter-spacing: 0.14em; color: #182B49; margin: 0; }
+  .notefind { font-size: 23px; line-height: 1.55; margin: 10px 0 0 0; }
+  .src { margin: 16px 0 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; }
+  .foot { display: flex; justify-content: space-between; margin-top: auto; padding-top: 20px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500;
     letter-spacing: 0.1em; text-transform: uppercase; }
-  .footer p { margin: 0; }
-
-
-  .full > .chip { align-self: flex-start; }
-  .full { flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 24px; }
-  .band { display: flex; align-items: center; gap: 28px; }
-  .band .secthead { margin: 0; flex: 0 0 auto; }
-  .twin { display: flex; gap: 48px; margin-top: 24px; }
-  .twin .figbox { flex: 1; min-width: 0; }
-  .checks .t.wrap { white-space: normal; font-size: 20px; line-height: 1.4; }
-  .full .notebox { margin-top: 24px; }
+  .foot p { margin: 0; }
 </style>
 <style>
   html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
@@ -78,39 +52,36 @@
 </head>
 <body>
 <div id="deck-viewport"><div id="deck-stage">
-
-    <div class="fm-slide"><div class="frame">
-        <p class="dochead"><span>DOC FM-11 · REV C</span><span>Pre-Ship Review Procedure</span><span>NOV 2026</span></p>
-        <div class="doublerule"><i></i></div>
-        <div class="full">
-          <p class="chip">⚠ The choice</p>
-          <div class="band"><h1 class="secthead">Two teams, one deadline</h1><span class="leader"></span><p class="source" style="margin:0">§1.2</p></div>
-          <div class="twin">
-            <div class="figbox">
-              <p class="figtag">Fig. 04 — Rushed review</p>
-              <ul class="checks">
-                <li><span class="g open">☐</span><span class="t wrap">Merged with a single skim approval</span><span class="leader"></span><span class="tag">R-1</span></li>
-                <li><span class="g open">☐</span><span class="t wrap">Config changes bundled into feature PRs</span><span class="leader"></span><span class="tag">R-2</span></li>
-                <li><span class="g open">☐</span><span class="t wrap">Rollback discovered by customers first</span><span class="leader"></span><span class="tag">R-3</span></li>
-              </ul>
-            </div>
-            <div class="figbox">
-              <p class="figtag">Fig. 05 — Disciplined review</p>
-              <ul class="checks">
-                <li><span class="g done">☑</span><span class="t wrap">Required a second reviewer on every merge</span><span class="leader"></span><span class="tag">D-1</span></li>
-                <li><span class="g done">☑</span><span class="t wrap">Config changes shipped in isolated PRs</span><span class="leader"></span><span class="tag">D-2</span></li>
-                <li><span class="g done">☑</span><span class="t wrap">Rollback caught in staging, never in production</span><span class="leader"></span><span class="tag">D-3</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="notebox">
-            <p class="notetag">NOTE 04</p>
-            <p class="notefind">Same deadline, different discipline: one team paid at review time, the other in production.</p>
-          </div>
-          <p class="source">SOURCE ▸ Fixture data · not a real study</p>
+    <div class="s">
+      <p class="doc"><span>DOC FM-11 · REV C</span><span>Pre-Ship Review Procedure</span><span>NOV 2026</span></p>
+      <p class="warn">⚠ The choice</p>
+      <h2 class="title">Two teams, one deadline</h2>
+      <p class="mark">§1.2</p>
+      <div class="cols">
+        <div class="ex">
+          <p class="figtag"><span class="b">■</span><span>Fig. 04 — Rushed review</span></p>
+          <ul class="checks">
+            <li><span class="g open">☐</span><span class="t">Merged with a single skim approval</span><span class="tag">R-1</span></li>
+            <li><span class="g open">☐</span><span class="t">Config changes bundled into feature PRs</span><span class="tag">R-2</span></li>
+            <li><span class="g open">☐</span><span class="t">Rollback discovered by customers first</span><span class="tag">R-3</span></li>
+          </ul>
         </div>
-        <div class="footer"><p>FM-11 · The choice</p><p>Page 05 / 07</p></div>
-      </div></div>
+        <div class="ex">
+          <p class="figtag"><span class="b">■</span><span>Fig. 05 — Disciplined review</span></p>
+          <ul class="checks">
+            <li><span class="g done">☑</span><span class="t">Required a second reviewer on every merge</span><span class="tag">D-1</span></li>
+            <li><span class="g done">☑</span><span class="t">Config changes shipped in isolated PRs</span><span class="tag">D-2</span></li>
+            <li><span class="g done">☑</span><span class="t">Rollback caught in staging, never in production</span><span class="tag">D-3</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="note">
+        <p class="notetag">NOTE 04</p>
+        <p class="notefind">Same deadline, different discipline: one team paid at review time, the other in production.</p>
+      </div>
+      <p class="src">SOURCE ▸ Fixture data · not a real study</p>
+      <div class="foot"><p>FM-11 · The choice</p><p>Page 05 / 07</p></div>
+    </div>
 </div></div>
 <script>
   function __typodeckFitStage() {
@@ -123,19 +94,6 @@
   window.addEventListener('orientationchange', __typodeckFitStage);
   document.addEventListener('DOMContentLoaded', __typodeckFitStage);
   __typodeckFitStage();
-</script>
-<script>
-  function __fmAutofit() {
-    document.querySelectorAll('[data-autofit]').forEach(function (el) {
-      var max = parseFloat(el.getAttribute('data-autofit'));
-      var size = max, min = Math.max(40, max * 0.35);
-      el.style.fontSize = size + 'px';
-      var guard = 60;
-      while (guard-- > 0 && size > min && el.scrollHeight > el.clientHeight + 2) { size -= 4; el.style.fontSize = size + 'px'; }
-    });
-  }
-  document.addEventListener('DOMContentLoaded', __fmAutofit);
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(__fmAutofit); }
 </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Seminar
-description: A quiet academic text system on a two-column page. A 66-character Source Serif argument column carries title and lede flush-left while a wide margin holds hanging citations and content sidenotes in small Inter, keyed by navy superscript markers. One 160px footnote rule closes the argument. White, ink, navy, gray — plain, structured, unshadowed.
+description: A quiet academic text system on a two-column page. A 66-character Source Serif argument column carries title and lede flush-left while a wide margin holds hanging citations and content sidenotes in small Inter, keyed by navy superscript markers. Whitespace closes the argument above the footnote. White, ink, navy, gray — plain, structured, unshadowed, no rules.
 colors:
   white: "#FFFFFF"
   ink: "#222222"
@@ -93,15 +93,14 @@ components:
     textIndent: "-24px"
     description: "Citation line wrapping under a hanging indent beneath its marker."
   footnote-rule:
-    width: 160px
-    borderTop: "1px solid {colors.gray}"
-    margin: "40px 0 16px"
-    description: "The single short rule closing the argument column; nothing else rules."
+    status: retired
+    successor: "whitespace"
+    description: "RETIRED in the typography-only vocabulary: the 160px rule is removed. The footnote follows the argument after a whitespace gap."
   footnote:
     fontFamily: "'Inter', system-ui, sans-serif"
     fontSize: 17px
     color: "rgba(34, 34, 34, 0.72)"
-    description: "Source line under the footnote rule with a navy superscript marker."
+    description: "Source line below the argument, whitespace-separated, with a navy superscript marker."
   sup-marker:
     fontSize: 0.72em
     color: "{colors.navy}"
@@ -124,18 +123,18 @@ Use `deck-stage.js` or an equivalent inline stage scaler for final output: rende
 
 ## Overview
 
-Seminar is a **quiet academic text system** modeled on the printed handout: one argument column, one margin, one rule. The left column sets a Source Serif title and italic lede on a 66-character measure; the wide right margin holds sidenotes and a hanging citation in small Inter; a single 160px footnote rule closes the argument with the source line. Navy section markers (§) and superscript keys are the only ornament.
+Seminar is a **quiet academic text system** modeled on the printed handout: one argument column, one margin, no rules. The left column sets a Source Serif title and italic lede on a 66-character measure; the wide right margin holds sidenotes and a hanging citation in small Inter; whitespace closes the argument above the footnoted source line. Navy section markers (§) and superscript keys are the only ornament.
 
 The type stack is two faces with column roles. **Source Serif 4** (700 titles, 400/italic ledes and body) is the argument voice — everything the speaker would read aloud. **Inter** (400 notes, 600 citation leads, 500 page numeral) is the apparatus voice — sidenotes, citations, footnotes, dates, folios. Serif argues; sans annotates. A serif sidenote or a sans headline breaks the contract.
 
-The palette is four restrained tokens: white ground `{colors.white}`, ink `{colors.ink}` for the argument, navy `{colors.navy}` for markers, and gray `{colors.gray}` for quiet notes and the rule (with a derived `{colors.hairline}` tint where a softer keyline is needed). There are no fills, no shadows, no gradients — emphasis comes from the margin apparatus, weight contrast, and the single rule.
+The palette is four restrained tokens: white ground `{colors.white}`, ink `{colors.ink}` for the argument, navy `{colors.navy}` for markers, and gray `{colors.gray}` for quiet notes (with a derived `{colors.hairline}` tint retained but unused in the typography-only vocabulary). There are no fills, no shadows, no gradients, no rules — emphasis comes from the margin apparatus, weight contrast, and whitespace.
 
 **Density philosophy: sparse but apparatus-rich.** The page looks empty at first glance and rewards a second one: markers keying margin to argument, a hanging citation, a footnoted source. A typical slide carries one claim plus its marginalia. If a slide needs more, add another sidenote — never a card, badge, or panel.
 
 **Key Characteristics:**
 - Source Serif argument column (66ch, flush-left) beside a 400px Inter sidenote margin.
 - Hanging citations and content sidenotes in the margin, keyed by navy superscript markers.
-- Exactly one rule per slide: the 160px footnote rule closing the argument.
+- No rules per slide: whitespace closes the argument above the footnote.
 - Navy § section markers opening the page and keying margin notes.
 - Plain white ground; zero shadows, zero fills, zero rounded chrome.
 - Page numeral in gray Inter at the bottom-right foot, nothing else in the footer.
@@ -147,8 +146,8 @@ The palette is four restrained tokens: white ground `{colors.white}`, ink `{colo
 - **White** (`{colors.white}` — `#FFFFFF`): The only ground. Plain seminar-room white.
 - **Ink** (`{colors.ink}` — `#222222`): Argument text — titles, ledes, body. Softened black.
 - **Navy** (`{colors.navy}` — `#1F3A5F`): Markers only — § signs, superscript keys, citation leads. Never body text.
-- **Gray** (`{colors.gray}` — `#8A8A8A`): Quiet notes, the date, the page numeral, the footnote rule.
-- **Hairline** (`{colors.hairline}` — `#E3E3E3`): Derived keyline tint for margin separators where a softer line than gray is needed. Never text.
+- **Gray** (`{colors.gray}` — `#8A8A8A`): Quiet notes, the date, the page numeral.
+- **Hairline** (`{colors.hairline}` — `#E3E3E3`): Derived tint, retained as a token; keyline usage retired. Never text.
 
 ### Defaults
 
@@ -156,7 +155,7 @@ The palette is four restrained tokens: white ground `{colors.white}`, ink `{colo
 - **Default headline color**: `{colors.ink}` at 88px / 700, flush-left.
 - **Default lede color**: `{colors.ink}` at 78% opacity, italic.
 - **Default sidenote color**: `{colors.ink}` at 72% opacity for notes, `{colors.navy}` for markers.
-- **Default rule**: one 160px 1px gray rule per slide, closing the argument — never more, never elsewhere.
+- **Default close**: a whitespace gap above the footnote — never a rule, never a keyline.
 
 Opacity tints of ink keep small Inter notes quiet without introducing new grays; navy and gray stay at full strength.
 
@@ -178,7 +177,7 @@ Opacity tints of ink keep small Inter notes quiet without introducing new grays;
 | `{typography.body}` | 24px | Source Serif 4 | 400 | Paragraph body |
 | `{typography.sidenote}` | 17px | Inter | 400 | Margin notes and citations |
 | `{typography.sidenote-strong}` | 17px | Inter | 600 | Citation leads in the margin |
-| `{typography.footnote}` | 17px | Inter | 400 | Source line under the rule |
+| `{typography.footnote}` | 17px | Inter | 400 | Source line below the argument |
 | `{typography.marker}` | 28px | Source Serif 4 | 700 | Navy § section markers |
 | `{typography.date-note}` | 17px | Inter | 400 | Gray date opposite the marker |
 | `{typography.page-number}` | 16px | Inter | 500 | Gray page numeral, bottom-right |
@@ -191,7 +190,7 @@ These treatments are **non-optional whenever the corresponding element type is u
 - **Every lede is Source Serif italic at 30px/1.55 in 78%-ink.** Upright or full-ink ledes read as body.
 - **Every sidenote carries a navy superscript marker** (`{components.sup-marker}`) and a 24px hanging indent. Unkeyed margin text is a defect.
 - **Every citation wraps under its hanging indent** — first line at the marker, continuation lines indented 24px.
-- **Every slide closes its argument with the single footnote rule**: 160px, 1px, gray, with 40px space above and 16px below. A second rule anywhere is a defect.
+- **Every slide closes its argument with whitespace above the footnote.** No rule, no keyline — a rule anywhere is a defect.
 - **Every § marker is navy Source Serif 700 at 28px.** The section sign appears in no other style.
 - **Every footnote sets its source verbatim in 17px Inter at 72%-ink** with a navy superscript key.
 
@@ -203,21 +202,21 @@ The voice contrast is **argued serif ↔ annotating sans**. Source Serif should 
 
 ### Canvas System
 
-Each slide is a fixed 1920×1080 stage with `64px 120px` padding. The page is a two-column grid: a 1080px argument column, a 120px gutter, and a 400px margin column. The § marker row opens the page (marker left, date right); the argument stacks title → lede → footnote rule → footnote; the margin stacks sidenotes from the title's cap height (18px offset); the page numeral sits bottom-right.
+Each slide is a fixed 1920×1080 stage with `64px 120px` padding. The page is a two-column grid: a 1080px argument column, a 120px gutter, and a 400px margin column. The § marker row opens the page (marker left, date right); the argument stacks title → lede → footnote with a whitespace close; the margin stacks sidenotes from the title's cap height (18px offset); the page numeral sits bottom-right.
 
 ### Persistent Chrome
 
 The apparatus, not furniture, persists:
 
 - **Section marker row** (`{components.section-marker}`) — navy § 1 left, gray date right, no rule.
-- **Footnote rule + footnote** (`{components.footnote-rule}`, `{components.footnote}`) — closing the argument.
+- **Footnote** (`{components.footnote}`) — closing the argument after a whitespace gap.
 - **Page numeral** (`{components.page-number}`) — gray, bottom-right.
 
 No headers, no footers, no counters beyond the numeral, no navigation chrome. The margin is the interface.
 
 ### Composition Rules
 
-The margin's first baseline aligns to the title's cap height via an 18px top offset. Sidenotes stack with 32px gaps and never exceed the argument column's height — a third sidenote must fit above the footnote's top edge. The footnote rule is always 160px regardless of column width; the footnote text wraps within the argument column. The page numeral pins to the bottom-right padding corner, clear of the footnote by at least 120px.
+The margin's first baseline aligns to the title's cap height via an 18px top offset. Sidenotes stack with 32px gaps and never exceed the argument column's height — a third sidenote must fit above the footnote's top edge. The footnote text wraps within the argument column. The page numeral pins to the bottom-right padding corner, clear of the footnote by at least 120px.
 
 ## Depth and Elevation
 
@@ -231,9 +230,7 @@ Zero everywhere, trivially — there are no boxes, pills, or buttons to round. T
 
 ### Border Weights
 
-- **1px solid gray** — the footnote rule (160px wide). The only stroke in the system.
-- **1px solid hairline** — permitted only as a margin separator between stacked sidenotes when three or more appear; otherwise unused.
-- No 2px, no double rules, no dotted strokes. The argument earns its close with a single gray keyline.
+No strokes exist in this system. The retired 160px footnote rule and hairline margin separators are documented for history only: the argument earns its close with whitespace.
 
 ### Decorative Element Types
 
@@ -245,13 +242,11 @@ Zero everywhere, trivially — there are no boxes, pills, or buttons to round. T
 
 **Superscript marker** — Navy 0.72em 600 key tying margin notes and footnotes to the argument.
 
-**Footnote rule** — The single 160px gray rule closing the argument column.
-
-**Footnote** — Verbatim source line in 17px 72%-ink Inter with a navy superscript key.
+**Footnote** — Verbatim source line in 17px 72%-ink Inter with a navy superscript key, whitespace-separated from the argument.
 
 **Page numeral** — Gray 16px Inter 500 numeral at the bottom-right foot.
 
-No bullets beyond text lists, no arrows, no badges, no dividers beyond the one rule. If an element is not in this list, it does not belong.
+No bullets beyond text lists, no arrows, no badges, no dividers, no rules. If an element is not in this list, it does not belong.
 
 ## Do's and Don'ts
 
@@ -259,7 +254,7 @@ No bullets beyond text lists, no arrows, no badges, no dividers beyond the one r
 
 - Argue in the left column in Source Serif and annotate in the margin in Inter — the column/voice split is the system.
 - Key every margin note and footnote with a navy superscript marker and hanging indent.
-- Close every argument with exactly one 160px gray footnote rule.
+- Close every argument with whitespace above the footnote.
 - Open every page with the navy § marker and the gray date opposite.
 - Draw margin notes strictly from real content phrases — citations, dates, and content numerals.
 - Align the margin's first baseline to the title's cap height with the 18px offset.
@@ -268,7 +263,7 @@ No bullets beyond text lists, no arrows, no badges, no dividers beyond the one r
 
 ### Don't
 
-- Don't add a second rule, a header rule, or margin separators unless three sidenotes stack.
+- Don't add rules, header keylines, or margin separators — separation is whitespace only.
 - Don't center, track, or uppercase the argument title — flush-left serif, always.
 - Don't set sidenotes in serif or headlines in Inter; the voices never swap.
 - Don't invent margin content — no lorem notes, no decorative citations, no placeholder keys.
@@ -298,18 +293,18 @@ Loading (add alongside the Latin families):
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
 ```
 
-Universal CJK adjustments: letter-spacing 0 on all CJK runs; no uppercase transforms; raise title leading to 1.3, lede to 1.7, and sidenote to 1.75; set the lede upright (CJK has no italic — use Noto Serif KR 400 at full ink instead of the 78% italic treatment); keep the hanging indents, superscript markers, and the single footnote rule unchanged, since the apparatus carries recognition across scripts. The § marker stays in Source Serif even in CJK builds.
+Universal CJK adjustments: letter-spacing 0 on all CJK runs; no uppercase transforms; raise title leading to 1.3, lede to 1.7, and sidenote to 1.75; set the lede upright (CJK has no italic — use Noto Serif KR 400 at full ink instead of the 78% italic treatment); keep the hanging indents, superscript markers, and the whitespace close unchanged, since the apparatus carries recognition across scripts. The § marker stays in Source Serif even in CJK builds.
 
 Known CJK gap: the italic-lede distinction collapses (no CJK italic), so lede-vs-body contrast must come from size and color alone. Noto Sans KR 500 stands in for Inter 600 citation leads with slightly less punch; keep the navy marker to preserve the keying signal.
 
 ## Iteration Guide
 
-1. Any new slide opens with the § marker row (navy marker left, gray date right) and closes with the footnote rule, footnote, and page numeral.
+1. Any new slide opens with the § marker row (navy marker left, gray date right) and closes with the footnote and page numeral after a whitespace gap.
 2. Any new title uses Source Serif 700 at 88px/1.12, flush-left in the 1080px argument column.
 3. Any new lede uses Source Serif italic at 30px/1.55 in 78%-ink, directly under the title.
 4. Any new sidenote uses 17px Inter with a navy superscript marker and 24px hanging indent, drawn from real content.
 5. Any new citation uses the hanging-citation component — 600 lead, wrapped lines indented.
-6. Any new slide carries exactly one rule: the 160px gray footnote rule with 40px/16px spacing.
+6. Any new slide carries no rules: the footnote follows the argument after a whitespace gap.
 7. Any new margin stack aligns its first baseline to the title cap height (18px offset) with 32px gaps.
 8. Any new color comes from the five declared tokens; tints via ink opacity only.
 9. Any new slide keeps the plain white ground — no fills, shadows, or textures.

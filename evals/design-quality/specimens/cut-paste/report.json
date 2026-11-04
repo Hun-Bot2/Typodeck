@@ -7,21 +7,21 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080. P2 verify 2026-11-04 (full-res + 1:1 crops): ghost-SHIP outline clears subtitle card (~30px, no occlusion — carryover refuted); tape strips overlap card borders only, no glyph covered."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (teal slab, paper band, swash bar, scrap, tape, sticky, disc badge, shadows, dot grid removed; two-tone tilted type + ghost + confetti kept); PNG 1920x1080 (111875 bytes), viewed full-res."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); typography-only rebuild; one confetti mark nudged for 60px text clearance, re-captured + re-viewed; PNG 1920x1080 (149362 bytes), viewed full-res."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); typography-only rebuild (side boxes, tape, square bullets removed; ▸ text markers in ink/teal); PNG 1920x1080 (181795 bytes), viewed full-res."
     }
   ],
   "render": {

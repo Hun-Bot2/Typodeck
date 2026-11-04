@@ -9,32 +9,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
-  .fika-slide { position: absolute; inset: 0; background: #FAFAF7; color: #3D4A54;
-    font-family: 'Nunito Sans', system-ui, sans-serif; padding: 96px 120px 88px 120px;
+  .s { position: absolute; inset: 0; background: #FAFAF7; color: #31404B;
+    font-family: 'Nunito Sans', system-ui, sans-serif; padding: 88px 120px 80px;
     display: flex; flex-direction: column; }
-  .fika-kicker { display: flex; align-items: center; gap: 18px; font-size: 22px; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase; color: #3D4A54; }
-  .fika-dot { width: 14px; height: 14px; border-radius: 999px; background: #7FA6C9; flex: 0 0 auto; }
-  .fika-title { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 72px; line-height: 1.12;
-    text-transform: lowercase; margin: 0; color: #3D4A54; }
-  .fika-rule { height: 2px; border-radius: 2px; background: #DCE8E3; margin: 40px 0 32px 0; max-width: 560px; }
-  .fika-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 40px; }
-  .fika-page { font-size: 20px; font-weight: 700; letter-spacing: 0.2em; }
-  .fika-context { font-size: 20px; font-weight: 400; opacity: 0.72; }
-  .fika-chip { font-size: 22px; font-weight: 700; letter-spacing: 0.04em; color: #3D4A54; border-radius: 999px; padding: 14px 28px; }
-
-
-  .fika-dot.b { background: #A8C3B9; }
-  .fika-head { margin-top: 36px; }
-  .fika-twin { flex: 1; display: flex; gap: 48px; margin-top: 40px; min-height: 0; }
-  .fika-side { flex: 1; border-radius: 24px; padding: 48px 56px; min-width: 0; }
-  .fika-side.rushed { background: #F5DCD2; }
-  .fika-side.steady { background: #DCE8E3; }
-  .fika-subhead { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 40px; line-height: 1.2; text-transform: lowercase; margin: 0; }
-  .fika-list { list-style: none; margin: 28px 0 0 0; padding: 0; }
-  .fika-list li { font-size: 24px; line-height: 1.55; padding: 14px 0; border-top: 2px solid rgba(61,74,84,0.12); }
-  .fika-list li:first-child { border-top: 0; }
-  .fika-caption { font-size: 24px; line-height: 1.6; margin: 36px 0 0 0; max-width: 90ch; }
+  .kick { display: flex; align-items: center; gap: 18px; font-size: 22px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; margin: 0; }
+  .kick .d { color: #182B49; font-size: 20px; }
+  .title { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 64px;
+    line-height: 1.12; text-transform: lowercase; margin: 28px 0 0 0; }
+  .cols { display: flex; gap: 120px; margin-top: 44px; }
+  .side { flex: 1; min-width: 0; }
+  .side h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 40px;
+    line-height: 1.2; text-transform: lowercase; margin: 0; }
+  .side ul { list-style: none; margin: 24px 0 0 0; padding: 0; }
+  .side li { font-size: 24px; line-height: 1.6; margin: 0; padding: 10px 0; }
+  .cap { font-size: 24px; line-height: 1.6; margin: 40px 0 0 0; max-width: 60ch; }
+  .foot { display: flex; align-items: baseline; justify-content: space-between; margin-top: auto; padding-top: 32px; }
+  .page { font-size: 20px; font-weight: 700; letter-spacing: 0.2em; margin: 0; }
+  .src { font-size: 20px; font-weight: 400; margin: 0; }
 </style>
 <style>
   html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
@@ -44,30 +36,29 @@
 </head>
 <body>
 <div id="deck-viewport"><div id="deck-stage">
-
-    <div class="fika-slide">
-      <div class="fika-kicker"><span class="fika-dot b"></span><span>The choice</span></div>
-      <div class="fika-head"><h1 class="fika-title">Two teams, one deadline</h1></div>
-      <div class="fika-twin">
-        <div class="fika-side rushed">
-          <h2 class="fika-subhead">Rushed review</h2>
-          <ul class="fika-list">
+    <div class="s">
+      <p class="kick"><span class="d">●</span><span>The choice</span></p>
+      <h2 class="title">Two teams, one deadline</h2>
+      <div class="cols">
+        <div class="side">
+          <h3>Rushed review</h3>
+          <ul>
             <li>Merged with a single skim approval</li>
             <li>Config changes bundled into feature PRs</li>
             <li>Rollback discovered by customers first</li>
           </ul>
         </div>
-        <div class="fika-side steady">
-          <h2 class="fika-subhead">Disciplined review</h2>
-          <ul class="fika-list">
+        <div class="side">
+          <h3>Disciplined review</h3>
+          <ul>
             <li>Required a second reviewer on every merge</li>
             <li>Config changes shipped in isolated PRs</li>
             <li>Rollback caught in staging, never in production</li>
           </ul>
         </div>
       </div>
-      <p class="fika-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
-      <div class="fika-foot"><span class="fika-page">05</span><span class="fika-context">Fixture data · not a real study</span></div>
+      <p class="cap">Same deadline, different discipline: one team paid at review time, the other in production.</p>
+      <div class="foot"><p class="page">05</p><p class="src">Fixture data · not a real study</p></div>
     </div>
 </div></div>
 <script>

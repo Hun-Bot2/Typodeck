@@ -9,9 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #000000;
+    --black: #101012;
     --white: #F5F5F5;
-    --red: #C1121F;
+    --red: #E5484D;
     --smoke: #8A8A8A;
   }
   * { box-sizing: border-box; }
@@ -23,7 +23,6 @@
   }
   .nr-bar-top {
     flex: 0 0 148px;
-    border-bottom: 1px solid #2A2A2A;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 96px;
   }
@@ -37,24 +36,14 @@
   }
   .nr-frame {
     flex: 1; position: relative; min-height: 0;
-    background:
-      radial-gradient(ellipse 90% 75% at 50% 42%, #161616 0%, #0A0A0A 52%, #000000 78%);
+    background: var(--black);
     display: flex; align-items: flex-end;
     padding: 0 96px 64px;
   }
-  .nr-frame::before {
-    content: "";
-    position: absolute; inset: 0;
-    background: repeating-linear-gradient(0deg, transparent 0px, transparent 5px, rgba(255,255,255,0.012) 5px, rgba(255,255,255,0.012) 6px);
-    pointer-events: none;
-  }
   .nr-lowthird { position: relative; width: 100%; }
-  .nr-rule {
-    width: 132px; height: 8px; background: var(--red); margin-bottom: 34px;
-  }
   .nr-kicker {
     font-family: "Bebas Neue", "Arial Black", sans-serif;
-    font-size: 40px; letter-spacing: 0.5em; color: var(--smoke);
+    font-size: 40px; letter-spacing: 0.5em; color: var(--red);
     margin-bottom: 22px;
   }
   .nr-titlebox { max-height: 470px; overflow: hidden; }
@@ -73,7 +62,6 @@
   }
   .nr-bar-bottom {
     flex: 0 0 132px;
-    border-top: 1px solid #2A2A2A;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 96px;
   }
@@ -127,7 +115,6 @@
       </div>
       <div class="nr-frame">
         <div class="nr-lowthird">
-          <div class="nr-rule"></div>
           <div class="nr-kicker">A study in review discipline</div>
           <div class="nr-titlebox">
             <h1 class="nr-title" id="nrTitle">The Hidden Cost of Rushing to Ship</h1>

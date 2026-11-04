@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>열한 건의 포스트모템이 가르쳐준 것 — 02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; background:#FFFFFF; }
+  .slide { position:relative; width:1920px; height:1080px; background:#FFFFFF;
+    color:#111111; font-family:'Noto Sans KR', sans-serif; overflow:hidden; }
+  .content { position:absolute; top:64px; left:72px; width:1152px; max-height:796px; }
+  .kicker { font-family:'Noto Sans KR', sans-serif;
+    font-weight:700; font-size:20px; letter-spacing:0;
+    text-transform:none; color:#E30613; margin:0; }
+  .folio { position:absolute; top:64px; left:1288px; width:560px;
+    text-align:right; }
+  .numeral { font-family:'Archivo', "Arial Black", sans-serif; font-weight:800;
+    font-size:380px; line-height:0.85; letter-spacing:-0.02em; color:#111111; margin:0; }
+  .meta { margin:36px 0 0 0; padding:0; list-style:none; }
+  .meta li { font-family:'Noto Sans KR', sans-serif; font-size:19px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    line-height:1.5; padding:0; margin:0 0 20px 0; }
+  .meta li span { display:block; color:#6B6B6B; font-size:16px; }
+  .footer { position:absolute; left:72px; right:72px; bottom:0; height:110px;
+    display:flex; align-items:center;
+    justify-content:space-between; }
+  .footer .ctx { font-family:'Noto Sans KR', sans-serif; font-size:20px; font-weight:500;
+    letter-spacing:0; text-transform:none; margin:0; }
+  .footer .idx { font-family:'Archivo', "Arial Black", sans-serif; font-weight:600;
+    font-size:22px; letter-spacing:0.12em; margin:0; }
+  h1, .statement { font-family:'Noto Sans KR', 'Archivo', sans-serif; font-weight:900;
+    text-align:left; margin:44px 0 0 0; }
+  .title-xl { line-height:1.20; letter-spacing:0; }
+  .sec-title { line-height:1.24; letter-spacing:0; margin-top:60px; }
+  .statement { line-height:1.25; letter-spacing:0; margin-top:70px; }
+  .ev-msg { line-height:1.32; letter-spacing:0; margin-top:40px; }
+  .cmp-title { line-height:1.27; letter-spacing:0; margin-top:36px; }
+  .d-title { line-height:1.27; letter-spacing:0; margin-top:32px; }
+  .close-line { line-height:1.20; letter-spacing:0; margin-top:120px; }
+  .lede { font-size:34px; line-height:1.71; color:#333; margin:36px 0 0 0; max-width:1026px; }
+  .orient { font-size:34px; line-height:1.71; color:#333; margin:36px 0 0 0; max-width:1026px; }
+  .close-recap { font-size:34px; line-height:1.71; color:#333; margin:40px 0 0 0; max-width:1026px; }
+  .srcline { font-family:'Noto Sans KR', sans-serif; font-size:20px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    color:#6B6B6B; margin:40px 0 0 0; }
+  .statrow { display:flex; gap:80px; margin:52px 0 0 0; }
+  .stat { display:flex; align-items:flex-end; gap:20px; }
+  .statnum { font-family:'Noto Sans KR', 'Archivo', sans-serif; font-weight:900; line-height:0.9;
+    letter-spacing:0; white-space:nowrap; }
+  .statlab { font-family:'Noto Sans KR', sans-serif; font-size:20px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    line-height:1.5; padding-bottom:18px; max-width:300px; }
+  .ev-sup { font-size:24px; line-height:1.77; color:#333; margin:36px 0 0 0; max-width:1026px; }
+  .findings { list-style:none; margin:44px 0 0 0; padding:0; }
+  .findings li { display:flex; gap:24px; padding:0; margin:0 0 32px 0; }
+  .findings li:last-child { margin-bottom:0; }
+  .fnum { font-family:'Noto Sans KR', 'Archivo', sans-serif; font-weight:900; font-size:30px; flex:0 0 96px; color:#E30613; }
+  .fbody { display:flex; flex-direction:column; gap:8px; }
+  .fhead { font-family:'Noto Sans KR', 'Archivo', sans-serif; font-weight:900; font-size:30px; line-height:1.15; }
+  .fsub { font-size:24px; line-height:1.77; color:#333; }
+  .zones { display:flex; gap:96px; margin-top:44px; }
+  .zone { flex:1 1 0; }
+  .zone-h { font-family:'Noto Sans KR', 'Archivo', sans-serif; font-weight:900; font-size:30px;
+    line-height:1.15; margin:0; }
+  .zone ul { list-style:none; margin:20px 0 0 0; padding:0; }
+  .zone li { font-size:22px; line-height:1.45; padding:0; margin:0 0 20px 0; }
+  .zone li:last-child { margin-bottom:0; }
+  .zone li.bad { color:#E30613; font-weight:600; }
+  .caption { font-size:22px; line-height:1.5; color:#6B6B6B; margin:36px 0 0 0; }
+  .ledger { display:grid; grid-template-columns:7em 10em 8em 1fr; column-gap:2.5em;
+    margin:32px 0 0 0; line-height:1.35; font-variant-numeric:tabular-nums; }
+  .lhead { font-family:'Noto Sans KR', sans-serif; font-weight:500; letter-spacing:0;
+    text-transform:none; color:#6B6B6B; font-size:0.86em; padding:0 0 0.9em 0; }
+  .lrow { display:contents; }
+  .lrow > .cell { padding:0.42em 0; white-space:nowrap; }
+  .lrow > .cell.case { font-family:'Noto Sans KR', 'Archivo', sans-serif; font-weight:900; font-size:0.95em; }
+  .lrow.flag > .cell.cost { color:#E30613; font-weight:700; }
+  .d-foot { font-family:'Noto Sans KR', sans-serif; font-size:18px; font-weight:500;
+    letter-spacing:0; text-transform:none;
+    color:#6B6B6B; margin:22px 0 0 0; }
+  .fx { color:#6B6B6B; font-size:0.85em; letter-spacing:0.08em; white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="slide" data-contain="stage">
+  <div class="content">
+    <p class="kicker" data-t="kicker" data-headline>2부 · 증거</p>
+    
+    <h1 class="sec-title" data-t="title" data-headline style="font-size:72px">리뷰가 실제로 잡아낸 것들</h1>
+    <p class="orient" data-t="sub">세 가지 패턴, 하나의 원칙.</p>
+  </div>
+  <div class="folio">
+    <p class="numeral" data-t="numeral">02</p>
+    <ul class="meta"><li data-t="meta"><span>구성</span>2부 증거</li>
+<li data-t="meta"><span>범위</span>패턴 3종</li></ul>
+  </div>
+  <footer class="footer"><p class="ctx" data-t="footer">Typodeck Research · Readout 07</p><p class="idx" data-t="pageidx">02 / 07</p></footer>
+</div>
+</body>
+</html>

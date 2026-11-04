@@ -1,0 +1,443 @@
+{
+ "startedAt": "2026-11-04T08:03:18.429Z",
+ "langs": [
+  "en",
+  "ko"
+ ],
+ "designs": {
+  "gridline-swiss": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "bespoke",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "bespoke",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "field-manual": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "monolith": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "chapter-verse": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "cut-paste": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "seminar": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "modulo-grid": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "coin-op": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "maison": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "signal-board": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "gilded-line": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "new-wave-static": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "ma": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "dessau": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "whiplash": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "tty-paper": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "front-page": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "memphis-squiggle": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "fika": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "iron-press": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "vista": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "peer-review": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "night-reel": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "fieldnote": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0,
+    "note": "retry after transient CDP timeout; standalone exit 0"
+   }
+  },
+  "bubble-os": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "drafting-table": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  },
+  "atelier-noir": {
+   "en": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   },
+   "ko": {
+    "status": "PASS",
+    "pass": "7/7",
+    "builder": "generic",
+    "failing": [],
+    "exit": 0
+   }
+  }
+ },
+ "finishedAt": "2026-11-04T08:16:08.862Z"
+}

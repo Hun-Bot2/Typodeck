@@ -12,8 +12,6 @@
     --paper: #FFFFFF;
     --ink: #1A1A1A;
     --blue: #0B5394;
-    --rule: #EAEAEA;
-    --abstract-tint: #F3F5F8;
     --muted: #5A6470;
   }
   * { box-sizing: border-box; }
@@ -32,12 +30,8 @@
     color: var(--ink);
   }
   .pr-runhead .pr-page { color: var(--muted); letter-spacing: 0.14em; }
-  .pr-double-rule { margin-top: 18px; border-top: 3px solid var(--ink); position: relative; }
-  .pr-double-rule::after {
-    content: ""; display: block; border-top: 1px solid var(--ink); margin-top: 3px;
-  }
   .pr-main {
-    flex: 1; display: flex; gap: 72px; margin-top: 52px; min-height: 0;
+    flex: 1; display: flex; gap: 132px; margin-top: 52px; min-height: 0;
   }
   .pr-article { flex: 1.85; min-width: 0; display: flex; flex-direction: column; }
   .pr-kicker {
@@ -54,9 +48,6 @@
   }
   .pr-abstract {
     margin-top: 40px;
-    background: var(--abstract-tint);
-    border-left: 6px solid var(--blue);
-    padding: 28px 34px 30px;
   }
   .pr-abstract-label {
     font-family: Inter, system-ui, sans-serif;
@@ -68,15 +59,13 @@
     margin: 0; font-style: italic; font-size: 35px; line-height: 1.42; color: var(--ink);
   }
   .pr-keywords {
-    margin-top: 20px; padding-top: 16px; border-top: 1px solid #D8DEE5;
+    margin-top: 20px;
     font-family: Inter, system-ui, sans-serif;
     font-size: 21px; font-weight: 500; color: var(--muted);
   }
   .pr-keywords strong { font-weight: 700; color: var(--ink); }
   .pr-rail {
     flex: 1; min-width: 0;
-    border-left: 1px solid var(--rule);
-    padding-left: 60px;
     display: flex; flex-direction: column; gap: 44px;
   }
   .pr-fig-label {
@@ -90,20 +79,26 @@
     font-size: 24px; font-weight: 600; color: var(--ink);
     margin: 12px 0 20px;
   }
-  .pr-bars { display: flex; flex-direction: column; gap: 13px; }
-  .pr-bar-row { display: flex; align-items: center; gap: 14px; }
-  .pr-bar-row .pr-bar-cat {
+  .pr-datalist { display: flex; flex-direction: column; gap: 13px; }
+  .pr-data-row {
+    display: flex; align-items: baseline; gap: 14px;
     font-family: Inter, system-ui, sans-serif;
+  }
+  .pr-data-row .pr-data-cat {
     font-size: 19px; font-weight: 600; color: var(--muted);
     width: 44px; flex: 0 0 auto; text-align: right;
     font-variant-numeric: tabular-nums;
   }
-  .pr-bar-track { flex: 1; height: 22px; background: #EDF0F4; position: relative; }
-  .pr-bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--blue); }
-  .pr-bar-row .pr-bar-val {
-    font-family: Inter, system-ui, sans-serif;
+  .pr-data-row .pr-data-val {
     font-size: 19px; font-weight: 700; color: var(--ink);
-    width: 30px; flex: 0 0 auto;
+    font-variant-numeric: tabular-nums;
+  }
+  .pr-data-row .pr-data-name {
+    font-size: 21px; font-weight: 500; color: var(--ink);
+    flex: 1;
+  }
+  .pr-data-row .pr-data-num {
+    font-size: 21px; font-weight: 500; color: var(--ink);
     font-variant-numeric: tabular-nums;
   }
   .pr-caption {
@@ -112,24 +107,8 @@
     font-size: 21px; line-height: 1.5; color: var(--muted);
   }
   .pr-caption strong { color: var(--ink); font-weight: 700; }
-  .pr-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
-  .pr-table th {
-    font-family: Inter, system-ui, sans-serif;
-    font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--muted); text-align: left;
-    padding: 10px 8px 10px 0;
-    border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink);
-  }
-  .pr-table th:last-child, .pr-table td:last-child { text-align: right; padding-right: 0; }
-  .pr-table td {
-    font-family: Inter, system-ui, sans-serif;
-    font-size: 21px; font-weight: 500; color: var(--ink);
-    padding: 11px 8px 11px 0; border-bottom: 1px solid var(--rule);
-    font-variant-numeric: tabular-nums;
-  }
-  .pr-table tr:last-child td { border-bottom: 2px solid var(--ink); }
   .pr-footnotes {
-    margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--ink);
+    margin-top: 40px;
     font-family: Inter, system-ui, sans-serif;
     font-size: 20px; line-height: 1.6; color: var(--muted);
     display: flex; gap: 48px;
@@ -176,7 +155,6 @@
         <span>Typodeck Research · November 2026</span>
         <span class="pr-page">p. 01</span>
       </div>
-      <div class="pr-double-rule"></div>
       <div class="pr-main">
         <div class="pr-article">
           <div class="pr-kicker">Research Article &#183; Review Practice</div>
@@ -193,23 +171,22 @@
           <div class="pr-fig">
             <div class="pr-fig-label">Figure 1</div>
             <div class="pr-fig-title">Review coverage across the corpus</div>
-            <div class="pr-bars">
-              <div class="pr-bar-row"><span class="pr-bar-cat">P01</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:82%"></span></span><span class="pr-bar-val">9</span></div>
-              <div class="pr-bar-row"><span class="pr-bar-cat">P04</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:64%"></span></span><span class="pr-bar-val">7</span></div>
-              <div class="pr-bar-row"><span class="pr-bar-cat">P05</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:73%"></span></span><span class="pr-bar-val">8</span></div>
-              <div class="pr-bar-row"><span class="pr-bar-cat">P08</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:45%"></span></span><span class="pr-bar-val">5</span></div>
-              <div class="pr-bar-row"><span class="pr-bar-cat">P11</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:55%"></span></span><span class="pr-bar-val">6</span></div>
+            <div class="pr-datalist">
+              <div class="pr-data-row"><span class="pr-data-cat">P01</span><span class="pr-data-val">9</span></div>
+              <div class="pr-data-row"><span class="pr-data-cat">P04</span><span class="pr-data-val">7</span></div>
+              <div class="pr-data-row"><span class="pr-data-cat">P05</span><span class="pr-data-val">8</span></div>
+              <div class="pr-data-row"><span class="pr-data-cat">P08</span><span class="pr-data-val">5</span></div>
+              <div class="pr-data-row"><span class="pr-data-cat">P11</span><span class="pr-data-val">6</span></div>
             </div>
-            <p class="pr-caption"><strong>Figure 1.</strong> Review coverage across the 11 postmortems; lower bars mark rushed releases.</p>
+            <p class="pr-caption"><strong>Figure 1.</strong> Review coverage across the 11 postmortems; lower counts mark rushed releases.</p>
           </div>
           <div class="pr-fig">
             <div class="pr-fig-label">Table 1</div>
-            <table class="pr-table">
-              <tr><th>Failure class</th><th>Count</th></tr>
-              <tr><td>Skipped review</td><td>7</td></tr>
-              <tr><td>Late review</td><td>3</td></tr>
-              <tr><td>Full review</td><td>1</td></tr>
-            </table>
+            <div class="pr-datalist">
+              <div class="pr-data-row"><span class="pr-data-name">Skipped review</span><span class="pr-data-num">7</span></div>
+              <div class="pr-data-row"><span class="pr-data-name">Late review</span><span class="pr-data-num">3</span></div>
+              <div class="pr-data-row"><span class="pr-data-name">Full review</span><span class="pr-data-num">1</span></div>
+            </div>
             <p class="pr-caption"><strong>Table 1.</strong> Where review discipline broke down.</p>
           </div>
         </div>

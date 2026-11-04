@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>What eleven postmortems taught us — 02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana:wght@400&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; background:#1D1C1B; }
+  .slide { position:relative; width:1920px; height:1080px; background:#1D1C1B;
+    color:#FAF8F5; font-family:'Montserrat', system-ui, sans-serif; overflow:hidden; }
+  .content { position:absolute; top:72px; left:96px; right:96px; max-height:820px; }
+  .kicker { font-family:'Montserrat', system-ui, sans-serif;
+    font-weight:500; font-size:20px; letter-spacing:0.14em;
+    text-transform:uppercase; color:#FAF8F5; margin:0;  }
+  .metaline { font-family:'Montserrat', system-ui, sans-serif; font-size:18px; font-weight:300;
+    letter-spacing:0.06em; text-transform:none;
+    color:#999999; margin:14px 0 0 0;  }
+  .footer { position:absolute; left:96px; right:96px; bottom:0; height:104px;
+    display:flex; align-items:center;
+    justify-content:space-between; }
+  .footer .ctx { font-family:'Montserrat', system-ui, sans-serif; font-size:19px; font-weight:300;
+    letter-spacing:0.06em; text-transform:none;
+    color:#999999; margin:0;  }
+  .footer .idx { font-family:'Italiana', serif; font-weight:400;
+    font-size:22px; letter-spacing:0.1em; margin:0; color:#FAF8F5; }
+  .footer .idx .numeral { font-size:30px; }
+  h1, .statement { font-family:'Italiana', serif; font-weight:400;
+    text-align:left; margin:44px 0 0 0;  }
+  .title-xl { font-family:'Italiana', serif; font-weight:400;
+    line-height:1.04; letter-spacing:-0.01em; }
+  .sec-title { line-height:1.05; margin-top:60px; }
+  .statement { line-height:1.1; margin-top:70px; }
+  .ev-msg { line-height:1.12; margin-top:40px; }
+  .cmp-title { line-height:1.08; margin-top:36px; }
+  .d-title { line-height:1.08; margin-top:32px; }
+  .close-line { font-family:'Italiana', serif; font-weight:400;
+    line-height:1.04; margin-top:120px; }
+  .lede { font-size:34px; line-height:1.5; margin:36px 0 0 0; max-width:1380px;  }
+  .orient { font-size:34px; line-height:1.5; margin:36px 0 0 0; max-width:1380px;  }
+  .close-recap { font-size:34px; line-height:1.5; margin:40px 0 0 0; max-width:1380px;  }
+  .srcline { font-family:'Montserrat', system-ui, sans-serif; font-size:20px; font-weight:300;
+    letter-spacing:0.06em; text-transform:none;
+    color:#999999; margin:40px 0 0 0;  }
+  .statrow { display:flex; gap:72px; margin:52px 0 0 0; }
+  .stat { display:flex; align-items:flex-end; gap:22px; }
+  .statnum { font-family:'Italiana', serif; font-weight:400; line-height:0.9;
+    letter-spacing:-0.02em; white-space:nowrap; }
+  .statlab { font-family:'Montserrat', system-ui, sans-serif; font-size:20px; font-weight:300;
+    letter-spacing:0.06em; text-transform:none;
+    line-height:1.5; padding-bottom:18px; max-width:320px;  }
+  .ev-sup { font-size:24px; line-height:1.55; margin:36px 0 0 0; max-width:1380px;  }
+  .findings { list-style:none; margin:44px 0 0 0; padding:0; }
+  .findings li { display:flex; gap:24px; padding:0; margin:0 0 30px 0; }
+  .findings li:last-child { margin-bottom:0; }
+  .fnum { font-family:'Italiana', serif; font-weight:400; font-size:30px; flex:0 0 96px; color:#FAF8F5; }
+  .fbody { display:flex; flex-direction:column; gap:8px; }
+  .fhead { font-family:'Italiana', serif; font-weight:400; font-size:30px; line-height:1.2;  }
+  .fsub { font-size:24px; line-height:1.55;  }
+  .zones { display:flex; gap:96px; margin-top:44px; }
+  .zone { flex:1 1 0; }
+  .zone-h { font-family:'Italiana', serif; font-weight:400; font-size:30px;
+    line-height:1.2; margin:0;  }
+  .zone ul { list-style:none; margin:20px 0 0 0; padding:0; }
+  .zone li { font-size:22px; line-height:1.5;
+    padding:0; margin:0 0 20px 0;  }
+  .zone li:last-child { margin-bottom:0; }
+  .zone li.bad { color:#FAF8F5; font-weight:600; }
+  .caption { font-size:22px; line-height:1.55; color:#999999; margin:36px 0 0 0;  }
+  .ledger { display:grid; grid-template-columns:7em 10em 8em 1fr; column-gap:2.5em;
+    margin:32px 0 0 0; line-height:1.35; font-variant-numeric:tabular-nums; }
+  .lhead { font-family:'Montserrat', system-ui, sans-serif; font-weight:300; letter-spacing:0.06em;
+    text-transform:none; color:#999999; font-size:0.86em; padding:0 0 0.9em 0;  }
+  .lrow { display:contents; }
+  .lrow > .cell { padding:0.42em 0; white-space:nowrap;  }
+  .lrow > .cell.case { font-family:'Italiana', serif; font-weight:400; font-size:0.95em; }
+  .lrow.flag > .cell.cost { color:#FAF8F5; font-weight:700; }
+  .d-foot { font-family:'Montserrat', system-ui, sans-serif; font-size:18px; font-weight:300;
+    letter-spacing:0.06em; text-transform:none;
+    color:#999999; margin:22px 0 0 0;  }
+  .fx { color:#999999; font-size:0.85em; letter-spacing:0.06em; white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="slide" data-contain="stage">
+  <div class="content">
+    <p class="kicker" data-t="kicker" data-headline>Part one · Method</p>
+    <p class="metaline" data-t="meta">Section 01 · Method · Reads 22 passes · Bar 4+ cases</p>
+    
+    <h1 class="sec-title" data-t="title" data-headline style="font-size:72px">How we read them</h1>
+    <p class="orient" data-t="sub">Every review was re-read twice: once for the timeline, once for the tone. Only patterns present in at least four cases survived.</p>
+  </div>
+  <footer class="footer"><p class="ctx" data-t="footer">Typodeck Research · Readout 07</p><p class="idx" data-t="pageidx"><span class="numeral" data-t="numeral">02</span> / 07</p></footer>
+</div>
+</body>
+</html>
