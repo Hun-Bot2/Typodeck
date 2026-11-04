@@ -6,7 +6,7 @@ colors:
   blueprint: "#0F3D7A"
   blueprint-deep: "#041226"
   line-white: "#FFFFFF"
-  light-line: "#7FB3E8"
+  light-line: "#93C2EE"
   pale-blue: "#D6E6FA"
   amber: "#FFD166"
 shadows:
@@ -163,7 +163,7 @@ Depth in this system is flat: there are no shadows, no blur, no gloss, no gradie
 - **Blueprint** (`{colors.blueprint}` — `#0F3D7A`): The sheet ground. Fills the stage solid and flat.
 - **Blueprint Deep** (`{colors.blueprint-deep}` — `#041226`): Retained token; no visible role in the typography-only register.
 - **Line White** (`{colors.line-white}` — `#FFFFFF`): Headlines, crosses, revision values.
-- **Light Line** (`{colors.light-line}` — `#7FB3E8`): Secondary marks — header tags, sheet line, revision headers.
+- **Light Line** (`{colors.light-line}` — `#93C2EE`): Secondary marks — header tags, sheet line, revision headers.
 - **Pale Blue** (`{colors.pale-blue}` — `#D6E6FA`): Tagline and body text. Softer than line white.
 - **Amber** (`{colors.amber}` — `#FFD166`): Revision-critical flags only — stamp line, revision letter, measurement notes.
 
@@ -177,6 +177,8 @@ Depth in this system is flat: there are no shadows, no blur, no gloss, no gradie
 - **Default corners**: four registration crosses at the sheet corners.
 
 White text on blueprint holds strong contrast at all specified sizes. Amber appears only in the three flag elements — never as running prose or headlines.
+
+**Color-comfort decision (2026-11-04): retain bg with corrected fg (headroom for the thin pass).** Dark saturated blue, outside the near-black scope — the blueprint ground is retained untouched. Light-line `#7FB3E8`→`#93C2EE` (4.83:1→5.68:1) gives the secondary-marks pair real headroom above the AA floor per P4 instead of a 0.33 margin. White, pale-blue, and amber roles are unchanged. Typo-only shapes unchanged — color values only.
 
 ## Typography
 

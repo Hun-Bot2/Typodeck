@@ -3,7 +3,7 @@ version: alpha
 name: Atelier Noir
 description: A high-fashion editorial presentation system set in porcelain on near-black, with tall Italiana serif statements carrying one italic accent word each, whisper-light Montserrat body copy, widely tracked gallery caps, a giant cropped issue numeral looming behind the content, and oversized runway margins with a rotated margin note. Typography-only register: no dividers, bars, or rules exist — hierarchy is carried by the two type voices, tonal layering, and vast whitespace alone. The effect sits between a runway program and a gallery wall text — couture, sparse, and nocturnal.
 colors:
-  noir: "#111111"
+  noir: "#1D1C1B"
   porcelain: "#FAF8F5"
   gallery-gray: "#999999"
   soft-line: "#C9C9C9"
@@ -145,7 +145,7 @@ Depth in this system is achieved without any shadow or blur: the issue numeral r
 
 ### Palette
 
-- **Noir** (`{colors.noir}` — `#111111`): The spread ground. Near-black, never pure black.
+- **Noir** (`{colors.noir}` — `#1D1C1B`): The spread ground. Near-black, never pure black.
 - **Porcelain** (`{colors.porcelain}` — `#FAF8F5`): Display headlines, kicker word, numeral, context line.
 - **Gallery Gray** (`{colors.gallery-gray}` — `#999999`): Tracked caps chrome — labels, issue line, folio, top row.
 - **Soft Line** (`{colors.soft-line}` — `#C9C9C9`): Tagline and secondary body text.
@@ -162,6 +162,8 @@ Depth in this system is achieved without any shadow or blur: the issue numeral r
 - **Default wine usage**: none — the token is retained but unrendered.
 
 Porcelain on noir holds excellent contrast at all sizes; gallery gray is restricted to caps chrome at 18px+ tracked wide. No other text color is allowed.
+
+**Color-comfort decision (2026-11-04): adjust luminance (lift ground).** Noir `#111111`→`#1D1C1B` narrows the extreme porcelain range 17.81:1→16.05:1 while keeping the couture nocturnal ground (still neutral near-black; monochrome identity untouched, no saturation to restrain). All ink pairs re-measured on the new ground: porcelain 16.05:1, accent-ivory 13.21:1, soft-line 10.28:1, gallery-gray 5.97:1. Wine stays retired. Harness `accent` remapped wine→porcelain in `theme.mjs` (wine kicker was 1.23:1, unreadable; the design's kicker is porcelain tracked caps). Typo-only shapes unchanged — color values only.
 
 ## Typography
 

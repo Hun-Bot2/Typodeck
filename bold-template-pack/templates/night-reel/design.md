@@ -4,9 +4,9 @@ name: Night Reel
 description: A noir cinematic presentation system that composes every slide as a shot inside CinemaScope letterbox zones. Towering Bebas Neue condensed caps anchor a low-third title block on solid black, with featherweight Inter for dialogue lines and exactly one blood-red accent per slide — the kicker line — as the single saturated beat. Typography-only register: no rules, bars-as-boxes, vignettes, or shimmer exist — hierarchy is carried by position, scale, tracking, and the single red line alone.
 
 colors:
-  black: "#000000"
+  black: "#101012"
   white: "#F5F5F5"
-  blood-red: "#C1121F"
+  blood-red: "#E5484D"
   smoke: "#8A8A8A"
   dialogue: "#C9C9C9"
   bar-line: "#2A2A2A"
@@ -148,9 +148,9 @@ The palette is near-monochrome: **pure black ground, off-white titles, smoke met
 
 ### Palette
 
-- **Black** (`{colors.black}` — `#000000`): The only ground — bars, frame, and letterbox shell all pure black.
+- **Black** (`{colors.black}` — `#101012`): The only ground — bars, frame, and letterbox shell all near-black.
 - **White** (`{colors.white}` — `#F5F5F5`): Title caps only. Slightly softened so caps on black don't glare.
-- **Blood Red** (`{colors.blood-red}` — `#C1121F`): The single accent — the low-third kicker line at 40px tracked Bebas. Never titles, never dialogue, never chrome, never repeated.
+- **Blood Red** (`{colors.blood-red}` — `#E5484D`): The single accent — the low-third kicker line at 40px tracked Bebas. Never titles, never dialogue, never chrome, never repeated.
 - **Smoke** (`{colors.smoke}` — `#8A8A8A`): Bar brand, context line, stat labels — the mid metadata voice.
 - **Dialogue** (`{colors.dialogue}` — `#C9C9C9`): Subtitle and body lines — brighter than smoke, dimmer than titles.
 - **Bar Line** (`{colors.bar-line}` — `#2A2A2A`): Retained token; no visible role in the typography-only register.
@@ -164,6 +164,8 @@ The palette is near-monochrome: **pure black ground, off-white titles, smoke met
 - **Default body color**: `{colors.dialogue}` in Inter light.
 - **Default metadata color**: `{colors.smoke}` for readable metadata, `{colors.reel-dim}` for rhythmic markers.
 - **Default accent**: `{colors.blood-red}`, exactly once per slide as the low-third kicker line.
+
+**Color-comfort decision (2026-11-04): replace dark treatment (pure black retired, red corrected).** This was the only L=0.0000 ground in the pack with the widest range (19.26:1). Black `#000000`→`#101012` keeps the noir letterbox read — still visually black in the cinema frame — while narrowing white to 17.43:1; smoke (5.51:1) and dialogue (11.48:1) re-verified with margin. Blood-red `#C1121F`→`#E5484D` (3.37:1→4.86:1, S 0.83→0.75) repairs the thin-margin kicker so it passes at small sizes too, keeping the single blood beat per P3 (brighter but slightly less saturated on the dark ground). White, smoke, and dialogue values are untouched. Typo-only shapes unchanged — color values only.
 
 ## Typography
 
