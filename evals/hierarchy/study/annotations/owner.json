@@ -1,0 +1,912 @@
+{
+  "reviewerId": "owner",
+  "datasetVersion": "study-v1",
+  "seed": 20261103,
+  "annotations": {
+    "S01": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S01",
+      "firstFocus": "F01-s1-b1",
+      "ranking": [
+        [
+          "F01-s1-b0"
+        ],
+        [
+          "F01-s1-b1"
+        ],
+        [
+          "F01-s1-b2"
+        ],
+        [
+          "F01-s1-b3"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "clip",
+          "blockIds": [
+            "F01-s1-b2"
+          ],
+          "comment": ""
+        }
+      ],
+      "confidence": 5,
+      "interpretation": {
+        "mainMessage": "F01-s1-b1",
+        "comment": ""
+      },
+      "status": "done",
+      "updatedAt": "2026-11-03T12:51:16.265Z"
+    },
+    "S02": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S02",
+      "firstFocus": "F02-s1-b1",
+      "ranking": [
+        [
+          "F02-s1-b1"
+        ],
+        [
+          "F02-s1-b0"
+        ],
+        [
+          "F02-s1-b2",
+          "F02-s1-b3"
+        ],
+        [
+          "F02-s1-b4"
+        ],
+        [
+          "F02-s1-b5"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "contrast",
+          "blockIds": [
+            "F02-s1-b0",
+            "F02-s1-b1",
+            "F02-s1-b2",
+            "F02-s1-b3",
+            "F02-s1-b4"
+          ],
+          "comment": ""
+        }
+      ],
+      "confidence": 5,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "done",
+      "updatedAt": "2026-11-03T12:52:50.320Z"
+    },
+    "S03": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S03",
+      "firstFocus": "F03-s1-b1",
+      "ranking": [
+        [
+          "F03-s1-b1"
+        ],
+        [
+          "F03-s1-b0"
+        ],
+        [
+          "F03-s1-b2"
+        ],
+        [
+          "F03-s1-b3"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "clip",
+          "blockIds": [
+            "F03-s1-b1"
+          ],
+          "comment": ""
+        }
+      ],
+      "confidence": 5,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "done",
+      "updatedAt": "2026-11-03T12:53:28.997Z"
+    },
+    "S04": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S04",
+      "firstFocus": "F04-s1-b0",
+      "ranking": [
+        [
+          "F04-s1-b0"
+        ],
+        [
+          "F04-s1-b1",
+          "F04-s1-b2",
+          "F04-s1-b3"
+        ],
+        [
+          "F04-s1-b4"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "other",
+          "blockIds": [
+            "F04-s1-b3"
+          ],
+          "comment": "위치가 모호하다"
+        }
+      ],
+      "confidence": 5,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "done",
+      "updatedAt": "2026-11-03T12:54:39.804Z"
+    },
+    "S05": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S05",
+      "firstFocus": "F05-s1-b0",
+      "ranking": [
+        [
+          "F05-s1-b0"
+        ],
+        [
+          "F05-s1-b1",
+          "F05-s1-b2",
+          "F05-s1-b3",
+          "F05-s1-b4"
+        ],
+        [
+          "F05-s1-b5"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "spacing",
+          "blockIds": [
+            "F05-s1-b1",
+            "F05-s1-b2",
+            "F05-s1-b0",
+            "F05-s1-b3",
+            "F05-s1-b4"
+          ],
+          "comment": ""
+        },
+        {
+          "type": "contrast",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": 5,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "done",
+      "updatedAt": "2026-11-03T12:55:15.560Z"
+    },
+    "S06": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S06",
+      "firstFocus": "F06-s1-b0",
+      "ranking": [
+        [
+          "F06-s1-b0"
+        ],
+        [
+          "F06-s1-b1",
+          "F06-s1-b2",
+          "F06-s1-b3",
+          "F06-s1-b4",
+          "F06-s1-b5"
+        ],
+        [
+          "F06-s1-b6"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "spacing",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": 5,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "done",
+      "updatedAt": "2026-11-03T12:55:33.225Z"
+    },
+    "S07": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S07",
+      "firstFocus": "F07-s1-b1",
+      "ranking": [
+        [
+          "F07-s1-b0"
+        ],
+        [
+          "F07-s1-b1"
+        ],
+        [
+          "F07-s1-b2"
+        ],
+        [
+          "F07-s1-b3"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:55:37.062Z"
+    },
+    "S08": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S08",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F08-s1-b0"
+        ],
+        [
+          "F08-s1-b1"
+        ],
+        [
+          "F08-s1-b2"
+        ],
+        [
+          "F08-s1-b3"
+        ],
+        [
+          "F08-s1-b4"
+        ],
+        [
+          "F08-s1-b5"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:55:43.931Z"
+    },
+    "S09": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S09",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F09-s1-b0"
+        ],
+        [
+          "F09-s1-b1"
+        ],
+        [
+          "F09-s1-b2"
+        ],
+        [
+          "F09-s1-b3"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:55:46.617Z"
+    },
+    "S10": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S10",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F10-s1-b0"
+        ],
+        [
+          "F10-s1-b1"
+        ],
+        [
+          "F10-s1-b2"
+        ],
+        [
+          "F10-s1-b3"
+        ],
+        [
+          "F10-s1-b4"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:55:47.619Z"
+    },
+    "S11": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S11",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F11-s1-b0"
+        ],
+        [
+          "F11-s1-b1"
+        ],
+        [
+          "F11-s1-b2"
+        ],
+        [
+          "F11-s1-b3"
+        ],
+        [
+          "F11-s1-b4"
+        ],
+        [
+          "F11-s1-b5"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:55:52.165Z"
+    },
+    "S12": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S12",
+      "firstFocus": "F12-s1-b0",
+      "ranking": [
+        [
+          "F12-s1-b0"
+        ],
+        [
+          "F12-s1-b1",
+          "F12-s1-b2",
+          "F12-s1-b3",
+          "F12-s1-b4",
+          "F12-s1-b5"
+        ],
+        [
+          "F12-s1-b6"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "clip",
+          "blockIds": [
+            "F12-s1-b0"
+          ],
+          "comment": ""
+        },
+        {
+          "type": "spacing",
+          "blockIds": [
+            "F12-s1-b1",
+            "F12-s1-b2",
+            "F12-s1-b4",
+            "F12-s1-b3",
+            "F12-s1-b5"
+          ],
+          "comment": ""
+        }
+      ],
+      "confidence": 5,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "done",
+      "updatedAt": "2026-11-03T12:56:39.225Z"
+    },
+    "S13": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S13",
+      "firstFocus": "F13-s1-b0",
+      "ranking": [
+        [
+          "F13-s1-b0"
+        ],
+        [
+          "F13-s1-b1"
+        ],
+        [
+          "F13-s1-b2"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "clip",
+          "blockIds": [
+            "F13-s1-b0"
+          ],
+          "comment": ""
+        }
+      ],
+      "confidence": 5,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "done",
+      "updatedAt": "2026-11-03T12:56:53.169Z"
+    },
+    "S14": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S14",
+      "firstFocus": "F14-s1-b0",
+      "ranking": [
+        [
+          "F14-s1-b0"
+        ],
+        [
+          "F14-s1-b1"
+        ],
+        [
+          "F14-s1-b2"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "clip",
+          "blockIds": [
+            "F14-s1-b0"
+          ],
+          "comment": ""
+        }
+      ],
+      "confidence": 5,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "done",
+      "updatedAt": "2026-11-03T12:57:08.597Z"
+    },
+    "S15": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S15",
+      "firstFocus": "F15-s1-b2",
+      "ranking": [
+        [
+          "F15-s1-b1"
+        ],
+        [
+          "F15-s1-b2"
+        ],
+        [
+          "F15-s1-b0",
+          "F15-s1-b3"
+        ],
+        [
+          "F15-s1-b4"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "clip",
+          "blockIds": [
+            "F15-s1-b2"
+          ],
+          "comment": ""
+        },
+        {
+          "type": "spacing",
+          "blockIds": [
+            "F15-s1-b0",
+            "F15-s1-b1",
+            "F15-s1-b2",
+            "F15-s1-b3"
+          ],
+          "comment": ""
+        }
+      ],
+      "confidence": 5,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "done",
+      "updatedAt": "2026-11-03T12:58:09.430Z"
+    },
+    "S16": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S16",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F15-s1-b0"
+        ],
+        [
+          "F15-s1-b1"
+        ],
+        [
+          "F15-s1-b2"
+        ],
+        [
+          "F15-s1-b3"
+        ],
+        [
+          "F15-s1-b4"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:58:12.742Z"
+    },
+    "S17": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S17",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F16-s1-b0"
+        ],
+        [
+          "F16-s1-b1"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:58:17.052Z"
+    },
+    "S18": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S18",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F02-s1-b0"
+        ],
+        [
+          "F02-s1-b1"
+        ],
+        [
+          "F02-s1-b2"
+        ],
+        [
+          "F02-s1-b3"
+        ],
+        [
+          "F02-s1-b4"
+        ],
+        [
+          "F02-s1-b5"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:58:23.867Z"
+    },
+    "S19": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S19",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F15-s1-b0"
+        ],
+        [
+          "F15-s1-b1"
+        ],
+        [
+          "F15-s1-b2"
+        ],
+        [
+          "F15-s1-b3"
+        ],
+        [
+          "F15-s1-b4"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:58:26.542Z"
+    },
+    "S20": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S20",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F04-s1-b0"
+        ],
+        [
+          "F04-s1-b1"
+        ],
+        [
+          "F04-s1-b2"
+        ],
+        [
+          "F04-s1-b3"
+        ],
+        [
+          "F04-s1-b4"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:58:31.474Z"
+    },
+    "S21": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S21",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F12-s1-b0"
+        ],
+        [
+          "F12-s1-b1"
+        ],
+        [
+          "F12-s1-b2"
+        ],
+        [
+          "F12-s1-b3"
+        ],
+        [
+          "F12-s1-b4"
+        ],
+        [
+          "F12-s1-b5"
+        ],
+        [
+          "F12-s1-b6"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:58:35.280Z"
+    },
+    "S26": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S26",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F16-s1-b0"
+        ],
+        [
+          "F16-s1-b1"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:59:04.954Z"
+    },
+    "S25": {
+      "reviewerId": "owner",
+      "datasetVersion": "study-v1",
+      "seed": 20261103,
+      "caseId": "S25",
+      "firstFocus": null,
+      "ranking": [
+        [
+          "F13-s1-b0"
+        ],
+        [
+          "F13-s1-b1"
+        ],
+        [
+          "F13-s1-b2"
+        ]
+      ],
+      "groups": [],
+      "problems": [
+        {
+          "type": "none",
+          "blockIds": [],
+          "comment": ""
+        }
+      ],
+      "confidence": null,
+      "interpretation": {
+        "mainMessage": null,
+        "comment": ""
+      },
+      "status": "in-progress",
+      "updatedAt": "2026-11-03T12:59:06.918Z"
+    }
+  },
+  "updatedAt": "2026-11-03T12:59:06.918Z"
+}
