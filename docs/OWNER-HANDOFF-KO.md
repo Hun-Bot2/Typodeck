@@ -69,6 +69,9 @@ node packages/core/dist/scripts/make-deck.js \
    (`direction-a-editorial.svg`, `direction-b-swiss.svg`,
    `direction-c-display.svg`). 현재 선택은 **B (Swiss)** 입니다.
    유지/변경을 알려주세요.
+3. README 상단 히어로는 요청대로 전체 너비(`width="100%"`,
+   라이트/다크 대응)로 교체됐습니다. 푸시 후 GitHub에서 한 번만
+   확인해 주세요.
 
 **완료 기준:** “TypoPPT + B 유지” 또는 변경안을 회신합니다.
 
@@ -113,8 +116,10 @@ URL은 `github.com/typodeck/typodeck`을 가리킵니다. `typodeck` org명은
 - 27개 템플릿의 CLI·Studio·API 연결 (experimental)
 - 한국어 export 수정 (ko-KR 로케일, KR 글꼴, 금칙 처리)
 - 숫자 히어로 겹침 버그 수정 (3개 시스템 렌더 확인)
-- README·브랜드·쇼케이스·영상 가이드
-- 전체 테스트 575/575, Studio smoke 확인
+- 타이틀 렌더 가드 확장 (타이틀/본문·캡션 충돌 해소, 18개 덱 585블록 무위험 확인)
+- README·브랜드(전체 너비 히어로)·쇼케이스·영상 가이드
+- 배포 위생 수정 (하드코딩 경로 제거 등) + MCP 보류 결정서 (ADR-0024)
+- 전체 테스트 576/576, Studio smoke 확인
 
 ## 의도적으로 손대지 않은 것
 

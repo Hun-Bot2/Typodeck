@@ -1,7 +1,9 @@
 """Independent a:t spot check: every slide's editable text lives in <a:t> nodes
-and matches the deck JSON that produced the PPTX. Run: python3 spotcheck.py"""
+and matches the deck JSON that produced the PPTX.
+Run from the repo root: python3 showcase/spot-check.py [decks-dir]"""
 import html
 import json
+import os
 import re
 import sys
 import zipfile
@@ -16,7 +18,8 @@ CASES = [
     ("handbook-expressive", "expressive"),
 ]
 
-BASE = "/tmp/typodeck-showcase/showcase/decks"
+BASE = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "decks")
 ok_all = True
 for name, _system in CASES:
     deck = json.load(open(f"{BASE}/{name}.json"))

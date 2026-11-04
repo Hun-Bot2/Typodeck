@@ -19,5 +19,6 @@ promote them into production templates on license assumptions.
 during this project are project artifacts; inputs drawn from the above
 retain their own terms.
 
-When installing or distributing the Typodeck Skill, only `skills/typodeck/`
-is needed; research assets need not (and by default do not) ship with it.
+When installing or distributing the Typodeck Skill, only
+`plugins/typodeck/skills/typodeck/` is needed; research assets need not
+(and by default do not) ship with it.

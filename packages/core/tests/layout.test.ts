@@ -8,10 +8,10 @@ import {
   type TextBlock,
 } from '../src/schema';
 import {
-  RENDER_LINEBOX_NUMBER,
+  RENDER_LINEBOX_DISPLAY,
   charWidthEm,
   estimateWrap,
-  fitNumberToRender,
+  fitDisplayToRender,
   fitText,
   inkHeightIn,
   layoutDeck,
@@ -168,17 +168,30 @@ describe('layout', () => {
   it('shrinks hero numerals until render-model ink fits the box (QuickLook probe case)', () => {
     // Editorial number geometry that rendered overlapping on all systems:
     // 84pt "1.9 million dollars" in an 8.6x2.06in box spilled ~0.6in.
-    const size = fitNumberToRender('1.9 million dollars', 8.6, 2.06, 84, 60, -0.02, true);
+    const size = fitDisplayToRender('1.9 million dollars', 8.6, 2.06, 84, 60, -0.02, true);
     assert.ok(size < 84, `expected shrink below 84, got ${size}`);
-    const r = estimateWrap('1.9 million dollars', size, 8.6, -0.02, RENDER_LINEBOX_NUMBER, true);
+    const r = estimateWrap('1.9 million dollars', size, 8.6, -0.02, RENDER_LINEBOX_DISPLAY, true);
     assert.ok(
-      inkHeightIn(r, size, RENDER_LINEBOX_NUMBER) <= 2.06,
+      inkHeightIn(r, size, RENDER_LINEBOX_DISPLAY) <= 2.06,
       `render ink still exceeds 2.06in at ${size}pt`,
     );
   });
 
   it('leaves numerals that already fit untouched', () => {
-    const size = fitNumberToRender('42%', 8.6, 2.06, 84, 60, -0.02, true);
+    const size = fitDisplayToRender('42%', 8.6, 2.06, 84, 60, -0.02, true);
     assert.equal(size, 84);
+  });
+
+  it('shrinks long titles until render-model ink fits the box (title/body collision case)', () => {
+    // Expressive interior title that rendered into the body below it:
+    // 4-line hero title at large size in a tight box.
+    const content = 'TypeScript monorepo: core pipeline with ingestion and evidence stages';
+    const size = fitDisplayToRender(content, 8.0, 2.2, 64, 24, -0.02, true);
+    assert.ok(size < 64, `expected shrink below 64, got ${size}`);
+    const r = estimateWrap(content, size, 8.0, -0.02, RENDER_LINEBOX_DISPLAY, true);
+    assert.ok(
+      inkHeightIn(r, size, RENDER_LINEBOX_DISPLAY) <= 2.2,
+      `render ink still exceeds 2.2in at ${size}pt`,
+    );
   });
 });

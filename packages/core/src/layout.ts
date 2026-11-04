@@ -834,17 +834,19 @@ function planExplainerColumns(ctx: Ctx): Plan[] {
  * estimator's 1.0em line box, not substitution, is at fault. PowerPoint
  * single spacing is likewise ~1.15–1.2em, but no PowerPoint render
  * compare exists: 1.25 is QuickLook-measured with margin. Applied to
- * number-role fitting only, where 0.2em/line errors reach whole inches
- * and collide with following blocks (seen on all three systems).
+ * display roles (number, title) only, where 0.2em/line errors reach whole
+ * inches: numeral/title collisions on all three systems, plus title/body
+ * and title/caption collisions on expressive interiors (dogfood deck).
+ * Body/caption/kicker stay on the 1.0 model — their error is sub-gap.
  */
-export const RENDER_LINEBOX_NUMBER = 1.25;
+export const RENDER_LINEBOX_DISPLAY = 1.25;
 
 /**
- * Shrink a number-role size until its render-model ink fits the box.
+ * Shrink a display-role size until its render-model ink fits the box.
  * Geometry (x/y/w/h) is untouched — only the emitted fontSize shrinks —
  * so no-overlap and in-bounds guarantees hold by construction.
  */
-export function fitNumberToRender(
+export function fitDisplayToRender(
   content: string,
   boxW: number,
   boxH: number,
@@ -855,8 +857,8 @@ export function fitNumberToRender(
 ): number {
   let size = startSize;
   while (size > minSize) {
-    const r = estimateWrap(content, size, boxW, trackingEm, RENDER_LINEBOX_NUMBER, bold);
-    if (inkHeightIn(r, size, RENDER_LINEBOX_NUMBER) <= boxH) break;
+    const r = estimateWrap(content, size, boxW, trackingEm, RENDER_LINEBOX_DISPLAY, bold);
+    if (inkHeightIn(r, size, RENDER_LINEBOX_DISPLAY) <= boxH) break;
     size = Math.max(minSize, size - Math.max(1, Math.round(size * 0.08)));
   }
   return size;
@@ -872,8 +874,8 @@ function materialize(ctx: Ctx, plans: Plan[], background: string): TextBlock[] {
     const h = Math.min(maxH, fit.heightIn + BLOCK_PAD * 2);
     const y = Math.min(p.y, SLIDE_HEIGHT_IN - system.margin - h);
     const fontSize =
-      p.role === 'number'
-        ? fitNumberToRender(p.content, p.w, h, fit.fontSize, st.minFontSize, st.tracking, st.fontWeight >= 700)
+      p.role === 'number' || p.role === 'title'
+        ? fitDisplayToRender(p.content, p.w, h, fit.fontSize, st.minFontSize, st.tracking, st.fontWeight >= 700)
         : fit.fontSize;
     return {
       id: `${slide.id}-b${i}`,

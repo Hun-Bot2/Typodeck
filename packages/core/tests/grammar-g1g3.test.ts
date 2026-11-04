@@ -252,7 +252,14 @@ describe('responsive rules', () => {
       compositionPlan: [{ slideId: 'n0-cover', semanticType: 'opening', candidateId: 'opening-monumental-numeral', rationale: 't', score: 1 }],
     });
     const shortTitle = short.slides[0].blocks.find((b) => b.role === 'title');
-    assert.equal(shortTitle?.fontSize, 57);
+    // R2's rule is relative step-down (short stays larger than long), not an
+    // exact size: the render guard may shrink even short titles until
+    // rendered ink fits the box (57pt spilled ~0.4in on 2 lines).
+    assert.ok(
+      shortTitle && title && shortTitle.fontSize > title.fontSize,
+      `short (${shortTitle?.fontSize}) should exceed long (${title?.fontSize})`,
+    );
+    assert.ok(shortTitle && shortTitle.fontSize <= 57, `short should not exceed 57, got ${shortTitle?.fontSize}`);
   });
   it('R3: G3 column count parameterizes (single col <=2 middle, grouped above)', () => {
     const xsOf = (key: string): number[] => {

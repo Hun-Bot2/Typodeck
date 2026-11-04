@@ -11,7 +11,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const ROOT = '/Users/jeonghun/Typodeck';
+const ROOT = path.resolve(__dirname, '..', '..', '..');
 const OUT = path.join(ROOT, 'evals/design-quality/pptx');
 const core = require(path.join(ROOT, 'packages/core/dist/src/index.js'));
 const JSZip = require(path.join(ROOT, 'node_modules/jszip'));

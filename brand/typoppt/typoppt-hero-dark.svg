@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="1280" height="480" role="img" aria-labelledby="title desc">
+  <title id="title">TypoPPT</title>
+  <desc id="desc">TypoPPT wordmark. You bring the content. TypoPPT handles the design. Native editable PowerPoint text, every number traces to evidence.</desc>
+  <rect width="1280" height="480" fill="#14120E"/>
+  <!-- kicker -->
+  <text x="640" y="120" text-anchor="middle" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="30" font-weight="600" letter-spacing="7" fill="#F2EEE4" opacity="0.72">TYPOGRAPHY-FIRST PRESENTATION ENGINE</text>
+  <!-- wordmark -->
+  <text x="640" y="288" text-anchor="middle" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="168" font-weight="700" letter-spacing="-3" fill="#F2EEE4">TypoPPT.</text>
+  <!-- tagline -->
+  <text x="640" y="360" text-anchor="middle" font-family="Inter,Archivo,-apple-system,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" fill="#F2EEE4" opacity="0.85">You bring the content. TypoPPT handles the design.</text>
+  <!-- proof line -->
+  <text x="640" y="416" text-anchor="middle" font-family="'IBM Plex Mono',ui-monospace,Menlo,monospace" font-size="24" letter-spacing="2" fill="#F2EEE4" opacity="0.6">24/24 EVAL &#183; NATIVE EDITABLE PPTX &#183; 0 FORBIDDEN OBJECTS</text>
+</svg>

@@ -15,7 +15,8 @@ the root README.
 
 | File | Size | Use |
 |---|---|---|
-| `typoppt-hero.svg` | 1280×480 | Primary README banner (final direction B) |
+| `typoppt-hero.svg` | 1280×480 | Primary README banner, light (final direction B) |
+| `typoppt-hero-dark.svg` | 1280×480 | Primary README banner, dark (one-colour rule) |
 | `typoppt-wordmark.svg` | 640×160, transparent | Compact wordmark for light surfaces |
 | `typoppt-wordmark-light.svg` | 640×160, paper bg | Wordmark on guaranteed-light background |
 | `typoppt-wordmark-dark.svg` | 640×160, dark bg | One-colour wordmark for dark surfaces |
@@ -24,7 +25,19 @@ the root README.
 | `direction-b-swiss.svg` | 1200×630 | Direction B exploration board (selected) |
 | `direction-c-display.svg` | 1200×630 | Direction C exploration board |
 
-## README snippet (light/dark aware, no external hosting)
+## README snippet (full-width hero, light/dark aware, no external hosting)
+
+```html
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="brand/typoppt/typoppt-hero-dark.svg" />
+  <img src="brand/typoppt/typoppt-hero.svg" alt="TypoPPT — typography-first presentation engine. You bring the content. TypoPPT handles the design." width="100%" />
+</picture>
+```
+
+`width="100%"` fills the GitHub content column (~880 px desktop, full
+width mobile). Do not use a fixed pixel width for the hero — that was
+the pre-fix impact defect (a 640 px wordmark in an 880 px column).
+Compact wordmark alternative (inline contexts only):
 
 ```html
 <picture>
@@ -33,8 +46,6 @@ the root README.
 </picture>
 ```
 
-For the full banner, reference `brand/typoppt/typoppt-hero.svg`.
-GitHub caps README content at ~880 px; all assets scale losslessly.
 GitHub repository social preview accepts raster only: rasterize
 `typoppt-social.svg` to PNG (e.g. `rsvg-convert -w 1280`) and upload it
 in the repository settings — SVGs cannot be set as the social image.
@@ -140,9 +151,12 @@ named face locally only to match proofs exactly.
 
 ## Verification
 
-- All 8 SVGs rasterised with `rsvg-convert` and visually inspected —
-  hero, both exploration boards with fixes (C signal period pinned to
-  Inter, A descriptor clearance), and the selected B board all pass.
+- All 9 SVGs rasterised with `rsvg-convert` and visually inspected —
+  light + dark heroes, both exploration boards with fixes (C signal
+  period pinned to Inter, A descriptor clearance), and the selected B
+  board all pass. Full-width fill verified in an emulated GitHub
+  content column (WebKit render: banner edges align with the text
+  column) at desktop and 375 px mobile widths.
 - Self-containment grep: no `<image>`, gradients, base64, `@import`, or
   external fetches (only the SVG namespace URI).
 - Wordmark legibility probed at 320 px wide — dominant and legible.
