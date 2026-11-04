@@ -4,7 +4,7 @@
 - Branch: `audit/box-aesthetic` (`git branch --show-current` 확인, 커밋 없음)
 - HEAD: `e8a3f2823922a688ac66a80dedf687c86bbbb8df` (`git rev-parse` 확인)
 - Run-1 입력: `evals/typo-only/audit.md`, `evals/typo-only/color.md` 전문 정독 후 작성
-- 판정: **CONDITIONAL** (조건부 — §15의 F1·F2 수정 후 READY 가능)
+- 판정: **READY** (리드 마감 — F1·F2 수정·재검증 완료, 아래 Closure 참조. 단 PPTX-네이티브 육안 대조는 여전히 NOT RUN)
 
 ## 1. 박스 미학의 원인
 
@@ -207,7 +207,20 @@
 7. **design-matrix D19 행 `#3D4A54` 드리프트**: specimen 측은 재작성으로 정리됐으나
    matrix 행 잔류 여부를 별도 확인 필요.
 
-## Verdict: CONDITIONAL
+## Closure (리드, 2026-11-04)
+
+- F1 수정: `theme.mjs` fika accent `dusty-blue`→`fjord` 1행. 대비율 2.45→**13.56:1**
+  (off-white `#FAFAF7` 기준, 리드 직접 계산). fika EN/KO 14슬라이드 재생성 후
+  `fika-en/01`·`fika-en/05` 전수 육안 확인 — 네이비 악센트, 박스 없음.
+- F2 수정: `proof-content.en.json:80` + `tests/fixtures/content-en.json:80` 캡션을
+  "Failure modes observed in the rushed cases are listed under Rushed; position
+  marks sides."로 교체. coverage 내 "Red squares" 잔류 0건, 신 캡션 27덱 적용 확인.
+  (KO는 원래 정상. 구 `harness-proof/gridline-swiss-en` 스냅샷 1건은 아카이브로 잔류.)
+- 재검증: sweep **54/54 PASS**, 하네스 테스트 51/51, 엔진 575/575, PPTX 6/6 ALL-OK.
+- 조건 충족으로 CONDITIONAL→**READY** 승급. 단, PPTX-네이티브(PowerPoint/Keynote)
+  육안 대조는 여전히 NOT RUN이며 owner 판단 사항으로 남는다.
+
+## Verdict (워크플로 당시): CONDITIONAL
 
 - READY가 아닌 이유: F1은 AA 실패(≈2.45:1) 텍스트가 14개 하네스 슬라이드에
   살아 있고 의미를 운반하므로, 미학 주장과 무관하게 접근성 결함이다.
