@@ -8,22 +8,18 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  * { border-radius:0 !important; }
-  html, body { margin:0; padding:0; background:#000; }
+  html, body { margin:0; padding:0; background:#FFFFFF; }
   .slide { position:relative; width:1920px; height:1080px; background:#FFFFFF;
     color:#000000; font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; overflow:hidden; }
   .content { position:absolute; top:72px; left:96px; right:96px; max-height:820px; }
-  .kicker { display:flex; align-items:center; gap:16px; font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  .kicker { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
     font-weight:700; font-size:20px; letter-spacing:0;
     text-transform:none; color:#E30613; margin:0; word-break:keep-all; overflow-wrap:normal; }
-  .kicker::before { content:""; width:16px; height:16px; background:#E30613; flex:0 0 auto; }
-  .accentrule { height:5px; background:#E30613; margin-top:22px; width:100%; }
-  .accentrule.notop { margin-top:0; }
   .metaline { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:18px; font-weight:500;
     letter-spacing:0; text-transform:none;
     color:#000000; margin:14px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
   .footer { position:absolute; left:96px; right:96px; bottom:0; height:104px;
-    border-top:2px solid #000000; display:flex; align-items:center;
+    display:flex; align-items:center;
     justify-content:space-between; }
   .footer .ctx { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:19px; font-weight:500;
     letter-spacing:0; text-transform:none;
@@ -48,45 +44,42 @@
   .srcline { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:20px; font-weight:500;
     letter-spacing:0; text-transform:none;
     color:#000000; margin:40px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
-  .statrow { display:flex; gap:40px; margin:44px 0 0 0; border-top:2px solid #000000; padding-top:32px; }
-  .stat { display:flex; align-items:flex-end; gap:22px; padding-right:40px; border-right:1px solid #000000; }
-  .stat:last-child { border-right:none; }
+  .statrow { display:flex; gap:72px; margin:52px 0 0 0; }
+  .stat { display:flex; align-items:flex-end; gap:22px; }
   .statnum { font-family:'Jost', 'Pretendard Variable', sans-serif; font-weight:800; line-height:0.9;
-    letter-spacing:0; }
+    letter-spacing:0; white-space:nowrap; }
   .statlab { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:20px; font-weight:500;
     letter-spacing:0; text-transform:none;
     line-height:1.5; padding-bottom:18px; max-width:320px; word-break:keep-all; overflow-wrap:normal; }
-  .ev-sup { font-size:24px; line-height:1.83; margin:32px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
-  .findings { list-style:none; margin:36px 0 0 0; padding:0; border-top:2px solid #000000; }
-  .findings li { display:flex; gap:24px; padding:22px 0; border-bottom:1px solid #000000; }
-  .fnum { font-family:'Jost', 'Pretendard Variable', sans-serif; font-weight:800; font-size:30px; flex:0 0 96px; }
+  .ev-sup { font-size:24px; line-height:1.83; margin:36px 0 0 0; max-width:1380px; word-break:keep-all; overflow-wrap:normal; }
+  .findings { list-style:none; margin:44px 0 0 0; padding:0; }
+  .findings li { display:flex; gap:24px; padding:0; margin:0 0 30px 0; }
+  .findings li:last-child { margin-bottom:0; }
+  .fnum { font-family:'Jost', 'Pretendard Variable', sans-serif; font-weight:800; font-size:30px; flex:0 0 96px; color:#E30613; }
   .fbody { display:flex; flex-direction:column; gap:8px; }
   .fhead { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:700; font-size:30px; line-height:1.2; word-break:keep-all; overflow-wrap:normal; }
   .fsub { font-size:24px; line-height:1.83; word-break:keep-all; overflow-wrap:normal; }
-  .zones { display:flex; gap:32px; margin-top:36px; }
+  .zones { display:flex; gap:96px; margin-top:44px; }
   .zone { flex:1 1 0; }
-  .zone-b { border-left:1px solid #000000; padding-left:32px; }
   .zone-h { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:700; font-size:30px;
     line-height:1.2; margin:0; word-break:keep-all; overflow-wrap:normal; }
-  .zone ul { list-style:none; margin:0; padding:18px 0 0 0; border-top:2px solid #000000; margin-top:12px; }
-  .zone li { display:flex; gap:14px; align-items:flex-start; font-size:22px; line-height:1.5;
-    padding:12px 0; border-bottom:1px solid #000000; word-break:keep-all; overflow-wrap:normal; }
-  .zone li::before { content:""; width:13px; height:13px; flex:0 0 auto; margin-top:10px; background:#000000; }
-  .zone li.bad::before { background:#E30613; }
-  .caption { font-size:22px; line-height:1.55; color:#000000; margin:30px 0 0 0;
-    border-top:1px solid #000000; padding-top:20px; word-break:keep-all; overflow-wrap:normal; }
-  table.dtable { border-collapse:collapse; margin:24px 0 0 0; width:100%; }
-  table.dtable th { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:500; letter-spacing:0;
-    text-transform:none; color:#000000; text-align:left; font-size:0.86em;
-    padding:10px 16px 10px 0; border-top:2px solid #000000; border-bottom:2px solid #000000; }
-  table.dtable td { line-height:1.35; padding:9px 16px 9px 0; border-bottom:1px solid #000000; white-space:nowrap; }
-  table.dtable td.case { font-family:'Jost', 'Pretendard Variable', sans-serif; font-weight:800; font-size:0.95em; }
-  table.dtable tr.flag td.cost::before { content:""; display:inline-block; width:12px; height:12px;
-    background:#E30613; margin-right:10px; }
-  table.dtable td, table.dtable th { word-break:keep-all; }
+  .zone ul { list-style:none; margin:20px 0 0 0; padding:0; }
+  .zone li { font-size:22px; line-height:1.5;
+    padding:0; margin:0 0 20px 0; word-break:keep-all; overflow-wrap:normal; }
+  .zone li:last-child { margin-bottom:0; }
+  .zone li.bad { color:#E30613; font-weight:600; }
+  .caption { font-size:22px; line-height:1.55; color:#000000; margin:36px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+  .ledger { display:grid; grid-template-columns:7em 10em 8em 1fr; column-gap:2.5em;
+    margin:32px 0 0 0; line-height:1.35; font-variant-numeric:tabular-nums; }
+  .lhead { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-weight:500; letter-spacing:0;
+    text-transform:none; color:#000000; font-size:0.86em; padding:0 0 0.9em 0; word-break:keep-all; }
+  .lrow { display:contents; }
+  .lrow > .cell { padding:0.42em 0; white-space:nowrap; word-break:keep-all; }
+  .lrow > .cell.case { font-family:'Jost', 'Pretendard Variable', sans-serif; font-weight:800; font-size:0.95em; }
+  .lrow.flag > .cell.cost { color:#E30613; font-weight:700; }
   .d-foot { font-family:'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size:18px; font-weight:500;
     letter-spacing:0; text-transform:none;
-    color:#000000; margin:14px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
+    color:#000000; margin:22px 0 0 0; word-break:keep-all; overflow-wrap:normal; }
   .fx { color:#000000; font-size:0.85em; letter-spacing:0.06em; white-space:nowrap; }
 </style>
 </head>
@@ -94,13 +87,13 @@
 <div class="slide" data-contain="stage">
   <div class="content">
     <p class="kicker" data-t="kicker" data-headline>부록 · 전체 11건</p>
-<div class="accentrule" aria-hidden="true"></div>
     <p class="metaline" data-t="meta">형식 원장 · 행 11</p>
     
     <h1 class="d-title" data-t="title" data-headline style="font-size:48px">열한 건, 네 개의 열</h1>
-    <table class="dtable" data-t="table" style="font-size:21px"><thead><tr><th>사례</th><th>신호</th><th>비용</th><th>습관</th></tr></thead>
-    <tbody><tr class=""><td class="case">P-01</td><td class="">페이징</td><td class="cost">2h</td><td class="">타임라인</td></tr><tr class="flag"><td class="case">P-02</td><td class="">배포</td><td class="cost">5h</td><td class="">타임라인</td></tr><tr class=""><td class="case">P-03</td><td class="">페이징</td><td class="cost">1h</td><td class="">페어링</td></tr><tr class="flag"><td class="case">P-04</td><td class="">데이터</td><td class="cost">9h</td><td class="">리뷰</td></tr><tr class=""><td class="case">P-05</td><td class="">배포</td><td class="cost">3h</td><td class="">타임라인</td></tr><tr class=""><td class="case">P-06</td><td class="">페이징</td><td class="cost">2h</td><td class="">페어링</td></tr><tr class="flag"><td class="case">P-07</td><td class="">데이터</td><td class="cost">12h</td><td class="">리뷰</td></tr><tr class=""><td class="case">P-08</td><td class="">배포</td><td class="cost">4h</td><td class="">타임라인</td></tr><tr class=""><td class="case">P-09</td><td class="">페이징</td><td class="cost">1h</td><td class="">페어링</td></tr><tr class="flag"><td class="case">P-10</td><td class="">데이터</td><td class="cost">7h</td><td class="">리뷰</td></tr><tr class=""><td class="case">P-11</td><td class="">배포</td><td class="cost">3h</td><td class="">타임라인</td></tr></tbody></table>
-    <p class="d-foot" data-t="tfoot">가상 사례 원장 · 비용은 엔지니어-시간 <span class="fx" data-fixture title="밀도 테스트용 가상 데이터">· FIXTURE</span></p>
+    <div class="ledger" data-t="table" style="font-size:21px"><span class="lhead">사례</span><span class="lhead">신호</span><span class="lhead">비용</span><span class="lhead">습관</span>
+    <div class="lrow"><span class="cell case">P-01</span><span class="cell">페이징</span><span class="cell cost">2h</span><span class="cell">타임라인</span></div><div class="lrow flag"><span class="cell case">P-02</span><span class="cell">배포</span><span class="cell cost">5h</span><span class="cell">타임라인</span></div><div class="lrow"><span class="cell case">P-03</span><span class="cell">페이징</span><span class="cell cost">1h</span><span class="cell">페어링</span></div><div class="lrow flag"><span class="cell case">P-04</span><span class="cell">데이터</span><span class="cell cost">9h</span><span class="cell">리뷰</span></div><div class="lrow"><span class="cell case">P-05</span><span class="cell">배포</span><span class="cell cost">3h</span><span class="cell">타임라인</span></div><div class="lrow"><span class="cell case">P-06</span><span class="cell">페이징</span><span class="cell cost">2h</span><span class="cell">페어링</span></div><div class="lrow flag"><span class="cell case">P-07</span><span class="cell">데이터</span><span class="cell cost">12h</span><span class="cell">리뷰</span></div><div class="lrow"><span class="cell case">P-08</span><span class="cell">배포</span><span class="cell cost">4h</span><span class="cell">타임라인</span></div><div class="lrow"><span class="cell case">P-09</span><span class="cell">페이징</span><span class="cell cost">1h</span><span class="cell">페어링</span></div><div class="lrow flag"><span class="cell case">P-10</span><span class="cell">데이터</span><span class="cell cost">7h</span><span class="cell">리뷰</span></div><div class="lrow"><span class="cell case">P-11</span><span class="cell">배포</span><span class="cell cost">3h</span><span class="cell">타임라인</span></div>
+    </div>
+    <p class="d-foot" data-t="tfoot">가상 사례 원장 · 비용은 엔지니어-시간&nbsp;<span class="fx" data-fixture title="밀도 테스트용 가상 데이터">· FIXTURE</span></p>
   </div>
   <footer class="footer"><p class="ctx" data-t="footer">Typodeck Research · Readout 07</p><p class="idx" data-t="pageidx"><span class="numeral" data-t="numeral">06</span> / 07</p></footer>
 </div>

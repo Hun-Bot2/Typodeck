@@ -1,10 +1,10 @@
 {
-  "harness": "0.1.0",
+  "harness": "0.2.0",
   "design": "modulo-grid",
   "lang": "ko",
   "builder": "generic",
   "localeNote": "locales/ko/typography.md present (prose guidance); central KO stacks applied",
-  "createdAt": "2026-11-03T19:07:18.834Z",
+  "createdAt": "2026-11-04T07:23:20.493Z",
   "status": "PASS",
   "summary": {
     "pass": 7,
@@ -18,7 +18,7 @@
       "png": "slides/01.png",
       "role": "cover",
       "roleReason": "intent+shape match (score 39)",
-      "compositionNote": "cover composition: module-hero 56px + lede",
+      "compositionNote": "cover composition: module-hero 56px + lede, type only",
       "repairs": [],
       "rounds": 1,
       "checks": {
@@ -129,7 +129,7 @@
       "png": "slides/04.png",
       "role": "evidence",
       "roleReason": "intent+shape match (score 59)",
-      "compositionNote": "evidence composition: message 48px + stat/finding row under rule",
+      "compositionNote": "evidence composition: message 48px + stat/finding group, whitespace-separated",
       "repairs": [],
       "rounds": 1,
       "checks": {
@@ -166,7 +166,7 @@
       "png": "slides/05.png",
       "role": "comparison",
       "roleReason": "intent+shape match (score 72)",
-      "compositionNote": "comparison composition: two-zone A/B with positional identity",
+      "compositionNote": "comparison composition: two-zone A/B with positional identity, accent marks flags",
       "repairs": [],
       "rounds": 1,
       "checks": {
@@ -203,7 +203,7 @@
       "png": "slides/06.png",
       "role": "dense",
       "roleReason": "intent+shape match (score 79)",
-      "compositionNote": "dense composition: table 21px + footnote",
+      "compositionNote": "dense composition: typographic ledger 21px, aligned columns, no grid",
       "repairs": [],
       "rounds": 1,
       "checks": {
@@ -240,7 +240,7 @@
       "png": "slides/07.png",
       "role": "closing",
       "roleReason": "intent+shape match (score 36)",
-      "compositionNote": "closing composition: module-hero 56px + recap",
+      "compositionNote": "closing composition: module-hero 56px + recap, type only",
       "repairs": [],
       "rounds": 1,
       "checks": {

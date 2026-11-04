@@ -7,34 +7,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  * { border-radius:0 !important; }
-  html, body { margin:0; padding:0; background:#000; }
+  html, body { margin:0; padding:0; background:#FFFFFF; }
   .slide { position:relative; width:1920px; height:1080px; background:#FFFFFF;
     color:#111111; font-family:'Inter', sans-serif; overflow:hidden; }
-  .colgrid { position:absolute; top:0; bottom:0; left:72px; right:72px;
-    display:grid; grid-template-columns:repeat(12, 1fr); gap:24px; pointer-events:none; }
-  .colgrid i { border-left:1px solid rgba(17, 17, 17, 0.07); display:block; }
-  .colgrid i:last-child { border-right:1px solid rgba(17, 17, 17, 0.07); }
-  .content { position:absolute; top:64px; left:72px; width:1326px; max-height:796px; }
-  .kicker { display:flex; align-items:center; gap:16px; font-family:'Archivo', sans-serif;
+  .content { position:absolute; top:64px; left:72px; width:1152px; max-height:796px; }
+  .kicker { font-family:'Archivo', sans-serif;
     font-weight:600; font-size:20px; letter-spacing:0.18em;
     text-transform:uppercase; color:#E30613; margin:0; }
-  .kicker::before { content:""; width:18px; height:18px; background:#E30613; flex:0 0 auto; }
-  .redrule { height:6px; background:#E30613; margin-top:20px; width:100%; }
-  .redrule.notop { margin-top:0; }
-  .rail { position:absolute; top:64px; bottom:110px; left:1422px; width:426px;
-    background:#F2F2F2; padding:40px 36px; box-sizing:border-box; overflow:hidden; }
+  .folio { position:absolute; top:64px; left:1288px; width:560px;
+    text-align:right; }
   .numeral { font-family:'Archivo', "Arial Black", sans-serif; font-weight:800;
-    font-size:260px; line-height:0.85; letter-spacing:-0.02em; color:#111111; margin:0; }
-  .railrule { height:6px; background:#E30613; margin:28px 0 12px 0; }
-  .meta { margin:0; padding:0; list-style:none; }
+    font-size:380px; line-height:0.85; letter-spacing:-0.02em; color:#111111; margin:0; }
+  .meta { margin:36px 0 0 0; padding:0; list-style:none; }
   .meta li { font-family:'Inter', sans-serif; font-size:19px; font-weight:500;
     letter-spacing:0.1em; text-transform:uppercase;
-    line-height:1.5; padding:14px 0; border-top:1px solid #D9D9D9; }
+    line-height:1.5; padding:0; margin:0 0 20px 0; }
   .meta li span { display:block; color:#6B6B6B; font-size:16px; }
   .footer { position:absolute; left:72px; right:72px; bottom:0; height:110px;
-    border-top:2px solid #111111; display:flex; align-items:center;
-    justify-content:space-between; background:#FFFFFF; }
+    display:flex; align-items:center;
+    justify-content:space-between; }
   .footer .ctx { font-family:'Inter', sans-serif; font-size:20px; font-weight:500;
     letter-spacing:0.08em; text-transform:uppercase; margin:0; }
   .footer .idx { font-family:'Archivo', "Arial Black", sans-serif; font-weight:600;
@@ -54,65 +45,60 @@
   .srcline { font-family:'Inter', sans-serif; font-size:20px; font-weight:500;
     letter-spacing:0.08em; text-transform:uppercase;
     color:#6B6B6B; margin:40px 0 0 0; }
-  .statrow { display:flex; gap:36px; margin:44px 0 0 0; border-top:2px solid #111111; padding-top:32px; }
-  .stat { display:flex; align-items:flex-end; gap:20px; padding-right:36px; border-right:1px solid #D9D9D9; }
-  .stat:last-child { border-right:none; }
+  .statrow { display:flex; gap:80px; margin:52px 0 0 0; }
+  .stat { display:flex; align-items:flex-end; gap:20px; }
   .statnum { font-family:'Archivo', sans-serif; font-weight:800; line-height:0.9;
-    letter-spacing:-0.02em; }
+    letter-spacing:-0.02em; white-space:nowrap; }
   .statlab { font-family:'Inter', sans-serif; font-size:20px; font-weight:500;
     letter-spacing:0.08em; text-transform:uppercase;
     line-height:1.5; padding-bottom:18px; max-width:300px; }
-  .ev-sup { font-size:24px; line-height:1.5; color:#333; margin:32px 0 0 0; max-width:1026px; }
-  .findings { list-style:none; margin:36px 0 0 0; padding:0; border-top:2px solid #111111; }
-  .findings li { display:flex; gap:24px; padding:24px 0; border-bottom:1px solid #E4E4E4; }
-  .fnum { font-family:'Archivo', sans-serif; font-weight:800; font-size:30px; flex:0 0 96px; }
+  .ev-sup { font-size:24px; line-height:1.5; color:#333; margin:36px 0 0 0; max-width:1026px; }
+  .findings { list-style:none; margin:44px 0 0 0; padding:0; }
+  .findings li { display:flex; gap:24px; padding:0; margin:0 0 32px 0; }
+  .findings li:last-child { margin-bottom:0; }
+  .fnum { font-family:'Archivo', sans-serif; font-weight:800; font-size:30px; flex:0 0 96px; color:#E30613; }
   .fbody { display:flex; flex-direction:column; gap:8px; }
   .fhead { font-family:'Archivo', sans-serif; font-weight:800; font-size:30px; line-height:1.15; }
   .fsub { font-size:24px; line-height:1.5; color:#333; }
-  .zones { display:flex; gap:24px; margin-top:36px; }
+  .zones { display:flex; gap:96px; margin-top:44px; }
   .zone { flex:1 1 0; }
-  .zone-b { border-left:1px solid #D9D9D9; padding-left:24px; }
   .zone-h { font-family:'Archivo', sans-serif; font-weight:800; font-size:30px;
     line-height:1.15; margin:0; }
-  .zone ul { list-style:none; margin:0; padding:18px 0 0 0; border-top:2px solid #111111; margin-top:12px; }
-  .zone li { display:flex; gap:14px; align-items:flex-start; font-size:22px; line-height:1.45;
-    padding:12px 0; border-bottom:1px solid #E4E4E4; }
-  .zone li::before { content:""; width:14px; height:14px; flex:0 0 auto; margin-top:9px; background:#111111; }
-  .zone li.bad::before { background:#E30613; }
-  .caption { font-size:22px; line-height:1.5; color:#6B6B6B; margin:30px 0 0 0;
-    border-top:1px solid #D9D9D9; padding-top:20px; }
-  table.swiss { border-collapse:collapse; margin:24px 0 0 0; width:100%; }
-  table.swiss th { font-family:'Inter', sans-serif; font-weight:500; letter-spacing:0.08em;
-    text-transform:uppercase; color:#6B6B6B; text-align:left; font-size:0.86em;
-    padding:10px 16px 10px 0; border-top:2px solid #111111; border-bottom:2px solid #111111; }
-  table.swiss td { line-height:1.3; padding:8px 16px 8px 0; border-bottom:1px solid #E4E4E4; white-space:nowrap; }
-  table.swiss td.case { font-family:'Archivo', sans-serif; font-weight:800; font-size:0.95em; }
-  table.swiss tr.flag td.cost::before { content:""; display:inline-block; width:12px; height:12px;
-    background:#E30613; margin-right:10px; }
+  .zone ul { list-style:none; margin:20px 0 0 0; padding:0; }
+  .zone li { font-size:22px; line-height:1.45; padding:0; margin:0 0 20px 0; }
+  .zone li:last-child { margin-bottom:0; }
+  .zone li.bad { color:#E30613; font-weight:600; }
+  .caption { font-size:22px; line-height:1.5; color:#6B6B6B; margin:36px 0 0 0; }
+  .ledger { display:grid; grid-template-columns:7em 10em 8em 1fr; column-gap:2.5em;
+    margin:32px 0 0 0; line-height:1.35; font-variant-numeric:tabular-nums; }
+  .lhead { font-family:'Inter', sans-serif; font-weight:500; letter-spacing:0.08em;
+    text-transform:uppercase; color:#6B6B6B; font-size:0.86em; padding:0 0 0.9em 0; }
+  .lrow { display:contents; }
+  .lrow > .cell { padding:0.42em 0; white-space:nowrap; }
+  .lrow > .cell.case { font-family:'Archivo', sans-serif; font-weight:800; font-size:0.95em; }
+  .lrow.flag > .cell.cost { color:#E30613; font-weight:700; }
   .d-foot { font-family:'Inter', sans-serif; font-size:18px; font-weight:500;
     letter-spacing:0.08em; text-transform:uppercase;
-    color:#6B6B6B; margin:14px 0 0 0; }
+    color:#6B6B6B; margin:22px 0 0 0; }
   .fx { color:#6B6B6B; font-size:0.85em; letter-spacing:0.08em; white-space:nowrap; }
 </style>
 </head>
 <body>
 <div class="slide" data-contain="stage">
-  <div class="colgrid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="content">
     <p class="kicker" data-t="kicker" data-headline>Appendix · All cases</p>
-<div class="redrule" aria-hidden="true"></div>
     
     <h1 class="d-title" data-t="title" data-headline style="font-size:48px">Eleven cases, four columns</h1>
-    <table class="swiss" data-t="table" style="font-size:21px"><thead><tr><th>Case</th><th>Signal</th><th>Cost</th><th>Habit</th></tr></thead>
-    <tbody><tr class=""><td class="case">P-01</td><td class="">paging</td><td class="cost">2h</td><td class="">timeline</td></tr><tr class="flag"><td class="case">P-02</td><td class="">deploy</td><td class="cost">5h</td><td class="">timeline</td></tr><tr class=""><td class="case">P-03</td><td class="">paging</td><td class="cost">1h</td><td class="">pairing</td></tr><tr class="flag"><td class="case">P-04</td><td class="">data</td><td class="cost">9h</td><td class="">review</td></tr><tr class=""><td class="case">P-05</td><td class="">deploy</td><td class="cost">3h</td><td class="">timeline</td></tr><tr class=""><td class="case">P-06</td><td class="">paging</td><td class="cost">2h</td><td class="">pairing</td></tr><tr class="flag"><td class="case">P-07</td><td class="">data</td><td class="cost">12h</td><td class="">review</td></tr><tr class=""><td class="case">P-08</td><td class="">deploy</td><td class="cost">4h</td><td class="">timeline</td></tr><tr class=""><td class="case">P-09</td><td class="">paging</td><td class="cost">1h</td><td class="">pairing</td></tr><tr class="flag"><td class="case">P-10</td><td class="">data</td><td class="cost">7h</td><td class="">review</td></tr><tr class=""><td class="case">P-11</td><td class="">deploy</td><td class="cost">3h</td><td class="">timeline</td></tr></tbody></table>
-    <p class="d-foot" data-t="tfoot">Illustrative case ledger · costs in engineer-hours <span class="fx" data-fixture title="case ledger is illustrative">· FIXTURE</span></p>
+    <div class="ledger" data-t="table" style="font-size:21px"><span class="lhead">Case</span><span class="lhead">Signal</span><span class="lhead">Cost</span><span class="lhead">Habit</span>
+    <div class="lrow"><span class="cell case">P-01</span><span class="cell">paging</span><span class="cell cost">2h</span><span class="cell">timeline</span></div><div class="lrow flag"><span class="cell case">P-02</span><span class="cell">deploy</span><span class="cell cost">5h</span><span class="cell">timeline</span></div><div class="lrow"><span class="cell case">P-03</span><span class="cell">paging</span><span class="cell cost">1h</span><span class="cell">pairing</span></div><div class="lrow flag"><span class="cell case">P-04</span><span class="cell">data</span><span class="cell cost">9h</span><span class="cell">review</span></div><div class="lrow"><span class="cell case">P-05</span><span class="cell">deploy</span><span class="cell cost">3h</span><span class="cell">timeline</span></div><div class="lrow"><span class="cell case">P-06</span><span class="cell">paging</span><span class="cell cost">2h</span><span class="cell">pairing</span></div><div class="lrow flag"><span class="cell case">P-07</span><span class="cell">data</span><span class="cell cost">12h</span><span class="cell">review</span></div><div class="lrow"><span class="cell case">P-08</span><span class="cell">deploy</span><span class="cell cost">4h</span><span class="cell">timeline</span></div><div class="lrow"><span class="cell case">P-09</span><span class="cell">paging</span><span class="cell cost">1h</span><span class="cell">pairing</span></div><div class="lrow flag"><span class="cell case">P-10</span><span class="cell">data</span><span class="cell cost">7h</span><span class="cell">review</span></div><div class="lrow"><span class="cell case">P-11</span><span class="cell">deploy</span><span class="cell cost">3h</span><span class="cell">timeline</span></div>
+    </div>
+    <p class="d-foot" data-t="tfoot">Illustrative case ledger · costs in engineer-hours&nbsp;<span class="fx" data-fixture title="case ledger is illustrative">· FIXTURE</span></p>
   </div>
-  <aside class="rail" data-t="rail">
-    <p class="numeral" data-t="numeral" data-contain="rail">06</p>
-    <div class="railrule" aria-hidden="true"></div>
+  <div class="folio">
+    <p class="numeral" data-t="numeral">06</p>
     <ul class="meta"><li data-t="meta"><span>Form</span>Ledger</li>
 <li data-t="meta"><span>Rows</span>11</li></ul>
-  </aside>
+  </div>
   <footer class="footer"><p class="ctx" data-t="footer">Typodeck Research · Readout 07</p><p class="idx" data-t="pageidx">06 / 07</p></footer>
 </div>
 </body>
