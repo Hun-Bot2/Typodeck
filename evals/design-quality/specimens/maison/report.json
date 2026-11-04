@@ -7,26 +7,33 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (display + closing gold hairlines retired, whitespace framing; accent word + gold labels carry the register); PNG 1920x1080 (62699 bytes), viewed full-res."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (display + closing gold hairlines retired, whitespace framing; accent word + gold labels carry the register); PNG 1920x1080 (62752 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: gray #6E6E6E→#9C9C9C (7.17:1 on black) in folio counter; four-tone discipline kept; HTML color-values-only; PNG re-captured via repo CDP pipeline, viewed full-res — PASS."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); rules retired; PNG 1920x1080 (65950 bytes), viewed full-res."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); rules retired; PNG 1920x1080 (65859 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: ivory-alternate slide — gold-deep #9A7F45→#77632F (5.26:1 on ivory) in context labels + gray #6E6E6E→#9C9C9C in tertiary marks; HTML color-values-only; PNG re-captured via repo CDP pipeline and viewed full-res — first RENDER verification of the gold-deep-on-ivory fix (was arithmetic-only) — PASS."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line, incl. prior EX-SRC maison-source line); rules retired; PNG 1920x1080 (94015 bytes), viewed full-res."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line, incl. prior EX-SRC maison-source line); rules retired; PNG 1920x1080 (94343 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: gray #6E6E6E→#9C9C9C (7.17:1 on black) in tertiary marks + folio counter; four-tone discipline kept; HTML color-values-only; PNG re-captured via repo CDP pipeline, viewed full-res — PASS."
     }
   ],
   "render": {
     "width": 1920,
     "height": 1080,
     "verify": "PASS"
+  },
+  "color_comfort": {
+    "date": "2026-11-04",
+    "tokens": "gray #6E6E6E→#9C9C9C (3.86:1→7.17:1 on black), gold-deep #9A7F45→#77632F (3.45:1→5.26:1 on ivory); black/ivory/gold kept",
+    "html_diff": "color-values-only vs f0aed77 (0 ODD lines after hex/rgba normalization)",
+    "png": "3/3 IHDR 1920x1080, all differ from f0aed77 blobs; re-captured via repo CDP pipeline",
+    "viewing": "all 3 viewed full-res by agent; four-tone discipline intact, no boxes; no comfort claim (WCAG arithmetic + AGENT viewing only)"
   }
 }
