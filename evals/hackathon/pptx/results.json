@@ -4,10 +4,10 @@
   "lang": "en",
   "slideCount": 7,
   "textBoxCount": 29,
-  "expectedChars": 1701,
+  "expectedChars": 1697,
   "validateOk": true,
   "validateErrors": [],
-  "editableChars": 1701,
+  "editableChars": 1697,
   "rasterPics": 0,
   "rasterBlips": 0,
   "faces": [
@@ -16,7 +16,7 @@
    "ea:Archivo",
    "ea:Inter"
   ],
-  "bytes": 98432
+  "bytes": 98428
  },
  {
   "design": "gridline-swiss",
@@ -40,17 +40,17 @@
   "lang": "en",
   "slideCount": 7,
   "textBoxCount": 29,
-  "expectedChars": 1701,
+  "expectedChars": 1697,
   "validateOk": true,
   "validateErrors": [],
-  "editableChars": 1701,
+  "editableChars": 1697,
   "rasterPics": 0,
   "rasterBlips": 0,
   "faces": [
    "STIX Two Text",
    "ea:STIX Two Text"
   ],
-  "bytes": 99038
+  "bytes": 99034
  },
  {
   "design": "peer-review",
@@ -76,10 +76,10 @@
   "lang": "en",
   "slideCount": 7,
   "textBoxCount": 29,
-  "expectedChars": 1701,
+  "expectedChars": 1697,
   "validateOk": true,
   "validateErrors": [],
-  "editableChars": 1701,
+  "editableChars": 1697,
   "rasterPics": 0,
   "rasterBlips": 0,
   "faces": [
@@ -88,7 +88,7 @@
    "ea:Fraunces",
    "ea:Nunito Sans"
   ],
-  "bytes": 98695
+  "bytes": 98691
  },
  {
   "design": "fika",

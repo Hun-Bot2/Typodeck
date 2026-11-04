@@ -3,7 +3,8 @@
 Reads: bold-template-pack/selection-index.json,
   evals/design-quality/{specimens,full-decks,pptx,audit/classification.json},
   evals/design-diversity/screenshots (legacy pre-refinement covers, reference only),
-  evals/hackathon/{coverage,art-direction ranks,pptx}.
+  evals/hackathon/{coverage,art-direction ranks,pptx},
+  evals/typo-only/before (pre-regen harness renders @257cdce, for before/after toggle).
 Writes: evals/review/index.html (build-time inline DATA, zero fetch).
 Serve root: repo root. Image paths are ../design-quality/... etc.
 """
@@ -98,8 +99,12 @@ for t in templates:
             p = HQ / "coverage" / f"{slug}-{lang}" / "slides" / f"{n:02d}.png"
             if not p.exists():
                 missing.append(str(p))
+            b = ROOT / "evals" / "typo-only" / "before" / f"{slug}-{lang}" / "slides" / f"{n:02d}.png"
+            if not b.exists():
+                missing.append(str(b))
             slides.append({'label': f"{n:02d} {QKINDS[n-1]}",
-                           'img': f"../hackathon/coverage/{slug}-{lang}/slides/{n:02d}.png"})
+                           'img': f"../hackathon/coverage/{slug}-{lang}/slides/{n:02d}.png",
+                           'before': f"../typo-only/before/{slug}-{lang}/slides/{n:02d}.png"})
         key = f"{slug}-{lang}"
         decks[lang] = {'status': cov.get('status', 'MISSING'), 'pass': cov.get('pass', '0/7'),
                        'builder': (rep.get('builder') or cov.get('builder') or '?'),
@@ -171,6 +176,11 @@ header p{color:var(--dim);font-size:13.5px;margin:0 0 6px;max-width:1000px}
 .tabs button{background:#232936;color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-size:13.5px;cursor:pointer}
 .tabs button.active{background:var(--acc);color:#181206;font-weight:700;border-color:var(--acc)}
 .tabs button:disabled{opacity:.35;cursor:default}
+.ver{display:flex;gap:8px;padding:10px 22px 0;align-items:center;font-size:13px;color:var(--dim)}
+.ver button{background:#232936;color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:5px 12px;font-size:13px;cursor:pointer}
+.ver button.active{background:var(--acc);color:#181206;font-weight:700;border-color:var(--acc)}
+.ver button:disabled{opacity:.35;cursor:default}
+.ver .src{font-size:12px}
 #main{margin:14px 22px 0;background:#000;border:1px solid var(--line);border-radius:8px;overflow:hidden}
 #main img{width:100%;display:block}
 .cap{padding:8px 22px 0;color:var(--dim);font-size:13px}
@@ -194,7 +204,7 @@ footer{padding:0 28px 90px;color:var(--dim);font-size:13px;max-width:1100px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style></head><body>
 <header><h1>Typodeck 통합 리뷰 — 27개 디자인, 출처 전부 한곳에</h1>
-<p>정제 표본 3종(cover · evidence · explanation) + Quality 풀덱 7장(6종) + Harness 풀덱 EN/KO 7장(27종 전부) + 정제 전 표지(참고용). 뱃지의 PASS는 구조 검증이며 심미 승인이 아닙니다. VIEWED = 리드가 전수 판독한 Harness 덱. 리뷰는 이 페이지에서 새로 시작됩니다(이전 해커톤 갤러리 리뷰와 별개).</p></header>
+<p>정제 표본 3종(cover · evidence · explanation) + Quality 풀덱 7장(6종) + Harness 풀덱 EN/KO 7장(27종 전부) + 정제 전 표지(참고용). 뱃지의 PASS는 구조 검증이며 심미 승인이 아닙니다. VIEWED = 리드가 전수 판독한 Harness 덱. 리뷰는 이 페이지에서 새로 시작됩니다(이전 해커톤 갤러리 리뷰와 별개). Harness EN/KO 탭에서는 재생성 전 렌더(Before @257cdce)와 현재본(After)을 전환할 수 있습니다.</p></header>
 <div id="bar">
 <input id="q" type="search" placeholder="검색: 이름, slug" style="width:170px">
 <select id="fRank"><option value="all">등급: 전부</option><option value="S">Showcase</option><option value="K">Keep</option><option value="R">Refine?</option><option value="X">Experimental</option></select>
@@ -207,7 +217,7 @@ footer{padding:0 28px 90px;color:var(--dim);font-size:13px;max-width:1100px}
 <div id="comparebar"><span id="cmpcount"></span> <button id="cmpopen">나란히 비교</button> <button id="cmpclear">해제</button></div>
 <div id="detail" role="dialog" aria-label="Detail"><div class="sheet"><button id="closedetail">닫기 ✕</button><div id="dbody"></div></div></div>
 <div id="overlay" role="dialog" aria-label="Compare"><div style="max-width:1700px;margin:0 auto"><button id="closeov">닫기 ✕</button><div class="cols" id="ovcols"></div></div></div>
-<footer>출처: evals/design-quality (정제 표본·풀덱·PPTX 6) · evals/hackathon (Harness EN/KO 54덱·PPTX 6) · evals/design-diversity (정제 전 표지 27, 참고용). 리뷰 데이터는 브라우저 localStorage + JSON 내보내기로 보관됩니다.</footer>
+<footer>출처: evals/design-quality (정제 표본·풀덱·PPTX 6) · evals/hackathon (Harness EN/KO 54덱·PPTX 6) · evals/design-diversity (정제 전 표지 27, 참고용) · evals/typo-only/before (Harness 재생성 전 378장 @257cdce). 리뷰 데이터는 브라우저 localStorage + JSON 내보내기로 보관됩니다.</footer>
 <script>
 const DATA=__DATA__;
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -230,20 +240,24 @@ document.getElementById('cmpopen').onclick=()=>{const ov=document.getElementById
 document.getElementById('closeov').onclick=()=>document.getElementById('overlay').classList.remove('on');
 const detail=document.getElementById('detail'),dbody=document.getElementById('dbody');
 const TABS=[['spec','정제 표본 3'],['qdeck','Quality 풀덱 7'],['en','Harness EN 7'],['ko','Harness KO 7'],['legacy','정제 전 표지']];
-let D={id:null,tab:'spec',slide:0,seq:[]};
+let D={id:null,tab:'spec',slide:0,seq:[],ver:'after'};
 function tabSlides(t,tab){if(tab==='spec')return t.src.spec;if(tab==='qdeck')return t.src.qdeck;if(tab==='en')return t.src.harness.en.slides;if(tab==='ko')return t.src.harness.ko.slides;return[{label:'legacy cover (정제 전, 참고용)',img:t.src.legacy}];}
 function seqIds(){const ids=[...document.querySelectorAll('#grid .card')].map(el=>el.dataset.id);return ids.length?ids:DATA.map(t=>t.id)}
 function openDetail(id,tab){const t=DATA.find(x=>x.id===id);if(!t)return;D.seq=seqIds();if(!D.seq.includes(id))D.seq=DATA.map(x=>x.id);D.id=id;D.tab=tab||'spec';if(D.tab==='qdeck'&&!t.src.qdeck.length)D.tab='spec';D.slide=0;paintDetail(t);}
 function paintDetail(t){const pos=D.seq.indexOf(D.id);const slides=tabSlides(t,D.tab);if(D.slide>=slides.length)D.slide=0;const s=slides[D.slide];
+const hasBefore=slides.some(x=>x.before);
+const pic=x=>(D.ver==='before'&&x.before)?x.before:x.img;
 const hd=D.tab==='en'?t.src.harness.en:D.tab==='ko'?t.src.harness.ko:null;
 dbody.innerHTML=`<div class="dhead"><h2><span class="did">${esc(t.id)}</span>${esc(t.name)}<span class="rank rank${esc(t.rank)}">${esc(t.rankLabel)}</span></h2><div class="slug">${esc(t.slug)} · ${esc(t.category)} · density ${esc(t.density)} · formality ${esc(t.formality)} · scheme ${esc(t.scheme)}</div><div class="why"><b>아트디렉션:</b> ${esc(t.why)}</div>${t.clsNote?`<div class="why"><b>Quality 분류:</b> ${esc(t.clsNote)}</div>`:''}${hd?`<div class="why">builder ${esc(hd.builder)} · ${esc(hd.status)} ${esc(hd.pass)}${hd.viewed?' · <b>VIEWED</b>':''}${hd.failing&&hd.failing.length?` · failing: ${esc(hd.failing.join(','))}`:''}</div>`:''}</div>
 <div class="tabs">${TABS.map(([k,l])=>{const dis=(k==='qdeck'&&!t.src.qdeck.length)?'disabled':'';return `<button data-tab="${k}" class="${D.tab===k?'active':''}" ${dis}>${l}</button>`}).join('')}</div>
-<div id="main"><img src="${esc(s.img)}" alt=""></div><div class="cap">${esc(s.label)}${D.tab==='legacy'?' — 정제 전 원본 표지입니다. 현재 품질 기준이 아닙니다.':''}</div>
+<div class="ver">보기: <button data-ver="after" class="${D.ver==='after'?'active':''}">After (현재)</button><button data-ver="before" class="${D.ver==='before'?'active':''}" ${hasBefore?'':'disabled'}>Before (@257cdce)</button><span class="src">${hasBefore?'Harness EN/KO 탭만 Before 제공 · 단축키 B':(D.tab==='legacy'?'정제 전 표지는 그 자체가 이전본입니다':'이 탭은 Before 없음')}</span></div>
+<div id="main"><img src="${esc(pic(s))}" alt=""></div><div class="cap">${esc(s.label)}${(D.ver==='before'&&s.before)?' · BEFORE @257cdce (재생성 전 렌더)':(hasBefore?' · AFTER (현재 재생성본)':'')}${D.tab==='legacy'?' — 정제 전 원본 표지입니다. 현재 품질 기준이 아닙니다.':''}</div>
 <div class="dnav"><button data-nav="-1">◀ 이전</button><button data-nav="1">다음 ▶</button><span class="pos">${D.slide+1} / ${slides.length} · 디자인 ${pos+1} / ${D.seq.length} (←/→ 슬라이드, Shift+←/→ 디자인)</span></div>
-<div id="film">${slides.map((x,i)=>`<img src="${esc(x.img)}" data-i="${i}" class="${i===D.slide?'active':''}" alt="" loading="lazy">`).join('')}</div>
+<div id="film">${slides.map((x,i)=>`<img src="${esc(pic(x))}" data-i="${i}" class="${i===D.slide?'active':''}" alt="" loading="lazy">`).join('')}</div>
 ${t.pptx.length?`<div class="pptx"><b>PPTX:</b> ${t.pptx.map(p=>`<a href="${esc(p.href)}" download>${esc(p.label)} ⬇</a>`).join('')}</div>`:'<div class="pptx">PPTX 없음</div>'}
 <div class="review"><b>내 리뷰</b><br>${['approve|승인','specialized|Specialized','refine|재작업','reject|반려'].map(o=>{const[v,l]=o.split('|');const cur=REV[t.id]?.verdict;return `<label><input type="radio" name="rv" value="${v}" ${cur===v?'checked':''}>${l}</label>`}).join('')}<textarea id="rvnote" placeholder="메모…">${esc(REV[t.id]?.note||'')}</textarea></div>`;
 dbody.querySelector('.tabs').onclick=e=>{const b=e.target.closest('[data-tab]');if(b&&!b.disabled){D.tab=b.dataset.tab;D.slide=0;paintDetail(t);}};
+dbody.querySelector('.ver').onclick=e=>{const b=e.target.closest('[data-ver]');if(b&&!b.disabled){D.ver=b.dataset.ver;paintDetail(t);}};
 dbody.querySelector('.dnav').onclick=e=>{const b=e.target.closest('[data-nav]');if(b)stepSlide(parseInt(b.dataset.nav,10));};
 dbody.querySelector('#film').onclick=e=>{const im=e.target.closest('[data-i]');if(im){D.slide=+im.dataset.i;paintDetail(t);}};
 dbody.querySelectorAll('[name=rv]').forEach(r=>r.onchange=()=>{REV[t.id]=REV[t.id]||{};REV[t.id].verdict=r.value;REV[t.id].updatedAt=new Date().toISOString();store.save(REV);});
@@ -254,7 +268,7 @@ function stepDesign(n){const i=D.seq.indexOf(D.id);openDetail(D.seq[(i+n+D.seq.l
 function closeDetail(){detail.classList.remove('on');history.replaceState(null,'',location.pathname);render();}
 document.getElementById('closedetail').onclick=closeDetail;
 detail.addEventListener('click',e=>{if(e.target===detail)closeDetail();});
-document.addEventListener('keydown',e=>{if(!detail.classList.contains('on'))return;if(e.key==='Escape')closeDetail();else if(e.key==='ArrowRight')e.shiftKey?stepDesign(1):stepSlide(1);else if(e.key==='ArrowLeft')e.shiftKey?stepDesign(-1):stepSlide(-1);});
+document.addEventListener('keydown',e=>{if(!detail.classList.contains('on'))return;if(e.key==='Escape')closeDetail();else if(e.key==='ArrowRight')e.shiftKey?stepDesign(1):stepSlide(1);else if(e.key==='ArrowLeft')e.shiftKey?stepDesign(-1):stepSlide(-1);else if((e.key==='b'||e.key==='B')&&!e.target.closest('textarea,input')){const t=DATA.find(x=>x.id===D.id);if(t&&tabSlides(t,D.tab).some(x=>x.before)){D.ver=D.ver==='before'?'after':'before';paintDetail(t);}}});
 grid.addEventListener('click',e=>{if(e.target.closest('[data-pick]')||e.target.closest('label.pick'))return;const c=e.target.closest('.card');if(c)openDetail(c.dataset.id);});
 document.getElementById('exp').onclick=()=>{const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),reviews:REV},null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='typodeck-unified-reviews.json';a.click();};
 document.getElementById('imp').onclick=()=>document.getElementById('impfile').click();
