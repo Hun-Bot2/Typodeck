@@ -7,21 +7,21 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (display + closing gold hairlines retired, whitespace framing; accent word + gold labels carry the register); PNG 1920x1080 (62699 bytes), viewed full-res."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); rules retired; PNG 1920x1080 (65950 bytes), viewed full-res."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080. EX-SRC fix 2026-11-04: maison-source line under caption (evidence mirror); re-captured + viewed."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line, incl. prior EX-SRC maison-source line); rules retired; PNG 1920x1080 (94015 bytes), viewed full-res."
     }
   ],
   "render": {

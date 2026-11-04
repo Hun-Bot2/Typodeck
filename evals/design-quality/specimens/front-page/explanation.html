@@ -25,21 +25,19 @@
   .fp-head { text-align:center; margin:16px 0 0 0;
     font-family:'Playfair Display', 'Didot', Georgia, serif; font-weight:900;
     font-size:76px; line-height:1.1; }
-  .fp-cols { display:flex; margin:26px 0 0 0; border-top:1px solid #141414; border-bottom:1px solid #141414; }
-  .fp-col { flex:1; padding:24px 32px 26px 32px; }
-  .fp-col + .fp-col { border-left:1px solid #141414; }
+  .fp-cols { display:flex; gap:96px; margin:26px 0 0 0; border-top:1px solid #141414; padding-top:26px; }
+  .fp-col { flex:1; }
   .fp-col-head { font-family:'Libre Franklin', system-ui, sans-serif; font-weight:600; font-size:21px;
     letter-spacing:0.22em; text-transform:uppercase; color:#6B6B6B; margin-bottom:14px; }
   .fp-col-head.red { color:#8B0000; }
   .fp-item { font-family:'Lora', Georgia, serif; font-size:25px; line-height:1.5;
-    text-align:justify; hyphens:auto; padding:12px 0; }
-  .fp-item + .fp-item { border-top:1px solid #D9D2C2; }
+    text-align:justify; hyphens:auto; padding:9px 0; }
   .fp-caption { margin:24px 0 0 0; text-align:justify; hyphens:auto; max-width:1050px;
     font-family:'Lora', Georgia, serif; font-size:27px; line-height:1.55; }
   .fp-src { margin:14px 0 0 0; text-align:left;
     font-family:'Libre Franklin', system-ui, sans-serif; font-weight:600; font-size:19px;
     letter-spacing:0.2em; text-transform:uppercase; color:#6B6B6B; }
-  .fp-accent { width:120px; height:4px; background:#8B0000; margin:24px auto 0 auto; }
+  .fp-accent { text-align:center; color:#8B0000; font-size:30px; line-height:1; margin:24px auto 0 auto; }
   .fp-folio { margin-top:auto; padding-top:12px; display:flex; justify-content:space-between;
     border-top:3px solid #141414; position:relative; }
   .fp-folio::before { content:""; position:absolute; top:6px; left:0; right:0; border-top:1px solid #141414; }
@@ -105,7 +103,7 @@
         </div>
         <p class="fp-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
         <p class="fp-src">Fixture data · not a real study</p>
-        <div class="fp-accent"></div>
+        <div class="fp-accent">⁂</div>
         <div class="fp-folio"><span>Page 03</span><span>Section R</span><span>03 / 03</span></div>
       </div>
     </div>

@@ -9,28 +9,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
-  .fika-slide { position: absolute; inset: 0; background: #FAFAF7; color: #3D4A54;
-    font-family: 'Nunito Sans', system-ui, sans-serif; padding: 96px 120px 88px 120px;
+  .s { position: absolute; inset: 0; background: #FAFAF7; color: #31404B;
+    font-family: 'Nunito Sans', system-ui, sans-serif; padding: 96px 120px 88px;
     display: flex; flex-direction: column; }
-  .fika-kicker { display: flex; align-items: center; gap: 18px; font-size: 22px; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase; color: #3D4A54; }
-  .fika-dot { width: 14px; height: 14px; border-radius: 999px; background: #7FA6C9; flex: 0 0 auto; }
-  .fika-title { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 72px; line-height: 1.12;
-    text-transform: lowercase; margin: 0; color: #3D4A54; }
-  .fika-rule { height: 2px; border-radius: 2px; background: #DCE8E3; margin: 40px 0 32px 0; max-width: 560px; }
-  .fika-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 40px; }
-  .fika-page { font-size: 20px; font-weight: 700; letter-spacing: 0.2em; }
-  .fika-context { font-size: 20px; font-weight: 400; opacity: 0.72; }
-  .fika-chip { font-size: 22px; font-weight: 700; letter-spacing: 0.04em; color: #3D4A54; border-radius: 999px; padding: 14px 28px; }
-
-
-  .fika-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 0; }
-  .fika-hero { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 80px; line-height: 1.12; text-transform: lowercase; margin: 40px 0 0 0; max-width: 16ch; }
-  .fika-dot.b { background: #E8B4A0; }
-  .fika-recap-panel { margin-top: 48px; background: #F5DCD2; border-radius: 24px; padding: 40px 72px; }
-  .fika-recap { font-size: 30px; line-height: 1.6; margin: 0; }
-  .fika-chips { display: flex; gap: 20px; margin-top: 40px; }
-  .c1 { background: #A8C3B9; } .c2 { background: #7FA6C9; }
+  .kick { display: flex; align-items: center; gap: 18px; font-size: 22px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase; margin: 0; }
+  .kick .d { color: #182B49; font-size: 20px; }
+  .mid { flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+  .line { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 96px;
+    line-height: 1.12; text-transform: lowercase; margin: 0; max-width: 14ch; }
+  .recap { font-size: 32px; line-height: 1.6; margin: 40px 0 0 0; }
+  .keys { display: flex; flex-wrap: wrap; gap: 16px 40px; margin-top: 40px; }
+  .keys span { font-size: 22px; font-weight: 700; color: #182B49; white-space: nowrap; }
+  .keys span + span::before { content: "·  "; color: #31404B; font-weight: 400; }
+  .foot { display: flex; align-items: baseline; justify-content: space-between; margin-top: 48px; }
+  .page { font-size: 20px; font-weight: 700; letter-spacing: 0.2em; margin: 0; }
 </style>
 <style>
   html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
@@ -40,18 +33,14 @@
 </head>
 <body>
 <div id="deck-viewport"><div id="deck-stage">
-
-    <div class="fika-slide">
-      <div class="fika-center">
-        <div class="fika-kicker"><span class="fika-dot b"></span><span>Typodeck Research · November 2026</span></div>
-        <h1 class="fika-hero">Slow the review. Ship once.</h1>
-        <div class="fika-recap-panel"><p class="fika-recap">Discipline upstream beats heroics downstream.</p></div>
-        <div class="fika-chips">
-          <span class="fika-chip c1">discipline upstream</span>
-          <span class="fika-chip c2">ship once</span>
-        </div>
+    <div class="s">
+      <p class="kick"><span class="d">●</span><span>Typodeck Research · November 2026</span></p>
+      <div class="mid">
+        <h2 class="line">Slow the review. Ship once.</h2>
+        <p class="recap">Discipline upstream beats heroics downstream.</p>
+        <p class="keys"><span>discipline upstream</span><span>ship once</span></p>
       </div>
-      <div class="fika-foot"><span class="fika-page">07</span></div>
+      <div class="foot"><p class="page">07</p></div>
     </div>
 </div></div>
 <script>

@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Fika
-description: A Scandinavian soft-functional presentation system built on warmth and restraint. Display type runs in Fraunces (weight 500, lowercase headlines) paired with Nunito Sans for body and tracked caps labels. The palette stays on warm off-white (`#FAFAF7`) with slate text (`#31404B`), fjord navy (`#182B49`) for chip text and small marks, and three muted pastels — sage, blush, dusty blue — as flat panel fills and chips. Depth is nearly absent: matte surfaces, 16–24px corner radii, and at most one whisper-soft lift shadow. Layouts breathe through an airy two-column rhythm with huge gutters. The effect is a quiet kitchen table, not a stage.
+description: A Scandinavian soft-functional presentation system built on warmth and restraint. Display type runs in Fraunces (weight 500, lowercase headlines) paired with Nunito Sans for body and tracked caps labels. The palette stays on warm off-white (`#FAFAF7`) with slate text (`#31404B`) and fjord navy (`#182B49`) for key-phrase lines. Typography-only register: no panels, chips, dots, rules, or shadows exist — hierarchy is carried by scale, weight, color, and whitespace alone. Layouts breathe through an airy two-column rhythm with huge gutters. The effect is a quiet kitchen table, not a stage.
 colors:
   off-white: "#FAFAF7"
   slate: "#31404B"
@@ -91,32 +91,26 @@ canvas:
   width: 1920px
   height: 1080px
 components:
-  soft-panel:
-    background: "{colors.sage-wash}"
-    borderRadius: "{spacing.radius-panel}"
-    padding: "64px"
-    boxShadow: "{shadows.none}"
-    description: "Large rounded companion panel in a pastel wash (sage/blush/blue rotate). Holds data numerals, figure captions, or a short list. No border, no shadow."
-  chip:
-    background: "{colors.blush}"
+  companion-figure:
+    fontFamily: "'Fraunces', Georgia, serif"
+    fontSize: 240px
+    fontWeight: 500
+    color: "{colors.slate}"
+    description: "Typographic data moment set directly on the ground: Fraunces numeral with a small Nunito caption beneath. No fill, no border, no shadow — the column gutter is the only separation."
+  keyword-line:
     color: "{colors.fjord}"
-    padding: "{spacing.chip-pad}"
-    borderRadius: "{spacing.radius-chip}"
     fontFamily: "'Nunito Sans', system-ui, sans-serif"
     fontSize: 22px
     fontWeight: 700
-    description: "999px pastel pill for key phrases. Pastel fills rotate sage → blush → dusty-blue; text always fjord navy (slate fails AA on dusty-blue at 4.17:1; fjord passes at 5.54:1)."
-  kicker-dot:
-    width: 14px
-    height: 14px
-    borderRadius: 999px
-    background: "{colors.fjord}"
-    description: "Small solid dot preceding the kicker label. Default fjord navy; may rotate with the slide's accent pastel for variety."
-  rule-soft:
-    height: 2px
-    background: "{colors.sage-wash}"
-    borderRadius: 2px
-    description: "Low-contrast divider between context line and body. Never dark, never heavy."
+    description: "Row of 2–4 key phrases in fjord navy Nunito Sans 700, separated by slate middots. Text always fjord (slate-on-pale pairings measured in evals/typo-only/color.md informed the fjord choice)."
+  kicker:
+    fontFamily: "'Nunito Sans', system-ui, sans-serif"
+    fontSize: 22px
+    fontWeight: 700
+    letterSpacing: 0.15em
+    textTransform: uppercase
+    color: "{colors.slate}"
+    description: "Bare tracked-caps kicker label. No dot, no mark — position and tracking carry the kicker signal."
   page-mark:
     fontFamily: "'Nunito Sans', system-ui, sans-serif"
     fontSize: 20px
@@ -134,58 +128,58 @@ This policy has higher priority than any source-template responsive behavior des
 
 This policy applies even if the source template was originally implemented with viewport-fluid CSS such as `100vw`, `100vh`, `vw`, `vh`, or `clamp()`. Treat those values as design proportions to translate into 1920×1080 stage coordinates, not as live responsive rules in the generated deck.
 
-Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and panel overlap.
+Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and margin collisions.
 
 ## Overview
 
-Fika is a **Scandinavian soft-functional presentation system**. Its foundational premise is friendliness through geometry: every container is rounded (16px cards, 24px panels, 999px chips), every headline is lowercase, every color is muted to a pastel register. Layouts breathe through huge gutters and an airy two-column rhythm — text on the left at roughly 58% width, one soft tinted companion panel on the right — and whitespace does the structuring work that rules and grids do in harder systems.
+Fika is a **Scandinavian soft-functional presentation system**. Its foundational premise is friendliness through restraint: every headline is lowercase, every color is muted, and nothing on the slide is a container. Layouts breathe through huge gutters and an airy two-column rhythm — text on the left at roughly 58% width, one typographic companion figure on the right — and whitespace does the structuring work that rules, panels, and grids do in harder systems.
 
 The type stack is two faces. **Fraunces** (weight 500) is the display face — a soft, slightly wonky serif with old-style warmth that carries headlines, subheads, and large data numerals, always in lowercase for headline runs. **Nunito Sans** is the work face — a rounded humanist sans used for body at 400 and for labels, chips, and captions at 700. The serif/sans contrast is gentle by design: neither face ever shouts.
 
-The palette stays on warm **off-white** (`{colors.off-white}`) with **slate** text (`{colors.slate}`), **fjord navy** (`{colors.fjord}`) for chip text and small marks, and three muted pastels — **sage**, **blush**, **dusty blue** — plus 35%-mix washes of each for large panel fills. Pastels are fills, never text: body and headlines are always slate on light grounds, chip text is always fjord. The result is calm without being cold — color reads as furniture, not signal.
+The palette stays on warm **off-white** (`{colors.off-white}`) with **slate** text (`{colors.slate}`) and **fjord navy** (`{colors.fjord}`) for key-phrase lines. Body and headlines are always slate on the ground; key phrases are always fjord. The pastel and wash tokens (sage, blush, dusty blue, washes) are retained for palette identity but have no visible role in the typography-only register — no pastel text (contrast), no pastel fills (no containers). The result is calm without being cold.
 
-Depth is the system's deliberate absence: **matte surfaces, no gradients, no gloss, no hard shadows**. At most one soft lift shadow (`{shadows.lift}`) appears per slide, usually under the companion panel. Rounded corners plus flat fills plus whitespace create all the separation the system needs.
+Depth is the system's deliberate absence: **flat ground, no gradients, no gloss, no shadows, no containers**. Scale, weight, color, and whitespace create all the separation the system needs.
 
-**Density philosophy: sparse and unhurried.** A typical slide carries one headline, one short body block, and one companion moment (a data numeral, three chips, or a short list). If a slide feels busy, remove an element rather than shrinking anything. Generous padding (96px vertical, 120px horizontal) is structural, not decorative.
+**Density philosophy: sparse and unhurried.** A typical slide carries one headline, one short body block, and one companion moment (a data numeral, a key-phrase line, or a short list). If a slide feels busy, remove an element rather than shrinking anything. Generous padding (96px vertical, 120px horizontal) is structural, not decorative.
 
 **Key Characteristics:**
 - Lowercase Fraunces headlines (`{typography.headline}`) — weight 500, sentence meaning set entirely in lowercase.
-- Soft rounded panels (`{components.soft-panel}`) — 24px radii, flat pastel-wash fills, zero borders.
-- Muted pastel chips (`{components.chip}`) — 999px pills in rotating pastels with fjord navy text.
-- Airy two-column rhythm — text left (~58%), one tinted panel right, gutters ≥ 96px.
-- Matte surface discipline — no gradients, no gloss, no hard shadows; at most one whisper lift shadow.
-- Fraunces old-style numerals for data moments inside pastel panels.
+- Typographic companion figure (`{components.companion-figure}`) — Fraunces numeral + caption set directly on the ground.
+- Fjord key-phrase line (`{components.keyword-line}`) — Nunito 700 phrases separated by slate middots.
+- Airy two-column rhythm — text left (~58%), one companion figure right, gutters ≥ 96px.
+- Matte surface discipline — no gradients, no gloss, no shadows, no containers of any kind.
+- Fraunces old-style numerals for data moments, always bare on the ground.
 
 ## Colors
 
 ### Palette
 
-- **Off-White** (`{colors.off-white}` — `#FAFAF7`): The universal ground. Every slide starts here; panels and text sit on it.
+- **Off-White** (`{colors.off-white}` — `#FAFAF7`): The universal ground. Every slide starts here; all text sits on it.
 - **Slate** (`{colors.slate}` — `#31404B`): The body text color. Headlines, body, labels, captions — all slate. Never pure black.
-- **Fjord** (`{colors.fjord}` — `#182B49`): Deep sophisticated navy for chip text and the kicker dot. Passes AA on every pastel fill (sage 7.55, blush 7.75, dusty-blue 5.54) where slate fails on dusty-blue (4.17).
-- **Sage** (`{colors.sage}` — `#A8C3B9`): First pastel. Chip fills, dots, small accents, and the wash source for large panels.
-- **Blush** (`{colors.blush}` — `#E8B4A0`): Second pastel. Rotates with sage for chips and companion panels.
-- **Dusty Blue** (`{colors.dusty-blue}` — `#7FA6C9`): Third pastel. Chip fills and wash source only; the kicker dot defaults to fjord.
-- **White** (`{colors.white}` — `#FFFFFF`): Reserved for small floating cards over pastel panels (rare) and chip text reversal — never a slide ground.
-- **Sage Wash** (`{colors.sage-wash}` — `#DCE8E3`): 35%-mix sage for large panel fills so big areas stay quiet.
-- **Blush Wash** (`{colors.blush-wash}` — `#F5DCD2`): 35%-mix blush for large panel fills.
-- **Blue Wash** (`{colors.blue-wash}` — `#D5E4F1`): 35%-mix dusty blue for large panel fills.
+- **Fjord** (`{colors.fjord}` — `#182B49`): Deep sophisticated navy for key-phrase lines. Crisp against the off-white ground at 22px bold.
+- **Sage** (`{colors.sage}` — `#A8C3B9`): First pastel. Retained token; no visible role in the typography-only register.
+- **Blush** (`{colors.blush}` — `#E8B4A0`): Second pastel. Retained token; no visible role in the typography-only register.
+- **Dusty Blue** (`{colors.dusty-blue}` — `#7FA6C9`): Third pastel. Retained token; no visible role in the typography-only register.
+- **White** (`{colors.white}` — `#FFFFFF`): Retained token; never a slide ground, never rendered in this register.
+- **Sage Wash** (`{colors.sage-wash}` — `#DCE8E3`): 35%-mix sage. Retained token; no visible role in the typography-only register.
+- **Blush Wash** (`{colors.blush-wash}` — `#F5DCD2`): 35%-mix blush. Retained token; no visible role in the typography-only register.
+- **Blue Wash** (`{colors.blue-wash}` — `#D5E4F1`): 35%-mix dusty blue. Retained token; no visible role in the typography-only register.
 
 ### Defaults
 
 - **Default surface background**: `{colors.off-white}` flat. No texture, no grid, no vignette.
 - **Default headline color**: `{colors.slate}` — pastels never carry headline text.
 - **Default body text color**: `{colors.slate}` at full opacity; secondary captions at 72% opacity.
-- **Default companion-panel fill**: `{colors.sage-wash}`; rotate to blush-wash then blue-wash across consecutive slides.
-- **Default chip fills**: rotate sage → blush → dusty-blue at full pastel strength with fjord text.
-- **Default divider**: `{components.rule-soft}` — 2px sage-wash line, never dark.
-- **Default accent for dots and small marks**: `{colors.fjord}`.
+- **Default companion figure**: `{components.companion-figure}` — bare Fraunces numeral + caption on the ground.
+- **Default key-phrase line**: `{components.keyword-line}` — fjord phrases with slate middot separators.
+- **Default divider**: none — whitespace rhythm separates blocks; rules do not exist.
+- **Default accent for key phrases**: `{colors.fjord}`.
 
 ### Pastel Policy
 
-Pastels exist only with a deliberate contrast role in this system: full-strength pastels are chip fills behind fjord text; washes are large panel fills behind slate text (all ≥ 8.1:1). Pastels are never text colors, never grounds for pale text, and never layered on pale grounds to carry meaning by color alone — chips and dots always pair with adjacent text labels. No new pastel may join the three without a documented text pairing that passes AA. See `evals/typo-only/color.md` for the shared rule and measurements.
+Pastels and washes are retained as palette tokens but retired from the visible vocabulary: no pastel text (all three fail AA on the ground), no pastel fills (the typography-only register has no containers). The fjord navy introduced for legibility (`evals/typo-only/color.md`) survives as the key-phrase text color. No new pastel may join the three without a documented text pairing that passes AA. See `evals/typo-only/color.md` for the shared rule and measurements.
 
-When a slide needs a warmer or cooler cast, switch the companion panel to the blush or blue wash — but keep all text slate and the ground off-white.
+When a slide needs a warmer or cooler cast, adjust nothing about color — vary the companion figure's scale and the column rhythm instead. All text stays slate/fjord and the ground stays off-white.
 
 ## Typography
 
@@ -195,7 +189,7 @@ The system runs two faces, each locked to its role.
 
 **Fraunces** is the display face — a soft serif with old-style proportions and gentle irregularity. Used for hero titles, headlines, subheads, and large data numerals. Headline runs are always lowercase (`text-transform: lowercase`), which is the system's most recognizable typographic move. Weight is always 500; heavier weights would break the softness.
 
-**Nunito Sans** is the work face — a rounded humanist sans. Used for body (400), labels and chips (700), captions (400), and page marks (700). Its roundness echoes the container radii and keeps small text friendly.
+**Nunito Sans** is the work face — a rounded humanist sans. Used for body (400), labels and key phrases (700), captions (400), and page marks (700). Its roundness keeps small text friendly against the huge gutters.
 
 Never use Fraunces for body or labels, never use Nunito Sans for headlines or data numerals. The serif-display / sans-work split is the typographic structure.
 
@@ -206,11 +200,11 @@ Never use Fraunces for body or labels, never use Nunito Sans for headlines or da
 | `{typography.hero}` | 88px | Fraunces | 500 | Cover display title, lowercase |
 | `{typography.headline}` | 72px | Fraunces | 500 | Primary section headline, lowercase |
 | `{typography.subhead}` | 40px | Fraunces | 500 | Region-level subheading, lowercase |
-| `{typography.data-numeral}` | 240px | Fraunces | 500 | Data numeral inside companion panel |
+| `{typography.data-numeral}` | 240px | Fraunces | 500 | Data numeral bare on the ground |
 | `{typography.body}` | 32px | Nunito Sans | 400 | Paragraph body |
 | `{typography.body-sm}` | 24px | Nunito Sans | 400 | Secondary body, list items |
 | `{typography.label}` | 22px | Nunito Sans | 700 | Tracked caps kicker label |
-| `{typography.chip}` | 22px | Nunito Sans | 700 | Chip text (not tracked) |
+| `{typography.chip}` | 22px | Nunito Sans | 700 | Key-phrase text (not tracked) |
 | `{typography.caption}` | 20px | Nunito Sans | 400 | Captions, context lines |
 | `{typography.page-mark}` | 20px | Nunito Sans | 700 | Page numeral, tracked |
 
@@ -219,15 +213,15 @@ Never use Fraunces for body or labels, never use Nunito Sans for headlines or da
 These treatments are **non-optional whenever the corresponding element type is used**:
 
 - **Every headline is lowercase.** Apply `text-transform: lowercase` to every hero, headline, and subhead. Capitalized display type breaks the friendly voice instantly.
-- **Every display run uses Fraunces 500.** No other weight, no italic in headlines. Data numerals use the same face and weight at 240px.
-- **Every kicker label is tracked caps.** Nunito Sans 700, 22px, 0.15em tracking, uppercase, preceded by a `{components.kicker-dot}`.
-- **Every chip uses Nunito Sans 700 untracked.** Chips are sentence-case short phrases, never uppercase, never letterspaced. Chips must carry new labels (section tags, dates, format notes) — never headline or subtitle words restated.
+- **Every display run uses Fraunces 500.** No other weight, no italic in headlines. Data numerals use the same face and weight at 240px, bare on the ground.
+- **Every kicker label is tracked caps.** Nunito Sans 700, 22px, 0.15em tracking, uppercase, with no preceding mark.
+- **Every key phrase uses Nunito Sans 700 untracked.** Key phrases are sentence-case short phrases, never uppercase, never letterspaced, separated by slate middots. Key phrases must carry new labels (section tags, dates, format notes) — never headline or subtitle words restated.
 - **Every body block uses line-height 1.6.** Nunito Sans needs the air; tighter leading feels cramped against the huge gutters.
 - **Every caption/context line is 20–24px Nunito Sans 400.** Context never uses the display serif.
 
 ### Typography Principles
 
-The voice contrast is **soft serif display ↔ rounded sans work**. Italic appears only as an occasional emphasis inside body text — never in headlines, never in labels. Numerals in prose use Nunito Sans; numerals as data moments use Fraunces at large sizes inside pastel panels.
+The voice contrast is **soft serif display ↔ rounded sans work**. Italic appears only as an occasional emphasis inside body text — never in headlines, never in labels. Numerals in prose use Nunito Sans; numerals as data moments use Fraunces at large sizes bare on the ground.
 
 Fraunces should always feel **settled** — left-aligned, generous line-height (1.12–1.2), never centered for multi-line runs (centering is permitted on the cover title only when the layout is single-column). Nunito Sans body is always left-aligned, sentence case.
 
@@ -237,77 +231,74 @@ Fraunces should always feel **settled** — left-aligned, generous line-height (
 
 The system targets a fixed **1920×1080 stage** per slide. Default slide padding is 96px vertical and 120px horizontal. The inner content region caps at `max-width: 1680px` and centers, so content keeps a calm measure while the off-white ground fills the stage.
 
-The primary layout is **airy two-column**: text column left at ~58% width, one companion panel right at ~34% width, with a ≥96px gutter between them. Single-column centered layouts are permitted for cover and section-divider slides only.
+The primary layout is **airy two-column**: text column left at ~58% width, one companion figure right at ~34% width, with a ≥96px gutter between them. Single-column centered layouts are permitted for cover and section-divider slides only.
 
 ### Persistent Chrome
 
 Two quiet elements appear on every slide:
 
-- **Kicker row** — `{components.kicker-dot}` + tracked-caps label in Nunito Sans 700, top-left of the content region. Carries the deck's context line or section name.
+- **Kicker row** — `{components.kicker}` tracked-caps label in Nunito Sans 700, top-left of the content region. Carries the deck's context line or section name.
 - **Page mark** — `{components.page-mark}` in Nunito Sans 700 tracked numerals (`01`), bottom-left of the content region at 20px.
 
-No navigation rails, no progress bars, no heavy footers. Chrome stays whisper-quiet so the pastels and whitespace dominate.
+No navigation rails, no progress bars, no heavy footers. Chrome stays whisper-quiet so the type and whitespace dominate.
 
 ### Gutter Discipline
 
-Gutters are structural. Column gap is never under 96px; stack gaps are 48px (headline→body), 32px (body→chips), 20px (tight list items). Nothing touches the viewport edge — the 120px horizontal padding is a hard minimum. If content overflows, shorten the copy or drop a chip; never compress the gutters.
+Gutters are structural. Column gap is never under 96px; stack gaps are 48px (headline→body), 32px (body→key phrases), 20px (tight list items). Nothing touches the viewport edge — the 120px horizontal padding is a hard minimum. If content overflows, shorten the copy or drop a key phrase; never compress the gutters.
 
 ## Depth and Elevation
 
-The system practices **matte flatness**. Surfaces are opaque flat fills; separation comes from color difference (wash panel vs off-white ground) and whitespace, not from shadow.
+The system practices **matte flatness**. The ground is one opaque flat fill; separation comes from scale, weight, color, and whitespace — never from shadow, panels, or fills.
 
-One soft shadow exists: `{shadows.lift}` (`0 8px 24px rgba(49,64,75,0.08)`), used at most once per slide — typically under the companion panel or a floating white card. A larger variant (`{shadows.lift-lg}`) is reserved for cover slides. Hard offset shadows, glows, blurs, and gradients do not exist anywhere in the system.
+No shadow is used anywhere in the typography-only register (the `{shadows.lift}` tokens are retained but unrendered). Hard offset shadows, glows, blurs, and gradients do not exist anywhere in the system.
 
-Corner radius carries the elevation signal instead: larger panels get 24px radii, inner cards 16px, chips 999px. The eye reads roundness + tint as "raised" without any shadow help.
+Type scale carries the hierarchy signal instead: display numerals at 160–240px, headlines at 72–88px, body at 32px, labels at 22px. The eye reads size + color as structure without any container help.
 
 ## Shapes and Treatment
 
 ### Border Radius
 
-Roundness is the primary shape language. Panels use 24px, cards 16px, chips and dots fully round (999px). Square corners appear nowhere — a sharp corner would read as a mistake against the system's softness.
+There are no shaped elements to round. The typography-only register has no panels, chips, dots, or rules — radius tokens are retained but unrendered. Softness comes from the Fraunces/Nunito letterforms and the airy gutters, not from geometry.
 
 ### Border Weights
 
-Borders effectively do not exist. Panels, chips, and cards have no strokes; dividers are 2px tint fills (`{components.rule-soft}`), not borders. If a boundary is needed, use a wash fill change instead of a line.
+Borders do not exist. There are no strokes, no fills-behind-text, and no divider rules. If a boundary is needed, use whitespace and scale contrast instead of a line.
 
 ### Decorative Element Types
 
-**Soft panel** — Large 24px-radius rectangle in a pastel wash holding a data numeral, figure, or short list. No border, no shadow (or one lift shadow). The slide's right-hand companion.
+**Companion figure** — Fraunces 500 numeral at 160–240px with a small Nunito caption beneath, set directly on the ground. The slide's right-hand companion. No fill, no border, no shadow.
 
-**Chip** — 999px pastel pill in rotating sage/blush/dusty-blue with fjord Nunito Sans 700 text. Appears in rows of 2–4 under body copy for key phrases.
+**Key-phrase line** — 2–4 fjord Nunito Sans 700 phrases in a wrapping row under body copy, separated by slate middots. No pills, no fills.
 
-**Kicker dot** — 14px solid pastel dot preceding the kicker label. The smallest color moment on the slide; rotates with the accent pastel.
-
-**Soft rule** — 2px sage-wash divider between context and body. Low contrast by design.
+**Kicker** — Bare tracked-caps label. No dot, no mark.
 
 **Page mark** — Tracked 20px numerals bottom-left. No rule, no box, no ornament.
 
-**Data numeral** — Fraunces 500 at 240px inside a companion panel with a small caption beneath. The system's one allowed "big number" moment.
+**Data numeral** — Fraunces 500 at 240px bare on the ground with a small caption beneath. The system's one allowed "big number" moment.
 
 ## Do's and Don'ts
 
 ### Do
 
 - Set every headline in lowercase Fraunces 500. The lowercase treatment is the voice.
-- Keep headlines, body, and labels slate on light grounds and chip text fjord; pastels are fills, never text colors.
-- Rotate companion-panel washes (sage → blush → blue) across consecutive slides for gentle variety.
+- Keep headlines, body, and labels slate on the ground and key-phrase lines fjord; pastels have no visible role.
+- Vary the companion figure's scale and the column rhythm across consecutive slides for gentle variety.
 - Hold the ≥96px column gutter and 120px page padding as hard minimums.
-- Use chips for key content phrases in rows of 2–4, rotating pastel fills.
-- Let whitespace structure the slide; reach for a wash panel before reaching for a rule.
-- Render data moments as Fraunces numerals inside pastel panels with small captions.
+- Use the key-phrase line for key content phrases in rows of 2–4 with middot separators.
+- Let whitespace structure the slide; never reach for a panel, fill, or rule.
+- Render data moments as bare Fraunces numerals on the ground with small captions.
 - Keep the kicker row and page mark quiet and consistent on every slide.
 
 ### Don't
 
 - Don't capitalize display type or add letterspacing to Fraunces headlines.
-- Don't use hard shadows, glows, gradients, or gloss anywhere — matte only.
+- Don't use shadows, glows, gradients, or gloss anywhere — matte only.
 - Don't place body text in a pastel color or on a saturated ground.
-- Don't use square corners on any container; roundness is non-negotiable.
-- Don't add borders, keylines, or grid wallpapers — fills and whitespace separate.
-- Don't exceed one soft shadow per slide or use shadows on text.
+- Don't add panels, chips, dots, borders, keylines, or grid wallpapers — whitespace and scale separate.
+- Don't use shadows on text or under type.
 - Don't use Fraunces for body/labels or Nunito Sans for headlines/numerals.
 - Don't crowd the slide; if it feels busy, remove an element rather than shrinking type.
-- Don't introduce a fourth pastel or a saturated neon — the palette is slate + fjord text colors plus three muted pastels plus washes.
+- Don't introduce a fourth pastel or a saturated neon — visible text colors are slate + fjord only.
 - Don't center multi-line body text; left-align everywhere except single-column covers.
 
 ## Responsive Behavior
@@ -317,12 +308,12 @@ Fika is a **fixed-stage system** (1920×1080) under the Frontend Slides policy. 
 ### Scaling Behavior
 
 - Hero 88px, headline 72px, subhead 40px, body 32px at stage scale.
-- Panel radii (24px), card radii (16px), and chip padding are fixed pixel values.
+- Companion-figure sizes and key-phrase padding are fixed pixel values.
 - The 96px column gutter and 120px page padding scale with the uniform stage transform only.
 
 ### Component Breakpoints
 
-No breakpoints exist in the fixed-stage model. In a hypothetical fluid build, the two-column layout would stack below 900px width and chips would wrap — but the generated deck never reflows; it letterboxes.
+No breakpoints exist in the fixed-stage model. In a hypothetical fluid build, the two-column layout would stack below 900px width and key phrases would wrap — but the generated deck never reflows; it letterboxes.
 
 ### Presenter Behavior
 
@@ -332,7 +323,7 @@ No breakpoints exist in the fixed-stage model. In a hypothetical fluid build, th
 
 ### Animation Triggers
 
-Chips and panels may fade in with a 120ms stagger on slide entry. The `prefers-reduced-motion` media query disables all entry motion. No ambient animation exists — stillness is part of the calm.
+Key phrases and companion figures may fade in with a 120ms stagger on slide entry. The `prefers-reduced-motion` media query disables all entry motion. No ambient animation exists — stillness is part of the calm.
 
 ### Print Behavior
 
@@ -347,7 +338,7 @@ When using this template for Korean (or other CJK) content, swap the Latin typef
 | Role | Latin (default) | Korean counterpart |
 |---|---|---|
 | Display / headlines / data numerals | Fraunces 500 (lowercase) | Noto Serif KR 600 |
-| Body / chips / captions | Nunito Sans 400–700 | Noto Sans KR 400–700 |
+| Body / key phrases / captions | Nunito Sans 400–700 | Noto Sans KR 400–700 |
 | Labels / kickers | Nunito Sans 700 (caps + 0.15em) | Noto Sans KR 700 (no transform, no tracking) |
 
 ### Mixed-Content Strategy
@@ -375,34 +366,33 @@ Add to the template's `<head>`:
 
 ### Aesthetic Notes for This System
 
-The system's lowercase-Fraunces voice cannot transfer to CJK (no case, no Fraunces equivalent). Compensate by leaning on the **non-typographic** signature elements: pastel washes, 24px roundness, huge gutters, and chips carry the friendliness on their own. Noto Serif KR at 600 gives display headlines enough softness to sit in Fraunces's place.
+The system's lowercase-Fraunces voice cannot transfer to CJK (no case, no Fraunces equivalent). Compensate by leaning on the remaining signature elements: huge gutters, the fjord key-phrase line, and the airy two-column rhythm carry the friendliness on their own. Noto Serif KR at 600 gives display headlines enough softness to sit in Fraunces's place.
 
-Kicker labels lose their tracked-caps treatment in CJK; keep the kicker dot + keyline position so the row still reads as a kicker through layout rather than tracking.
+Kicker labels lose their tracked-caps treatment in CJK; keep the kicker position so the row still reads as a kicker through layout rather than tracking.
 
 ### Known CJK Gap
 
-- **No rounded-CJK work face on CDN.** Nunito Sans's roundness has no Korean counterpart on Google Fonts; Noto Sans KR is a neutral grotesque. The roundness voice must come from container radii and chips, not letterforms.
-- **No lowercase signal in CJK.** The system's most recognizable move (lowercase headlines) vanishes. Do not fake it with smaller sizes — keep display scale and let panels carry the identity.
+- **No rounded-CJK work face on CDN.** Nunito Sans's roundness has no Korean counterpart on Google Fonts; Noto Sans KR is a neutral grotesque. The soft voice must come from scale and whitespace, not letterforms.
+- **No lowercase signal in CJK.** The system's most recognizable move (lowercase headlines) vanishes. Do not fake it with smaller sizes — keep display scale and let the two-column rhythm carry the identity.
 
 ## Iteration Guide
 
 1. Any new slide starts on the off-white ground with 96px/120px padding, a kicker row, and a page mark.
 2. Any new headline uses Fraunces 500 lowercase at the matching scale token. Any new body uses Nunito Sans 400. Any new label uses Nunito Sans 700 tracked caps.
-3. Any new companion panel uses a pastel wash fill (rotate sage → blush → blue) at 24px radius with no border.
-4. Any new key-phrase row uses 2–4 chips with rotating full-strength pastel fills and fjord text.
-5. Any new data moment uses a Fraunces 240px numeral inside a wash panel with a 20px caption beneath.
-6. Any new divider uses the 2px sage-wash soft rule — never a dark line.
-7. Any new shadow must be the single allowed lift shadow per slide; when in doubt, use none.
-8. Any new color must come from slate + fjord + the three pastels + washes; no fourth pastel, no saturation boosts.
-9. If a slide feels crowded, remove an element or move it to a companion panel — never shrink type below its token.
-10. Animated elements (chip/panel fade-ins) respect `prefers-reduced-motion`; stillness is the default.
+3. Any new companion figure uses a bare Fraunces numeral + caption on the ground — no fill, no border, no shadow.
+4. Any new key-phrase row uses 2–4 fjord phrases with slate middot separators — no pills, no fills.
+5. Any new data moment uses a Fraunces 240px numeral bare on the ground with a 20px caption beneath.
+6. Any new separation uses whitespace rhythm — dividers and rules do not exist.
+7. Any new shadow is forbidden — the shadow tokens are retained but unrendered; when in doubt, use none.
+8. Any new visible color must be slate or fjord; pastels and washes are retained tokens with no visible role.
+9. If a slide feels crowded, remove an element — never shrink type below its token, never add a container.
+10. Animated elements (key-phrase/figure fade-ins) respect `prefers-reduced-motion`; stillness is the default.
 
 ## Known Gaps
 
 - **Fonts**: Fraunces / Nunito Sans via Google Fonts CDN (`display=swap`); fallbacks `"Arial Black", Georgia, serif` for display / `system-ui, sans-serif` for work faces. No font files committed. Offline rendering falls back to system stacks and loses the soft-serif voice.
 - **Lowercase is a transform**: headlines rely on `text-transform: lowercase`; export targets without transform support must lowercase the source strings instead.
-- **Single lift shadow**: decks with many floating cards per slide cannot stack shadows; flatten extra cards onto wash fills.
-- **Wash fills are flat tints**: there is no texture or gradient fallback needed — panels are already solid colors.
+- **No shadows, panels, or fills**: the typography-only register renders none of the retained shadow/pastel tokens; decks must not reintroduce them as containers.
 - **Page marks are manual**: the `01` numeral is authored per slide; there is no auto-numbering layer.
 - **No dark mode**: the system is light-ground only; dark slides would need a new palette, not an inversion.
 
@@ -412,10 +402,10 @@ Kicker labels lose their tracked-caps treatment in CJK; keep the kicker dot + ke
 |---|--------|------------------------|----------|--------------------|
 | 1 | Blur (backdrop / filter) | Not used | full | N/A — no blur in system |
 | 2 | Blend modes | Not used | full | N/A — no blends in system |
-| 3 | Animation / keyframes | Chip/panel fade-in stagger (120ms) | none | Static end-state frame |
+| 3 | Animation / keyframes | Key-phrase/figure fade-in stagger (120ms) | none | Static end-state frame |
 | 4 | Pixel / hard offset shadows | Not used | full | N/A |
 | 5 | Gradients | Not used | full | N/A — all fills are flat |
 | 6 | Grain / scanline / noise overlays | Not used | full | N/A |
-| 7 | Transparency layers | Lift shadow `rgba(49,64,75,0.08)`; 72% caption opacity | partial | Opaque approximations (drop shadow or flatten to solid) |
+| 7 | Transparency layers | 72% caption opacity | partial | Opaque approximations (flatten to solid) |
 | 8 | Custom fonts | Fraunces + Nunito Sans via Google Fonts CDN | partial | Embedded or substituted serif/sans pair |
-| 9 | Absolute-positioned decor | Kicker dot, chips, companion panel | full | Grouped native shapes |
+| 9 | Absolute-positioned decor | None — in-flow type only | full | Native text boxes 1:1 |

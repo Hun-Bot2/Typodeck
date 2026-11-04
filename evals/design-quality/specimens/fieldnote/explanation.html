@@ -10,7 +10,6 @@
 <style>
   :root {
     --kraft: #E9DCC8;
-    --kraft-deep: #DCCDAF;
     --moss: #2E3B2E;
     --leaf: #5A7A4E;
     --clay: #B4552D;
@@ -18,10 +17,7 @@
   * { box-sizing: border-box; }
   .fn-slide {
     position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 120% 100% at 50% 0%, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 55%),
-      repeating-linear-gradient(0deg, transparent 0px, transparent 7px, rgba(120,100,70,0.045) 7px, rgba(120,100,70,0.045) 8px),
-      var(--kraft);
+    background: var(--kraft);
     color: var(--moss);
     font-family: Karla, system-ui, sans-serif;
     padding: 76px 110px 80px;
@@ -35,13 +31,7 @@
     font-size: 26px; font-weight: 700;
     letter-spacing: 0.3em; text-transform: uppercase;
     color: var(--clay);
-    border: 3px solid var(--clay);
-    outline: 1px solid var(--clay);
-    outline-offset: 5px;
-    border-radius: 4px;
-    padding: 14px 22px 12px 28px;
     transform: rotate(-3deg);
-    background: rgba(255,255,255,0.25);
   }
   .fn-stamp-sub {
     font-family: Caveat, cursive;
@@ -55,27 +45,18 @@
     letter-spacing: -0.005em; color: var(--moss);
     word-break: keep-all; overflow-wrap: normal;
   }
-  .fn-underscore {
-    width: 340px; height: 10px; background: var(--clay);
-    border-radius: 6px; margin-top: 24px;
-    transform: rotate(-0.6deg);
-  }
   .fn-side { margin-top: 24px; }
   .fn-side-label {
     margin: 0 0 10px;
     font-size: 27px; font-weight: 700; color: var(--moss);
   }
   .fn-finding {
-    display: flex; align-items: flex-start; gap: 14px;
+    display: flex; align-items: baseline; gap: 14px;
     margin: 8px 0 0;
     font-size: 27px; font-weight: 400; line-height: 1.5; color: var(--moss);
   }
-  .fn-leaf {
-    width: 22px; height: 22px; flex: 0 0 auto;
-    margin-top: 8px;
-    background: var(--leaf);
-    border-radius: 0 60% 0 60%;
-    transform: rotate(-12deg);
+  .fn-finding .mark {
+    color: var(--leaf); font-weight: 700;
   }
   .fn-caption {
     margin: 26px 0 0;
@@ -87,7 +68,6 @@
     font-size: 27px; font-weight: 700;
     letter-spacing: 0.24em; text-transform: uppercase;
     color: var(--moss);
-    border-top: 2px dashed rgba(46,59,46,0.45);
   }
   .fn-src {
     font-family: Caveat, cursive;
@@ -97,7 +77,6 @@
   }
   .fn-margin {
     flex: 1; min-width: 0;
-    border-left: 2px dashed rgba(46,59,46,0.45);
     padding-left: 64px; padding-top: 12px;
     display: flex; flex-direction: column;
   }
@@ -107,7 +86,6 @@
     color: var(--clay);
     transform: rotate(1.5deg);
   }
-  .fn-arrow { margin: 6px 0 0 30px; transform: rotate(8deg); }
   .fn-margin-note {
     margin-top: auto;
     font-family: Caveat, cursive;
@@ -158,18 +136,17 @@
           <span class="fn-stamp-sub">choose wisely!</span>
         </div>
         <h1 class="fn-title">Two teams, one deadline</h1>
-        <div class="fn-underscore"></div>
         <div class="fn-side">
           <p class="fn-side-label">Rushed review</p>
-          <p class="fn-finding"><span class="fn-leaf"></span><span>Merged with a single skim approval</span></p>
-          <p class="fn-finding"><span class="fn-leaf"></span><span>Config changes bundled into feature PRs</span></p>
-          <p class="fn-finding"><span class="fn-leaf"></span><span>Rollback discovered by customers first</span></p>
+          <p class="fn-finding"><span class="mark">·</span><span>Merged with a single skim approval</span></p>
+          <p class="fn-finding"><span class="mark">·</span><span>Config changes bundled into feature PRs</span></p>
+          <p class="fn-finding"><span class="mark">·</span><span>Rollback discovered by customers first</span></p>
         </div>
         <div class="fn-side">
           <p class="fn-side-label">Disciplined review</p>
-          <p class="fn-finding"><span class="fn-leaf"></span><span>Required a second reviewer on every merge</span></p>
-          <p class="fn-finding"><span class="fn-leaf"></span><span>Config changes shipped in isolated PRs</span></p>
-          <p class="fn-finding"><span class="fn-leaf"></span><span>Rollback caught in staging, never in production</span></p>
+          <p class="fn-finding"><span class="mark">·</span><span>Required a second reviewer on every merge</span></p>
+          <p class="fn-finding"><span class="mark">·</span><span>Config changes shipped in isolated PRs</span></p>
+          <p class="fn-finding"><span class="mark">·</span><span>Rollback caught in staging, never in production</span></p>
         </div>
         <p class="fn-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
         <div class="fn-context">Typodeck Research · November 2026</div>
@@ -177,10 +154,6 @@
       </div>
       <div class="fn-margin">
         <div class="fn-note">haste makes waste&#8230;</div>
-        <svg class="fn-arrow" width="120" height="90" viewBox="0 0 120 90" fill="none" aria-hidden="true">
-          <path d="M14 8 C 50 30, 70 44, 92 72" stroke="#B4552D" stroke-width="6" stroke-linecap="round"/>
-          <path d="M74 68 L92 74 L84 90" stroke="#B4552D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
         <div class="fn-margin-note">&#10003; isolate, then merge</div>
       </div>
     </div>

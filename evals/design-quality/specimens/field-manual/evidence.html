@@ -8,18 +8,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only: no frame border, rules, boxes, chips, or leaders.
+     Procedural navy #182B49 (do not regress to royal). */
   .fm-slide {
     position: absolute; inset: 0;
-    background-color: #FAF8F3;
-    background-image: radial-gradient(rgba(26,26,26,0.14) 1px, transparent 1.5px);
-    background-size: 24px 24px;
+    background: #FAF8F3;
     color: #1A1A1A;
     font-family: 'IBM Plex Sans', system-ui, sans-serif;
     overflow: hidden;
   }
-  .fm-slide .frame {
+  .fm-slide .page {
     position: absolute; top: 32px; left: 32px; right: 32px; bottom: 32px;
-    border: 2px solid #1A1A1A;
     padding: 36px 56px 28px 56px;
     display: flex; flex-direction: column;
   }
@@ -29,15 +28,11 @@
     font-size: 20px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
     margin: 0;
   }
-  .fm-slide .doublerule { border-top: 3px solid #1A1A1A; margin-top: 16px; padding-top: 8px; }
-  .fm-slide .doublerule i { display: block; border-top: 1px solid #1A1A1A; }
-  .fm-slide .chip {
-    display: inline-block;
+  .fm-slide .warn {
     align-self: flex-start;
-    background: #FFB000; color: #1A1A1A;
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 19px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 12px 20px; margin: 28px 0 0 0;
+    color: #1A1A1A; margin: 40px 0 0 0;
   }
   .fm-slide .title {
     font-family: 'Archivo', "Arial Black", sans-serif;
@@ -45,19 +40,13 @@
     text-transform: uppercase;
     margin: 24px 0 0 0;
   }
-  .fm-slide .sheet { display: flex; gap: 48px; margin-top: 32px; flex: 1; min-height: 0; }
-  .fm-slide .plate {
-    flex: 0 0 560px;
-    background: #FFFFFF; border: 1px solid #1A1A1A; padding: 32px 36px;
-    align-self: flex-start;
-  }
+  .fm-slide .sheet { display: flex; gap: 64px; margin-top: 40px; flex: 1; min-height: 0; }
+  .fm-slide .fig { flex: 0 0 560px; align-self: flex-start; }
   .fm-slide .figtag {
-    display: flex; align-items: center; gap: 12px;
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 19px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-    color: #0B5FFF; margin: 0 0 16px 0;
+    color: #182B49; margin: 0 0 16px 0;
   }
-  .fm-slide .figtag::before { content: ""; width: 14px; height: 14px; background: #0B5FFF; flex: 0 0 auto; }
   .fm-slide .bignum {
     font-family: 'Archivo', "Arial Black", sans-serif;
     font-weight: 700; font-size: 172px; line-height: 1; margin: 0;
@@ -65,17 +54,14 @@
   .fm-slide .biglbl {
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 20px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    margin: 12px 0 0 0;
-    border-top: 2px dashed #6E6A5E; padding-top: 14px;
+    margin: 16px 0 0 0;
   }
   .fm-slide .side { flex: 1; min-width: 0; }
-  .fm-slide .notebox {
-    background: #FFFFFF; border: 1px solid #0B5FFF; padding: 28px 32px;
-  }
+  .fm-slide .note { margin: 0; }
   .fm-slide .notetag {
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 19px; font-weight: 500; letter-spacing: 0.14em;
-    color: #0B5FFF; margin: 0 0 12px 0;
+    color: #182B49; margin: 0 0 12px 0;
   }
   .fm-slide .notefind { font-size: 32px; line-height: 1.55; margin: 0; }
   .fm-slide .source {
@@ -84,7 +70,7 @@
     font-size: 20px; font-weight: 500;
   }
   .fm-slide .footer {
-    border-top: 1px solid #1A1A1A; margin-top: 24px; padding-top: 14px;
+    margin-top: 24px;
     display: flex; justify-content: space-between;
     font-family: 'IBM Plex Mono', ui-monospace, monospace;
     font-size: 19px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
@@ -127,19 +113,18 @@
   <div id="deck-stage">
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <div class="fm-slide">
-      <div class="frame">
+      <div class="page">
         <p class="dochead"><span>DOC FM-11 · REV C</span><span>Finding 01 — Review Evidence</span><span>NOV 2026</span></p>
-        <div class="doublerule"><i></i></div>
-        <p class="chip">Finding 01 · Filed</p>
+        <p class="warn">Finding 01 · Filed</p>
         <h1 class="title">Teams that required a second reviewer before merge contained failures earlier.</h1>
         <div class="sheet">
-          <div class="plate">
+          <div class="fig">
             <p class="figtag">Fig. 02 — Containment</p>
             <p class="bignum">63%</p>
             <p class="biglbl">fewer sev-1 rollbacks</p>
           </div>
           <div class="side">
-            <div class="notebox">
+            <div class="note">
               <p class="notetag">NOTE 03</p>
               <p class="notefind">Review depth predicted containment better than team size, tenure, or tooling.</p>
             </div>

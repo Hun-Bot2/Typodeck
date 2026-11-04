@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only: orange stat numeral as the single strike. No strip
+     bullet, no band box, no band rule. */
   .mono-slide {
     position: absolute; inset: 0;
     background: #0E0E0E;
@@ -25,8 +27,7 @@
     margin: 0;
     padding-bottom: 16px;
   }
-  .mono-slide .strip .l { display: flex; align-items: center; gap: 16px; margin: 0; }
-  .mono-slide .strip .l::before { content: ""; width: 20px; height: 20px; background: #FF4D00; flex: 0 0 auto; }
+  .mono-slide .strip .l { margin: 0; }
   .mono-slide .strip .r { margin: 0; color: #8A8578; }
   .mono-slide .zone {
     flex: 1; min-height: 0;
@@ -59,25 +60,23 @@
     font-size: 30px; line-height: 1.5; color: #8A8578;
     margin: 32px 0 0 0; max-width: 30em;
   }
-  .mono-slide .band {
+  .mono-slide .foot {
     flex: 0 0 auto;
-    background: #000000;
-    border-top: 8px solid #FF4D00;
-    margin: 16px -24px 0 -24px;
-    padding: 32px 48px;
+    margin: 16px 0 0 0;
+    padding: 32px 24px 40px 24px;
     display: flex; justify-content: space-between; align-items: center; gap: 48px;
   }
-  .mono-slide .band .sub {
+  .mono-slide .foot .sub {
     font-size: 32px; line-height: 1.45; font-weight: 400; color: #F5F0E6;
     margin: 0; flex: 1 1 auto;
   }
-  .mono-slide .band .ctx {
+  .mono-slide .foot .ctx {
     flex: 0 0 auto; text-align: right;
     font-family: 'Anton', "Arial Black", sans-serif;
     font-size: 26px; letter-spacing: 0.18em; text-transform: uppercase;
     color: #F5F0E6; margin: 0; line-height: 1.2;
   }
-  .mono-slide .band .ctx small {
+  .mono-slide .foot .ctx small {
     display: block; font-size: 22px; letter-spacing: 0.2em; color: #8A8578; margin-top: 10px;
   }
 </style>
@@ -129,7 +128,7 @@
           <p class="sup">Review depth predicted containment better than team size, tenure, or tooling.</p>
         </div>
       </div>
-      <div class="band">
+      <div class="foot">
         <p class="sub">Fixture data · not a real study</p>
         <p class="ctx">Typodeck Research<small>11 Cases · 02 / 24</small></p>
       </div>

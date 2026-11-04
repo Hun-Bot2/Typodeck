@@ -21,15 +21,12 @@
     color: #FAF8F5; opacity: .13;
     user-select: none; pointer-events: none;
   }
-  #deck-stage .a-vline { position: absolute; top: 0; bottom: 0; width: 1px; background: rgba(153,153,153,.35); }
   #deck-stage .a-top {
     position: absolute; left: 170px; right: 170px; top: 96px;
     display: flex; justify-content: space-between; align-items: center;
     font-size: 20px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase;
     color: #999999;
   }
-  #deck-stage .a-kicker { display: flex; align-items: center; gap: 22px; }
-  #deck-stage .a-winebar { width: 8px; height: 44px; background: #4A0E18; }
   #deck-stage .a-kicktext { color: #FAF8F5; }
   #deck-stage .a-side {
     position: absolute; left: 64px; top: 50%; transform: translateY(-50%) rotate(180deg);
@@ -63,7 +60,7 @@
   }
   #deck-stage .a-foot {
     position: absolute; left: 170px; right: 170px; bottom: 92px;
-    border-top: 1px solid rgba(153,153,153,.4); padding-top: 28px;
+    padding-top: 28px;
     display: flex; justify-content: space-between; align-items: baseline;
   }
   #deck-stage .a-context { font-size: 27px; font-weight: 300; color: #FAF8F5; letter-spacing: .04em; }
@@ -107,10 +104,8 @@
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <div class="a-slide">
       <div class="a-numeral">11</div>
-      <div class="a-vline" style="left:150px;"></div>
-      <div class="a-vline" style="left:1210px;"></div>
       <div class="a-top">
-        <span class="a-kicker"><span class="a-winebar"></span><span class="a-kicktext">The choice</span></span>
+        <span class="a-kicktext">The choice</span>
         <span>2026</span>
       </div>
       <div class="a-side">N° 11 — 2026</div>

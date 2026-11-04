@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Vista
-description: A mid-century travel-poster presentation system built on stacked horizontal bands. Display type runs in DM Serif Display for poster headlines, paired with Outfit for body and tracked caps labels. The palette stacks deep teal (`#0E3B43`) sky bands against warm sand (`#F6E7C1`) with burnt orange (`#E4572E`) for the sunburst badge and ticket rules, plus leaf green (`#A8C686`) for secondary fills. Bands are separated by dashed ticket-perforation rules; a circular sunburst numeral badge anchors each composition. Depth is flat poster space — solid fills, dashed rules, no shadows.
+description: A mid-century travel-poster presentation system built on stacked horizontal bands. Display type runs in DM Serif Display for poster headlines, paired with Outfit for body and tracked caps labels. The palette stacks deep teal (`#0E3B43`) sky bands against warm sand (`#F6E7C1`) with burnt orange (`#E4572E`) for the poster figure numeral, plus leaf green (`#A8C686`) for secondary bands. Typography-only register: bands abut directly with no ticket rules, badges, rings, notches, or keylines — hierarchy is carried by the band grounds, scale, and tracked caps alone. Depth is flat poster space — solid grounds, no shadows.
 colors:
   deep-teal: "#0E3B43"
   teal-deep: "#0A2D34"
@@ -88,31 +88,27 @@ components:
   band:
     width: 1920px
     padding: "{spacing.pad-band-y} {spacing.pad-band-x}"
-    description: "Full-bleed flat band in teal, sand, cream, or leaf. Bands stack top-to-bottom with ticket rules between; edges always full-bleed, never inset."
-  ticket-rule:
-    borderTop: "3px dashed {colors.burnt-orange}"
-    description: "3px dashed burnt-orange perforation line separating bands. Full-bleed with circular notch cutouts at both edges."
-  notch:
-    width: 56px
-    height: 56px
-    borderRadius: 999px
-    description: "Circular ground-colored notch punched at each end of a ticket rule to mimic a torn ticket stub."
-  sunburst:
-    width: 196px
-    height: 196px
-    borderRadius: 999px
-    background: "{colors.burnt-orange}"
-    color: "{colors.sand}"
-    description: "Burnt-orange circle carrying the slide's key numeral in DM Serif Display, ringed by a radiating dashed burnt-orange ring."
-  sunburst-ring:
-    border: "3px dashed {colors.burnt-orange}"
-    borderRadius: 999px
-    offset: 14px
-    description: "Radiating dashed ring floating 14px outside the sunburst badge, suggesting sun rays. Burnt orange (not sand) so the ring stays visible across both the teal sky and the sand headline band."
-  keyline:
-    height: 2px
-    background: "{colors.sand}"
-    description: "Thin keyline rule under tracked caps labels on teal bands. Sand on teal, teal on sand."
+    description: "Full-bleed flat band in teal, sand, cream, or leaf. Bands stack top-to-bottom abutting directly; edges always full-bleed, never inset."
+  poster-figure:
+    fontFamily: "'DM Serif Display', Georgia, serif"
+    fontSize: 72px
+    fontWeight: 400
+    color: "{colors.burnt-orange}"
+    description: "The slide's key numeral set bare on the headline band in burnt-orange DM Serif Display. No badge, no ring — scale and signal color carry the figure."
+  kicker:
+    fontFamily: "'Outfit', system-ui, sans-serif"
+    fontSize: 22px
+    fontWeight: 600
+    letterSpacing: 0.2em
+    textTransform: uppercase
+    description: "Bare tracked-caps kicker in the sky band. No keyline — position and tracking carry the kicker signal."
+  leaf-word:
+    fontFamily: "'Outfit', system-ui, sans-serif"
+    fontSize: 20px
+    fontWeight: 600
+    letterSpacing: 0.2em
+    textTransform: uppercase
+    description: "Secondary meta line as plain tracked caps. No chip, no tag shape."
   page-mark:
     fontFamily: "'Outfit', system-ui, sans-serif"
     fontSize: 20px
@@ -129,51 +125,51 @@ This policy has higher priority than any source-template responsive behavior des
 
 This policy applies even if the source template was originally implemented with viewport-fluid CSS such as `100vw`, `100vh`, `vw`, `vh`, or `clamp()`. Treat those values as design proportions to translate into 1920×1080 stage coordinates, not as live responsive rules in the generated deck.
 
-Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and panel overlap.
+Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and band-boundary crossings.
 
 ## Overview
 
-Vista is a **mid-century travel-poster presentation system**. Its foundational premise is the band stack: every slide reads as sky band / headline band / ticket rule / body band, each a flat solid fill with full-bleed edges. Layouts move top to bottom like a journey — teal sky, sand headline field, dashed perforation, body ground — with a sunburst badge carrying the slide's key numeral. Corners are square, fills are opaque, and ornament is limited to perforations, badges, and thin keylines.
+Vista is a **mid-century travel-poster presentation system**. Its foundational premise is the band stack: every slide reads as sky band / headline band / body band, each a flat solid fill with full-bleed edges. Layouts move top to bottom like a journey — teal sky, sand headline field, body ground — with a burnt-orange poster figure carrying the slide's key numeral. Corners are square, fills are opaque, and ornament is limited to the band grounds and tracked caps.
 
-The type stack is two faces. **DM Serif Display** (weight 400, the face's only weight) is the poster face — a high-contrast modern serif with mid-century warmth carrying hero titles, headlines, subheads, and badge numerals. **Outfit** is the work face — a clean geometric sans used for body (400) and tracked caps labels (600). The serif-poster / sans-ticket contrast echoes a railway poster crossed with a boarding pass.
+The type stack is two faces. **DM Serif Display** (weight 400, the face's only weight) is the poster face — a high-contrast modern serif with mid-century warmth carrying hero titles, headlines, subheads, and poster figures. **Outfit** is the work face — a clean geometric sans used for body (400) and tracked caps labels (600). The serif-poster / sans-caption contrast echoes a railway poster crossed with a timetable.
 
-The palette stacks **deep teal** (`{colors.deep-teal}`) sky bands against **warm sand** (`{colors.sand}`) with **burnt orange** (`{colors.burnt-orange}`) for the sunburst badge and ticket rules, plus **leaf green** (`{colors.leaf}`) for secondary fills and **cream white** (`{colors.cream-white}`) for body grounds. Teal and sand alternate as grounds; burnt orange never carries body text.
+The palette stacks **deep teal** (`{colors.deep-teal}`) sky bands against **warm sand** (`{colors.sand}`) with **burnt orange** (`{colors.burnt-orange}`) for the poster figure numeral, plus **leaf green** (`{colors.leaf}`) for secondary bands and **cream white** (`{colors.cream-white}`) for body grounds. Teal and sand alternate as grounds; burnt orange never carries body text.
 
-Depth is **flat poster space**: solid fills, dashed rules, no shadows, no gradients, no blur. Band contrast does all the separation work.
+Depth is **flat poster space**: solid grounds, no shadows, no gradients, no blur, no rules. Band contrast does all the separation work.
 
-**Density philosophy: poster-bold but ticket-tidy.** A typical slide carries one kicker, one headline, one ticket rule, one body block, and one badge. Bands keep elements separated without whitespace oceans; padding inside bands is moderate (56px vertical, 120px horizontal) because the band edges themselves structure the slide.
+**Density philosophy: poster-bold but ticket-tidy.** A typical slide carries one kicker, one headline, one poster figure, and one body block. Bands keep elements separated without whitespace oceans; padding inside bands is moderate (56px vertical, 120px horizontal) because the band edges themselves structure the slide.
 
 **Key Characteristics:**
-- Stacked band layout (`{components.band}`) — full-bleed flat bands in teal/sand/cream reading top-to-bottom like a poster horizon.
-- Ticket-stub dashed rules (`{components.ticket-rule}`) — 3px dashed burnt-orange perforations with notch cutouts separating bands.
-- Sunburst numeral badge (`{components.sunburst}`) — burnt-orange circle with radiating dashed ring carrying the key figure.
+- Stacked band layout (`{components.band}`) — full-bleed flat bands in teal/sand/cream/leaf reading top-to-bottom like a poster horizon, abutting directly.
+- Poster figure numeral (`{components.poster-figure}`) — burnt-orange DM Serif numeral set bare on the headline band.
 - Poster-serif headlines (`{typography.headline}`) — DM Serif Display, teal on sand or sand on teal, never letterspaced.
-- Tracked Outfit caps labels (`{typography.label}`) — 0.2em tracked uppercase kickers on thin keyline rules.
-- Flat opaque fills only — zero shadows, zero gradients, zero blur.
+- Tracked Outfit caps labels (`{typography.label}`) — bare 0.2em tracked uppercase kickers; no keylines.
+- Plain meta words (`{components.leaf-word}`) — small tracked-caps subsection markers with no chip shape.
+- Flat opaque grounds only — zero shadows, zero gradients, zero blur, zero rules.
 
 ## Colors
 
 ### Palette
 
 - **Deep Teal** (`{colors.deep-teal}` — `#0E3B43`): The sky color. Top bands, bottom bands, headline text on sand, body text on cream.
-- **Teal Deep** (`{colors.teal-deep}` — `#0A2D34`): A darker teal for the bottom-most ground band and notch fills. Used sparingly for anchoring.
-- **Sand** (`{colors.sand}` — `#F6E7C1`): The headline field. Warm mid ground carrying teal poster type; also badge-numeral color on orange.
-- **Sand Deep** (`{colors.sand-deep}` — `#EDD9A8`): Darker sand for alternating sub-bands and keyline accents on cream.
-- **Burnt Orange** (`{colors.burnt-orange}` — `#E4572E`): The signal color. Sunburst badge fill, ticket rules, kickers' keylines, rare headline emphasis. Never body text.
-- **Leaf** (`{colors.leaf}` — `#A8C686`): Secondary fill for side panels and small chips. A cool counterpoint to the warm sand.
+- **Teal Deep** (`{colors.teal-deep}` — `#0A2D34`): A darker teal for the bottom-most ground band. Used sparingly for anchoring.
+- **Sand** (`{colors.sand}` — `#F6E7C1`): The headline field. Warm mid ground carrying teal poster type; also ground behind the burnt-orange figure.
+- **Sand Deep** (`{colors.sand-deep}` — `#EDD9A8`): Darker sand for alternating sub-bands. Retained token.
+- **Burnt Orange** (`{colors.burnt-orange}` — `#E4572E`): The signal color. Poster figure numeral and rare headline emphasis at display sizes. Never body text.
+- **Leaf** (`{colors.leaf}` — `#A8C686`): Secondary band ground. A cool counterpoint to the warm sand.
 - **Cream White** (`{colors.cream-white}` — `#FFFDF6`): Body ground. Lighter than sand, used for text-heavy bands to maximize legibility.
 
 ### Defaults
 
-- **Default band order (cover)**: teal sky → sand headline → ticket rule → cream body → teal ground. Alternate teal/sand so adjacent bands always contrast.
+- **Default band order (cover)**: teal sky → sand headline → cream body → teal ground, bands abutting directly. Alternate teal/sand so adjacent bands always contrast.
 - **Default headline color**: `{colors.deep-teal}` on sand; `{colors.sand}` on teal. Never orange headlines, never low-contrast pairings.
 - **Default body text color**: `{colors.deep-teal}` on cream/sand; `{colors.sand}` on teal.
-- **Default ticket-rule color**: `{colors.burnt-orange}` dashed, full-bleed, with notches.
-- **Default badge fill**: `{colors.burnt-orange}` with `{colors.sand}` numeral and dashed burnt-orange ring.
-- **Default keyline**: 2px sand on teal bands, 2px teal on sand/cream bands.
+- **Default band separator**: none — adjacent ground colors abut; rules do not exist.
+- **Default poster figure**: `{components.poster-figure}` — burnt-orange numeral bare on the headline band.
+- **Default kicker**: `{components.kicker}` — bare tracked caps; no keyline.
 - **Default caption color**: teal at 75% on light bands, sand at 75% on teal bands.
 
-When a slide needs a cooler moment, swap one sand band for leaf — but keep the teal/cream text rules and the orange ticket signals unchanged.
+When a slide needs a cooler moment, swap one sand band for leaf — but keep the teal/cream text rules and the orange figure signal unchanged.
 
 ## Typography
 
@@ -181,11 +177,11 @@ When a slide needs a cooler moment, swap one sand band for leaf — but keep the
 
 The system runs two faces, each locked to its role.
 
-**DM Serif Display** is the poster face — a high-contrast modern serif with bracketed warmth, available only in weight 400 (plus italic). Used for hero titles, headlines, subheads, and badge numerals. Its poster scale and contrast are the system's display voice; a grotesque or slab replacement would erase the travel-poster feel.
+**DM Serif Display** is the poster face — a high-contrast modern serif with bracketed warmth, available only in weight 400 (plus italic). Used for hero titles, headlines, subheads, and poster figures. Its poster scale and contrast are the system's display voice; a grotesque or slab replacement would erase the travel-poster feel.
 
-**Outfit** is the work face — a clean geometric sans. Used for body (400), labels and ticket stubs (600 tracked caps), captions (400), and page marks (600). Its geometric clarity reads as the "ticket" voice against the poster's serif.
+**Outfit** is the work face — a clean geometric sans. Used for body (400), labels and meta lines (600 tracked caps), captions (400), and page marks (600). Its geometric clarity reads as the caption voice against the poster's serif.
 
-Never use Outfit for headlines or badge numerals, never use DM Serif Display for body, labels, or captions. The serif-poster / sans-ticket split is the typographic structure.
+Never use Outfit for headlines or poster figures, never use DM Serif Display for body, labels, or captions. The serif-poster / sans-caption split is the typographic structure.
 
 ### Typography Scale
 
@@ -194,11 +190,11 @@ Never use Outfit for headlines or badge numerals, never use DM Serif Display for
 | `{typography.hero}` | 76px | DM Serif Display | 400 | Cover display title |
 | `{typography.headline}` | 64px | DM Serif Display | 400 | Primary section headline |
 | `{typography.subhead}` | 44px | DM Serif Display | 400 | Region-level subheading |
-| `{typography.badge-numeral}` | 72px | DM Serif Display | 400 | Numeral inside sunburst badge |
+| `{typography.badge-numeral}` | 72px | DM Serif Display | 400 | Poster figure numeral on the band |
 | `{typography.body}` | 30px | Outfit | 400 | Paragraph body |
 | `{typography.body-sm}` | 25px | Outfit | 400 | Secondary body, list items |
 | `{typography.label}` | 22px | Outfit | 600 | Tracked caps kicker label |
-| `{typography.ticket-stub}` | 20px | Outfit | 600 | Small caps line on ticket stubs |
+| `{typography.ticket-stub}` | 20px | Outfit | 600 | Small caps meta line in sky band |
 | `{typography.caption}` | 21px | Outfit | 400 | Captions, context lines |
 | `{typography.page-mark}` | 20px | Outfit | 600 | Page numeral, tracked |
 
@@ -207,18 +203,18 @@ Never use Outfit for headlines or badge numerals, never use DM Serif Display for
 These treatments are **non-optional whenever the corresponding element type is used**:
 
 - **Every headline uses DM Serif Display with native spacing.** Never letterspace the poster serif; tracking on DM Serif Display breaks its rhythm.
-- **Every kicker is tracked Outfit caps on a keyline.** 22px, 600 weight, 0.2em tracking, uppercase, sitting on a 2px keyline rule.
-- **Every badge numeral is DM Serif 72px in sand on burnt orange.** The numeral is the slide's key figure; the dashed burnt-orange ring floats 14px outside the badge.
-- **Every ticket rule is 3px dashed burnt orange.** Full-bleed with circular punched-hole notches (56px, teal-deep) centered on the rule at both edges.
+- **Every kicker is bare tracked Outfit caps.** 22px, 600 weight, 0.2em tracking, uppercase, with no keyline.
+- **Every poster figure is burnt-orange DM Serif at 64–72px.** The numeral is the slide's key figure, set bare on the headline band.
+- **Bands abut directly.** No ticket rules, notches, or separators exist — adjacent ground colors meet edge to edge.
 - **Every body block uses Outfit 400 at 1.55 line-height.** Sentence case, left-aligned (or centered on single-measure covers).
 - **Every context line uses tracked caps or caption.** Context on teal bands uses sand tracked caps; on light bands, teal caption.
 - **Every page mark is right-aligned tracked numerals.** 20px, 600, 0.25em tracking, in the bottom band's contrasting color.
 
 ### Typography Principles
 
-The voice contrast is **warm poster serif ↔ geometric ticket sans**. Italic appears only in DM Serif Display for a single accent word per headline at most — never in Outfit, never for whole sentences. Numerals in prose use Outfit; numerals as poster moments use DM Serif Display inside the sunburst badge.
+The voice contrast is **warm poster serif ↔ geometric caption sans**. Italic appears only in DM Serif Display for a single accent word per headline at most — never in Outfit, never for whole sentences. Numerals in prose use Outfit; numerals as poster moments use burnt-orange DM Serif Display bare on the band.
 
-Headlines may center (on poster bands) or left-align (on ticket-style body slides) depending on the band's role — covers center, section slides left-align. Body is left-aligned except on centered covers. Labels are always uppercase with 0.2em+ tracking on Latin runs.
+Headlines may center (on poster bands) or left-align (on caption-style body slides) depending on the band's role — covers center, section slides left-align. Body is left-aligned except on centered covers. Labels are always uppercase with 0.2em+ tracking on Latin runs.
 
 ## Layout
 
@@ -226,81 +222,74 @@ Headlines may center (on poster bands) or left-align (on ticket-style body slide
 
 The system targets a fixed **1920×1080 stage** per slide. Bands are full-bleed (1920px wide, no horizontal inset) with 56px vertical / 120px horizontal inner padding. The inner content region caps at `max-width: 1680px` and centers within each band.
 
-The primary layout is the **band stack**: sky band (teal, ~250px) → headline band (sand, ~320px) → ticket rule → body band (cream, flexible) → ground band (teal-deep, ~120px). Proportions flex per slide, but the top-to-bottom poster order and full-bleed edges are constant.
+The primary layout is the **band stack**: sky band (teal, ~250px) → headline band (sand, ~320px) → body band (cream, flexible) → ground band (teal-deep, ~120px). Proportions flex per slide, but the top-to-bottom poster order and full-bleed edges are constant.
 
 ### Persistent Chrome
 
 Three compact elements appear on every slide:
 
-- **Kicker label** — `{typography.label}` tracked caps on a keyline, top-left of the sky band. Carries context or section name.
-- **Sunburst badge** — `{components.sunburst}` carrying the slide's key numeral, docked at the sky/headline boundary (overlapping both bands).
+- **Kicker label** — `{typography.label}` bare tracked caps, top-left of the sky band. Carries context or section name.
+- **Poster figure** — `{components.poster-figure}` carrying the slide's key numeral, centered in the headline band.
 - **Page mark** — `{components.page-mark}` right-aligned in the ground band.
 
-No navigation rails, no progress bars. The bands and ticket rules are the chrome.
+No navigation rails, no progress bars. The bands are the chrome.
 
 ### Band Discipline
 
-Bands are full-bleed and opaque — never inset, never translucent, never rounded. Adjacent bands must always contrast (teal next to sand/cream, never teal on teal). Ticket rules separate the headline band from the body band on every slide; additional rules may separate further bands but never appear inside a band. If content overflows a band, rebalance band heights — never let text cross a band boundary.
+Bands are full-bleed and opaque — never inset, never translucent, never rounded. Adjacent bands must always contrast (teal next to sand/cream, never teal on teal). Bands abut directly with no rules between them. If content overflows a band, rebalance band heights — never let text cross a band boundary.
 
 ## Depth and Elevation
 
 The system practices **flat poster space**. All bands are opaque solid fills; separation comes from hue contrast between adjacent bands, not from shadow or elevation.
 
-Shadows, glows, blurs, gradients, and rounded corners do not exist anywhere in the system — with one deliberate exception: the sunburst badge and ticket notches are circular, because the ticket/poster metaphor requires them. Everything else is square and flat.
-
-The badge overlaps the sky/headline boundary by design (docked, not floating) — the overlap is a poster layering cue, not an elevation cue, and carries no shadow.
+Shadows, glows, blurs, gradients, rules, and rounded corners do not exist anywhere in the system. Everything is square and flat; the poster figure is bare type with no badge, ring, or notch.
 
 ## Shapes and Treatment
 
 ### Border Radius
 
-Square everywhere except the badge system. Bands, panels, chips, and rules have zero radius. Circles appear only as the sunburst badge (196px), its dashed ring, and ticket-notch cutouts (56px). A rounded rectangle would read as off-metaphor.
+Square everywhere. Bands have zero radius; no badges, rings, notches, or chips exist. A rounded rectangle — or any circle — would read as off-metaphor.
 
 ### Border Weights
 
-- **3px dashed burnt orange** — ticket rules (the system's dominant line).
-- **3px dashed burnt orange** — sunburst radiating ring.
-- **2px solid** — keylines under labels (sand on teal, teal on sand).
-- Solid borders on containers do not exist; band edges are the boundaries.
+Lines do not exist: no ticket rules, no rings, no keylines, no borders. Band edges are the only boundaries, and they are ground-color changes, not strokes.
 
 ### Decorative Element Types
 
-**Band** — Full-bleed flat color field (teal/sand/cream/leaf). The compositional unit; every slide is 3–5 bands.
+**Band** — Full-bleed flat color field (teal/sand/cream/leaf). The compositional unit; every slide is 3–5 bands abutting directly.
 
-**Ticket rule** — 3px dashed burnt-orange perforation with 56px circular notches at both edges. Separates headline and body bands on every slide.
+**Poster figure** — Burnt-orange DM Serif numeral at 64–72px set bare on the headline band. The slide's key figure; no badge, no ring.
 
-**Sunburst badge** — 196px burnt-orange circle with a 72px DM Serif sand numeral, ringed by a dashed burnt-orange circle floating 14px out. Docked at the sky/headline seam.
-
-**Keyline** — 2px thin rule under tracked caps labels. Sand on teal, teal on sand.
+**Kicker** — Bare tracked-caps label in the sky band. No keyline.
 
 **Page mark** — Tracked 20px numerals right-aligned in the ground band.
 
-**Leaf chip** — Small square (zero radius) leaf-green tag for secondary meta. The only chip in the system; square, not round.
+**Meta word** — Small tracked-caps word for secondary meta. Plain type, no tag shape.
 
 ## Do's and Don'ts
 
 ### Do
 
 - Stack full-bleed opaque bands top-to-bottom in poster order on every slide.
-- Separate the headline and body bands with a dashed ticket rule + notches.
-- Dock the sunburst badge at the sky/headline seam with its radiating dashed ring.
+- Abut bands directly with no rules, notches, or separators between them.
+- Set the poster figure as a bare burnt-orange DM Serif numeral on the headline band.
 - Set headlines in DM Serif Display with native spacing, teal on sand or sand on teal.
-- Set kickers in tracked Outfit caps (0.2em) on a 2px keyline.
-- Keep every band edge square and full-bleed; circles belong to the badge system only.
+- Set kickers in bare tracked Outfit caps (0.2em); no keylines.
+- Keep every band edge square and full-bleed; circles do not exist.
 - Alternate band grounds so adjacent bands always contrast.
 - Right-align the page mark in the bottom ground band.
 
 ### Don't
 
 - Don't inset, round, or translucify any band — full-bleed opaque squares only.
-- Don't use shadows, gradients, glows, or blur anywhere, including under the badge.
+- Don't use shadows, gradients, glows, or blur anywhere.
 - Don't letterspace DM Serif Display headlines or set them in burnt orange.
 - Don't use Outfit for headlines/numerals or DM Serif Display for body/labels.
 - Don't place body text across a band boundary — rebalance band heights instead.
 - Don't stack two adjacent bands in the same ground color.
-- Don't use solid rules where the ticket perforation belongs (band seams are dashed).
+- Don't add rules, badges, rings, notches, chips, or keylines of any kind.
 - Don't introduce curved dividers, diagonal cuts, or wave separators — bands are horizontal.
-- Don't add a second badge per slide; one sunburst carries the key figure.
+- Don't add a second poster figure per slide; one numeral carries the key figure.
 - Don't use italic Outfit or whole-sentence serif italic — one accent word at most.
 
 ## Responsive Behavior
@@ -310,7 +299,7 @@ Vista is a **fixed-stage system** (1920×1080) under the Frontend Slides policy.
 ### Scaling Behavior
 
 - Hero 76px, headline 64px, subhead 44px, body 30px at stage scale.
-- Band heights (sky 248px, headline ~320px), badge 196px, notches 56px, dashes 3px are fixed pixel values.
+- Band heights (sky 248px, headline ~320px) and the poster figure size (72px) are fixed pixel values.
 - Band padding (56px/120px) scales with the uniform stage transform only.
 
 ### Component Breakpoints
@@ -325,11 +314,11 @@ No breakpoints exist in the fixed-stage model. Bands are horizontal and full-wid
 
 ### Animation Triggers
 
-Bands may rise in with a 90ms stagger on slide entry; the badge ring may rotate slowly (60s loop). `prefers-reduced-motion` disables both. No other ambient animation exists.
+Bands may rise in with a 90ms stagger on slide entry. `prefers-reduced-motion` disables it. No other ambient animation exists.
 
 ### Print Behavior
 
-The system prints as flat poster bands: solid fills, no shadows to band, dashed rules reproduce cleanly. Export each slide as a static 1920×1080 frame; entry animations resolve to their end state.
+The system prints as flat poster bands: solid grounds, no shadows, no rules. Export each slide as a static 1920×1080 frame; entry animations resolve to their end state.
 
 ## CJK & International Content
 
@@ -339,9 +328,9 @@ When using this template for Korean (or other CJK) content, swap the Latin typef
 
 | Role | Latin (default) | Korean counterpart |
 |---|---|---|
-| Display / headlines / badge numerals | DM Serif Display 400 | Noto Serif KR 600 |
+| Display / headlines / poster figures | DM Serif Display 400 | Noto Serif KR 600 |
 | Body / captions | Outfit 400 | Noto Sans KR 400 |
-| Labels / kickers / ticket stubs | Outfit 600 (caps + 0.2em) | Noto Sans KR 700 (no transform, no tracking) |
+| Labels / kickers / meta lines | Outfit 600 (caps + 0.2em) | Noto Sans KR 700 (no transform, no tracking) |
 
 ### Mixed-Content Strategy
 
@@ -361,41 +350,41 @@ Add to the template's `<head>`:
 
 - **Line-height**: increase by ~15–20% from the Latin spec. Body 1.75–1.85 (up from 1.55), display 1.25–1.35 (up from 1.1–1.15). Rebalance band heights if CJK headlines wrap taller.
 - **Letter-spacing**: set to 0 on every CJK run. The 0.2em label tracking and 0.25em page-mark tracking must not apply to CJK characters.
-- **Text transform**: don't apply `uppercase` to CJK text. Kickers keep their keyline rule so they still read as kickers through position.
+- **Text transform**: don't apply `uppercase` to CJK text. Kickers keep their sky-band position so they still read as kickers through position.
 - **Punctuation**: use full-width CJK punctuation (。，：；！？「」) in Korean sentences.
 - **No period on display headlines**: omit trailing 。 on display-scale headlines per CJK convention.
 - **Space between CJK and Latin**: insert an ASCII space between CJK characters and adjacent Latin/digits in mixed sentences.
 
 ### Aesthetic Notes for This System
 
-The system's poster voice transfers well: Noto Serif KR at 600 has the heft for band headlines, and the band/ticket/badge geometry is script-independent. Lean on the **non-typographic** elements — orange perforations, the sunburst badge, band contrast — which carry the travel-poster identity regardless of script.
+The system's poster voice transfers well: Noto Serif KR at 600 has the heft for band headlines, and the band-stack geometry is script-independent. Lean on the band contrast and the burnt-orange poster figure, which carry the travel-poster identity regardless of script.
 
-Badge numerals in CJK builds should stay Latin digits (e.g. `11`) in DM Serif Display — numerals are script-neutral and the badge keeps its poster-most element intact.
+Poster figures in CJK builds should stay Latin digits (e.g. `11`) in DM Serif Display — numerals are script-neutral and the figure keeps the poster's boldest moment intact.
 
 ### Known CJK Gap
 
-- **No geometric-CJK work face on CDN.** Outfit's geometric ticket voice has no Korean counterpart on Google Fonts; Noto Sans KR is a neutral grotesque. The ticket signal must come from dashes, keylines, and tracked-Latin numerals rather than letterforms.
+- **No geometric-CJK work face on CDN.** Outfit's geometric caption voice has no Korean counterpart on Google Fonts; Noto Sans KR is a neutral grotesque. The caption signal must come from band contrast and tracked-Latin numerals rather than letterforms.
 - **No CJK poster serif with DM's contrast.** Noto Serif KR 600 is sturdy but lower-contrast than DM Serif Display; headlines lose some poster snap. Compensate with scale (hold 76px hero) and band contrast.
 
 ## Iteration Guide
 
-1. Any new slide stacks full-bleed opaque bands in poster order with the ticket rule between headline and body.
+1. Any new slide stacks full-bleed opaque bands in poster order, abutting directly with no rules.
 2. Any new headline uses DM Serif Display at the matching scale token with native spacing, in the band's contrasting color.
-3. Any new kicker uses tracked Outfit caps (0.2em) on a 2px keyline in the sky band.
-4. Any new key figure uses the sunburst badge (196px orange, sand serif numeral, dashed ring) docked at the sky/headline seam.
+3. Any new kicker uses bare tracked Outfit caps (0.2em) in the sky band — no keyline.
+4. Any new key figure uses the burnt-orange DM Serif numeral bare on the headline band — no badge, no ring.
 5. Any new body block uses Outfit 400 at 1.55 in the cream/sand body band.
-6. Any new band seam uses the 3px dashed orange ticket rule with 56px notches — never a solid line.
+6. Any new band seam is a direct ground-color abutment — rules of any kind are forbidden.
 7. Any new color must come from the teal/sand/orange/leaf/cream set; adjacent bands must contrast.
-8. Any new secondary meta uses the square leaf chip — never a round pill.
+8. Any new secondary meta uses a plain tracked-caps word — never a chip, tag, or pill.
 9. If content overflows a band, rebalance band heights; text never crosses a seam.
-10. Animated elements (band rise, ring rotation) respect `prefers-reduced-motion`; static bands are the default.
+10. Animated elements (band rise) respect `prefers-reduced-motion`; static bands are the default.
 
 ## Known Gaps
 
 - **Fonts**: DM Serif Display / Outfit via Google Fonts CDN (`display=swap`); fallbacks `Georgia, serif` for display / `system-ui, sans-serif` for work faces. No font files committed. Offline rendering falls back to system stacks and loses the poster voice.
 - **Single display weight**: DM Serif Display ships only 400; emphasis inside headlines is limited to scale, italic accent words, or color.
-- **Badge is single-numeral**: the 196px badge fits 1–3 characters; longer figures need a smaller numeral size or a wider oval (unproven).
-- **Notches are painted**: the 56px ticket notches are absolutely-positioned ground-colored circles; they assume opaque adjacent bands.
+- **Figure is single-numeral**: the poster figure fits 1–3 characters at 64–72px; longer figures need a smaller size (unproven).
+- **No badges, rings, or notches**: the typography-only register renders none of the retired badge/notch shapes; decks must not reintroduce them.
 - **Page marks are manual**: the ground-band numeral is authored per slide; there is no auto-numbering layer.
 - **No dark-poster variant**: the teal/cream alternation is fixed; all-teal slides would need new text-color rules.
 
@@ -405,10 +394,10 @@ Badge numerals in CJK builds should stay Latin digits (e.g. `11`) in DM Serif Di
 |---|--------|------------------------|----------|--------------------|
 | 1 | Blur (backdrop / filter) | Not used | full | N/A — no blur in system |
 | 2 | Blend modes | Not used | full | N/A — no blends in system |
-| 3 | Animation / keyframes | Band rise stagger; badge-ring 60s rotation | none | Static end-state frame |
+| 3 | Animation / keyframes | Band rise stagger | none | Static end-state frame |
 | 4 | Pixel / hard offset shadows | Not used | full | N/A |
 | 5 | Gradients | Not used | full | N/A — all fills are flat |
 | 6 | Grain / scanline / noise overlays | Not used | full | N/A |
 | 7 | Transparency layers | 75% caption tints on bands | partial | Opaque approximations (pre-mixed tints) |
 | 8 | Custom fonts | DM Serif Display + Outfit via Google Fonts CDN | partial | Embedded or substituted serif/sans pair |
-| 9 | Absolute-positioned decor | Badge, ring, notches, keylines | full | Grouped native shapes |
+| 9 | Absolute-positioned decor | None — in-flow type on bands | full | Native text boxes 1:1 |

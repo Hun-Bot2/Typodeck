@@ -7,21 +7,21 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (strip bullet, band slab + 8px rule removed; footer is plain type; single orange strike word kept); PNG 1920x1080 (79591 bytes), viewed full-res."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); typography-only rebuild (orange 63% numeral is the single strike); PNG 1920x1080 (105928 bytes), viewed full-res."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); typography-only rebuild (column divider, row rules, band removed; affirmed head orange, rushed side dimmed as type); PNG 1920x1080 (120279 bytes), viewed full-res."
     }
   ],
   "render": {

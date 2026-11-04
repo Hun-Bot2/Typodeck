@@ -8,50 +8,41 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --paper: #FFFFFF; --ink: #1A1A1A; --blue: #0B5394; --rule: #EAEAEA; --abstract-tint: #F3F5F8; --muted: #5A6470; }
   * { box-sizing: border-box; }
-  .pr-slide { position: absolute; inset: 0; background: var(--paper); color: var(--ink);
-    font-family: "STIX Two Text", Georgia, "Times New Roman", serif; padding: 56px 88px 48px;
+  .s { position: absolute; inset: 0; background: #FFFFFF; color: #1A1A1A;
+    font-family: "STIX Two Text", Georgia, serif; padding: 56px 88px 48px;
     display: flex; flex-direction: column; }
-  .pr-runhead { display: flex; justify-content: space-between; align-items: baseline;
+  .run { display: flex; justify-content: space-between; align-items: baseline;
     font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 600;
-    letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); }
-  .pr-runhead .pr-page { color: var(--muted); letter-spacing: 0.14em; }
-  .pr-double-rule { margin-top: 18px; border-top: 3px solid var(--ink); }
-  .pr-double-rule::after { content: ""; display: block; border-top: 1px solid var(--ink); margin-top: 3px; }
-  .pr-kicker { font-family: Inter, system-ui, sans-serif; font-size: 22px; font-weight: 700;
-    letter-spacing: 0.24em; text-transform: uppercase; color: var(--blue); }
-  .pr-abstract { background: var(--abstract-tint); border-left: 6px solid var(--blue); padding: 28px 34px 30px; }
-  .pr-abstract-label { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
-    letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
-  .pr-abstract-text { margin: 0; font-style: italic; font-size: 35px; line-height: 1.42; color: var(--ink); }
-  .pr-keywords { margin-top: 20px; padding-top: 16px; border-top: 1px solid #D8DEE5;
-    font-family: Inter, system-ui, sans-serif; font-size: 21px; font-weight: 500; color: var(--muted); }
-  .pr-keywords strong { font-weight: 700; color: var(--ink); }
-  .pr-fig-label { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); }
-  .pr-fig-title { font-family: Inter, system-ui, sans-serif; font-size: 24px; font-weight: 600; color: var(--ink); margin: 12px 0 20px; }
-  .pr-caption { margin: 16px 0 0; font-family: Inter, system-ui, sans-serif; font-size: 21px; line-height: 1.5; color: var(--muted); }
-  .pr-caption strong { color: var(--ink); font-weight: 700; }
-  .pr-footnotes { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--ink);
-    font-family: Inter, system-ui, sans-serif; font-size: 20px; line-height: 1.6; color: var(--muted);
-    display: flex; gap: 48px; }
-  .pr-footnotes .pr-fn sup { font-weight: 700; color: var(--blue); margin-right: 6px; }
-
-
-  .pr-main { flex: 1; display: flex; gap: 72px; margin-top: 52px; min-height: 0; }
-  .pr-article { flex: 1.85; min-width: 0; display: flex; flex-direction: column; }
-  .pr-titlebox { margin-top: 26px; max-height: 420px; overflow: hidden; }
-  .pr-title { margin: 0; font-size: 86px; font-weight: 700; line-height: 1.06; letter-spacing: -0.005em; }
-  .pr-article .pr-abstract { margin-top: 40px; }
-  .pr-rail { flex: 1; min-width: 0; border-left: 1px solid var(--rule); padding-left: 60px;
-    display: flex; flex-direction: column; gap: 40px; }
-  .pr-bars { display: flex; flex-direction: column; gap: 9px; }
-  .pr-bar-row { display: flex; align-items: center; gap: 14px; }
-  .pr-bar-cat { font-family: Inter, system-ui, sans-serif; font-size: 18px; font-weight: 600; color: var(--muted);
-    width: 52px; flex: 0 0 auto; text-align: right; font-variant-numeric: tabular-nums; }
-  .pr-bar-track { flex: 1; height: 18px; background: #EDF0F4; position: relative; }
-  .pr-bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--blue); }
+    letter-spacing: 0.22em; text-transform: uppercase; }
+  .run .pg { color: #5A6470; letter-spacing: 0.14em; }
+  .kick { font-family: Inter, system-ui, sans-serif; font-size: 22px; font-weight: 700;
+    letter-spacing: 0.24em; text-transform: uppercase; color: #0B5394; margin: 0; }
+  .main { flex: 1; display: flex; gap: 96px; margin-top: 56px; min-height: 0; }
+  .art { flex: 1.5; min-width: 0; display: flex; flex-direction: column; }
+  .title { margin: 26px 0 0 0; font-size: 84px; font-weight: 700; line-height: 1.06;
+    letter-spacing: -0.005em; max-height: 280px; overflow: hidden; }
+  .abs { margin-top: 44px; }
+  .abs-lab { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase; margin: 0 0 14px 0; }
+  .abs-txt { margin: 0; font-style: italic; font-size: 34px; line-height: 1.42; }
+  .keys { margin-top: 24px; font-family: Inter, system-ui, sans-serif; font-size: 21px;
+    font-weight: 500; color: #5A6470; }
+  .keys strong { font-weight: 700; color: #1A1A1A; }
+  .rail { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .fig-lab { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; margin: 0; }
+  .fig-ttl { font-family: Inter, system-ui, sans-serif; font-size: 24px; font-weight: 600;
+    margin: 12px 0 0 0; }
+  .idx { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; margin-top: 24px; }
+  .idx span { font-family: Inter, system-ui, sans-serif; font-size: 21px; font-weight: 500;
+    padding: 8px 0; font-variant-numeric: tabular-nums; }
+  .cap { margin: 20px 0 0 0; font-family: Inter, system-ui, sans-serif; font-size: 21px;
+    line-height: 1.5; color: #5A6470; }
+  .cap strong { color: #1A1A1A; font-weight: 700; }
+  .fns { margin-top: auto; padding-top: 24px; font-family: Inter, system-ui, sans-serif;
+    font-size: 20px; line-height: 1.6; color: #5A6470; display: flex; gap: 48px; }
+  .fns sup { font-weight: 700; color: #0B5394; margin-right: 6px; }
 </style>
 <style>
   html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
@@ -61,42 +52,28 @@
 </head>
 <body>
 <div id="deck-viewport"><div id="deck-stage">
-
-    <div class="pr-slide">
-      <div class="pr-runhead"><span>Typodeck Research · November 2026</span><span class="pr-page">p. 01</span></div>
-      <div class="pr-double-rule"></div>
-      <div class="pr-main">
-        <div class="pr-article">
-          <div class="pr-kicker">Research Article &#183; Review Practice</div>
-          <div class="pr-titlebox"><h1 class="pr-title" id="prTitle" data-max="86">The Hidden Cost of Rushing to Ship</h1></div>
-          <div class="pr-abstract">
-            <div class="pr-abstract-label">Abstract</div>
-            <p class="pr-abstract-text">What 11 postmortems taught us about review discipline</p>
-            <div class="pr-keywords"><strong>Keywords</strong> &#8212; postmortems &#183; review discipline &#183; shipping</div>
+    <div class="s">
+      <div class="run"><span>Typodeck Research · November 2026</span><span class="pg">p. 01</span></div>
+      <div class="main">
+        <div class="art">
+          <p class="kick">Research Article · Review Practice</p>
+          <h1 class="title" data-autofit="84">The Hidden Cost of Rushing to Ship</h1>
+          <div class="abs">
+            <p class="abs-lab">Abstract</p>
+            <p class="abs-txt">What 11 postmortems taught us about review discipline</p>
+            <p class="keys"><strong>Keywords</strong> — postmortems · review discipline · shipping</p>
           </div>
         </div>
-        <div class="pr-rail">
-          <div class="pr-fig">
-            <div class="pr-fig-label">Figure 1</div>
-            <div class="pr-fig-title">The eleven postmortems in the corpus</div>
-            <div class="pr-bars"><div class="pr-bar-row"><span class="pr-bar-cat">P-01</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:100%"></span></span></div>
-<div class="pr-bar-row"><span class="pr-bar-cat">P-02</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:100%"></span></span></div>
-<div class="pr-bar-row"><span class="pr-bar-cat">P-03</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:100%"></span></span></div>
-<div class="pr-bar-row"><span class="pr-bar-cat">P-04</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:100%"></span></span></div>
-<div class="pr-bar-row"><span class="pr-bar-cat">P-05</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:100%"></span></span></div>
-<div class="pr-bar-row"><span class="pr-bar-cat">P-06</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:100%"></span></span></div>
-<div class="pr-bar-row"><span class="pr-bar-cat">P-07</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:100%"></span></span></div>
-<div class="pr-bar-row"><span class="pr-bar-cat">P-08</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:100%"></span></span></div>
-<div class="pr-bar-row"><span class="pr-bar-cat">P-09</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:100%"></span></span></div>
-<div class="pr-bar-row"><span class="pr-bar-cat">P-10</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:100%"></span></span></div>
-<div class="pr-bar-row"><span class="pr-bar-cat">P-11</span><span class="pr-bar-track"><span class="pr-bar-fill" style="width:100%"></span></span></div></div>
-            <p class="pr-caption"><strong>Figure 1.</strong> Corpus index P-01 through P-11; one bar per postmortem.</p>
-          </div>
+        <div class="rail">
+          <p class="fig-lab">Figure 1</p>
+          <p class="fig-ttl">The eleven postmortems in the corpus</p>
+          <div class="idx"><span>P-01</span><span>P-02</span><span>P-03</span><span>P-04</span><span>P-05</span><span>P-06</span><span>P-07</span><span>P-08</span><span>P-09</span><span>P-10</span><span>P-11</span></div>
+          <p class="cap"><strong>Figure 1.</strong> Corpus index P-01 through P-11; one line per postmortem.</p>
         </div>
       </div>
-      <div class="pr-footnotes">
-        <span class="pr-fn"><sup>[1]</sup>Corpus: 11 postmortems of rushed releases.</span>
-        <span class="pr-fn"><sup>[2]</sup>Scope: review discipline only.</span>
+      <div class="fns">
+        <span><sup>[1]</sup>Corpus: 11 postmortems of rushed releases.</span>
+        <span><sup>[2]</sup>Scope: review discipline only.</span>
       </div>
     </div>
 </div></div>
@@ -113,21 +90,17 @@
   __typodeckFitStage();
 </script>
 <script>
-  (function () {
-    function fit() {
-      var t = document.getElementById('prTitle');
-      if (!t) return;
-      var box = t.parentElement;
-      var budget = (parseFloat(getComputedStyle(box).maxHeight) || 420) - 6;
-      var size = parseFloat(t.getAttribute('data-max')) || 86;
-      t.style.fontSize = size + 'px';
-      while (size > 40 && t.getBoundingClientRect().height > budget) { size -= 2; t.style.fontSize = size + 'px'; }
-    }
-    document.addEventListener('DOMContentLoaded', fit);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-    window.addEventListener('load', fit);
-    setTimeout(fit, 800); setTimeout(fit, 2000);
-  })();
+  function __prAutofit() {
+    document.querySelectorAll('[data-autofit]').forEach(function (el) {
+      var max = parseFloat(el.getAttribute('data-autofit'));
+      var size = max, min = Math.max(40, max * 0.45);
+      el.style.fontSize = size + 'px';
+      var guard = 60;
+      while (guard-- > 0 && size > min && el.scrollHeight > el.clientHeight + 2) { size -= 2; el.style.fontSize = size + 'px'; }
+    });
+  }
+  document.addEventListener('DOMContentLoaded', __prAutofit);
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(__prAutofit); }
 </script>
 </body>
 </html>

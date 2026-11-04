@@ -45,22 +45,21 @@
     <style>
       .sb { position: absolute; inset: 0; background: #F6F8FA; color: #0F172A;
         font-family: 'Inter', system-ui, sans-serif; display: flex; flex-direction: column; }
-      .sb-topbar { height: 64px; flex: 0 0 64px; background: #0F172A; color: #E2E8F0;
-        display: flex; align-items: center; padding: 0 72px; gap: 20px;
-        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; letter-spacing: 0.14em; }
-      .sb-live { width: 14px; height: 14px; border-radius: 50%; background: #16A34A; flex: 0 0 14px; }
+      .sb-topbar { flex: 0 0 auto; display: flex; align-items: center; padding: 26px 0 22px 0; gap: 20px;
+        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; letter-spacing: 0.14em;
+        border-bottom: 1px solid #CBD5E1; margin: 0 72px; }
+      .sb-live { color: #16A34A; font-size: 22px; }
       .sb-topbar .spacer { flex: 1; }
       .sb-topbar .dim { color: #94A3B8; }
-      .sb-topbar .amber { color: #FBBF24; }
+      .sb-topbar .amber { color: #B45309; font-weight: 600; }
       .sb-main { flex: 1; display: grid; grid-template-columns: repeat(12, 1fr);
-        gap: 12px; padding: 56px 72px 0 72px; min-height: 0; }
+        gap: 12px; padding: 48px 72px 0 72px; min-height: 0; }
       .sb-left { grid-column: 1 / 8; display: flex; flex-direction: column; min-width: 0; }
-      .sb-kicker { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-      .sb-pill { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px;
-        font-weight: 600; letter-spacing: 0.12em; padding: 10px 22px; border-radius: 999px;
-        text-transform: uppercase; }
-      .sb-pill.blue { background: #2563EB; color: #fff; }
-      .sb-pill.ghost { border: 2px solid #0F172A; color: #0F172A; }
+      .sb-kicker { display: flex; align-items: center; gap: 18px; margin-bottom: 28px;
+        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px;
+        font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+      .sb-kicker .kb { color: #2563EB; }
+      .sb-kicker .sep { color: #94A3B8; font-weight: 400; }
       .sb-title { margin: 0; font-weight: 800; font-size: 68px; line-height: 1.1;
         letter-spacing: -0.015em; color: #0F172A; font-variant-numeric: tabular-nums; }
       .sb-datarows { margin-top: 36px; padding: 0 0 34px 0; }
@@ -72,34 +71,28 @@
       .sb-row .v { margin-left: auto; font-weight: 600; color: #0F172A; text-align: right;
         font-variant-numeric: tabular-nums; text-transform: uppercase; }
       .sb-row .up { color: #16A34A; font-weight: 600; white-space: nowrap; }
-      .sb-right { grid-column: 8 / 13; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-      .sb-kpi { background: #fff; border: 1px solid #E2E8F0; border-top: 6px solid #2563EB;
-        padding: 30px 34px 28px 34px; display: flex; align-items: center; gap: 26px; }
-      .sb-kpi.green { border-top-color: #16A34A; }
+      .sb-right { grid-column: 8 / 13; display: flex; flex-direction: column; min-width: 0; }
+      .sb-kpi { padding: 6px 0 26px 0; display: flex; align-items: center; gap: 26px;
+        border-bottom: 1px solid #CBD5E1; }
       .sb-num { font-size: 92px; font-weight: 800; line-height: 1;
         font-variant-numeric: tabular-nums; color: #0F172A; }
       .sb-kpi-meta { display: flex; flex-direction: column; gap: 12px; }
       .sb-kpi-label { font-family: 'IBM Plex Mono', ui-monospace, monospace;
         font-size: 19px; letter-spacing: 0.1em; color: #475569; line-height: 1.5;
         text-transform: uppercase; }
-      .sb-status { align-self: flex-start; font-family: 'IBM Plex Mono', ui-monospace, monospace;
-        font-size: 17px; font-weight: 600; letter-spacing: 0.12em;
-        padding: 8px 18px; border-radius: 999px; color: #fff; }
-      .sb-status.ok { background: #16A34A; }
-      .sb-readout { background: #0F172A; color: #E2E8F0; padding: 30px 34px 28px 34px; flex: 1;
-        display: flex; flex-direction: column; }
+      .sb-status { font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 17px; font-weight: 600; letter-spacing: 0.12em; color: #0F172A; }
+      .sb-status .dot { color: #16A34A; }
+      .sb-readout { padding: 26px 0 0 0; flex: 1; display: flex; flex-direction: column; }
       .sb-readout h3 { margin: 0 0 16px 0; font-family: 'IBM Plex Mono', ui-monospace, monospace;
-        font-size: 18px; font-weight: 600; letter-spacing: 0.16em; color: #93C5FD; }
-      .sb-readout p { margin: 0; font-family: 'IBM Plex Mono', ui-monospace, monospace;
-        font-size: 26px; line-height: 1.6; color: #E2E8F0; }
+        font-size: 18px; font-weight: 600; letter-spacing: 0.16em; color: #2563EB; }
+      .sb-readout p { margin: 0; font-size: 31px; line-height: 1.5; color: #0F172A; font-weight: 600; }
       .sb-seal { margin-top: 28px; }
-      .sb-seal .track { height: 10px; background: #334155; }
-      .sb-seal .fill { height: 10px; width: 100%; background: #16A34A; }
-      .sb-seal .cap { margin-top: 10px; font-family: 'IBM Plex Mono', ui-monospace, monospace;
-        font-size: 16px; letter-spacing: 0.14em; color: #94A3B8; }
-      .sb-readout .src { margin-top: auto; padding-top: 24px;
+      .sb-seal .cap { font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 16px; letter-spacing: 0.14em; color: #64748B; }
+      .sb-readout .src { margin-top: auto; padding: 24px 0 34px 0;
         font-family: 'IBM Plex Mono', ui-monospace, monospace;
-        font-size: 17px; letter-spacing: 0.12em; color: #94A3B8;
+        font-size: 17px; letter-spacing: 0.12em; color: #64748B;
         text-transform: uppercase; }
       .sb-foot { flex: 0 0 60px; display: flex; align-items: center;
         font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 18px;
@@ -109,7 +102,7 @@
     </style>
     <div class="sb">
       <div class="sb-topbar">
-        <span class="sb-live"></span>
+        <span class="sb-live">●</span>
         <span>TYPODECK RESEARCH</span>
         <span class="dim">/</span>
         <span class="amber">POSTMORTEM SERIES</span>
@@ -120,8 +113,9 @@
       <div class="sb-main">
         <div class="sb-left">
           <div class="sb-kicker">
-            <span class="sb-pill blue">Finding 01</span>
-            <span class="sb-pill ghost">NOV 2026</span>
+            <span class="kb">Finding 01</span>
+            <span class="sep">/</span>
+            <span>NOV 2026</span>
           </div>
           <h1 class="sb-title">Teams that required a second reviewer before merge contained failures earlier.</h1>
           <div class="sb-datarows">
@@ -132,17 +126,17 @@
           </div>
         </div>
         <div class="sb-right">
-          <div class="sb-kpi green">
+          <div class="sb-kpi">
             <div class="sb-num">63%</div>
             <div class="sb-kpi-meta">
               <div class="sb-kpi-label">fewer sev-1 rollbacks</div>
-              <span class="sb-status ok">● LOGGED</span>
+              <span class="sb-status"><span class="dot">●</span> LOGGED</span>
             </div>
           </div>
           <div class="sb-readout">
             <h3>READOUT — PREDICTOR</h3>
             <p>Review depth predicted containment better than team size, tenure, or tooling.</p>
-            <div class="sb-seal"><div class="track"><div class="fill"></div></div><div class="cap">READOUT SEALED · FINDING 01</div></div>
+            <div class="sb-seal"><div class="cap">READOUT SEALED · FINDING 01</div></div>
             <div class="src">Source · Fixture data · not a real study</div>
           </div>
         </div>

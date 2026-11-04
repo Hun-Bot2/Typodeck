@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Field Manual
-description: A technical-manual presentation system on warm dotted-grid paper. Archivo Bold caps issue headers, IBM Plex Sans carries body, and IBM Plex Mono tags every step, figure, and note with a visible reference code. A 60/40 text-plus-figure split with dashed leader lines, bordered callout boxes, and caution-amber warning chips makes every slide read as one page of a larger controlled document.
+description: A technical-manual presentation system on warm paper. Archivo Bold caps issue headers, IBM Plex Sans carries body, and IBM Plex Mono tags every step, figure, and note with a visible reference code. A 60/40 text-plus-figure split with navy mono tags, text checkbox glyphs, and plain-type warning labels makes every slide read as one page of a larger controlled document. No borders, boxes, rules, leaders, chips, or dot grids — type and whitespace only.
 colors:
   paper: "#FAF8F3"
   ink: "#1A1A1A"
@@ -99,45 +99,52 @@ components:
     fontFamily: "'IBM Plex Mono', monospace"
     fontSize: 20px
     fontWeight: 500
-    description: "Three-part mono strip: document code left, procedure title center, date right. Closed by the double rule."
+    description: "Three-part mono strip: document code left, procedure title center, date right. Whitespace below opens the page."
   double-rule:
-    borderTop: "3px solid {colors.ink}"
-    borderBottom: "1px solid {colors.ink}"
-    gap: 8px
-    description: "Heavy 3px rule over a 1px rule with an 8px gap. Opens and closes the document frame."
+    status: retired
+    successor: "whitespace"
+    description: "RETIRED in the typography-only vocabulary: the 3px-over-1px rules are removed. The header opens the page with whitespace."
   warn-chip:
-    background: "{colors.caution-amber}"
-    color: "{colors.ink}"
-    padding: "12px 20px"
+    status: retired
+    successor: "warn-label"
+    description: "RETIRED as a filled chip in the typography-only vocabulary. Warnings set as plain mono caps ink labels with a leading warning glyph (no fill)."
+  warn-label:
     fontFamily: "'IBM Plex Mono', monospace"
     fontSize: 19px
-    description: "Amber filled warning chip with a leading warning glyph. The only filled element in the system."
+    color: "{colors.ink}"
+    description: "Plain mono caps ink warning label with a leading warning glyph. No fill, no border."
   step-row:
     numeralSize: 52px
-    border: "1px solid {colors.ink}"
-    description: "Numbered step: bordered 56px numeral square, uppercase Plex Sans label, dashed leader, mono section tag."
+    numeralColor: "{colors.procedural-blue}"
+    description: "Numbered step: plain navy mono numeral, uppercase Plex Sans label, mono section tag right. No squares, no leaders — whitespace gaps."
   leader-line:
-    borderBottom: "2px dashed {colors.muted}"
-    description: "Dashed leader stitching steps to tags and figures to notes. Always muted, always 2px dashes."
+    status: retired
+    successor: "whitespace"
+    description: "RETIRED in the typography-only vocabulary: dashed leaders are removed. Proximity and alignment stitch steps to tags."
   figure-box:
-    border: "1px solid {colors.ink}"
-    background: "{colors.box-fill}"
-    padding: "28px 32px"
-    description: "White bordered exhibit box with a mono figure tag header and check-row contents."
+    status: retired
+    successor: "figure-group"
+    description: "RETIRED as a bordered box in the typography-only vocabulary. Exhibits set as figure groups: navy mono tag over check rows."
+  figure-group:
+    fontFamily: "'IBM Plex Mono', monospace"
+    fontSize: 20px
+    description: "Exhibit group: navy mono figure tag over check-row contents, whitespace-separated."
   note-box:
-    border: "1px solid {colors.procedural-blue}"
-    background: "{colors.box-fill}"
-    padding: "24px 28px"
-    description: "Blue-bordered callout box: mono blue NOTE tag over a short Plex Sans finding."
+    status: retired
+    successor: "note-group"
+    description: "RETIRED as a bordered box in the typography-only vocabulary. Notes set as note groups: navy mono tag over a short finding."
+  note-group:
+    fontFamily: "'IBM Plex Sans', sans-serif"
+    fontSize: 23px
+    description: "Callout group: navy mono NOTE tag over a short Plex Sans finding, whitespace-separated."
   check-row:
     fontFamily: "'IBM Plex Mono', monospace"
     fontSize: 20px
-    description: "Exhibit checklist row: boxed glyph (done/open), mono label, dashed leader, mono item tag."
+    description: "Exhibit checklist row: text checkbox glyph (done navy / open deep-amber), mono label, mono item tag. No leaders."
   revision-footer:
-    borderTop: "1px solid {colors.ink}"
     fontFamily: "'IBM Plex Mono', monospace"
     fontSize: 19px
-    description: "Ruled footer: document code left, page right, mono uppercase."
+    description: "Footer pairing: document code left, page right, mono uppercase, no rule."
 ---
 
 ## Frontend Slides Fixed-Stage Policy
@@ -153,51 +160,50 @@ Use `deck-stage.js` or an equivalent inline stage scaler for final output: rende
 
 ## Overview
 
-Field Manual is a **technical-manual presentation system**. Its foundational premise is the **numbered artifact**: every step, figure, note, and warning carries a visible reference code (`01`, `FIG. 01`, `NOTE 01`, `§2.1`), so each slide reads as one page of a larger controlled document rather than a standalone canvas. The frame is a document: doc-header strip, double rule, ruled sections, revision footer.
+Field Manual is a **technical-manual presentation system**. Its foundational premise is the **numbered artifact**: every step, figure, note, and warning carries a visible reference code (`01`, `FIG. 01`, `NOTE 01`, `§2.1`), so each slide reads as one page of a larger controlled document rather than a standalone canvas. The page is a document: doc-header strip, whitespace-opened sections, revision footer pairing.
 
 The type stack is three faces with procedural roles. **Archivo Bold caps** issues orders — titles, section heads, and step-adjacent heads, always uppercase, always left-aligned. **IBM Plex Sans** explains — body, subtitles, note findings, and step labels in sentence or uppercase depending on the component. **IBM Plex Mono** tags — document codes, figure tags, section references, check rows, chips, and footer. The mono voice is the system's paperwork: if it looks stamped, filed, or referenced, it is Plex Mono.
 
-The palette is **warm paper and ink** with two functional accents. **Procedural navy** (`{colors.procedural-blue}`) marks notes, figure tags, and informational chrome — a deep filing-cabinet navy that stays distinct from ink at 1px borders and 19px tags without ever reading electric. **Caution amber** fills warning chips — the only filled elements anywhere. Navy never fills large areas; amber never appears outside chips and open-checkbox glyphs. Muted taupe grays secondary text and dashed leaders.
+The palette is **warm paper and ink** with two functional accents. **Procedural navy** (`{colors.procedural-blue}` — locked `#182B49`, never royal) marks notes, figure tags, step numerals, and informational type — a deep filing-cabinet navy that stays distinct from ink at 19px tags without ever reading electric. **Caution amber** survives only as the open-checkbox text glyph in deep-amber; amber fills are retired. Navy never fills large areas; amber never appears outside open-checkbox glyphs. Muted taupe grays secondary text and item tags.
 
-Layout follows a **60/40 split**: ruled text with numbered steps on the left, a bordered figure column with exhibits and callout boxes on the right, stitched together with dashed leader lines. The ground is dotted-grid paper — fine 1px dots on a 24px grid at 14% ink — giving every surface the feel of engineering paper.
+Layout follows a **60/40 split**: numbered steps on the left, a figure column with exhibit groups and note groups on the right, stitched together by alignment and proximity. The ground is solid warm paper — flat, unprinted.
 
-**Density philosophy: dense but ruled.** These slides carry more elements than an editorial system allows — header, title, steps, figure, note, footer — but every element sits inside a ruled section with a visible tag, so density reads as thoroughness rather than clutter. When content grows, the title steps down (92 → 64 → 44px) and steps compress; the figure column keeps exactly one exhibit plus one note.
+**Density philosophy: dense but tagged.** These slides carry more elements than an editorial system allows — header, title, steps, figure, note, footer — but every element carries a visible tag with whitespace around it, so density reads as thoroughness rather than clutter. When content grows, the title steps down (92 → 64 → 44px) and steps compress; the figure column keeps exactly one exhibit plus one note.
 
 **Key Characteristics:**
-- Doc header strip with mono document code, centered procedure title, and date — closed by a 3px + 1px double rule.
-- Numbered steps with bordered numeral squares, dashed leader lines, and mono section tags (`§2.1`).
-- Bordered figure boxes (`FIG. 01`) with check-row exhibits and dashed leaders to callout notes.
-- Blue-bordered `NOTE` callout boxes pairing a mono tag with a short Plex Sans finding.
-- Caution-amber warning chips — the only filled elements in the system.
-- Fine dotted-grid paper ground with an 8px baseline and ruled sections throughout.
+- Doc header strip with mono document code, centered procedure title, and date — opened by whitespace.
+- Numbered steps with plain navy mono numerals and mono section tags (`§2.1`), whitespace-gapped.
+- Figure groups (`FIG. 01`) with check-row exhibits stitched to notes by proximity.
+- `NOTE` callout groups pairing a navy mono tag with a short Plex Sans finding.
+- Plain-type warning labels with a leading `⚠` — no fills anywhere in the system.
+- Solid warm-paper ground with an 8px baseline and tagged sections throughout.
 - Three-face discipline: Archivo caps issue, Plex Sans explain, Plex Mono tag.
-- Zero shadows, zero gradients, zero border-radius; boxes are 1px borders on white or paper.
+- Zero boxes, zero borders, zero rules, zero leaders, zero shadows, zero gradients, zero border-radius.
 
 ## Colors
 
 ### Palette
 
-- **Paper** (`{colors.paper}` — `#FAF8F3`): The warm ground, always carrying the dotted grid. Reads as aged but clean stock.
-- **Ink** (`{colors.ink}` — `#1A1A1A`): All type, rules, borders, and numeral squares. Warm near-black.
-- **Procedural Navy** (`{colors.procedural-blue}` — `#182B49`): Note boxes, figure tags, informational markers, checked-box glyphs. A deep sophisticated navy (13.4:1 on paper, 14.2:1 on box-white); never large fills, never body text.
-- **Caution Amber** (`{colors.caution-amber}` — `#FFB000`): Warning-chip fills and open-checkbox glyphs only. The system's alert color.
-- **Muted** (`{colors.muted}` — `#6E6A5E`): Secondary text, dashed leaders, and caption lines. Warm gray-taupe.
-- **Dot Grid** (`{colors.dot-grid}` — `rgba(26,26,26,0.14)`): 1px dots on a 24px grid over the paper.
-- **Box Fill** (`{colors.box-fill}` — `#FFFFFF`): Figure and note box interiors — white cards pinned on the paper.
+- **Paper** (`{colors.paper}` — `#FAF8F3`): The warm ground, solid and unprinted. Reads as aged but clean stock.
+- **Ink** (`{colors.ink}` — `#1A1A1A`): All type. Warm near-black.
+- **Procedural Navy** (`{colors.procedural-blue}` — `#182B49`): Note groups, figure tags, step numerals, informational markers, checked-box glyphs. A deep sophisticated navy (13.4:1 on paper); never large fills, never body text. Locked — never regress to royal blue.
+- **Caution Amber** (`{colors.caution-amber}` — `#FFB000`): Retained palette token; fills retired. Open-checkbox glyphs set in deep-amber text. The system's alert color.
+- **Muted** (`{colors.muted}` — `#6E6A5E`): Secondary text, item tags, and caption lines. Warm gray-taupe.
+- **Dot Grid** (`{colors.dot-grid}` — `rgba(26,26,26,0.14)`): Retained token; the printed dot texture is retired — the ground is solid paper.
+- **Box Fill** (`{colors.box-fill}` — `#FFFFFF`): Retained token; box interiors retired — no white cards in the typography-only vocabulary.
 
 ### Defaults
 
-- **Default surface background**: `{colors.paper}` with the dotted grid. Figure and note boxes punch white over it.
+- **Default surface background**: `{colors.paper}`, flat and unprinted.
 - **Default headline color**: `{colors.ink}`, always caps, always Archivo 700.
 - **Default body text color**: `{colors.ink}`; secondary lines in `{colors.muted}`.
-- **Default tag color**: `{colors.ink}` for structural tags; `{colors.procedural-blue}` for note/figure tags.
-- **Default chip treatment**: `{colors.caution-amber}` fill with ink mono text and a leading `⚠` glyph.
-- **Default box borders**: 1px ink for figures and steps; 1px blue for notes.
-- **Default leader lines**: 2px dashed `{colors.muted}`.
+- **Default tag color**: `{colors.ink}` for structural tags; `{colors.procedural-blue}` for note/figure tags and step numerals.
+- **Default warning treatment**: plain mono caps ink label with a leading `⚠` glyph (`{components.warn-label}`). No fills.
+- **Default separation**: whitespace and alignment only — no boxes, no leaders, no rules.
 
 ### Pastel & Tint Policy
 
-This system carries no pastel tints: paper and box-fill are near-whites that always take ink or navy text, and amber is a saturated fill that always takes ink text. If a tint is ever introduced, it must carry a deliberate contrast role (ground for dark text, or fill behind dark text) — never pastel-on-pale text, never tint-on-tint type. See `evals/typo-only/color.md` for the shared rule and measurements.
+This system carries no pastel tints and no fills: paper is a near-white that always takes ink or navy text, and amber survives only as open-checkbox text glyphs. If a tint is ever introduced, it must carry a deliberate contrast role (ground for dark text, or fill behind dark text) — never pastel-on-pale text, never tint-on-tint type. See `evals/typo-only/color.md` for the shared rule and measurements.
 
 ## Typography
 
@@ -209,7 +215,7 @@ The system runs three faces, each locked to its role.
 
 **IBM Plex Sans** is the explanation face — Regular (400) for body and subtitles, Medium (500) uppercase for step labels. It carries every sentence-length run in the system.
 
-**IBM Plex Mono** is the paperwork face — Medium (500) for tags, codes, chips, check rows, and footer; Regular (400) for section references. If an element looks stamped, filed, or cross-referenced, it is Plex Mono.
+**IBM Plex Mono** is the paperwork face — Medium (500) for tags, codes, warnings, check rows, and footer; Regular (400) for section references. If an element looks stamped, filed, or cross-referenced, it is Plex Mono.
 
 Never use Archivo for body, never use Plex Sans for reference codes, never use Plex Mono for headlines. The command/explain/tag split is the typographic structure.
 
@@ -226,7 +232,7 @@ Never use Archivo for body, never use Plex Sans for reference codes, never use P
 | `{typography.body-compact}` | 23px | Plex Sans | 400 | Standard body and note findings |
 | `{typography.callout}` | 20px | Plex Mono | 500 | Check rows and mono callouts |
 | `{typography.figure-tag}` | 19px | Plex Mono | 500 | Figure/note tags, tracked caps |
-| `{typography.warn-chip}` | 19px | Plex Mono | 500 | Warning chip text |
+| `{typography.warn-chip}` | 19px | Plex Mono | 500 | Warning label text (plain type, no fill) |
 | `{typography.section-tag}` | 19px | Plex Mono | 400 | Section references (`§2.1`, `A-3`) |
 
 ### Signature Treatments
@@ -234,18 +240,18 @@ Never use Archivo for body, never use Plex Sans for reference codes, never use P
 These treatments are **non-optional whenever the corresponding element type is used**:
 
 - **Every Archivo header is uppercase.** Sentence-case Archivo does not exist in this system.
-- **Every step carries a bordered 52px numeral square**, a dashed leader, and a mono section tag. A step without its tag reads as an unordered bullet and breaks the procedural voice.
-- **Every figure box opens with a tracked mono tag** (`FIG. 01 — …`) with a blue square bullet. Untagged boxes read as generic cards.
-- **Every note box pairs a blue mono tag** (`NOTE 01`) with a short Plex Sans finding. Tag without finding (or reverse) is incomplete.
-- **Every warning chip is amber-filled with a leading `⚠` glyph** in mono caps. Outline-only or chipless warnings do not exist.
-- **Every check row carries a boxed glyph** (`☑` blue for done, `☐` amber-ink for open) plus a dashed leader and item tag.
-- **Every doc header closes with the double rule** (3px over 1px, 8px gap). Single rules never frame the document.
+- **Every step carries a plain navy mono numeral** and a mono section tag, whitespace-gapped. A step without its tag reads as an unordered bullet and breaks the procedural voice.
+- **Every figure group opens with a tracked navy mono tag** (`FIG. 01 — …`). Untagged groups read as generic text.
+- **Every note group pairs a navy mono tag** (`NOTE 01`) with a short Plex Sans finding. Tag without finding (or reverse) is incomplete.
+- **Every warning is a plain mono caps ink label with a leading `⚠` glyph**. Filled or boxed warnings do not exist.
+- **Every check row carries a text checkbox glyph** (`☑` navy for done, `☐` deep-amber for open) plus an item tag. No leaders.
+- **Every doc header opens the page with whitespace below.** Rules never frame the document.
 
 ### Typography Principles
 
-The voice contrast is **command ↔ explanation ↔ paperwork**. Archivo orders, Plex Sans clarifies, Plex Mono files. Italic is never used — emphasis comes from chips, boxes, and tags, never slant.
+The voice contrast is **command ↔ explanation ↔ paperwork**. Archivo orders, Plex Sans clarifies, Plex Mono files. Italic is never used — emphasis comes from tags, scale, and warnings, never slant.
 
-Headers should always feel **issued** — caps, left-aligned, followed by ruled content. Body should feel **legible under lamplight** — generous line-height (≥1.5), sentence case, no letterspacing. Mono should feel **stamped** — tracked caps for tags, plain for references.
+Headers should always feel **issued** — caps, left-aligned, followed by tagged content. Body should feel **legible under lamplight** — generous line-height (≥1.5), sentence case, no letterspacing. Mono should feel **stamped** — tracked caps for tags, plain for references.
 
 ### Defaults
 
@@ -259,107 +265,98 @@ Headers should always feel **issued** — caps, left-aligned, followed by ruled 
 
 ### Canvas System
 
-The system targets a fixed **1920×1080 stage**. A document frame insets 32px from the stage edge with a 2px ink border; inside the frame, 56px padding holds the content. The doc-header strip sits at the top of the frame, the revision footer at the bottom, and the 60/40 split fills the middle with a 48px gutter.
+The system targets a fixed **1920×1080 stage**. A document page insets 32px from the stage edge; inside, 56px padding holds the content. The doc-header strip sits at the top of the page, the revision footer pairing at the bottom, and the 60/40 split fills the middle with a 48px gutter.
 
-The 8px baseline governs vertical rhythm: header heights, step rows, box padding, and chip heights all resolve to multiples of 8. The dotted grid (24px) is the visible manifestation of this discipline.
+The 8px baseline governs vertical rhythm: header heights, step rows, and group gaps all resolve to multiples of 8.
 
 ### Persistent Chrome
 
 Three elements appear on every slide:
 
-- **Document frame** — 2px ink border at 32px inset, with the doc-header strip and double rule at top.
-- **Figure column** — the right 40%: exactly one bordered exhibit plus one note box, stitched with a dashed leader.
-- **Revision footer** — `{components.revision-footer}`: 1px rule, document code left, page right.
+- **Page inset** — 32px inset with 56px inner padding, doc-header strip at top.
+- **Figure column** — the right 40%: exactly one exhibit group plus one note group, stitched by proximity.
+- **Revision footer** — `{components.revision-footer}`: document code left, page right, no rule.
 
-The dotted-grid paper ground prints on every surface.
+The solid warm-paper ground fills every surface.
 
 ### Procedural Rhythm
 
-The left column reads top-down as a procedure: chip → title → subtitle → steps → source line. The right column reads as evidence: figure → leader → note. Leaders always run from the structural element toward its tag — left-to-right in steps, top-to-bottom between figure and note.
+The left column reads top-down as a procedure: warning → title → subtitle → steps → source line. The right column reads as evidence: figure group → note group. Alignment stitches elements to their tags — steps left-align with tags right, groups stack tag-over-content.
 
 ## Depth and Elevation
 
 ### Flat Paper by Doctrine
 
-Field Manual has **no depth system**. There are no shadows, no gradients, no translucency. Hierarchy comes from borders (2px frame, 1px boxes), rules (3px/1px), fills (white boxes on paper, amber chips), and the tag system.
+Field Manual has **no depth system**. There are no shadows, no gradients, no translucency, no boxes, no rules, no fills. Hierarchy comes from the tag system, scale, weight, navy accents, and whitespace.
 
-### Boxes as Elevation
+### Type as Elevation
 
-- **White figure/note boxes** (`{components.figure-box}`, `{components.note-box}`) punch forward from the dotted paper by fill contrast alone — no shadow, just a 1px border and white fill.
-- **Amber chips** (`{components.warn-chip}`) are the highest-emphasis elements: the only fills outside white boxes.
-- **Numeral squares** are 1px-bordered, paper-filled, 56px — they read as stamped, not raised.
+- **Figure/note groups** (`{components.figure-group}`, `{components.note-group}`) advance by navy tags and whitespace — no borders, no fills.
+- **Warning labels** (`{components.warn-label}`) are the highest-emphasis elements: plain mono caps ink with a leading `⚠`.
+- **Step numerals** are plain navy mono — they read as stamped, not raised.
 
-### Paper Texture as Depth
+### Paper Ground
 
-The dotted grid gives the ground a material quality that flat color cannot. Boxes feel pinned to engineering paper because the dots stop at the box edge (boxes are opaque white). Never set boxes translucent.
+The solid warm paper is the only ground. Groups sit directly on it, separated by whitespace. Never add texture, fills, or panels.
 
 ## Shapes and Treatment
 
 ### Border Radius
 
-Zero everywhere. Frames, boxes, chips, numeral squares, and checkboxes are all square. A rounded corner reads as consumer product, not controlled document.
+Zero everywhere, trivially — there are no boxes, borders, chips, or squares to round. A rounded corner reads as consumer product, not controlled document.
 
 ### Border Weights
 
-- **3px solid** — the heavy rule in the double-rule frame treatment only.
-- **2px solid** — the outer document frame border.
-- **1px solid** — figure boxes, note boxes, numeral squares, table rules, footer rule. The system's workhorse weight.
-- **2px dashed** — leader lines in muted taupe. The only dashed element; never used for box borders.
-
-Borders are always solid ink or blue (boxes), except leaders which are always dashed muted.
+No borders exist in this system. The retired weights (3px/2px/1px rules, 1px box borders, 2px dashed leaders) are documented for history only: every separation they performed is now whitespace, tags, and alignment.
 
 ### Decorative Element Types
 
-**Doc header** — Three-part mono strip (code / procedure / date) closed by the double rule. Opens every slide identically.
+**Doc header** — Three-part mono strip (code / procedure / date) with whitespace below. Opens every slide identically.
 
-**Double rule** — 3px rule over 1px rule with an 8px gap. Frames the document top (and optionally bottom).
+**Warning label** — Plain mono caps ink label with a leading `⚠`. Used for cautions and pre-ship alerts.
 
-**Warning chip** — Amber-filled mono caps chip with a leading `⚠`. Used for cautions and pre-ship alerts.
+**Step row** — Navy mono numeral + uppercase label + section tag, whitespace-gapped. The procedural workhorse.
 
-**Step row** — Bordered numeral square + uppercase label + dashed leader + section tag. The procedural workhorse.
+**Figure group** — Navy mono figure tag over check-row contents.
 
-**Leader line** — 2px dashed muted stitching between elements and their tags.
+**Check row** — Text checkbox glyph + mono label + item tag. Qualitative exhibits, never fabricated numbers.
 
-**Figure box** — White 1px-bordered exhibit with a mono figure tag and check-row contents.
+**Note group** — Navy mono tag over a short finding.
 
-**Check row** — Boxed glyph + mono label + dashed leader + item tag. Qualitative exhibits, never fabricated numbers.
+**Approval strip** — Mono block under the source line: prepared-by, date, sign-off. Closes the text column on cover slides.
 
-**Note box** — Blue 1px-bordered callout with a mono blue tag and a short finding.
+**Revision footer** — Mono document code and pagination pairing, no rule.
 
-**Approval strip** — Ruled mono block under the source line: prepared-by, date, and a dashed sign-off line. Closes the text column on cover slides.
-
-**Revision footer** — 1px rule with mono document code and pagination.
-
-**Ruled table** — On data slides: mono tracked header row, 1px ink top rule, dashed row dividers, mono reference column.
+**Mono ledger** — On data slides: mono tracked header row over aligned columns with a mono reference column. No rules, no dividers.
 
 ## Do's and Don'ts
 
 ### Do
 
 - Number everything: steps, figures, notes, checks, and pages all carry visible reference codes.
-- Keep the doc header + double rule + revision footer on every slide. The frame is the identity.
+- Keep the doc header + revision footer on every slide. The page and its tags are the identity.
 - Use Archivo caps for every header; Plex Sans for every sentence; Plex Mono for every tag.
-- Stitch steps to tags and figures to notes with 2px dashed muted leaders.
-- Fill warning chips amber — and fill nothing else except white boxes.
-- Pin every warning chip flush to the note or figure it warns about — a chip pointing at empty paper ships confusion.
+- Stitch steps to tags and figures to notes with alignment and proximity — never leaders.
+- Set warnings as plain mono caps ink labels with `⚠` — and fill nothing, ever.
+- Pin every warning flush to the note or figure it warns about — a warning pointing at empty paper ships confusion.
 - Keep exhibits qualitative (check rows, gap lists) unless the data is genuinely sourced.
-- Punch figure/note boxes white over the dotted paper; keep boxes opaque.
+- Set figure/note groups directly on the paper with whitespace around; never box them.
 - Step the title down (92 → 64 → 44px) as titles lengthen past ~45 characters.
-- Tag figures and notes with blue mono tags and square blue bullets.
-- Let the dotted grid show through every paper region — never cover the ground fully.
+- Tag figures, notes, and steps with navy (`#182B49`) mono tags — never royal, never bullets.
+- Keep the ground solid warm paper — never texture, never fills, never panels.
 
 ### Don't
 
 - Don't use sentence-case Archivo or caps Plex Sans body. Each face keeps its case discipline.
-- Don't add shadows, gradients, or rounded corners anywhere.
-- Don't use blue for body text or large fills. Blue is a tag and border color.
-- Don't use amber outside warning chips and open-checkbox glyphs.
+- Don't add boxes, borders, rules, leaders, fills, shadows, gradients, or rounded corners anywhere.
+- Don't use navy for body text or large fills. Navy is a tag, numeral, and marker color — and never royal `#0B5FFF`.
+- Don't use amber outside open-checkbox text glyphs. Amber fills do not exist.
 - Don't fabricate chart data. If numbers are not sourced, use check-row exhibits instead of bars.
 - Don't remove the figure column to "make room." Compress steps instead.
-- Don't use solid leaders or dotted leaders — leaders are always 2px dashed muted.
-- Don't use italic for emphasis — use chips, boxes, and tags.
-- Don't set boxes translucent. White boxes are opaque by doctrine.
-- Don't center headers or body. Left-aligned, ruled, tagged — always.
+- Don't use leaders of any dash, dot, or weight — stitching is alignment and proximity.
+- Don't use italic for emphasis — use warning labels, scale, and tags.
+- Don't add panels, cards, or textures. Type on solid paper only.
+- Don't center headers or body. Left-aligned, tagged — always.
 
 ## Responsive Behavior
 
@@ -367,8 +364,8 @@ Field Manual is a **fixed-stage system** built for 1920×1080 output. All sizes 
 
 ### Scaling Behavior
 
-- The 32px frame inset, 2px frame border, and 56px inner padding are fixed at 1920×1080 and scale with the stage transform.
-- The 60/40 split and 48px gutter are fixed proportions of the frame interior.
+- The 32px page inset and 56px inner padding are fixed at 1920×1080 and scale with the stage transform.
+- The 60/40 split and 48px gutter are fixed proportions of the page interior.
 - Title sizes step by content length (92 → 64 → 44px), not by viewport.
 
 ### Component Breakpoints
@@ -387,7 +384,7 @@ None. This system has no animation: no entry transitions, no reveals, no check-d
 
 ### Print Behavior
 
-The system prints 1:1 — paper ground (light enough for laser), ink type, blue notes, amber chips. The dotted grid prints cleanly. For static export, screenshots preserve frame, boxes, and leaders exactly.
+The system prints 1:1 — paper ground (light enough for laser), ink type, navy tags. For static export, screenshots preserve tags, glyphs, and groups exactly.
 
 ## CJK & International Content
 
@@ -399,11 +396,11 @@ When using this system for Korean (or other CJK) content, swap the Latin stack f
 |---|---|---|
 | Headers / step labels | Archivo 700 (caps) | Noto Sans KR 800 (no transform, no tracking) |
 | Body / findings | IBM Plex Sans 400–500 | Noto Sans KR 400–500 |
-| Tags / codes / chips / checks | IBM Plex Mono 400–500 | Noto Sans KR 500 with mono-styled Latin kept in Plex Mono for codes |
+| Tags / codes / warnings / checks | IBM Plex Mono 400–500 | Noto Sans KR 500 with mono-styled Latin kept in Plex Mono for codes |
 
 ### Mixed-Content Strategy
 
-**Strategy B** — split pairing. CJK prose (titles, body, findings) renders in Noto Sans KR; reference codes that are Latin-only (`FM-11`, `§2.1`, `FIG. 01`, `NOTE 01`, `A-3`) stay in IBM Plex Mono to preserve the stamped paperwork voice. Mixed lines keep an ASCII space between CJK and Latin runs. Hierarchy survives through weight plus the frame/box/chip system, which translates unchanged.
+**Strategy B** — split pairing. CJK prose (titles, body, findings) renders in Noto Sans KR; reference codes that are Latin-only (`FM-11`, `§2.1`, `FIG. 01`, `NOTE 01`, `A-3`) stay in IBM Plex Mono to preserve the stamped paperwork voice. Mixed lines keep an ASCII space between CJK and Latin runs. Hierarchy survives through weight plus the tag/group system, which translates unchanged.
 
 ### Loading
 
@@ -427,22 +424,22 @@ Add to the slide `<head>`:
 
 ### Aesthetic Notes for This System
 
-The frame carries the CJK build. Reference codes (`FM-11`, `FIG. 01`, `§2.1`) stay in Plex Mono — they are locale-neutral paperwork — while prose moves to Noto Sans KR. The double rule, dotted paper, boxes, leaders, and amber chips translate 1:1 and do more identity work in CJK builds than in Latin ones.
+The tag system carries the CJK build. Reference codes (`FM-11`, `FIG. 01`, `§2.1`) stay in Plex Mono — they are locale-neutral paperwork — while prose moves to Noto Sans KR. The tags, checkbox glyphs, and warning labels translate 1:1 and do more identity work in CJK builds than in Latin ones.
 
 ### Known CJK Gap
 
 - **No Korean mono face with the Plex Mono paperwork voice.** Noto Sans KR 500 stands in for mono-styled Korean; only Latin codes keep true monospaced rhythm. Korean tags lose the typewriter-stamp signal.
-- **Command voice softens.** Archivo caps have no Korean equivalent; Noto Sans KR 800 headers without caps or tracking feel informative rather than issued. The frame and chips must carry the authority.
+- **Command voice softens.** Archivo caps have no Korean equivalent; Noto Sans KR 800 headers without caps or tracking feel informative rather than issued. The tags and warning labels must carry the authority.
 
 ## Iteration Guide
 
-1. Any new slide keeps the document frame, doc header + double rule, figure column, and revision footer. Don't skip the paperwork.
+1. Any new slide keeps the page inset, doc header, figure column, and revision footer. Don't skip the paperwork.
 2. Any new header uses Archivo 700 caps. Any new sentence uses Plex Sans. Any new code, tag, or check uses Plex Mono.
-3. Any new step gets a bordered numeral square, a dashed leader, and a section tag — all three, no exceptions.
-4. Any new exhibit goes in a bordered figure box with a mono figure tag; stitch it to its note with a dashed leader.
-5. Any new note is a blue-bordered box with a blue mono tag and a one-to-two-sentence Plex Sans finding.
-6. Any new warning is an amber chip with a leading `⚠` — never an outline, never plain text.
-7. Any new measurement snaps to the 8px baseline. Dots are 24px; boxes pad at 24/28/32px.
+3. Any new step gets a navy mono numeral, an uppercase label, and a section tag — all three, whitespace-gapped, no exceptions.
+4. Any new exhibit is a figure group with a navy mono figure tag; stitch it to its note by proximity.
+5. Any new note is a note group with a navy mono tag and a one-to-two-sentence Plex Sans finding.
+6. Any new warning is a plain mono caps ink label with a leading `⚠` — never a fill, never a box.
+7. Any new measurement snaps to the 8px baseline. Groups gap at 24/32px.
 8. If numbers are not genuinely sourced, exhibit with check rows, not bars or charts. Never fabricate data.
 9. If a title exceeds ~45 characters, step it to 64px; past ~80, to 44px. Never compress below that — shorten the title.
 10. New slides are static pages with no animation. Keep it that way.
@@ -450,11 +447,11 @@ The frame carries the CJK build. Reference codes (`FM-11`, `FIG. 01`, `§2.1`) s
 ## Known Gaps
 
 - **Fonts**: Archivo / IBM Plex Sans / IBM Plex Mono via Google Fonts CDN (`display=swap`); fallbacks `"Arial Black", sans-serif` / `system-ui, sans-serif` / `ui-monospace, monospace`. No font files committed. Offline rendering falls back to system stacks and loses the command/paperwork contrast.
-- **No chart system.** Bars, lines, and pies are unspecified by doctrine (no fabricated data); authors needing quantitative exhibits must source numbers first, then render minimal ink rules with mono labels.
+- **No chart system.** Bars, lines, and pies are unspecified by doctrine (no fabricated data); authors needing quantitative exhibits must source numbers first, then render minimal mono ledgers with reference tags.
 - **No image treatment specified.** Photography and illustration are out of scope; exhibits are check rows and gap lists.
 - **Figure column fits one exhibit plus one note.** Longer evidence must move to dedicated content slides.
 - **Reference codes are manual.** `FIG. 01`, `NOTE 01`, `§2.1`, and pagination are hand-set per slide; there is no auto-numbering layer.
-- **The dotted grid is cosmetic CSS.** It aligns with content by shared constants, not layout coupling — editing frame padding without checking the grid phase breaks the paper illusion silently.
+- **Dot grid retired (typography-only rebuild).** The ground is solid paper; the old grid-phase coupling gap is gone with the texture.
 
 ### PPTX Fidelity Disclosure
 
@@ -465,7 +462,7 @@ The frame carries the CJK build. Reference codes (`FM-11`, `FIG. 01`, `§2.1`) s
 | 3 | Animation / keyframes | Not used — static pages only | full | N/A |
 | 4 | Pixel / hard offset shadows | Not used — zero shadows by doctrine | full | N/A |
 | 5 | Gradients | Not used | full | N/A |
-| 6 | Grain / scanline / noise overlays | Dotted grid via `radial-gradient` dots | partial | Flatten dots into the background fill pattern |
-| 7 | Transparency layers | Dot grid at 14% ink | partial | Solid #E4E0D6 dots in background pattern |
+| 6 | Grain / scanline / noise overlays | Not used (dot grid retired) | full | N/A |
+| 7 | Transparency layers | Not used | full | N/A |
 | 8 | Custom fonts | Archivo / Plex Sans / Plex Mono via Google Fonts CDN | partial | Embed licensed equivalents or substitute Arial / Calibri / Consolas |
-| 9 | Absolute-positioned decor | Frame border, boxes, chips, leaders as positioned blocks | full | Grouped native rectangles and lines |
+| 9 | Absolute-positioned decor | Retired — tags, glyphs, and groups are plain text boxes | full | Native text boxes |

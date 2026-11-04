@@ -10,20 +10,9 @@
 <style>
   #deck-stage .d-slide {
     position: absolute; inset: 0; overflow: hidden;
-    background-color: #0F3D7A;
-    background-image:
-      radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0) 55%, rgba(4,18,38,.35) 100%),
-      linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px),
-      linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
-    background-size: auto, 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+    background: #0F3D7A;
     font-family: "IBM Plex Sans", system-ui, sans-serif;
     color: #FFFFFF;
-  }
-  #deck-stage .d-frame {
-    position: absolute; left: 40px; top: 40px; right: 40px; bottom: 40px;
-    border: 3px solid #FFFFFF;
   }
   #deck-stage .d-cross {
     position: absolute; font-family: "IBM Plex Mono", ui-monospace, monospace;
@@ -35,26 +24,12 @@
     font-family: "IBM Plex Mono", ui-monospace, monospace;
     font-size: 22px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: #7FB3E8;
   }
-  #deck-stage .d-head .d-sq {
-    display: inline-block; width: 16px; height: 16px; background: #FFD166;
-    margin-right: 14px; vertical-align: -1px;
-  }
   #deck-stage .d-head .d-rev { color: #FFD166; }
-  #deck-stage .d-dimh { position: absolute; left: 120px; right: 200px; top: 208px; height: 30px; }
-  #deck-stage .d-dimh .d-line {
-    position: absolute; left: 0; right: 0; top: 14px; height: 2px; background: #FFFFFF;
-  }
-  #deck-stage .d-dimh .d-line::before, #deck-stage .d-dimh .d-line::after {
-    content: ""; position: absolute; top: -8px; width: 2px; height: 18px; background: #FFFFFF;
-  }
-  #deck-stage .d-dimh .d-line::before { left: 0; }
-  #deck-stage .d-dimh .d-line::after { right: 0; }
-  #deck-stage .d-dimh .d-tag {
-    position: absolute; left: 50%; top: 0; transform: translateX(-50%);
-    background: #0F3D7A; padding: 2px 18px;
+  #deck-stage .d-dimh {
+    position: absolute; left: 120px; right: 200px; top: 208px;
+    text-align: center;
     font-family: "IBM Plex Mono", ui-monospace, monospace;
-    font-size: 20px; letter-spacing: .12em; color: #FFFFFF;
-    border: 2px solid #FFFFFF;
+    font-size: 20px; letter-spacing: .12em; color: #FFD166;
   }
   #deck-stage .d-title {
     position: absolute; left: 120px; right: 200px; top: 248px;
@@ -63,7 +38,6 @@
     text-transform: uppercase; letter-spacing: .01em;
     color: #FFFFFF; margin: 0;
   }
-  #deck-stage .d-rule { position: absolute; left: 124px; top: 470px; width: 150px; height: 6px; background: #FFD166; }
   #deck-stage .d-stat {
     position: absolute; left: 120px; top: 500px;
     font-family: "Barlow Condensed", "Arial Black", sans-serif;
@@ -84,30 +58,20 @@
     position: absolute; right: 208px; top: 620px;
     font-family: "IBM Plex Mono", ui-monospace, monospace;
     font-size: 21px; font-weight: 500; letter-spacing: .22em; color: #FFD166;
-    border: 3px solid #FFD166; padding: 12px 22px 12px 26px;
     transform: rotate(-6deg);
     white-space: nowrap;
   }
   #deck-stage .d-dimv { position: absolute; right: 96px; top: 248px; bottom: 300px; width: 30px; }
-  #deck-stage .d-dimv .d-vline {
-    position: absolute; top: 0; bottom: 0; left: 14px; width: 2px; background: #FFFFFF;
-  }
-  #deck-stage .d-dimv .d-vline::before, #deck-stage .d-dimv .d-vline::after {
-    content: ""; position: absolute; left: -8px; width: 18px; height: 2px; background: #FFFFFF;
-  }
-  #deck-stage .d-dimv .d-vline::before { top: 0; }
-  #deck-stage .d-dimv .d-vline::after { bottom: 0; }
   #deck-stage .d-dimv .d-vtag {
     position: absolute; left: 50%; top: 50%;
     transform: translate(-50%,-50%) rotate(-90deg);
-    background: #0F3D7A; padding: 2px 18px; white-space: nowrap;
+    white-space: nowrap;
     font-family: "IBM Plex Mono", ui-monospace, monospace;
-    font-size: 20px; letter-spacing: .12em; color: #FFFFFF;
-    border: 2px solid #FFFFFF;
+    font-size: 20px; letter-spacing: .12em; color: #FFD166;
   }
   #deck-stage .d-foot {
     position: absolute; left: 120px; right: 120px; bottom: 84px;
-    border-top: 2px solid #FFFFFF; padding-top: 24px;
+    padding-top: 24px;
     display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;
   }
   #deck-stage .d-context { font-size: 30px; font-weight: 400; color: #FFFFFF; }
@@ -115,16 +79,18 @@
     font-family: "IBM Plex Mono", ui-monospace, monospace;
     font-size: 20px; letter-spacing: .16em; color: #7FB3E8; margin-top: 10px;
   }
-  #deck-stage .d-revtable { border-collapse: collapse; }
-  #deck-stage .d-revtable th, #deck-stage .d-revtable td {
-    border: 2px solid #FFFFFF; padding: 8px 26px; text-align: center;
+  #deck-stage .d-revblock { text-align: right; }
+  #deck-stage .d-revrow {
     font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 24px; font-weight: 500; color: #FFFFFF;
+    margin-top: 8px;
   }
-  #deck-stage .d-revtable th {
+  #deck-stage .d-revrow:first-child { margin-top: 0; }
+  #deck-stage .d-revrow .k {
     font-size: 17px; font-weight: 500; letter-spacing: .2em; color: #7FB3E8;
+    margin-right: 18px;
   }
-  #deck-stage .d-revtable td { font-size: 24px; font-weight: 500; color: #FFFFFF; }
-  #deck-stage .d-revtable td.d-amber { color: #FFD166; }
+  #deck-stage .d-revrow .d-amber { color: #FFD166; }
 </style>
 <!-- SCAFFOLD-EMBED-START (copy this whole block into preview.html) -->
 <style>
@@ -162,32 +128,31 @@
   <div id="deck-stage">
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <div class="d-slide">
-      <div class="d-frame"></div>
       <span class="d-cross" style="left:22px;top:28px;">+</span>
       <span class="d-cross" style="right:22px;top:28px;">+</span>
       <span class="d-cross" style="left:22px;bottom:28px;">+</span>
       <span class="d-cross" style="right:22px;bottom:28px;">+</span>
       <div class="d-head">
-        <span><span class="d-sq"></span>Sheet B-04 · Finding 01</span>
+        <span>Sheet B-04 · Finding 01</span>
         <span>SCALE 1:50 · <span class="d-rev">REV C</span></span>
       </div>
-      <div class="d-dimh"><div class="d-line"></div><span class="d-tag">1600 ±0.5</span></div>
+      <div class="d-dimh">1600 ±0.5</div>
       <h1 class="d-title">Teams that required a second reviewer before merge contained failures earlier.</h1>
-      <div class="d-rule"></div>
       <p class="d-stat">63%</p>
       <p class="d-statlabel">fewer sev-1 rollbacks</p>
       <p class="d-sub">Review depth predicted containment better than team size, tenure, or tooling.</p>
       <div class="d-stamp">CONTAINED EARLIER</div>
-      <div class="d-dimv"><div class="d-vline"></div><span class="d-vtag">732</span></div>
+      <div class="d-dimv"><span class="d-vtag">732</span></div>
       <div class="d-foot">
         <div>
           <div class="d-context">Fixture data · not a real study</div>
           <div class="d-sheet">DWG NO. TD-2026-111 · UNITS MM</div>
         </div>
-        <table class="d-revtable">
-          <tr><th>REV</th><th>DATE</th><th>SHEET</th></tr>
-          <tr><td class="d-amber">C</td><td>2026-11</td><td>02 / 03</td></tr>
-        </table>
+        <div class="d-revblock">
+          <div class="d-revrow"><span class="k">REV</span><span class="d-amber">C</span></div>
+          <div class="d-revrow"><span class="k">DATE</span><span>2026-11</span></div>
+          <div class="d-revrow"><span class="k">SHEET</span><span>02 / 03</span></div>
+        </div>
       </div>
     </div>
     <!-- /DESIGN SLIDE MARKUP -->

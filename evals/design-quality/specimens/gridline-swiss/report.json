@@ -7,21 +7,21 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080. P2 verify 2026-11-04 (full-res + 1:1 crop): rail numeral 01 fully contained with wide margins — not cropped."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (rail panel, red rule, column grid, kicker square, row dividers removed; free folio numeral + stacked meta, footer pairing, no rule); 1920x1080 stage + scaler; PNG 1920x1080 (78546 bytes), viewed full-res."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); typography-only rebuild (grid lines, rule, stat/support divider removed); PNG 1920x1080 (87557 bytes), viewed full-res."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); typography-only rebuild (divider, h2 rules, li rules, square bullets removed; red zone head carries valence as type); PNG 1920x1080 (95497 bytes), viewed full-res."
     }
   ],
   "render": {

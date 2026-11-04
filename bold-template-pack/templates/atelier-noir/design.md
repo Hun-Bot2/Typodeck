@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Atelier Noir
-description: A high-fashion editorial presentation system set in porcelain on near-black, with tall Italiana serif statements carrying one italic accent word each, whisper-light Montserrat body copy, widely tracked gallery caps, a giant cropped issue numeral looming behind the content, hairline vertical dividers, oversized runway margins with a rotated margin note, and a single deep-wine bar as the only color event. The effect sits between a runway program and a gallery wall text — couture, sparse, and nocturnal.
+description: A high-fashion editorial presentation system set in porcelain on near-black, with tall Italiana serif statements carrying one italic accent word each, whisper-light Montserrat body copy, widely tracked gallery caps, a giant cropped issue numeral looming behind the content, and oversized runway margins with a rotated margin note. Typography-only register: no dividers, bars, or rules exist — hierarchy is carried by the two type voices, tonal layering, and vast whitespace alone. The effect sits between a runway program and a gallery wall text — couture, sparse, and nocturnal.
 colors:
   noir: "#111111"
   porcelain: "#FAF8F5"
@@ -97,55 +97,49 @@ components:
     fontStyle: italic
     color: "{colors.accent-ivory}"
     description: "Exactly one italic serif word per display headline. Synthesized oblique on Italiana, ivory tint."
-  vertical-divider:
-    width: 1px
-    background: "rgba(153, 153, 153, 0.35)"
-    description: "Full-height hairline dividers structuring the spread. Two per cover: margin edge + content edge."
-  wine-bar:
-    width: 8px
-    height: 44px
-    background: "{colors.wine}"
-    description: "The single color event per slide. Sits beside the kicker, never repeated, never larger."
-  kicker-row:
-    gap: 22px
-    description: "Wine bar + porcelain kicker word in tracked caps, top-left of the spread."
+  kicker:
+    color: "{colors.porcelain}"
+    fontFamily: "'Montserrat', system-ui, sans-serif"
+    fontSize: 20px
+    fontWeight: 500
+    letterSpacing: 0.3em
+    textTransform: uppercase
+    description: "Bare porcelain kicker word in tracked caps, top-left of the spread. No bar, no mark."
   margin-note-rail:
     rotation: 180deg
     description: "Rotated tracked-caps note running down the left margin gutter in dim gallery gray."
-  footer-hairline:
-    border: "1px solid rgba(153, 153, 153, 0.4)"
-    description: "Hairline rule above the footer with context left and folio right."
+  footer-row:
+    description: "Whitespace-separated footer with context left and folio right. No rule."
 ---
 
 ## Frontend Slides Fixed-Stage Policy
 
 When this design system is used by the `frontend-slides` skill, generate the final deck as a **fixed 1920×1080 stage** that scales uniformly to the browser viewport. The deck should preserve a 16:9 slide canvas on every screen, including phones; it may letterbox or pillarbox, but it should not reflow slide content for mobile.
 
-This policy has higher priority than any source-template responsive behavior described later in this file. The runway margins, hairline divider positions, and the giant numeral's crop are fixed stage coordinates — they scale only with the single stage transform, never with viewport-relative units.
+This policy has higher priority than any source-template responsive behavior described later in this file. The runway margins, zone boundaries, and the giant numeral's crop are fixed stage coordinates — they scale only with the single stage transform, never with viewport-relative units.
 
-Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and numeral/divider collisions.
+Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and numeral collisions.
 
 ## Overview
 
-Atelier Noir is a **high-fashion editorial presentation system**. Its foundational premise is the **spread**: every slide is a full-bleed magazine spread with oversized margins, one porcelain serif statement, a looming issue numeral, and hairline dividers doing all the structural work. Layouts feel tailored and nocturnal — vast black margins, a single wine accent, and tracked-out caps keep the whole deck on the runway.
+Atelier Noir is a **high-fashion editorial presentation system**. Its foundational premise is the **spread**: every slide is a full-bleed magazine spread with oversized margins, one porcelain serif statement, and a looming issue numeral. Layouts feel tailored and nocturnal — vast black margins, tonal layering, and tracked-out caps keep the whole deck on the runway.
 
 The type stack is two faces working in concert. **Italiana** is the display face — a tall hairline roman with couture proportions that carries headlines, the issue numeral, and quote bodies. **Montserrat** is everything else — whisper-light 300 for body and taglines, tracked 500 caps for gallery labels, issue lines, margin notes, and folios. The light/heavy, serif/sans, roman/caps contrasts are the entire typographic drama.
 
-The palette is built around **noir as ground** (`{colors.noir}`) with **porcelain** display text, **gallery gray** chrome, **soft-line** secondary text, and a single **deep-wine** bar as the only color event per slide. There are no fills, no tints, no gradients — black, porcelain, gray, and one breath of wine. The wine bar never repeats within a slide and never grows beyond its 8×44 proportion.
+The palette is built around **noir as ground** (`{colors.noir}`) with **porcelain** display text, **gallery gray** chrome, and **soft-line** secondary text. There are no fills, no tints, no gradients, no bars — black, porcelain, and gray only. The `{colors.wine}` token is retained for palette identity but retired from the visible vocabulary: at 1.23:1 on noir it cannot render as text, and the bar that carried it is retired.
 
-Depth in this system is achieved without any shadow or blur: the issue numeral recedes through **opacity alone** (13%), dividers recede through **alpha** (35–40%), and content advances through **porcelain brightness**. Layering is tonal, never spatial.
+Depth in this system is achieved without any shadow or blur: the issue numeral recedes through **opacity alone** (13%), the margin note dims to 70%, and content advances through **porcelain brightness**. Layering is tonal, never spatial.
 
 **Density philosophy: runway sparse.** One statement per slide — kicker, issue line, serif headline with its italic word, tagline, footer — surrounded by hundreds of pixels of black. The left margin carries only the rotated note; the right third belongs to the numeral. A typical slide carries ~40 words total; anything denser breaks the couture register.
 
 **Key Characteristics:**
 - Giant cropped issue numeral at 13% opacity bled off the right edge.
 - Porcelain Italiana headlines with exactly one italic accent word each.
-- Hairline vertical dividers structuring the spread instead of boxes or panels.
+- Whitespace-structured zones instead of dividers, boxes, or panels.
 - Oversized runway margins (150px+) with a rotated margin note on the left rail.
-- A single deep-wine bar as the only color event per slide.
 - Widely tracked Montserrat caps (+0.3em and above) for all chrome in gallery gray.
 - Two-font stack: Italiana (display), Montserrat (body + chrome) — never substitute.
-- Zero shadows, zero fills, zero decoration outside dividers, numeral, and wine.
+- Zero shadows, zero fills, zero decoration outside the numeral and the type.
 
 ## Colors
 
@@ -156,7 +150,7 @@ Depth in this system is achieved without any shadow or blur: the issue numeral r
 - **Gallery Gray** (`{colors.gallery-gray}` — `#999999`): Tracked caps chrome — labels, issue line, folio, top row.
 - **Soft Line** (`{colors.soft-line}` — `#C9C9C9`): Tagline and secondary body text.
 - **Accent Ivory** (`{colors.accent-ivory}` — `#E8E2D8`): The italic accent word — a breath warmer than porcelain.
-- **Wine** (`{colors.wine}` — `#4A0E18`): The single color event — the 8×44 bar beside the kicker.
+- **Wine** (`{colors.wine}` — `#4A0E18`): Retained token; retired from the visible vocabulary (unreadable on noir, and its bar is retired).
 
 ### Defaults
 
@@ -164,10 +158,10 @@ Depth in this system is achieved without any shadow or blur: the issue numeral r
 - **Default headline color**: `{colors.porcelain}` with one `{colors.accent-ivory}` italic word.
 - **Default body text color**: `{colors.soft-line}` for taglines, `{colors.gallery-gray}` for chrome.
 - **Default numeral treatment**: porcelain at 13% opacity, cropped by the right stage edge.
-- **Default divider treatment**: 1px gallery gray at 35% full-height verticals.
-- **Default wine usage**: exactly one 8×44 bar per slide beside the kicker.
+- **Default zone separation**: none — whitespace separates margin, content, and numeral field; dividers do not exist.
+- **Default wine usage**: none — the token is retained but unrendered.
 
-Porcelain on noir holds excellent contrast at all sizes; gallery gray is restricted to caps chrome at 18px+ tracked wide. Wine never appears as text — it is a bar only.
+Porcelain on noir holds excellent contrast at all sizes; gallery gray is restricted to caps chrome at 18px+ tracked wide. No other text color is allowed.
 
 ## Typography
 
@@ -220,16 +214,16 @@ Italiana should always feel **tailored** — generous leading, no tracking, the 
 
 The system targets a fixed **1920×1080 stage** per slide. Each slide renders at exactly 1920×1080 and scales uniformly via a single transform (`deck-stage.js` or equivalent). Letterboxing is permitted; reflowing is not.
 
-Default spread anatomy: top row at 96px (kicker left, year right); main column from 250px (issue line, headline, tagline) between x=250 and x=1210; vertical dividers at x=150 and x=1210 full-height; rotated margin note centered on the left rail; numeral bled off the right edge centered vertically; footer hairline above 92px bottom with context left and folio right. The right third of the stage belongs to the numeral — content never enters it.
+Default spread anatomy: top row at 96px (kicker left, year right); main column from 250px (issue line, headline, tagline) between x=250 and x=1210; rotated margin note centered on the left rail; numeral bled off the right edge centered vertically; footer row above 92px bottom with context left and folio right. The right third of the stage belongs to the numeral — content never enters it.
 
 ### Persistent Chrome
 
 Five elements appear on every slide:
-- **Top row** — wine bar + porcelain kicker left, gray year right, in tracked caps.
-- **Left divider + margin note** — hairline at x=150 with the rotated note in the gutter.
-- **Content divider** — hairline at x=1210 separating content from the numeral field.
+- **Top row** — bare porcelain kicker left, gray year right, in tracked caps.
+- **Margin note** — rotated note in the left gutter.
+- **Numeral field boundary** — the content/numeral division at x=1210 is positional only; no line marks it.
 - **Issue numeral** — giant cropped numeral behind the right field at 13%.
-- **Footer** — hairline rule with sentence-case context left and tracked folio right.
+- **Footer** — whitespace-separated row with sentence-case context left and tracked folio right.
 
 There is no nav rail, no counter, no progress chrome — the folio (`01`) in the footer is the only numbering.
 
@@ -237,29 +231,25 @@ There is no nav rail, no counter, no progress chrome — the folio (`01`) in the
 
 ### Tonal Layering (Signature)
 
-This system has **no shadows, no blur, no gloss, and no gradients**. Depth is carried entirely by tone: porcelain content at 100% advances, dividers at 35–40% structure, the numeral at 13% recedes. Introducing any drop shadow, glow, or bevel breaks the couture register immediately.
+This system has **no shadows, no blur, no gloss, no gradients, no dividers, and no bars**. Depth is carried entirely by tone: porcelain content at 100% advances, the margin note at 70% whispers, the numeral at 13% recedes. Introducing any drop shadow, glow, bevel, or line breaks the couture register immediately.
 
 ### Opacity Discipline
 
-Three alpha levels exist and no others: 100% (content), 35–40% (dividers, footer rule), 13% (numeral). The margin note renders at 70% gray-on-black as dimmed chrome. No element may use an intermediate alpha — tonal ambiguity flattens the spread.
+Three alpha levels exist and no others: 100% (content), 70% (margin note), 13% (numeral). No element may use an intermediate alpha — tonal ambiguity flattens the spread.
 
-### The Wine Event
+### The Retired Wine
 
-The wine bar advances through **hue alone** — it is the only chromatic pixel on the slide. It never casts shadow, never glows, never enlarges. Its power comes from solitude: one bar, one place, every slide.
+The wine token is retained but unrendered: the 8×44 bar that carried it is retired, and wine cannot render as text on noir. No chromatic pixel appears on the slide; the spread is strictly monochrome.
 
 ## Shapes and Treatment
 
 ### Border Radius
 
-Effectively zero — and mostly there are no boxes at all. The system uses rules and bars, not containers: hairline dividers, the footer rule, the wine bar. If a bordered element ever appears (emergency only), it is square. Rounded corners do not exist in this register.
+There are no boxes, rules, or bars at all. The system is pure type on noir: numeral, headlines, chrome, and whitespace. If a bordered element ever appears (emergency only), it is square — but the register forbids it. Rounded corners do not exist in this register.
 
 ### Border Weights
 
-- **8px solid wine** — the wine bar (width, not border — it is a solid bar).
-- **1px gallery gray at 35–40%** — vertical dividers and the footer rule.
-- **No other borders.** No frames, no chips, no outlines, no boxes.
-
-The hairline is the system's only line. Anything heavier than 1px except the wine bar is forbidden.
+Borders do not exist. There are no dividers, footer rules, wine bars, frames, chips, outlines, or boxes. Whitespace is the only structure.
 
 ### Decorative Element Types
 
@@ -267,15 +257,11 @@ The hairline is the system's only line. Anything heavier than 1px except the win
 
 **Accent word** — The single italic ivory word inside each headline. The spread's only gesture.
 
-**Vertical divider** — Full-height 1px gray hairlines at x=150 and x=1210. The spread's only structure.
-
-**Wine bar** — 8×44px solid wine bar beside the kicker. The spread's only color.
-
-**Kicker row** — Wine bar + porcelain tracked-caps kicker word. Opens every spread top-left.
+**Kicker** — Bare porcelain tracked-caps word. Opens every spread top-left.
 
 **Margin-note rail** — Rotated (+180°) tracked-caps note in the left gutter. The spread's whisper.
 
-**Footer hairline** — 1px rule with context (sentence case, light) left and folio (tracked caps, gray) right.
+**Footer row** — Context (sentence case, light) left and folio (tracked caps, gray) right, whitespace-separated.
 
 **Issue line** — Gray tracked caps with a porcelain `N°` numeral beat above the headline.
 
@@ -285,19 +271,19 @@ The hairline is the system's only line. Anything heavier than 1px except the win
 
 - Bleed the giant numeral off the right edge at 13% on every slide.
 - Give every headline exactly one italic ivory accent word — never zero, never two.
-- Structure every spread with the two full-height hairline dividers.
+- Structure every spread with whitespace zones — no dividers, no bars, no rules.
 - Hold the runway margins — content between x=250 and x=1210, numeral field clear right.
 - Track every caps label at +0.3em or wider in gallery gray.
-- Place exactly one wine bar per slide beside the kicker — never repeated, never resized.
+- Open every spread with the bare porcelain kicker — no bar, no mark.
 - Run the rotated margin note down the left gutter on every slide.
 - Keep spreads to ~40 words — one statement, one tagline, quiet chrome.
 
 ### Don't
 
-- Don't add shadows, glows, gradients, fills, or boxes — tone and hairlines only.
+- Don't add shadows, glows, gradients, fills, boxes, dividers, or bars — tone and type only.
 - Don't round anything — there are no containers to round.
 - Don't set headlines in any face but Italiana or chrome in any face but Montserrat.
-- Don't use a second accent word, a second wine bar, or a second color anywhere.
+- Don't use a second accent word or a second color anywhere — the spread is monochrome.
 - Don't track caps tighter than +0.3em — tight tracking reads corporate.
 - Don't fill the numeral bright, outline it, or shadow it — 13% flat, always.
 - Don't let content enter the numeral field right of x=1210.
@@ -307,13 +293,12 @@ The hairline is the system's only line. Anything heavier than 1px except the win
 
 ## Responsive Behavior
 
-Atelier Noir is a **fixed-stage system** built around 1920×1080 stage coordinates. There are no viewport-fluid rules and no breakpoints for the deck itself — the single stage transform scales the spread, numeral, and hairlines uniformly to any screen.
+Atelier Noir is a **fixed-stage system** built around 1920×1080 stage coordinates. There are no viewport-fluid rules and no breakpoints for the deck itself — the single stage transform scales the spread and numeral uniformly to any screen.
 
 ### Scaling Behavior
 
-- Runway margins, divider positions, and the numeral crop are fixed stage values.
+- Runway margins, zone boundaries, and the numeral crop are fixed stage values.
 - Headline sizes and caps tracking are fixed — they scale only via the stage transform.
-- The 1px hairlines scale with the stage; at small sizes they may approach sub-pixel rendering, which is acceptable.
 
 ### Component Breakpoints
 
@@ -371,7 +356,7 @@ Add to the template's `<head>`:
 
 ### Aesthetic Notes for This System
 
-The system's identity rests on hairline serif + whisper sans + spaced caps + tonal layering. A CJK build loses Italiana's hairline (Noto Serif KR is sturdier) but keeps everything structural: the numeral field, dividers, wine bar, and vast margins carry full recognition. The italic accent word has no CJK mechanism — render the accent word in Noto Serif KR 600 at porcelain brightness against the 400-weight headline instead of slanting.
+The system's identity rests on hairline serif + whisper sans + spaced caps + tonal layering. A CJK build loses Italiana's hairline (Noto Serif KR is sturdier) but keeps everything structural: the numeral field, zone positions, and vast margins carry full recognition. The italic accent word has no CJK mechanism — render the accent word in Noto Serif KR 600 at porcelain brightness against the 400-weight headline instead of slanting.
 
 Korean chrome labels lose the +0.3em tracking; compensate with wider word spacing and the dimmed gray tone to keep the measured feel.
 
@@ -382,25 +367,25 @@ Korean chrome labels lose the +0.3em tracking; compensate with wider word spacin
 
 ## Iteration Guide
 
-1. Any new slide gets the top row, both dividers, the margin note, the numeral field, and the footer hairline. Don't skip the chrome.
+1. Any new slide gets the top row, the margin note, the numeral field, and the footer row. Don't skip the chrome.
 2. Any new display element uses Italiana with exactly one italic accent word. Any new body element uses Montserrat 300. Any new label uses Montserrat 500 tracked caps. Never cross the role boundaries.
 3. Any new headline gets its accent word in italic accent-ivory — one word, never zero, never two.
 4. Any new label tracks at +0.3em minimum in gallery gray. Don't substitute a plain h-tag.
-5. Any new slide carries exactly one wine bar beside the kicker. No second color event, ever.
-6. Any new structure is a 1px hairline divider. Boxes, frames, and panels do not exist here.
+5. Any new slide carries no color event — the spread is monochrome; wine stays retired.
+6. Any new structure is whitespace — dividers, bars, boxes, frames, and panels do not exist here.
 7. Any new numeral bleeds off the right edge at 13% — vertically centered, cropped, flat.
 8. Any new spread holds ~40 words maximum. Cut words before shrinking type or margins.
-9. If a slide needs emphasis beyond the headline, enlarge nothing — let the numeral and wine do the work.
+9. If a slide needs emphasis beyond the headline, enlarge nothing — let the numeral do the work.
 10. Animated elements (numeral fade, headline rise, chrome stagger) should respect `prefers-reduced-motion`. The spread itself is static and stays on always.
 
 ## Known Gaps
 
 - **Fonts**: Italiana / Montserrat via Google Fonts CDN (`display=swap`); fallbacks `serif` / `system-ui, sans-serif`. No font files committed. Offline rendering falls back to system stacks and loses the hairline serif voice.
 - **Accent-word paint is JS-applied** on the cover: the headline ships as contiguous text and a small script wraps the accent word. If JS fails, the headline renders in flat porcelain — correct content, missing gesture.
-- **Overflow guard is JS-applied**: headline size steps down until the whole main block (issue line + headline + tagline) fits above the footer hairline. Without JS, very long titles can collide with the footer.
+- **Overflow guard is JS-applied**: headline size steps down until the whole main block (issue line + headline + tagline) fits above the footer row. Without JS, very long titles can collide with the footer.
 - **The accent italic is synthesized oblique.** Italiana ships no true italic; browsers slant the roman. The 600-weight CJK substitute is documented for Korean builds.
 - **The numeral value is per-edition manual.** Nothing binds the `11` to content; authors must update it when the edition changes.
-- **Hairlines may shimmer** on low-DPI downscaled renders. This is accepted as a gallery-print artifact.
+- **No dividers, bars, or rules.** The typography-only register renders none of the retired hairlines or the wine bar; decks must not reintroduce them.
 
 ### PPTX Fidelity Disclosure
 
@@ -412,6 +397,6 @@ Korean chrome labels lose the +0.3em tracking; compensate with wider word spacin
 | 4 | Pixel / hard offset shadows | None used | full | N/A |
 | 5 | Gradients | None used | full | N/A |
 | 6 | Grain / scanline / noise overlays | None used | full | N/A |
-| 7 | Transparency layers | Numeral 13%, dividers 35–40% alpha | partial | Opaque gray approximations (numeral #2A2A2A, dividers #555555) |
+| 7 | Transparency layers | Numeral 13% alpha only | partial | Opaque gray approximation (numeral #2A2A2A) |
 | 8 | Custom fonts | Italiana / Montserrat via Google Fonts CDN | partial | Embedded subset or Didot / Arial substitution |
-| 9 | Absolute-positioned decor | Numeral, dividers, wine bar, margin note | full | Grouped native shapes |
+| 9 | Absolute-positioned decor | Numeral + margin note (type only) | full | Native text boxes 1:1 |

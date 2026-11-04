@@ -8,57 +8,49 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only: the stat moment takes the deep slide ground so the
+     amber signal survives as display type (amber-on-deep 7.89:1). No tiles,
+     chips, bands, rules, or keyline grid. The only background is the
+     full-slide solid ground. */
   .modulo-slide {
     position: absolute; inset: 0;
-    background-color: #FFFFFF;
-    background-image:
-      linear-gradient(#E5E5E5 1px, transparent 1px),
-      linear-gradient(90deg, #E5E5E5 1px, transparent 1px);
-    background-size: 240px 240px;
+    background: #14213D;
     font-family: 'Inter', system-ui, sans-serif;
-    color: #14213D;
+    color: #FFFFFF;
   }
-  .modulo-top { position: absolute; top: 64px; left: 120px; right: 120px; display: flex; align-items: center; gap: 16px; }
-  .modulo-tile { width: 48px; height: 48px; flex: 0 0 auto; }
-  .modulo-kicker { display: flex; align-items: center; gap: 12px; margin-left: 32px; }
-  .modulo-chip { width: 12px; height: 12px; background: #FCA311; flex: 0 0 auto; }
+  .modulo-top { position: absolute; top: 64px; left: 120px; right: 120px; }
   .modulo-kicker-text {
     font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 15px;
-    letter-spacing: 0.12em; text-transform: uppercase; color: #14213D; white-space: nowrap;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #FFFFFF; white-space: nowrap;
+    margin: 0;
   }
   .modulo-hero { position: absolute; top: 190px; left: 120px; right: 120px; }
   .modulo-title {
     font-family: 'Sora', "Arial Black", sans-serif; font-weight: 800;
     font-size: 62px; line-height: 1.12; letter-spacing: -0.015em;
-    color: #14213D; margin: 0; text-wrap: balance;
+    color: #FFFFFF; margin: 0; text-wrap: balance;
   }
-  .modulo-band { position: absolute; left: 0; right: 0; top: 470px; background: #FCA311; color: #14213D; }
-  .modulo-band-inner {
-    padding: 36px 120px; display: flex; align-items: center; gap: 48px;
-  }
-  .modulo-band-stat {
+  .modulo-stat-row { position: absolute; left: 120px; right: 120px; top: 500px; display: flex; align-items: baseline; gap: 48px; }
+  .modulo-stat-num {
     font-family: 'Sora', "Arial Black", sans-serif; font-weight: 800;
-    font-size: 128px; line-height: 1; letter-spacing: -0.02em;
+    font-size: 128px; line-height: 1; letter-spacing: -0.02em; color: #FCA311;
   }
-  .modulo-band-label {
+  .modulo-stat-label {
     font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 22px;
-    letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.5;
+    letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.5; color: #FFFFFF;
   }
   .modulo-low { position: absolute; top: 730px; left: 120px; right: 120px; }
-  .modulo-subrow { display: flex; align-items: flex-start; gap: 16px; max-width: 1200px; }
-  .modulo-sq { width: 14px; height: 14px; background: #14213D; flex: 0 0 auto; margin-top: 12px; }
-  .modulo-subtitle { font-size: 29px; line-height: 1.55; color: #3D4C6D; margin: 0; }
+  .modulo-subtitle { font-size: 29px; line-height: 1.55; color: rgba(255, 255, 255, 0.82); margin: 0; max-width: 1200px; }
   .modulo-source {
     margin-top: 28px;
     font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 15px;
-    letter-spacing: 0.12em; text-transform: uppercase; color: #3D4C6D;
+    letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.82);
   }
-  .modulo-footer { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: #14213D; color: #FFFFFF; }
-  .modulo-rule { position: absolute; top: -6px; left: 0; right: 0; height: 6px; background: #FCA311; }
+  .modulo-footer { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; }
   .modulo-footer-inner {
     height: 120px; padding: 0 120px; display: flex; align-items: center; justify-content: space-between;
     font-family: 'Sora', "Arial Black", sans-serif; font-weight: 600; font-size: 14px;
-    letter-spacing: 0.12em; text-transform: uppercase;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #FFFFFF;
   }
   .modulo-counter { color: #FCA311; }
 </style>
@@ -99,35 +91,20 @@
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <div class="modulo-slide">
       <div class="modulo-top">
-        <span class="modulo-tile" style="background:#FCA311"></span>
-        <span class="modulo-tile" style="background:#14213D"></span>
-        <span class="modulo-tile" style="background:#E5E5E5"></span>
-        <span class="modulo-tile" style="background:#14213D"></span>
-        <span class="modulo-tile" style="background:#FCA311"></span>
-        <span class="modulo-tile" style="background:#E5E5E5"></span>
-        <div class="modulo-kicker">
-          <span class="modulo-chip"></span>
-          <span class="modulo-kicker-text">Finding 01 · Typodeck Research</span>
-        </div>
+        <p class="modulo-kicker-text">Finding 01 · Typodeck Research</p>
       </div>
       <div class="modulo-hero">
         <h1 class="modulo-title">Teams that required a second reviewer before merge contained failures earlier.</h1>
       </div>
-      <div class="modulo-band">
-        <div class="modulo-band-inner">
-          <span class="modulo-band-stat">63%</span>
-          <span class="modulo-band-label">fewer sev-1 rollbacks</span>
-        </div>
+      <div class="modulo-stat-row">
+        <span class="modulo-stat-num">63%</span>
+        <span class="modulo-stat-label">fewer sev-1 rollbacks</span>
       </div>
       <div class="modulo-low">
-        <div class="modulo-subrow">
-          <span class="modulo-sq"></span>
-          <p class="modulo-subtitle">Review depth predicted containment better than team size, tenure, or tooling.</p>
-        </div>
+        <p class="modulo-subtitle">Review depth predicted containment better than team size, tenure, or tooling.</p>
         <p class="modulo-source">Fixture data · not a real study</p>
       </div>
       <div class="modulo-footer">
-        <div class="modulo-rule"></div>
         <div class="modulo-footer-inner">
           <span class="modulo-counter">02 / 03</span>
           <span>Typodeck Research</span>

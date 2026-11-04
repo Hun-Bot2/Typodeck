@@ -23,21 +23,16 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 120px;
     box-sizing: border-box;
-    position: relative;
   }
-  .vista-kicker { margin: 0; }
-  .vista-kicker span {
+  .vista-kicker {
+    margin: 0;
     font-size: 22px; font-weight: 600;
     letter-spacing: 0.2em; text-transform: uppercase;
   }
-  .vista-keyline { height: 2px; background: #E4572E; margin-top: 14px; width: 200px; }
-  .vista-leafchip {
-    background: #A8C686; color: #0E3B43;
+  .vista-leafword {
     font-size: 20px; font-weight: 600;
     letter-spacing: 0.2em; text-transform: uppercase;
-    padding: 12px 22px;
-    align-self: flex-start;
-    margin-top: 44px;
+    color: #F6E7C1;
   }
   .vista-headband {
     flex: 0 0 auto;
@@ -46,7 +41,6 @@
     text-align: center;
     padding: 48px 300px 52px 300px;
     box-sizing: border-box;
-    position: relative;
   }
   .vista-message {
     font-family: 'DM Serif Display', Georgia, serif;
@@ -55,36 +49,19 @@
     margin: 0;
     text-wrap: balance;
   }
+  .vista-figure {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 72px; line-height: 1;
+    margin: 28px 0 0 0;
+    color: #E4572E;
+  }
   .vista-statlabel {
     font-size: 22px; font-weight: 600;
     letter-spacing: 0.2em; text-transform: uppercase;
-    margin: 22px 0 0;
+    margin: 16px 0 0;
     color: #0E3B43;
   }
-  .vista-badge {
-    position: absolute; right: 120px; top: -98px;
-    width: 196px; height: 196px;
-  }
-  .vista-badge .disc {
-    position: absolute; inset: 0;
-    background: #E4572E; border-radius: 999px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 60px; color: #F6E7C1;
-  }
-  .vista-badge .ring {
-    position: absolute; inset: -14px;
-    border: 3px dashed #E4572E; border-radius: 999px;
-  }
-  .vista-ticket {
-    flex: 0 0 auto;
-    position: relative;
-    background: #A8C686;
-    border-top: 3px dashed #E4572E;
-  }
-  .vista-notch { position: absolute; top: -28px; width: 56px; height: 56px; border-radius: 999px; background: #0A2D34; }
-  .vista-notch.left { left: -28px; }
-  .vista-notch.right { right: -28px; }
   .vista-bodyband {
     flex: 1;
     min-height: 0;
@@ -154,17 +131,13 @@
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <div class="vista-slide">
       <div class="vista-sky">
-        <p class="vista-kicker"><span>Finding 01</span><span class="vista-keyline" style="display:block"></span></p>
-        <span class="vista-leafchip">second reviewer</span>
+        <p class="vista-kicker">Finding 01</p>
+        <span class="vista-leafword">second reviewer</span>
       </div>
       <div class="vista-headband">
-        <div class="vista-badge"><div class="ring"></div><div class="disc">63%</div></div>
         <h1 class="vista-message">Teams that required a second reviewer before merge contained failures earlier.</h1>
+        <p class="vista-figure">63%</p>
         <p class="vista-statlabel">fewer sev-1 rollbacks</p>
-      </div>
-      <div class="vista-ticket">
-        <span class="vista-notch left"></span>
-        <span class="vista-notch right"></span>
       </div>
       <div class="vista-bodyband">
         <p class="vista-sub">Review depth predicted containment better than team size, tenure, or tooling.</p>

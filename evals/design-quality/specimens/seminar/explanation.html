@@ -26,7 +26,7 @@
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 17px; font-weight: 400; color: #8A8A8A;
   }
-  .sm-grid {
+  .sm-cols {
     display: flex; gap: 120px; margin-top: 48px; flex: 1; min-height: 0;
   }
   .sm-arg { width: 1080px; flex: 0 0 auto; }
@@ -61,12 +61,13 @@
     font-size: 24px; font-style: italic; font-weight: 400; line-height: 1.55;
     color: rgba(34, 34, 34, 0.78); margin: 28px 0 0; max-width: 42ch;
   }
-  .sm-rule { width: 160px; height: 1px; background: #8A8A8A; margin: 32px 0 14px; }
+  /* Typography-only: the footnote rule is retired; whitespace closes the argument. */
   .sm-foot {
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 17px; line-height: 1.6;
     color: rgba(34, 34, 34, 0.72); margin: 0;
   }
+  .sm-foot.first { margin-top: 46px; }
   .sm-margin { width: 400px; flex: 0 0 auto; padding-top: 18px; }
   .sm-note {
     font-family: 'Inter', system-ui, sans-serif;
@@ -110,7 +111,7 @@
         <span class="sm-marker">§ 3</span>
         <span class="sm-date">November 2026</span>
       </div>
-      <div class="sm-grid">
+      <div class="sm-cols">
         <div class="sm-arg">
           <p class="sm-eyebrow">The choice</p>
           <h1 class="sm-title">Two teams, one deadline</h1>
@@ -131,8 +132,7 @@
             </ul>
           </div>
           <p class="sm-caption">Same deadline, different discipline: one team paid at review time, the other in production.<sup>3</sup></p>
-          <div class="sm-rule" aria-hidden="true"></div>
-          <p class="sm-foot"><sup>3</sup> Typodeck Research · November 2026</p>
+          <p class="sm-foot first"><sup>3</sup> Typodeck Research · November 2026</p>
           <p class="sm-foot"><sup>4</sup> Fixture data · not a real study</p>
         </div>
         <aside class="sm-margin">

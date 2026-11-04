@@ -7,21 +7,21 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (cabinet frame, rails, screws, slots, ticker band, scanlines, vignette, block-cursor div removed; phosphor text-shadow glow retained on glyphs as light — zero box-shadow/borders/fills; ▊ is a text glyph; eyebrows flanked by + ticks); PNG 1920x1080 (215319 bytes), viewed full-res."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); free glowing stat on the void; PNG 1920x1080 (163163 bytes), viewed full-res."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); panels replaced by side-by-side type zones with ▲/▼ text markers; PNG 1920x1080 (246487 bytes), viewed full-res."
     }
   ],
   "render": {

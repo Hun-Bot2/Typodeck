@@ -10,7 +10,6 @@
 <style>
   :root {
     --kraft: #E9DCC8;
-    --kraft-deep: #DCCDAF;
     --moss: #2E3B2E;
     --leaf: #5A7A4E;
     --clay: #B4552D;
@@ -18,10 +17,7 @@
   * { box-sizing: border-box; }
   .fn-slide {
     position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 120% 100% at 50% 0%, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 55%),
-      repeating-linear-gradient(0deg, transparent 0px, transparent 7px, rgba(120,100,70,0.045) 7px, rgba(120,100,70,0.045) 8px),
-      var(--kraft);
+    background: var(--kraft);
     color: var(--moss);
     font-family: Karla, system-ui, sans-serif;
     padding: 88px 110px 80px;
@@ -35,13 +31,7 @@
     font-size: 26px; font-weight: 700;
     letter-spacing: 0.3em; text-transform: uppercase;
     color: var(--clay);
-    border: 3px solid var(--clay);
-    outline: 1px solid var(--clay);
-    outline-offset: 5px;
-    border-radius: 4px;
-    padding: 14px 22px 12px 28px;
     transform: rotate(-3deg);
-    background: rgba(255,255,255,0.25);
   }
   .fn-stamp-sub {
     font-family: Caveat, cursive;
@@ -56,38 +46,25 @@
     letter-spacing: -0.005em; color: var(--moss);
     word-break: keep-all; overflow-wrap: normal; /* CJK: break only at spaces, no orphan syllable */
   }
-  .fn-underscore {
-    width: 340px; height: 10px; background: var(--clay);
-    border-radius: 6px; margin-top: 30px;
-    transform: rotate(-0.6deg);
-  }
   .fn-subtitle {
     margin: 34px 0 0;
     font-size: 42px; font-weight: 500; line-height: 1.4; color: var(--moss);
     max-width: 1050px;
     word-break: keep-all; overflow-wrap: normal; /* CJK: keep words whole */
   }
-  .fn-leaves { margin-top: 36px; display: flex; gap: 40px; }
+  .fn-leaves { margin-top: 36px; display: flex; gap: 24px; align-items: baseline; flex-wrap: wrap; }
   .fn-leaf-item {
-    display: flex; align-items: center; gap: 14px;
     font-size: 27px; font-weight: 700; color: var(--leaf);
   }
-  .fn-leaf {
-    width: 26px; height: 26px; flex: 0 0 auto;
-    background: var(--leaf);
-    border-radius: 0 60% 0 60%;
-    transform: rotate(-12deg);
-  }
+  .fn-leaves .sep { color: var(--moss); opacity: 0.45; font-size: 27px; font-weight: 700; }
   .fn-context {
     margin-top: auto; padding-top: 30px;
     font-size: 27px; font-weight: 700;
     letter-spacing: 0.24em; text-transform: uppercase;
     color: var(--moss);
-    border-top: 2px dashed rgba(46,59,46,0.45);
   }
   .fn-margin {
     flex: 1; min-width: 0;
-    border-left: 2px dashed rgba(46,59,46,0.45);
     padding-left: 64px; padding-top: 12px;
     display: flex; flex-direction: column;
   }
@@ -97,12 +74,8 @@
     color: var(--clay);
     transform: rotate(1.5deg);
   }
-  .fn-arrow { margin: 6px 0 0 30px; transform: rotate(8deg); }
   .fn-tally {
     margin-top: 44px;
-    border: 2px solid var(--leaf); border-radius: 4px;
-    padding: 26px 30px;
-    background: rgba(255,255,255,0.3);
     transform: rotate(-1deg);
   }
   .fn-tally-label {
@@ -172,21 +145,16 @@
         <div class="fn-titlebox">
           <h1 class="fn-title" id="fnTitle">The Hidden Cost of Rushing to Ship</h1>
         </div>
-        <div class="fn-underscore"></div>
         <p class="fn-subtitle">What 11 postmortems taught us about review discipline</p>
         <div class="fn-leaves">
-          <span class="fn-leaf-item"><span class="fn-leaf"></span>postmortems</span>
-          <span class="fn-leaf-item"><span class="fn-leaf"></span>review discipline</span>
-          <span class="fn-leaf-item"><span class="fn-leaf"></span>shipping</span>
+          <span class="fn-leaf-item">postmortems</span><span class="sep">·</span>
+          <span class="fn-leaf-item">review discipline</span><span class="sep">·</span>
+          <span class="fn-leaf-item">shipping</span>
         </div>
         <div class="fn-context">Typodeck Research · November 2026</div>
       </div>
       <div class="fn-margin">
         <div class="fn-note">slow down &amp;<br>look closer&#8230;</div>
-        <svg class="fn-arrow" width="120" height="90" viewBox="0 0 120 90" fill="none" aria-hidden="true">
-          <path d="M14 8 C 50 30, 70 44, 92 72" stroke="#B4552D" stroke-width="6" stroke-linecap="round"/>
-          <path d="M74 68 L92 74 L84 90" stroke="#B4552D" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
         <div class="fn-tally">
           <div class="fn-tally-label">Postmortems read</div>
           <div class="fn-tally-num">11</div>
