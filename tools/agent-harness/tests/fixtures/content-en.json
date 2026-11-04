@@ -77,7 +77,7 @@
           ]
         }
       },
-      "caption": "Red squares mark failure modes observed in the rushed cases; position marks sides, not color.",
+      "caption": "Failure modes observed in the rushed cases are listed under Rushed; position marks sides.",
       "meta": [
         { "label": "Finding", "value": "F-02" },
         { "label": "Cases", "value": "6 vs 5" }

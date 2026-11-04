@@ -14,7 +14,7 @@ import { planDeckRoles } from './lib/roles.mjs';
 import { buildSlide } from './lib/builder.mjs';
 import { buildSlideGeneric } from './lib/builder-generic.mjs';
 import { toTheme } from './lib/theme.mjs';
-import { launchChrome, renderSlide, pngDims } from './lib/render.mjs';
+import { launchChromeWithRetry, renderSlide, pngDims } from './lib/render.mjs';
 import { checkDims, checkOverflow, checkClip, checkClipStage, checkVerbatim, checkFixture, checkSpec, checkSpecGeneric } from './lib/checks.mjs';
 import { proposeRepair, REPAIR_ROUNDS } from './lib/repair.mjs';
 
@@ -148,8 +148,11 @@ async function main() {
   roles.forEach((r, i) => console.log(`slide ${i + 1}: role=${r.role} (${r.reason})`));
 
   await fs.mkdir(slidesDir, { recursive: true });
-  const port = Number(a.port ?? 9333);
-  const chrome = await launchChrome(port);
+  const basePort = Number(a.port ?? 9333);
+  const launched = await launchChromeWithRetry(basePort);
+  const chrome = launched.chrome;
+  const port = launched.port;
+  if (port !== basePort) console.log(`chrome: base port ${basePort} busy, rendering on ${port}`);
   const reportSlides = [];
   try {
     for (let i = 0; i < content.slides.length; i++) {

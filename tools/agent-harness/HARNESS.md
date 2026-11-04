@@ -50,7 +50,7 @@ node tools/agent-harness/generate.mjs \
 | `--lang` | yes | `en` or `ko`. `ko` applies the design's CJK section; when `locales/ko.md` (or `locales/ko/design.md`) exists under the template dir its tokens override |
 | `--content` | yes | Path to content JSON (schema below) |
 | `--out` | yes | Output dir (created). Receives `slides/NN.{html,png}` + `report.json` |
-| `--port` | no | CDP port for headless Chrome (default `9333`) |
+| `--port` | no | CDP port base for headless Chrome (default `9333`; launch retries step to `+1` per attempt, up to 3 attempts) |
 | `--no-repair` | no | Single render per slide; skips the bounded repair loop |
 | `--help` | no | Print usage |
 
@@ -159,14 +159,14 @@ Any change to these requires a harness minor-version bump and a note here.
 ## Module map
 
 - `generate.mjs` — CLI orchestration (load → plan → build → render → check → repair → report)
-- `sweep.mjs` — coverage sweep (`--langs`, `--out`, `--contentDir`) over every design × lang; writes `coverage.json` with honest PASS/PARTIAL/ERROR per design-lang
+- `sweep.mjs` — coverage sweep (`--langs`, `--out`, `--contentDir`) over every design × lang; writes `coverage.json` with honest PASS/PARTIAL/ERROR per design-lang (`classifyEntry`: any harness exit other than 0/1 is ERROR even when a stale report is readable)
 - `lib/content.mjs` — content-JSON validation + verbatim string collection
 - `lib/spec.mjs` — `design.md` front-matter parser, `{ref}` resolution, CJK section extraction
 - `lib/roles.mjs` — semantic role planner
 - `lib/builder.mjs` — bespoke per-role HTML/CSS composer (all constants from spec tokens), typography-only
 - `lib/builder-generic.mjs` — canonical-theme per-role composer, typography-only
 - `lib/theme.mjs` — design tokens → canonical theme normalization
-- `lib/render.mjs` — zero-dependency CDP renderer (headless Chrome) + PNG dim reader
+- `lib/render.mjs` — zero-dependency CDP renderer (headless Chrome) + PNG dim reader; `launchChromeWithRetry` retries a failed launch on ascending ports (a previous Chrome may still be releasing the base port); `waitForDebugPort` claims a port only when our own Chrome child is alive, so a concurrent sweep holding the base port forces a retry instead of a silent attach to a foreign browser
 - `lib/checks.mjs` — six deterministic checks (pure, unit-tested)
 - `lib/repair.mjs` — bounded repair proposals
 - `tests/` — `node --test tests/` (builders + typo-only assertions + spec-parse + role-plan + checks + repair + theme); `tests/fixtures/content-{en,ko}.json` are the 7-slide EN/KO decks
@@ -191,6 +191,16 @@ when the proof dir is absent.
 - `0.2.0` — typography-only rewrite: both builders emit type-only slides
   (no rules/rails/grids/tables/boxes); `clip` accepts a railless numeral;
   `spec` asserts zero rules/rails/grids; `report.json` gains `builder`;
-  sweep gains `--contentDir`; tests gain typo-only assertions + fixtures.
+  sweep gains `--contentDir`; tests gain typo-only assertions + fixtures;
+  Chrome launch retries on ascending ports (fixes transient sweep ERRORs
+  when the previous Chrome still holds the base debug port) and verifies
+  debug-port ownership before rendering (a foreign browser on the base
+  port forces a retry instead of corrupt screenshots); theme maps follow
+  the pack's box-vocabulary purge (`signal-board` kicker `pill-label` →
+  `kicker-label`; `new-wave-static` caption `context-chip` → `context-line`,
+  numeral `band-caps` → `footer-giant`; `memphis-squiggle` kicker
+  `chip-label` → `stamp-label`); sweep classification no longer lets a
+  stale `report.json` mask a current-run crash (non-0/1 harness exits
+  are ERROR).
 - `0.1.0` — initial frozen contract: bespoke gridline-swiss builder,
   six checks, bounded repair.
