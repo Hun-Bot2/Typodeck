@@ -64,7 +64,12 @@ export function buildSlideGeneric({ theme, slide, role, index, total, deck, lang
 
   const fx = slide.fixture
     ? `<span class="fx" data-fixture title="${esc(slide.fixtureNote ?? 'illustrative content')}">· FIXTURE</span>` : '';
-  const withFx = (html) => (slide.fixture && !html.includes('data-fixture') ? `${html}&nbsp;${fx}` : html);
+  const withFx = (html) => {
+    if (!slide.fixture || html.includes('data-fixture')) return html;
+    // Fixture copy often names FIXTURE literally: fold it into the marker.
+    if (/FIXTURE/i.test(html)) return html.replace(/\s*·?\s*FIXTURE/i, `&nbsp;${fx}`);
+    return `${html}&nbsp;${fx}`;
+  };
 
   const metaLine = (slide.meta?.length ? slide.meta : [])
     .map((m) => (typeof m === 'string' ? m : [m.label, m.value].filter(Boolean).join(' ')))

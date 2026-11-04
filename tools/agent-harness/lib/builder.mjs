@@ -100,7 +100,12 @@ export function buildSlide({ spec, slide, role, index, total, deck, lang, adjust
   const fx = slide.fixture
     ? `<span class="fx" data-fixture title="${esc(slide.fixtureNote ?? 'illustrative content')}">· FIXTURE</span>` : '';
 
-  const withFx = (html) => (slide.fixture && !html.includes('data-fixture') ? `${html}&nbsp;${fx}` : html);
+  const withFx = (html) => {
+    if (!slide.fixture || html.includes('data-fixture')) return html;
+    // Fixture copy often names FIXTURE literally: fold it into the marker.
+    if (/FIXTURE/i.test(html)) return html.replace(/\s*·?\s*FIXTURE/i, `&nbsp;${fx}`);
+    return `${html}&nbsp;${fx}`;
+  };
 
   const notes = [];
   let bodyHtml = '';

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>What eleven postmortems taught us — 01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { border-radius:0 !important; }
+  html, body { margin:0; padding:0; background:#000; }
+  .slide { position:relative; width:1920px; height:1080px; background:#FAF8F3;
+    color:#1A1A1A; font-family:'IBM Plex Sans', sans-serif; overflow:hidden; }
+  .content { position:absolute; top:72px; left:96px; right:96px; max-height:820px; }
+  .kicker { display:flex; align-items:center; gap:16px; font-family:'IBM Plex Mono', monospace;
+    font-weight:400; font-size:20px; letter-spacing:0.14em;
+    text-transform:none; color:#0B5FFF; margin:0;  }
+  .kicker::before { content:""; width:16px; height:16px; background:#0B5FFF; flex:0 0 auto; }
+  .accentrule { height:5px; background:#0B5FFF; margin-top:22px; width:100%; }
+  .accentrule.notop { margin-top:0; }
+  .metaline { font-family:'IBM Plex Mono', monospace; font-size:18px; font-weight:500;
+    letter-spacing:0.06em; text-transform:none;
+    color:#6E6A5E; margin:14px 0 0 0;  }
+  .footer { position:absolute; left:96px; right:96px; bottom:0; height:104px;
+    border-top:2px solid #1A1A1A; display:flex; align-items:center;
+    justify-content:space-between; }
+  .footer .ctx { font-family:'IBM Plex Mono', monospace; font-size:19px; font-weight:500;
+    letter-spacing:0.06em; text-transform:none;
+    color:#6E6A5E; margin:0;  }
+  .footer .idx { font-family:'IBM Plex Sans', sans-serif; font-weight:500;
+    font-size:22px; letter-spacing:0.1em; margin:0; color:#1A1A1A; }
+  .footer .idx .numeral { font-size:30px; }
+  h1, .statement { font-family:'Archivo', sans-serif; font-weight:700;
+    text-align:left; margin:44px 0 0 0;  }
+  .title-xl { font-family:'Archivo', sans-serif; font-weight:700;
+    line-height:1.04; letter-spacing:-0.01em; }
+  .sec-title { line-height:1.05; margin-top:60px; }
+  .statement { line-height:1.1; margin-top:70px; }
+  .ev-msg { line-height:1.12; margin-top:40px; }
+  .cmp-title { line-height:1.08; margin-top:36px; }
+  .d-title { line-height:1.08; margin-top:32px; }
+  .close-line { font-family:'Archivo', sans-serif; font-weight:700;
+    line-height:1.04; margin-top:120px; }
+  .lede { font-size:34px; line-height:1.5; margin:36px 0 0 0; max-width:1380px;  }
+  .orient { font-size:34px; line-height:1.5; margin:36px 0 0 0; max-width:1380px;  }
+  .close-recap { font-size:34px; line-height:1.5; margin:40px 0 0 0; max-width:1380px;  }
+  .srcline { font-family:'IBM Plex Mono', monospace; font-size:20px; font-weight:500;
+    letter-spacing:0.06em; text-transform:none;
+    color:#6E6A5E; margin:40px 0 0 0;  }
+  .statrow { display:flex; gap:40px; margin:44px 0 0 0; border-top:2px solid #1A1A1A; padding-top:32px; }
+  .stat { display:flex; align-items:flex-end; gap:22px; padding-right:40px; border-right:1px solid #6E6A5E; }
+  .stat:last-child { border-right:none; }
+  .statnum { font-family:'IBM Plex Sans', sans-serif; font-weight:500; line-height:0.9;
+    letter-spacing:-0.02em; }
+  .statlab { font-family:'IBM Plex Mono', monospace; font-size:20px; font-weight:500;
+    letter-spacing:0.06em; text-transform:none;
+    line-height:1.5; padding-bottom:18px; max-width:320px;  }
+  .ev-sup { font-size:24px; line-height:1.55; margin:32px 0 0 0; max-width:1380px;  }
+  .findings { list-style:none; margin:36px 0 0 0; padding:0; border-top:2px solid #1A1A1A; }
+  .findings li { display:flex; gap:24px; padding:22px 0; border-bottom:1px solid #6E6A5E; }
+  .fnum { font-family:'IBM Plex Sans', sans-serif; font-weight:500; font-size:30px; flex:0 0 96px; }
+  .fbody { display:flex; flex-direction:column; gap:8px; }
+  .fhead { font-family:'Archivo', sans-serif; font-weight:700; font-size:30px; line-height:1.2;  }
+  .fsub { font-size:24px; line-height:1.55;  }
+  .zones { display:flex; gap:32px; margin-top:36px; }
+  .zone { flex:1 1 0; }
+  .zone-b { border-left:1px solid #6E6A5E; padding-left:32px; }
+  .zone-h { font-family:'Archivo', sans-serif; font-weight:700; font-size:30px;
+    line-height:1.2; margin:0;  }
+  .zone ul { list-style:none; margin:0; padding:18px 0 0 0; border-top:2px solid #1A1A1A; margin-top:12px; }
+  .zone li { display:flex; gap:14px; align-items:flex-start; font-size:22px; line-height:1.5;
+    padding:12px 0; border-bottom:1px solid #6E6A5E;  }
+  .zone li::before { content:""; width:13px; height:13px; flex:0 0 auto; margin-top:10px; background:#1A1A1A; }
+  .zone li.bad::before { background:#0B5FFF; }
+  .caption { font-size:22px; line-height:1.55; color:#6E6A5E; margin:30px 0 0 0;
+    border-top:1px solid #6E6A5E; padding-top:20px;  }
+  table.dtable { border-collapse:collapse; margin:24px 0 0 0; width:100%; }
+  table.dtable th { font-family:'IBM Plex Mono', monospace; font-weight:500; letter-spacing:0.06em;
+    text-transform:none; color:#6E6A5E; text-align:left; font-size:0.86em;
+    padding:10px 16px 10px 0; border-top:2px solid #1A1A1A; border-bottom:2px solid #1A1A1A; }
+  table.dtable td { line-height:1.35; padding:9px 16px 9px 0; border-bottom:1px solid #6E6A5E; white-space:nowrap; }
+  table.dtable td.case { font-family:'IBM Plex Sans', sans-serif; font-weight:500; font-size:0.95em; }
+  table.dtable tr.flag td.cost::before { content:""; display:inline-block; width:12px; height:12px;
+    background:#0B5FFF; margin-right:10px; }
+  table.dtable td, table.dtable th {  }
+  .d-foot { font-family:'IBM Plex Mono', monospace; font-size:18px; font-weight:500;
+    letter-spacing:0.06em; text-transform:none;
+    color:#6E6A5E; margin:14px 0 0 0;  }
+  .fx { color:#6E6A5E; font-size:0.85em; letter-spacing:0.06em; white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="slide" data-contain="stage">
+  <div class="content">
+    <p class="kicker" data-t="kicker" data-headline>Typodeck Research · Readout 07</p>
+<div class="accentrule" aria-hidden="true"></div>
+    <p class="metaline" data-t="meta">Issue 07 / 2026 · Cases 11 postmortems · Date Nov 2026</p>
+    
+    <h1 class="title-xl" data-t="title" data-headline style="font-size:72px">What eleven postmortems taught us</h1>
+    <p class="lede" data-t="sub">A slow read of eleven incident reviews, from paging alert to final action item — and the three habits the calm teams share.</p>
+  </div>
+  <footer class="footer"><p class="ctx" data-t="footer">Typodeck Research · Readout 07</p><p class="idx" data-t="pageidx"><span class="numeral" data-t="numeral">01</span> / 07</p></footer>
+</div>
+</body>
+</html>
