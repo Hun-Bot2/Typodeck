@@ -23,7 +23,7 @@ const BESPOKE = new Set(['gridline-swiss']);
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '..', '..');
-const VERSION = '0.1.0';
+const VERSION = '0.2.0';
 
 function usage() {
   return [

@@ -108,7 +108,7 @@ components:
   confetti-chip:
     border: "4px solid {colors.ink}"
     boxShadow: "{shadows.sticker-hard-sm}"
-    description: "Tilted pill or square chip in pink/teal/yellow/purple carrying labels or the context line. Tilt ±3deg."
+    description: "Tilted pill or square chip in pink/teal/yellow/purple carrying labels or the context line. Tilt ±3deg. Labels are ink except on purple chips, which carry white labels (ink on purple is 3.88:1; white on purple is 4.86:1)."
   context-pill:
     background: "{colors.yellow}"
     border: "4px solid {colors.ink}"
@@ -196,6 +196,8 @@ Depth is flat sticker-book. The signature is the **two-layer title slap**: a 6px
 - **Default headline color**: `{colors.ink}` in Archivo Black with the two-layer slap shadow.
 - **Default body text color**: `{colors.ink}` in Nunito 400.
 - **Default chip fills**: rotate pink → teal → yellow → purple across chips in reading order.
+- **Default chip-label color**: `{colors.ink}` on pink/teal/yellow chips, `{colors.white}` on purple chips.
+- **Pastel & tint policy**: accents are saturated fills, never text — color lives in shapes, not words. If a light tint is ever introduced, it must carry a deliberate contrast role as a ground for dark text; never pastel-on-pale text. See `evals/typo-only/color.md` for the shared rule and measurements.
 - **Default zigzag colors**: alternate pink/teal/purple segments left to right.
 - **Default outline numeral**: transparent fill, 4px ink stroke, with a purple offset echo behind.
 - **Default ticker**: `{colors.cream}` text on `{colors.ink}` fill.
@@ -251,7 +253,7 @@ These treatments are **non-optional whenever the corresponding element type is u
 - **Every title carries the two-layer slap shadow.** `6px 6px 0 teal, 12px 12px 0 ink`, hard-edged. A title without the slap reads as a poster, not a sticker.
 - **Every title sits above a zigzag rule.** Alternating-accent SVG zigzag, 8px stroke, full text-measure width. Straight rules do not exist in this system.
 - **Every front anchors a hollow outline numeral.** 300px Archivo Black, transparent fill, 4px ink stroke, drawn from a real deck number, parked in a corner clear of type.
-- **Every label lives on a tilted outlined chip.** 4px ink outline, hard offset shadow, ±3deg rotation, tracked Archivo caps. Naked floating labels do not exist.
+- **Every label lives on a tilted outlined chip.** 4px ink outline, hard offset shadow, ±3deg rotation, tracked Archivo caps — ink labels, except white on purple chips. Naked floating labels do not exist.
 - **Every context line rides the yellow pill.** Yellow fill, 4px outline, 999px radius, −2deg tilt, hard ink shadow.
 - **Every confetti piece keeps clear of type bounding boxes.** Scatter sits behind and around content; a dot overlapping a letter is a defect, not decoration.
 - **Every ticker pins the foot.** Full-bleed ink strip with cream tracked caps: section mark left, counter right.

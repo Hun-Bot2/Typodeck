@@ -1,5 +1,5 @@
 // Coverage sweep: run the harness for every design x {en, ko}, collect statuses.
-// Usage: node sweep.mjs [--langs=en,ko] [--out=DIR]
+// Usage: node sweep.mjs [--langs=en,ko] [--out=DIR] [--contentDir=DIR]
 // Writes <out>/<slug>-<lang>/{slides,report.json} + <out>/coverage.json.
 // Honest statuses per design-lang: PASS (7/7), PARTIAL (n/7 + failing slides),
 // ERROR (harness exit != 0 / crash).
@@ -17,9 +17,16 @@ const flag = (name, fb) => {
 
 const langs = flag('--langs', 'en,ko').split(',').map((s) => s.trim()).filter(Boolean);
 const outRoot = path.resolve(REPO, flag('--out', 'evals/hackathon/coverage'));
+const contentDir = path.resolve(REPO, flag('--contentDir', 'evals/hackathon/harness-proof'));
 const idx = JSON.parse(fs.readFileSync(path.join(REPO, 'bold-template-pack', 'selection-index.json'), 'utf8'));
 const slugs = idx.templates.map((t) => t.slug);
-const contentFor = (lang) => path.join(REPO, 'evals', 'hackathon', 'harness-proof', `proof-content.${lang}.json`);
+const contentFor = (lang) => {
+  const cand = path.join(contentDir, `proof-content.${lang}.json`);
+  if (fs.existsSync(cand)) return cand;
+  const alt = path.join(contentDir, `content-${lang}.json`);
+  if (fs.existsSync(alt)) return alt;
+  return cand;
+};
 
 const coverage = { startedAt: new Date().toISOString(), langs, designs: {} };
 for (const slug of slugs) {

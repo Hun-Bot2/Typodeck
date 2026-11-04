@@ -1,10 +1,11 @@
 ---
 version: alpha
 name: Fika
-description: A Scandinavian soft-functional presentation system built on warmth and restraint. Display type runs in Fraunces (weight 500, lowercase headlines) paired with Nunito Sans for body and tracked caps labels. The palette stays on warm off-white (`#FAFAF7`) with slate text (`#31404B`) and three muted pastels — sage, blush, dusty blue — as flat panel fills and chips. Depth is nearly absent: matte surfaces, 16–24px corner radii, and at most one whisper-soft lift shadow. Layouts breathe through an airy two-column rhythm with huge gutters. The effect is a quiet kitchen table, not a stage.
+description: A Scandinavian soft-functional presentation system built on warmth and restraint. Display type runs in Fraunces (weight 500, lowercase headlines) paired with Nunito Sans for body and tracked caps labels. The palette stays on warm off-white (`#FAFAF7`) with slate text (`#31404B`), fjord navy (`#182B49`) for chip text and small marks, and three muted pastels — sage, blush, dusty blue — as flat panel fills and chips. Depth is nearly absent: matte surfaces, 16–24px corner radii, and at most one whisper-soft lift shadow. Layouts breathe through an airy two-column rhythm with huge gutters. The effect is a quiet kitchen table, not a stage.
 colors:
   off-white: "#FAFAF7"
   slate: "#31404B"
+  fjord: "#182B49"
   sage: "#A8C3B9"
   blush: "#E8B4A0"
   dusty-blue: "#7FA6C9"
@@ -98,19 +99,19 @@ components:
     description: "Large rounded companion panel in a pastel wash (sage/blush/blue rotate). Holds data numerals, figure captions, or a short list. No border, no shadow."
   chip:
     background: "{colors.blush}"
-    color: "{colors.slate}"
+    color: "{colors.fjord}"
     padding: "{spacing.chip-pad}"
     borderRadius: "{spacing.radius-chip}"
     fontFamily: "'Nunito Sans', system-ui, sans-serif"
     fontSize: 22px
     fontWeight: 700
-    description: "999px pastel pill for key phrases. Pastel fills rotate sage → blush → dusty-blue; text always slate."
+    description: "999px pastel pill for key phrases. Pastel fills rotate sage → blush → dusty-blue; text always fjord navy (slate fails AA on dusty-blue at 4.17:1; fjord passes at 5.54:1)."
   kicker-dot:
     width: 14px
     height: 14px
     borderRadius: 999px
-    background: "{colors.dusty-blue}"
-    description: "Small solid dot preceding the kicker label. Color rotates with the slide's accent pastel."
+    background: "{colors.fjord}"
+    description: "Small solid dot preceding the kicker label. Default fjord navy; may rotate with the slide's accent pastel for variety."
   rule-soft:
     height: 2px
     background: "{colors.sage-wash}"
@@ -141,7 +142,7 @@ Fika is a **Scandinavian soft-functional presentation system**. Its foundational
 
 The type stack is two faces. **Fraunces** (weight 500) is the display face — a soft, slightly wonky serif with old-style warmth that carries headlines, subheads, and large data numerals, always in lowercase for headline runs. **Nunito Sans** is the work face — a rounded humanist sans used for body at 400 and for labels, chips, and captions at 700. The serif/sans contrast is gentle by design: neither face ever shouts.
 
-The palette stays on warm **off-white** (`{colors.off-white}`) with **slate** text (`{colors.slate}`) and three muted pastels — **sage**, **blush**, **dusty blue** — plus 35%-mix washes of each for large panel fills. Pastels are fills, never text: body and headlines are always slate on light grounds. The result is calm without being cold — color reads as furniture, not signal.
+The palette stays on warm **off-white** (`{colors.off-white}`) with **slate** text (`{colors.slate}`), **fjord navy** (`{colors.fjord}`) for chip text and small marks, and three muted pastels — **sage**, **blush**, **dusty blue** — plus 35%-mix washes of each for large panel fills. Pastels are fills, never text: body and headlines are always slate on light grounds, chip text is always fjord. The result is calm without being cold — color reads as furniture, not signal.
 
 Depth is the system's deliberate absence: **matte surfaces, no gradients, no gloss, no hard shadows**. At most one soft lift shadow (`{shadows.lift}`) appears per slide, usually under the companion panel. Rounded corners plus flat fills plus whitespace create all the separation the system needs.
 
@@ -150,7 +151,7 @@ Depth is the system's deliberate absence: **matte surfaces, no gradients, no glo
 **Key Characteristics:**
 - Lowercase Fraunces headlines (`{typography.headline}`) — weight 500, sentence meaning set entirely in lowercase.
 - Soft rounded panels (`{components.soft-panel}`) — 24px radii, flat pastel-wash fills, zero borders.
-- Muted pastel chips (`{components.chip}`) — 999px pills in rotating pastels with slate text.
+- Muted pastel chips (`{components.chip}`) — 999px pills in rotating pastels with fjord navy text.
 - Airy two-column rhythm — text left (~58%), one tinted panel right, gutters ≥ 96px.
 - Matte surface discipline — no gradients, no gloss, no hard shadows; at most one whisper lift shadow.
 - Fraunces old-style numerals for data moments inside pastel panels.
@@ -160,10 +161,11 @@ Depth is the system's deliberate absence: **matte surfaces, no gradients, no glo
 ### Palette
 
 - **Off-White** (`{colors.off-white}` — `#FAFAF7`): The universal ground. Every slide starts here; panels and text sit on it.
-- **Slate** (`{colors.slate}` — `#31404B`): The only text color. Headlines, body, labels, chips, captions — all slate. Never pure black.
+- **Slate** (`{colors.slate}` — `#31404B`): The body text color. Headlines, body, labels, captions — all slate. Never pure black.
+- **Fjord** (`{colors.fjord}` — `#182B49`): Deep sophisticated navy for chip text and the kicker dot. Passes AA on every pastel fill (sage 7.55, blush 7.75, dusty-blue 5.54) where slate fails on dusty-blue (4.17).
 - **Sage** (`{colors.sage}` — `#A8C3B9`): First pastel. Chip fills, dots, small accents, and the wash source for large panels.
 - **Blush** (`{colors.blush}` — `#E8B4A0`): Second pastel. Rotates with sage for chips and companion panels.
-- **Dusty Blue** (`{colors.dusty-blue}` — `#7FA6C9`): Third pastel. Same rotation role; also the default kicker-dot color.
+- **Dusty Blue** (`{colors.dusty-blue}` — `#7FA6C9`): Third pastel. Chip fills and wash source only; the kicker dot defaults to fjord.
 - **White** (`{colors.white}` — `#FFFFFF`): Reserved for small floating cards over pastel panels (rare) and chip text reversal — never a slide ground.
 - **Sage Wash** (`{colors.sage-wash}` — `#DCE8E3`): 35%-mix sage for large panel fills so big areas stay quiet.
 - **Blush Wash** (`{colors.blush-wash}` — `#F5DCD2`): 35%-mix blush for large panel fills.
@@ -175,9 +177,13 @@ Depth is the system's deliberate absence: **matte surfaces, no gradients, no glo
 - **Default headline color**: `{colors.slate}` — pastels never carry headline text.
 - **Default body text color**: `{colors.slate}` at full opacity; secondary captions at 72% opacity.
 - **Default companion-panel fill**: `{colors.sage-wash}`; rotate to blush-wash then blue-wash across consecutive slides.
-- **Default chip fills**: rotate sage → blush → dusty-blue at full pastel strength with slate text.
+- **Default chip fills**: rotate sage → blush → dusty-blue at full pastel strength with fjord text.
 - **Default divider**: `{components.rule-soft}` — 2px sage-wash line, never dark.
-- **Default accent for dots and small marks**: `{colors.dusty-blue}`.
+- **Default accent for dots and small marks**: `{colors.fjord}`.
+
+### Pastel Policy
+
+Pastels exist only with a deliberate contrast role in this system: full-strength pastels are chip fills behind fjord text; washes are large panel fills behind slate text (all ≥ 8.1:1). Pastels are never text colors, never grounds for pale text, and never layered on pale grounds to carry meaning by color alone — chips and dots always pair with adjacent text labels. No new pastel may join the three without a documented text pairing that passes AA. See `evals/typo-only/color.md` for the shared rule and measurements.
 
 When a slide needs a warmer or cooler cast, switch the companion panel to the blush or blue wash — but keep all text slate and the ground off-white.
 
@@ -268,7 +274,7 @@ Borders effectively do not exist. Panels, chips, and cards have no strokes; divi
 
 **Soft panel** — Large 24px-radius rectangle in a pastel wash holding a data numeral, figure, or short list. No border, no shadow (or one lift shadow). The slide's right-hand companion.
 
-**Chip** — 999px pastel pill in rotating sage/blush/dusty-blue with slate Nunito Sans 700 text. Appears in rows of 2–4 under body copy for key phrases.
+**Chip** — 999px pastel pill in rotating sage/blush/dusty-blue with fjord Nunito Sans 700 text. Appears in rows of 2–4 under body copy for key phrases.
 
 **Kicker dot** — 14px solid pastel dot preceding the kicker label. The smallest color moment on the slide; rotates with the accent pastel.
 
@@ -283,7 +289,7 @@ Borders effectively do not exist. Panels, chips, and cards have no strokes; divi
 ### Do
 
 - Set every headline in lowercase Fraunces 500. The lowercase treatment is the voice.
-- Keep all text slate on light grounds; pastels are fills, never text colors.
+- Keep headlines, body, and labels slate on light grounds and chip text fjord; pastels are fills, never text colors.
 - Rotate companion-panel washes (sage → blush → blue) across consecutive slides for gentle variety.
 - Hold the ≥96px column gutter and 120px page padding as hard minimums.
 - Use chips for key content phrases in rows of 2–4, rotating pastel fills.
@@ -301,7 +307,7 @@ Borders effectively do not exist. Panels, chips, and cards have no strokes; divi
 - Don't exceed one soft shadow per slide or use shadows on text.
 - Don't use Fraunces for body/labels or Nunito Sans for headlines/numerals.
 - Don't crowd the slide; if it feels busy, remove an element rather than shrinking type.
-- Don't introduce a fourth pastel or a saturated neon — the palette is three muted pastels plus washes.
+- Don't introduce a fourth pastel or a saturated neon — the palette is slate + fjord text colors plus three muted pastels plus washes.
 - Don't center multi-line body text; left-align everywhere except single-column covers.
 
 ## Responsive Behavior
@@ -383,11 +389,11 @@ Kicker labels lose their tracked-caps treatment in CJK; keep the kicker dot + ke
 1. Any new slide starts on the off-white ground with 96px/120px padding, a kicker row, and a page mark.
 2. Any new headline uses Fraunces 500 lowercase at the matching scale token. Any new body uses Nunito Sans 400. Any new label uses Nunito Sans 700 tracked caps.
 3. Any new companion panel uses a pastel wash fill (rotate sage → blush → blue) at 24px radius with no border.
-4. Any new key-phrase row uses 2–4 chips with rotating full-strength pastel fills and slate text.
+4. Any new key-phrase row uses 2–4 chips with rotating full-strength pastel fills and fjord text.
 5. Any new data moment uses a Fraunces 240px numeral inside a wash panel with a 20px caption beneath.
 6. Any new divider uses the 2px sage-wash soft rule — never a dark line.
 7. Any new shadow must be the single allowed lift shadow per slide; when in doubt, use none.
-8. Any new color must come from the three pastels + washes; no fourth hue, no saturation boosts.
+8. Any new color must come from slate + fjord + the three pastels + washes; no fourth pastel, no saturation boosts.
 9. If a slide feels crowded, remove an element or move it to a companion panel — never shrink type below its token.
 10. Animated elements (chip/panel fade-ins) respect `prefers-reduced-motion`; stillness is the default.
 

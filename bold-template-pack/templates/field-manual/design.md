@@ -5,7 +5,7 @@ description: A technical-manual presentation system on warm dotted-grid paper. A
 colors:
   paper: "#FAF8F3"
   ink: "#1A1A1A"
-  procedural-blue: "#0B5FFF"
+  procedural-blue: "#182B49"
   caution-amber: "#FFB000"
   muted: "#6E6A5E"
   dot-grid: "rgba(26, 26, 26, 0.14)"
@@ -157,7 +157,7 @@ Field Manual is a **technical-manual presentation system**. Its foundational pre
 
 The type stack is three faces with procedural roles. **Archivo Bold caps** issues orders — titles, section heads, and step-adjacent heads, always uppercase, always left-aligned. **IBM Plex Sans** explains — body, subtitles, note findings, and step labels in sentence or uppercase depending on the component. **IBM Plex Mono** tags — document codes, figure tags, section references, check rows, chips, and footer. The mono voice is the system's paperwork: if it looks stamped, filed, or referenced, it is Plex Mono.
 
-The palette is **warm paper and ink** with two functional accents. **Procedural blue** marks notes, figure tags, and informational chrome. **Caution amber** fills warning chips — the only filled elements anywhere. Blue never fills large areas; amber never appears outside chips and open-checkbox glyphs. Muted taupe grays secondary text and dashed leaders.
+The palette is **warm paper and ink** with two functional accents. **Procedural navy** (`{colors.procedural-blue}`) marks notes, figure tags, and informational chrome — a deep filing-cabinet navy that stays distinct from ink at 1px borders and 19px tags without ever reading electric. **Caution amber** fills warning chips — the only filled elements anywhere. Navy never fills large areas; amber never appears outside chips and open-checkbox glyphs. Muted taupe grays secondary text and dashed leaders.
 
 Layout follows a **60/40 split**: ruled text with numbered steps on the left, a bordered figure column with exhibits and callout boxes on the right, stitched together with dashed leader lines. The ground is dotted-grid paper — fine 1px dots on a 24px grid at 14% ink — giving every surface the feel of engineering paper.
 
@@ -179,7 +179,7 @@ Layout follows a **60/40 split**: ruled text with numbered steps on the left, a 
 
 - **Paper** (`{colors.paper}` — `#FAF8F3`): The warm ground, always carrying the dotted grid. Reads as aged but clean stock.
 - **Ink** (`{colors.ink}` — `#1A1A1A`): All type, rules, borders, and numeral squares. Warm near-black.
-- **Procedural Blue** (`{colors.procedural-blue}` — `#0B5FFF`): Note boxes, figure tags, informational markers, checked-box glyphs. Never large fills, never body text.
+- **Procedural Navy** (`{colors.procedural-blue}` — `#182B49`): Note boxes, figure tags, informational markers, checked-box glyphs. A deep sophisticated navy (13.4:1 on paper, 14.2:1 on box-white); never large fills, never body text.
 - **Caution Amber** (`{colors.caution-amber}` — `#FFB000`): Warning-chip fills and open-checkbox glyphs only. The system's alert color.
 - **Muted** (`{colors.muted}` — `#6E6A5E`): Secondary text, dashed leaders, and caption lines. Warm gray-taupe.
 - **Dot Grid** (`{colors.dot-grid}` — `rgba(26,26,26,0.14)`): 1px dots on a 24px grid over the paper.
@@ -194,6 +194,10 @@ Layout follows a **60/40 split**: ruled text with numbered steps on the left, a 
 - **Default chip treatment**: `{colors.caution-amber}` fill with ink mono text and a leading `⚠` glyph.
 - **Default box borders**: 1px ink for figures and steps; 1px blue for notes.
 - **Default leader lines**: 2px dashed `{colors.muted}`.
+
+### Pastel & Tint Policy
+
+This system carries no pastel tints: paper and box-fill are near-whites that always take ink or navy text, and amber is a saturated fill that always takes ink text. If a tint is ever introduced, it must carry a deliberate contrast role (ground for dark text, or fill behind dark text) — never pastel-on-pale text, never tint-on-tint type. See `evals/typo-only/color.md` for the shared rule and measurements.
 
 ## Typography
 

@@ -1,8 +1,12 @@
-// Generic spec-driven slide builder: composes per-role HTML/CSS from a
-// canonical theme (see theme.mjs). Same marker contract as the bespoke
-// gridline builder (data-t keys, data-headline, data-fixture) and same
-// repair adjust keys (titlePx, tablePx, statsPx), so checks + repair work
-// unchanged. Title sizes snap to the repair ladder so step-down math is exact.
+// Generic spec-driven slide builder (typography-only): composes per-role
+// HTML/CSS from a canonical theme (see theme.mjs). Same marker contract as
+// the bespoke gridline builder (data-t keys, data-headline, data-fixture)
+// and same repair adjust keys (titlePx, tablePx, statsPx), so checks +
+// repair work unchanged. Title sizes snap to the repair ladder so step-down
+// math is exact. Hierarchy is carried by position, alignment, proximity,
+// scale, weight, color, and whitespace only: no visible rectangles, cards,
+// panels, rules, table grids, borders used as containers, or colored boxes
+// behind text. The only background is the full-slide solid ground.
 
 import { esc, titleLadder } from './builder.mjs';
 import { koStacks, latinFontsHref, PRETENDARD_CSS, NOTO_KR_CSS } from './theme.mjs';
@@ -55,12 +59,12 @@ export function buildSlideGeneric({ theme, slide, role, index, total, deck, lang
   }
 
   const kicker = slide.kicker
-    ? `<p class="kicker" data-t="kicker" data-headline>${esc(slide.kicker)}</p>\n<div class="accentrule" aria-hidden="true"></div>`
-    : `<div class="accentrule notop" aria-hidden="true"></div>`;
+    ? `<p class="kicker" data-t="kicker" data-headline>${esc(slide.kicker)}</p>`
+    : '';
 
   const fx = slide.fixture
     ? `<span class="fx" data-fixture title="${esc(slide.fixtureNote ?? 'illustrative content')}">· FIXTURE</span>` : '';
-  const withFx = (html) => (slide.fixture && !html.includes('data-fixture') ? `${html} ${fx}` : html);
+  const withFx = (html) => (slide.fixture && !html.includes('data-fixture') ? `${html}&nbsp;${fx}` : html);
 
   const metaLine = (slide.meta?.length ? slide.meta : [])
     .map((m) => (typeof m === 'string' ? m : [m.label, m.value].filter(Boolean).join(' ')))
@@ -74,7 +78,7 @@ export function buildSlideGeneric({ theme, slide, role, index, total, deck, lang
 
   if (role === 'cover' || role === 'closing') {
     const size = adjust.titlePx ?? Math.min(titleLadder(role, titleLen), snapDown(T.display.size));
-    notes.push(`${role} composition: ${T.display.role} ${size}px + ${role === 'cover' ? 'lede' : 'recap'}`);
+    notes.push(`${role} composition: ${T.display.role} ${size}px + ${role === 'cover' ? 'lede' : 'recap'}, type only`);
     const cls = role === 'cover' ? 'title-xl' : 'close-line';
     const sub = role === 'cover' ? slide.lede : slide.recap;
     const subCls = role === 'cover' ? 'lede' : 'close-recap';
@@ -95,7 +99,7 @@ export function buildSlideGeneric({ theme, slide, role, index, total, deck, lang
     ${slide.source ? `<p class="srcline" data-t="src">${withFx(esc(slide.source))}</p>` : ''}`;
   } else if (role === 'evidence') {
     const size = adjust.titlePx ?? 48;
-    notes.push(`evidence composition: message ${size}px + stat/finding row under rule`);
+    notes.push(`evidence composition: message ${size}px + stat/finding group, whitespace-separated`);
     let mid = '';
     if (slide.stats?.length) {
       const spx = adjust.statsPx ?? 150;
@@ -119,7 +123,7 @@ export function buildSlideGeneric({ theme, slide, role, index, total, deck, lang
     ${slide.source ? `<p class="srcline" data-t="src">${withFx(esc(slide.source))}</p>` : ''}`;
   } else if (role === 'comparison') {
     const size = adjust.titlePx ?? 56;
-    notes.push('comparison composition: two-zone A/B with positional identity');
+    notes.push('comparison composition: two-zone A/B with positional identity, accent marks flags');
     const zone = (z, cls) => `<div class="zone ${cls}" data-t="zone-${cls}">
       <h2 class="zone-h" data-headline>${esc(z.label)}</h2>
       <ul>${(z.rows ?? []).map((r) => {
@@ -134,12 +138,13 @@ export function buildSlideGeneric({ theme, slide, role, index, total, deck, lang
   } else if (role === 'dense') {
     const size = adjust.titlePx ?? 48;
     const tpx = adjust.tablePx ?? 21;
-    notes.push(`dense composition: table ${tpx}px + footnote`);
+    notes.push(`dense composition: typographic ledger ${tpx}px, aligned columns, no grid`);
     const t = slide.table;
     bodyHtml = `
     <h1 class="d-title" data-t="title" data-headline style="font-size:${size}px">${esc(slide.title ?? slide.message ?? '')}</h1>
-    <table class="dtable" data-t="table" style="font-size:${tpx}px"><thead><tr>${t.columns.map((c) => `<th>${esc(c)}</th>`).join('')}</tr></thead>
-    <tbody>${t.rows.map((row, i) => `<tr class="${t.flags?.[i] ? 'flag' : ''}">${row.map((cell, j) => `<td class="${j === 0 ? 'case' : j === 2 ? 'cost' : ''}">${esc(String(cell))}</td>`).join('')}</tr>`).join('')}</tbody></table>
+    <div class="ledger" data-t="table" style="font-size:${tpx}px">${t.columns.map((c) => `<span class="lhead">${esc(c)}</span>`).join('')}
+    ${t.rows.map((row, i) => `<div class="lrow${t.flags?.[i] ? ' flag' : ''}">${row.map((cell, j) => `<span class="cell${j === 0 ? ' case' : j === 2 ? ' cost' : ''}">${esc(String(cell))}</span>`).join('')}</div>`).join('')}
+    </div>
     ${t.footnote ? `<p class="d-foot" data-t="tfoot">${withFx(esc(t.footnote))}</p>` : ''}`;
   }
 
@@ -154,22 +159,18 @@ export function buildSlideGeneric({ theme, slide, role, index, total, deck, lang
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 ${links.join('\n')}
 <style>
-  * { border-radius:0 !important; }
-  html, body { margin:0; padding:0; background:#000; }
+  html, body { margin:0; padding:0; background:${C.bg}; }
   .slide { position:relative; width:1920px; height:1080px; background:${C.bg};
     color:${C.ink}; font-family:${bodyF.family}; overflow:hidden; }
   .content { position:absolute; top:72px; left:96px; right:96px; max-height:820px; }
-  .kicker { display:flex; align-items:center; gap:16px; font-family:${kickF.family};
+  .kicker { font-family:${kickF.family};
     font-weight:${kickF.weight}; font-size:20px; letter-spacing:${track(lang, '0.14em')};
     text-transform:${caps(lang, T.kicker.textTransform)}; color:${C.accent}; margin:0; ${kobreak} }
-  .kicker::before { content:""; width:16px; height:16px; background:${C.accent}; flex:0 0 auto; }
-  .accentrule { height:5px; background:${C.accent}; margin-top:22px; width:100%; }
-  .accentrule.notop { margin-top:0; }
   .metaline { font-family:${capF.family}; font-size:18px; font-weight:${capF.weight};
     letter-spacing:${track(lang, '0.06em')}; text-transform:${caps(lang, 'none')};
     color:${C.muted}; margin:14px 0 0 0; ${kobreak} }
   .footer { position:absolute; left:96px; right:96px; bottom:0; height:104px;
-    border-top:2px solid ${C.ink}; display:flex; align-items:center;
+    display:flex; align-items:center;
     justify-content:space-between; }
   .footer .ctx { font-family:${capF.family}; font-size:19px; font-weight:${capF.weight};
     letter-spacing:${track(lang, '0.06em')}; text-transform:${caps(lang, 'none')};
@@ -194,45 +195,42 @@ ${links.join('\n')}
   .srcline { font-family:${capF.family}; font-size:20px; font-weight:${capF.weight};
     letter-spacing:${track(lang, '0.06em')}; text-transform:${caps(lang, 'none')};
     color:${C.muted}; margin:40px 0 0 0; ${kobreak} }
-  .statrow { display:flex; gap:40px; margin:44px 0 0 0; border-top:2px solid ${C.ink}; padding-top:32px; }
-  .stat { display:flex; align-items:flex-end; gap:22px; padding-right:40px; border-right:1px solid ${C.line}; }
-  .stat:last-child { border-right:none; }
+  .statrow { display:flex; gap:72px; margin:52px 0 0 0; }
+  .stat { display:flex; align-items:flex-end; gap:22px; }
   .statnum { font-family:${numF.family}; font-weight:${numF.weight}; line-height:0.9;
-    letter-spacing:${track(lang, '-0.02em')}; }
+    letter-spacing:${track(lang, '-0.02em')}; white-space:nowrap; }
   .statlab { font-family:${capF.family}; font-size:20px; font-weight:${capF.weight};
     letter-spacing:${track(lang, '0.06em')}; text-transform:${caps(lang, 'none')};
     line-height:1.5; padding-bottom:18px; max-width:320px; ${kobreak} }
-  .ev-sup { font-size:${Math.round(24 * tense)}px; line-height:${lh(1.55, lang)}; margin:32px 0 0 0; max-width:1380px; ${kobreak} }
-  .findings { list-style:none; margin:36px 0 0 0; padding:0; border-top:2px solid ${C.ink}; }
-  .findings li { display:flex; gap:24px; padding:22px 0; border-bottom:1px solid ${C.line}; }
-  .fnum { font-family:${numF.family}; font-weight:${numF.weight}; font-size:30px; flex:0 0 96px; }
+  .ev-sup { font-size:${Math.round(24 * tense)}px; line-height:${lh(1.55, lang)}; margin:36px 0 0 0; max-width:1380px; ${kobreak} }
+  .findings { list-style:none; margin:44px 0 0 0; padding:0; }
+  .findings li { display:flex; gap:24px; padding:0; margin:0 0 30px 0; }
+  .findings li:last-child { margin-bottom:0; }
+  .fnum { font-family:${numF.family}; font-weight:${numF.weight}; font-size:30px; flex:0 0 96px; color:${C.accent}; }
   .fbody { display:flex; flex-direction:column; gap:8px; }
   .fhead { font-family:${titleF.family}; font-weight:${titleF.weight}; font-size:30px; line-height:1.2; ${kobreak} }
   .fsub { font-size:24px; line-height:${lh(1.55, lang)}; ${kobreak} }
-  .zones { display:flex; gap:32px; margin-top:36px; }
+  .zones { display:flex; gap:96px; margin-top:44px; }
   .zone { flex:1 1 0; }
-  .zone-b { border-left:1px solid ${C.line}; padding-left:32px; }
   .zone-h { font-family:${titleF.family}; font-weight:${titleF.weight}; font-size:30px;
     line-height:1.2; margin:0; ${kobreak} }
-  .zone ul { list-style:none; margin:0; padding:18px 0 0 0; border-top:2px solid ${C.ink}; margin-top:12px; }
-  .zone li { display:flex; gap:14px; align-items:flex-start; font-size:22px; line-height:1.5;
-    padding:12px 0; border-bottom:1px solid ${C.line}; ${kobreak} }
-  .zone li::before { content:""; width:13px; height:13px; flex:0 0 auto; margin-top:10px; background:${C.ink}; }
-  .zone li.bad::before { background:${C.accent}; }
-  .caption { font-size:22px; line-height:1.55; color:${C.muted}; margin:30px 0 0 0;
-    border-top:1px solid ${C.line}; padding-top:20px; ${kobreak} }
-  table.dtable { border-collapse:collapse; margin:24px 0 0 0; width:100%; }
-  table.dtable th { font-family:${capF.family}; font-weight:${capF.weight}; letter-spacing:${track(lang, '0.06em')};
-    text-transform:${caps(lang, 'none')}; color:${C.muted}; text-align:left; font-size:0.86em;
-    padding:10px 16px 10px 0; border-top:2px solid ${C.ink}; border-bottom:2px solid ${C.ink}; }
-  table.dtable td { line-height:1.35; padding:9px 16px 9px 0; border-bottom:1px solid ${C.line}; white-space:nowrap; }
-  table.dtable td.case { font-family:${numF.family}; font-weight:${numF.weight}; font-size:0.95em; }
-  table.dtable tr.flag td.cost::before { content:""; display:inline-block; width:12px; height:12px;
-    background:${C.accent}; margin-right:10px; }
-  table.dtable td, table.dtable th { ${lang === 'ko' ? 'word-break:keep-all;' : ''} }
+  .zone ul { list-style:none; margin:20px 0 0 0; padding:0; }
+  .zone li { font-size:22px; line-height:1.5;
+    padding:0; margin:0 0 20px 0; ${kobreak} }
+  .zone li:last-child { margin-bottom:0; }
+  .zone li.bad { color:${C.accent}; font-weight:600; }
+  .caption { font-size:22px; line-height:1.55; color:${C.muted}; margin:36px 0 0 0; ${kobreak} }
+  .ledger { display:grid; grid-template-columns:7em 10em 8em 1fr; column-gap:2.5em;
+    margin:32px 0 0 0; line-height:1.35; font-variant-numeric:tabular-nums; }
+  .lhead { font-family:${capF.family}; font-weight:${capF.weight}; letter-spacing:${track(lang, '0.06em')};
+    text-transform:${caps(lang, 'none')}; color:${C.muted}; font-size:0.86em; padding:0 0 0.9em 0; ${lang === 'ko' ? 'word-break:keep-all;' : ''} }
+  .lrow { display:contents; }
+  .lrow > .cell { padding:0.42em 0; white-space:nowrap; ${lang === 'ko' ? 'word-break:keep-all;' : ''} }
+  .lrow > .cell.case { font-family:${numF.family}; font-weight:${numF.weight}; font-size:0.95em; }
+  .lrow.flag > .cell.cost { color:${C.accent}; font-weight:700; }
   .d-foot { font-family:${capF.family}; font-size:18px; font-weight:${capF.weight};
     letter-spacing:${track(lang, '0.06em')}; text-transform:${caps(lang, 'none')};
-    color:${C.muted}; margin:14px 0 0 0; ${kobreak} }
+    color:${C.muted}; margin:22px 0 0 0; ${kobreak} }
   .fx { color:${C.muted}; font-size:0.85em; letter-spacing:0.06em; white-space:nowrap; }
 </style>
 </head>
