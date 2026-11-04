@@ -7,26 +7,31 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080. TYPO-ONLY rebuild 2026-11-04: arch/echo/halo/curls/tendril removed; fleuron bloom + fleuron divider (rose ● glyph) + bronze ○/rose ● bullets; no drawn shapes. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080. TYPO-ONLY rebuild 2026-11-04: arch/echo/halo/curls/tendril removed; fleuron bloom + fleuron divider (rose ● glyph) + bronze ○/rose ● bullets; no drawn shapes. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080. TYPO-ONLY rebuild 2026-11-04: arch/echo/halo/curls/tendril removed; fleuron bloom + fleuron divider (rose ● glyph) + bronze ○/rose ● bullets; no drawn shapes. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res."
     }
   ],
   "render": {
     "width": 1920,
     "height": 1080,
     "verify": "PASS"
+  },
+  "typo_only": {
+    "rebuild": "2026-11-04",
+    "boxes": "none",
+    "note": "TYPO-ONLY rebuild 2026-11-04: arch/echo/halo/curls/tendril removed; fleuron bloom + fleuron divider (rose ● glyph) + bronze ○/rose ● bullets; no drawn shapes. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res."
   }
 }

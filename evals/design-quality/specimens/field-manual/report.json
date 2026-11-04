@@ -7,21 +7,21 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (frame border, dot grid, double rule, amber chip fills, numeral squares, leaders, box borders removed); specimens moved from stale royal blue to locked navy #182B49 (no regress); ☑/☐ kept as text glyphs; approval Sign renders '—' (was an empty rule line); PNG 1920x1080 (146517 bytes), viewed full-res."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source lines); typography-only rebuild + navy #182B49; PNG 1920x1080 (104634 bytes), viewed full-res."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); typography-only rebuild + navy #182B49; disciplined rows keep ☑ (verified after a glyph slip caught pre-capture); PNG 1920x1080 (99651 bytes), viewed full-res."
     }
   ],
   "render": {

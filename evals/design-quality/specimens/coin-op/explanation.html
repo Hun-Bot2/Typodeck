@@ -8,60 +8,48 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;500&family=Silkscreen:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only: glowing type on the void. Zones sit side by side with a
+     wide gutter — no panels, fills, borders, or row separators. */
   .coinop-slide { position: absolute; inset: 0; background: #060A06; overflow: hidden;
     font-family: 'IBM Plex Mono', ui-monospace, monospace; }
-  .coinop-frame { position: absolute; inset: 56px; border: 4px solid #FFB000;
-    box-shadow: 0 0 18px rgba(255,176,0,.35), inset 0 0 18px rgba(255,176,0,.12); }
-  .coinop-inner { position: absolute; inset: 16px; border: 2px solid #33FF66;
-    box-shadow: 0 0 14px rgba(51,255,102,.30), inset 0 0 24px rgba(51,255,102,.06);
-    display: flex; flex-direction: column; }
-  .coinop-screw { position: absolute; width: 12px; height: 12px; background: #FFB000;
-    box-shadow: 0 0 8px rgba(255,176,0,.8), 0 0 28px rgba(255,176,0,.35); }
-  .coinop-ticker { height: 64px; flex: 0 0 auto; background: #FFB000; overflow: hidden;
-    display: flex; align-items: center; justify-content: center; }
-  .coinop-ticker-track { display: flex; flex: 0 0 auto; align-items: center; justify-content: center; }
-  .coinop-ticker span { font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 20px;
-    letter-spacing: 0.08em; text-transform: uppercase; color: #060A06; white-space: nowrap; }
+  .coinop-stage { position: absolute; inset: 72px; display: flex; flex-direction: column; }
+  .coinop-marquee { flex: 0 0 auto; text-align: center;
+    font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 20px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: #F2A91E; margin: 0;
+    text-shadow: 0 0 8px rgba(242,169,30,.7), 0 0 28px rgba(242,169,30,.3); }
   .coinop-well { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center;
     justify-content: center; text-align: center; padding: 16px 72px; min-height: 0; }
-  .coinop-slotlabel { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
-  .coinop-slot { width: 10px; height: 44px; border: 2px solid #FFB000; border-radius: 6px;
-    box-shadow: 0 0 8px rgba(255,176,0,.5); flex: 0 0 auto; }
-  .coinop-slotlabel-text { font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 17px;
-    letter-spacing: 0.14em; text-transform: uppercase; color: #FFB000;
-    text-shadow: 0 0 8px rgba(255,176,0,.8), 0 0 28px rgba(255,176,0,.35); white-space: nowrap; }
+  .coinop-eyebrow { margin: 0 0 14px 0;
+    font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 17px;
+    letter-spacing: 0.14em; text-transform: uppercase; color: #F2A91E; white-space: nowrap;
+    text-shadow: 0 0 8px rgba(242,169,30,.7), 0 0 28px rgba(242,169,30,.3); }
+  .coinop-eyebrow .pm { color: #1FA84A; text-shadow: none; padding: 0 16px; }
   .coinop-title { font-family: 'VT323', ui-monospace, monospace; font-weight: 400;
-    font-size: 84px; line-height: 1.0; color: #33FF66; margin: 0;
-    text-shadow: 0 0 8px rgba(51,255,102,.9), 0 0 32px rgba(51,255,102,.45), 0 0 90px rgba(51,255,102,.25); }
-  .coinop-panels { display: flex; gap: 32px; width: 100%; max-width: 1560px; margin-top: 22px; }
-  .coinop-panel { flex: 1 1 0; min-width: 0; text-align: left; background: #0A0F0A;
-    border: 2px solid #1FA84A; padding: 24px 30px 26px; }
-  .coinop-panel.bad { border-color: rgba(255,176,0,.55); }
-  .coinop-panel h2 { font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 18px;
-    letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 14px 0; }
-  .coinop-panel.good h2 { color: #33FF66; text-shadow: 0 0 8px rgba(51,255,102,.7); }
-  .coinop-panel.bad h2 { color: #FFB000; text-shadow: 0 0 8px rgba(255,176,0,.7); }
-  .coinop-panel ul { list-style: none; margin: 0; padding: 0; }
-  .coinop-panel li { font-size: 23px; line-height: 1.5; color: #E8E4D8; margin: 0; padding: 9px 0;
-    border-top: 1px solid #1E2A1E; text-shadow: 0 0 6px rgba(232,228,216,.3); }
-  .coinop-panel li .mk { display: inline-block; width: 1.6em; }
-  .coinop-panel.good li .mk { color: #33FF66; }
-  .coinop-panel.bad li .mk { color: #FFB000; }
-  .coinop-caption { font-size: 23px; line-height: 1.6; color: #E8E4D8; margin: 22px 0 0 0; max-width: 66ch;
+    font-size: 84px; line-height: 1.0; color: #3FE673; margin: 0;
+    text-shadow: 0 0 8px rgba(63,230,115,.75), 0 0 32px rgba(63,230,115,.38), 0 0 90px rgba(63,230,115,.22); }
+  .coinop-zones { display: flex; gap: 96px; width: 100%; max-width: 1560px; margin-top: 28px; }
+  .coinop-zone { flex: 1 1 0; min-width: 0; text-align: left; }
+  .coinop-zone h2 { font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 18px;
+    letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 16px 0; }
+  .coinop-zone.good h2 { color: #3FE673; text-shadow: 0 0 8px rgba(63,230,115,.7); }
+  .coinop-zone.bad h2 { color: #F2A91E; text-shadow: 0 0 8px rgba(242,169,30,.7); }
+  .coinop-zone ul { list-style: none; margin: 0; padding: 0; }
+  .coinop-zone li { font-size: 23px; line-height: 1.5; color: #E8E4D8; margin: 0 0 14px 0;
+    text-shadow: 0 0 6px rgba(232,228,216,.3); }
+  .coinop-zone li:last-child { margin-bottom: 0; }
+  .coinop-zone li .mk { display: inline-block; width: 1.6em; }
+  .coinop-zone.good li .mk { color: #3FE673; }
+  .coinop-zone.bad li .mk { color: #F2A91E; }
+  .coinop-caption { font-size: 23px; line-height: 1.6; color: #E8E4D8; margin: 28px 0 0 0; max-width: 66ch;
     text-shadow: 0 0 6px rgba(232,228,216,.35); }
+  .coinop-ticks { color: #1FA84A; font-size: 22px; letter-spacing: 24px; margin: 18px 0 0 24px; }
   .coinop-footer { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 72px 28px; font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 13px;
+    font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 13px;
     letter-spacing: 0.18em; text-transform: uppercase; color: #1FA84A; }
-  .coinop-cursor { display: inline-block; width: 18px; height: 26px; background: #33FF66;
-    box-shadow: 0 0 6px rgba(51,255,102,.7), 0 0 24px rgba(51,255,102,.35);
-    vertical-align: -5px; animation: coinop-blink 1.06s steps(1) infinite; }
+  .coinop-cursor { color: #3FE673; font-family: 'VT323', ui-monospace, monospace; font-size: 30px;
+    text-shadow: 0 0 6px rgba(63,230,115,.6), 0 0 24px rgba(63,230,115,.3);
+    animation: coinop-blink 1.06s steps(1) infinite; }
   @keyframes coinop-blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
-  .coinop-rails { position: absolute; top: 0; bottom: 0; width: 10px; display: flex;
-    flex-direction: column; justify-content: center; gap: 32px; }
-  .coinop-scan { position: absolute; inset: 0; z-index: 49; pointer-events: none;
-    background: repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(0,0,0,.28) 3px, rgba(0,0,0,.28) 4px); }
-  .coinop-vig { position: absolute; inset: 0; z-index: 50; pointer-events: none;
-    background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,.55) 100%); }
   @media (prefers-reduced-motion: reduce) {
     .coinop-cursor { animation: none; }
   }
@@ -102,59 +90,37 @@
   <div id="deck-stage">
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <div class="coinop-slide">
-      <div class="coinop-frame">
-        <span class="coinop-screw" style="top:-8px;left:-8px"></span>
-        <span class="coinop-screw" style="top:-8px;right:-8px"></span>
-        <span class="coinop-screw" style="bottom:-8px;left:-8px"></span>
-        <span class="coinop-screw" style="bottom:-8px;right:-8px"></span>
-        <div class="coinop-inner">
-          <div class="coinop-ticker">
-            <div class="coinop-ticker-track">
-              <span>Typodeck Research · November 2026</span>
+      <div class="coinop-stage">
+        <p class="coinop-marquee">Typodeck Research · November 2026</p>
+        <div class="coinop-well">
+          <p class="coinop-eyebrow"><span class="pm">+</span>The choice<span class="pm">+</span></p>
+          <h1 class="coinop-title">Two teams, one deadline</h1>
+          <div class="coinop-zones">
+            <div class="coinop-zone bad">
+              <h2>Rushed review</h2>
+              <ul>
+                <li><span class="mk">▼</span>Merged with a single skim approval</li>
+                <li><span class="mk">▼</span>Config changes bundled into feature PRs</li>
+                <li><span class="mk">▼</span>Rollback discovered by customers first</li>
+              </ul>
+            </div>
+            <div class="coinop-zone good">
+              <h2>Disciplined review</h2>
+              <ul>
+                <li><span class="mk">▲</span>Required a second reviewer on every merge</li>
+                <li><span class="mk">▲</span>Config changes shipped in isolated PRs</li>
+                <li><span class="mk">▲</span>Rollback caught in staging, never in production</li>
+              </ul>
             </div>
           </div>
-          <div class="coinop-well">
-            <div class="coinop-slotlabel">
-              <span class="coinop-slot"></span>
-              <span class="coinop-slotlabel-text">The choice</span>
-              <span class="coinop-slot"></span>
-            </div>
-            <h1 class="coinop-title">Two teams, one deadline</h1>
-            <div class="coinop-panels">
-              <div class="coinop-panel bad">
-                <h2>Rushed review</h2>
-                <ul>
-                  <li><span class="mk">▼</span>Merged with a single skim approval</li>
-                  <li><span class="mk">▼</span>Config changes bundled into feature PRs</li>
-                  <li><span class="mk">▼</span>Rollback discovered by customers first</li>
-                </ul>
-              </div>
-              <div class="coinop-panel good">
-                <h2>Disciplined review</h2>
-                <ul>
-                  <li><span class="mk">▲</span>Required a second reviewer on every merge</li>
-                  <li><span class="mk">▲</span>Config changes shipped in isolated PRs</li>
-                  <li><span class="mk">▲</span>Rollback caught in staging, never in production</li>
-                </ul>
-              </div>
-            </div>
-            <p class="coinop-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
-          </div>
-          <div class="coinop-footer">
-            <span>Page 03</span>
-            <span><span class="coinop-cursor"></span></span>
-            <span>Fixture data · not a real study</span>
-          </div>
+          <p class="coinop-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
         </div>
-        <div class="coinop-rails" style="left:-24px">
-          <span class="coinop-slot"></span><span class="coinop-slot"></span><span class="coinop-slot"></span>
-        </div>
-        <div class="coinop-rails" style="right:-24px">
-          <span class="coinop-slot"></span><span class="coinop-slot"></span><span class="coinop-slot"></span>
+        <div class="coinop-footer">
+          <span>Page 03</span>
+          <span class="coinop-cursor">▊</span>
+          <span>Fixture data · not a real study</span>
         </div>
       </div>
-      <div class="coinop-scan"></div>
-      <div class="coinop-vig"></div>
     </div>
     <!-- /DESIGN SLIDE MARKUP -->
   </div>

@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only: position, scale, weight, color, whitespace. No rules,
+     no dividers, no grid lines, no bullets, no borders. Zone identity is
+     positional; the negative side carries a red head as valence. */
   .gridline-slide {
     position: absolute; inset: 0;
     background: #FFFFFF;
@@ -15,14 +18,7 @@
     font-family: 'Inter', system-ui, sans-serif;
     overflow: hidden;
   }
-  .gridline-slide .colgrid {
-    position: absolute; top: 0; bottom: 0; left: 72px; right: 72px;
-    display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
-    pointer-events: none;
-  }
-  .gridline-slide .colgrid i { border-left: 1px solid rgba(17,17,17,0.07); display: block; }
-  .gridline-slide .colgrid i:last-child { border-right: 1px solid rgba(17,17,17,0.07); }
-  .gridline-slide .frame {
+  .gridline-slide .columns {
     position: absolute; inset: 0;
     padding: 64px 72px 0 72px;
     display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
@@ -30,16 +26,11 @@
   }
   .gridline-slide .kicker {
     grid-column: 1 / 13;
-    display: flex; align-items: center; gap: 16px;
     font-family: 'Archivo', "Arial Black", sans-serif;
     font-weight: 600; font-size: 20px; letter-spacing: 0.18em; text-transform: uppercase;
     color: #E30613;
     margin: 0;
   }
-  .gridline-slide .kicker::before {
-    content: ""; width: 18px; height: 18px; background: #E30613; flex: 0 0 auto;
-  }
-  .gridline-slide .redrule { grid-column: 1 / 13; height: 6px; background: #E30613; margin-top: 20px; }
   .gridline-slide .title {
     grid-column: 1 / 13;
     font-family: 'Archivo', "Arial Black", sans-serif;
@@ -48,34 +39,27 @@
   }
   .gridline-slide .zones {
     grid-column: 1 / 13;
-    display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 48px;
+    display: flex; gap: 96px;
     margin-top: 44px;
   }
-  .gridline-slide .zones .vdiv { background: #D9D9D9; }
+  .gridline-slide .zone { flex: 1 1 0; min-width: 0; }
   .gridline-slide .zone h2 {
     font-family: 'Archivo', "Arial Black", sans-serif;
     font-weight: 600; font-size: 26px; letter-spacing: 0.1em; text-transform: uppercase;
-    border-top: 2px solid #111111;
-    padding-top: 20px; margin: 0 0 8px 0;
+    margin: 0;
   }
-  .gridline-slide .zone ul { list-style: none; margin: 0; padding: 0; }
+  .gridline-slide .zone.rushed h2 { color: #E30613; }
+  .gridline-slide .zone.calm h2 { color: #111111; }
+  .gridline-slide .zone ul { list-style: none; margin: 20px 0 0 0; padding: 0; }
   .gridline-slide .zone li {
-    display: flex; align-items: flex-start; gap: 18px;
     font-size: 29px; line-height: 1.4;
-    padding: 20px 0;
-    border-bottom: 1px solid #D9D9D9;
+    padding: 0; margin: 0 0 20px 0;
   }
-  .gridline-slide .zone li::before {
-    content: ""; width: 16px; height: 16px; flex: 0 0 auto; margin-top: 12px;
-  }
-  .gridline-slide .zone.rushed li::before { background: #E30613; }
-  .gridline-slide .zone.calm li::before { background: #111111; }
+  .gridline-slide .zone li:last-child { margin-bottom: 0; }
   .gridline-slide .caption {
     grid-column: 1 / 13;
     margin: 40px 0 0 0;
     font-size: 28px; line-height: 1.5; color: #333333;
-    border-top: 2px solid #111111;
-    padding-top: 24px;
   }
   .gridline-slide .caption-src {
     grid-column: 1 / 13;
@@ -85,7 +69,6 @@
   }
   .gridline-slide .footer {
     position: absolute; left: 72px; right: 72px; bottom: 0; height: 110px;
-    border-top: 2px solid #111111;
     display: flex; align-items: center; justify-content: space-between;
     background: #FFFFFF;
   }
@@ -135,10 +118,8 @@
   <div id="deck-stage">
     <!-- DESIGN SLIDE MARKUP GOES HERE (replaces this placeholder) -->
     <div class="gridline-slide">
-      <div class="colgrid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="frame">
+      <div class="columns">
         <p class="kicker">The choice</p>
-        <div class="redrule"></div>
         <h1 class="title">Two teams, one deadline</h1>
         <div class="zones">
           <div class="zone rushed">
@@ -149,7 +130,6 @@
               <li>Rollback discovered by customers first</li>
             </ul>
           </div>
-          <div class="vdiv"></div>
           <div class="zone calm">
             <h2>Disciplined review</h2>
             <ul>

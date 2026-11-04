@@ -9,67 +9,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
-  .fm-slide { position: absolute; inset: 0; background-color: #FAF8F3;
-    background-image: radial-gradient(rgba(26,26,26,0.14) 1px, transparent 1.5px);
-    background-size: 24px 24px; color: #1A1A1A;
-    font-family: 'IBM Plex Sans', system-ui, sans-serif; overflow: hidden; }
-  .frame { position: absolute; top: 32px; left: 32px; right: 32px; bottom: 32px;
-    border: 2px solid #1A1A1A; padding: 36px 56px 28px 56px;
+  .s { position: absolute; inset: 0; background: #FAF8F3; color: #1A1A1A;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif; padding: 48px 88px 40px;
     display: flex; flex-direction: column; }
-  .dochead { display: flex; justify-content: space-between; align-items: baseline;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 500;
+  .doc { display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500;
     letter-spacing: 0.12em; text-transform: uppercase; margin: 0; }
-  .doublerule { border-top: 3px solid #1A1A1A; margin-top: 16px; padding-top: 8px; }
-  .doublerule i { display: block; border-top: 1px solid #1A1A1A; }
-  .main { flex: 1; min-height: 0; display: flex; gap: 48px; margin-top: 28px; }
-  .left { flex: 0 0 60%; min-width: 0; }
+  .main { flex: 1; display: flex; gap: 72px; margin-top: 40px; min-height: 0; }
+  .left { flex: 0 0 58%; min-width: 0; }
   .right { flex: 1; min-width: 0; }
-  .chip { display: inline-block; background: #FFB000; color: #1A1A1A;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 20px; margin: 0; }
-  .title { font-family: 'Archivo', "Arial Black", sans-serif; font-weight: 700; font-size: 92px;
-    line-height: 1.05; letter-spacing: 0.01em; text-transform: uppercase; margin: 24px 0 0 0;
-    max-height: 300px; overflow: hidden; }
-  .secthead { font-family: 'Archivo', "Arial Black", sans-serif; font-weight: 700; font-size: 44px;
-    line-height: 1.15; text-transform: uppercase; margin: 24px 0 0 0; }
-  .subtitle { font-size: 30px; line-height: 1.5; margin: 16px 0 0 0; }
-  .bodyc { font-size: 23px; line-height: 1.55; margin: 16px 0 0 0; }
-  .source { margin: 18px 0 0 0; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 500; }
-  .leader { flex: 1; border-bottom: 2px dashed #6E6A5E; min-width: 24px; }
-  .figbox { background: #FFFFFF; border: 1px solid #1A1A1A; padding: 28px 32px; }
-  .figtag { display: flex; align-items: center; gap: 12px;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
-    letter-spacing: 0.14em; text-transform: uppercase; color: #0B5FFF; margin: 0 0 8px 0; }
-  .figtag::before { content: ""; width: 14px; height: 14px; background: #0B5FFF; flex: 0 0 auto; }
-  .checks { margin: 0; padding: 0; list-style: none; }
-  .checks li { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-top: 1px dashed #6E6A5E; }
-  .checks li:first-child { border-top: 0; }
-  .checks .g { font-size: 24px; line-height: 1; flex: 0 0 auto; }
-  .checks .done { color: #0B5FFF; }
-  .checks .open { color: #8A6100; }
-  .checks .t { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; font-weight: 500; white-space: nowrap; }
-  .checks .tag { flex: 0 0 auto; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 400; }
-  .vleader { width: 0; border-left: 2px dashed #6E6A5E; height: 26px; margin: 0 0 0 60px; }
-  .notebox { background: #FFFFFF; border: 1px solid #0B5FFF; padding: 24px 28px; margin-top: 26px; }
-  .notetag { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
-    letter-spacing: 0.14em; color: #0B5FFF; margin: 0 0 10px 0; }
-  .notefind { font-size: 23px; line-height: 1.55; margin: 0; }
-  .footer { border-top: 1px solid #1A1A1A; margin-top: 24px; padding-top: 14px;
-    display: flex; justify-content: space-between;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase; }
-  .footer p { margin: 0; }
-
-
-  .closehead { font-family: 'Archivo', "Arial Black", sans-serif; font-weight: 700; font-size: 72px;
+  .warn { font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; margin: 0; }
+  .line { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 76px;
     line-height: 1.08; text-transform: uppercase; margin: 24px 0 0 0; }
-  .approval { display: flex; margin-top: 24px; padding-top: 12px; border-top: 1px solid #1A1A1A;
-    font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; font-weight: 500;
-    letter-spacing: 0.08em; text-transform: uppercase; }
-  .approval div { flex: 0 0 auto; padding-right: 48px; }
-  .approval div:last-child { flex: 1; padding-right: 0; }
-  .approval span { display: block; color: #6E6A5E; font-size: 16px; margin-bottom: 8px; }
-  .approval .sig { border-bottom: 2px dashed #6E6A5E; height: 26px; }
+  .recap { font-size: 30px; line-height: 1.5; margin: 20px 0 0 0; }
+  .src { margin: 24px 0 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; }
+  .appr { display: flex; margin-top: 32px; font-family: 'IBM Plex Mono', monospace;
+    font-size: 19px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  .appr div { flex: 0 0 auto; padding-right: 48px; }
+  .appr div:last-child { flex: 1; padding-right: 0; }
+  .appr span { display: block; color: #6E6A5E; font-size: 16px; margin-bottom: 8px; }
+  .figtag { display: flex; align-items: center; gap: 12px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: #182B49; margin: 0; }
+  .figtag .b { font-size: 16px; }
+  .checks { margin: 12px 0 0 0; padding: 0; list-style: none; }
+  .checks li { display: flex; align-items: baseline; gap: 14px; padding: 12px 0; }
+  .checks .g { font-size: 24px; line-height: 1; flex: 0 0 auto; color: #182B49; }
+  .checks .t { font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 500; }
+  .checks .tag { margin-left: auto; font-family: 'IBM Plex Mono', monospace; font-size: 19px;
+    color: #6E6A5E; }
+  .note { margin-top: 32px; }
+  .notetag { font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500;
+    letter-spacing: 0.14em; color: #182B49; margin: 0; }
+  .notefind { font-size: 23px; line-height: 1.55; margin: 10px 0 0 0; }
+  .foot { display: flex; justify-content: space-between; margin-top: auto; padding-top: 24px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; }
+  .foot p { margin: 0; }
 </style>
 <style>
   html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
@@ -79,40 +56,35 @@
 </head>
 <body>
 <div id="deck-viewport"><div id="deck-stage">
-
-    <div class="fm-slide"><div class="frame">
-        <p class="dochead"><span>DOC FM-11 · REV C</span><span>Pre-Ship Review Procedure</span><span>NOV 2026</span></p>
-        <div class="doublerule"><i></i></div>
-        <div class="main">
-          <div class="left">
-            <p class="chip">⚠ Ship once</p>
-            <h1 class="closehead" data-autofit="72">Slow the review. Ship once.</h1>
-            <p class="subtitle">Discipline upstream beats heroics downstream.</p>
-            <p class="source">SOURCE ▸ Typodeck Research · November 2026</p>
-            <div class="approval">
-              <div><span>Reviewed by</span>Second reviewer</div>
-              <div><span>Date</span>November 2026</div>
-              <div><span>Sign</span><div class="sig"></div></div>
-            </div>
-          </div>
-          <div class="right">
-            <div class="figbox">
-              <p class="figtag">Fig. 06 — Procedure complete</p>
-              <ul class="checks">
-                <li><span class="g done">☑</span><span class="t">REVIEW SLOWED</span><span class="leader"></span><span class="tag">C-1</span></li>
-                <li><span class="g done">☑</span><span class="t">DISCIPLINE UPSTREAM</span><span class="leader"></span><span class="tag">C-2</span></li>
-                <li><span class="g done">☑</span><span class="t">SHIPPED ONCE</span><span class="leader"></span><span class="tag">C-3</span></li>
-              </ul>
-            </div>
-            <div class="vleader"></div>
-            <div class="notebox" style="margin-top:0">
-              <p class="notetag">NOTE 05</p>
-              <p class="notefind">Discipline upstream beats heroics downstream. File under FM-11.</p>
-            </div>
+    <div class="s">
+      <p class="doc"><span>DOC FM-11 · REV C</span><span>Pre-Ship Review Procedure</span><span>NOV 2026</span></p>
+      <div class="main">
+        <div class="left">
+          <p class="warn">⚠ Ship once</p>
+          <h2 class="line">Slow the review. Ship once.</h2>
+          <p class="recap">Discipline upstream beats heroics downstream.</p>
+          <p class="src">SOURCE ▸ Typodeck Research · November 2026</p>
+          <div class="appr">
+            <div><span>Reviewed by</span>Second reviewer</div>
+            <div><span>Date</span>November 2026</div>
+            <div><span>Sign</span>________</div>
           </div>
         </div>
-        <div class="footer"><p>FM-11 · Sign-off</p><p>Page 07 / 07</p></div>
-      </div></div>
+        <div class="right">
+          <p class="figtag"><span class="b">■</span><span>Fig. 06 — Procedure complete</span></p>
+          <ul class="checks">
+            <li><span class="g">☑</span><span class="t">REVIEW SLOWED</span><span class="tag">C-1</span></li>
+            <li><span class="g">☑</span><span class="t">DISCIPLINE UPSTREAM</span><span class="tag">C-2</span></li>
+            <li><span class="g">☑</span><span class="t">SHIPPED ONCE</span><span class="tag">C-3</span></li>
+          </ul>
+          <div class="note">
+            <p class="notetag">NOTE 05</p>
+            <p class="notefind">Discipline upstream beats heroics downstream. File under FM-11.</p>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><p>FM-11 · Sign-off</p><p>Page 07 / 07</p></div>
+    </div>
 </div></div>
 <script>
   function __typodeckFitStage() {
@@ -125,19 +97,6 @@
   window.addEventListener('orientationchange', __typodeckFitStage);
   document.addEventListener('DOMContentLoaded', __typodeckFitStage);
   __typodeckFitStage();
-</script>
-<script>
-  function __fmAutofit() {
-    document.querySelectorAll('[data-autofit]').forEach(function (el) {
-      var max = parseFloat(el.getAttribute('data-autofit'));
-      var size = max, min = Math.max(40, max * 0.35);
-      el.style.fontSize = size + 'px';
-      var guard = 60;
-      while (guard-- > 0 && size > min && el.scrollHeight > el.clientHeight + 2) { size -= 4; el.style.fontSize = size + 'px'; }
-    });
-  }
-  document.addEventListener('DOMContentLoaded', __fmAutofit);
-  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(__fmAutofit); }
 </script>
 </body>
 </html>

@@ -7,26 +7,33 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; typography-only rebuild 2026-11-04 (cabinet frame, rails, screws, slots, ticker band, scanlines, vignette, block-cursor div removed; phosphor text-shadow glow retained on glyphs as light — zero box-shadow/borders/fills; ▊ is a text glyph; eyebrows flanked by + ticks); PNG 1920x1080 (209673 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: phosphor #33FF66→#3FE673 (12.13:1), amber #FFB000→#F2A91E (9.93:1), glow stops re-matched + alphas trimmed, void kept; HTML diff color-values-only; PNG re-captured via repo CDP pipeline. NOTE: first checkpoint capture caught webfont-fallback glyphs (smooth, not VT323/Silkscreen); re-captured via the same pipeline and re-viewed — pixel fonts confirmed. Viewed full-res — PASS."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); free glowing stat on the void; PNG 1920x1080 (159662 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: phosphor #33FF66→#3FE673 (12.13:1), amber #FFB000→#F2A91E (9.93:1), glow stops re-matched + alphas trimmed, void kept; HTML diff color-values-only; PNG re-captured via repo CDP pipeline, pixel fonts confirmed, viewed full-res — PASS."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); panels replaced by side-by-side type zones with ▲/▼ text markers; PNG 1920x1080 (244369 bytes), viewed full-res. COLOR-COMFORT 2026-11-04: phosphor #33FF66→#3FE673 (12.13:1), amber #FFB000→#F2A91E (9.93:1), glow stops re-matched + alphas trimmed, void kept; HTML diff color-values-only; PNG re-captured via repo CDP pipeline, pixel fonts confirmed, viewed full-res — PASS."
     }
   ],
   "render": {
     "width": 1920,
     "height": 1080,
     "verify": "PASS"
+  },
+  "color_comfort": {
+    "date": "2026-11-04",
+    "tokens": "phosphor #33FF66→#3FE673, amber #FFB000→#F2A91E, glow re-matched + trimmed, void #060A06 kept",
+    "html_diff": "color-values-only vs f0aed77 (0 ODD lines after hex/rgba normalization)",
+    "png": "3/3 IHDR 1920x1080, all differ from f0aed77 blobs; cover re-captured to fix a webfont-fallback capture defect",
+    "viewing": "all 3 viewed full-res by agent; arcade identity intact, no boxes; no comfort claim (WCAG arithmetic + AGENT viewing only)"
   }
 }

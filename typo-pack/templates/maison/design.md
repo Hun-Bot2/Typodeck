@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Maison
-description: A minimal-luxury presentation system built on a centered single column with vast gutters and a 20vh top margin. Display type runs in Cormorant Garamond ivory on matte black (#0B0B0C), paired with Inter Light body copy and widely tracked Inter caps (+0.3em) labels. A single muted gold (#C6A664) carries hairline rules, the context label, and exactly one italic accent word per display moment. Matte alternating grounds, 1px hairline dividers, and oversized leading do all the work — no shadows, no blur, no ornament beyond the hairline.
+description: A minimal-luxury presentation system built on a centered single column with vast gutters and a 20vh top margin. Display type runs in Cormorant Garamond ivory on matte black (#0B0B0C), paired with Inter Light body copy and widely tracked Inter caps (+0.3em) labels. A single muted gold (#C6A664) carries the context label and exactly one italic accent word per display moment. Matte alternating grounds, whitespace, and oversized leading do all the work — no shadows, no blur, no rules, no ornament beyond type.
 
 colors:
   black: "#0B0B0C"
@@ -9,8 +9,8 @@ colors:
   ivory: "#F7F3EC"
   ivory-dim: "#CFC8B8"
   gold: "#C6A664"
-  gold-deep: "#9A7F45"
-  gray: "#6E6E6E"
+  gold-deep: "#77632F"
+  gray: "#9C9C9C"
   gray-line: "#3A3A3C"
 
 shadows:
@@ -102,18 +102,15 @@ components:
     fontWeight: 500
     letterSpacing: 0.3em
     textTransform: uppercase
-    description: "Gold tracked caps context line floating above the display rule; the slide's quiet header."
+    description: "Gold tracked caps context line floating above the headline; the slide's quiet header."
   rule-display:
-    width: 120px
-    height: 1px
-    background: "{colors.gold}"
-    description: "Short centered 1px gold rule between the context label and the headline."
+    status: retired
+    successor: "whitespace"
+    description: "RETIRED in the typography-only vocabulary: the 120px gold rule is removed. Whitespace frames the headline."
   rule-closing:
-    width: 100%
-    height: 1px
-    background: "{colors.gold}"
-    opacity: 0.55
-    description: "Full-measure 1px gold closing rule above the folio line; softer than the display rule."
+    status: retired
+    successor: "whitespace"
+    description: "RETIRED in the typography-only vocabulary: the closing rule is removed. Whitespace closes the column above the folio."
   label-folio:
     color: "{colors.ivory-dim}"
     fontFamily: "'Inter', sans-serif"
@@ -121,7 +118,7 @@ components:
     fontWeight: 500
     letterSpacing: 0.3em
     textTransform: uppercase
-    description: "Centered folio line beneath the closing rule: folio numeral plus genuine content phrase."
+    description: "Centered folio line closing the column: folio numeral plus genuine content phrase, whitespace above."
   accent-word:
     fontFamily: "'Cormorant Garamond', serif"
     fontStyle: italic
@@ -140,7 +137,7 @@ components:
   ground-alternate:
     background: "{colors.ivory}"
     color: "{colors.black}"
-    description: "Inverted ivory slide ground used sparingly; headlines go black, rules and labels go gold-deep."
+    description: "Inverted ivory slide ground used sparingly; headlines go black, labels and accents go gold-deep."
   divider-dot:
     color: "{colors.gold}"
     description: "Single centered gold interpunct separating stacked label lines; never doubled or ruled."
@@ -158,19 +155,19 @@ Use `deck-stage.js` or an equivalent inline stage scaler for final output: rende
 
 ## Overview
 
-Maison is a **minimal-luxury presentation system**. Its foundational premise is **restraint**: one centered column at 60ch, one accent word, one hairline at a time, opening 20vh below the stage top. Layouts feel curated rather than composed — the context label floats above a gold hairline, the headline breathes at oversized leading with a single italic word in gold, and the subtitle follows at a whisper before the closing rule. Whitespace is the material; type is placed the way objects are placed in a viewing room.
+Maison is a **minimal-luxury presentation system**. Its foundational premise is **restraint**: one centered column at 60ch, one accent word, whitespace for every separation, opening 20vh below the stage top. Layouts feel curated rather than composed — the context label floats above the headline's whitespace, the headline breathes at oversized leading with a single italic word in gold, and the subtitle follows at a whisper before the closing gap. Whitespace is the material; type is placed the way objects are placed in a viewing room.
 
 The type stack is two faces with strict roles. **Cormorant Garamond** is the display face — a light, high-contrast serif for headlines, quote bodies, and stat figures in ivory (or black on inverted grounds). **Inter** is the quiet infrastructure — Light (300) for body copy at 1.8 leading, Medium (500) tracked caps at +0.3em for context labels, folio lines, and counters. The voice contrast is **lyrical serif display ↔ whispered sans body ↔ widely tracked caps hardware**.
 
-The palette is four tones and nothing else: **matte black ground** (`{colors.black}`), **ivory text** (`{colors.ivory}`), **muted gold** (`{colors.gold}`) for rules, labels, and the accent word, and **gray** (`{colors.gray}`) for tertiary marks. Gold is rationed like spice — one accent word, two hairlines, one label per slide. Ivory grounds appear only as rare inverted alternates; the system's home is black.
+The palette is four tones and nothing else: **matte black ground** (`{colors.black}`), **ivory text** (`{colors.ivory}`), **muted gold** (`{colors.gold}`) for labels, the accent word, and quote marks, and **gray** (`{colors.gray}`) for tertiary marks. Gold is rationed like spice — one accent word and one label per slide. Ivory grounds appear only as rare inverted alternates; the system's home is black.
 
-Depth is nearly absent by doctrine: **matte alternating grounds, 1px hairline dividers, and oversized leading do all the work**. There are no shadows, no blur, no gradients, no texture. Hierarchy is built from scale, leading, and the single gold accent — a slide that needs more effects is a slide that needs fewer words.
+Depth is nearly absent by doctrine: **matte alternating grounds, whitespace, and oversized leading do all the work**. There are no shadows, no blur, no gradients, no texture, no rules. Hierarchy is built from scale, leading, and the single gold accent — a slide that needs more effects is a slide that needs fewer words.
 
-**Density philosophy: low, columnar, patient.** One idea per slide, one column per slide, vast gutters on both sides. A typical slide carries the context label + display rule + headline + subtitle + closing rule + folio line — six quiet elements in a single vertical rhythm, never sidebars, never grids, never clusters.
+**Density philosophy: low, columnar, patient.** One idea per slide, one column per slide, vast gutters on both sides. A typical slide carries the context label + headline + subtitle + folio line in a single vertical rhythm with whitespace between — never sidebars, never grids, never clusters.
 
 **Key Characteristics:**
 - Single italic accent word — exactly one word per display headline in Cormorant italic gold; everything else stays roman ivory.
-- Hairline gold rules — 1px centered rules (120px display rule, full-measure closing rule) as the only dividers in the system.
+- Whitespace framing — gaps above the headline and above the folio as the only separators in the system.
 - Oversized leading — display at 1.3 and body at 1.8 line-height, so whitespace glows between the lines.
 - Vast-margin centered column — 20vh top margin, 60ch measure, nothing outside the column except alternating matte grounds.
 - Tracked caps labels in gold — Inter Medium caps at +0.3em for context, kickers, and folio lines; the quiet hardware of the system.
@@ -182,13 +179,13 @@ Depth is nearly absent by doctrine: **matte alternating grounds, 1px hairline di
 ### Palette
 
 - **Black** (`{colors.black}` — `#0B0B0C`): The matte home ground; near-black with a whisper of warmth.
-- **Black Soft** (`{colors.black-soft}` — `#141416`): Panel-adjacent tone for rare inset regions on black; barely lifted.
+- **Black Soft** (`{colors.black-soft}` — `#141416`): Retained token; inset-region usage retired — the column sets on flat black.
 - **Ivory** (`{colors.ivory}` — `#F7F3EC`): Display and body text on black; the alternate slide ground when inverted.
 - **Ivory Dim** (`{colors.ivory-dim}` — `#CFC8B8`): Folio lines and secondary labels on black; softer than full ivory.
-- **Gold** (`{colors.gold}` — `#C6A664`): The single accent — hairline rules, context labels, the accent word, quote marks.
-- **Gold Deep** (`{colors.gold-deep}` — `#9A7F45`): Gold's companion on ivory grounds, where full gold would wash out.
-- **Gray** (`{colors.gray}` — `#6E6E6E`): Tertiary marks — counters, hints, de-emphasized micro text on either ground.
-- **Gray Line** (`{colors.gray-line}` — `#3A3A3C`): Hairlines on black where gold would over-assert; structural, never decorative.
+- **Gold** (`{colors.gold}` — `#C6A664`): The single accent — context labels, the accent word, quote marks.
+- **Gold Deep** (`{colors.gold-deep}` — `#77632F`): Gold's companion on ivory grounds, where full gold would wash out.
+- **Gray** (`{colors.gray}` — `#9C9C9C`): Tertiary marks — counters, hints, de-emphasized micro text on either ground.
+- **Gray Line** (`{colors.gray-line}` — `#3A3A3C`): Retained token; hairline usage retired. Never text.
 
 ### Defaults
 
@@ -197,10 +194,12 @@ Depth is nearly absent by doctrine: **matte alternating grounds, 1px hairline di
 - **Default headline color on ivory alternates**: `{colors.black}` with a `{colors.gold-deep}` italic accent word.
 - **Default body text color on black**: `{colors.ivory}` at 78% in Inter Light; on ivory: `{colors.black}` at 80%.
 - **Default context label**: `{colors.gold}` Inter caps +0.3em (`{components.label-context}`).
-- **Default folio line**: `{colors.ivory-dim}` Inter caps +0.3em (`{components.label-folio}`) beneath the closing rule.
-- **Default rule treatment**: 120px gold display rule above the headline, full-measure 55% closing rule above the folio.
+- **Default folio line**: `{colors.ivory-dim}` Inter caps +0.3em (`{components.label-folio}`) with whitespace above.
+- **Default separation**: whitespace gaps above the headline and above the folio — no rules.
 
 Gold text appears only as the accent word (display scale) and tracked caps labels. Gold body copy does not exist. Gray text appears only below 15px or at 60%+ transparency.
+
+**Color-comfort decision (2026-11-04): retain bg with corrected fg (two measured AA defects fixed).** Gray `#6E6E6E`→`#9C9C9C` (3.86:1→7.17:1 on black) repairs small tertiary text with headroom per P4; it stays clearly tertiary against ivory-dim. Gold-deep `#9A7F45`→`#77632F` (3.45:1→5.26:1 on ivory) repairs context labels on ivory alternates. The four-tone discipline (black/ivory/gold/gray) is preserved — same roles, corrected values. Black↔ivory full-field alternation is retained as the design's elevation device, bounded by the existing rule (rare inversions, never twice in a row); new work must not add consecutive inverted slides. Typo-only shapes unchanged — color values only.
 
 ## Typography
 
@@ -237,7 +236,7 @@ These treatments are **non-optional whenever the corresponding element type is u
 - **Every display element uses line-height ≥ 1.3.** Cormorant at tight leading turns brittle — the air between lines is part of the letterforms' setting.
 - **Every Inter body block uses line-height 1.8.** The whisper register depends on oversized leading; 1.5 or below reads as ordinary sans body.
 - **Every Inter label is uppercase with exactly +0.3em tracking.** Narrower tracking reads as corporate; wider reads as parody. Sentence-case Inter labels do not exist.
-- **Every cover opens with the context label + 120px display rule** before the headline, and closes with the full-measure rule + folio line after the subtitle. The rules frame the column like a mount frames a print.
+- **Every cover opens with the context label + whitespace** before the headline, and closes with the folio line after a whitespace gap. The gaps frame the column like a mount frames a print.
 - **Every quote body is Cormorant italic with the oversized gold quote mark.** Roman quotes or sans quotes flatten the only expressive moment the system allows.
 - **Every stat figure pairs a Cormorant numeral with a tracked gold caps label beneath** — never beside, never above, never in one line.
 
@@ -253,15 +252,15 @@ Italic appears in exactly two places: the single accent word per headline and th
 
 The system targets `100vw × 100vh` per slide. Slides stack vertically inside a `slides-container` and translate via `transform: translateY(...)` for navigation. Only one slide occupies the viewport at a time.
 
-The column caps at 1200px (60ch) and centers horizontally, opening 20vh below the stage top. Side gutters hold at 12vw minimum — the column never widens to fill availability. Vertical rhythm runs: context label → 36px → display rule → 36px → headline → 36px → subtitle → 48px → closing rule → 24px → folio line.
+The column caps at 1200px (60ch) and centers horizontally, opening 20vh below the stage top. Side gutters hold at 12vw minimum — the column never widens to fill availability. Vertical rhythm runs: context label → 72px → headline → 36px → subtitle → 72px → folio line.
 
 ### Persistent Chrome
 
 Two elements appear on every slide:
-- **Display frame** — the context label + 120px gold rule (`{components.label-context}`, `{components.rule-display}`) opening the column.
-- **Closing frame** — the full-measure gold rule + folio line (`{components.rule-closing}`, `{components.label-folio}`) with the slide counter seated at the folio's right end.
+- **Context opening** — the gold context label (`{components.label-context}`) with whitespace below, opening the column.
+- **Folio close** — the folio line (`{components.label-folio}`) with whitespace above, with the slide counter seated at the folio's right end.
 
-No navigation dots, no floating hints, no progress bars — chrome is the column's own frame, never overlaid UI.
+No navigation dots, no floating hints, no progress bars — chrome is the column's own type, never overlaid UI.
 
 ### Atmospheric Overlay Stack
 
@@ -275,17 +274,17 @@ A Maison slide with an overlay effect applied reads as a smudge on glass, not an
 
 ### Matte Planes (Signature)
 
-The system uses **matte plane alternation** as its only depth language: black grounds and rare ivory grounds alternate across the deck, and the contrast between consecutive slides is the elevation. Within a slide there is no depth — `{shadows.none-matte}` is the default and only elevation token. Text rests on the ground (`{shadows.text-rest}`); rules lie flat.
+The system uses **matte plane alternation** as its only depth language: black grounds and rare ivory grounds alternate across the deck, and the contrast between consecutive slides is the elevation. Within a slide there is no depth — `{shadows.none-matte}` is the default and only elevation token. Text rests on the ground (`{shadows.text-rest}`).
 
-The `{shadows.hairline-glow-faint}` token (1px gold at 40%) exists only to keep 1px rules from shimmering on low-density screens — it is anti-aliasing assistance, not glow, and must never be widened.
+The `{shadows.hairline-glow-faint}` token is retained but unused — its rules are retired.
 
 ### No Cards, No Panels
 
-Cards and elevated panels do not exist in this system. Content that other systems would box — stats, quotes, callouts — is set as centered type with rules. A bordered box or filled panel breaks the viewing-room register immediately.
+Cards and elevated panels do not exist in this system. Content that other systems would box — stats, quotes, callouts — is set as centered type with whitespace. A bordered box or filled panel breaks the viewing-room register immediately.
 
-### Rule Separation
+### Whitespace Separation
 
-Regions separate with 1px hairlines only: gold for the display and closing rules, gray-line for rare structural divisions on black. No rule exceeds 1px; no rule carries a shadow.
+Regions separate with whitespace only. No rules, no hairlines, no dividers of any weight.
 
 ### No Atmospheric Depth
 
@@ -295,35 +294,27 @@ Blur, blend modes, gradients, grain, and vignettes do not exist in this system. 
 
 ### Border Radius
 
-Zero everywhere, without exception. There are no boxes, chips, pills, or buttons to round — the system's only shapes are hairlines, type, and the interpunct. Any rounded element breaks the register.
+Zero everywhere, without exception. There are no boxes, chips, pills, buttons, or rules to round — the system's only shapes are type and the interpunct. Any rounded element breaks the register.
 
 ### Border Weights
 
-- **1px solid gold** — display rule (120px) and closing rule (full measure); the only gold lines in the system.
-- **1px solid gray-line** — rare structural hairlines on black where gold would over-assert.
-- **No other weights exist.** A 2px rule would read as a bar; a 4px rule as architecture from another system.
-
-All lines are solid, centered, and horizontal. Vertical rules, dashed rules, and double rules do not exist here.
+No borders exist in this system. The retired 1px gold and gray-line hairlines are documented for history only: every separation is now whitespace.
 
 ### Decorative Element Types
 
-**Context label** — Gold Inter caps at +0.3em floating above the display rule; the slide's quiet header.
-
-**Display rule** — Short centered 120px 1px gold rule between the context label and the headline.
+**Context label** — Gold Inter caps at +0.3em floating above the headline's whitespace; the slide's quiet header.
 
 **Accent word** — The single Cormorant italic gold word inside a display headline; the system's most distinctive typographic mark.
 
-**Closing rule** — Full-measure 1px gold rule at 55% opacity above the folio line; softer than the display rule.
+**Folio line** — Centered ivory-dim Inter caps folio with whitespace above: folio numeral plus genuine content phrase.
 
-**Folio line** — Centered ivory-dim Inter caps folio beneath the closing rule: folio numeral plus genuine content phrase.
-
-**Divider interpunct** — Single centered gold `·` separating stacked label lines; never doubled, never flanked by rules.
+**Divider interpunct** — Single centered gold `·` separating stacked label lines; never doubled.
 
 **Quote mark** — Oversized 96px gold Cormorant `“` opening quote slides; the only decorative glyph in the system.
 
 **Stat figure** — Large centered Cormorant numeral with a tracked gold caps label beneath.
 
-**Ground alternate** — The rare inverted ivory slide ground; headlines go black, labels and rules go gold-deep.
+**Ground alternate** — The rare inverted ivory slide ground; headlines go black, labels and accents go gold-deep.
 
 ## Do's and Don'ts
 
@@ -331,44 +322,44 @@ All lines are solid, centered, and horizontal. Vertical rules, dashed rules, and
 
 - Open the column 20vh below the stage top at 60ch measure, centered, with 12vw minimum gutters.
 - Set exactly one italic gold accent word in every display headline — the display word of the title when one exists.
-- Frame the column with the display rule above the headline and the closing rule + folio line below the subtitle.
+- Frame the column with whitespace above the headline and the folio line after a whitespace gap.
 - Keep display leading at 1.3+ and body leading at 1.8 — the air is part of the setting.
 - Track every Inter label at exactly +0.3em uppercase; gold for context, ivory-dim for folio, gray for counters.
 - Alternate matte black home grounds with rare ivory inversions; never invert twice in a row.
-- Center every element in the column — headlines, body, rules, labels, stat figures, quotes.
-- Ration gold to the accent word, two hairlines, and one label per slide.
+- Center every element in the column — headlines, body, labels, stat figures, quotes.
+- Ration gold to the accent word and one label per slide.
 - Set quotes in Cormorant italic with the oversized gold quote mark.
 - Pair stat figures with tracked gold caps labels beneath, never beside.
 
 ### Don't
 
-- Don't add shadows, blur, gradients, blend modes, texture, or rounded corners. Matte planes and hairlines are the only depth.
+- Don't add shadows, blur, gradients, blend modes, texture, rules, or rounded corners. Matte planes and whitespace are the only depth.
 - Don't set two accent words in one headline — or zero. Exactly one, always italic, always gold.
 - Don't use Inter for headlines or Cormorant for body or labels. Each face has a single role.
 - Don't left-align anything. The column centers; asymmetry belongs to other systems.
-- Don't box content in cards or panels. Stats, quotes, and callouts are centered type with rules.
+- Don't box content in cards or panels. Stats, quotes, and callouts are centered type with whitespace.
 - Don't introduce a fifth color. Black, ivory, gold, gray — a second accent reads as noise.
 - Don't track Inter labels wider or narrower than +0.3em. The engraved rhythm is fixed.
 - Don't tighten display leading below 1.3 or body below 1.8. Density breaks the whisper register.
-- Don't omit the display or closing rules on any slide. The frame is non-negotiable.
+- Don't add display or closing rules on any slide. The whitespace frame is non-negotiable.
 - Don't use italic outside the accent word and quote bodies. Italic labels or counters do not exist.
 
 ## Responsive Behavior
 
-Maison is a **measure-locked system** built around the fixed 60ch column and 20vh top margin. Display sizes interpolate via `clamp()` on viewport width while the measure, rules, and tracking stay fixed.
+Maison is a **measure-locked system** built around the fixed 60ch column and 20vh top margin. Display sizes interpolate via `clamp()` on viewport width while the measure, gaps, and tracking stay fixed.
 
 ### Scaling Behavior
 
 - Hero text scales 54px → 96px on viewport width.
 - Stat figures scale 72px → 120px.
 - Body scales 19px → 26px.
-- The 60ch measure, 120px display rule, 1px weights, and +0.3em tracking are fixed — they never scale, so the frame reads finer on larger canvases by design.
+- The 60ch measure, whitespace gaps, and +0.3em tracking are fixed — they never scale, so the frame reads finer on larger canvases by design.
 
 ### Component Breakpoints
 
 - `max-width: 1400px` — gutters narrow 12vw → 8vw; measure holds at 60ch.
 - `max-width: 1024px` — top margin drops 20vh → 14vh; folio counter moves beneath the folio line.
-- `max-width: 640px` — context label drops to 14px; display rule shortens 120px → 80px.
+- `max-width: 640px` — context label drops to 14px; the opening gap compresses 72px → 48px.
 
 ### Presenter Behavior
 
@@ -384,7 +375,7 @@ The fade transition is the only motion in the system. It shortens to an instant 
 
 ### Print Behavior
 
-The system prints 1:1 — matte grounds, hairlines, and tracked caps survive print exactly. Black grounds print as rich black; for toner-saving drafts an ivory-ground variant may substitute with gold-deep rules. For static export, screenshots of each slide preserve all flat geometry with no overlay loss.
+The system prints 1:1 — matte grounds, whitespace, and tracked caps survive print exactly. Black grounds print as rich black; for toner-saving drafts an ivory-ground variant may substitute with gold-deep labels. For static export, screenshots of each slide preserve all flat geometry with no overlay loss.
 
 ## CJK & International Content
 
@@ -423,26 +414,26 @@ Add to the template's `<head>`:
 
 ### Aesthetic Notes for This System
 
-The system's identity rests on serif delicacy plus engraved caps — and a CJK build preserves both registers. Noto Serif KR at 600 gives display headlines the needed contrast logic, and the hairline rules translate perfectly at identical widths. Lean on the **non-typographic** signature elements: the 120px display rule, the full-measure closing rule, and the vast 20vh margin carry the luxury register when the Cormorant voice is unavailable.
+The system's identity rests on serif delicacy plus engraved caps — and a CJK build preserves both registers. Noto Serif KR at 600 gives display headlines the needed contrast logic. Lean on the **typographic** signature elements: the gold accent word, tracked labels, and the vast 20vh margin carry the luxury register when the Cormorant voice is unavailable.
 
-The +0.3em engraved caps rhythm cannot transfer to Hangul. Render Korean context and folio labels in Noto Sans KR weight 500 at 0 tracking with no transform, one size down (15px context, 13px folio) to preserve the frame's delicate silhouette against the gold rules.
+The +0.3em engraved caps rhythm cannot transfer to Hangul. Render Korean context and folio labels in Noto Sans KR weight 500 at 0 tracking with no transform, one size down (15px context, 13px folio) to preserve the frame's delicate silhouette.
 
 ### Known CJK Gap
 
 - **No italic in Hangul.** The single-italic-accent signature loses its slant — gold color isolation must carry the accent alone. Compensate by keeping the accent word choice equally deliberate.
-- **Cormorant has no Hangul voice.** Noto Serif KR is a sturdy Ming-style serif that reads more editorial than couture. The vast margins and hairlines must carry the luxury register the face cannot.
+- **Cormorant has no Hangul voice.** Noto Serif KR is a sturdy Ming-style serif that reads more editorial than couture. The vast margins and gold accents must carry the luxury register the face cannot.
 
 ## Iteration Guide
 
 1. Any new slide opens its column 20vh below the stage top at 60ch measure, centered, on matte black (or a deliberate ivory alternate).
 2. Any new display element uses Cormorant 500 at 1.3+ leading with exactly one italic gold accent word. Any new body element uses Inter Light at 1.8 leading in dimmed ivory. Any new label uses Inter Medium caps at +0.3em.
 3. Any new headline gets `{colors.ivory}` on black or `{colors.black}` on ivory alternates, with the gold (or gold-deep) accent word.
-4. Any new slide frames the column with the display rule above the headline and the closing rule + folio line below the subtitle.
+4. Any new slide frames the column with whitespace above the headline and the folio line after a whitespace gap.
 5. Any new quote uses Cormorant italic with the oversized gold quote mark; any new stat uses a Cormorant figure with a tracked gold caps label beneath.
 6. Any new ground alternation inverts black ↔ ivory deliberately and never twice in a row.
 7. Any new label centers in the column at +0.3em tracking — gold context, ivory-dim folio, gray counter.
-8. Gold stays rationed: one accent word, two hairlines, one label per slide — audit every addition.
-9. No new shadows, blur, gradients, blend modes, texture, boxes, or rounded corners — matte planes and hairlines only.
+8. Gold stays rationed: one accent word and one label per slide — audit every addition.
+9. No new shadows, blur, gradients, blend modes, texture, rules, boxes, or rounded corners — matte planes and whitespace only.
 10. New motion is limited to the 600ms gallery fade, cut to instant under `prefers-reduced-motion`.
 
 ## Known Gaps
@@ -465,6 +456,6 @@ The +0.3em engraved caps rhythm cannot transfer to Hangul. Render Korean context
 | 4 | Pixel / hard offset shadows | Not used — text rests flat | full | N/A (nothing to reproduce) |
 | 5 | Gradients | Not used — flat matte grounds | full | N/A (nothing to reproduce) |
 | 6 | Grain / scanline / noise overlays | Not used | full | N/A (nothing to reproduce) |
-| 7 | Transparency layers | Ivory at 78% for body; closing rule at 55% | partial | Nearest opaque tints (#C9C2B2 body, #D8C48F rule) |
+| 7 | Transparency layers | Ivory at 78% for body | partial | Nearest opaque tint (#C9C2B2 body) |
 | 8 | Custom fonts | Cormorant Garamond / Inter via CDN | partial | Embedded subsets; fallback Georgia / Calibri |
-| 9 | Absolute-positioned decor | Hairline rules as flat divs | full | Native 1pt line shapes |
+| 9 | Absolute-positioned decor | Not used — column in flow | full | Native text boxes |

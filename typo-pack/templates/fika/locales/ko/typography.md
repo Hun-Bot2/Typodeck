@@ -32,7 +32,8 @@ CDN: Google Fonts (Noto Serif KR) + jsDelivr `sun-typeface/SUIT@2` variable, OFL
 - body/body-sm: lineHeight 1.6 kept (already meets Korean floor); keep-all.
 - label: tracking → 0; transform → none; size 22 → **23px**; SUIT 700.
 - chip: tracking 0.04em → 0; pill geometry unchanged; Korean chip labels at
-  SUIT 700 22px.
+  SUIT 700 22px in fjord (`#182B49`) per parent — never slate on dusty-blue
+  (4.17:1, fails AA).
 - caption: weight 400 → **500** (20px floor); lineHeight 1.5 → **1.6**.
 - page-mark: tracking → 0 for Korean; Latin page marks keep parent style.
 

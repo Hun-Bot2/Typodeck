@@ -21,19 +21,19 @@ Use this small file for title-slide previews only. For final deck generation, re
 
 ## Visual Snapshot
 
-A Scandinavian soft-functional presentation system built on warmth and restraint. Display type runs in Fraunces (a soft, wonky serif with old-style friendliness) set lowercase for headlines, paired with Nunito Sans for body and small caps-flavored labels. The palette stays on warm off-white (#FAFAF7) with slate text (#3D4A54) and three muted pastels — sage, blush, and dusty blue — used as flat panel fills and chips, never as text. Depth is nearly absent: matte surfaces, soft 16px+ corner radii, and at most a whisper of a warm-gray shadow. The effect is a quiet kitchen table, not a stage — everything rounded, everything legible, nothing shouting.
+A Scandinavian soft-functional presentation system built on warmth and restraint. Display type runs in Fraunces (a soft, wonky serif with old-style friendliness) set lowercase for headlines, paired with Nunito Sans for body and small caps-flavored labels. The palette stays on warm off-white (#FAFAF7) with slate text (#31404B), fjord navy (#182B49) chip text, and three muted pastels — sage, blush, and dusty blue — used as flat panel fills and chips, never as text. Depth is nearly absent: matte surfaces, soft 16px+ corner radii, and at most a whisper of a warm-gray shadow. The effect is a quiet kitchen table, not a stage — everything rounded, everything legible, nothing shouting.
 
 Fika is a Scandinavian soft-functional presentation system. Its foundational premise is friendliness through geometry: every container is rounded (16px panels, 999px chips), every headline is lowercase, every color is muted to a pastel register. Layouts breathe through huge gutters and an airy two-column rhythm — text on the left, one soft tinted panel on the right — and whitespace does the structuring work that rules and grids do in harder systems.
 
 ## Preview Ingredients
 
-- Palette: off-white #FAFAF7; slate #31404B; sage #A8C3B9; blush #E8B4A0; dusty-blue #7FA6C9; white #FFFFFF
+- Palette: off-white #FAFAF7; slate #31404B; fjord #182B49 (chip text, kicker dot); sage #A8C3B9; blush #E8B4A0; dusty-blue #7FA6C9; white #FFFFFF
 - Typography: See full design doc after selection.
 - Signature move: Lowercase Fraunces headlines ({typography.headline}) — sentence meaning set entirely in lowercase, weight 500, tight but never cramped.
 - Signature move: Soft rounded panels ({components.soft-panel}) — 16–24px radii, flat pastel fills (sage/blush/dusty-blue at full tint or 35% wash), zero borders.
-- Signature move: Muted pastel chips ({components.chip}) — 999px pills in alternating pastels with slate text, carrying new labels (section tags, dates) and never headline echoes.
+- Signature move: Muted pastel chips ({components.chip}) — 999px pills in alternating pastels with fjord navy text, carrying new labels (section tags, dates) and never headline echoes.
 - Signature move: Airy two-column rhythm — text column left at ~58% width, one tinted companion panel right, gutters ≥ 96px, nothing touching the viewport edge.
-- Signature move: Matte surface discipline — no gradients, no gloss, no hard shadows; at most one 0 8px 24px rgba(61,74,84,0.08) lift shadow per slide.
+- Signature move: Matte surface discipline — no gradients, no gloss, no hard shadows; at most one 0 8px 24px rgba(49,64,75,0.08) lift shadow per slide.
 - Signature move: Fraunces old-style numerals for data moments — figures set large in the display serif inside a pastel panel, never in a geometric sans.
 
 ## International / CJK Preview Note

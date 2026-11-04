@@ -51,13 +51,16 @@ export function checkOverflow(metrics, geom = STAGE) {
   return pass('no overflow');
 }
 
-/** clip: numeral contained in rail; stage children inside 1920x1080. */
+/** clip: numeral contained in rail when a rail exists (legacy chrome);
+ * typography-only slides carry the numeral as free display type, so a
+ * missing rail falls back to stage containment. Stage children always
+ * inside 1920x1080. */
 export function checkClip(metrics) {
   const bad = [];
   const { rail, numeral } = metrics;
-  if (!rail || !numeral) {
-    bad.push('rail or numeral missing');
-  } else {
+  if (!numeral) {
+    bad.push('numeral missing');
+  } else if (rail) {
     if (numeral.x < rail.x - TOL_PX) bad.push(`numeral left ${Math.round(numeral.x - rail.x)}px outside rail`);
     if (numeral.x + numeral.w > rail.x + rail.w + TOL_PX) {
       bad.push(`numeral right +${Math.round(numeral.x + numeral.w - rail.x - rail.w)}px outside rail`);
@@ -66,6 +69,9 @@ export function checkClip(metrics) {
     // Numeral may extend below the visible rail only if rail clips it: rail has
     // overflow hidden, so bottom bleed is hidden — still flag past 40px.
     if (numeral.y + numeral.h > rail.y + rail.h + 40) bad.push('numeral bleeds below rail');
+  } else if (numeral.x < -TOL_PX || numeral.y < -TOL_PX ||
+      numeral.x + numeral.w > STAGE.w + TOL_PX || numeral.y + numeral.h > STAGE.h + TOL_PX) {
+    bad.push('numeral rect outside 1920x1080 stage');
   }
   for (const t of metrics.texts ?? []) {
     if (t.x < -TOL_PX || t.y < -TOL_PX || t.x + t.w > STAGE.w + TOL_PX || t.y + t.h > STAGE.h + TOL_PX) {
@@ -73,7 +79,7 @@ export function checkClip(metrics) {
     }
   }
   if (bad.length > 0) return { ok: false, detail: `clip: ${bad.join('; ')}`, items: bad };
-  return pass('rail + stage containment holds');
+  return pass('numeral + stage containment holds');
 }
 
 /**
@@ -110,20 +116,21 @@ export function checkFixture(metrics, slide) {
   return pass('no stray fixture marker');
 }
 
-/** spec-chrome: one red rule, grid, rail, footer, left headlines, no radius. */
+/** spec-chrome (typography-only): no rules/rails/grids, one footer,
+ * left headlines, no radius. Hierarchy must come from type alone. */
 export function checkSpec(metrics) {
   const bad = [];
   const s = metrics.spec ?? {};
-  if (s.redrules !== 1) bad.push(`content red rules: ${s.redrules ?? 0}, want exactly 1`);
-  if (s.grids !== 1) bad.push('exposed column grid missing');
-  if (s.rails !== 1) bad.push('index rail missing');
+  if ((s.redrules ?? 0) !== 0) bad.push(`content red rules: ${s.redrules}, want 0 (typography only)`);
+  if ((s.grids ?? 0) !== 0) bad.push('exposed column grid present (typography only)');
+  if ((s.rails ?? 0) !== 0) bad.push('index rail panel present (typography only)');
   if (s.footers !== 1) bad.push('footer bar missing');
   for (const h of metrics.heads ?? []) {
     if (h.align === 'center' || h.align === 'justify') bad.push(`headline ${h.key} is ${h.align}`);
   }
   if ((metrics.rounded ?? 0) > 0) bad.push(`${metrics.rounded} rounded element(s)`);
   if (bad.length > 0) return { ok: false, detail: `spec: ${bad.join('; ')}`, items: bad };
-  return pass('chrome + type rules per spec');
+  return pass('typography-only chrome + type rules hold');
 }
 
 /** clip-generic: stage children inside 1920x1080 (no rail requirement). */
@@ -138,10 +145,14 @@ export function checkClipStage(metrics) {
   return pass('stage containment holds');
 }
 
-/** spec-generic: footer present, headlines left-aligned, no rounded chrome. */
+/** spec-generic (typography-only): footer present, no rules/rails/grids,
+ * headlines left-aligned, no rounded chrome. */
 export function checkSpecGeneric(metrics) {
   const bad = [];
   const s = metrics.spec ?? {};
+  if ((s.redrules ?? 0) !== 0) bad.push(`content rules: ${s.redrules}, want 0 (typography only)`);
+  if ((s.grids ?? 0) !== 0) bad.push('exposed column grid present (typography only)');
+  if ((s.rails ?? 0) !== 0) bad.push('rail panel present (typography only)');
   if (s.footers !== 1) bad.push(`footers: ${s.footers ?? 0}, want exactly 1`);
   for (const h of metrics.heads ?? []) {
     if (h.align === 'center' || h.align === 'justify') bad.push(`headline ${h.key} is ${h.align}`);

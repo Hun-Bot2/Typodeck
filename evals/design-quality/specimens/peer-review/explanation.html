@@ -12,7 +12,6 @@
     --paper: #FFFFFF;
     --ink: #1A1A1A;
     --blue: #0B5394;
-    --rule: #EAEAEA;
     --muted: #5A6470;
   }
   * { box-sizing: border-box; }
@@ -31,12 +30,8 @@
     color: var(--ink);
   }
   .pr-runhead .pr-page { color: var(--muted); letter-spacing: 0.14em; }
-  .pr-double-rule { margin-top: 18px; border-top: 3px solid var(--ink); position: relative; }
-  .pr-double-rule::after {
-    content: ""; display: block; border-top: 1px solid var(--ink); margin-top: 3px;
-  }
   .pr-main {
-    flex: 1; display: flex; gap: 72px; margin-top: 48px; min-height: 0;
+    flex: 1; display: flex; gap: 132px; margin-top: 48px; min-height: 0;
   }
   .pr-article { flex: 1.5; min-width: 0; display: flex; flex-direction: column; }
   .pr-kicker {
@@ -57,13 +52,12 @@
     font-size: 21px; font-weight: 700;
     letter-spacing: 0.18em; text-transform: uppercase;
     color: var(--ink);
-    border-top: 2px solid var(--ink);
-    padding-top: 16px; margin-bottom: 6px;
+    margin-bottom: 18px;
   }
   .pr-group ul { list-style: none; margin: 0; padding: 0; }
   .pr-group li {
     font-size: 27px; line-height: 1.42; color: var(--ink);
-    padding: 13px 0; border-bottom: 1px solid var(--rule);
+    padding: 6px 0;
   }
   .pr-group li .n {
     font-family: Inter, system-ui, sans-serif;
@@ -74,12 +68,9 @@
   .pr-closing {
     margin: 34px 0 0 0;
     font-style: italic; font-size: 30px; line-height: 1.5; color: var(--ink);
-    border-top: 1px solid var(--ink); padding-top: 24px;
   }
   .pr-rail {
     flex: 1; min-width: 0;
-    border-left: 1px solid var(--rule);
-    padding-left: 60px;
     display: flex; flex-direction: column;
   }
   .pr-fig-label {
@@ -88,24 +79,20 @@
     letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--ink);
   }
-  .pr-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
-  .pr-table th {
+  .pr-datalist { display: flex; flex-direction: column; gap: 14px; margin-top: 16px; }
+  .pr-data-row {
+    display: flex; align-items: baseline; gap: 14px;
     font-family: Inter, system-ui, sans-serif;
-    font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--muted); text-align: left;
-    padding: 10px 8px 10px 0;
-    border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink);
   }
-  .pr-table th:last-child, .pr-table td:last-child { text-align: right; padding-right: 0; }
-  .pr-table td {
-    font-family: Inter, system-ui, sans-serif;
+  .pr-data-row .pr-data-name {
     font-size: 20px; font-weight: 500; color: var(--ink);
-    padding: 12px 8px 12px 0; border-bottom: 1px solid var(--rule);
-    font-variant-numeric: tabular-nums;
-    vertical-align: top;
+    flex: 1; line-height: 1.35;
   }
-  .pr-table tr:last-child td { border-bottom: 2px solid var(--ink); }
-  .pr-table td.ref { color: var(--muted); font-weight: 600; white-space: nowrap; }
+  .pr-data-row .pr-data-ref {
+    font-size: 20px; font-weight: 600; color: var(--muted);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
   .pr-caption {
     margin: 16px 0 0;
     font-family: Inter, system-ui, sans-serif;
@@ -113,7 +100,7 @@
   }
   .pr-caption strong { color: var(--ink); font-weight: 700; }
   .pr-footnotes {
-    margin-top: 36px; padding-top: 18px; border-top: 1px solid var(--ink);
+    margin-top: 36px;
     font-family: Inter, system-ui, sans-serif;
     font-size: 20px; line-height: 1.6; color: var(--muted);
     display: flex; gap: 48px;
@@ -160,7 +147,6 @@
         <span>Typodeck Research · November 2026</span>
         <span class="pr-page">p. 03</span>
       </div>
-      <div class="pr-double-rule"></div>
       <div class="pr-main">
         <div class="pr-article">
           <div class="pr-kicker">The choice &#183; Review Practice</div>
@@ -188,15 +174,14 @@
         <div class="pr-rail">
           <div class="pr-fig">
             <div class="pr-fig-label">Table 3</div>
-            <table class="pr-table">
-              <tr><th>Observed practice</th><th>Ref</th></tr>
-              <tr><td>Merged with a single skim approval</td><td class="ref">R-1</td></tr>
-              <tr><td>Config changes bundled into feature PRs</td><td class="ref">R-2</td></tr>
-              <tr><td>Rollback discovered by customers first</td><td class="ref">R-3</td></tr>
-              <tr><td>Required a second reviewer on every merge</td><td class="ref">D-1</td></tr>
-              <tr><td>Config changes shipped in isolated PRs</td><td class="ref">D-2</td></tr>
-              <tr><td>Rollback caught in staging, never in production</td><td class="ref">D-3</td></tr>
-            </table>
+            <div class="pr-datalist">
+              <div class="pr-data-row"><span class="pr-data-name">Merged with a single skim approval</span><span class="pr-data-ref">R-1</span></div>
+              <div class="pr-data-row"><span class="pr-data-name">Config changes bundled into feature PRs</span><span class="pr-data-ref">R-2</span></div>
+              <div class="pr-data-row"><span class="pr-data-name">Rollback discovered by customers first</span><span class="pr-data-ref">R-3</span></div>
+              <div class="pr-data-row"><span class="pr-data-name">Required a second reviewer on every merge</span><span class="pr-data-ref">D-1</span></div>
+              <div class="pr-data-row"><span class="pr-data-name">Config changes shipped in isolated PRs</span><span class="pr-data-ref">D-2</span></div>
+              <div class="pr-data-row"><span class="pr-data-name">Rollback caught in staging, never in production</span><span class="pr-data-ref">D-3</span></div>
+            </div>
             <p class="pr-caption"><strong>Table 3.</strong> The six practices behind the choice.</p>
           </div>
         </div>

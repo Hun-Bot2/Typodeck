@@ -1,12 +1,12 @@
 ---
 version: alpha
 name: Night Reel
-description: A noir cinematic presentation system that composes every slide as a shot inside CinemaScope letterbox bars. Towering Bebas Neue condensed caps anchor a low-third title block over a spotlight vignette fading to pure black, with featherweight Inter for dialogue lines and exactly one blood-red accent per slide — the title rule — as the single saturated beat.
+description: A noir cinematic presentation system that composes every slide as a shot inside CinemaScope letterbox zones. Towering Bebas Neue condensed caps anchor a low-third title block on solid black, with featherweight Inter for dialogue lines and exactly one blood-red accent per slide — the kicker line — as the single saturated beat. Typography-only register: no rules, bars-as-boxes, vignettes, or shimmer exist — hierarchy is carried by position, scale, tracking, and the single red line alone.
 
 colors:
-  black: "#000000"
+  black: "#101012"
   white: "#F5F5F5"
-  blood-red: "#C1121F"
+  blood-red: "#E5484D"
   smoke: "#8A8A8A"
   dialogue: "#C9C9C9"
   bar-line: "#2A2A2A"
@@ -87,30 +87,27 @@ canvas:
 components:
   letterbox-top:
     height: 148px
-    borderBottom: "1px solid {colors.bar-line}"
-    description: "Top letterbox bar: smoke brand left, near-invisible reel marker right."
+    description: "Top letterbox zone on the black ground: smoke brand left, near-invisible reel marker right. No hairlines."
   letterbox-bottom:
     height: 132px
-    borderTop: "1px solid {colors.bar-line}"
-    description: "Bottom letterbox bar: light context line left, dim scene count right."
-  spotlight-frame:
-    background: "radial-gradient(ellipse 90% 75% at 50% 42%, {colors.spotlight} 0%, #0A0A0A 52%, {colors.black} 78%)"
-    description: "Near-black radial glow behind the low third, vignetting to pure black at the frame edges."
-  red-rule:
-    width: 132px
-    height: 8px
-    background: "{colors.blood-red}"
-    description: "The single red accent: a short heavy rule opening the low-third block. One per slide."
-  low-third:
-    anchor: bottom
-    description: "Bottom-anchored title stack: red rule, tracked kicker, condensed caps title, one dialogue line."
-  kicker:
-    color: "{colors.smoke}"
+    description: "Bottom letterbox zone on the black ground: light context line left, dim scene count right. No hairlines."
+  red-kicker:
+    color: "{colors.blood-red}"
     fontSize: 40px
     letterSpacing: 0.5em
     textTransform: uppercase
     fontFamily: "'Bebas Neue', 'Arial Black', sans-serif"
-    description: "Widely tracked smoke kicker — the quiet line before the title lands."
+    description: "The single red accent: a widely tracked blood-red kicker opening the low-third block. One per slide."
+  low-third:
+    anchor: bottom
+    description: "Bottom-anchored title stack: red kicker, condensed caps title, one dialogue line."
+  kicker:
+    color: "{colors.blood-red}"
+    fontSize: 40px
+    letterSpacing: 0.5em
+    textTransform: uppercase
+    fontFamily: "'Bebas Neue', 'Arial Black', sans-serif"
+    description: "Widely tracked blood-red kicker — the single saturated line before the title lands."
   scene-count:
     color: "{colors.reel-dim}"
     fontSize: 34px
@@ -127,7 +124,7 @@ This policy has higher priority than any source-template responsive behavior des
 
 This policy applies even if the source template was originally implemented with viewport-fluid CSS such as `100vw`, `100vh`, `vw`, `vh`, or `clamp()`. Treat those values as design proportions to translate into 1920×1080 stage coordinates, not as live responsive rules in the generated deck.
 
-Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and panel overlap.
+Use `deck-stage.js` or an equivalent inline stage scaler for final output: render each slide at 1920×1080, scale the whole stage with one transform, and verify rendered screenshots for both text overflow and low-third collisions.
 
 ## Overview
 
@@ -135,15 +132,15 @@ Night Reel is a **noir cinematic presentation system**. Its foundational premise
 
 The type stack is two voices in deliberate tension. **Bebas Neue** is the display face — a tall, narrow, single-weight condensed sans that carries titles, kickers, and bar metadata in uppercase. Its caps-only rhythm is what makes the system read as film credits rather than slides. **Inter at weight 300** is the dialogue face — featherweight grotesque for subtitles, body lines, and the context line, always sentence case, always quiet against the towering caps.
 
-The palette is near-monochrome: **pure black ground, off-white titles, smoke metadata**, and exactly one saturated beat — a **blood-red rule** opening the low-third block. The red is budgeted like a plot point: one per slide, never repeated in text, charts, or chrome. The surface rhythm is darkness with one light: a radial spotlight glow behind the title that vignettes to pure black, overlaid with a 1%-opacity scanline-grade shimmer.
+The palette is near-monochrome: **pure black ground, off-white titles, smoke metadata**, and exactly one saturated beat — a **blood-red kicker** opening the low-third block. The red is budgeted like a plot point: one line per slide, never repeated in titles, dialogue, or chrome. The surface rhythm is pure darkness: a solid black ground with no vignette, no shimmer, no gradients.
 
-**Density philosophy: low, held, bottom-weighted.** At least half of every frame stays empty black above the low-third block. A typical title shot carries one red rule, one kicker, one title, and one dialogue line — four elements, then darkness. Dense evidence shots (cue stacks, stat blocks, two-take comparisons) may stack to six low-third elements with the title stepped to 104px, then 88px. Crowding the frame past that ceiling destroys the cinematic hush; when content grows beyond it, it paginates to the next shot instead.
+**Density philosophy: low, held, bottom-weighted.** At least half of every frame stays empty black above the low-third block. A typical title shot carries one red kicker, one title, and one dialogue line — three elements, then darkness. Dense evidence shots (cue stacks, stat blocks, two-take comparisons) may stack to six low-third elements with the title stepped to 104px, then 88px. Crowding the frame past that ceiling destroys the cinematic hush; when content grows beyond it, it paginates to the next shot instead.
 
 **Key Characteristics:**
-- CinemaScope letterbox bars top and bottom with hairline inner rules, carrying only brand metadata and a scene count.
-- Low-third title block: red rule, tracked kicker, towering Bebas caps title, single light-weight dialogue line.
-- Exactly one blood-red accent per slide; everything else stays black, white, or smoke.
-- Spotlight vignette ground fading to pure black, plus a faint 1% scanline-grade shimmer.
+- CinemaScope letterbox zones top and bottom with no hairlines, carrying only brand metadata and a scene count.
+- Low-third title block: red kicker, towering Bebas caps title, single light-weight dialogue line.
+- Exactly one blood-red line per slide; everything else stays black, white, or smoke.
+- Solid black ground — no vignette, no shimmer, no gradients.
 - Credit-sequence type hierarchy: condensed caps display, Inter light dialogue, near-invisible reel metadata.
 - Vast negative space above the title — the empty black is part of the composition.
 
@@ -151,22 +148,24 @@ The palette is near-monochrome: **pure black ground, off-white titles, smoke met
 
 ### Palette
 
-- **Black** (`{colors.black}` — `#000000`): The only ground — bars, frame, and letterbox shell all pure black.
+- **Black** (`{colors.black}` — `#101012`): The only ground — bars, frame, and letterbox shell all near-black.
 - **White** (`{colors.white}` — `#F5F5F5`): Title caps only. Slightly softened so caps on black don't glare.
-- **Blood Red** (`{colors.blood-red}` — `#C1121F`): The single accent — the low-third rule. Never text, never chrome, never repeated.
-- **Smoke** (`{colors.smoke}` — `#8A8A8A`): Kickers, bar brand, context line — the mid metadata voice.
+- **Blood Red** (`{colors.blood-red}` — `#E5484D`): The single accent — the low-third kicker line at 40px tracked Bebas. Never titles, never dialogue, never chrome, never repeated.
+- **Smoke** (`{colors.smoke}` — `#8A8A8A`): Bar brand, context line, stat labels — the mid metadata voice.
 - **Dialogue** (`{colors.dialogue}` — `#C9C9C9`): Subtitle and body lines — brighter than smoke, dimmer than titles.
-- **Bar Line** (`{colors.bar-line}` — `#2A2A2A`): Hairline inner rules separating the bars from the frame.
+- **Bar Line** (`{colors.bar-line}` — `#2A2A2A`): Retained token; no visible role in the typography-only register.
 - **Reel Dim** (`{colors.reel-dim}` — `#3D3D3D`): Near-invisible reel markers and scene counts in the bars.
-- **Spotlight** (`{colors.spotlight}` — `#161616`): Core of the radial glow behind the title block.
+- **Spotlight** (`{colors.spotlight}` — `#161616`): Retained token; no visible role in the typography-only register.
 
 ### Defaults
 
-- **Default surface background**: `{colors.black}` with the spotlight gradient in the frame region.
+- **Default surface background**: `{colors.black}` solid. No vignette, no shimmer, no gradients.
 - **Default headline color**: `{colors.white}` in Bebas caps.
 - **Default body color**: `{colors.dialogue}` in Inter light.
 - **Default metadata color**: `{colors.smoke}` for readable metadata, `{colors.reel-dim}` for rhythmic markers.
-- **Default accent**: `{colors.blood-red}`, exactly once per slide as the low-third rule.
+- **Default accent**: `{colors.blood-red}`, exactly once per slide as the low-third kicker line.
+
+**Color-comfort decision (2026-11-04): replace dark treatment (pure black retired, red corrected).** This was the only L=0.0000 ground in the pack with the widest range (19.26:1). Black `#000000`→`#101012` keeps the noir letterbox read — still visually black in the cinema frame — while narrowing white to 17.43:1; smoke (5.51:1) and dialogue (11.48:1) re-verified with margin. Blood-red `#C1121F`→`#E5484D` (3.37:1→4.86:1, S 0.83→0.75) repairs the thin-margin kicker so it passes at small sizes too, keeping the single blood beat per P3 (brighter but slightly less saturated on the dark ground). White, smoke, and dialogue values are untouched. Typo-only shapes unchanged — color values only.
 
 ## Typography
 
@@ -188,7 +187,7 @@ Caps sentences in Inter or sentence-case titles in Bebas both break the credit h
 | `{typography.section-title}` | 120px | Bebas Neue | 400 | Inner-section title |
 | `{typography.dialogue}` | 44px | Inter | 300 | Cover subtitle / dialogue line |
 | `{typography.body-light}` | 32px | Inter | 300 | Body lines on dark |
-| `{typography.kicker}` | 40px | Bebas Neue | 400 | Tracked smoke kicker above titles |
+| `{typography.kicker}` | 40px | Bebas Neue | 400 | Tracked blood-red kicker above titles |
 | `{typography.bar-brand}` | 34px | Bebas Neue | 400 | Top-bar brand + reel marker |
 | `{typography.context-line}` | 30px | Inter | 300 | Bottom-bar context line |
 | `{typography.scene-count}` | 34px | Bebas Neue | 400 | Bottom-bar scene count |
@@ -198,10 +197,10 @@ Caps sentences in Inter or sentence-case titles in Bebas both break the credit h
 These treatments are **non-optional whenever the corresponding element type is used**:
 
 - **Every title is Bebas caps at 0.94–0.96 line-height.** The tight leading is the credit look; looser leading turns caps into a poster. Long titles shrink via the fit routine (196px toward a 56px floor in 4px steps) — never letterspaced tighter to fit.
-- **Every kicker is smoke Bebas at 0.5em tracking.** The extreme tracking against the tight title leading is the system's core contrast.
+- **Every kicker is blood-red Bebas at 0.5em tracking.** The extreme tracking against the tight title leading is the system's core contrast; the red is the slide's single saturated beat.
 - **Every dialogue line is Inter 300 sentence case.** Never uppercase, never tracked beyond 0.08em, never heavier than 400.
 - **Every bar metadata line is Bebas with 0.3em+ tracking** in smoke or reel-dim — present for frame rhythm, dim enough to ignore.
-- **Every low-third block opens with the red rule.** No title appears without its red beat; no slide carries a second one.
+- **Every low-third block opens with the red kicker.** No title appears without its red beat; no slide carries a second red element.
 - **Every title keeps hairline positive tracking (0.015em).** Bebas is dense — zero tracking crowds the caps, wide tracking dissolves them.
 - **Every context line stays Inter light at 0.08em.** It reads once, then recedes into the bottom bar.
 
@@ -209,7 +208,7 @@ These treatments are **non-optional whenever the corresponding element type is u
 
 ### Canvas System
 
-The system targets a fixed **1920×1080 stage** composed as three horizontal bands: a 148px top letterbox bar, a flexible frame region carrying the spotlight and the bottom-anchored low-third block, and a 132px bottom letterbox bar. The low third holds four stacked elements on title shots (rule, kicker, title, dialogue) with 22–34px gaps; dense evidence shots may stack to six (rule, kicker, title or stat block, up to three cue/stat/take rows); everything above is empty black.
+The system targets a fixed **1920×1080 stage** composed as three horizontal zones on solid black: a 148px top letterbox zone, a flexible frame region carrying the bottom-anchored low-third block, and a 132px bottom letterbox zone. The low third holds three stacked elements on title shots (red kicker, title, dialogue) with 22–34px gaps; dense evidence shots may stack to six (red kicker, title or stat block, up to three cue/stat/take rows); everything above is empty black.
 
 Frame padding is `0 96px 64px`; bar padding is `0 96px`. The dialogue line caps at 1400px measure so it never runs the full frame width. The title box caps at 470px height with hidden overflow, guarded by the fit routine.
 
@@ -224,33 +223,27 @@ No navigation, no progress, no logos — the bars frame; they never decorate.
 
 ## Depth and Elevation
 
-Night Reel builds depth **optically, not with shadows**. The spotlight radial gradient lifts the title zone out of the black, and the 1% scanline shimmer adds a film-grade grain that keeps large black fields from reading as dead pixels. Text carries no shadow in the base treatment; the halo and red-glow tokens exist only as APL-safe accents for export contexts where pure flat caps lose presence — and even there they stay under 8% effective luminance lift.
+Night Reel builds depth **positionally, not optically**. The ground is solid black; hierarchy comes from the low-third anchor, scale contrast, tracking, and the single red kicker. Text carries no shadow; the halo and red-glow tokens are retained but unrendered outside export fallbacks.
 
-Any hard offset shadow, bevel, or card lift breaks the cinematic flatness. If an element needs separation on black, dim its neighbors instead of lifting it.
+Any gradient, vignette, shimmer, hard offset shadow, bevel, or card lift breaks the cinematic flatness. If an element needs separation on black, dim its neighbors instead of lifting it.
 
 ## Shapes and Treatment
 
 ### Border Radius
 
-Zero everywhere. Bars, frame, rule, and any future panels are all square-cut. The red rule is a hard 132×8 rectangle; rounding it would turn a censor bar into a pill and collapse the noir severity.
+There is nothing to round: no bars-as-boxes, rules, panels, or vignettes exist in the typography-only register. Type on solid black is square-cut by nature; any rounded shape would collapse the noir severity.
 
 ### Border Weights
 
-- **1px bar-line rules** — the inner hairlines separating letterbox bars from the frame. The only rules in the system.
-- **8px red rule** — the low-third accent bar at 132px wide. Heavy, short, unmissable.
-- No other borders exist: no card outlines, no dividers inside the low third, no framed panels.
+Borders do not exist. There are no bar hairlines, accent bars, card outlines, dividers, or framed panels. Position and the single red kicker are the only structural signals.
 
 ### Decorative Element Types
 
-**Letterbox bars** — The 148px/132px black bands with hairline inner rules. The system's frame and primary identity; every slide carries both.
+**Letterbox zones** — The 148px/132px black bands with no hairlines. The system's frame and primary identity; every slide carries both.
 
-**Low-third block** — The bottom-anchored title stack: red rule, smoke kicker, caps title, dialogue line. The only content module on a title slide.
+**Low-third block** — The bottom-anchored title stack: red kicker, caps title, dialogue line. The only content module on a title slide.
 
-**Red rule** — The 132×8 blood-red bar. One per slide, always opening the low third, never reused as underline, bullet, or chart accent.
-
-**Spotlight vignette** — The radial near-black glow (spotlight core → pure black) behind the title zone. Motivates the title's presence in the dark.
-
-**Scanline-grade shimmer** — A 1%-opacity horizontal stripe overlay across the frame. Subliminal film grain; visible only in that its absence reads as digital flatness.
+**Red kicker** — The blood-red tracked Bebas line. One per slide, always opening the low third, never reused as underline, bullet, or chart accent.
 
 **Reel markers** — Near-invisible Bebas metadata in the bars (corpus size, scene count). Rhythmic texture for the frame edges.
 
@@ -260,30 +253,30 @@ Zero everywhere. Bars, frame, rule, and any future panels are all square-cut. Th
 
 **Two-take stack** — The comparison device: two takes stacked sequentially (never side by side), each opened by a Bebas 34px 0.3em smoke sub-kicker with one dialogue line beneath, separated by 48px of empty black. Spacing is the only separator — no divider, no second red, no panels.
 
-**Title-less low third** — On evidence shots only, the title line may be omitted when the figures are the subject: red rule + kicker + stat block, nothing else. Every other shot carries a title.
+**Title-less low third** — On evidence shots only, the title line may be omitted when the figures are the subject: red kicker + stat block, nothing else. Every other shot carries a title.
 
 ## Do's and Don'ts
 
 ### Do
 
-- Keep both letterbox bars on every slide with their hairline inner rules and dim metadata.
+- Keep both letterbox zones on every slide with their dim metadata and no hairlines.
 - Anchor the title block to the bottom of the frame and leave at least half the frame empty black.
-- Open every low third with the single red rule — and budget exactly one red element per slide.
+- Open every low third with the single red kicker — and budget exactly one red element per slide.
 - Set titles in Bebas caps at 0.94 leading and dialogue in Inter 300 sentence case.
-- Let the spotlight vignette and 1% shimmer carry all atmospheric depth; keep text flat.
+- Keep the ground solid black and all text flat — no vignette, no shimmer, no gradients.
 - Dim neighbors instead of lifting elements when separation is needed on black.
 - Shrink long titles with the fit routine toward the 56px floor; never tighten tracking to fit.
 - Stack dense evidence as cue, stat, or take rows under a 104px title; omit the title only when figures are the subject.
 
 ### Don't
 
-- Don't add a second red element — no red text, red bullets, red chart series, or red chrome.
+- Don't add a second red element — the kicker line is the only red; no red titles, bullets, chart series, or chrome.
 - Don't center titles or float them mid-frame; the low third is the only title position.
 - Don't set sentences in Bebas or display lines in Inter — caps announce, light grotesque speaks.
 - Don't widen title leading past 1.0 or track titles beyond 0.03em; the dense caps stack is the look.
-- Don't introduce gray panels, cards, or bordered boxes on the frame — content floats on black.
-- Don't raise the shimmer past 2% opacity or add visible grain, noise, or starfields.
-- Don't crowd the frame past six low-third elements on dense evidence shots (four on title shots); content beyond the ceiling paginates to the next shot.
+- Don't introduce gray panels, cards, bordered boxes, rules, or vignettes on the frame — content floats on black.
+- Don't add shimmer, grain, noise, or starfields at any opacity.
+- Don't crowd the frame past six low-third elements on dense evidence shots (three on title shots); content beyond the ceiling paginates to the next shot.
 
 ## Responsive Behavior
 
@@ -306,7 +299,7 @@ When using this system for Chinese (or other CJK) content, swap the Latin stack 
 
 ### Mixed-Content Strategy
 
-**Strategy A** — single CJK family with built-in Latin coverage, differentiated by weight. Set every text element to `'Noto Sans SC', sans-serif`: titles at 900, kickers and bar lines at 500, dialogue at 300–400. The condensed-caps voice cannot survive translation (no condensed Chinese grotesque exists on the CDN), so weight contrast plus the letterbox frame and red rule carry the cinematic identity instead.
+**Strategy A** — single CJK family with built-in Latin coverage, differentiated by weight. Set every text element to `'Noto Sans SC', sans-serif`: titles at 900, kickers and bar lines at 500, dialogue at 300–400. The condensed-caps voice cannot survive translation (no condensed Chinese grotesque exists on the CDN), so weight contrast plus the letterbox zones and red kicker carry the cinematic identity instead.
 
 ### Loading
 
@@ -331,7 +324,7 @@ Add to the slide `<head>`:
 
 ### Aesthetic Notes for This System
 
-The noir voice in a CJK build lives entirely in the non-typographic elements: the letterbox bars, the low-third position, the spotlight vignette, and the single red rule. Lean on them harder — widen the bars by 10–15% if the translated title feels small, and keep the red rule at full 132×8 presence since it becomes the primary brand mark once the Bebas voice is gone. Keep reel markers and scene counts in Latin Bebas ("01", corpus numerals) — they read as timecode and preserve the frame-edge rhythm.
+The noir voice in a CJK build lives in the compositional elements: the letterbox zones, the low-third position, and the single red kicker. Lean on them harder — widen the zones by 10–15% if the translated title feels small, and keep the red kicker at full 40px tracked presence since it becomes the primary brand mark once the Bebas voice is gone. Keep reel markers and scene counts in Latin Bebas ("01", corpus numerals) — they read as timecode and preserve the frame-edge rhythm.
 
 ### Known CJK Gap
 
@@ -340,28 +333,28 @@ The noir voice in a CJK build lives entirely in the non-typographic elements: th
 
 ## Iteration Guide
 
-1. Any new slide keeps both letterbox bars with hairline inner rules and dim bar metadata. Don't restyle or drop the bars.
+1. Any new slide keeps both letterbox zones with dim bar metadata and no hairlines. Don't restyle or drop the zones.
 2. Any new display element uses Bebas caps; any new sentence uses Inter light. Never cross the roles.
-3. Any new title anchors to the low third beneath the red rule and kicker — never centered, never top-aligned.
-4. Any new accent is the single red rule. Don't add red text, red bullets, or a second red shape anywhere.
-5. Any new frame keeps the spotlight vignette and 1% shimmer; don't add grain, noise, or visible texture.
+3. Any new title anchors to the low third beneath the red kicker — never centered, never top-aligned.
+4. Any new accent is the single red kicker line. Don't add red titles, bullets, or a second red element anywhere.
+5. Any new frame keeps the solid black ground; don't add vignettes, shimmer, grain, noise, or visible texture.
 6. Any new metadata in the bars uses dim Bebas (0.3em+) or light Inter — present for rhythm, never demanding reading.
-7. Any new content beyond the low-third ceiling (four elements on title shots, six on dense evidence shots) paginates to the next shot; don't shrink the empty black.
+7. Any new content beyond the low-third ceiling (three elements on title shots, six on dense evidence shots) paginates to the next shot; don't shrink the empty black.
 8. Any new emphasis on black comes from dimming neighbors, never from shadows, lifts, or panels.
 9. Long titles shrink via the fit routine toward the 56px floor; never tighten tracking or widen leading to fit.
-10. Animated builds (if any) fade the low third up once; the bars and spotlight never animate.
+10. Animated builds (if any) fade the low third up once; the zones never animate.
 11. Any new list uses the cue-stack device: Bebas cue labels with Inter dialogue rows, at most three rows.
 12. Any new evidence figure uses the stat-block device: Bebas 104px white figures with smoke labels, at most three rows.
 13. Any new comparison uses the two-take stack: sequential takes under smoke sub-kickers, 48px of black between, no divider.
 14. Any new dense evidence shot may stack to six low-third elements with the title stepped to 104px (then 88px); the 56px floor stays overflow-only, and anything past six elements paginates.
-15. Any new low third keeps its title except on evidence shots, where kicker plus stat block may stand alone beneath the red rule.
+15. Any new low third keeps its title except on evidence shots, where the red kicker plus stat block may stand alone.
 
 ## Known Gaps
 
 - **Fonts**: Bebas Neue / Inter via Google Fonts CDN (`display=swap`); fallbacks "Arial Black", sans-serif / system-ui, sans-serif. No font files committed. Offline rendering falls back to system stacks and loses the condensed-credit voice.
 - **Title fit needs JS.** The shrink-to-fit routine runs on DOMContentLoaded, font-ready, and load plus delayed passes at 800/2000ms for late `display=swap` swaps; without JS, very long titles can overflow the 470px title box. Static export must bake the fitted size.
 - **Single-weight display.** Bebas ships one weight; all display hierarchy must come from size, tracking, and color — there is no bold Bebas for extra emphasis.
-- **Near-black gradients band on cheap panels.** The spotlight vignette can show banding on 6-bit displays; the 1% shimmer partially dithers it.
+- **No vignette, shimmer, or gradients.** The typography-only register renders a solid black ground; the retained spotlight/shimmer tokens must not be reintroduced.
 
 ### PPTX Fidelity Disclosure
 
@@ -371,8 +364,8 @@ The noir voice in a CJK build lives entirely in the non-typographic elements: th
 | 2 | Blend modes | None used | full | N/A — no blend modes |
 | 3 | Animation / keyframes | None used (static credit frame) | full | N/A — static export is native |
 | 4 | Pixel / hard offset shadows | None used (flat caps on black) | full | N/A — no shadows |
-| 5 | Gradients | Radial spotlight vignette behind title | partial | Nearest radial gradient; on flat-only exporters, solid #0A0A0A frame fill |
-| 6 | Grain / scanline / noise overlays | 1% repeating-linear shimmer overlay | none | Dropped on export (subliminal at 1%; absence is acceptable) |
-| 7 | Transparency layers | Spotlight alpha ramp only | partial | Opaque gradient stops approximating the ramp |
+| 5 | Gradients | Not used (solid black ground) | full | N/A — no gradients in this register |
+| 6 | Grain / scanline / noise overlays | Not used | full | N/A — no overlays in this register |
+| 7 | Transparency layers | None used (all type opaque) | full | N/A |
 | 8 | Custom fonts | Bebas Neue + Inter via Google Fonts CDN | partial | Embed both faces if licensed; else Arial Narrow Bold + Calibri Light substitution |
-| 9 | Absolute-positioned decor | Shimmer overlay is absolute inset-0 | none | Dropped with the shimmer; layout is in-flow flexbox otherwise |
+| 9 | Absolute-positioned decor | None — in-flow flexbox layout | full | Native shapes / text boxes 1:1 |

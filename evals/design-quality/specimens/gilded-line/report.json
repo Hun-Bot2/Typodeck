@@ -7,26 +7,38 @@
       "html": "cover.html",
       "png": "cover.png",
       "validator": "PASS",
-      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080."
+      "verdict": "PASS — PRIMARY title/subtitle/context verbatim; 1920x1080 stage + scaler; PNG 1920x1080 (66433 bytes). TYPO-ONLY rebuild 2026-11-04: champagne/gold inscription on noir, diamond crest + diamond-rule dividers + side diamond stacks; no frames/panel/fan. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res. COLOR-COMFORT 2026-11-04: champagne #F5EFE0→#F0E6D2 (15.58:1, design's own warmer-cover direction), lacquer/gold/champagne-dim kept; HTML color-values-only; PNG re-captured via repo CDP pipeline, viewed full-res — PASS."
     },
     {
       "kind": "evidence",
       "html": "evidence.html",
       "png": "evidence.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-B block verbatim (message + 63% stat + support + source line); PNG 1920x1080 (78135 bytes). TYPO-ONLY rebuild 2026-11-04: champagne/gold inscription on noir, diamond crest + diamond-rule dividers + side diamond stacks; no frames/panel/fan. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res. COLOR-COMFORT 2026-11-04: champagne #F5EFE0→#F0E6D2 (15.58:1, design's own warmer-cover direction), lacquer/gold/champagne-dim kept; HTML color-values-only; PNG re-captured via repo CDP pipeline, viewed full-res — PASS."
     },
     {
       "kind": "explanation",
       "html": "explanation.html",
       "png": "explanation.png",
       "validator": "PASS",
-      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080."
+      "verdict": "PASS — Slide-C block verbatim (title + 6 bullets + caption + source line); PNG 1920x1080 (89440 bytes). TYPO-ONLY rebuild 2026-11-04: champagne/gold inscription on noir, diamond crest + diamond-rule dividers + side diamond stacks; no frames/panel/fan. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res. COLOR-COMFORT 2026-11-04: champagne #F5EFE0→#F0E6D2 (15.58:1, design's own warmer-cover direction), lacquer/gold/champagne-dim kept; HTML color-values-only; PNG re-captured via repo CDP pipeline, viewed full-res — PASS."
     }
   ],
   "render": {
     "width": 1920,
     "height": 1080,
     "verify": "PASS"
+  },
+  "typo_only": {
+    "rebuild": "2026-11-04",
+    "boxes": "none",
+    "note": "TYPO-ONLY rebuild 2026-11-04: champagne/gold inscription on noir, diamond crest + diamond-rule dividers + side diamond stacks; no frames/panel/fan. Capture: repo CDP pipeline at 1920x1080, marker-verified, viewed at full res."
+  },
+  "color_comfort": {
+    "date": "2026-11-04",
+    "tokens": "champagne #F5EFE0→#F0E6D2; lacquer, gold, champagne-dim kept; deco teal stays reserved",
+    "html_diff": "color-values-only vs f0aed77 (0 ODD lines after hex/rgba normalization)",
+    "png": "3/3 IHDR 1920x1080, all differ from f0aed77 blobs; re-captured via repo CDP pipeline",
+    "viewing": "all 3 viewed full-res by agent; deco identity intact, no boxes; no comfort claim (WCAG arithmetic + AGENT viewing only)"
   }
 }

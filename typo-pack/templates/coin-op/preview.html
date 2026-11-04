@@ -10,14 +10,14 @@
 <style>
   .coinop-slide { position: absolute; inset: 0; background: #060A06; overflow: hidden;
     font-family: 'IBM Plex Mono', ui-monospace, monospace; }
-  .coinop-frame { position: absolute; inset: 56px; border: 4px solid #FFB000;
-    box-shadow: 0 0 18px rgba(255,176,0,.35), inset 0 0 18px rgba(255,176,0,.12); }
-  .coinop-inner { position: absolute; inset: 16px; border: 2px solid #33FF66;
-    box-shadow: 0 0 14px rgba(51,255,102,.30), inset 0 0 24px rgba(51,255,102,.06);
+  .coinop-frame { position: absolute; inset: 56px; border: 4px solid #F2A91E;
+    box-shadow: 0 0 18px rgba(242,169,30,.35), inset 0 0 18px rgba(242,169,30,.12); }
+  .coinop-inner { position: absolute; inset: 16px; border: 2px solid #3FE673;
+    box-shadow: 0 0 14px rgba(63,230,115,.30), inset 0 0 24px rgba(63,230,115,.06);
     display: flex; flex-direction: column; }
-  .coinop-screw { position: absolute; width: 12px; height: 12px; background: #FFB000;
-    box-shadow: 0 0 8px rgba(255,176,0,.8), 0 0 28px rgba(255,176,0,.35); }
-  .coinop-ticker { height: 64px; flex: 0 0 auto; background: #FFB000; overflow: hidden;
+  .coinop-screw { position: absolute; width: 12px; height: 12px; background: #F2A91E;
+    box-shadow: 0 0 8px rgba(242,169,30,.8), 0 0 28px rgba(242,169,30,.35); }
+  .coinop-ticker { height: 64px; flex: 0 0 auto; background: #F2A91E; overflow: hidden;
     display: flex; align-items: center; justify-content: center; }
   /* Static marquee: the frozen first frame ships exactly as set — no mid-scroll
      clip. Motion is never load-bearing; see Known Gaps. */
@@ -27,23 +27,23 @@
   .coinop-well { flex: 1 1 auto; display: flex; flex-direction: column; align-items: center;
     justify-content: center; text-align: center; padding: 24px 72px; min-height: 0; }
   .coinop-slotlabel { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-  .coinop-slot { width: 10px; height: 44px; border: 2px solid #FFB000; border-radius: 6px;
-    box-shadow: 0 0 8px rgba(255,176,0,.5); flex: 0 0 auto; }
+  .coinop-slot { width: 10px; height: 44px; border: 2px solid #F2A91E; border-radius: 6px;
+    box-shadow: 0 0 8px rgba(242,169,30,.5); flex: 0 0 auto; }
   .coinop-slotlabel-text { font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 17px;
-    letter-spacing: 0.14em; text-transform: uppercase; color: #FFB000;
-    text-shadow: 0 0 8px rgba(255,176,0,.8), 0 0 28px rgba(255,176,0,.35); white-space: nowrap; }
+    letter-spacing: 0.14em; text-transform: uppercase; color: #F2A91E;
+    text-shadow: 0 0 8px rgba(242,169,30,.7), 0 0 28px rgba(242,169,30,.3); white-space: nowrap; }
   .coinop-title { font-family: 'VT323', ui-monospace, monospace; font-weight: 400;
-    font-size: 108px; line-height: 1.0; letter-spacing: 0.01em; color: #33FF66; margin: 0;
+    font-size: 108px; line-height: 1.0; letter-spacing: 0.01em; color: #3FE673; margin: 0;
     max-width: 1400px; text-wrap: balance;
-    text-shadow: 0 0 8px rgba(51,255,102,.9), 0 0 32px rgba(51,255,102,.45), 0 0 90px rgba(51,255,102,.25); }
+    text-shadow: 0 0 8px rgba(63,230,115,.75), 0 0 32px rgba(63,230,115,.38), 0 0 90px rgba(63,230,115,.22); }
   .coinop-ticks { color: #1FA84A; font-size: 22px; letter-spacing: 24px; margin: 20px 0 20px 24px; }
   .coinop-subtitle { font-size: 22px; line-height: 1.7; color: #E8E4D8; margin: 0; max-width: 66ch;
     text-shadow: 0 0 6px rgba(232,228,216,.35); }
   .coinop-footer { flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
     padding: 20px 72px 28px; font-family: 'Silkscreen', "Arial Black", sans-serif; font-size: 13px;
     letter-spacing: 0.18em; text-transform: uppercase; color: #1FA84A; }
-  .coinop-cursor { display: inline-block; width: 18px; height: 26px; background: #33FF66;
-    box-shadow: 0 0 6px rgba(51,255,102,.7), 0 0 24px rgba(51,255,102,.35);
+  .coinop-cursor { display: inline-block; width: 18px; height: 26px; background: #3FE673;
+    box-shadow: 0 0 6px rgba(63,230,115,.7), 0 0 24px rgba(63,230,115,.35);
     vertical-align: -5px; animation: coinop-blink 1.06s steps(1) infinite; }
   @keyframes coinop-blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
   .coinop-rails { position: absolute; top: 0; bottom: 0; width: 10px; display: flex;

@@ -1,0 +1,126 @@
+{
+  "deck": {
+    "title": "What eleven postmortems taught us",
+    "context": "Typodeck Research · Readout 07",
+    "date": "Nov 2026",
+    "author": "Typodeck Research"
+  },
+  "slides": [
+    {
+      "intent": "open the deck with title slide and lede",
+      "kicker": "Typodeck Research · Readout 07",
+      "title": "What eleven postmortems taught us",
+      "lede": "A slow read of eleven incident reviews, from paging alert to final action item — and the three habits the calm teams share.",
+      "meta": [
+        { "label": "Issue", "value": "07 / 2026" },
+        { "label": "Cases", "value": "11 postmortems" },
+        { "label": "Date", "value": "Nov 2026" }
+      ]
+    },
+    {
+      "intent": "section divider into part two, orient the reader",
+      "kicker": "Part one · Method",
+      "title": "How we read them",
+      "orienting": "Every review was re-read twice: once for the timeline, once for the tone. Only patterns present in at least four cases survived.",
+      "meta": [
+        { "label": "Section", "value": "01 · Method" },
+        { "label": "Reads", "value": "22 passes" },
+        { "label": "Bar", "value": "4+ cases" }
+      ]
+    },
+    {
+      "intent": "single thesis statement, one big sentence",
+      "kicker": "Thesis",
+      "statement": "Calm teams write the timeline first and the blame never.",
+      "source": "Readout 07 · Typodeck Research",
+      "meta": [
+        { "label": "Form", "value": "Thesis" },
+        { "label": "Cases", "value": "11 of 11" }
+      ]
+    },
+    {
+      "intent": "evidence with stats supporting the thesis",
+      "kicker": "Evidence · Timelines",
+      "message": "Teams that timestamp first resolve faster",
+      "stats": [
+        { "value": "63%", "label": "faster median resolution with a live timeline" },
+        { "value": "9/11", "label": "reviews where blame language slowed the fix" }
+      ],
+      "lede": "The two fastest incidents both opened a shared timeline within five minutes of the page.",
+      "source": "Illustrative figures · Readout 07",
+      "fixture": true,
+      "fixtureNote": "stats are illustrative",
+      "meta": [
+        { "label": "Finding", "value": "F-01" },
+        { "label": "Signal", "value": "9 of 11" }
+      ]
+    },
+    {
+      "intent": "compare rushed versus reviewed response styles",
+      "kicker": "Comparison · Response styles",
+      "title": "Rushed pages versus reviewed pages",
+      "zones": {
+        "a": {
+          "label": "Rushed",
+          "rows": [
+            { "text": "Timeline reconstructed from memory", "flag": true },
+            { "text": "Three parallel chat threads", "flag": true },
+            { "text": "Fix shipped without a reviewer", "flag": true }
+          ]
+        },
+        "b": {
+          "label": "Reviewed",
+          "rows": [
+            { "text": "Live timeline from minute five" },
+            { "text": "One thread, one incident lead" },
+            { "text": "Every fix paired before deploy" }
+          ]
+        }
+      },
+      "caption": "Failure modes observed in the rushed cases are listed under Rushed; position marks sides.",
+      "meta": [
+        { "label": "Finding", "value": "F-02" },
+        { "label": "Cases", "value": "6 vs 5" }
+      ]
+    },
+    {
+      "intent": "dense table breakdown of all eleven cases",
+      "kicker": "Appendix · All cases",
+      "title": "Eleven cases, four columns",
+      "table": {
+        "columns": ["Case", "Signal", "Cost", "Habit"],
+        "rows": [
+          ["P-01", "paging", "2h", "timeline"],
+          ["P-02", "deploy", "5h", "timeline"],
+          ["P-03", "paging", "1h", "pairing"],
+          ["P-04", "data", "9h", "review"],
+          ["P-05", "deploy", "3h", "timeline"],
+          ["P-06", "paging", "2h", "pairing"],
+          ["P-07", "data", "12h", "review"],
+          ["P-08", "deploy", "4h", "timeline"],
+          ["P-09", "paging", "1h", "pairing"],
+          ["P-10", "data", "7h", "review"],
+          ["P-11", "deploy", "3h", "timeline"]
+        ],
+        "flags": [false, true, false, true, false, false, true, false, false, true, false],
+        "footnote": "Illustrative case ledger · costs in engineer-hours"
+      },
+      "fixture": true,
+      "fixtureNote": "case ledger is illustrative",
+      "meta": [
+        { "label": "Form", "value": "Ledger" },
+        { "label": "Rows", "value": "11" }
+      ]
+    },
+    {
+      "intent": "closing takeaways and next steps",
+      "kicker": "Closing · Next",
+      "title": "Write it down while it is happening",
+      "recap": "One live timeline, one lead, one paired fix. We will re-run this readout after the next five incidents.",
+      "meta": [
+        { "label": "Next", "value": "+5 cases" },
+        { "label": "Owner", "value": "Research" }
+      ]
+    }
+  ]
+}

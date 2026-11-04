@@ -8,42 +8,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --paper: #FFFFFF; --ink: #1A1A1A; --blue: #0B5394; --rule: #EAEAEA; --abstract-tint: #F3F5F8; --muted: #5A6470; }
   * { box-sizing: border-box; }
-  .pr-slide { position: absolute; inset: 0; background: var(--paper); color: var(--ink);
-    font-family: "STIX Two Text", Georgia, "Times New Roman", serif; padding: 56px 88px 48px;
+  .s { position: absolute; inset: 0; background: #FFFFFF; color: #1A1A1A;
+    font-family: "STIX Two Text", Georgia, serif; padding: 56px 88px 48px;
     display: flex; flex-direction: column; }
-  .pr-runhead { display: flex; justify-content: space-between; align-items: baseline;
+  .run { display: flex; justify-content: space-between; align-items: baseline;
     font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 600;
-    letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); }
-  .pr-runhead .pr-page { color: var(--muted); letter-spacing: 0.14em; }
-  .pr-double-rule { margin-top: 18px; border-top: 3px solid var(--ink); }
-  .pr-double-rule::after { content: ""; display: block; border-top: 1px solid var(--ink); margin-top: 3px; }
-  .pr-kicker { font-family: Inter, system-ui, sans-serif; font-size: 22px; font-weight: 700;
-    letter-spacing: 0.24em; text-transform: uppercase; color: var(--blue); }
-  .pr-abstract { background: var(--abstract-tint); border-left: 6px solid var(--blue); padding: 28px 34px 30px; }
-  .pr-abstract-label { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
-    letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
-  .pr-abstract-text { margin: 0; font-style: italic; font-size: 35px; line-height: 1.42; color: var(--ink); }
-  .pr-keywords { margin-top: 20px; padding-top: 16px; border-top: 1px solid #D8DEE5;
-    font-family: Inter, system-ui, sans-serif; font-size: 21px; font-weight: 500; color: var(--muted); }
-  .pr-keywords strong { font-weight: 700; color: var(--ink); }
-  .pr-fig-label { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); }
-  .pr-fig-title { font-family: Inter, system-ui, sans-serif; font-size: 24px; font-weight: 600; color: var(--ink); margin: 12px 0 20px; }
-  .pr-caption { margin: 16px 0 0; font-family: Inter, system-ui, sans-serif; font-size: 21px; line-height: 1.5; color: var(--muted); }
-  .pr-caption strong { color: var(--ink); font-weight: 700; }
-  .pr-footnotes { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--ink);
-    font-family: Inter, system-ui, sans-serif; font-size: 20px; line-height: 1.6; color: var(--muted);
-    display: flex; gap: 48px; }
-  .pr-footnotes .pr-fn sup { font-weight: 700; color: var(--blue); margin-right: 6px; }
-
-
-  .pr-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; min-height: 0; max-width: 1380px; margin: 0 auto; width: 100%; }
-  .pr-close { margin: 30px 0 0 0; font-size: 84px; font-weight: 700; line-height: 1.1; letter-spacing: -0.005em; }
-  .pr-center .pr-abstract { margin-top: 44px; text-align: left; width: 100%; }
-  .pr-endmark { margin-top: 40px; width: 22px; height: 22px; background: var(--ink); }
+    letter-spacing: 0.22em; text-transform: uppercase; }
+  .run .pg { color: #5A6470; letter-spacing: 0.14em; }
+  .kick { font-family: Inter, system-ui, sans-serif; font-size: 22px; font-weight: 700;
+    letter-spacing: 0.24em; text-transform: uppercase; color: #0B5394; margin: 0; }
+  .mid { flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+  .title { margin: 28px 0 0 0; font-size: 88px; font-weight: 700; line-height: 1.08;
+    letter-spacing: -0.005em; max-width: 18ch; }
+  .sec-lab { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase; margin: 48px 0 0 0; }
+  .recap { margin: 14px 0 0 0; font-style: italic; font-size: 34px; line-height: 1.42; }
+  .fns { margin-top: auto; padding-top: 24px; font-family: Inter, system-ui, sans-serif;
+    font-size: 20px; line-height: 1.6; color: #5A6470; display: flex; gap: 48px; }
+  .fns sup { font-weight: 700; color: #0B5394; margin-right: 6px; }
 </style>
 <style>
   html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
@@ -53,22 +36,15 @@
 </head>
 <body>
 <div id="deck-viewport"><div id="deck-stage">
-
-    <div class="pr-slide">
-      <div class="pr-runhead"><span>Typodeck Research · November 2026</span><span class="pr-page">p. 07</span></div>
-      <div class="pr-double-rule"></div>
-      <div class="pr-center">
-        <div class="pr-kicker">Closing &#183; Review Practice</div>
-        <h1 class="pr-close">Slow the review. Ship once.</h1>
-        <div class="pr-abstract">
-          <div class="pr-abstract-label">In brief</div>
-          <p class="pr-abstract-text">Discipline upstream beats heroics downstream.</p>
-        </div>
-        <div class="pr-endmark"></div>
+    <div class="s">
+      <div class="run"><span>Typodeck Research · November 2026</span><span class="pg">p. 07</span></div>
+      <div class="mid">
+        <p class="kick">Closing · Review Practice</p>
+        <h2 class="title">Slow the review. Ship once.</h2>
+        <p class="sec-lab">In brief</p>
+        <p class="recap">Discipline upstream beats heroics downstream.</p>
       </div>
-      <div class="pr-footnotes">
-        <span class="pr-fn"><sup>[1]</sup>Typodeck Research · November 2026.</span>
-      </div>
+      <div class="fns"><span><sup>[1]</sup>Typodeck Research · November 2026.</span></div>
     </div>
 </div></div>
 <script>
@@ -83,6 +59,5 @@
   document.addEventListener('DOMContentLoaded', __typodeckFitStage);
   __typodeckFitStage();
 </script>
-
 </body>
 </html>

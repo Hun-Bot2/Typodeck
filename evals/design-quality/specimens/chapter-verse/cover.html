@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Inter:wght@500&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only: running head, kicker, ornament glyph, and folio carried
+     by type and whitespace. No hairlines anywhere. */
   .cv-slide {
     position: absolute; inset: 0;
     background: #FBF7EF;
@@ -23,21 +25,16 @@
     letter-spacing: 0.24em; text-transform: uppercase;
     color: #6B6257;
   }
-  .cv-running-rule { height: 1px; background: #B9A88F; margin-top: 18px; }
   .cv-main {
     flex: 1; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     text-align: center; min-height: 0;
   }
   .cv-kicker {
-    display: flex; align-items: center; gap: 24px;
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 16px; font-weight: 500;
     letter-spacing: 0.34em; text-transform: uppercase;
     color: #7A2E2E; white-space: nowrap;
-  }
-  .cv-kicker::before, .cv-kicker::after {
-    content: ""; display: block; width: 120px; height: 1px; background: #7A2E2E;
   }
   .cv-title {
     font-family: 'Newsreader', Georgia, serif;
@@ -46,12 +43,8 @@
     max-width: 1320px; text-wrap: balance;
   }
   .cv-ornament {
-    display: flex; align-items: center; gap: 18px;
     margin: 40px 0 8px; color: #7A2E2E;
     font-family: 'Newsreader', Georgia, serif; font-size: 14px;
-  }
-  .cv-ornament::before, .cv-ornament::after {
-    content: ""; display: block; width: 200px; height: 1px; background: #B9A88F;
   }
   .cv-lede {
     font-family: 'Newsreader', Georgia, serif;
@@ -66,7 +59,6 @@
     font-weight: 600; font-size: 3.1em; line-height: 0.8;
     float: left; padding: 8px 14px 0 0; color: #7A2E2E;
   }
-  .cv-folio-rule { height: 1px; background: #B9A88F; }
   .cv-folio {
     display: flex; align-items: baseline; justify-content: space-between;
     padding-top: 20px;
@@ -123,7 +115,6 @@
     <section class="cv-slide">
       <header>
         <div class="cv-running"><span>Typodeck Research</span><span>November 2026</span></div>
-        <div class="cv-running-rule"></div>
       </header>
       <div class="cv-main">
         <div class="cv-kicker">Chapter One</div>
@@ -132,7 +123,6 @@
         <p class="cv-lede">What 11 postmortems taught us about review discipline</p>
       </div>
       <footer>
-        <div class="cv-folio-rule"></div>
         <div class="cv-folio">
           <span class="cv-folio-source">Typodeck Research · November 2026</span>
           <span class="cv-folio-mark" aria-hidden="true">❦</span>

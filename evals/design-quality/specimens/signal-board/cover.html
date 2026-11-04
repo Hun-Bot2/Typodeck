@@ -45,21 +45,21 @@
     <style>
       .sb { position: absolute; inset: 0; background: #F6F8FA; color: #0F172A;
         font-family: 'Inter', system-ui, sans-serif; display: flex; flex-direction: column; }
-      .sb-topbar { height: 64px; flex: 0 0 64px; background: #0F172A; color: #E2E8F0;
-        display: flex; align-items: center; padding: 0 72px; gap: 20px;
-        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; letter-spacing: 0.14em; }
-      .sb-live { width: 14px; height: 14px; border-radius: 50%; background: #16A34A; flex: 0 0 14px; }
+      .sb-topbar { flex: 0 0 auto; display: flex; align-items: center; padding: 26px 72px 22px 72px; gap: 20px;
+        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 20px; letter-spacing: 0.14em;
+        border-bottom: 1px solid #CBD5E1; margin: 0 72px; padding-left: 0; padding-right: 0; }
+      .sb-live { color: #16A34A; font-size: 22px; }
       .sb-topbar .spacer { flex: 1; }
       .sb-topbar .dim { color: #94A3B8; }
-      .sb-topbar .amber { color: #FBBF24; }
+      .sb-topbar .amber { color: #B45309; font-weight: 600; }
       .sb-main { flex: 1; display: grid; grid-template-columns: repeat(12, 1fr);
-        gap: 12px; padding: 56px 72px 0 72px; min-height: 0; }
+        gap: 12px; padding: 48px 72px 0 72px; min-height: 0; }
       .sb-left { grid-column: 1 / 8; display: flex; flex-direction: column; min-width: 0; }
-      .sb-kicker { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-      .sb-pill { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px;
-        font-weight: 600; letter-spacing: 0.12em; padding: 10px 22px; border-radius: 999px; }
-      .sb-pill.blue { background: #2563EB; color: #fff; }
-      .sb-pill.ghost { border: 2px solid #0F172A; color: #0F172A; }
+      .sb-kicker { display: flex; align-items: center; gap: 18px; margin-bottom: 28px;
+        font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px;
+        font-weight: 600; letter-spacing: 0.12em; }
+      .sb-kicker .kb { color: #2563EB; }
+      .sb-kicker .sep { color: #94A3B8; font-weight: 400; }
       .sb-title { margin: 0; font-weight: 800; font-size: 88px; line-height: 1.04;
         letter-spacing: -0.015em; color: #0F172A; font-variant-numeric: tabular-nums; }
       .sb-sub { margin: 26px 0 0 0; font-size: 31px; line-height: 1.45; color: #475569;
@@ -67,7 +67,7 @@
       .sb-context { display: flex; align-items: center; gap: 14px; margin-top: 34px;
         font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 22px;
         letter-spacing: 0.06em; color: #0F172A; }
-      .sb-swatch { width: 18px; height: 18px; background: #2563EB; flex: 0 0 18px; }
+      .sb-context .mk { color: #2563EB; font-weight: 600; }
       .sb-datarows { margin-top: auto; padding: 30px 0 34px 0; }
       .sb-row { display: flex; align-items: baseline; gap: 18px; padding: 13px 2px;
         border-top: 1px solid #CBD5E1;
@@ -77,49 +77,40 @@
       .sb-row .v { margin-left: auto; font-weight: 600; color: #0F172A;
         font-variant-numeric: tabular-nums; }
       .sb-row .up { color: #16A34A; font-weight: 600; }
-      .sb-row .down { color: #DC2626; font-weight: 600; }
-      .sb-right { grid-column: 8 / 13; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-      .sb-kpi { background: #fff; border: 1px solid #E2E8F0; border-top: 6px solid #2563EB;
-        padding: 30px 34px 28px 34px; display: flex; align-items: center; gap: 26px; }
-      .sb-kpi.green { border-top-color: #16A34A; }
-      .sb-kpi.red { border-top-color: #DC2626; }
+      .sb-right { grid-column: 8 / 13; display: flex; flex-direction: column; min-width: 0; }
+      .sb-kpi { padding: 6px 0 26px 0; display: flex; align-items: center; gap: 26px;
+        border-bottom: 1px solid #CBD5E1; }
       .sb-num { font-size: 92px; font-weight: 800; line-height: 1;
         font-variant-numeric: tabular-nums; color: #0F172A; }
       .sb-kpi-meta { display: flex; flex-direction: column; gap: 12px; }
       .sb-kpi-label { font-family: 'IBM Plex Mono', ui-monospace, monospace;
         font-size: 19px; letter-spacing: 0.1em; color: #475569; line-height: 1.5; }
-      .sb-status { align-self: flex-start; font-family: 'IBM Plex Mono', ui-monospace, monospace;
-        font-size: 17px; font-weight: 600; letter-spacing: 0.12em;
-        padding: 8px 18px; border-radius: 999px; color: #fff; }
-      .sb-status.ok { background: #16A34A; }
-      .sb-status.warn { background: #B45309; }
-      .sb-status.bad { background: #DC2626; }
-      .sb-cases { background: #0F172A; color: #E2E8F0; padding: 26px 30px 22px 30px; flex: 1;
-        display: flex; flex-direction: column; }
+      .sb-status { font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 17px; font-weight: 600; letter-spacing: 0.12em; color: #0F172A; }
+      .sb-status .dot { color: #16A34A; }
+      .sb-cases { padding: 26px 0 0 0; flex: 1; display: flex; flex-direction: column; }
       .sb-cases h3 { margin: 0 0 14px 0; font-family: 'IBM Plex Mono', ui-monospace, monospace;
-        font-size: 18px; font-weight: 600; letter-spacing: 0.16em; color: #93C5FD; }
+        font-size: 18px; font-weight: 600; letter-spacing: 0.16em; color: #2563EB; }
       .sb-case { display: flex; align-items: center; gap: 14px; padding: 9px 0;
-        border-top: 1px solid #334155;
+        border-top: 1px solid #CBD5E1;
         font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 19px; }
-      .sb-case .id { color: #E2E8F0; font-weight: 500; }
-      .sb-case .st { margin-left: auto; font-size: 16px; font-weight: 600; letter-spacing: 0.1em;
-        padding: 5px 14px; border-radius: 999px; }
-      .sb-case .st.ok { background: rgba(22,163,74,0.22); color: #4ADE80; }
-      .sb-case .st.warn { background: rgba(251,191,36,0.20); color: #FBBF24; }
-      .sb-foot { flex: 0 0 60px; display: flex; align-items: center; padding: 0 72px;
+      .sb-case .id { color: #0F172A; font-weight: 500; }
+      .sb-case .st { margin-left: auto; font-size: 16px; font-weight: 600; letter-spacing: 0.1em; }
+      .sb-case .st.ok { color: #0F172A; }
+      .sb-case .st.ok .dot { color: #16A34A; }
+      .sb-case .st.warn { color: #B45309; }
+      .sb-foot { flex: 0 0 60px; display: flex; align-items: center;
         font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 18px;
         letter-spacing: 0.12em; color: #64748B; border-top: 1px solid #CBD5E1;
         margin: 0 72px; padding-left: 0; padding-right: 0; }
       .sb-foot .r { margin-left: auto; color: #0F172A; font-weight: 600; }
-      .sb-seal { margin-top: auto; padding-top: 20px; }
-      .sb-seal .track { height: 10px; background: #334155; }
-      .sb-seal .fill { height: 10px; width: 100%; background: #16A34A; }
-      .sb-seal .cap { margin-top: 10px; font-family: 'IBM Plex Mono', ui-monospace, monospace;
-        font-size: 16px; letter-spacing: 0.14em; color: #94A3B8; }
+      .sb-seal { margin-top: auto; padding: 22px 0 34px 0; }
+      .sb-seal .cap { font-family: 'IBM Plex Mono', ui-monospace, monospace;
+        font-size: 16px; letter-spacing: 0.14em; color: #64748B; }
     </style>
     <div class="sb">
       <div class="sb-topbar">
-        <span class="sb-live"></span>
+        <span class="sb-live">●</span>
         <span>TYPODECK RESEARCH</span>
         <span class="dim">/</span>
         <span class="amber">POSTMORTEM SERIES</span>
@@ -130,12 +121,13 @@
       <div class="sb-main">
         <div class="sb-left">
           <div class="sb-kicker">
-            <span class="sb-pill blue">RESEARCH BRIEF</span>
-            <span class="sb-pill ghost">NOV 2026</span>
+            <span class="kb">RESEARCH BRIEF</span>
+            <span class="sep">/</span>
+            <span>NOV 2026</span>
           </div>
           <h1 class="sb-title">The Hidden Cost of Rushing to Ship</h1>
           <p class="sb-sub">What 11 postmortems taught us about review discipline</p>
-          <div class="sb-context"><span class="sb-swatch"></span><span>Typodeck Research · November 2026</span></div>
+          <div class="sb-context"><span class="mk">▸</span><span>Typodeck Research · November 2026</span></div>
           <div class="sb-datarows">
             <div class="sb-row"><span class="k">CASES AUDITED</span><span class="v">11 / 11</span><span class="up">▲ COMPLETE</span></div>
             <div class="sb-row"><span class="k">SHARED FINDING</span><span class="v">REVIEW DISCIPLINE</span><span class="up">▲ CONFIRMED</span></div>
@@ -143,22 +135,22 @@
           </div>
         </div>
         <div class="sb-right">
-          <div class="sb-kpi green">
+          <div class="sb-kpi">
             <div class="sb-num">11</div>
             <div class="sb-kpi-meta">
               <div class="sb-kpi-label">POSTMORTEMS<br>IN SAMPLE</div>
-              <span class="sb-status ok">● COMPLETE</span>
+              <span class="sb-status"><span class="dot">●</span> COMPLETE</span>
             </div>
           </div>
           <div class="sb-cases">
             <h3>CASE LOG — REVIEW STATUS</h3>
-            <div class="sb-case"><span class="id">PM-01 … PM-04</span><span class="st ok">LOGGED</span></div>
-            <div class="sb-case"><span class="id">PM-05 … PM-08</span><span class="st ok">LOGGED</span></div>
-            <div class="sb-case"><span class="id">PM-09 … PM-11</span><span class="st warn">UNDER REVIEW</span></div>
+            <div class="sb-case"><span class="id">PM-01 … PM-04</span><span class="st ok"><span class="dot">●</span> LOGGED</span></div>
+            <div class="sb-case"><span class="id">PM-05 … PM-08</span><span class="st ok"><span class="dot">●</span> LOGGED</span></div>
+            <div class="sb-case"><span class="id">PM-09 … PM-11</span><span class="st warn">● UNDER REVIEW</span></div>
             <h3 style="margin-top:22px;">EXTRACTION — SHARED THEME</h3>
-            <div class="sb-case"><span class="id">ROWS LOGGED</span><span class="st ok">11 / 11</span></div>
-            <div class="sb-case"><span class="id">REVIEW DISCIPLINE</span><span class="st warn">FLAGSHIP</span></div>
-            <div class="sb-seal"><div class="track"><div class="fill"></div></div><div class="cap">SAMPLE SEALED · 11 / 11</div></div>
+            <div class="sb-case"><span class="id">ROWS LOGGED</span><span class="st ok"><span class="dot">●</span> 11 / 11</span></div>
+            <div class="sb-case"><span class="id">REVIEW DISCIPLINE</span><span class="st warn">● FLAGSHIP</span></div>
+            <div class="sb-seal"><div class="cap">SAMPLE SEALED · 11 / 11</div></div>
           </div>
         </div>
       </div>

@@ -166,7 +166,8 @@ describe('template-pack integration', () => {
     assert.equal(title.color, '#F5F0E6');
     assert.equal(title.fontFace, 'Anton');
     const kicker = deck.slides[0].blocks.find((b) => b.role === 'kicker')!;
-    assert.equal(kicker.color, '#FF4D00');
+    // color-comfort: monolith signal-orange #FF4D00 -> #F04E12 (saturation trim).
+    assert.equal(kicker.color, '#F04E12');
     // Baseline without theme is unchanged (no fontFace stamped).
     const plain = layoutDeck(SAMPLE_NARRATIVE, 'expressive', { seed: 7 });
     assert.equal(plain.slides[0].blocks[0].fontFace, undefined);

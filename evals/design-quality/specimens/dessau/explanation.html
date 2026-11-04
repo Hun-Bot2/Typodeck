@@ -45,37 +45,32 @@
     <div class="de-slide">
       <div class="de-topbar"><p class="de-context">Fixture data · not a real study</p></div>
       <div class="de-field">
-        <div class="de-bar de-bar-red" aria-hidden="true"></div>
-        <div class="de-coldiv de-coldiv-blue" aria-hidden="true"></div>
-        <div class="de-coldiv de-coldiv-yellow" aria-hidden="true"></div>
         <div class="de-main">
           <p class="de-eyebrow">The choice</p>
           <h1 class="de-title" id="deTitle">Two teams, one deadline</h1>
           <div class="de-cols">
             <div class="de-col">
-              <h2>Rushed review</h2>
+              <h2><span class="mk-tri">▲</span> Rushed review</h2>
               <ul class="mk-tri">
-                <li>Merged with a single skim approval</li>
-                <li>Config changes bundled into feature PRs</li>
-                <li>Rollback discovered by customers first</li>
+                <li><span class="mk">▲</span> Merged with a single skim approval</li>
+                <li><span class="mk">▲</span> Config changes bundled into feature PRs</li>
+                <li><span class="mk">▲</span> Rollback discovered by customers first</li>
               </ul>
             </div>
             <div class="de-col">
-              <h2>Disciplined review</h2>
+              <h2><span class="mk-dot">●</span> Disciplined review</h2>
               <ul class="mk-dot">
-                <li>Required a second reviewer on every merge</li>
-                <li>Config changes shipped in isolated PRs</li>
-                <li>Rollback caught in staging, never in production</li>
+                <li><span class="mk">●</span> Required a second reviewer on every merge</li>
+                <li><span class="mk">●</span> Config changes shipped in isolated PRs</li>
+                <li><span class="mk">●</span> Rollback caught in staging, never in production</li>
               </ul>
             </div>
           </div>
           <div class="de-caprow">
-            <div class="de-capbar" aria-hidden="true"></div>
             <p class="de-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
           </div>
         </div>
       </div>
-      <div class="de-strip" aria-hidden="true"><span class="de-seg-red"></span><span class="de-seg-blue"></span><span class="de-seg-yellow"></span></div>
       <div class="de-bottombar"><div class="de-numeral" aria-hidden="true">03</div></div>
     </div>
     <!-- /DESIGN SLIDE MARKUP -->
@@ -126,7 +121,7 @@
     top: 0; left: 0;
     width: 1920px;
     height: 96px;
-    background: #000000;
+    border-bottom: 4px solid #000000;
   }
   .de-context {
     position: absolute;
@@ -140,25 +135,20 @@
     line-height: 1.5;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: #000000;
     white-space: nowrap;
   }
   .de-field {
     position: absolute;
     top: 96px; left: 0;
     width: 1920px;
-    height: 900px;
+    height: 912px;
   }
-  .de-bar { position: absolute; top: 56px; bottom: 56px; width: 28px; }
-  .de-bar-red { left: 96px; background: #E30613; }
-  .de-coldiv { position: absolute; top: 240px; bottom: 390px; width: 28px; }
-  .de-coldiv-blue { left: 950px; background: #0066B3; }
-  .de-coldiv-yellow { left: 990px; background: #FFCC00; }
   .de-main {
     position: absolute;
-    left: 152px;
+    left: 96px;
     top: 80px;
-    width: 1672px;
+    width: 1728px;
   }
   .de-eyebrow {
     margin: 0;
@@ -192,6 +182,8 @@
     text-transform: uppercase;
     color: #000000;
   }
+  .de-col h2 .mk-tri { color: #E30613; }
+  .de-col h2 .mk-dot { color: #0066B3; }
   .de-col ul { list-style: none; margin: 0; padding: 0; }
   .de-col li {
     font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
@@ -200,25 +192,12 @@
     line-height: 1.4;
     color: #000000;
     margin: 0;
-    padding: 10px 0 10px 44px;
-    position: relative;
+    padding: 10px 0;
   }
-  .mk-tri li::before {
-    content: ""; position: absolute; left: 0; top: 16px;
-    width: 0; height: 0;
-    border-left: 13px solid transparent;
-    border-right: 13px solid transparent;
-    border-bottom: 22px solid #E30613;
-  }
-  .mk-dot li::before {
-    content: ""; position: absolute; left: 0; top: 16px;
-    width: 24px; height: 24px; border-radius: 50%;
-    background: #0066B3;
-  }
-  .de-caprow { display: flex; align-items: center; gap: 28px; margin-top: 44px; }
-  .de-capbar { flex: 0 0 180px; height: 28px; background: #000000; }
+  .mk-tri li .mk { color: #E30613; font-size: 22px; }
+  .mk-dot li .mk { color: #0066B3; font-size: 22px; }
+  .de-caprow { margin-top: 44px; border-top: 4px solid #000000; padding-top: 24px; }
   .de-caption {
-    flex: 1 1 auto;
     margin: 0;
     font-family: "Jost", "Noto Sans KR", Futura, "Century Gothic", sans-serif;
     font-weight: 400;
@@ -226,23 +205,13 @@
     line-height: 1.4;
     color: #000000;
   }
-  .de-strip {
-    position: absolute;
-    top: 996px; left: 0;
-    width: 1920px;
-    height: 12px;
-    display: flex;
-  }
-  .de-strip span { flex: 1 1 0; }
-  .de-seg-red { background: #E30613; }
-  .de-seg-blue { background: #0066B3; }
-  .de-seg-yellow { background: #FFCC00; }
   .de-bottombar {
     position: absolute;
-    top: 1008px; left: 0;
+    bottom: 0; left: 0;
     width: 1920px;
-    height: 72px;
-    background: #000000;
+    height: 76px;
+    box-sizing: border-box;
+    border-top: 4px solid #000000;
   }
   .de-numeral {
     position: absolute;
@@ -253,7 +222,7 @@
     font-weight: 600;
     font-size: 54px;
     line-height: 1;
-    color: #FFFFFF;
+    color: #000000;
   }
 </style>
 </body>

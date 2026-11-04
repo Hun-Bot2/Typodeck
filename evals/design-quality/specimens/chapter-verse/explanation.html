@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Inter:wght@500&display=swap" rel="stylesheet">
 <style>
+  /* Typography-only: stanzas separate with the single ◆ glyph and whitespace.
+     No hairlines. */
   .cv-slide {
     position: absolute; inset: 0;
     background: #FBF7EF;
@@ -23,21 +25,16 @@
     letter-spacing: 0.24em; text-transform: uppercase;
     color: #6B6257;
   }
-  .cv-running-rule { height: 1px; background: #B9A88F; margin-top: 18px; }
   .cv-main {
     flex: 1; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     text-align: center; min-height: 0;
   }
   .cv-kicker {
-    display: flex; align-items: center; gap: 24px;
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 16px; font-weight: 500;
     letter-spacing: 0.34em; text-transform: uppercase;
     color: #7A2E2E; white-space: nowrap;
-  }
-  .cv-kicker::before, .cv-kicker::after {
-    content: ""; display: block; width: 120px; height: 1px; background: #7A2E2E;
   }
   .cv-section-title {
     font-family: 'Newsreader', Georgia, serif;
@@ -58,14 +55,14 @@
     color: #1C1A17; margin: 0;
   }
   .cv-stanza-sep {
-    width: 200px; height: 1px; background: #B9A88F; margin: 32px auto 0;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 14px; color: #7A2E2E; margin: 32px 0 0;
   }
   .cv-caption {
     font-family: 'Newsreader', Georgia, serif;
     font-size: 24px; font-weight: 400; font-style: italic; line-height: 1.6;
     color: rgba(28, 26, 23, 0.82); max-width: 820px; margin: 32px 0 0;
   }
-  .cv-folio-rule { height: 1px; background: #B9A88F; }
   .cv-folio {
     display: flex; align-items: baseline; justify-content: space-between;
     padding-top: 20px;
@@ -112,7 +109,6 @@
     <section class="cv-slide">
       <header>
         <div class="cv-running"><span>The Hidden Cost of Rushing to Ship</span><span>November 2026</span></div>
-        <div class="cv-running-rule"></div>
       </header>
       <div class="cv-main">
         <div class="cv-kicker">The choice</div>
@@ -123,7 +119,7 @@
           <p class="cv-stanza-line">Config changes bundled into feature PRs</p>
           <p class="cv-stanza-line">Rollback discovered by customers first</p>
         </div>
-        <div class="cv-stanza-sep"></div>
+        <div class="cv-stanza-sep" aria-hidden="true">◆</div>
         <div class="cv-stanza">
           <div class="cv-stanza-head">Disciplined review</div>
           <p class="cv-stanza-line">Required a second reviewer on every merge</p>
@@ -133,7 +129,6 @@
         <p class="cv-caption">Same deadline, different discipline: one team paid at review time, the other in production.</p>
       </div>
       <footer>
-        <div class="cv-folio-rule"></div>
         <div class="cv-folio">
           <span class="cv-folio-source">Typodeck Research · November 2026</span>
           <span class="cv-folio-mark" aria-hidden="true">❦</span>

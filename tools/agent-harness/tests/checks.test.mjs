@@ -11,9 +11,9 @@ function metrics(over = {}) {
     texts: [{ key: 'title', sw: 100, cw: 200, sh: 50, ch: 60, x: 72, y: 200, w: 200, h: 60 }],
     heads: [{ key: 'title', align: 'left' }],
     rounded: 0,
-    rail: { x: 1272, y: 64, w: 576, h: 906 },
+    rail: null, // typography-only: numeral is free display type, no rail panel
     numeral: { x: 1312, y: 104, w: 460, h: 340 },
-    spec: { redrules: 1, grids: 1, rails: 1, footers: 1, fixtures: 0 },
+    spec: { redrules: 0, grids: 0, rails: 0, footers: 1, fixtures: 0 },
     text: 'Hello world. Second sentence here.',
     ...over,
   };
@@ -48,12 +48,21 @@ test('checkOverflow tolerates subpixel rounding (<=2px)', () => {
   assert.equal(checkOverflow(m).ok, true);
 });
 
-test('checkClip flags numeral escaping the rail', () => {
+test('checkClip contains the railless numeral in the stage', () => {
   assert.equal(checkClip(metrics()).ok, true);
-  const esc = metrics({ numeral: { x: 1200, y: 104, w: 460, h: 340 } });
+  const esc = metrics({ numeral: { x: 1500, y: 104, w: 460, h: 340 } });
   assert.equal(checkClip(esc).ok, false);
   const off = metrics({ texts: [{ key: 't', sw: 10, cw: 10, sh: 10, ch: 10, x: 1900, y: 100, w: 100, h: 10 }] });
   assert.equal(checkClip(off).ok, false);
+  const missing = metrics({ numeral: null });
+  assert.equal(checkClip(missing).ok, false);
+});
+
+test('checkClip still enforces rail containment for legacy chrome', () => {
+  const rail = { x: 1272, y: 64, w: 576, h: 906 };
+  assert.equal(checkClip(metrics({ rail })).ok, true);
+  const esc = metrics({ rail, numeral: { x: 1200, y: 104, w: 460, h: 340 } });
+  assert.equal(checkClip(esc).ok, false);
 });
 
 test('checkVerbatim requires every string, split long ones by sentence', () => {
@@ -76,9 +85,12 @@ test('checkFixture requires markers on fixture slides, forbids strays', () => {
   assert.equal(checkFixture(m, { fixture: false }).ok, false);
 });
 
-test('checkSpec enforces one red rule, chrome, left heads, no radius', () => {
+test('checkSpec enforces typography-only chrome: no rules/rails/grids', () => {
   assert.equal(checkSpec(metrics()).ok, true);
-  assert.equal(checkSpec(metrics({ spec: { redrules: 2, grids: 1, rails: 1, footers: 1, fixtures: 0 } })).ok, false);
+  assert.equal(checkSpec(metrics({ spec: { redrules: 1, grids: 0, rails: 0, footers: 1, fixtures: 0 } })).ok, false);
+  assert.equal(checkSpec(metrics({ spec: { redrules: 0, grids: 1, rails: 0, footers: 1, fixtures: 0 } })).ok, false);
+  assert.equal(checkSpec(metrics({ spec: { redrules: 0, grids: 0, rails: 1, footers: 1, fixtures: 0 } })).ok, false);
+  assert.equal(checkSpec(metrics({ spec: { redrules: 0, grids: 0, rails: 0, footers: 0, fixtures: 0 } })).ok, false);
   assert.equal(checkSpec(metrics({ heads: [{ key: 't', align: 'center' }] })).ok, false);
   assert.equal(checkSpec(metrics({ rounded: 3 })).ok, false);
 });

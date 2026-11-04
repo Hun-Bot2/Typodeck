@@ -21,13 +21,13 @@ Use this small file for title-slide previews only. For final deck generation, re
 
 ## Visual Snapshot
 
-Field Manual is a technical-manual presentation system set on warm paper with a fine dotted grid. Headers run in Archivo Bold caps, body in IBM Plex Sans, and every callout, tag, and figure label in IBM Plex Mono. The palette is paper and ink with a procedural blue for notes and figure chrome and a caution amber reserved for warning chips. Layouts follow a 60/40 split: ruled text with numbered steps on the left, a bordered figure column with exhibits and callout boxes on the right, stitched together with dashed leader lines. Depth is flat: 1px bordered boxes, double rules, and dotted-grid paper do all the work; shadows and gradients do not exist. The effect sits between a military field guide and a well-run engineering wiki — every element numbered, every claim tagged, nothing left floating.
+Field Manual is a technical-manual presentation system set on warm paper with a fine dotted grid. Headers run in Archivo Bold caps, body in IBM Plex Sans, and every callout, tag, and figure label in IBM Plex Mono. The palette is paper and ink with a deep procedural navy for notes and figure chrome and a caution amber reserved for warning chips. Layouts follow a 60/40 split: ruled text with numbered steps on the left, a bordered figure column with exhibits and callout boxes on the right, stitched together with dashed leader lines. Depth is flat: 1px bordered boxes, double rules, and dotted-grid paper do all the work; shadows and gradients do not exist. The effect sits between a military field guide and a well-run engineering wiki — every element numbered, every claim tagged, nothing left floating.
 
 Field Manual's foundational premise is the numbered artifact: every step, figure, note, and warning carries a visible reference code, so the slide reads as one page of a larger controlled document. Layouts feel issued, not designed — a doc header, a double rule, ruled sections, and a revision footer are the entire vocabulary.
 
 ## Preview Ingredients
 
-- Palette: paper #FAF8F3; ink #1A1A1A; procedural-blue #0B5FFF; caution-amber #FFB000; muted #6E6A5E
+- Palette: paper #FAF8F3; ink #1A1A1A; procedural-blue #182B49 (deep navy); caution-amber #FFB000; muted #6E6A5E
 - Typography: See full design doc after selection.
 - Signature move: Doc header strip with mono document code, centered procedure title, and date — closed by a 3px + 1px double rule.
 - Signature move: Numbered steps with bordered numeral squares, dashed leader lines, and mono section tags (`§2.1`).
